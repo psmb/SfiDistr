@@ -10,9 +10,15 @@
         "typo3/neos": "dev-master",
         "typo3/neos-nodetypes": "dev-master",
         "typo3/neos-kickstarter": "dev-master",
+        "sfi/widgets": "*",
+        "sfi/news": "*",
+        "sfi/styleguide": "*",
         "sfi/sfi": "*"
     },
     "repositories": [
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.Styleguide.git" },
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.Widgets.git" },
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.News.git" },
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Sfi.git" }
     ],
     "require-dev": {
