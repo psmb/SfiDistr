@@ -10,7 +10,7 @@
         "typo3/neos": "dev-master",
         "typo3/neos-nodetypes": "dev-master",
         "typo3/neos-kickstarter": "dev-master",
-        "sfi/sfi": "*",
+        "sfi/sfi": "*"
     },
     "repositories": [
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Sfi.git" }
