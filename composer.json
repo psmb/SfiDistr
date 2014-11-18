@@ -1,6 +1,6 @@
 {
-    "name": "typo3/neos-base-distribution",
-    "description" : "TYPO3 Neos Base Distribution",
+    "name": "sfi/sfi-distr",
+    "description" : "TYPO3 Neos Distribution for Sfi.ru",
     "license": "GPL-3.0+",
     "config": {
         "vendor-dir": "Packages/Libraries",
@@ -9,9 +9,12 @@
     "require": {
         "typo3/neos": "dev-master",
         "typo3/neos-nodetypes": "dev-master",
-        "typo3/neosdemotypo3org": "dev-master",
-        "typo3/neos-kickstarter": "dev-master"
+        "typo3/neos-kickstarter": "dev-master",
+        "sfi/sfi": "*",
     },
+    "repositories": [
+        { "type": "git", "url": "https://github.com/dimaip/Neos.NodeType.CodeSnippet.git" }
+    ],
     "require-dev": {
         "typo3/buildessentials": "dev-master",
         "mikey179/vfsstream": "1.4.*",
