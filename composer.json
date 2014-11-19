@@ -6,16 +6,6 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
-    "require": {
-        "typo3/neos": "dev-master",
-        "typo3/neos-nodetypes": "dev-master",
-        "typo3/neos-kickstarter": "dev-master",
-        "sfi/widgets": "*",
-        "sfi/news": "*",
-        "sfi/styleguide": "*",
-        "sfi/grid": "*",
-        "sfi/sfi": "*"
-    },
     "repositories": [
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Styleguide.git" },
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Widgets.git" },
@@ -23,14 +13,32 @@
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Grid.git" },
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Sfi.git" }
     ],
+    "require": {
+        "typo3/neos": "1.2.0-beta1",
+        "typo3/neos-nodetypes": "1.2.0-beta1",
+        "typo3/neos-kickstarter": "1.2.0-beta1",
+        "doctrine/migrations": "@dev",
+        "typo3/typoscript": "@beta",
+        "typo3/typo3cr": "@beta",
+        "typo3/media": "@dev",
+        "typo3/flow": "2.3.*@beta",
+        "typo3/fluid": "@beta",
+        "typo3/eel": "@beta",
+        "typo3/party": "@beta",
+        "typo3/kickstart": "@beta",
+        "sfi/widgets": "*",
+        "sfi/news": "*",
+        "sfi/styleguide": "*",
+        "sfi/grid": "*",
+        "sfi/sfi": "*"
+    },
     "require-dev": {
-        "typo3/buildessentials": "dev-master",
+        "typo3/buildessentials": "2.3.*@beta",
         "mikey179/vfsstream": "1.4.*",
         "phpunit/phpunit": "4.3.*",
         "flowpack/behat": "dev-master",
         "typo3-ci/typo3flow": "dev-master"
     },
-    "minimum-stability": "dev",
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },
