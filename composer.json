@@ -26,11 +26,11 @@
         "typo3/eel": "@beta",
         "typo3/party": "@beta",
         "typo3/kickstart": "@beta",
-        "sfi/widgets": "dev-master",
-        "sfi/news": "dev-master",
-        "sfi/styleguide": "dev-master",
-        "sfi/grid": "dev-master",
-        "sfi/sfi": "dev-master"
+        "sfi/widgets": "@dev",
+        "sfi/news": "@dev",
+        "sfi/styleguide": "@dev",
+        "sfi/grid": "@dev",
+        "sfi/sfi": "@dev"
     },
     "require-dev": {
         "typo3/buildessentials": "2.3.*@beta",
@@ -38,7 +38,7 @@
         "phpunit/phpunit": "4.3.*",
         "flowpack/behat": "dev-master",
         "typo3-ci/typo3flow": "dev-master",
-        "typo3/surf": "*"
+        "typo3/surf": "@dev"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
