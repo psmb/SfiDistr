@@ -26,11 +26,11 @@
         "typo3/eel": "@beta",
         "typo3/party": "@beta",
         "typo3/kickstart": "@beta",
-        "sfi/widgets": "*",
-        "sfi/news": "*",
-        "sfi/styleguide": "*",
-        "sfi/grid": "*",
-        "sfi/sfi": "*"
+        "sfi/widgets": "dev-master",
+        "sfi/news": "dev-master",
+        "sfi/styleguide": "dev-master",
+        "sfi/grid": "dev-master",
+        "sfi/sfi": "dev-master"
     },
     "require-dev": {
         "typo3/buildessentials": "2.3.*@beta",
