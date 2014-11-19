@@ -6,6 +6,13 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
+    "repositories": [
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.Styleguide.git" },
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.Widgets.git" },
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.News.git" },
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.Grid.git" },
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.Sfi.git" }
+    ],
     "require": {
         "typo3/neos": "1.2.0-beta1",
         "typo3/neos-nodetypes": "1.2.0-beta1",
@@ -18,7 +25,12 @@
         "typo3/fluid": "@beta",
         "typo3/eel": "@beta",
         "typo3/party": "@beta",
-        "typo3/kickstart": "@beta"
+        "typo3/kickstart": "@beta",
+        "sfi/widgets": "*",
+        "sfi/news": "*",
+        "sfi/styleguide": "*",
+        "sfi/grid": "*",
+        "sfi/sfi": "*"
     },
     "require-dev": {
         "typo3/buildessentials": "2.3.*@beta",
