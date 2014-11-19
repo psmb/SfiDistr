@@ -13,12 +13,14 @@
         "sfi/widgets": "*",
         "sfi/news": "*",
         "sfi/styleguide": "*",
+        "sfi/grid": "*",
         "sfi/sfi": "*"
     },
     "repositories": [
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Styleguide.git" },
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Widgets.git" },
         { "type": "git", "url": "https://github.com/dimaip/Sfi.News.git" },
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.Grid.git" },
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Sfi.git" }
     ],
     "require-dev": {
