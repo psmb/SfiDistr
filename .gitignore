@@ -2,10 +2,10 @@
 /Build/BuildEssentials
 /Build/Reports
 /Build/Resources
-/Configuration/
+#/Configuration/
 /Data/
 /Packages/
-/Web/
+#/Web/
 /bin/
 /Readme.txt
 /Upgrading.txt
