@@ -31,8 +31,7 @@
         "sfi/news": "@dev",
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",
-        "sfi/sfi": "@dev",
-        "sfi/sfifrontend": "@dev"
+        "sfi/sfi": "@dev"
     },
     "require-dev": {
         "typo3/buildessentials": "2.3.*@beta",
