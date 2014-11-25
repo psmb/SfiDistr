@@ -11,8 +11,7 @@
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Widgets.git" },
         { "type": "git", "url": "https://github.com/dimaip/Sfi.News.git" },
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Grid.git" },
-        { "type": "git", "url": "https://github.com/dimaip/Sfi.Sfi.git" },
-        { "type": "git", "url": "https://github.com/dimaip/Sfi.SfiFrontend.git" }
+        { "type": "git", "url": "https://github.com/dimaip/Sfi.Sfi.git" }
     ],
     "require": {
         "typo3/neos": "1.2.0-beta1",
