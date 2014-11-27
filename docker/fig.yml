@@ -1,0 +1,44 @@
+dbdata:
+  image: busybox:latest
+  command: echo dbdata
+  volumes:
+    - /home/dimaip/docker_data/lib/mysql:/var/lib/mysql
+
+db:
+  image: tutum/mariadb:latest
+  ports:
+    - 3306
+  volumes_from:
+    - dbdata
+  environment:
+    MARIADB_PASS: super-secret-db-password-321
+
+webdata:
+  image: busybox:latest
+  command: echo webdata
+  volumes:
+    - /home/dimaip/docker_data/data:/data
+
+web:
+  image: dimaip/sfi:latest
+  ports:
+    - '8080:80'
+  links:
+    - db:db
+  volumes_from:
+    - webdata
+  environment:
+    T3APP_ALWAYS_DO_PULL: true
+    T3APP_NAME: sfi-dev
+
+ssh:
+  image: million12/php-app-ssh
+  ports:
+    - '1122:22'
+  links:
+    - db:db
+    - web:web
+  volumes_from:
+    - webdata
+  environment:
+    IMPORT_GITHUB_PUB_KEYS: dimaip
