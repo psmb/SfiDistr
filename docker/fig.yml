@@ -20,7 +20,7 @@ webdata:
     - /home/dimaip/docker_data/data:/data
 
 web:
-  image: dimaip/sfi:latest
+  image: dimaip/sfidistr:latest
   ports:
     - '8080:80'
   links:
@@ -29,7 +29,7 @@ web:
     - webdata
   environment:
     T3APP_ALWAYS_DO_PULL: true
-    T3APP_NAME: sfi-dev
+    T3APP_NAME: sfi
 
 ssh:
   image: million12/php-app-ssh
