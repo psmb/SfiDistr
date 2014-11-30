@@ -748,9 +748,10 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.Grid.git",
-                "reference": "b65341ff4f7fee26fc76bfc66d7ca4dda0036857"
+                "reference": "cc948817c6f356a86deb851554cb233e2296fe47"
             },
             "require": {
+                "sfi/widgets": "*",
                 "typo3/flow": "*"
             },
             "type": "typo3-flow-package",
@@ -760,7 +761,7 @@
                 }
             },
             "description": "Foundation Grid",
-            "time": "2014-11-19 20:26:00"
+            "time": "2014-11-28 08:02:48"
         },
         {
             "name": "sfi/news",
@@ -768,7 +769,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.News.git",
-                "reference": "21f745f17b781b234bdc057d7ca576acd93941b7"
+                "reference": "8db54e1ff3bd0ce0a1e246731790261104a4666c"
             },
             "require": {
                 "typo3/flow": "*"
@@ -780,7 +781,7 @@
                 }
             },
             "description": "Tiny node-based news extension for sfi.ru",
-            "time": "2014-11-26 12:50:53"
+            "time": "2014-11-28 07:21:14"
         },
         {
             "name": "sfi/sfi",
@@ -788,7 +789,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.Sfi.git",
-                "reference": "be1307a0633670a3f5aab474833bdd07aff1b4c0"
+                "reference": "7de520f3288ced1d839f220cd94ce267ae383338"
             },
             "require": {
                 "sfi/grid": "*",
@@ -805,7 +806,7 @@
                 }
             },
             "description": "SFI site files",
-            "time": "2014-11-25 20:27:07"
+            "time": "2014-11-28 07:59:58"
         },
         {
             "name": "sfi/styleguide",
@@ -833,7 +834,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.Widgets.git",
-                "reference": "1de7f2574e74e22f71258e164d6dfd9735f68b1d"
+                "reference": "3378a6f25922da97f56eda3afb47ebf587ff3852"
             },
             "require": {
                 "typo3/flow": "*"
@@ -845,7 +846,7 @@
                 }
             },
             "description": "Various implementations of content widgets for Neos like tabs, accordion, carousel etc.",
-            "time": "2014-11-26 08:58:41"
+            "time": "2014-11-27 21:48:15"
         },
         {
             "name": "symfony/console",
