@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.18",
+            "version": "v1.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "74fb0a7a1a23696d9c8cc2fba5903f6711cdd067"
+                "reference": "89d77bfbee79e16653f7162c86e602cc188471db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/74fb0a7a1a23696d9c8cc2fba5903f6711cdd067",
-                "reference": "74fb0a7a1a23696d9c8cc2fba5903f6711cdd067",
+                "url": "https://api.github.com/repos/composer/installers/zipball/89d77bfbee79e16653f7162c86e602cc188471db",
+                "reference": "89d77bfbee79e16653f7162c86e602cc188471db",
                 "shasum": ""
             },
             "replace": {
@@ -59,6 +59,7 @@
                 "Hurad",
                 "MODX Evo",
                 "OXID",
+                "Thelia",
                 "WolfCMS",
                 "agl",
                 "annotatecms",
@@ -68,9 +69,11 @@
                 "codeigniter",
                 "concrete5",
                 "croogo",
+                "dokuwiki",
                 "drupal",
                 "elgg",
                 "fuelphp",
+                "grav",
                 "installer",
                 "joomla",
                 "kohana",
@@ -94,7 +97,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2014-08-18 20:00:12"
+            "time": "2014-11-29 01:29:17"
         },
         {
             "name": "doctrine/annotations",
@@ -769,7 +772,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.News.git",
-                "reference": "8db54e1ff3bd0ce0a1e246731790261104a4666c"
+                "reference": "9d0517d561b4ac9df63ec592b7e77ca3ae2662d5"
             },
             "require": {
                 "typo3/flow": "*"
@@ -781,7 +784,7 @@
                 }
             },
             "description": "Tiny node-based news extension for sfi.ru",
-            "time": "2014-11-28 07:21:14"
+            "time": "2014-12-01 05:36:54"
         },
         {
             "name": "sfi/sfi",
@@ -789,7 +792,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.Sfi.git",
-                "reference": "7de520f3288ced1d839f220cd94ce267ae383338"
+                "reference": "2125783e1a70b495d3a271b49d8c22f6f7a09434"
             },
             "require": {
                 "sfi/grid": "*",
@@ -806,7 +809,7 @@
                 }
             },
             "description": "SFI site files",
-            "time": "2014-11-28 07:59:58"
+            "time": "2014-12-01 15:32:45"
         },
         {
             "name": "sfi/styleguide",
@@ -834,7 +837,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.Widgets.git",
-                "reference": "3378a6f25922da97f56eda3afb47ebf587ff3852"
+                "reference": "c44085c44444c03ac59e76ea7e187e35deb38067"
             },
             "require": {
                 "typo3/flow": "*"
@@ -846,21 +849,21 @@
                 }
             },
             "description": "Various implementations of content widgets for Neos like tabs, accordion, carousel etc.",
-            "time": "2014-11-27 21:48:15"
+            "time": "2014-12-01 15:33:19"
         },
         {
             "name": "symfony/console",
-            "version": "v2.5.7",
+            "version": "v2.6.0",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "61b13c27c9258e97009249d4ef193c964bf346b7"
+                "reference": "d3bac228fd7a2aac9193e241b239880b3ba39a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/61b13c27c9258e97009249d4ef193c964bf346b7",
-                "reference": "61b13c27c9258e97009249d4ef193c964bf346b7",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/d3bac228fd7a2aac9193e241b239880b3ba39a10",
+                "reference": "d3bac228fd7a2aac9193e241b239880b3ba39a10",
                 "shasum": ""
             },
             "require": {
@@ -868,16 +871,18 @@
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/event-dispatcher": "~2.1"
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/process": "~2.1"
             },
             "suggest": {
                 "psr/log": "For using the console logger",
-                "symfony/event-dispatcher": ""
+                "symfony/event-dispatcher": "",
+                "symfony/process": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -901,7 +906,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-20 13:22:25"
+            "time": "2014-11-20 13:24:23"
         },
         {
             "name": "symfony/dom-crawler",
