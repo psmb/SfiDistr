@@ -14,18 +14,11 @@
         { "type": "git", "url": "https://github.com/dimaip/Sfi.Sfi.git" }
     ],
     "require": {
-        "typo3/neos": "1.2.0-beta3",
-        "typo3/neos-nodetypes": "1.2.0-beta3",
-        "typo3/neos-kickstarter": "1.2.0-beta3",
+        "typo3/neos": "1.2.*",
+        "typo3/neos-nodetypes": "1.2.*",
+        "typo3/neos-kickstarter": "1.2.*",
         "doctrine/migrations": "@dev",
-        "typo3/typoscript": "@beta",
-        "typo3/typo3cr": "@beta",
-        "typo3/media": "@dev",
-        "typo3/flow": "2.3.*@beta",
-        "typo3/fluid": "@beta",
-        "typo3/eel": "@beta",
-        "typo3/party": "@beta",
-        "typo3/kickstart": "@beta",
+        "typo3/flow": "2.3.*"
         "sfi/widgets": "@dev",
         "sfi/news": "@dev",
         "sfi/styleguide": "@dev",
