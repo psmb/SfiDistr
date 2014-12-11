@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ea10f04286616e12f51fa7b8bdd81f99",
+    "hash": "ef1f8ee8fd71c2f7cd84c1ac36942ba9",
     "packages": [
         {
             "name": "composer/installers",
@@ -751,7 +751,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.Grid.git",
-                "reference": "cc948817c6f356a86deb851554cb233e2296fe47"
+                "reference": "8fb9d77ab784e9e27f221501bb0a7b1e95dff839"
             },
             "require": {
                 "sfi/widgets": "*",
@@ -764,7 +764,7 @@
                 }
             },
             "description": "Foundation Grid",
-            "time": "2014-11-28 08:02:48"
+            "time": "2014-12-10 18:30:50"
         },
         {
             "name": "sfi/news",
@@ -772,7 +772,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.News.git",
-                "reference": "9d0517d561b4ac9df63ec592b7e77ca3ae2662d5"
+                "reference": "0edca1eec57e35596a8af1c5d5ece9357a398d74"
             },
             "require": {
                 "typo3/flow": "*"
@@ -784,7 +784,7 @@
                 }
             },
             "description": "Tiny node-based news extension for sfi.ru",
-            "time": "2014-12-01 05:36:54"
+            "time": "2014-12-08 09:58:32"
         },
         {
             "name": "sfi/sfi",
@@ -792,7 +792,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.Sfi.git",
-                "reference": "2125783e1a70b495d3a271b49d8c22f6f7a09434"
+                "reference": "551b945cb177718e27ab814f617262b2a6eb6c96"
             },
             "require": {
                 "sfi/grid": "*",
@@ -809,7 +809,7 @@
                 }
             },
             "description": "SFI site files",
-            "time": "2014-12-01 15:32:45"
+            "time": "2014-12-11 11:05:35"
         },
         {
             "name": "sfi/styleguide",
@@ -837,7 +837,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dimaip/Sfi.Widgets.git",
-                "reference": "c44085c44444c03ac59e76ea7e187e35deb38067"
+                "reference": "7c9f9d5ffb6cd6489fe3184d5e953e9ce720f73d"
             },
             "require": {
                 "typo3/flow": "*"
@@ -849,21 +849,21 @@
                 }
             },
             "description": "Various implementations of content widgets for Neos like tabs, accordion, carousel etc.",
-            "time": "2014-12-01 15:33:19"
+            "time": "2014-12-10 18:21:04"
         },
         {
             "name": "symfony/console",
-            "version": "v2.6.0",
+            "version": "v2.6.1",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "d3bac228fd7a2aac9193e241b239880b3ba39a10"
+                "reference": "ef825fd9f809d275926547c9e57cbf14968793e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/d3bac228fd7a2aac9193e241b239880b3ba39a10",
-                "reference": "d3bac228fd7a2aac9193e241b239880b3ba39a10",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/ef825fd9f809d275926547c9e57cbf14968793e8",
+                "reference": "ef825fd9f809d275926547c9e57cbf14968793e8",
                 "shasum": ""
             },
             "require": {
@@ -906,21 +906,21 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-20 13:24:23"
+            "time": "2014-12-02 20:19:20"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v2.5.7",
+            "version": "v2.5.8",
             "target-dir": "Symfony/Component/DomCrawler",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DomCrawler.git",
-                "reference": "3245e012a7c88fd9ba5896be8d9b3a8bb99db869"
+                "reference": "afbdb416ca0096d2d6be13c6fe42d20b52656076"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/3245e012a7c88fd9ba5896be8d9b3a8bb99db869",
-                "reference": "3245e012a7c88fd9ba5896be8d9b3a8bb99db869",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/afbdb416ca0096d2d6be13c6fe42d20b52656076",
+                "reference": "afbdb416ca0096d2d6be13c6fe42d20b52656076",
                 "shasum": ""
             },
             "require": {
@@ -959,21 +959,21 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-20 13:22:25"
+            "time": "2014-12-02 20:15:53"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.5.7",
+            "version": "v2.5.8",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "900d38bc8f74a50343ce65dd1c1e9819658ee56b"
+                "reference": "b6ad726d415aa787ac4deddc75e7ad7a1bcc84bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/900d38bc8f74a50343ce65dd1c1e9819658ee56b",
-                "reference": "900d38bc8f74a50343ce65dd1c1e9819658ee56b",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/b6ad726d415aa787ac4deddc75e7ad7a1bcc84bd",
+                "reference": "b6ad726d415aa787ac4deddc75e7ad7a1bcc84bd",
                 "shasum": ""
             },
             "require": {
@@ -1006,18 +1006,18 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-11-20 13:22:25"
+            "time": "2014-12-02 20:15:53"
         },
         {
             "name": "typo3/eel",
-            "version": "2.3.0-beta2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Eel.git",
-                "reference": "9bec9bd23e5c4e4d9ce6f52808f9cfa625ee19e7"
+                "reference": "dc6a2ce3f7405eff69f6bf0c10a2122412117df9"
             },
             "require": {
-                "typo3/flow": "2.3.0-beta2"
+                "typo3/flow": "2.3.*"
             },
             "type": "typo3-flow-framework",
             "autoload": {
@@ -1030,15 +1030,15 @@
                 "LGPL-3.0+"
             ],
             "description": "The Embedded Expression Language (Eel) is a building block for creating Domain Specific Languages",
-            "time": "2014-11-26 10:51:40"
+            "time": "2014-12-10 23:22:30"
         },
         {
             "name": "typo3/flow",
-            "version": "2.3.0-beta2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Flow.git",
-                "reference": "fa80b794c7f61ba08729d54d89c0b9d82c60686e"
+                "reference": "6f49f40fd1ebd8d8b404e80f3260a570b71651c8"
             },
             "require": {
                 "composer/installers": "~1.0.2",
@@ -1052,9 +1052,9 @@
                 "symfony/console": "2.*",
                 "symfony/dom-crawler": "2.5.*",
                 "symfony/yaml": "2.5.*",
-                "typo3/eel": "2.3.0-beta2",
-                "typo3/fluid": "2.3.0-beta2",
-                "typo3/party": "2.3.0-beta2"
+                "typo3/eel": "2.3.*",
+                "typo3/fluid": "2.3.*",
+                "typo3/party": "2.3.*"
             },
             "suggest": {
                 "doctrine/data-fixtures": "To manage and execute the loading of data fixtures for the Doctrine ORM or ODM"
@@ -1071,18 +1071,18 @@
             ],
             "description": "TYPO3 Flow Application Framework",
             "homepage": "http://flow.typo3.org",
-            "time": "2014-11-26 10:51:40"
+            "time": "2014-12-10 23:22:29"
         },
         {
             "name": "typo3/fluid",
-            "version": "2.3.0-beta2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Fluid.git",
-                "reference": "3f6d0b13cf04c60f7c02364c63e93719c35a7a8d"
+                "reference": "51440ca680bcf8f33917e781f2b187bca1d572cd"
             },
             "require": {
-                "typo3/flow": "2.3.0-beta2"
+                "typo3/flow": "2.3.*"
             },
             "type": "typo3-flow-framework",
             "autoload": {
@@ -1095,7 +1095,7 @@
                 "LGPL-3.0+"
             ],
             "description": "Next-Generation Templating Framework for TYPO3 Flow and TYPO3 Neos, also backported to TYPO3 CMS",
-            "time": "2014-11-26 10:51:41"
+            "time": "2014-12-10 23:22:30"
         },
         {
             "name": "typo3/form",
@@ -1147,14 +1147,14 @@
         },
         {
             "name": "typo3/kickstart",
-            "version": "2.3.0-beta2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Kickstart.git",
-                "reference": "7aa26abab6cf26ec38c939477d01c77d25d24bdf"
+                "reference": "042a86aa0b2ff94907f542f84843c26a857e2073"
             },
             "require": {
-                "typo3/flow": "2.3.0-beta2"
+                "typo3/flow": "2.3.*"
             },
             "type": "typo3-flow-framework",
             "autoload": {
@@ -1167,15 +1167,15 @@
                 "LGPL-3.0+"
             ],
             "description": "A simple generator for controller and views.",
-            "time": "2014-11-26 10:51:41"
+            "time": "2014-12-10 23:22:30"
         },
         {
             "name": "typo3/media",
-            "version": "1.2.0-beta2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Media.git",
-                "reference": "690aff0ddafa6679b9608d928c06b7354f8cfaf9"
+                "reference": "7d46d9bdb28a5fc9353a42d33a180cf4b067a617"
             },
             "require": {
                 "typo3/flow": "*",
@@ -1196,19 +1196,19 @@
         },
         {
             "name": "typo3/neos",
-            "version": "1.2.0-beta2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Neos.git",
-                "reference": "216a3ea235e53d0c665614109063ab80a06121c6"
+                "reference": "edc6494e3faef41c033e9c79885c5485615e7ec3"
             },
             "require": {
                 "typo3/flow": "*",
-                "typo3/media": "1.2.0-beta2",
+                "typo3/media": "1.2.*",
                 "typo3/setup": "*",
                 "typo3/twitter-bootstrap": "*",
-                "typo3/typo3cr": "1.2.0-beta2",
-                "typo3/typoscript": "1.2.0-beta2"
+                "typo3/typo3cr": "1.2.*",
+                "typo3/typoscript": "1.2.*"
             },
             "suggest": {
                 "typo3/neos-kickstarter": "Helps with creating new packages for TYPO3 Neos."
@@ -1229,19 +1229,19 @@
                 "GPL-3.0+"
             ],
             "description": "The next generation of the popular open-source CMS.",
-            "time": "2014-11-26 11:03:32"
+            "time": "2014-12-10 22:59:52"
         },
         {
             "name": "typo3/neos-kickstarter",
-            "version": "1.2.0-beta2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.SiteKickstarter.git",
-                "reference": "24339439df23586872cc2bc8117739163f5545c8"
+                "reference": "06314b6d1ca36dea2c96cd2397362cc6d8ebf25b"
             },
             "require": {
                 "typo3/kickstart": "*",
-                "typo3/neos": "1.2.0-beta2",
+                "typo3/neos": "1.2.*",
                 "typo3/neos-nodetypes": "*"
             },
             "type": "typo3-flow-package",
@@ -1255,18 +1255,18 @@
                 "GPL-3.0+"
             ],
             "description": "A simple generator for Neos assets, like sites and plugins.",
-            "time": "2014-11-26 11:03:33"
+            "time": "2014-12-10 22:59:52"
         },
         {
             "name": "typo3/neos-nodetypes",
-            "version": "1.2.0-beta2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Neos.NodeTypes.git",
-                "reference": "38b86421d55b2a024675276e526abdcea8eef28c"
+                "reference": "f93fa203621f7738454959fde4a80f92bcb4b3d0"
             },
             "require": {
-                "typo3/neos": "1.2.0-beta2"
+                "typo3/neos": "1.2.*"
             },
             "type": "typo3-flow-package",
             "autoload": {
@@ -1279,18 +1279,18 @@
                 "GPL-3.0+"
             ],
             "description": "Node type configuration for TYPO3 Neos",
-            "time": "2014-11-26 11:03:33"
+            "time": "2014-12-10 22:59:52"
         },
         {
             "name": "typo3/party",
-            "version": "2.3.0-beta2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Party.git",
-                "reference": "9b52196247f70e0541d66f88259bc42c9df64e08"
+                "reference": "1122529ef79e1d0677630f932dda4181ad498f5c"
             },
             "require": {
-                "typo3/flow": "2.3.0-beta2"
+                "typo3/flow": "2.3.*"
             },
             "type": "typo3-flow-framework",
             "autoload": {
@@ -1303,7 +1303,7 @@
                 "LGPL-3.0+"
             ],
             "description": "A PHP implementation of the OASIS Customer Information Quality (CIQ) XML Standard.",
-            "time": "2014-11-26 10:51:41"
+            "time": "2014-12-10 23:22:30"
         },
         {
             "name": "typo3/setup",
@@ -1357,11 +1357,11 @@
         },
         {
             "name": "typo3/typo3cr",
-            "version": "1.2.0-beta2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.TYPO3CR.git",
-                "reference": "d5bb0b54e8ce1aa3fd7736e46101cfb917d051b5"
+                "reference": "3190720519fa48a0410517d84deef2002dc23bc5"
             },
             "require": {
                 "typo3/eel": "*",
@@ -1378,15 +1378,15 @@
                 "GPL-3.0+"
             ],
             "description": "Content repository based on TYPO3 Flow, specifically made for TYPO3 Neos.",
-            "time": "2014-11-24 13:56:15"
+            "time": "2014-12-10 22:29:52"
         },
         {
             "name": "typo3/typoscript",
-            "version": "1.2.0-beta2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.TypoScript.git",
-                "reference": "9c35d658c214d83a4059004a051dd4bb20beb08e"
+                "reference": "0bd7f69d5a16a1aba29dce8f4736913df0badd1d"
             },
             "require": {
                 "typo3/eel": "*",
@@ -1403,7 +1403,7 @@
                 "GPL-3.0+"
             ],
             "description": "TypoScript is a hierarchical, prototype based processing language",
-            "time": "2014-11-13 12:24:46"
+            "time": "2014-09-12 14:41:10"
         }
     ],
     "packages-dev": [
@@ -1531,16 +1531,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.11",
+            "version": "2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "53603b3c995f5aab6b59c8e08c3a663d2cc810b7"
+                "reference": "0e7d2eec5554f869fa7a4ec2d21e4b37af943ea5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/53603b3c995f5aab6b59c8e08c3a663d2cc810b7",
-                "reference": "53603b3c995f5aab6b59c8e08c3a663d2cc810b7",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/0e7d2eec5554f869fa7a4ec2d21e4b37af943ea5",
+                "reference": "0e7d2eec5554f869fa7a4ec2d21e4b37af943ea5",
                 "shasum": ""
             },
             "require": {
@@ -1592,7 +1592,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-08-31 06:33:04"
+            "time": "2014-12-03 06:41:44"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1907,16 +1907,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "e54a01c0da1b87db3c5a3c4c5277ddf331da4aef"
+                "reference": "c484a80f97573ab934e37826dba0135a3301b26a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/e54a01c0da1b87db3c5a3c4c5277ddf331da4aef",
-                "reference": "e54a01c0da1b87db3c5a3c4c5277ddf331da4aef",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/c484a80f97573ab934e37826dba0135a3301b26a",
+                "reference": "c484a80f97573ab934e37826dba0135a3301b26a",
                 "shasum": ""
             },
             "require": {
@@ -1930,7 +1930,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -1967,7 +1967,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2014-05-11 23:00:21"
+            "time": "2014-11-16 21:32:38"
         },
         {
             "name": "sebastian/diff",
@@ -2023,16 +2023,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "0d9bf79554d2a999da194a60416c15cf461eb67d"
+                "reference": "6e6c71d918088c251b181ba8b3088af4ac336dd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/0d9bf79554d2a999da194a60416c15cf461eb67d",
-                "reference": "0d9bf79554d2a999da194a60416c15cf461eb67d",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/6e6c71d918088c251b181ba8b3088af4ac336dd7",
+                "reference": "6e6c71d918088c251b181ba8b3088af4ac336dd7",
                 "shasum": ""
             },
             "require": {
@@ -2069,7 +2069,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2014-10-22 06:38:05"
+            "time": "2014-10-25 08:00:45"
         },
         {
             "name": "sebastian/exporter",
@@ -2225,16 +2225,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "1.5.5",
+            "version": "1.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "5d973e59cf58a0c847f298de84374c96b42b17b3"
+                "reference": "6f3e42d311b882b25b4d409d23a289f4d3b803d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5d973e59cf58a0c847f298de84374c96b42b17b3",
-                "reference": "5d973e59cf58a0c847f298de84374c96b42b17b3",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6f3e42d311b882b25b4d409d23a289f4d3b803d5",
+                "reference": "6f3e42d311b882b25b4d409d23a289f4d3b803d5",
                 "shasum": ""
             },
             "require": {
@@ -2296,7 +2296,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2014-09-25 03:33:46"
+            "time": "2014-12-04 22:32:15"
         },
         {
             "name": "typo3-ci/typo3flow",
@@ -2413,11 +2413,11 @@
         },
         {
             "name": "typo3/buildessentials",
-            "version": "2.3.0-beta2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Flow/BuildEssentials.git",
-                "reference": "a156ab4bdbae58439926344ad4d3808c1d2d4e27"
+                "reference": "3dc85abf2ff4e45f2bac42c8fa8dd59ffee78080"
             },
             "require": {
                 "composer/installers": "~1.0.2"
@@ -2439,7 +2439,7 @@
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.Surf.git",
-                "reference": "53002a04b7ae0c1d370ed379a456513db7b40ce6"
+                "reference": "efbe3d7a13a0fb17b0e7ab599b830b02aeddb095"
             },
             "require": {
                 "typo3/flow": "*"
@@ -2455,24 +2455,13 @@
                 "GPL-3.0+"
             ],
             "description": "TYPO3 Surf is a deployment tool based on Flow and suited for a wide variety of applications",
-            "time": "2014-11-06 16:15:28"
+            "time": "2014-12-02 15:03:55"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "typo3/neos": 10,
-        "typo3/neos-nodetypes": 10,
-        "typo3/neos-kickstarter": 10,
         "doctrine/migrations": 20,
-        "typo3/typoscript": 10,
-        "typo3/typo3cr": 10,
-        "typo3/media": 20,
-        "typo3/flow": 10,
-        "typo3/fluid": 10,
-        "typo3/eel": 10,
-        "typo3/party": 10,
-        "typo3/kickstart": 10,
         "sfi/widgets": 20,
         "sfi/news": 20,
         "sfi/styleguide": 20,

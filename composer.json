@@ -18,7 +18,7 @@
         "typo3/neos-nodetypes": "1.2.*",
         "typo3/neos-kickstarter": "1.2.*",
         "doctrine/migrations": "@dev",
-        "typo3/flow": "2.3.*"
+        "typo3/flow": "2.3.*",
         "sfi/widgets": "@dev",
         "sfi/news": "@dev",
         "sfi/styleguide": "@dev",
