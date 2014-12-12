@@ -6,4 +6,4 @@ deployment:
     branch: master
     commands:
       - ./flow surf:deploy Sfi:
-        timeout: 900
+          timeout: 900
