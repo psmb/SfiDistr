@@ -1,0 +1,8 @@
+machine:
+  php:
+    version: 5.5.11
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./flow surf:deploy Sfi
