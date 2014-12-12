@@ -1,6 +1,9 @@
 machine:
   php:
     version: 5.5.11
+test:
+  override:
+    - echo "No tests to run"
 deployment:
   production:
     branch: master
