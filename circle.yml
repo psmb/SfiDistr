@@ -5,4 +5,8 @@ deployment:
   production:
     branch: master
     commands:
-      - ./flow surf:deploy Sfi
+      - ./flow surf:deploy Sfi:
+        timeout: 240
+        environment:
+          foo: bar
+          foo2: bar2
