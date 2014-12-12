@@ -10,3 +10,6 @@ First install docker and fig, then:
 sudo fig up
 ssh -p 1122 www@YOUR_DOCKER_IP
 ```
+
+CircleCI integration status:
+[![Circle CI](https://circleci.com/gh/sfi-ru/SfiDistr/tree/master.svg?style=svg)](https://circleci.com/gh/sfi-ru/SfiDistr/tree/master)
