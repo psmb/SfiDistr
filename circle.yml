@@ -7,6 +7,3 @@ deployment:
     commands:
       - ./flow surf:deploy Sfi:
         timeout: 900
-        environment:
-          foo: bar
-          foo2: bar2
