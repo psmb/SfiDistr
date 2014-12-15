@@ -10,7 +10,7 @@ $deployment->setWorkflow($workflow);
 
 
 $node = new \TYPO3\Surf\Domain\Model\Node('sfi');
-$node->setHostname('sfi.ru');
+$node->setHostname('server.psmb.ru');
 $node->setOption('username', 'dimaip');
 
 $application = new \TYPO3\Surf\Application\TYPO3\Flow();
