@@ -18,3 +18,13 @@
       package: 'TYPO3.Neos'
       variables:
         'defaultUriSuffix': '.html'
+
+-
+  name: 'yandex-news'
+  uriPattern: 'rss-feed-yandex'
+  defaults:
+    '@package':    'TYPO3.Neos'
+    '@controller': 'Frontend\Node'
+    '@action':     'show'
+    '@format':     'html'
+    'node': '/sites/sfi/system/rss/all'
