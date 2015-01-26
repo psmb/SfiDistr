@@ -2,7 +2,7 @@
 <header class="Header">
 	<div class="row">
 		<div class="columns">
-			<div class="MainMenu js-MainMenu">
+			<div class="">
 				
 				<div class="js-MainMenu-Wrap">
 					<div class="overflow-hidden">
@@ -29,17 +29,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="MainMenu-AllWrap">
-		<div class="row">
-			<div class="columns">
-				<div class="hide  MainMenu-FollowLinks">
-					<f:render partial="FollowLinks" />
-				</div>
-				<div href="#menu" class="show-for-medium-up MainMenu-Toggle js-MainMenu-Toggle"><f:render partial="Svg/IconMenu"/></div>
-				{mainMenu -> f:format.raw()}
-			</div>
+	<f:if condition="{false}">
+		<div class="MainMenu-FollowLinks">
+			<f:render partial="FollowLinks" />
 		</div>
-	</div>
+	</f:if>
+	{mainMenu -> f:format.raw()}
 	<f:if condition="{breadcrumbMenu}">
 		<div class="row">
 			<div class="columns">
