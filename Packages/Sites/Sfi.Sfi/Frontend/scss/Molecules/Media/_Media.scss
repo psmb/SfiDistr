@@ -1,0 +1,27 @@
+.Media {
+	border: $border-thin;
+	padding: 2*$u;
+	margin-bottom: 30px;
+}
+.Media-Title{
+	@extend .Paragraph--Large;
+	line-height: $lineHeight-tight;
+	margin-bottom: $u/2;
+}
+.Media-Teaser{
+	@extend .ParagraphAlt;
+	margin-top: $u/2;
+	margin-bottom: $u/2;
+}
+.Media-Date{
+	@extend .ServiceEm;
+	color: $gray--light;
+	margin-top: $u/2;
+	margin-bottom: $u/2;
+}
+.Media-Category{
+	display: none;
+}
+.Media-Image img{
+	width: 100%;
+}

@@ -1,0 +1,17 @@
+.SiteLogo{
+	max-width: 340px;
+	width: calc(100% - 66px);
+	height:100%;
+}
+
+@media #{$medium-up} {
+	.SiteLogo {
+		width: 340px;
+		max-width: initial;
+	}
+}
+@media #{$large-up} {
+	.SiteLogo {
+		width: 450px;
+	}
+}

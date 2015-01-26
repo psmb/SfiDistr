@@ -1,0 +1,34 @@
+.MediaSmall {
+	margin-bottom: 2*$u;
+}
+
+.MediaSmall-Title{
+	@extend .H4;
+	margin-top: 0;
+	margin-bottom: $u/2;
+}
+.MediaSmall-Teaser{
+	@extend .Paragraph--Small;
+	margin-top: $u/2;
+	margin-bottom: $u/2;
+}
+.MediaSmall-Date{
+	@extend .Paragraph--Small;
+	color: $gray--light;
+	margin-top: $u/2;
+	margin-bottom: $u/2;
+}
+.MediaSmall-Category{
+	@extend .H5;
+	display: none;
+}
+.MediaSmall-Image {
+	float: left;
+	img{
+		width: 90px;
+	}
+}
+
+.MediaSmall-Body {
+	margin-left: 120px;
+}

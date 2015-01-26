@@ -1,0 +1,31 @@
+*, *:before, *:after {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+}
+a{
+  color: inherit;
+  text-decoration: inherit;
+}
+p,h1,h2,h3,h4,h5,h6{
+	font-size: inherit;
+	font-weight: inherit;
+	margin: 0;
+}
+ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+// Responsive images
+img{
+	max-width:100%;
+	height:auto;
+	display: inline-block;
+	vertical-align: middle;
+}

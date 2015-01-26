@@ -1,0 +1,9 @@
+{
+  "name": "foundation-compass-app",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "slick.js": "~1.3.13",
+    "audiojs": "*"
+  }
+}

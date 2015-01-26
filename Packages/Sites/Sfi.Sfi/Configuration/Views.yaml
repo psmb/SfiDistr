@@ -1,0 +1,5 @@
+-
+  requestFilter: 'isPackage("TYPO3.TYPO3CR")&&isController("Paginate")'
+  options:
+    templateRootPaths:
+      'TYPO3.TYPO3CR': 'resource://Sfi.Sfi/Private/Templates'

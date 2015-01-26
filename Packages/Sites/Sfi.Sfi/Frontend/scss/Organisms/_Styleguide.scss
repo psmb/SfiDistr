@@ -1,0 +1,40 @@
+.StyleguideMenu{
+	overflow: auto;
+	li{
+		float: left;
+		margin: $u;
+	}
+	a{
+		padding: $u;
+		text-decoration: underline;
+	}
+	li.current a{
+		color: red;
+	}
+}
+.Styleguide-CategoryTitle{
+	font-size: 4rem;
+	text-align: center;
+}
+
+.SubCategory-Title{
+	font-size: 3rem;
+	line-height: 1.3;
+	margin-top: 2em;
+}
+.SubCategory{
+	margin-bottom: 2*$u;
+}
+.SubCategory-Content{
+	margin: 2*$u 0;
+}
+
+
+.StyleguideItem{
+	padding: 2*$u 0;
+	border-top: $border-thin;
+}
+.StyleguideItem-Title{
+	font-size: 2rem;
+	line-height: 1.3;
+}

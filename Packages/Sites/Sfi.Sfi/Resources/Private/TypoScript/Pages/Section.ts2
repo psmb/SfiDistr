@@ -1,0 +1,28 @@
+section < page{
+	bodyTag.attributes.class = 'Page Page--Section'
+	body{
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Section.html'
+
+		node = ${q(node).get(0)}
+
+		title = ${q(node).property('title')}
+		subtitle = ${q(node).property('subtitle')}
+		
+		#we define here only additional content sections. The main is defined in Page.ts2
+		content{
+			presentation = TYPO3.Neos:ContentCollection {
+				nodePath = 'presentation'
+			}
+
+			sidebar = TYPO3.Neos:ContentCollection {
+				nodePath = 'sidebar'
+			}
+		}
+
+	}
+}
+
+root.section {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:PageSection]')}
+	renderPath = '/section'
+}

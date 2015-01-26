@@ -1,0 +1,12 @@
+.NewsLatest {
+	margin-top: -55px;
+	background: white;
+}
+
+.NewsLatest-Grid[data-columns]::before {
+	content: '3 .columns.medium-4';
+}
+
+.NewsList-Grid[data-columns]::before {
+	content: '3 .columns.medium-4';
+}

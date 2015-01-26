@@ -1,0 +1,31 @@
+/* 
+Font declarations
+ */
+
+@font-face{
+font-family:"Franklin";
+src:url("/_Resources/Static/Packages/Sfi.Sfi/fonts/FranklinGothic-Book.woff") format("woff");
+font-weight:400;font-style:normal;
+}
+@font-face{
+font-family:"Franklin";
+src:url("/_Resources/Static/Packages/Sfi.Sfi/fonts/FranklinGothic-Demi.woff") format("woff");
+font-weight:700;font-style:normal;
+}
+
+@font-face{
+font-family:"FranklinCond";
+src:url("/_Resources/Static/Packages/Sfi.Sfi/fonts/FranklinGothic-DemiCond.woff") format("woff");
+font-weight:400;font-style:bold;
+}
+
+// Icon font declaraions are in different place
+
+$fontFamily-main: "Georgia",serif;
+$fontFamily-alt: "Franklin",sans-serif;
+
+body{
+	font-size: rem-calc(16);
+	font-family: $fontFamily-main;
+	color: black;
+}

@@ -1,0 +1,17 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+
+<ul class="MainMenu-Wrap MainMenu-HiddenOnSmall">
+	<f:for each="{items}" as="item" iteration="iterator">
+		<li class="MainMenu-Column MainMenu-Level2Wrap {f:if(condition:iterator.isLast,then:'end')} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}" >
+			<neos:link.node node="{item.node}" class="MainMenu-Presentation"/>
+			<f:if condition="{item.subItems}">
+				<div class="MainMenu-SectionsWrap MainMenu-AlwaysHiddenOnSmall">
+					<f:for each="{item.subItems}" as="subItem">
+						<neos:link.node node="{subItem.node}" class="MainMenu-Level2Item {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}" />
+					</f:for>
+				</div>
+			</f:if>
+		</li>
+	</f:for>
+</ul>

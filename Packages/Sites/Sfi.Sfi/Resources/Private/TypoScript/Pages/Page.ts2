@@ -1,0 +1,79 @@
+#This is a default page object. It's being extended and never used directly.
+
+prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
+	head {
+		titleTag.content = ${String.stripTags(q(node).property('title'))}
+		stylesheets.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			sectionName = 'stylesheets'
+		}
+		stylesheets.backend = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			sectionName = 'backendStylesheets'
+		}
+		stylesheets.backend.@process.1=${node.context.workspaceName != 'live' ? value:''}
+
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			sectionName = 'headScripts'
+		}
+	}
+	bodyTag.attributes.class = 'Page'
+	bodyTag.attributes.id = ${q(node).property('_name')}
+	body {
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+		partialRootPath = 'resource://Sfi.Sfi/Private/Templates/Partials'
+		sectionName = 'body'
+
+		mainMenu = Menu{
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/MainMenu.html'
+			partialRootPath = 'resource://Sfi.Sfi/Private/Templates/Partials'
+			entryLevel = 1
+			maximumLevels = 2
+		}
+		secondaryMenu = Menu{
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SecondaryMenu.html'
+			itemCollection = ${q(site).children('links').children().get()}
+		}
+		sectionMenu = Menu
+		sectionMenu {
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
+			entryLevel = 2
+			maximumLevels = 0
+		}
+
+		breadcrumbMenu = BreadcrumbMenu{
+			attributes.class = 'BreadcrumbMenu'
+		}
+
+		# TODO: refactor into FooterGallery object
+		footerGallery = TYPO3.TypoScript:Tag{
+			tagName = 'ul'
+			attributes.class = 'FooterGallery small-block-grid-2 medium-block-grid-3 large-block-grid-6'
+			content = Sfi.Widgets:ContentCollection {
+				itemRenderer = Sfi.Widgets:AutoRenderWithTag{
+					tagName = 'li'
+					attributes.class = 'FooterGallery-Item'
+				}
+				collection = ${q(site).children('footerGallery').children().slice(0, String.toInteger(6)).get()}
+				prototype(TYPO3.Neos.NodeTypes:Image){
+					maximumWidth = 220
+					maximumHeight = 220
+					allowCropping = TRUE
+				}
+			}
+		}
+
+		content {
+			main = PrimaryContent {
+				nodePath = 'main'
+			}
+		}
+
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			sectionName = 'bodyScripts'
+		}
+	}
+}
+page = Sfi.Sfi:Page

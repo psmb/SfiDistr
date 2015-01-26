@@ -1,0 +1,18 @@
+.SectionDivider{
+	@extend .ServiceClassic;
+	margin: 0;
+	margin-bottom: $u;
+	color: $gray--light;
+	line-height: 1;
+	padding: 1.5*$u 0;
+	text-align: center;
+}
+.SectionDivider--Service{
+	@extend .SectionDivider;
+	border-bottom: $border-thin;
+}
+
+.SectionDivider--Content{
+	@extend .SectionDivider;
+	border-bottom: $border-thick;
+}

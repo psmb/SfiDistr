@@ -1,0 +1,12 @@
+main < page{
+	bodyTag.attributes.class = 'Page Page--Main'
+	body{
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Main.html'
+		breadcrumbMenu>
+	}
+}
+
+root.main {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:PageMain]')}
+	renderPath = '/main'
+}

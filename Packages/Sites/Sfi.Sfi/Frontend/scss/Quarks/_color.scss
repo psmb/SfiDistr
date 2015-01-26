@@ -1,0 +1,27 @@
+$gray--dark: #222;
+$gray--light: #828282;
+$gray-bg: #dadada;
+$gray-bg--light: #f7f7f7;
+$gray-line: #ccc;
+
+$red: #ba3925;
+$blue: #2455c3;
+
+$color-primary: $red;
+$color-primaryAlt: $blue;
+
+
+
+.color-white{
+	color: white !important;
+}
+.color-primary{
+	color: $color-primary !important;
+}
+
+.backgroundColor-white{
+	background-color: white !important;
+}
+.borderColor-white{
+	border-color: white !important;
+}

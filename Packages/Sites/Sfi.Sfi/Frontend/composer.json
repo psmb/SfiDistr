@@ -1,0 +1,10 @@
+{
+    "name": "sfi/sfifrontend",
+    "type": "typo3-flow-package",
+    "description": "SFI frontend files",
+    "autoload": {
+        "psr-0": {
+            "Sfi\\SfiFrontend": "Classes"
+        }
+    }
+}

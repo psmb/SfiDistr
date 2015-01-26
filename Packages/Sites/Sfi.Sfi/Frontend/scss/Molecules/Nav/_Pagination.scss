@@ -1,0 +1,15 @@
+.Pagination{
+	overflow: auto;
+}
+.Pagination > li{
+	float: left;
+	font-family: $fontFamily-alt;
+	a{
+		padding: $u/2 $u;
+		display: inline-block;
+	}
+}
+.Pagination > li.isCurrent, .Pagination > li:hover{
+	background: $color-primary;
+	color: white;
+}

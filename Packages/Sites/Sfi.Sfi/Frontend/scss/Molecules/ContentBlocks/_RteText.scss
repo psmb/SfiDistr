@@ -1,0 +1,20 @@
+.RteText {
+	h1 {
+		@extend .H2;
+	}
+	h2 {
+		@extend .H3;
+	}
+	h3 {
+		@extend .H4;
+	}
+	h4 {
+		@extend .H5;
+	}
+	p {
+		@extend .Paragraph;
+	}
+	a {
+		@extend .Link;
+	}
+}

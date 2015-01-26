@@ -1,0 +1,29 @@
+.FooterGallery{
+	margin: 0 !important;
+}
+.FooterGallery .Figure{
+	position: relative;
+	display: block;
+	margin: 0;
+	img{
+		width: 100%;
+	}
+	figcaption{
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		opacity: 0.8;
+		text-align: center;
+		color: white;
+		background-color: $color-primary;
+	}
+}
+.FooterGallery .Figure:hover figcaption{
+	display: block;
+}
+.FooterGallery-Item{
+	padding: 0 !important;
+}

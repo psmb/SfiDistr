@@ -1,0 +1,50 @@
+
+%mainHeadings {
+	margin-top: $u;
+	margin-bottom: $u;
+	font-family: 'FranklinCond';
+	font-weight: bold;
+	color: $gray--dark;
+	line-height: $lineHeight-single;
+	@media #{$medium-up} {
+		line-height: $lineHeight-tight;
+	}
+}
+// Not used yet, consider deprication
+.H0 {
+	@extend %mainHeadings;
+	font-size: rem-calc(36);
+	@media #{$medium-up} {
+		font-size: rem-calc(64);
+	}
+}
+.H1 {
+	@extend %mainHeadings;
+	font-size: rem-calc(36);
+	@media #{$medium-up} {
+		font-size: rem-calc(48);
+	}
+}
+.H2 {
+	@extend %mainHeadings;
+	font-size: rem-calc(24);
+	@media #{$medium-up} {
+		font-size: rem-calc(36);
+	}
+}
+.H3 {
+	@extend %mainHeadings;
+	font-size: rem-calc(24);
+}
+.H4 {
+	@extend %mainHeadings;
+	font-size: rem-calc(18);
+}
+.H5 {
+	@extend %mainHeadings;
+	font-size: rem-calc(14);
+}
+.H6 {
+	@extend %mainHeadings;
+	font-size: rem-calc(12);
+}

@@ -1,0 +1,52 @@
+
+'Sfi.Sfi:Redirect':
+  ui:
+    label: 'Redirect from old news'
+  superTypes:
+    - 'TYPO3.Neos.NodeTypes:Page'
+
+
+'Sfi.Sfi:PageMain':
+  ui:
+    label: 'Page: Main'
+  superTypes:
+    - 'TYPO3.Neos.NodeTypes:Page'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+    footerGallery:
+      type: 'TYPO3.Neos:ContentCollection'
+
+'Sfi.Sfi:PagePresentation':
+  ui:
+    label: 'Page: Presentation'
+  superTypes:
+    - 'TYPO3.Neos.NodeTypes:Page'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    lead:
+      type: string
+      defaultValue: '<p>Lead text</p>'
+      ui:
+        inlineEditable: TRUE
+
+'Sfi.Sfi:PageSection':
+  ui:
+    label: 'Page: Section'
+  superTypes:
+    - 'TYPO3.Neos.NodeTypes:Page'
+  childNodes:
+    presentation:
+      type: 'TYPO3.Neos:ContentCollection'
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+    sidebar:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    subtitle:
+      type: string
+      defaultValue: '<p>Page subtitle</p>'
+      ui:
+        inlineEditable: TRUE

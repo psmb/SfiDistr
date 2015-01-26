@@ -1,0 +1,149 @@
+// Hackish way to fix tabs
+.neos-empty-contentcollection-overlay{
+	display: none !important;
+}
+
+.Sections{
+    margin: 3*$u 0;
+}
+
+.Sections-Tabs {
+    overflow: auto;
+    margin: 2*$u 0;
+    padding: 0;
+}
+
+.Sections-Tab {
+    float: left;
+    margin: 0;
+    list-style: none;
+}
+
+.Sections-Panel {
+    display: none;
+}
+
+.Sections-Tabs {
+	display: none;
+}
+
+.Sections-Panel.isActive {
+    display: block;
+}
+
+/* Accordion responsive breakpoint */
+@media #{$medium-up} {
+    .Sections-Tabs {
+        display: block;
+    }
+
+    .Sections-AccordionTitle {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+.Sections--Pills{
+	.Sections-Anchor{
+		@extend .Service;
+		&:after{
+			content: ' »';
+            color: $color-primary;
+		}
+	}
+    .Sections-Anchor.isActive, .Sections-Anchor:hover{
+        color: $color-primary;
+    }
+    .Sections-Tabs{
+        margin-bottom: 3*$u;
+    }
+	.Sections-Tab{
+		padding: 0;
+		padding-right: 2*$u; 
+	}
+}
+
+
+
+
+
+
+
+
+.SectionWithImageTabAnchor{
+    padding-right: $u;
+    padding-bottom: $u;
+}
+
+.SectionWithImageTabAnchor-Image{
+    opacity: 0.8;
+}
+.SectionWithImageTabAnchor-Image:hover,.Sections-Anchor.isActive .SectionWithImageTabAnchor-Image{
+    opacity: 1;
+}
+
+.Sections-Anchor.isActive .SectionWithImageTabAnchor-Image{
+    position: relative;
+}
+.Sections-Anchor.isActive .SectionWithImageTabAnchor-Image:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 10px solid;
+}
+
+.SectionWithImageAccordionAnchor{
+    margin-bottom: $u;
+}
+.SectionWithImageAccordionAnchor-Title{
+    @extend .H6;
+    margin: 0 !important;
+    border-top: $border-thin;
+    padding-top: $u;
+}
+.SectionWithImageAccordionAnchor-SubTitle{
+    @extend .ParagraphAlt--Small;
+    margin-top: $u/2;
+}
+
+
+@media #{$small-only}{
+    .SectionWithImagePanel .TextWithImage-Headline{
+        display: none;
+    }
+}
+
+
+
+.SectionWithImageTabAnchor-Title{
+    @extend .Service;
+}
+
+
+@media #{$medium-up}{
+    .SectionWithImageTabAnchor--Variant1{
+        width: 120px !important;
+    }
+    .SectionWithImageTabAnchor--Variant2{
+        width: 120px !important;
+    }
+}
+@media #{$large-up}{
+    .SectionWithImageTabAnchor--Variant1{
+        width: 120px !important;
+    }
+    .SectionWithImageTabAnchor--Variant2{
+        width: 190px !important;
+    }
+}

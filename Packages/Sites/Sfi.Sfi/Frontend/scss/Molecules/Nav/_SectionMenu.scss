@@ -1,0 +1,24 @@
+
+
+
+.SectionMenu-Item {
+	@extend .H4;
+	color: $color-primary;
+	margin: 0 !important;
+	border-bottom: $border-dotted;
+	a {
+		display: block;
+		padding: 2/3*$u;
+		padding-right: 2*$u;
+	}
+	& a:after {
+		content: ' »';
+	}
+	&:first-child {
+		border-top: $border-dotted;
+	}
+}
+
+.SectionMenu-Item.current,.SectionMenu-Item:hover {
+	color: $color-primary;
+}

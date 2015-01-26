@@ -1,0 +1,16 @@
+.Figure{
+	margin: $u 0;
+	// display: table;
+	figcaption{
+		@extend .ServiceEm;
+		margin: 0;
+		// display: table-caption;
+		caption-side: bottom;
+		padding: $u;
+		p{
+			color: inherit;
+			margin:0;
+			font-size: inherit;
+		}
+	}
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<html>
+<head>
+	<f:section name="backendStylesheets">
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/backend.css', package: 'Sfi.Sfi')}" />
+	</f:section>
+	<f:section name="stylesheets">
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/_bower.css', package: 'Sfi.Sfi')}" />
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/app.css', package: 'Sfi.Sfi')}" />
+	</f:section>
+	<f:section name="headScripts">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+		<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	</f:section>
+</head>
+<body>
+	<f:section name="body">
+		<f:render partial="Header" arguments="{_all}"/>
+		{content.main -> f:format.raw()}
+		<f:render partial="Footer"  arguments="{_all}"/>
+	</f:section>
+	
+	<f:section name="bodyScripts">
+		<script src="{f:uri.resource(path: 'Built/_bower.js', package: 'Sfi.Sfi')}"></script>
+		<script src="{f:uri.resource(path: 'js/plugins.js', package: 'Sfi.Sfi')}"></script>
+
+		<!-- Yandex.Metrika counter -->
+<div style="display:none;"><script type="text/javascript">
+    (function(w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter4380412 = new Ya.Metrika({id:4380412,
+                    clickmap:true,
+                    trackLinks:true, webvisor:true});
+            }
+            catch(e) { }
+        });
+    })(window, "yandex_metrika_callbacks");
+    </script></div>
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+<noscript><div><img src="//mc.yandex.ru/watch/4380412" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7608407-2', 'sfi.ru');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+
+  //Custom analytics code
+jQuery(function($) {
+    // Debug flag
+    var debugMode = false;
+
+    // Default time delay before checking location
+    var callBackTime = 100;
+
+    // # px before tracking a reader
+    var readerLocation = 150;
+
+    // Set some flags for tracking & execution
+    var timer = 0;
+    var scroller = false;
+    var endContent = false;
+    var didComplete = false;
+
+    // Set some time variables to calculate reading time
+    var startTime = new Date();
+    var beginning = startTime.getTime();
+    var totalTime = 0;
+    
+    // Get some information about the current page
+    var pageTitle = document.title;
+
+    // Track the aticle load
+    if (!debugMode) {
+        ga('send', 'event', 'Reading', 'ArticleLoaded', pageTitle, {'nonInteraction': 1});
+    } else {
+        alert('The page has loaded. Woohoo.');    
+    }
+
+    // Check the location and track user
+    function trackLocation() {
+        bottom = $(window).height() + $(window).scrollTop();
+        height = $(document).height();
+
+        // If user starts to scroll send an event
+        if (bottom > readerLocation && !scroller) {
+            currentTime = new Date();
+            scrollStart = currentTime.getTime();
+            timeToScroll = Math.round((scrollStart - beginning) / 1000);
+            if (!debugMode) {
+                ga('send', 'event', 'Reading', 'StartReading', pageTitle, timeToScroll, {'metric1' : timeToScroll});
+            } else {
+                alert('started reading ' + timeToScroll);
+            }
+            scroller = true;
+        }
+
+        // If user has hit the bottom of the content send an event
+        if (bottom >= $('.page_cont').scrollTop() + $('.page_cont').innerHeight() && !endContent) {
+            currentTime = new Date();
+            contentScrollEnd = currentTime.getTime();
+            timeToContentEnd = Math.round((contentScrollEnd - scrollStart) / 1000);
+            if (!debugMode) {
+                 if (timeToContentEnd < 60) {
+                    ga('set', 'dimension1', 'Scanner'); 
+                } else {
+                    ga('set', 'dimension1', 'Reader'); 
+                }
+                ga('send', 'event', 'Reading', 'ContentBottom', pageTitle, timeToContentEnd, {'metric2' : timeToContentEnd});
+            } else {
+                alert('end content section '+timeToContentEnd);
+            }
+            endContent = true;
+        }
+
+        // If user has hit the bottom of page send an event
+        if (bottom >= height && !didComplete) {
+            currentTime = new Date();
+            end = currentTime.getTime();
+            totalTime = Math.round((end - scrollStart) / 1000);
+            if (!debugMode) {
+                ga('send', 'event', 'Reading', 'PageBottom', pageTitle, totalTime, {'metric3' : totalTime});
+            } else {
+                alert('bottom of page '+totalTime);
+            }
+            didComplete = true;
+        }
+    }
+
+    // Track the scrolling and track location
+    $(window).scroll(function() {
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        // Use a buffer so we don't call trackLocation too often.
+        timer = setTimeout(trackLocation, callBackTime);
+    });
+});
+
+</script>
+	</f:section>
+</body>
+</html>

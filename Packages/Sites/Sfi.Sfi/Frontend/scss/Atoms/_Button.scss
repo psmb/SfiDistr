@@ -1,0 +1,31 @@
+.Button {
+	@extend .Service--Small;
+	margin: 8px 0 !important;
+	background: $color-primary;
+	color: white;
+	margin: 0;
+	padding: $u/2;
+	cursor: pointer;
+	&:hover{
+		opacity: 0.7;
+	}
+}
+
+.ButtonInline {
+	@extend .Link;
+	@extend .ParagraphAlt;
+	&:after {
+		content: "›";
+		padding-left: 3px;
+	}
+}
+
+// TODO: refactor this shit
+.Button.English {
+	@extend .Service;
+	margin: 6px 0 !important;
+	color: $color-primary;
+	background: initial;
+	padding: $u/2;
+	cursor: pointer;
+}

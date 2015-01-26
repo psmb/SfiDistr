@@ -14,7 +14,7 @@ $node->setHostname('server.psmb.ru');
 $node->setOption('username', 'dimaip');
 
 $application = new \TYPO3\Surf\Application\TYPO3\Flow();
-$application->setDeploymentPath('/mnt/db/fast_sfi/surf');
+$application->setDeploymentPath('/www/sfi.ru/surf');
 $application->setOption('repositoryUrl', 'git@github.com:sfi-ru/SfiDistr.git');
 $application->setOption('composerCommandPath', '/usr/local/bin/composer');
 $application->addNode($node);

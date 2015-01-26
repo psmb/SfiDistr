@@ -1,0 +1,14 @@
+.MediaAnnouncement-Date{
+	@extend .Paragraph;
+	color: $color-primary;
+	text-align: right;
+}
+.MediaAnnouncement-Title{
+	@extend .Paragraph;
+}
+.MediaAnnouncement-Teaser{
+	@extend .ParagraphAlt;
+}
+.MediaAnnouncement-Place{
+	@extend .ParagraphAlt;
+}

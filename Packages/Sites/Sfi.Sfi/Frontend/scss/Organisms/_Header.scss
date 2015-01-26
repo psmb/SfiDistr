@@ -1,0 +1,57 @@
+.Header-Wrap{
+	position: relative;
+	overflow: auto;
+}
+
+.Header-Menu{
+	position: absolute; 
+	right: 0; 
+	top: 0;
+}
+
+.Header-AdditionalInfo{
+	overflow: auto;
+	font-size: rem-calc(13);
+	text-decoration: underline;
+}
+@media #{$medium-up}{
+	.Header-AdditionalInfo{
+		font-size: rem-calc(14);
+	}
+}
+.Header-AdditionalInfo > *{
+	float: left;
+	width: 50%;
+	margin: $u/2 0;
+}
+.Header-Contacts {
+	padding-right: $u;
+}
+.Header-Contacts p, .Header-SecondaryMenu .SecondaryMenu-Item{
+	margin: 0;
+	line-height: $lineHeight-normal;
+	@media #{$large-up}{
+		line-height: $lineHeight-loose;
+	}
+}
+
+.Header-AdditionalInfo > *:nth-child(2){
+	padding-left: 9px;
+}
+
+@media #{$medium-only} {
+	.Header-SecondaryMenu {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		bottom: -70px; // TODO: magick number
+		text-align: center;
+	}
+	.SecondaryMenu-Item {
+		display: inline;
+		padding-right: 12px;
+	}
+	.Header-Contacts {
+		width: 100%;
+	}
+}

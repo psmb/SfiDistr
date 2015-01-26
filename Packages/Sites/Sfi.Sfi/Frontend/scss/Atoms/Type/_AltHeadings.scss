@@ -1,0 +1,7 @@
+.H1Alt, .H3Alt, .H4Alt, .H5Alt, .H6Alt {
+	color: pink;
+}
+.H2Alt{
+	@extend .H2;
+	font-weight: normal !important;
+}

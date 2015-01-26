@@ -1,0 +1,38 @@
+.Service {
+	@extend .ParagraphAlt;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+.Service--Large {
+	@extend .Service;
+	font-size: rem-calc(14);
+	@media #{$medium-up}{
+		font-size: rem-calc(18);
+	}
+}
+.Service--Small {
+	@extend .Service;
+	font-size: rem-calc(14);
+}
+
+.ServiceClassic {
+	@extend .Paragraph;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.ServiceLight {
+	@extend .ParagraphAlt;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.ServiceTiny {
+	@extend .Paragraph;
+	font-size: rem-calc(10);
+}
+.ServiceEm {
+	@extend .Paragraph--Small;
+	font-style: italic;
+	font-size: rem-calc(14);
+}

@@ -1,0 +1,64 @@
+########################
+#Our site content types#
+########################
+
+'Sfi.Sfi:QuoteBlock':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+    - 'TYPO3.Neos.NodeTypes:Image'
+  ui:
+    label: 'Quote block'
+    icon: 'icon-edit'
+    group: contentBlocks
+    inspector:
+      groups:
+        variant:
+          label: 'Variant'
+          position: 'start 1'
+  properties:
+    authorName:
+      type: string
+      defaultValue: '<h3>Author Name</h3>'
+      ui:
+        inlineEditable: TRUE
+    authorDescription:
+      type: string
+      defaultValue: '<p>Author description</p>'
+      ui:
+        inlineEditable: TRUE
+    text:
+      type: string
+      defaultValue: '<p>Enter quotation text here</p>'
+      ui:
+        inlineEditable: TRUE
+    largeImage:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Large Image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+    variant:
+      defaultValue: 'Image-Right'
+      type: string
+      ui:
+        label: 'Quote variant'
+        reloadIfChanged: true
+        inspector:
+          group: variant
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              'Image-Left':
+                label: 'Image-Left'
+              'Image-Right':
+                label: 'Image-Right'
+
+
+'Sfi.Sfi:Questions':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Questions'
+    icon: 'icon-edit'
+    group: contentWidgets

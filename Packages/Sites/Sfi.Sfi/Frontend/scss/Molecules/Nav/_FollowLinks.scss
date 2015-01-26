@@ -1,0 +1,20 @@
+.FollowLinks{
+	display: inline-block;
+	margin: 0 32px;
+}
+
+.FollowLinks-Button{
+	padding: 0 $u*0.5;
+	color: $gray--light;
+}
+
+.FollowLinks-Button.icon-facebook{
+	font-size: 17px;
+	padding-right: 0;
+}
+.FollowLinks-Button.icon-mail{
+	font-size: 15px;
+}
+.FollowLinks-Button.icon-vk{
+	padding-left: 4px;
+}

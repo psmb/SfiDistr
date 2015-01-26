@@ -1,0 +1,17 @@
+.BreadcrumbMenu{
+	clear: both;
+	li{
+		@extend .ParagraphAlt--Small;
+		float: left;
+		margin: $u/2 $u $u/2 0;
+		@media #{$large-up}{
+			margin: $u $u $u 0;
+		}
+	}
+	li:last-child:after{
+		content: '';
+	}
+	li:after{
+		content: ' »';
+	}
+}

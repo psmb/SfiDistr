@@ -1,0 +1,29 @@
+.Footer {
+	margin-top: 3*$u;
+	padding: $u 0;
+	border-top: $border-thick;
+	
+	.Paragraph--Small {
+		margin: 0;
+		line-height: $lineHeight-loose;
+	}
+
+}
+
+.Footer-Description {
+	margin-top: $u/2 !important;
+}
+
+.Footer-Copyright {
+	margin-top: 3*$u;
+	color: $gray--light;
+}
+
+.FooterGallery-Header {
+	margin: 0;
+	padding: 1.5*$u;
+	color: $gray--light;
+	background: $gray-bg--light;
+	@extend .ServiceClassic;
+	text-align: center;
+}

@@ -1,0 +1,33 @@
+.QuoteBlock{
+	margin: 2*$u 0;
+}
+.QuoteBlock-Text{
+	@extend .Blockquote;
+}
+.QuoteBlock-AuthorName{
+	@extend .H6;
+	color: $gray--light;
+	margin-bottom: $u/2 !important;
+}
+.QuoteBlock-AuthorDescription{
+	@extend .ServiceEm;
+	margin-top: 0 !important;
+}
+
+@media #{$small-only}{
+	.QuoteBlock-Image > img{
+		border: $border-thin;
+		border-radius: 50%;
+		max-width: 96px;
+		margin-right: 2*$u;
+	}
+}
+@media #{$medium-up}{
+	.QuoteBlock-Text{
+		border-left: 0;
+		padding-left: 0;
+	}
+	.QuoteBlock{
+		border-bottom: $border-thin;
+	}
+}

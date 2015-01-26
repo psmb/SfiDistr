@@ -1,0 +1,16 @@
+presentation < page{
+	bodyTag.attributes.class = 'Page Page--Presentation'
+	body{
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Presentation.html'
+
+		node = ${q(node).get(0)}
+
+		title = ${q(node).property('title')}
+		lead = ${q(node).property('lead')}
+	}
+}
+
+root.presentation {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:PagePresentation]')}
+	renderPath = '/presentation'
+}
