@@ -1,10 +1,19 @@
+.fuse_hidden
+.sass-cache
+bower_components
+node_modules
+*.DS_Store
+stylesheets
+
 /Build/Behat/*
 /Build/BuildEssentials
 /Build/Reports
 /Build/Resources
 #/Configuration/
 /Data/
-/Packages/
+/Packages/Application/
+/Packages/Framework/
+/Packages/Libraries/
 #/Web/
 /bin/
 /Readme.txt
@@ -17,3 +26,4 @@
 /Tests/Selenium/settings.xml
 Build/Resources/Java/selenium-server-standalone*
 /"
+
