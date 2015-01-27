@@ -15,7 +15,9 @@
 
 .MediaSlide-Body{
 	position: absolute;
-	top: 50%;
+	@media #{$medium-up} {
+		bottom: 25%;
+	}
 	margin: 1.5*$u 0;
 	margin-right: $u;
 }
