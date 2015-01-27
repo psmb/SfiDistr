@@ -19,26 +19,19 @@ $workflow->defineTask('sfi.sfi:initialize',
         array('command' => 'cd {releasePath} && cp Configuration/Production/Settings.yaml Configuration/Settings.yaml && FLOW_CONTEXT=Production ./flow flow:cache:flush --force && chmod g+rwx -R . && FLOW_CONTEXT=Production ./flow cache:warmup')
 );
 
-$deployment->setWorkflow($workflow);
-
-
 $node = new \TYPO3\Surf\Domain\Model\Node('sfi');
 $node->setHostname('server.psmb.ru');
 $node->setOption('username', 'dimaip');
 
 $application = new \TYPO3\Surf\Application\TYPO3\Flow();
-
-
 $application->setDeploymentPath('/www/sfi.ru/surf');
 $application->setOption('repositoryUrl', 'git@github.com:sfi-ru/SfiDistr.git');
 $application->setOption('composerCommandPath', '/usr/local/bin/composer');
 $application->addNode($node);
 
-$deployment->onInitialize(function() use ($workflow, $application) {
-	$workflow->addTask('sfi.sfi:initialize', 'migrate', $application);
-	$workflow->addTask('sfi.sfi:smoketest', 'test', $application);
-});
+$workflow->addTask('sfi.sfi:initialize', 'migrate', $application);
+$workflow->addTask('sfi.sfi:smoketest', 'test', $application);
+$deployment->setWorkflow($workflow);
 $deployment->addApplication($application);
-
 
 ?>
