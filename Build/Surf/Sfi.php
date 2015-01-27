@@ -8,7 +8,7 @@ use TYPO3\Surf\Domain\Model\SimpleWorkflow;
 $workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
 
 $smokeTestOptions = array(
-        'url' => 'http://sfi.ru',
+        'url' => 'http://next.sfi.ru',
         'remote' => TRUE,
         'expectedStatus' => 200,
         'expectedRegexp' => '/Page--Main/'
