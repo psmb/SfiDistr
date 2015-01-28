@@ -1,6 +1,17 @@
+.PresentationLayout-Wrap {
+	margin-top: 2*$u;
+	@media #{$medium-up} {
+		margin-top: 3*$u;
+	}
+	@media #{$large-up} {
+		margin-top: 4*$u;
+	}
+}
+
 .PresentationLayout-PageTitle {
 	@extend .H1;
-	margin-top: 2*$u;
+	margin-top: 0;
+	line-height: $lineHeight-single;
 }
 
 .PresentationLayout-Lead {
