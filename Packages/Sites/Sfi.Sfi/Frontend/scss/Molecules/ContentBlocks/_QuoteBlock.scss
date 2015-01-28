@@ -14,20 +14,9 @@
 	margin-top: 0 !important;
 }
 
-@media #{$small-only}{
-	.QuoteBlock-Image > img{
-		border: $border-thin;
-		border-radius: 50%;
-		max-width: 96px;
-		margin-right: 2*$u;
-	}
-}
-@media #{$medium-up}{
-	.QuoteBlock-Text{
-		border-left: 0;
-		padding-left: 0;
-	}
-	.QuoteBlock{
-		border-bottom: $border-thin;
-	}
+.QuoteBlock-Image > img{
+	border: $border-thin;
+	border-radius: 50%;
+	max-width: 96px;
+	margin-right: 2*$u;
 }
