@@ -39,6 +39,9 @@ function(){"use strict";if(window.matchMedia&&window.matchMedia("all").addListen
 
 
 var onReadyPlugins = function() {
+
+    $(".js-StickInParent").stick_in_parent();
+
     audiojs.events.ready(function() {
         path = '/_Resources/Static/Packages/Sfi.Sfi/Built/';
         var as = audiojs.createAll({

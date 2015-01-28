@@ -1,17 +1,20 @@
 .Footer {
-	margin-top: 3*$u;
+	margin-top: 6*$u;
 	padding: $u 0;
-	border-top: $border-thick;
-	background: $gray-bg;
-	
-	.Paragraph--Small {
-		margin: 0;
-		line-height: $lineHeight-loose;
-	}
+	background: $gray-bg--light;
+}
 
+.Footer-Paragraph {
+	@extend .ParagraphAlt--Small;
+	margin: 0;
+	line-height: $lineHeight-loose;
+	color: $gray--light;
 }
 
 .Footer-Description {
+	strong {
+		color: $gray--dark;
+	}
 	margin-top: $u/2 !important;
 }
 
@@ -24,7 +27,7 @@
 	margin: 0;
 	padding: 1.5*$u;
 	color: $gray--light;
-	background: $gray-bg--light;
+	background: $gray-bg;
 	@extend .ServiceClassic;
 	text-align: center;
 }

@@ -3,19 +3,26 @@
 
 <f:section name="body">
 	<f:render partial="Header" arguments="{_all}"/>
-	<section class="marginTop-double marginBottom-single hide">
-		<div class="row">
-			<div class="columns">
-				<h2 class="H2" style="margin-bottom: 0 !important">Современный. Традиционный. Открытый.</h2>
+	<div>
+		<div class="js-StickInParent">
+			{content.newsTop -> f:format.raw()}
+		</div>
+		<div>
+			<div class="row">
+				<div class="columns">
+					<div class="Cover-OnTop">
+						{content.newsLatest -> f:format.raw()}
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="medium-10 large-8 columns">
-				<p class="ParagraphAlt">Свято-Филаретовский православно-христианский институт — независимое высшее богословское учебное заведение, церковная школа, сохраняющая светский статус</p>
-			</div>
+	</div>
+
+	<div class="row">
+		<div class="columns">
+			{content.newsAnnouncements -> f:format.raw()}
 		</div>
-	</section>
-	{content.main -> f:format.raw()}
+	</div>
 
 	<div class="FooterMain marginTop-triple">
 		<div class="row">

@@ -4,6 +4,7 @@
   "private": "true",
   "dependencies": {
     "slick.js": "~1.3.13",
-    "audiojs": "*"
+    "audiojs": "*",
+    "sticky-kit": "~1.1.1"
   }
 }
