@@ -1,5 +1,5 @@
 .NewsLatest {
-	margin-top: -55px;
+	margin-top: -49px;
 	background: white;
 }
 
@@ -9,4 +9,15 @@
 
 .NewsList-Grid[data-columns]::before {
 	content: '3 .columns.medium-4';
+}
+
+.NewsLatest-Grid {
+	margin: 0 !important;
+	padding: 2*$u $u !important;
+	background: $gray-bg--light;
+}
+
+.News-MoreButton {
+	padding: $u/2 $u;
+	background: white;
 }

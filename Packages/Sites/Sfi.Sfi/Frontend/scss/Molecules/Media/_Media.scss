@@ -2,6 +2,9 @@
 	border: $border-thin;
 	padding: 2*$u;
 	margin-bottom: 30px;
+	&:hover {
+		background: white;
+	}
 }
 .Media-Title{
 	@extend .Paragraph--Large;
