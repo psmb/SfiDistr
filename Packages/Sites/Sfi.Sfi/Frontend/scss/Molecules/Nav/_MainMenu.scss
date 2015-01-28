@@ -1,6 +1,8 @@
 // Adjust gaps for blockgrid in menus
 
-.MainMenu.isActive .icon-right-dir:before { content: '\e80e'; }
+.MainMenu.isActive .IconMenu svg {
+	transform: rotate(90deg);
+}
 
 .MainMenu-FollowLinks{
 	margin: 5px 0;
