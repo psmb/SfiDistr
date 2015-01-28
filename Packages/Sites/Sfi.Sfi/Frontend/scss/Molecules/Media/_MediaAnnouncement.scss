@@ -1,14 +1,37 @@
-.MediaAnnouncement-Date{
-	@extend .Paragraph;
+.MediaAnnouncement-WrapText {
+	margin-left: 65px + 1.5*$u;
+	@media #{$medium-up} {
+		margin-left: 65px + 3*$u;
+	}
+	@media #{$large-up} {
+		margin-left: 65px + 4*$u;
+	}
+}
+.MediaAnnouncement-Date {
+	text-align: center;
+	float: left;
+}
+.MediaAnnouncement-DateDay {
+	@extend .H2;
 	color: $color-primary;
-	text-align: right;
+	margin: 0;
 }
-.MediaAnnouncement-Title{
-	@extend .Paragraph;
+.MediaAnnouncement-DateMonth {
+	@extend .ServiceLight;
+	color: $color-primary;
+	margin: 0;
 }
-.MediaAnnouncement-Teaser{
+.MediaAnnouncement-DateTime {
+	@extend .Service--Small;
+	margin: 0;
+}
+.MediaAnnouncement-Title {
+	@extend .H3;
+}
+.MediaAnnouncement-Teaser {
 	@extend .ParagraphAlt;
 }
-.MediaAnnouncement-Place{
+.MediaAnnouncement-Place {
 	@extend .ParagraphAlt;
+	color: $gray--light;
 }
