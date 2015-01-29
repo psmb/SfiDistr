@@ -19,6 +19,7 @@
 		text-align: center;
 		color: white;
 		background-color: $color-primary;
+		transition: $transition;
 	}
 }
 .FooterGallery .Figure:hover figcaption{

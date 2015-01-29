@@ -4,6 +4,7 @@
 .Pagination > li{
 	float: left;
 	font-family: $fontFamily-alt;
+	transition: $transition;
 	a{
 		padding: $u/2 $u;
 		display: inline-block;

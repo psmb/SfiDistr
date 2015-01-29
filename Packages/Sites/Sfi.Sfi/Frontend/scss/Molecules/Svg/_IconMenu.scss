@@ -4,6 +4,7 @@
 	padding-left: 9px;
 	padding-top: 5px;
 
+	transition: $transition;
 	&:hover{
 		opacity: 0.7;
 	}

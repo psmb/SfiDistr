@@ -1,11 +1,2 @@
 // TODO: find out how much does this thing really costs
-* {
-	transition: all 400ms ease;
-}
-.js-StickInParent {
-	transition: initial !important;
-}
-
-.neos-backend * {
-	transition: initial !important;
-}
+$transition: all 400ms ease;

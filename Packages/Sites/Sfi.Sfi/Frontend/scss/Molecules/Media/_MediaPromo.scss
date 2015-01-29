@@ -3,6 +3,7 @@
 	padding: 2*$u;
 	border: $border-thin;
 	background: $gray-bg--light;
+	transition: $transition;
 	&:hover {
 		background: white;
 	}

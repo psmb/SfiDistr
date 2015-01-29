@@ -5,3 +5,10 @@ $rem-base: 16px !default;
 $row-width: rem-calc(1200) !default;
 @import "foundation/grid";
 @import "foundation/block-grid";
+
+.row {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+}

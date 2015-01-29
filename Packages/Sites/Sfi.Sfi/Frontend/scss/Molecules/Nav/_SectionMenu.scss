@@ -6,6 +6,7 @@
 	color: $color-primary;
 	margin: 0 !important;
 	border-bottom: $border-dotted;
+	transition: $transition;
 	a {
 		display: block;
 		padding: 2/3*$u;
