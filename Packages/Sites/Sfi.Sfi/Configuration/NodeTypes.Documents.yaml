@@ -6,11 +6,18 @@
     - 'TYPO3.Neos.NodeTypes:Page'
 
 
+'Sfi.Sfi:Page':
+  abstract: true
+  ui:
+    label: 'Abstract Page'
+  superTypes:
+    - 'TYPO3.Neos.NodeTypes:Page'
+
 'Sfi.Sfi:PageMain':
   ui:
     label: 'Page: Main'
   superTypes:
-    - 'TYPO3.Neos.NodeTypes:Page'
+    - 'Sfi.Sfi:Page'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -21,7 +28,7 @@
   ui:
     label: 'Page: Presentation'
   superTypes:
-    - 'TYPO3.Neos.NodeTypes:Page'
+    - 'Sfi.Sfi:Page'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -36,7 +43,7 @@
   ui:
     label: 'Page: Section'
   superTypes:
-    - 'TYPO3.Neos.NodeTypes:Page'
+    - 'Sfi.Sfi:Page'
   childNodes:
     presentation:
       type: 'TYPO3.Neos:ContentCollection'
@@ -55,7 +62,7 @@
 
 'Sfi.Sfi:Promo':
   superTypes:
-    - 'TYPO3.Neos:Document'
+    - 'Sfi.Sfi:Page'
   constraints:
     nodeTypes:
       '*': false

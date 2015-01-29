@@ -5,8 +5,8 @@
 # Explicitly include Sfi.Widgets, because autoInclude may messup inclussion order
 include: resource://Sfi.Widgets/Private/TypoScript/Root.ts2
 include: NodeTypes/**/*.ts2
+include: Page.ts2
 include: Pages/**/*.ts2
-
 
 print < page
 

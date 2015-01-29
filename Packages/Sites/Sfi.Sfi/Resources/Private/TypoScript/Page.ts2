@@ -79,6 +79,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 page = Sfi.Sfi:Page
 
 root.page {
-	condition = ${q(node).is('[instanceof TYPO3.Neos:Document]')}
+	condition = ${q(node).is('[instanceof Sfi.Sfi:Page]')}
 	renderPath = '/page'
+	@position = 'end 9900'
 }

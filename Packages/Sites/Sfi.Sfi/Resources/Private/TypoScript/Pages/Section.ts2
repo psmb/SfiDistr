@@ -18,7 +18,6 @@ section < page {
 				nodePath = 'sidebar'
 			}
 		}
-
 	}
 }
 
