@@ -31,6 +31,8 @@ $application->addNode($node);
 
 $workflow->addTask('sfi.sfi:initialize', 'migrate', $application);
 $workflow->addTask('sfi.sfi:smoketest', 'test', $application);
+$workflow->setEnableRollback(FALSE);
+
 $deployment->setWorkflow($workflow);
 $deployment->addApplication($application);
 
