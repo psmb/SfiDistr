@@ -1,0 +1,73 @@
+prototype(Sfi.Sfi:Promo) {
+	title = ${q(node).property('title')}
+	teaser = ${q(node).property('teaser')}
+
+	main = TYPO3.Neos:ContentCollection{
+		nodePath = 'main'
+	}
+
+	moreItems = Sfi.Sfi:PromoList{
+		content.collection.@process.filterOutSelf {
+			expression = ${q(value).filter('[_name != ' + q(node).property('_name') + ']').get()}
+			@position = 'start'
+		}
+	}
+
+	@cache {
+		mode = 'cached'
+		maximumLifetime = '86400'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+			format = ${request.format}
+		}
+		entryTags {
+			# Whenever the node changes the matched condition could change
+			1 = ${'Node_' + documentNode.identifier}
+			# Whenever one of the parent nodes changes the layout could change
+			2 = ${'DescendantOf_' + documentNode.identifier}
+		}
+	}
+}
+
+prototype(Sfi.Sfi:PromoShort) < prototype(TYPO3.Neos:Content) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/PromoShort.html'
+	title = ${String.stripTags(q(node).property('title'))}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
+	thumbnailImage = ${q(node).property('image')}
+}
+
+
+
+prototype(Sfi.Sfi:PromoList) < prototype(TYPO3.TypoScript:Tag) {
+	tagName = 'div'
+	attributes.class = 'PromoList'
+	content = TYPO3.Neos:ContentCollectionRenderer {
+		itemRenderer = Sfi.Sfi:PromoShort
+		collection = ${q(site).children('promo').children().get()}
+	}
+	@cache {
+		mode = 'cached'
+		maximumLifetime = '86400'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+			format = ${request.format}
+		}
+		entryTags {
+			# Whenever the node changes the matched condition could change
+			1 = ${'Node_' + documentNode.identifier}
+			# Whenever one of the parent nodes changes the layout could change
+			2 = ${'DescendantOf_' + documentNode.identifier}
+		}
+	}
+}
+
+prototype(TYPO3.Neos:PrimaryContent) {
+    promo{
+        @position = 'before default'
+        condition = ${q(node).is('[instanceof Sfi.Sfi:Promo]')}
+        type = 'Sfi.Sfi:Promo'
+    }
+}

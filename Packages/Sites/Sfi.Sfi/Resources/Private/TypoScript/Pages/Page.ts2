@@ -50,7 +50,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		footerGallery = TYPO3.TypoScript:Tag{
 			tagName = 'ul'
 			attributes.class = 'FooterGallery small-block-grid-2 medium-block-grid-3 large-block-grid-6'
-			content = Sfi.Widgets:ContentCollection {
+			content = TYPO3.Neos:ContentCollectionRenderer {
 				itemRenderer = Sfi.Widgets:AutoRenderWithTag{
 					tagName = 'li'
 					attributes.class = 'FooterGallery-Item'
@@ -77,3 +77,8 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 	}
 }
 page = Sfi.Sfi:Page
+
+root.page {
+	condition = ${q(node).is('[instanceof TYPO3.Neos:Document]')}
+	renderPath = '/page'
+}

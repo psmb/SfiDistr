@@ -50,3 +50,59 @@
       defaultValue: '<p>Page subtitle</p>'
       ui:
         inlineEditable: TRUE
+
+
+
+'Sfi.Sfi:Promo':
+  superTypes:
+    - 'TYPO3.Neos:Document'
+  constraints:
+    nodeTypes:
+      '*': false
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'Promo'
+    icon: icon-file-text
+    group: news
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          position: 5
+  properties:
+    title:
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Enter title here'
+          format: {  }
+          table: {  }
+          list: {  }
+          link:
+            a: true
+          alignment: {  }
+    teaser:
+      type: string
+      ui:
+        label: 'Teaser text'
+        inlineEditable: true
+        inspector:
+          group: null
+        aloha:
+          placeholder: 'Enter teaser here'
+          format: { }
+          table: {  }
+          list: {  }
+          link:
+            a: true
+          alignment: {  }
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+          position: 50

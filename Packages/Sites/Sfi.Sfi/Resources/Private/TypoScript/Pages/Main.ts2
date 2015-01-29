@@ -1,4 +1,4 @@
-main < page{
+main < page {
 	bodyTag.attributes.class = 'Page Page--Main'
 	body{
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Main.html'
@@ -6,6 +6,7 @@ main < page{
 			newsTop = Sfi.News:TopList
 			newsLatest = Sfi.News:Latest
 			newsAnnouncements = Sfi.News:AnnouncementsList
+			promo = Sfi.Sfi:PromoList
 		}
 		breadcrumbMenu>
 	}

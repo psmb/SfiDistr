@@ -18,6 +18,6 @@
 	@extend .Paragraph--Large;
 }
 
-.PresentationLayout-Content {
-	border-right: $border-thin;
+.PresentationLayout-Sidebar {
+	border-left: $border-thin;
 }

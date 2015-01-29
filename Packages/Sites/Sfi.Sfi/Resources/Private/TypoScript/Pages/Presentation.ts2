@@ -1,4 +1,4 @@
-presentation < page{
+presentation < page {
 	bodyTag.attributes.class = 'Page Page--Presentation'
 	body{
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Presentation.html'

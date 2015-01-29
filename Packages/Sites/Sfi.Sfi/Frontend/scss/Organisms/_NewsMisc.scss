@@ -1,3 +1,4 @@
+// TODO: Main page offset, move away from here
 .NewsLatest {
 	margin-top: -49px;
 	background: white;
@@ -15,6 +16,11 @@
 	margin: 0 !important;
 	padding: 2*$u $u !important;
 	background: $gray-bg--light;
+}
+
+.NewsList-Grid {
+	margin: 2*$u 0;
+	overflow: auto;
 }
 
 .News-MoreButton {

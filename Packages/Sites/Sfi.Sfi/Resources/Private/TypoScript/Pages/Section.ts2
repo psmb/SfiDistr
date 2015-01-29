@@ -1,4 +1,4 @@
-section < page{
+section < page {
 	bodyTag.attributes.class = 'Page Page--Section'
 	body{
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Section.html'

@@ -1,5 +1,6 @@
 .MediaSmall {
 	margin-bottom: 2*$u;
+	overflow: auto;
 }
 
 .MediaSmall-Title{
@@ -24,11 +25,12 @@
 }
 .MediaSmall-Image {
 	float: left;
+	margin-right: 30px;
 	img{
 		width: 90px;
 	}
 }
 
 .MediaSmall-Body {
-	margin-left: 120px;
+	overflow: hidden;
 }

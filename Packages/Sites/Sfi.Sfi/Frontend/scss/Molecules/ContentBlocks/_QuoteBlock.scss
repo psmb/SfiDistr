@@ -23,11 +23,15 @@
 	}
 }
 @media #{$medium-up}{
-	.QuoteBlock-Text{
+	.QuoteBlock-Image {
+		position: absolute;
+		bottom: 0;
+	}
+	.QuoteBlock-Text {
 		border-left: 0;
 		padding-left: 0;
 	}
-	.QuoteBlock{
+	.QuoteBlock {
 		border-bottom: $border-thin;
 	}
 }
