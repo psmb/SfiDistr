@@ -33,6 +33,12 @@ $application->setDeploymentPath('/www/sfi.ru/surf');
 $application->setOption('repositoryUrl', 'git@github.com:sfi-ru/SfiDistr.git');
 $application->setOption('composerCommandPath', '/usr/local/bin/composer');
 $application->setOption('keepReleases', 10);
+
+// Use rsync for transfer instead of composer
+$application->setOption('transferMethod', 'rsync');
+$application->setOption('packageMethod', 'git');
+$application->setOption('updateMethod', NULL);
+
 $application->addNode($node);
 
 $workflow->addTask('sfi.sfi:cherry-pick', 'migrate', $application);
