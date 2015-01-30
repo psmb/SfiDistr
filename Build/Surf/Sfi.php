@@ -9,7 +9,7 @@ $workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
 
 $workflow->defineTask('sfi.sfi:beard',
         'typo3.surf:shell',
-        array('command' => './beard patch')
+        array('command' => 'cd {releasePath} && ./beard patch')
 );
 $smokeTestOptions = array(
         'url' => 'http://next.sfi.ru',
@@ -31,7 +31,7 @@ $application->setOption('keepReleases', 10);
 
 // Use rsync for transfer instead of composer
 $application->setOption('transferMethod', 'rsync');
-$application->setOption('packageMethod', 'git');
+//$application->setOption('packageMethod', 'git');
 $application->setOption('updateMethod', NULL);
 $application->setOption('rsyncFlags', "--recursive --omit-dir-times --perms --links --delete --delete-excluded --exclude '.git'");
 
