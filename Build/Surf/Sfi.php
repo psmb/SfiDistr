@@ -37,7 +37,7 @@ $application->setOption('rsyncFlags', "--recursive --omit-dir-times --perms --li
 
 $application->addNode($node);
 
-$workflow->addTask('sfi.sfi:beard', 'package', $application);
+//$workflow->addTask('sfi.sfi:beard', 'package', $application);
 $workflow->addTask('sfi.sfi:initialize', 'migrate', $application);
 $workflow->addTask('sfi.sfi:smoketest', 'test', $application);
 $workflow->setEnableRollback(FALSE);
