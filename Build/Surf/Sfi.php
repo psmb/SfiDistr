@@ -9,7 +9,7 @@ $workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
 
 $workflow->defineTask('sfi.sfi:beard',
         'typo3.surf:localshell',
-        array('command' => 'cd {workspacePath} && ./beard patch')
+        array('command' => 'cd /home/ubuntu/SfiDistr && ./beard patch')
 );
 $workflow->defineTask('sfi.sfi:initialize',
         'typo3.surf:shell',
