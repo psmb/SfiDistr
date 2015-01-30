@@ -9,7 +9,7 @@ $workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
 
 $workflow->defineTask('sfi.sfi:beard',
         'typo3.surf:localshell',
-        array('command' => 'cd /home/ubuntu/SfiDistr && git config --global user.email "dimaip@gmail.com" &&  git config --global user.name "Dmitri Pisarev (CircleCI)" && ./beard patch')
+        array('command' => 'cd {workspacePath} && git config --global user.email "dimaip@gmail.com" &&  git config --global user.name "Dmitri Pisarev (CircleCI)" && ./beard patch')
 );
 $workflow->defineTask('sfi.sfi:initialize',
         'typo3.surf:shell',
