@@ -35,7 +35,7 @@ $application->setOption('keepReleases', 10);
 
 // Use rsync for transfer instead of composer
 $application->setOption('transferMethod', 'rsync');
-//$application->setOption('packageMethod', 'git');
+$application->setOption('packageMethod', 'git');
 $application->setOption('updateMethod', NULL);
 $application->setOption('rsyncFlags', "--recursive --omit-dir-times --perms --links --delete --delete-excluded --exclude '.git'");
 
