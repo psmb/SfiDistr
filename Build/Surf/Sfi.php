@@ -35,13 +35,13 @@ $application->setOption('keepReleases', 10);
 
 // Use rsync for transfer instead of composer
 $application->setOption('transferMethod', 'rsync');
-$application->setOption('packageMethod', 'git');
+//$application->setOption('packageMethod', 'git');
 $application->setOption('updateMethod', NULL);
 $application->setOption('rsyncFlags', "--recursive --omit-dir-times --perms --links --delete --delete-excluded --exclude '.git'");
 
 $application->addNode($node);
 
-$workflow->addTask('sfi.sfi:beard', 'package', $application);
+$workflow->afterStage('package', 'sfi.sfi:beard', $application);
 $workflow->addTask('sfi.sfi:initialize', 'migrate', $application);
 $workflow->addTask('sfi.sfi:smoketest', 'test', $application);
 $workflow->setEnableRollback(FALSE);
