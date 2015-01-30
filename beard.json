@@ -1,0 +1,14 @@
+{
+    "defaults": {
+        "gerrit_api_endpoint": "https://review.typo3.org/",
+        "gerrit_git": "git.typo3.org"
+    },
+    "changes": [
+        {
+            "name": "Add check to make sure OriginalImage exists",
+            "type": "gerrit",
+            "path": "Packages/Application/TYPO3.Media",
+            "change_id": "36411"
+        }
+    ]
+}
