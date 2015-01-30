@@ -41,7 +41,7 @@ $application->setOption('rsyncFlags', "--recursive --omit-dir-times --perms --li
 
 $application->addNode($node);
 
-$workflow->beforeStage('transfer', 'typo3.surf:package:git', $application);
+$workflow->beforeStage('transfer', 'sfi.sfi:beard', $application);
 $workflow->addTask('sfi.sfi:initialize', 'migrate', $application);
 $workflow->addTask('sfi.sfi:smoketest', 'test', $application);
 $workflow->setEnableRollback(FALSE);
