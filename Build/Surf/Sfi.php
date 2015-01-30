@@ -32,9 +32,7 @@ $application = new \TYPO3\Surf\Application\TYPO3\Flow();
 $application->setDeploymentPath('/www/sfi.ru/surf');
 $application->setOption('repositoryUrl', 'git@github.com:sfi-ru/SfiDistr.git');
 $application->setOption('composerCommandPath', '/usr/local/bin/composer');
-$application->setOption('gitPostCheckoutCommands', array(
-        'Packages/Application/TYPO3.Media/' => array('git fetch http://review.typo3.org/Packages/TYPO3.Media refs/changes/11/36411/1 && git cherry-pick FETCH_HEAD')
-));
+$application->setOption('keepReleases', 10);
 $application->addNode($node);
 
 $workflow->addTask('sfi.sfi:cherry-pick', 'migrate', $application);
