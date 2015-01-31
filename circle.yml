@@ -3,6 +3,7 @@ machine:
     version: 5.5.11
 dependencies:
   override:
+    - rm composer.json
     - composer require typo3/surf:@dev
 test:
   override:
