@@ -1,6 +1,9 @@
 machine:
   php:
     version: 5.5.11
+dependencies:
+  override:
+    - composer require typo3/surf:@dev
 test:
   override:
     - echo "No tests to run"
