@@ -23,9 +23,14 @@
 	}
 }
 @media #{$medium-up}{
+	.QuoteBlock-ImageWrap {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
 	.QuoteBlock-Image {
-		position: absolute;
-		bottom: 0;
+		align-self: flex-end;
 	}
 	.QuoteBlock-Text {
 		border-left: 0;
