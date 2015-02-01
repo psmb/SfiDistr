@@ -3,8 +3,8 @@ machine:
     version: 5.5.11
 dependencies:
   override:
-    - rm composer.json
-    - composer require typo3/surf:@dev
+    - rm composer.json && mv composer.surf.json composer.json
+    - composer install --no-interaction --no-dev --no-progress --prefer-dist
 test:
   override:
     - echo "No tests to run"
