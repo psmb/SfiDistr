@@ -8,6 +8,7 @@
     },
     "require": {
         "doctrine/migrations": "@dev",
+        "typo3/neos": "1.2.*",
         "typo3/surf": "@dev"
     },
     "scripts": {
