@@ -3,7 +3,7 @@ machine:
     version: 5.5.11
 dependencies:
   override:
-    - rm composer.json && mv composer.surf.json composer.json
+    - rm composer.json && rm Packages/Sites/Sfi.Sfi/composer.json && mv composer.surf.json composer.json
     - composer install --no-interaction --no-dev --no-progress --prefer-dist
 test:
   override:
