@@ -14,7 +14,7 @@
 	margin-top: 0 !important;
 }
 
-@include breakpoint('small only') {
+@include breakpoint(small only) {
 	.QuoteBlock-Image > img{
 		border: $border-thin;
 		border-radius: 50%;

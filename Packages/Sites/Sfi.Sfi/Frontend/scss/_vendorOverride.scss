@@ -1,8 +1,8 @@
 .audiojs p{
 	margin: 0 !important;
 }
-
-body{
+// FIX!
+body1{
 	.slick-list{
 		padding-top: 36px;
 		border-top: $border-thin;
@@ -38,6 +38,43 @@ body{
 	}
 	.slick-next{
 		right: 0;
+	}
+	.slick-list .Figure{
+		margin: 0;
+	}
+}
+body{
+	.slick-dots{
+		// lucky number :(
+		width: 97%;
+		margin-top: 0;
+		margin-left: 16px;
+		margin-right: 16px;
+		top: 3px;
+		bottom: initial;
+		li button:before{
+			font-size: 8px;
+			opacity: 1;
+			color: $gray-line;
+		}
+		li.slick-active button:before{
+			opacity: 1;
+			color: $color-primary;
+		}
+	}
+	.slick-prev, .slick-next{
+		top: 50%;
+		margin-top: 0;
+		&:before{
+			color: $color-primary;
+			opacity: 1;
+		}
+	}
+	.slick-prev{
+		left: 0;
+	}
+	.slick-next{
+		right: 6px;
 	}
 	.slick-list .Figure{
 		margin: 0;

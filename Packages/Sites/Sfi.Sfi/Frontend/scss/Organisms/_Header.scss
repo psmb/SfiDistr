@@ -39,7 +39,7 @@
 	padding-left: 9px;
 }
 
-@include breakpoint('medium only') {
+@include breakpoint(medium only) {
 	.Header-SecondaryMenu {
 		position: absolute;
 		left: 0;

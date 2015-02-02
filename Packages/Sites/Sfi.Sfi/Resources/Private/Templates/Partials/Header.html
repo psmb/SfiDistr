@@ -1,6 +1,6 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <header class="Header">
-	<div class="grid-container">
+	<div class="grid-block">
 		<div class="grid-content">
 			<div class="">
 				
@@ -36,7 +36,7 @@
 	</f:if>
 	{mainMenu -> f:format.raw()}
 	<f:if condition="{breadcrumbMenu}">
-		<div class="grid-container">
+		<div class="grid-block">
 			<div class="grid-content">
 					{breadcrumbMenu -> f:format.raw()}
 			</div>

@@ -1,11 +1,4 @@
 @import "foundation/functions";
-$breakpoints: (
-  small: rem-calc(0),
-  medium: rem-calc(600),
-  large: rem-calc(1024),
-  xlarge: rem-calc(1440),
-  xxlarge: rem-calc(1920),
-);
 $rem-base: 16px;
 $container-width: rem-calc(1200);
 $global-padding: 15px;
@@ -13,7 +6,11 @@ $global-padding: 15px;
 @import "foundation/grid";
 @import "foundation/visibility";
 
-// Make 
+.grid-block {
+	max-width: $container-width;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
 .grid-content {
 	flex-basis: 100%;
 }
