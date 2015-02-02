@@ -10,7 +10,8 @@ $global-padding: 15px;
 	max-width: $container-width;
 	margin-left: auto;
 	margin-right: auto;
+	flex-wrap: wrap;
 }
 .grid-content {
-	flex-basis: 100%;
+	flex: 0 0 100%;
 }
