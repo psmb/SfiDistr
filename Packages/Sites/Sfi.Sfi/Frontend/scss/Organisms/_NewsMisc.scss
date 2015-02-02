@@ -1,15 +1,14 @@
 // TODO: Main page offset, move away from here
 .NewsLatest {
-	margin-top: -49px;
 	background: white;
 }
 
 .NewsLatest-Grid[data-columns]::before {
-	content: '3 .columns.medium-4';
+	content: '3 .grid-content.medium-4';
 }
 
 .NewsList-Grid[data-columns]::before {
-	content: '3 .columns.medium-4';
+	content: '3 .grid-content.medium-4';
 }
 
 .NewsLatest-Grid {

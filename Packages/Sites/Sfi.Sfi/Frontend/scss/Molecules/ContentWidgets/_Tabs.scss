@@ -32,7 +32,7 @@
 }
 
 /* Accordion responsive breakpoint */
-@media #{$medium-up} {
+@include breakpoint('medium') {
     .Sections-Tabs {
         display: block;
     }
@@ -118,7 +118,7 @@
 }
 
 
-@media #{$small-only}{
+@include breakpoint('small only') {
     .SectionWithImagePanel .TextWithImage-Headline{
         display: none;
     }
@@ -131,7 +131,7 @@
 }
 
 
-@media #{$medium-up}{
+@include breakpoint('medium') {
     .SectionWithImageTabAnchor--Variant1{
         width: 120px !important;
     }
@@ -139,7 +139,7 @@
         width: 120px !important;
     }
 }
-@media #{$large-up}{
+@include breakpoint('large') {
     .SectionWithImageTabAnchor--Variant1{
         width: 120px !important;
     }

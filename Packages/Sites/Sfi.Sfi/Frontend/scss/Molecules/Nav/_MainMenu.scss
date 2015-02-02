@@ -50,7 +50,7 @@
 .Page--Main .MainMenu-Toggle{
 	display: none;
 }
-@media #{$medium-up}{
+@include breakpoint('medium') {
 	.Page--Main .MainMenu-Toggle{
 		display: block;
 	}
@@ -78,7 +78,7 @@
 	}
 }
 
-@media #{$medium-up}{
+@include breakpoint('medium') {
 	.MainMenu-Column{
 		float: left;
 		padding-right: 1.5*$u;
@@ -120,7 +120,7 @@
 	}
 }
 
-@media #{$large-up}{
+@include breakpoint('large') {
 	.MainMenu-Column{
 		float: left;
 		padding-right: 3*$u;

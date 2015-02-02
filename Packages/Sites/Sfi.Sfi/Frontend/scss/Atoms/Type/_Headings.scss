@@ -6,7 +6,7 @@
 	font-weight: bold;
 	color: $gray--dark;
 	line-height: $lineHeight-single;
-	@media #{$medium-up} {
+	@include breakpoint('medium') {
 		line-height: $lineHeight-tight;
 	}
 }
@@ -14,21 +14,21 @@
 .H0 {
 	@extend %mainHeadings;
 	font-size: rem-calc(36);
-	@media #{$medium-up} {
+	@include breakpoint('medium') {
 		font-size: rem-calc(64);
 	}
 }
 .H1 {
 	@extend %mainHeadings;
 	font-size: rem-calc(36);
-	@media #{$medium-up} {
+	@include breakpoint('medium') {
 		font-size: rem-calc(48);
 	}
 }
 .H2 {
 	@extend %mainHeadings;
 	font-size: rem-calc(24);
-	@media #{$medium-up} {
+	@include breakpoint('medium') {
 		font-size: rem-calc(36);
 	}
 }

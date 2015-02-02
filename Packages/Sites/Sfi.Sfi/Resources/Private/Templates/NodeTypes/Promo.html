@@ -1,17 +1,19 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
-<div class="row">
-	<div class="PromoDetail-Article medium-7 columns">
-		<div class="Article">
-			<neos:contentElement.wrap node="{node}">
-				<h1 class="Article-Title H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
-				<div class="Article-Teaser Paragraph">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+<div class="grid-container">
+	<div class="grid-block">
+		<div class="PromoDetail-Article medium-7 grid-content">
+			<div class="Article">
+				<neos:contentElement.wrap node="{node}">
+					<h1 class="Article-Title H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+					<div class="Article-Teaser Paragraph">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
 
-				<div class="Article-Content">{main -> f:format.raw()}</div>
-			</neos:contentElement.wrap>
-		</div>	
-	</div>
-	<div class="PromoDetail-MoreItems	 medium-4 medium-offset-1 columns">
-		{moreItems -> f:format.raw()}
+					<div class="Article-Content">{main -> f:format.raw()}</div>
+				</neos:contentElement.wrap>
+			</div>	
+		</div>
+		<div class="PromoDetail-MoreItems	 medium-4 medium-offset-1 grid-content">
+			{moreItems -> f:format.raw()}
+		</div>
 	</div>
 </div>

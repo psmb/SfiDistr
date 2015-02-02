@@ -1,9 +1,9 @@
 .MediaAnnouncement-WrapText {
 	margin-left: 65px + 1.5*$u;
-	@media #{$medium-up} {
+	@include breakpoint('medium') {
 		margin-left: 65px + 3*$u;
 	}
-	@media #{$large-up} {
+	@include breakpoint('large') {
 		margin-left: 65px + 4*$u;
 	}
 }

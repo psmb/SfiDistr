@@ -4,7 +4,7 @@
 		@extend .ParagraphAlt--Small;
 		float: left;
 		margin: $u/2 $u $u/2 0;
-		@media #{$large-up}{
+		@include breakpoint('large') {
 			margin: $u $u $u 0;
 		}
 	}

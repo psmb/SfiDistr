@@ -9,7 +9,7 @@
 	}
 }
 
-@media screen and (min-width: 370px){
+@include breakpoint('370px'){
 	.IconMenu{
 		padding-left: 0;
 	}

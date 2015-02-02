@@ -4,13 +4,13 @@
 	height:100%;
 }
 
-@media #{$medium-up} {
+@include breakpoint('medium') {
 	.SiteLogo {
 		width: 340px;
 		max-width: initial;
 	}
 }
-@media #{$large-up} {
+@include breakpoint('large') {
 	.SiteLogo {
 		width: 450px;
 	}

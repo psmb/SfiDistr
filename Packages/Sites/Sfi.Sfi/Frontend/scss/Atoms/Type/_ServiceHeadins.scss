@@ -7,7 +7,7 @@
 .Service--Large {
 	@extend .Service;
 	font-size: rem-calc(14);
-	@media #{$medium-up}{
+	@include breakpoint('medium') {
 		font-size: rem-calc(18);
 	}
 }

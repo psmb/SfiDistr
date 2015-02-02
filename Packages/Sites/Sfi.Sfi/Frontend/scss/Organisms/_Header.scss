@@ -14,7 +14,7 @@
 	font-size: rem-calc(13);
 	text-decoration: underline;
 }
-@media #{$medium-up}{
+@include breakpoint('medium') {
 	.Header-AdditionalInfo{
 		font-size: rem-calc(14);
 	}
@@ -30,7 +30,7 @@
 .Header-Contacts p, .Header-SecondaryMenu .SecondaryMenu-Item{
 	margin: 0;
 	line-height: $lineHeight-normal;
-	@media #{$large-up}{
+	@include breakpoint('large') {
 		line-height: $lineHeight-loose;
 	}
 }
@@ -39,7 +39,7 @@
 	padding-left: 9px;
 }
 
-@media #{$medium-only} {
+@include breakpoint('medium only') {
 	.Header-SecondaryMenu {
 		position: absolute;
 		left: 0;

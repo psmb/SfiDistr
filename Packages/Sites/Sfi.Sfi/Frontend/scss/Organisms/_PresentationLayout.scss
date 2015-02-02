@@ -1,9 +1,9 @@
 .PresentationLayout-Wrap {
 	margin-top: 2*$u;
-	@media #{$medium-up} {
+	@include breakpoint('medium') {
 		margin-top: 3*$u;
 	}
-	@media #{$large-up} {
+	@include breakpoint('large') {
 		margin-top: 4*$u;
 	}
 }

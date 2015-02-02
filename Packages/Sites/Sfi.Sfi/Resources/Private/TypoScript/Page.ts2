@@ -49,7 +49,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		# TODO: refactor into FooterGallery object
 		footerGallery = TYPO3.TypoScript:Tag{
 			tagName = 'ul'
-			attributes.class = 'FooterGallery small-block-grid-2 medium-block-grid-3 large-block-grid-6'
+			attributes.class = 'FooterGallery grid-block small-up-2 medium-up-3 large-up-6'
 			content = TYPO3.Neos:ContentCollectionRenderer {
 				itemRenderer = Sfi.Widgets:AutoRenderWithTag{
 					tagName = 'li'

@@ -1,6 +1,6 @@
 .NewsDetail{
 	margin-top: 3*$u !important;
-	@media #{$medium-up}{
+	@include breakpoint('medium') {
 		margin-top: 6*$u !important;
 	}
 }
@@ -28,7 +28,7 @@
 	.Article-AuthorLabel{
 		@extend .ServiceEm;
 		padding-right: $u/2;
-		@media #{$medium-up}{
+		@include breakpoint('medium') {
 			padding-left: 2*$u;
 		}
 	}
@@ -80,7 +80,7 @@
 	left: -15px;
 }
 
-@media #{$medium-only}{
+@include breakpoint('medium only') {
 	.NewsDetail-MoreItems {
 		.MediaSmall-Image{
 			display: none;
@@ -91,17 +91,18 @@
 	}
 }
 
-.NewsDetail {
-	@include grid-row();
-}
-@media screen and (min-width: rem-calc(780)) {
-	.NewsDetail-Article--Hard {
-		@include grid-column(7);
-	}
-	.NewsDetail-MoreItems {
-		@include grid-column(4, false, false, 1);
-	}
-}
+// TODO fix
+// .NewsDetail {
+// 	@include grid-row();
+// }
+// @include breakpoint('780px') {
+// 	.NewsDetail-Article--Hard {
+// 		@include grid-column(7);
+// 	}
+// 	.NewsDetail-MoreItems {
+// 		@include grid-column(4, false, false, 1);
+// 	}
+// }
 
 
 

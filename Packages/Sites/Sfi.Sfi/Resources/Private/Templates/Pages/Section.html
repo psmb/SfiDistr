@@ -5,28 +5,28 @@
 	<f:render partial="Header" arguments="{_all}"/>
 
 	<div class="SectionLayout">
-		<div class="row">
-			<div class="large-6 columns">
+		<div class="grid-block">
+			<div class="large-6 grid-content">
 				<div class="SectionLayout-PageTitle">{title}</div>
 				<neos:contentElement.wrap node="{node}">
 					<div class="SectionLayout-SubTitle">{neos:contentElement.editable(property: 'subtitle')}</div>
 				</neos:contentElement.wrap>
 			</div>
 		</div>
-		<div class="row">
-			<div class="columns">
+		<div class="grid-block">
+			<div class="grid-content">
 				<div class="SectionLayout-Presentation">
 					{content.presentation -> f:format.raw()}
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="large-8 columns">
+		<div class="grid-block">
+			<div class="large-8 grid-content">
 				<div class="SectionLayout-Content">
 					{content.main -> f:format.raw()}
 				</div>			
 			</div>
-			<div class="large-4 columns">
+			<div class="large-4 grid-content">
 				{sectionMenu -> f:format.raw()}
 				<div class="SectionLayout-Sidebar">
 					{content.sidebar -> f:format.raw()}
