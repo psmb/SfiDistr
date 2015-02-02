@@ -7,10 +7,10 @@
         "bin-dir": "bin"
     },
     "repositories": [
-        { "type": "git", "url": "https://github.com/dimaip/Sfi.Styleguide.git" },
-        { "type": "git", "url": "https://github.com/dimaip/Sfi.Widgets.git" },
-        { "type": "git", "url": "https://github.com/dimaip/Sfi.News.git" },
-        { "type": "git", "url": "https://github.com/dimaip/Sfi.Grid.git" }
+        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Styleguide.git" },
+        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Widgets.git" },
+        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.News.git" },
+        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Grid.git" }
     ],
     "require": {
         "typo3/neos": "1.2.*",
