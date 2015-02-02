@@ -9,6 +9,12 @@
             "type": "gerrit",
             "path": "Packages/Application/TYPO3.Media",
             "change_id": "36411"
+        },
+        {
+            "name": "Command for cleaning up nodes",
+            "type": "gerrit",
+            "path": "Packages/Application/TYPO3.TYPO3CR",
+            "change_id": "34696,6"
         }
     ]
 }
