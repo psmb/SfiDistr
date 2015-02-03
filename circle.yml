@@ -14,3 +14,5 @@ deployment:
     commands:
       - ./flow surf:deploy Sfi:
           timeout: 900
+          environment:
+            REPOSITORY_URL: 'git@github.com:sfi-ru/SfiDistr.git'

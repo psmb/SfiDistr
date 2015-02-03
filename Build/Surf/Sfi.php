@@ -3,9 +3,18 @@ use TYPO3\Surf\Domain\Model\Workflow;
 use TYPO3\Surf\Domain\Model\Node;
 use TYPO3\Surf\Domain\Model\SimpleWorkflow;
 
+
+
+if(getenv("REPOSITORY_URL") == "") {
+	throw new \TYPO3\Surf\Exception\InvalidConfigurationException("EnvVar REPOSITORY_URL is not set!");
+} else {
+	$envVars['REPOSITORY_URL'] = getenv("REPOSITORY_URL");
+}
+
+
 $application = new \TYPO3\Surf\Application\TYPO3\Flow('SfiDistr');
 $application->setDeploymentPath('/www/sfi.ru/surf');
-$application->setOption('repositoryUrl', 'git@github.com:sfi-ru/SfiDistr.git');
+$application->setOption('repositoryUrl', $envVars['REPOSITORY_URL']);
 $application->setOption('composerCommandPath', '/usr/local/bin/composer');
 $application->setOption('keepReleases', 10);
 
