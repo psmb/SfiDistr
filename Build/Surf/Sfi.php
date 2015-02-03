@@ -10,16 +10,16 @@ $application->setOption('composerCommandPath', '/usr/local/bin/composer');
 $application->setOption('keepReleases', 10);
 
 // Use rsync for transfer instead of composer
-// $application->setOption('transferMethod', 'rsync');
-// $application->setOption('packageMethod', 'git');
-// $application->setOption('updateMethod', NULL);
-// $application->setOption('rsyncFlags', "--recursive --omit-dir-times --perms --links --delete --delete-excluded --exclude '.git'");
+$application->setOption('transferMethod', 'rsync');
+$application->setOption('packageMethod', 'git');
+$application->setOption('updateMethod', NULL);
+$application->setOption('rsyncFlags', "--recursive --omit-dir-times --perms --links --delete --delete-excluded --exclude '.git'");
 
 
 $workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
 $workflow->defineTask('sfi.sfi:beard',
-        'typo3.surf:shell',
-        array('command' => 'cd {releasePath} && ./beard patch')
+        'typo3.surf:localshell',
+        array('command' => 'cd {workspacePath} && git config --global user.email "dimaip@gmail.com" &&  git config --global user.name "Dmitri Pisarev (CircleCI)" && ./beard patch')
 );
 $workflow->defineTask('sfi.sfi:initialize',
         'typo3.surf:shell',
@@ -32,8 +32,7 @@ $smokeTestOptions = array(
         'expectedRegexp' => '/Page--Main/'
 );
 $workflow->defineTask('sfi.sfi:smoketest', 'typo3.surf:test:httptest', $smokeTestOptions);
-
-$workflow->addTask('sfi.sfi:beard', 'migrate', $application);
+$workflow->beforeStage('transfer', 'sfi.sfi:beard', $application);
 $workflow->addTask('sfi.sfi:initialize', 'migrate', $application);
 $workflow->addTask('sfi.sfi:smoketest', 'test', $application);
 $workflow->setEnableRollback(FALSE);
