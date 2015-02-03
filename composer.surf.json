@@ -11,5 +11,6 @@
     ],
     "require": {
         "sfi/surf": "@dev"
-    }
+    },
+    "minimum-stability": "dev"
 }
