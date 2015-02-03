@@ -11,9 +11,15 @@ if(getenv("REPOSITORY_URL") == "") {
 	$envVars['REPOSITORY_URL'] = getenv("REPOSITORY_URL");
 }
 
+if(getenv("DOMAIN") == "") {
+	throw new \TYPO3\Surf\Exception\InvalidConfigurationException("EnvVar DOMAIN is not set!");
+} else {
+	$envVars['DOMAIN'] = getenv("DOMAIN");
+}
 
-$application = new \TYPO3\Surf\Application\TYPO3\Flow('SfiDistr');
-$application->setDeploymentPath('/www/sfi.ru/surf');
+
+$application = new \TYPO3\Surf\Application\TYPO3\Flow($envVars['DOMAIN']);
+$application->setDeploymentPath('/www/'..$envVars['DOMAIN'].'/surf');
 $application->setOption('repositoryUrl', $envVars['REPOSITORY_URL']);
 $application->setOption('composerCommandPath', '/usr/local/bin/composer');
 $application->setOption('keepReleases', 10);
@@ -35,7 +41,7 @@ $workflow->defineTask('sfi.sfi:initialize',
         array('command' => 'cd {releasePath} && cp Configuration/Production/Settings.yaml Configuration/Settings.yaml && FLOW_CONTEXT=Production ./flow flow:cache:flush --force && chmod g+rwx -R . && FLOW_CONTEXT=Production ./flow cache:warmup')
 );
 $smokeTestOptions = array(
-        'url' => 'http://next.sfi.ru',
+        'url' => 'http://next.'.$envVars['DOMAIN'],
         'remote' => TRUE,
         'expectedStatus' => 200,
         'expectedRegexp' => '/Page--Main/'
@@ -47,7 +53,7 @@ $workflow->addTask('sfi.sfi:smoketest', 'test', $application);
 $workflow->setEnableRollback(FALSE);
 
 
-$node = new \TYPO3\Surf\Domain\Model\Node('sfi');
+$node = new \TYPO3\Surf\Domain\Model\Node($envVars['DOMAIN']);
 $node->setHostname('server.psmb.ru');
 $node->setOption('username', 'dimaip');
 $application->addNode($node);
