@@ -23,6 +23,7 @@
 }
 .MediaAnnouncement-DateTime {
 	@extend .Service--Small;
+	color: $color-primary;
 	margin: 0;
 }
 .MediaAnnouncement-Title {
