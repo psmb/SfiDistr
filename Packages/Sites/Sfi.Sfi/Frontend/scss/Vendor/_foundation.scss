@@ -2,9 +2,13 @@
 $rem-base: 16px;
 $container-width: rem-calc(1200);
 $global-padding: 15px;
+$include-html-classes: true;
+$default-float: left;
+$flex-video-padding-bottom: 54.55% !default;
 @import "foundation/breakpoints";
 @import "foundation/grid";
 @import "foundation/visibility";
+@import "foundation/flexvideo";
 
 .grid-block {
 	max-width: $container-width;
