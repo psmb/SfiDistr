@@ -5,12 +5,6 @@
     },
     "changes": [
         {
-            "name": "Add check to make sure OriginalImage exists",
-            "type": "gerrit",
-            "path": "Packages/Application/TYPO3.Media",
-            "change_id": "36411"
-        },
-        {
             "name": "Command for cleaning up nodes",
             "type": "gerrit",
             "path": "Packages/Application/TYPO3.TYPO3CR",
