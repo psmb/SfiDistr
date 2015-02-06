@@ -14,7 +14,8 @@ stylesheets
 /Web/_Resources/
 /Web/index.php
 /Configuration/*
-!/Configuration/Caches.yaml
+!/Configuration/Develpment/Caches.yaml
+!/Configuration/Production/Caches.yaml
 /Build/Behat/*
 /Build/BuildEssentials
 /Build/Reports
