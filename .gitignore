@@ -13,12 +13,12 @@ stylesheets
 
 /Web/_Resources/
 /Web/index.php
-/Configuration
+/Configuration/*
+!/Configuration/Caches.yaml
 /Build/Behat/*
 /Build/BuildEssentials
 /Build/Reports
 /Build/Resources
-#/Configuration/
 /Data/
 /Packages/Application/
 /Packages/Framework/
