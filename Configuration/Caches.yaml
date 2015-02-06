@@ -1,0 +1,15 @@
+# use sqlite for large caches
+TYPO3_TypoScript_Content:
+  backend: TYPO3\Flow\Cache\Backend\PdoBackend
+  backendOptions:
+    dataSourceName: 'sqlite:/data/www/sfi/Data/Temporary/caches.sqlite'
+
+Flow_Mvc_Routing_Resolve:
+  backend: TYPO3\Flow\Cache\Backend\PdoBackend
+  backendOptions:
+    dataSourceName: 'sqlite:/data/www/sfi/Data/Temporary/caches.sqlite'
+
+Flow_Mvc_Routing_Route:
+  backend: TYPO3\Flow\Cache\Backend\PdoBackend
+  backendOptions:
+    dataSourceName: 'sqlite:/data/www/sfi/Data/Temporary/caches.sqlite'
