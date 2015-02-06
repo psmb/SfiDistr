@@ -1,4 +1,4 @@
-# use sqlite for large caches
+# use sqlite for large caches that use tagging
 TYPO3_TypoScript_Content:
   backend: TYPO3\Flow\Cache\Backend\PdoBackend
   backendOptions:

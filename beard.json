@@ -5,6 +5,12 @@
     },
     "changes": [
         {
+            "name": "PdoBackend fix",
+            "type": "gerrit",
+            "path": "Packages/Framework/TYPO3.Flow",
+            "change_id": "36724"
+        },
+        {
             "name": "Command for cleaning up nodes",
             "type": "gerrit",
             "path": "Packages/Application/TYPO3.TYPO3CR",
