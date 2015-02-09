@@ -10,6 +10,8 @@
     label: 'Quote block'
     icon: 'icon-edit'
     group: contentBlocks
+
+
     inspector:
       groups:
         variant:
@@ -62,3 +64,23 @@
     label: 'Questions'
     icon: 'icon-edit'
     group: contentWidgets
+
+
+'Sfi.Sfi:Card':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Card'
+    icon: 'icon-edit'
+    group: contentBlocks
+  properties:
+    title:
+      type: string
+      defaultValue: '<h3>Card title</h3>'
+      ui:
+        inlineEditable: TRUE
+    text:
+      type: string
+      defaultValue: '<p>Enter card text here</p>'
+      ui:
+        inlineEditable: TRUE

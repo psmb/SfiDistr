@@ -1,0 +1,12 @@
+.Card {
+	border: $border-thin;
+	padding: $u 2*$u;
+}
+
+.Card-Title {
+	@extend .ServiceLight;
+}
+
+.Card-Text {
+	@extend .ParagraphAlt;
+}
