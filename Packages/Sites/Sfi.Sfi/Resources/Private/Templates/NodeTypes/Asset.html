@@ -1,0 +1,6 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<div class="Asset">
+	<neos:contentElement.wrap node="{node}">
+		<a href="{f:uri.resource(resource: asset.resource)}">{neos:contentElement.editable(property: 'title', tag:'span')}</a>
+	</neos:contentElement.wrap>
+</div>

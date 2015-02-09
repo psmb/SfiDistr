@@ -10,8 +10,6 @@
     label: 'Quote block'
     icon: 'icon-edit'
     group: contentBlocks
-
-
     inspector:
       groups:
         variant:
@@ -84,3 +82,30 @@
       defaultValue: '<p>Enter card text here</p>'
       ui:
         inlineEditable: TRUE
+
+
+'Sfi.Sfi:Asset':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Asset'
+    icon: 'icon-edit'
+    group: contentBlocks
+    inspector:
+      groups:
+        asset:
+          label: 'Asset'
+          position: 'start 1'
+  properties:
+    title:
+      type: string
+      defaultValue: 'Enter asset name'
+      ui:
+        inlineEditable: TRUE
+    asset:
+      type: TYPO3\Media\Domain\Model\Asset
+      ui:
+        inspector:
+          group: 'asset'
+        label: 'Assets'
+        reloadIfChanged: TRUE
