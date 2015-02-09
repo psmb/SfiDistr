@@ -17,4 +17,16 @@
 	a {
 		@extend .Link;
 	}
+	ul {
+		@extend .UnorderedList;
+		li {
+			@extend .Paragraph;
+		}
+	}
+	ol {
+		@extend .OrderedList;
+		li {
+			@extend .Paragraph;
+		}
+	}
 }
