@@ -10,8 +10,8 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		stylesheets.backend = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
 			sectionName = 'backendStylesheets'
+			@process.1=${node.context.workspaceName != 'live' ? value:''}
 		}
-		stylesheets.backend.@process.1=${node.context.workspaceName != 'live' ? value:''}
 
 		javascripts.site = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
@@ -73,6 +73,11 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		javascripts.site = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
 			sectionName = 'bodyScripts'
+		}
+		javascripts.backend = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			sectionName = 'backendScripts'
+			@process.1=${node.context.workspaceName != 'live' ? value:''}
 		}
 	}
 }

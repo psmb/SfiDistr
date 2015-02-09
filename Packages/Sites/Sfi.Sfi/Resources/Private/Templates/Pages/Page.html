@@ -29,6 +29,9 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/mstile-144x144.png">
 	</f:section>
+    <f:section name="backendScripts">
+        <script src="{f:uri.resource(path: 'js/backend.js', package: 'Sfi.Sfi')}?{f:format.date(date:'now',format:'U')}"></script>
+    </f:section>
 </head>
 <body>
 	<f:section name="body">
