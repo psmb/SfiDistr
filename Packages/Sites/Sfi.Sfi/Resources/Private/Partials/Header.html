@@ -9,7 +9,7 @@
 				<div class="SearchBox" id="cse-search-form1"></div>
 			</div>
 			<div class="grid-content grid-content-flex paddingLeft-none shrink">
-				<f:render section="EnglishLink"/>
+				<f:render partial="EnglishLink"/>
 			</div>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 			{secondaryMenu -> f:format.raw()}
 		</div>
 		<div class="grid-content large-1 show-for-large-up">
-			<f:render section="EnglishLink"/>
+			<f:render partial="EnglishLink"/>
 		</div>
 		<div href="#menu" class="show-for-small-only MobileNav-Toggle js-MobileNav-Toggle"><f:render partial="Svg/IconMenu"/></div>
 	</div>
@@ -49,7 +49,3 @@
 		</div>
 	</f:if>
 </header>
-
-<f:section name="EnglishLink">
-	<a class="Link Service lineHeight-single" style="display:block" href="http://archive.sfi.ru/eng">English</a>
-</f:section>

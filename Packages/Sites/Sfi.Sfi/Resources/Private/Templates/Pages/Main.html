@@ -2,6 +2,11 @@
 <f:layout name="Default" />
 
 <f:section name="content">
+	<div class="grid-block show-for-small-only">
+		<div class="medium-4 large-3 grid-content">
+			<f:render partial="Contacts" />
+		</div>
+	</div>
 	<div>
 		<div class="js-StickInParent" style="margin-bottom: -49px">
 			{content.newsTop -> f:format.raw()}
