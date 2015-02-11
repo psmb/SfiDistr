@@ -51,12 +51,17 @@
       type: 'TYPO3.Neos:ContentCollection'
     sidebar:
       type: 'TYPO3.Neos:ContentCollection'
-  properties:
-    subtitle:
-      type: string
-      defaultValue: '<p>Page subtitle</p>'
-      ui:
-        inlineEditable: TRUE
+
+'Sfi.Sfi:PageSubSection':
+  ui:
+    label: 'Page: SubSection'
+  superTypes:
+    - 'Sfi.Sfi:Page'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+    sidebar:
+      type: 'TYPO3.Neos:ContentCollection'
 
 
 
