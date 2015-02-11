@@ -1,0 +1,40 @@
+
+.MobileNav-Menu {
+	position: fixed;
+	top: 0;
+	right: -20*$u;
+	width: 20*$u;
+	height: 100%;
+	overflow: scroll;
+	box-shadow: $gray-line -2px 0 2px;
+	transition: ease-in-out 0.3s;
+}
+.MobileNav-Content {
+	transition: ease-in-out 0.3s;
+}
+.js-MobileNav.isActive .MobileNav-Content {
+	position: relative;
+	transform: translateX(-20*$u);
+}
+.js-MobileNav.isActive .MobileNav-Menu {
+	transform: translateX(-20*$u);
+}
+
+
+
+.MobileNav-Menu {
+	padding: $u;
+}
+
+.MobileNav-Toggle {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	cursor: pointer;
+	// Stay on top of menu to render clicks
+	z-index: 110;
+	display: inline-block;
+	.IconMenu {
+		display: inline-block;
+	}
+}

@@ -51,3 +51,9 @@
   float: right !important;
 }
 
+.float-children {
+	overflow: auto;
+}
+.float-children * {
+	float: left;
+}

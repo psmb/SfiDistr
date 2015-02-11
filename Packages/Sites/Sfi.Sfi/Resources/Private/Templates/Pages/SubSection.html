@@ -1,6 +1,6 @@
-<f:section name="body">
-	<f:render partial="Header" arguments="{_all}"/>
+<f:layout name="Default" />
 
+<f:section name="content">
 	<div class="grid-block SubSectionLayout-Wrap">
 		<div class="medium-8 grid-content SubSectionLayout-Content">
 			<h1 class="SubSectionLayout-PageTitle">{node.parent.properties.title}</h1>
@@ -15,6 +15,4 @@
 			</div>
 		</div>
 	</div>
-	
-	<f:render partial="Footer"  arguments="{_all}"/>
 </f:section>

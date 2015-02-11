@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 {namespace neos=TYPO3\Neos\ViewHelpers}
+<f:layout name="Default" />
 
-<f:section name="body">
-	<f:render partial="Header" arguments="{_all}"/>
+<f:section name="content">
 	<div>
 		<div class="js-StickInParent" style="margin-bottom: -49px">
 			{content.newsTop -> f:format.raw()}
@@ -55,5 +54,4 @@
 			</div>
 		</div>
 	</div>
-	<f:render partial="Footer"  arguments="{_all}"/>
 </f:section>

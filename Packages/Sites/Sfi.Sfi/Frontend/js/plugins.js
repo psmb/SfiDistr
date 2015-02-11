@@ -75,6 +75,16 @@ var onReadyPlugins = function() {
         e.stopPropagation();
     });
 
+    $('.js-MobileNav-Toggle').click(function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        $('.js-MobileNav').toggleClass('isActive');
+    });
+    $('body').click(function(e){
+        $('.js-MobileNav').removeClass('isActive');
+    });
+
+
 	$('.js-sections').responsiveTabs();
 
     // TODO: optimize carousel init code

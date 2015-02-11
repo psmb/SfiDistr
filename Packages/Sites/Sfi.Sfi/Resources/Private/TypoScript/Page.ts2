@@ -4,30 +4,30 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title'))}
 		stylesheets.site = TYPO3.TypoScript:Template {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Utility.html'
 			sectionName = 'stylesheets'
 		}
 		stylesheets.backend = TYPO3.TypoScript:Template {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Utility.html'
 			sectionName = 'backendStylesheets'
 			@process.1=${node.context.workspaceName != 'live' ? value:''}
 		}
 
 		javascripts.site = TYPO3.TypoScript:Template {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Utility.html'
 			sectionName = 'headScripts'
 		}
 	}
 	bodyTag.attributes.class = 'Page'
 	bodyTag.attributes.id = ${q(node).property('_name')}
 	body {
-		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
-		partialRootPath = 'resource://Sfi.Sfi/Private/Templates/Partials'
-		sectionName = 'body'
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Default.html'
+		partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+		layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 
 		mainMenu = Menu{
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/MainMenu.html'
-			partialRootPath = 'resource://Sfi.Sfi/Private/Templates/Partials'
+			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			entryLevel = 1
 			maximumLevels = 2
 		}
@@ -71,11 +71,12 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		}
 
 		javascripts.site = TYPO3.TypoScript:Template {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Utility.html'
+			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			sectionName = 'bodyScripts'
 		}
 		javascripts.backend = TYPO3.TypoScript:Template {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Utility.html'
 			sectionName = 'backendScripts'
 			@process.1=${node.context.workspaceName != 'live' ? value:''}
 		}

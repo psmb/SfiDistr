@@ -9,49 +9,17 @@
 	top: 0;
 }
 
-.Header-AdditionalInfo{
-	overflow: auto;
-	font-size: rem-calc(13);
-	text-decoration: underline;
-}
-@include breakpoint('medium') {
-	.Header-AdditionalInfo{
-		font-size: rem-calc(14);
-	}
-}
-.Header-AdditionalInfo > *{
-	float: left;
-	width: 50%;
-	margin: $u/2 0;
-}
-.Header-Contacts {
-	padding-right: $u;
-}
-.Header-Contacts p, .Header-SecondaryMenu .SecondaryMenu-Item{
-	margin: 0;
-	line-height: $lineHeight-normal;
-	@include breakpoint('large') {
-		line-height: $lineHeight-loose;
-	}
+.Header-Bar{
+	border-top: 1px;
+	border-bottom: 1px;
+	border-right: 0;
+	border-left: 0;
+	border-color: $gray-line;
+	border-style: solid;
+	background: $gray-bg--light;
+	border-bottom: $border-thick;
 }
 
-.Header-AdditionalInfo > *:nth-child(2){
-	padding-left: 9px;
-}
-
-@include breakpoint(medium only) {
-	.Header-SecondaryMenu {
-		position: absolute;
-		left: 0;
-		width: 100%;
-		bottom: -70px; // TODO: magick number
-		text-align: center;
-	}
-	.SecondaryMenu-Item {
-		display: inline;
-		padding-right: 12px;
-	}
-	.Header-Contacts {
-		width: 100%;
-	}
+.Header-TopBar {
+	border-bottom: $border-thin;
 }

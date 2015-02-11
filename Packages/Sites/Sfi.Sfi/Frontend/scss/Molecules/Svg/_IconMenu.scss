@@ -8,6 +8,9 @@
 		opacity: 0.7;
 	}
 }
+.isActive .IconMenu svg {
+	transform: rotate(90deg);
+}
 
 @include breakpoint('370px'){
 	.IconMenu{

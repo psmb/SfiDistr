@@ -1,0 +1,31 @@
+<div class="SearchBox">
+	<div id="cse-search-form"></div>
+		<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript"> 
+        google.load('search', '1', {language : 'ru'});
+        google.setOnLoadCallback(function() {
+            var customSearchOptions = {};  var customSearchControl = new google.search.CustomSearchControl(
+            '018114637120266180637:mydi3olflo8', customSearchOptions);
+            customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+            var options = new google.search.DrawOptions();
+            options.setAutoComplete(true);
+            options.enableSearchboxOnly("http://sfi.ru/search.html");
+            customSearchControl.draw('cse-search-form', options);
+            var default_value = "поиск";
+            var Input = jQuery("input");
+            Input.css("background-image","none");
+            Input.val(default_value);
+			Input.focus(function() {
+				if(Input.val() == default_value) {
+					Input.val("");
+					Input.css("background-image","none");
+				}
+			}).blur(function(){
+				if(Input.val().length == 0) {
+					Input.val(default_value);
+					Input.css("background-image","none");
+				}
+			});
+        }, true);
+    </script>
+</div>

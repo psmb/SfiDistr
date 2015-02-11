@@ -1,0 +1,186 @@
+.SearchBox {
+  margin: $u/2 0;
+}
+/*
+ * ########search
+ */
+.gsc-control-cse {
+  border-color: #c0bf65;
+  padding: 2px;
+  padding-bottom: 0px; }
+
+input.gsc-input {
+  @extend .ParagraphAlt;
+  color: $gray--light;
+  border: $border-thin;
+  margin: 0;
+}
+table.gsc-search-box td.gsc-input {
+  padding-right: $u/4 !important;
+}
+
+input.gsc-search-button {
+  color: transparent;
+  background-color: transparent;
+  border: none;
+  width: 2*$u;
+  height: 2*$u;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;
+  position: relative;
+}
+td.gsc-search-button {
+  position: relative;
+}
+td.gsc-search-button:after {
+  color: $gray--light;
+  position: absolute;
+  left: 0;
+  top: $u/2;
+  font-family: "SfiIcons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  content: '\e80a';
+}
+
+.gsc-tabHeader.gsc-tabhInactive {
+  border-color: #777777;
+  background-color: #777777; }
+
+.gsc-tabHeader.gsc-tabhActive {
+  border-color: #333333;
+  background-color: #333333; }
+
+.gsc-tabsArea {
+  border-color: #333333; }
+
+.gsc-webResult.gsc-result {
+  border-color: #c0bf65;
+  background-color: white; }
+
+.gsc-webResult.gsc-result:hover {
+  border-color: black;
+  background-color: white; }
+
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b {
+  color: #7fad17; }
+
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b {
+  color: #7fad17; }
+
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b {
+  color: #7fad17; }
+
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b {
+  color: #7fad17; }
+
+.gsc-cursor-page {
+  color: #7fad17; }
+
+a.gsc-trailing-more-results:link {
+  color: #7fad17; }
+
+.gs-webResult.gs-result .gs-snippet {
+  color: #515151; }
+
+.gs-webResult.gs-result .gs-visibleUrl {
+  color: #717a35; }
+
+.gs-webResult.gs-result .gs-visibleUrl-short {
+  color: #717a35; }
+
+.gs-webResult.gs-result .gs-visibleUrl-short {
+  display: none; }
+
+.gs-webResult.gs-result .gs-visibleUrl-long {
+  display: block; }
+
+.gsc-cursor-box {
+  border-color: #c0bf65; }
+
+.gsc-results .gsc-cursor-page {
+  color: #717a35;
+  padding: 2px;
+  border-color: #777777;
+  background-color: white; }
+
+.gsc-results .gsc-cursor-page.gsc-cursor-current-page {
+  border-color: #333333;
+  background-color: #c0bf65; }
+
+.gs-promotion.gs-result {
+  border-color: #cccccc;
+  background-color: #e6e6e6; }
+
+.gs-promotion.gs-result a.gs-title:link {
+  color: #0000cc; }
+
+.gs-promotion.gs-result a.gs-title:visited {
+  color: #0000cc; }
+
+.gs-promotion.gs-result a.gs-title:hover {
+  color: #444444; }
+
+.gs-promotion.gs-result a.gs-title:active {
+  color: #00cc00; }
+
+.gs-promotion.gs-result .gs-snippet {
+  color: #333333; }
+
+.gs-promotion.gs-result .gs-visibleUrl,
+.gs-promotion.gs-result .gs-visibleUrl-short {
+  color: #00cc00; }
+
+.gsc-branding {
+  display: none; }
+
+.gsc-wrapper div.gsc-resultsbox-visible {
+  background-color: #f3f3f1;
+  border: 2px solid #c0bf65;
+  padding: 10px;
+  padding-right: 3px;
+  margin-right: 2px; }
+
+.gsc-adBlock {
+  display: none !important; }
+
+.gsc-adBlock,
+.gsc-adBlockVertical {
+  display: none; }
+
+div.gsc-result .gs-title {
+  height: 1.7em; }
+
+
+.gs-result {
+  padding: 10px;
+  line-height: 1.2em; }
+
+
+.gsc-clear-button {
+  display: none;
+}

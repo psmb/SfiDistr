@@ -1,0 +1,55 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<header class="Header js-MainMenu">
+	<div class=" show-for-medium-only">
+		<div class="Header-TopBar grid-block">
+			<div class="grid-content grid-content-flex">
+				{secondaryMenu -> f:format.raw()}
+			</div>
+			<div class="medium-3 shrink">
+				<f:render partial="Search"/>
+			</div>
+			<div class="grid-content grid-content-flex paddingLeft-none shrink">
+				<f:render section="EnglishLink"/>
+			</div>
+		</div>
+	</div>
+	<div class="grid-block">
+		<div class="grid-content medium-9 large-6 MainMenu-TopLeft marginTop-sesquialteral marginBottom-half">
+			<div class="Header-Logo">
+				<neos:link.node node="~" title="На главную"><f:render partial="Svg/SiteLogo"/></neos:link.node>
+			</div>
+		</div>
+		<div class="grid-content medium-3 large-2 large-offset-1 show-for-medium-up">
+			<f:render partial="Contacts" />
+		</div>
+		<div class="grid-content large-2 show-for-large-up">
+			{secondaryMenu -> f:format.raw()}
+		</div>
+		<div class="grid-content large-1 show-for-large-up">
+			<f:render section="EnglishLink"/>
+		</div>
+		<div href="#menu" class="show-for-small-only MobileNav-Toggle js-MobileNav-Toggle"><f:render partial="Svg/IconMenu"/></div>
+	</div>
+	<div class="Header-Bar">
+		<div class="grid-block">	
+			<div class="large-10 grid-content show-for-medium-up">
+				{mainMenu -> f:format.raw()}
+			</div>
+			<div class="large-2 grid-content show-for-large-up">
+	        	<f:render partial="Search"/>
+			</div>
+		</div>	
+	</div>
+
+	<f:if condition="{breadcrumbMenu}">
+		<div class="grid-block">
+			<div class="grid-content">
+					{breadcrumbMenu -> f:format.raw()}
+			</div>
+		</div>
+	</f:if>
+</header>
+
+<f:section name="EnglishLink">
+	<a class="Link Service lineHeight-single" style="display:block" href="http://archive.sfi.ru/eng">English</a>
+</f:section>
