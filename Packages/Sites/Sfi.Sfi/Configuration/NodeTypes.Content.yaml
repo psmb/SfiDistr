@@ -83,6 +83,55 @@
       ui:
         inlineEditable: TRUE
 
+'Sfi.Sfi:VCard':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'VCard'
+    icon: 'icon-edit'
+    group: contentBlocks
+    inspector:
+      groups:
+        variant:
+          label: 'Variant'
+          position: 'start 1'
+  properties:
+    name:
+      type: string
+      defaultValue: '<h3>Имя</h3>'
+      ui:
+        inlineEditable: TRUE
+    position:
+      type: string
+      defaultValue: '<p>Должность</p>'
+      ui:
+        inlineEditable: TRUE
+    degree:
+      type: string
+      defaultValue: '<p>Научная степень</p>'
+      ui:
+        inlineEditable: TRUE
+    contact:
+      type: string
+      defaultValue: '<p>Адрес</p>'
+      ui:
+        inlineEditable: TRUE
+    variant:
+      defaultValue: '1'
+      type: string
+      ui:
+        label: 'VCard variant'
+        reloadIfChanged: true
+        inspector:
+          group: variant
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              '1':
+                label: 'Variant 1'
+              '2':
+                label: 'Variant 2'
+
 
 'Sfi.Sfi:Asset':
   superTypes:
