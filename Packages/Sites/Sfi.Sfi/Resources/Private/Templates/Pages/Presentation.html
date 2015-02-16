@@ -10,8 +10,10 @@
 			</neos:contentElement.wrap>
 			{content.main -> f:format.raw()}
 		</div>
-		<div class="medium-4 large-3 large-offset-1 grid-content PresentationLayout-Sidebar js-StickInParent">
-			{sectionMenu -> f:format.raw()}
+		<div class="medium-4 large-3 large-offset-1 grid-content PresentationLayout-Sidebar">
+			<div class="js-StickInParent">
+				{sectionMenu -> f:format.raw()}
+			</div>
 		</div>
 	</div>
 </f:section>

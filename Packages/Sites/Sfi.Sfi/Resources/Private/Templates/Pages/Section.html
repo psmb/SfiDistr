@@ -11,10 +11,12 @@
 		<div class="medium-8 grid-content SectionLayout-Content">
 			{content.main -> f:format.raw()}
 		</div>
-		<div class="medium-4 large-3 large-offset-1 grid-content SectionLayout-Sidebar js-StickInParent">
-			{sectionMenu -> f:format.raw()}
-			<div class="SectionLayout-Sidebar">
-				{content.sidebar -> f:format.raw()}
+		<div class="medium-4 large-3 large-offset-1 grid-content SectionLayout-Sidebar">
+			<div class="js-StickInParent">
+				{sectionMenu -> f:format.raw()}
+				<div class="SectionLayout-Sidebar">
+					{content.sidebar -> f:format.raw()}
+				</div>
 			</div>
 		</div>
 	</div>
