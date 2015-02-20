@@ -8,7 +8,7 @@ redis:
   image: redis
 
 db:
-  image: tutum/mariadb:latest
+  image: million12/mariadb:latest
   ports:
     - 3306
   volumes_from:
@@ -23,7 +23,7 @@ webdata:
     - /home/dimaip/docker/sfi.ru/data:/data
 
 web:
-  image: dimaip/neos:latest
+  image: dimaip/sfidistr:latest
   ports:
     - '8888:80'
   links:
