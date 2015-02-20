@@ -1,4 +1,4 @@
-FROM dimaip/typo3-flow-neos-abstract:latest
+FROM dimaip/flow-neos-abstract:latest
 MAINTAINER Dmitri Pisarev
 
 ENV T3APP_BUILD_REPO_URL https://github.com/sfi-ru/SfiDistr.git
