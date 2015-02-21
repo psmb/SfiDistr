@@ -83,10 +83,8 @@
 	}
 }
 
-.NewsDetail {
-	@include grid-block();
-}
-@include breakpoint('780px') {
+
+@include breakpoint(780px) {
 	.NewsDetail-Article--Hard {
 		@include grid-content(7);
 	}
