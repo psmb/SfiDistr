@@ -19,6 +19,7 @@
 }
 .Media-Date{
 	@extend .ServiceEm;
+	text-transform: lowercase;
 	color: $gray--light;
 	margin-top: $u/2;
 	margin-bottom: $u/2;
