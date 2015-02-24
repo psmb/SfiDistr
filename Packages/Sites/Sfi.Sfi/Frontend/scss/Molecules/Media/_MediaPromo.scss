@@ -10,7 +10,7 @@
 }
 
 .MediaPromo-Title{
-	@extend .ServiceLight;
+	@extend .ServiceLight--Small;
 	color: $color-primaryAlt;
 }
 .MediaPromo-Teaser{

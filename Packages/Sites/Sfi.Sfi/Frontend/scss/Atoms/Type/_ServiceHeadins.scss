@@ -26,7 +26,17 @@
 	@extend .ParagraphAlt;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+	font-size: rem-calc(18);
 }
+.ServiceLight--Small {
+	@extend .ServiceLight;
+	font-size: rem-calc(14);
+}
+.ServiceLight--Large {
+	@extend .ServiceLight;
+	font-size: rem-calc(21);
+}
+
 .ServiceTiny {
 	@extend .Paragraph;
 	font-size: rem-calc(10);
