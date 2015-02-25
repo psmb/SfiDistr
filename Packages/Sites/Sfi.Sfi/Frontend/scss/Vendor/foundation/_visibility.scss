@@ -13,7 +13,7 @@
   .hide-for-xlarge-up,
   .hide-for-xlarge-only,
   .hide-for-xxlarge-up,
-  .hide-for-xxlarge-only { display: initial !important; }
+  .hide-for-xxlarge-only { display: block !important; }
 
   .hide-for-small,
   .hide-for-small-only,
@@ -46,7 +46,7 @@
     .hide-for-xlarge-up,
     .hide-for-xlarge-only,
     .hide-for-xxlarge-up,
-    .hide-for-xxlarge-only { display: initial !important; }
+    .hide-for-xxlarge-only { display: block !important; }
 
     .show-for-small,
     .show-for-small-only,
@@ -80,7 +80,7 @@
     .hide-for-xlarge-up,
     .hide-for-xlarge-only,
     .hide-for-xxlarge-up,
-    .hide-for-xxlarge-only { display: initial !important; }
+    .hide-for-xxlarge-only { display: block !important; }
 
     .show-for-small-only,
     .show-for-medium,
