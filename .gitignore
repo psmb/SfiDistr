@@ -29,6 +29,7 @@ Configuration/Development/Settings.yaml.example
 /Packages/Application/
 /Packages/Framework/
 /Packages/Libraries/
+/Packages/Plugins/
 #/Web/
 /bin/
 /Readme.txt
