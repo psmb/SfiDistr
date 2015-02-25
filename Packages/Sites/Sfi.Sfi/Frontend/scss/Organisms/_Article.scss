@@ -5,79 +5,72 @@
 	}
 }
 
+.Article-Date {
+	text-transform: lowercase;
+}
 
 
-
-.Article-CoverPhoto .Figure{
+.Article-CoverPhoto .Figure {
 	margin-bottom: 0;
 }
 
-	.Article-Bar{
-		margin-top: 2*$u;
-		margin-bottom: $u;
-		border-top: $border-thin;
-		padding-top: $u;
-	}
-	.Article-Date, .Article-Place{
-		@extend .ServiceEm;
-		margin-bottom: 0;
-	}
-	.Article-Author{
-		
-	}
-	.Article-AuthorLabel{
-		@extend .ServiceEm;
-		padding-right: $u/2;
-		@include breakpoint('medium') {
-			padding-left: 2*$u;
-		}
-	}
-	.Article-AuthorName{
-		@extend .Service--Small;
-	}
-	.Article-CoverPhoto .Figure{
-		margin-top: 0;
-	}
+.Article-Date, .Article-Place {
+	@extend .ServiceEm;
+	margin-bottom: 0;
+}
+.Article-AuthorLabel {
+	@extend .ServiceEm;
+	padding-right: $u/2;
+}
+.Article-AuthorName {
+	@extend .Service--Small;
+	margin-right: 2*$u;
+}
+.Article-CoverPhoto .Figure {
+	margin-top: 0;
+}
 
 
-.NewsDetail-Article--Soft{
-	.Article-Title{
+.NewsDetail-Article--Soft {
+	.Article-Title {
 		@extend .H1;
 		text-align: center;
 		margin-top: 0;
 		margin-bottom: 0;
 	}
-	.Article-Teaser{
-		@extend .Paragraph;
-		color: $gray--light;
+	.Article-Teaser {
+		@extend .ServiceLight--Large;
 		text-align: center;
 	}
-	.Article-Lead{
+	.Article-Lead {
 		@extend .Paragraph--Large;
+	}
+	.Article-Date {
+		text-align: center;
 	}
 }
 
-.NewsDetail-Article--Hard{
-	.Article-Title{
+.NewsDetail-Article--Hard {
+	.Article-Title {
 		@extend .H2;
 		margin-top: 0;
 		margin-bottom: 0;
 	}
-	.Article-Teaser{
+	.Article-Teaser {
 		@extend .Paragraph;
 		color: $gray--light;
 	}
-	.Article-Lead{
+	.Article-Lead {
 		@extend .Paragraph;
 	}
 }
 
 @include breakpoint(medium only) {
 	.NewsDetail-MoreItems {
-		.MediaSmall-Image{
+		.MediaSmall-Image {
 			display: none;
 		}
-		.MediaSmall-Body{
+		.MediaSmall-Body {
 			margin-left: 0;
 		}
 	}
@@ -96,13 +89,13 @@
 
 
 
-.PromoDetail-Article{
-	.Article-Title{
+.PromoDetail-Article {
+	.Article-Title {
 		@extend .H2;
 		margin-top: 0;
 		margin-bottom: 0;
 	}
-	.Article-Teaser{
+	.Article-Teaser {
 		@extend .Paragraph;
 		color: $gray--light;
 	}
