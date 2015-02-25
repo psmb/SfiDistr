@@ -9,15 +9,19 @@
 	text-transform: lowercase;
 }
 
-
 .Article-CoverPhoto .Figure {
 	margin-bottom: 0;
 }
 
-.Article-Date, .Article-Place {
+.Article-Date, .Article-Place, .Article-CommentCount {
 	@extend .ServiceEm;
 	margin-bottom: 0;
 }
+
+.Article-CommentCount {
+	color: $color-primaryAlt;
+}
+
 .Article-AuthorLabel {
 	@extend .ServiceEm;
 	padding-right: $u/2;
