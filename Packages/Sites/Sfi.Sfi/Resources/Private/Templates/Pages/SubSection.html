@@ -3,8 +3,10 @@
 <f:section name="content">
 	<div class="grid-block SubSectionLayout-Wrap">
 		<div class="medium-8 grid-content SubSectionLayout-Content">
-			<h1 class="SubSectionLayout-PageTitle">{node.parent.properties.title}</h1>
-			{subSectionMenu -> f:format.raw()}
+			<div class="SubSectionLayout-Header">
+				<h1 class="SubSectionLayout-PageTitle">{node.parent.properties.title}</h1>
+				{subSectionMenu -> f:format.raw()}
+			</div>
 			<h2 class="SubSectionLayout-SubPageTitle">{node.properties.title}</h2>
 			{content.main -> f:format.raw()}
 		</div>

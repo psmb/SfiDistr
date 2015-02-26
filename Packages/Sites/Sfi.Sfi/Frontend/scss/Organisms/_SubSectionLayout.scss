@@ -1,0 +1,53 @@
+.SubSectionLayout-Wrap {
+	margin-top: 2*$u;
+	@include breakpoint('medium') {
+		margin-top: 3*$u;
+	}
+	@include breakpoint('large') {
+		margin-top: 4*$u;
+	}
+}
+
+.SubSectionLayout-Header {
+	border-bottom: $border-thin;
+	margin-bottom: 3*$u;
+	@include breakpoint('medium') {
+		margin-bottom: 4*$u;
+	}
+	@include breakpoint('large') {
+		margin-bottom: 6*$u;
+	}
+}
+
+.SubSectionLayout-PageTitle {
+	@extend .H1;
+	margin-top: 0;
+	margin-bottom: 2*$u;
+}
+
+.SubSectionLayout-SubTitle {
+	@extend .ParagraphAlt;
+}
+.SubSectionLayout-SubPageTitle {
+	@extend .H2;
+}
+
+.SubSectionMenu {
+	margin: $u 0;
+	@include breakpoint('medium') {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+	}
+    list-style-position: inside;
+    list-style-type: decimal;
+}
+.SubSectionMenu-Item {
+	@extend .ParagraphAlt;
+	margin-top: 0;
+	margin-bottom: $u/2;
+}
+
+.SubSectionLayout-Sidebar {
+	border-left: $border-thin;
+}
