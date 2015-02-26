@@ -24,9 +24,6 @@
 }
 @include breakpoint('medium') {
 	.QuoteBlock-ImageWrap {
-		display: -webkit-box;
-		display: -moz-box;
-		display: -ms-flexbox;
 		display: flex;
 	}
 	.QuoteBlock-Image {

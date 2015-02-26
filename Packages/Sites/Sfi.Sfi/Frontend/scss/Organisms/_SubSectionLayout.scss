@@ -35,8 +35,6 @@
 .SubSectionMenu {
 	margin: $u 0;
 	@include breakpoint('medium') {
-		-webkit-column-count: 2;
-		-moz-column-count: 2;
 		column-count: 2;
 	}
     list-style-position: inside;
@@ -51,3 +49,4 @@
 .SubSectionLayout-Sidebar {
 	border-left: $border-thin;
 }
+

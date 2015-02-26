@@ -3,9 +3,11 @@ module.exports = function (grunt) {
 		watch: {
 			compass: {
 				files: "scss/**/*.scss",
-				tasks: ['compass:watch'],
-				debugInfo : true,
-				trace: true
+				tasks: ['compass:dist']
+			},
+			autoprefixer: {
+				files: "Public/Built/app.css",
+				tasks: ['autoprefixer:dist']
 			},
 		},
 		bower_concat: {
@@ -31,20 +33,23 @@ module.exports = function (grunt) {
 			},
 		},
 		compass: {
-			watch: {
+			dist: {
 				options: {
-					watch: true,
 					environment: 'development',
 					config: "config.rb"
 				}
-			},
-			compile: {
-                                options: {
-                                        environment: 'development',
-                                        config: "config.rb"
-                                }
-                        }
+			}
 
+		},
+
+		autoprefixer: {
+			dist: {
+				options: {
+					browsers: ['last 2 version', '> 1%', 'ie 9']
+				},
+				src: 'Public/Built/app.css',
+				dest: 'Public/Built/app-prefixed.css'
+			}
 		}
 	//	browserSync: {
 	//		dev: {
@@ -65,8 +70,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-bower-concat');
+	grunt.loadNpmTasks('grunt-autoprefixer');
 //	grunt.loadNpmTasks('grunt-browser-sync');
 
 	// create custom task-list
-	grunt.registerTask('default', ["compass"]);
+	grunt.registerTask('default', ["watch"]);
+	//grunt.registerTask('autoprefixer', ["autoprefixer"]);
 };
