@@ -1,0 +1,19 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+{namespace w=Sfi\Widgets\ViewHelpers}
+
+<neos:link.node node="{node}">
+	<div class="marginVertical-double">
+		<p>
+			<span class="H4">{authorName}</span>
+			<span class="ServiceEm">{authorDegree}</span>
+		</p>
+		<p class="ServiceEm margin-none">
+			{authorFrom}
+		</p>
+		<h3 class="Paragraph Link margin-none">
+			{title}
+		</h3>
+	</div>
+</neos:link.node>
