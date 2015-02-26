@@ -1,0 +1,65 @@
+prototype(Sfi.Sfi:Paper) {
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+
+	main = TYPO3.Neos:ContentCollection{
+		nodePath = 'main'
+	}
+
+	@cache {
+		mode = 'cached'
+		maximumLifetime = '86400'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+			format = ${request.format}
+		}
+		entryTags {
+			# Whenever the node changes the matched condition could change
+			1 = ${'Node_' + documentNode.identifier}
+			# Whenever one of the parent nodes changes the layout could change
+			2 = ${'DescendantOf_' + documentNode.identifier}
+		}
+	}
+}
+
+prototype(Sfi.Sfi:PaperShort) < prototype(TYPO3.Neos:Content) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/PaperShort.html'
+	title = ${String.stripTags(q(node).property('title'))}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
+	thumbnailImage = ${q(node).property('image')}
+}
+
+
+
+prototype(Sfi.Sfi:PaperList) < prototype(TYPO3.TypoScript:Tag) {
+	tagName = 'div'
+	attributes.class = 'PaperList'
+	content = TYPO3.Neos:ContentCollectionRenderer {
+		itemRenderer = Sfi.Sfi:PaperShort
+		collection = ${q(site).children('Paper').children().get()}
+	}
+	@cache {
+		mode = 'cached'
+		maximumLifetime = '86400'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+			format = ${request.format}
+		}
+		entryTags {
+			# Whenever the node changes the matched condition could change
+			1 = ${'Node_' + documentNode.identifier}
+			# Whenever one of the parent nodes changes the layout could change
+			2 = ${'DescendantOf_' + documentNode.identifier}
+		}
+	}
+}
+
+prototype(TYPO3.Neos:PrimaryContent) {
+    Paper{
+        @position = 'before default'
+        condition = ${q(node).is('[instanceof Sfi.Sfi:Paper]')}
+        type = 'Sfi.Sfi:Paper'
+    }
+}

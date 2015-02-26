@@ -1,16 +1,5 @@
-.NewsDetail{
-	margin-top: 3*$u !important;
-	@include breakpoint('medium') {
-		margin-top: 6*$u !important;
-	}
-}
-
 .Article-Date {
 	text-transform: lowercase;
-}
-
-.Article-CoverPhoto .Figure {
-	margin-bottom: 0;
 }
 
 .Article-Date, .Article-Place, .Article-CommentCount {
@@ -32,10 +21,11 @@
 }
 .Article-CoverPhoto .Figure {
 	margin-top: 0;
+	margin-bottom: 0;
 }
 
 
-.NewsDetail-Article--Soft {
+.Article--Soft {
 	.Article-Title {
 		@extend .H1;
 		text-align: center;
@@ -49,12 +39,9 @@
 	.Article-Lead {
 		@extend .Paragraph--Large;
 	}
-	.Article-Date {
-		text-align: center;
-	}
 }
 
-.NewsDetail-Article--Hard {
+.Article--Hard {
 	.Article-Title {
 		@extend .H2;
 		margin-top: 0;
@@ -67,6 +54,30 @@
 		@extend .Paragraph;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO: refactor this
+.NewsDetail {
+	margin-top: 3*$u !important;
+	@include breakpoint('medium') {
+		margin-top: 6*$u !important;
+	}
+}
+
+
 
 @include breakpoint(medium only) {
 	.NewsDetail-MoreItems {
@@ -87,19 +98,5 @@
 	.NewsDetail-MoreItems {
 		@include grid-content(4, 1);
 		border-left: $border-thin;
-	}
-}
-
-
-
-.PromoDetail-Article {
-	.Article-Title {
-		@extend .H2;
-		margin-top: 0;
-		margin-bottom: 0;
-	}
-	.Article-Teaser {
-		@extend .Paragraph;
-		color: $gray--light;
 	}
 }

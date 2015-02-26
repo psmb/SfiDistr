@@ -1,0 +1,39 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace w=Sfi\Widgets\ViewHelpers}
+
+<div class="Paper-Article">
+	<div class="Article Article--Soft">
+		<neos:contentElement.wrap node="{node}">
+			<div class="grid-block">
+				<div class="large-10 large-offset-1 grid-content">
+					<div class="textAlign-center">
+						<div>
+							<span class="Service--Large">{neos:contentElement.editable(property: 'authorName', tag: 'span')}</span>
+							<span class="Blockquote">{neos:contentElement.editable(property: 'authorDegree', tag: 'span')}</span>
+						</div>
+						<span class="Blockquote">{neos:contentElement.editable(property: 'authorFrom', tag: 'span')}</span>
+						<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+						<div class="ServiceEm">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+						<span class="Article-Date">
+							<w:date format="j F Y">{date}</w:date>
+						</span>
+						&bull;
+						<a class="Article-CommentCount" href="#disqus_thread">Комментировать</a>
+					</div>
+					<h1 class="Article-Lead">{neos:contentElement.editable(property: 'lead', tag: 'span')}</h1>
+				</div>
+			</div>
+			<div class="grid-block">
+				<div class="large-8 medium-10 large-offset-2 medium-offset-1 grid-content">
+					<div class="Article-Content">{main -> f:format.raw()}</div>
+				</div>
+			</div>
+			<div class="grid-block marginTop-triple">
+				<div class="large-10 large-offset-1 grid-content">
+					<f:render partial="Disqus" />
+				</div>
+			</div>
+		</neos:contentElement.wrap>
+	</div>	
+</div>
