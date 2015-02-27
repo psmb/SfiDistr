@@ -1,6 +1,8 @@
 FROM dimaip/flow-neos-abstract:latest
 MAINTAINER Dmitri Pisarev
 
+ADD container-files /
+
 ENV T3APP_BUILD_REPO_URL https://github.com/sfi-ru/SfiDistr.git
 ENV T3APP_BUILD_BRANCH master
 #ENV T3APP_PREINSTALL false
