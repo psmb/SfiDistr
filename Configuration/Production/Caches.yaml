@@ -1,15 +1,13 @@
-# use sqlite for large caches that use tagging
 TYPO3_TypoScript_Content:
-  backend: TYPO3\Flow\Cache\Backend\PdoBackend
+  backend: TYPO3\Flow\Cache\Backend\RedisBackend
   backendOptions:
-    dataSourceName: 'sqlite:%FLOW_PATH_DATA%/Temporary/Production/Cache/Data/TYPO3_TypoScript_Content.sqlite'
-
+    hostname: redis
 Flow_Mvc_Routing_Resolve:
-  backend: TYPO3\Flow\Cache\Backend\PdoBackend
+  backend: TYPO3\Flow\Cache\Backend\RedisBackend
   backendOptions:
-    dataSourceName: 'sqlite:%FLOW_PATH_DATA%/Temporary/Production/Cache/Data/Flow_Mvc_Routing_Resolve.sqlite'
+    hostname: redis
 
 Flow_Mvc_Routing_Route:
-  backend: TYPO3\Flow\Cache\Backend\PdoBackend
+  backend: TYPO3\Flow\Cache\Backend\RedisBackend
   backendOptions:
-    dataSourceName: 'sqlite:%FLOW_PATH_DATA%/Temporary/Production/Cache/Data/Flow_Mvc_Routing_Route.sqlite'
+    hostname: redis
