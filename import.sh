@@ -4,9 +4,6 @@
 set -e
 set -u
 
-ssh dimaip@server.psmb.ru "cd /www/sfi.ru/SfiDistr;./flow site:export --tidy --filename AutoExport/Site.xml;"
-rsync -avz dimaip@server.psmb.ru:/www/sfi.ru/SfiDistr/AutoExport/ AutoExport
-rm -rf Data/Temporary/Development/Cache/
-./flow site:prune
-./flow site:import --filename AutoExport/Site.xml
-rm -rf Data/Temporary
+ssh www@server.psmb.ru -p 1122 'cd /data/www/sfi.ru/surf/releases/current/ && ./flow db:export --mode=all --sql-file="Data/Persistent/db.sql"'
+rsync -avz -e "ssh -p 1122" www@server.psmb.ru:/data/www/sfi.ru/surf/shared/Data/Persistent Data/Persistent
+./flow db:import --sql-file="Data/Persistent/db.sql"

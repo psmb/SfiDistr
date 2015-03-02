@@ -22,7 +22,9 @@ case $@ in
   *)
     echo "Site build script"
     cp Configuration/Production/Settings.yaml Configuration/Settings.yaml && FLOW_CONTEXT=Production ./flow flow:cache:flush --force && FLOW_CONTEXT=Production ./flow cache:warmup && chmod g+rwx -R
+    echo $RUNTIME_EXECUTED_MIGRATIONS
+    if [[ $RUNTIME_EXECUTED_MIGRATIONS == 0 ]]; then
+      ./flow db:import --sql-file="Data/Persistent/db.sql"
+    fi
     ;;
 esac
-
-echo "Site build completed."

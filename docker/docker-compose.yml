@@ -33,7 +33,7 @@ web:
   volumes_from:
     - webdata
   environment:
-    VIRTUAL_HOST: 'sfi.ru,dev.sfi.ru,next.sfi.ru'
+    VIRTUAL_HOST: 'sfi.ru,dev.sfi.ru,next.sfi.ru,direct.sfi.ru'
     T3APP_NAME: 'sfi.ru'
     T3APP_BUILD_REPO_URL: 'https://github.com/sfi-ru/SfiDistr.git'
 
