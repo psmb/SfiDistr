@@ -14,7 +14,7 @@ db:
   volumes_from:
     - dbdata
   environment:
-    MARIADB_PASS: set-db-password-here
+    MARIADB_PASS: pass
 
 webdata:
   image: busybox:latest
@@ -32,7 +32,7 @@ web:
   volumes_from:
     - webdata
   environment:
-    VIRTUAL_HOST: 'sfi.ru'
+    VIRTUAL_HOST: 'sfi.ru,dev.sfi.ru,next.sfi.ru'
     T3APP_NAME: 'sfi.ru'
     T3APP_BUILD_REPO_URL: 'https://github.com/sfi-ru/SfiDistr.git'
 
@@ -48,4 +48,3 @@ ssh:
     - webdata
   environment:
     IMPORT_GITHUB_PUB_KEYS: dimaip
-
