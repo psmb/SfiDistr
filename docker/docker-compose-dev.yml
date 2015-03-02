@@ -2,7 +2,7 @@ dbdata:
   image: busybox:latest
   command: echo dbdata
   volumes:
-    - /var/lib/mysql
+    - /home/dimaip/docker/sfi.ru/lib/mysql:/var/lib/mysql
 
 redis:
   image: redis
@@ -20,7 +20,7 @@ webdata:
   image: busybox:latest
   command: echo webdata
   volumes:
-    - /data
+    - /home/dimaip/docker/sfi.ru/data:/data
     - /home/dimaip/docker/sfi.ru/Persistent:/data/www/sfi.ru/surf/shared/Data/Persistent
 
 web:
