@@ -22,6 +22,7 @@ webdata:
   volumes:
     - /data
     - /home/dimaip/docker/sfi.ru/Persistent:/data/www/sfi.ru/surf/shared/Data/Persistent
+    - /etc/localtime:/etc/localtime:ro
 
 web:
   image: dimaip/sfidistr:latest

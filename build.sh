@@ -21,6 +21,9 @@ case $@ in
   #
   *)
     echo "Site build script"
-    cp Configuration/Production/Settings.yaml Configuration/Settings.yaml && FLOW_CONTEXT=Production ./flow flow:cache:flush --force && FLOW_CONTEXT=Production ./flow cache:warmup && chmod g+rwx -R
+    if [ -f Configuration/Production/Settings.yaml ]; then
+      cp Configuration/Production/Settings.yaml Configuration/Settings.yaml
+    fi
+    FLOW_CONTEXT=Production ./flow flow:cache:flush --force && FLOW_CONTEXT=Production ./flow cache:warmup && chmod g+rwx -R .
     ;;
 esac
