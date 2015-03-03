@@ -5,5 +5,5 @@ set -e
 set -u
 
 ssh www@server.psmb.ru -p 1122 'cd /data/www/sfi.ru/surf/releases/current/ && ./flow db:export --mode=all --sql-file="Data/Persistent/db.sql"'
-rsync -avz -e "ssh -p 1122" www@server.psmb.ru:/data/www/sfi.ru/surf/shared/Data/Persistent Data/Persistent
+rsync -rlhvz -e "ssh -p 1122" www@server.psmb.ru:/data/www/sfi.ru/surf/shared/Data/Persistent Data/Persistent
 ./flow db:import --sql-file="Data/Persistent/db.sql"
