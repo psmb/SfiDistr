@@ -35,13 +35,14 @@
   properties:
     lead:
       type: string
-      defaultValue: '<p>Lead text</p>'
       ui:
         inlineEditable: TRUE
+        label: 'Author name'
         aloha:
+          placeholder: 'Enter lead text here'
           format:
             b: TRUE
-            i: TRUE
+            i: TURE
             u: false
             sub: false
             sup: false

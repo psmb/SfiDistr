@@ -11,9 +11,10 @@
   properties:
     text:
       type: string
-      defaultValue: '<p>Epigraph text here</p>'
       ui:
         inlineEditable: TRUE
+        aloha:
+          placeholder: 'Epigraph text here'
 
 'Sfi.Sfi:QuoteBlock':
   superTypes:
@@ -87,14 +88,16 @@
   properties:
     title:
       type: string
-      defaultValue: '<h3>Card title</h3>'
       ui:
         inlineEditable: TRUE
+        aloha:
+          placeholder: 'Заголовок карточки'
     text:
       type: string
-      defaultValue: '<p>Enter card text here</p>'
       ui:
         inlineEditable: TRUE
+        aloha:
+          placeholder: 'Тут текст карточки'
 
 'Sfi.Sfi:VCard':
   superTypes:
@@ -111,24 +114,28 @@
   properties:
     name:
       type: string
-      defaultValue: '<h3>Имя</h3>'
       ui:
         inlineEditable: TRUE
+        aloha:
+          placeholder: 'Имя'
     position:
       type: string
-      defaultValue: '<p>Должность</p>'
       ui:
         inlineEditable: TRUE
+        aloha:
+          placeholder: 'Должность'
     degree:
       type: string
-      defaultValue: '<p>Научная степень</p>'
       ui:
         inlineEditable: TRUE
+        aloha:
+          placeholder: 'Научная степень'
     contact:
       type: string
-      defaultValue: '<p>Адрес</p>'
       ui:
         inlineEditable: TRUE
+        aloha:
+          placeholder: 'Адрес'
     variant:
       defaultValue: '1'
       type: string
@@ -161,9 +168,10 @@
   properties:
     title:
       type: string
-      defaultValue: 'Enter asset name'
       ui:
         inlineEditable: TRUE
+        aloha:
+          placeholder: 'Enter asset name'
     asset:
       type: TYPO3\Media\Domain\Model\Asset
       ui:
