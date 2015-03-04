@@ -1,0 +1,16 @@
+.Epigraph {
+	@extend .Paragraph;
+	font-style: italic;
+	
+	overflow: auto;
+	& > div {
+		float: right;
+		width: 60%;
+		@include breakpoint('medium') {
+			width: 50%;
+		}
+		@include breakpoint('large') {
+			width: 40%;
+		}
+	}
+}

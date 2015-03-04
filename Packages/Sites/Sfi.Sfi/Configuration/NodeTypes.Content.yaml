@@ -2,6 +2,19 @@
 #Our site content types#
 ########################
 
+'Sfi.Sfi:Epigraph':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Epigraph'
+    icon: 'icon-edit'
+  properties:
+    text:
+      type: string
+      defaultValue: '<p>Epigraph text here</p>'
+      ui:
+        inlineEditable: TRUE
+
 'Sfi.Sfi:QuoteBlock':
   superTypes:
     - 'TYPO3.Neos:Content'
