@@ -8,6 +8,10 @@
 	}
 }
 
+.PresentationLayout-Content {
+	overflow: hidden;
+}
+
 .PresentationLayout-PageTitle {
 	@extend .H1;
 	margin-top: 0;
