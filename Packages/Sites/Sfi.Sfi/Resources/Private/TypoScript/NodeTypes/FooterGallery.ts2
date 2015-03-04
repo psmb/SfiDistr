@@ -1,0 +1,16 @@
+prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
+	tagName = 'ul'
+	attributes.class = 'FooterGallery grid-block small-up-2 medium-up-3 large-up-6'
+	content = TYPO3.Neos:ContentCollectionRenderer {
+		itemRenderer = Sfi.Widgets:AutoRenderWithTag{
+			tagName = 'li'
+			attributes.class = 'FooterGallery-Item'
+		}
+		collection = ${q(site).children('footerGallery').children().slice(0, String.toInteger(6)).get()}
+		prototype(TYPO3.Neos.NodeTypes:Image){
+			maximumWidth = 220
+			maximumHeight = 220
+			allowCropping = TRUE
+		}
+	}
+}
