@@ -17,5 +17,8 @@
 	border-color: $gray-line;
 	border-style: solid;
 	background: $gray-bg--light;
-	border-bottom: $border-thick;
+}
+
+.Header-TopBar {
+	border-bottom: $border-thin;
 }
