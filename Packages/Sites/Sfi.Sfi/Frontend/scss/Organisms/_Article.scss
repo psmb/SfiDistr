@@ -97,6 +97,5 @@
 	}
 	.NewsDetail-MoreItems {
 		@include grid-content(4, 1);
-		border-left: $border-thin;
 	}
 }
