@@ -40,6 +40,19 @@ function(){"use strict";if(window.matchMedia&&window.matchMedia("all").addListen
 
 var onReadyPlugins = function() {
 
+    var searchBoxInput = jQuery(".js-SearchBox-Field");
+    var defaultValue = "поиск";
+    searchBoxInput.val(defaultValue);
+    searchBoxInput.focus(function() {
+        if($(this).val() == defaultValue) {
+            $(this).val("");
+        }
+    }).blur(function(){
+        if($(this).val().length == 0) {
+            $(this).val(defaultValue);
+        }
+    });
+
     audiojs.events.ready(function() {
         path = '/_Resources/Static/Packages/Sfi.Sfi/Built/';
         var as = audiojs.createAll({
