@@ -1,17 +1,19 @@
-.SiteLogo{
-	max-width: 340px;
-	width: calc(100% - 66px);
+.SiteLogo {
+	display: block;
+	max-width: 406px;
+	width: 100%;
+	padding-right: 66px;
 	height:100%;
 }
 
 @include breakpoint('medium') {
 	.SiteLogo {
-		width: 340px;
+		width: 406px;
 		max-width: initial;
 	}
 }
 @include breakpoint('large') {
 	.SiteLogo {
-		width: 450px;
+		width: 516px;
 	}
 }

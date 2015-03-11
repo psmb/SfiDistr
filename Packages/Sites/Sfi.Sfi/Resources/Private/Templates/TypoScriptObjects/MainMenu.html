@@ -2,7 +2,11 @@
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 
 <div class="MainMenu">
-	<a href="#menu" class="show-for-medium-up MainMenu-Toggle float-left js-MainMenu-Toggle"><f:render partial="Svg/IconMenu"/></a>
+	<a href="#menu" class="show-for-medium-up MainMenu-Toggle float-left js-MainMenu-Toggle">
+		<div class="IconMenu">
+			<img alt="Меню" src="_Resources/Static/Packages/Sfi.Sfi/Images/IconMenu.svg">
+		</div>
+	</a>
 	<ul class="MainMenu-Wrap overflow-hidden">
 		<f:for each="{items}" as="item" iteration="iterator">
 			<li class="MainMenu-Column {f:if(condition:iterator.isLast,then:'end')} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}" >

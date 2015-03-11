@@ -1,14 +1,12 @@
-.IconMenu{
-	fill: $color-primary;
-
+.IconMenu {
 	padding-left: 9px;
 	padding-top: 5px;
 
-	&:hover{
+	&:hover {
 		opacity: 0.7;
 	}
 }
-.isActive .IconMenu svg {
+.isActive .IconMenu img {
 	transform: rotate(90deg);
 }
 
@@ -18,7 +16,7 @@
 	}
 }
 
-.IconMenu svg{
+.IconMenu img{
 	transition: $transition;
 	width: 28px;
 	height: 28px;
