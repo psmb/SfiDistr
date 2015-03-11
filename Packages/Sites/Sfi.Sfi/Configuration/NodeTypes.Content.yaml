@@ -16,6 +16,26 @@
         aloha:
           placeholder: 'Epigraph text here'
 
+'Sfi.Sfi:Note':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Note'
+    icon: 'icon-edit'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        aloha:
+          placeholder: 'Note title'
+    text:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        aloha:
+          placeholder: 'Note text here'
+
 'Sfi.Sfi:QuoteBlock':
   superTypes:
     - 'TYPO3.Neos:Content'
