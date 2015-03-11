@@ -1,8 +1,8 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-	<div class="grid-block SubSectionLayout-Wrap">
-		<div class="medium-8 grid-content SubSectionLayout-Content">
+	<div class="row SubSectionLayout-Wrap">
+		<div class="medium-8 columns SubSectionLayout-Content">
 			<div class="SubSectionLayout-Header">
 				<h1 class="SubSectionLayout-PageTitle">{node.parent.properties.title}</h1>
 				{subSectionMenu -> f:format.raw()}
@@ -10,7 +10,7 @@
 			<h2 class="SubSectionLayout-SubPageTitle">{node.properties.title}</h2>
 			{content.main -> f:format.raw()}
 		</div>
-		<div class="medium-4 large-3 large-offset-1 grid-content SubSectionLayout-Sidebar js-StickInParent">
+		<div class="medium-4 large-3 large-offset-1 columns SubSectionLayout-Sidebar js-StickInParent">
 			{sectionMenu -> f:format.raw()}
 			<div class="SubSectionLayout-Sidebar">
 				{content.sidebar -> f:format.raw()}

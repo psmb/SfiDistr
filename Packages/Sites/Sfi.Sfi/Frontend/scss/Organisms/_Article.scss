@@ -93,9 +93,10 @@
 
 @include breakpoint(780px) {
 	.NewsDetail-Article--Hard {
-		@include grid-content(7);
+		@include grid-column(7);
 	}
 	.NewsDetail-MoreItems {
-		@include grid-content(4, 1);
+		@include grid-column(4, 1);
+		@include grid-column($columns:4, $offset:1);
 	}
 }

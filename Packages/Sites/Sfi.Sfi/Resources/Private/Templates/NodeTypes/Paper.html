@@ -5,8 +5,8 @@
 <div class="Paper-Article">
 	<div class="Article Article--Soft">
 		<neos:contentElement.wrap node="{node}">
-			<div class="grid-block">
-				<div class="large-10 large-offset-1 grid-content">
+			<div class="row">
+				<div class="large-10 large-offset-1 columns">
 					<div class="textAlign-center">
 						<div>
 							<span class="Service--Large">{neos:contentElement.editable(property: 'authorName', tag: 'span')}</span>
@@ -24,13 +24,13 @@
 					<h1 class="Article-Lead">{neos:contentElement.editable(property: 'lead', tag: 'span')}</h1>
 				</div>
 			</div>
-			<div class="grid-block">
-				<div class="large-8 medium-10 large-offset-2 medium-offset-1 grid-content">
+			<div class="row">
+				<div class="large-8 medium-10 large-offset-2 medium-offset-1 columns">
 					<div class="Article-Content">{main -> f:format.raw()}</div>
 				</div>
 			</div>
-			<div class="grid-block marginTop-triple">
-				<div class="large-10 large-offset-1 grid-content">
+			<div class="row marginTop-triple">
+				<div class="large-10 large-offset-1 columns">
 					<f:render partial="Disqus" />
 				</div>
 			</div>

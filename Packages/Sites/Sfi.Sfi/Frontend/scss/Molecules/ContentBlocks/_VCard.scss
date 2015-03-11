@@ -1,6 +1,6 @@
 .VCard {
 	@include breakpoint (medium) {
-		@include grid-offset(1);
+		margin-left: 4*$u;
 	}
 }
 .VCard-Position {

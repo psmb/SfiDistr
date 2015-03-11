@@ -1,0 +1,26 @@
+/*
+Errno::EISDIR: Is a directory - /home/dimaip/docker/sfi/data/www/sfi/surf/releases/initial/Packages/Sites/Sfi.Sfi/Frontend/scss/Vendor/foundation/foundationForApps.scss
+
+Backtrace:
+/var/lib/gems/1.9.1/gems/sass-3.4.8/lib/sass/engine.rb:229:in `read'
+/var/lib/gems/1.9.1/gems/sass-3.4.8/lib/sass/engine.rb:229:in `for_file'
+/var/lib/gems/1.9.1/gems/sass-3.4.8/lib/sass/plugin/compiler.rb:487:in `update_stylesheet'
+/var/lib/gems/1.9.1/gems/sass-3.4.8/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/var/lib/gems/1.9.1/gems/sass-3.4.8/lib/sass/plugin/compiler.rb:209:in `each'
+/var/lib/gems/1.9.1/gems/sass-3.4.8/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/lib/compass/sass_compiler.rb:40:in `compile!'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/lib/compass/commands/update_project.rb:49:in `perform'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/lib/compass/commands/base.rb:18:in `execute'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/lib/compass/commands/project_base.rb:19:in `execute'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/bin/compass:30:in `block in <top (required)>'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/bin/compass:44:in `call'
+/var/lib/gems/1.9.1/gems/compass-1.1.0.alpha.3/bin/compass:44:in `<top (required)>'
+/usr/local/bin/compass:23:in `load'
+/usr/local/bin/compass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Errno::EISDIR: Is a directory - /home/dimaip/docker/sfi/data/www/sfi/surf/releases/initial/Packages/Sites/Sfi.Sfi/Frontend/scss/Vendor/foundation/foundationForApps.scss"; }

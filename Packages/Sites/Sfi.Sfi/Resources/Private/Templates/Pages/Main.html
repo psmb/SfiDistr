@@ -4,13 +4,13 @@
 		<div>
 			<div class="js-StickInParent" style="margin-bottom: -49px">
 				<f:render partial="Header" arguments="{_all}"/>
-				<div class="grid-block show-for-small-only">
-					<div class="medium-4 large-3 grid-content">
-						<div class="grid-block">
-							<div class="grid-content small-6">
+				<div class="row show-for-small-only">
+					<div class="medium-4 large-3 columns">
+						<div class="row">
+							<div class="columns small-6">
 								<p class="ParagraphAlt lineHeight-single">Москва, Покровка, 29</p>
 							</div>
-							<div class="grid-content small-6">
+							<div class="columns small-6">
 								<p class="ParagraphAlt lineHeight-single"><a class="Link" href="tel:+74956230380">+7 495 623 0380</a></p>
 							</div>
 						</div>
@@ -22,8 +22,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="grid-block">
-				<div class="grid-content">
+			<div class="row">
+				<div class="columns">
 					<div class="Cover-OnTop">
 						{content.newsLatest -> f:format.raw()}
 					</div>
@@ -31,23 +31,23 @@
 			</div>
 		</div>
 
-		<div class="grid-block">
-			<div class="grid-content">
+		<div class="row">
+			<div class="columns">
 				<h2 class="SectionDivider--Service" style="background: white">Анонсы</h2>
 			</div>
 		</div>
-		<div class="grid-block marginTop-double">
-			<div class="medium-4 large-3 grid-content">
+		<div class="row marginTop-double">
+			<div class="medium-4 large-3 columns">
 				{content.promo -> f:format.raw()}
 			</div>
-			<div class="medium-8 large-offset-1 grid-content">
+			<div class="medium-8 large-offset-1 columns">
 				{content.newsAnnouncements -> f:format.raw()}
 			</div>
 		</div>
 
 		<div class="FooterMain marginTop-triple">
-			<div class="grid-block">
-				<div class="medium-6 grid-content">
+			<div class="row">
+				<div class="medium-6 columns">
 					<div class="Service">Расчетный счет</div>
 					<p class="ParagraphAlt--Small">
 						СФИ, Московский банк Сбербанка России ОАО, г. Москва
@@ -58,7 +58,7 @@
 						<br>К/сч:30101810400000000225
 					</p>
 				</div>
-				<div class="medium-6 grid-content">
+				<div class="medium-6 columns">
 					<div class="Service">Лицензии</div>
 					<p class="ParagraphAlt--Small">
 						Свидетельство о государственной аккредитации № 0982 от 30 апреля 2014 года

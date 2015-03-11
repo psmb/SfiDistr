@@ -5,10 +5,10 @@
 
 .NewsLatest-Grid[data-columns]::before, .NewsList-Grid[data-columns]::before {
 	@include breakpoint('medium') {
-		content: '2 .grid-content.medium-6';
+		content: '2 .columns.medium-6';
 	}
 	@include breakpoint('large') {
-		content: '3 .grid-content.large-4';
+		content: '3 .columns.large-4';
 	}
 }
 
