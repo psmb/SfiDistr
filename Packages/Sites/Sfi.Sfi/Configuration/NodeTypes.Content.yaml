@@ -2,40 +2,6 @@
 #Our site content types#
 ########################
 
-'Sfi.Sfi:Epigraph':
-  superTypes:
-    - 'TYPO3.Neos:Content'
-  ui:
-    label: 'Epigraph'
-    icon: 'icon-edit'
-  properties:
-    text:
-      type: string
-      ui:
-        inlineEditable: TRUE
-        aloha:
-          placeholder: 'Epigraph text here'
-
-'Sfi.Sfi:Note':
-  superTypes:
-    - 'TYPO3.Neos:Content'
-  ui:
-    label: 'Note'
-    icon: 'icon-edit'
-  properties:
-    title:
-      type: string
-      ui:
-        inlineEditable: TRUE
-        aloha:
-          placeholder: 'Note title'
-    text:
-      type: string
-      ui:
-        inlineEditable: TRUE
-        aloha:
-          placeholder: 'Note text here'
-
 'Sfi.Sfi:QuoteBlock':
   superTypes:
     - 'TYPO3.Neos:Content'
@@ -87,16 +53,6 @@
                 label: 'Image-Left'
               'Image-Right':
                 label: 'Image-Right'
-
-
-'Sfi.Sfi:Questions':
-  superTypes:
-    - 'TYPO3.Neos:Content'
-  ui:
-    label: 'Questions'
-    icon: 'icon-edit'
-    group: contentWidgets
-
 
 'Sfi.Sfi:Card':
   superTypes:
@@ -171,31 +127,3 @@
                 label: 'Variant 1'
               '2':
                 label: 'Variant 2'
-
-
-'Sfi.Sfi:Asset':
-  superTypes:
-    - 'TYPO3.Neos:Content'
-  ui:
-    label: 'Asset'
-    icon: 'icon-edit'
-    group: contentBlocks
-    inspector:
-      groups:
-        asset:
-          label: 'Asset'
-          position: 'start 1'
-  properties:
-    title:
-      type: string
-      ui:
-        inlineEditable: TRUE
-        aloha:
-          placeholder: 'Enter asset name'
-    asset:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'asset'
-        label: 'Assets'
-        reloadIfChanged: TRUE

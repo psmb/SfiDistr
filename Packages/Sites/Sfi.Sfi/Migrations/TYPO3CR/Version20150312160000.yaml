@@ -1,0 +1,72 @@
+up:
+  comments: 'Migration to move Node, Epigraph and Asset to Widgets'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Sfi:Note'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Note'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Sfi:Epigraph'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Epigraph'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Sfi:Asset'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Asset'
+down:
+  comments: 'Revert migration to move Node, Epigraph and Asset to Widgets'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Note'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Sfi:Note'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Epigraph'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Sfi:Epigraph'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Asset'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Sfi:Asset'
