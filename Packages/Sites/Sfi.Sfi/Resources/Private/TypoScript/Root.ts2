@@ -2,8 +2,8 @@
  * Root TypoScript template for the SFI v.3.0 site
  */
 
-# Explicitly include Sfi.Widgets, because autoInclude may messup inclussion order
-include: resource://Sfi.Widgets/Private/TypoScript/Root.ts2
+# Explicitly include Sfi.Shared, because autoInclude may messup inclussion order
+include: resource://Sfi.Shared/Private/TypoScript/Root.ts2
 include: NodeTypes/**/*.ts2
 include: Page.ts2
 include: Pages/**/*.ts2

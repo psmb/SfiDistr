@@ -2,7 +2,7 @@ prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
 	tagName = 'ul'
 	attributes.class = 'FooterGallery small-block-grid-2 medium-block-grid-3 large-block-grid-6'
 	content = TYPO3.Neos:ContentCollectionRenderer {
-		itemRenderer = Sfi.Widgets:AutoRenderWithTag{
+		itemRenderer = Sfi.Shared:AutoRenderWithTag{
 			tagName = 'li'
 			attributes.class = 'FooterGallery-Item'
 		}
