@@ -8,7 +8,7 @@
     },
     "repositories": [
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Styleguide.git" },
-        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Widgets.git" },
+        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Shared.git" },
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.News.git" },
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Grid.git" }
     ],
@@ -18,7 +18,7 @@
         "typo3/neos-kickstarter": "1.2.*",
         "doctrine/migrations": "@dev",
         "typo3/flow": "2.3.*",
-        "sfi/widgets": "@dev",
+        "sfi/shared": "@dev",
         "sfi/news": "@dev",
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",

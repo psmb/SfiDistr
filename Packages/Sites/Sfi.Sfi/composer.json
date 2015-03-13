@@ -5,7 +5,7 @@
     "require": {
         "typo3/neos": "*",
         "typo3/neos-nodetypes": "*",
-        "sfi/widgets": "*",
+        "sfi/shared": "*",
         "sfi/news": "*",
         "sfi/styleguide": "*",
         "sfi/grid": "*"
