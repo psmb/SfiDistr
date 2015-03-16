@@ -1,7 +1,7 @@
 prototype(Sfi.Sfi:Paper) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 
-	main = TYPO3.Neos:ContentCollection{
+	main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 
@@ -32,18 +32,15 @@ prototype(Sfi.Sfi:PaperShort) < prototype(TYPO3.Neos:Content) {
 }
 
 
-prototype(Sfi.News:List) {
-	itemRenderer = TYPO3.TypoScript:Case {
-		paper {
-			condition = ${q(node).is('[instanceof Sfi.Sfi:Paper]')}
-			type = 'Sfi.Sfi:PaperShort'
-		}
-	}
+# Add support for PaperShort to renderer of Listable
+prototype(Sfi.News:Listable).itemRenderer.paper {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:Paper]')}
+	type = 'Sfi.Sfi:PaperShort'
 }
 
 
 prototype(TYPO3.Neos:PrimaryContent) {
-    Paper{
+    Paper {
         @position = 'before default'
         condition = ${q(node).is('[instanceof Sfi.Sfi:Paper]')}
         type = 'Sfi.Sfi:Paper'
