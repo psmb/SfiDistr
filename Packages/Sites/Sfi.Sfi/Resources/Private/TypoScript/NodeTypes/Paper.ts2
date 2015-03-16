@@ -40,9 +40,9 @@ prototype(Sfi.News:Listable).itemRenderer.paper {
 
 
 prototype(TYPO3.Neos:PrimaryContent) {
-    Paper {
-        @position = 'before default'
-        condition = ${q(node).is('[instanceof Sfi.Sfi:Paper]')}
-        type = 'Sfi.Sfi:Paper'
-    }
+	Paper {
+		@position = 'before default'
+		condition = ${q(node).is('[instanceof Sfi.Sfi:Paper]')}
+		type = 'Sfi.Sfi:Paper'
+	}
 }
