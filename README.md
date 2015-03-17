@@ -6,10 +6,10 @@ Sfi.ru Distribution
 ###Install with Docker
 
 1. Install Docker
-2. Create a directory where your project files will be. By convention /home/username/docker/project-name
+2. Create a directory where your project files will be. By convention `/home/username/docker/project-name`
 3. Copy contents of https://github.com/sfi-ru/SfiDistr/blob/master/docker/docker-compose.yml and replace `PATH_TO_PROJECT_FILES` with smth like `/home/username/docker/`
 4. For local development:
-  * Add local domain name (e.g. `sfi` instead of `sfi.ru`) to `/hosts/etc`
+  * Add local domain name (e.g. `sfi` instead of `sfi.ru`) to `/etc/hosts` and point it to `127.0.0.1`
   * Adjust `T3APP_NAME` in `docker-compose.yml` with local domain name
   * Define custom local port for web container to run on. E.g. `- 8080:80` to run on port 8080. This port needs to be different for every local project.
 5. Run `docker-compose up -d` from the same directory and wait some minutes before all needed images are download and started (about 10 min on good connection).
