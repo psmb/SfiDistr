@@ -9,16 +9,16 @@ Sfi.ru Distribution
 2. Create a directory where your project files will be. By convention /home/username/docker/project-name
 3. Copy contents of https://github.com/sfi-ru/SfiDistr/blob/master/docker/docker-compose.yml and replace `PATH_TO_PROJECT_FILES` with smth like `/home/username/docker/`
 4. For local development:
-4.1. Add local domain name (e.g. `sfi` instead of `sfi.ru`) to `/hosts/etc`
-4.2. Adjust `T3APP_NAME` in `docker-compose.yml` with local domain name
-4.3. Define custom local port for web container to run on. E.g. `- 8080:80` to run on port 8080. This port needs to be different for every local project.
+  * Add local domain name (e.g. `sfi` instead of `sfi.ru`) to `/hosts/etc`
+  * Adjust `T3APP_NAME` in `docker-compose.yml` with local domain name
+  * Define custom local port for web container to run on. E.g. `- 8080:80` to run on port 8080. This port needs to be different for every local project.
 5. Run `docker-compose up -d` from the same directory and wait some minutes before all needed images are download and started (about 10 min on good connection).
 6. To run Flow commands, ssh into the container with `ssh -p1122 www@localhost`
 7. To import website data:
-7.1. Ask server admin to include your Github username to allowed list
-7.2. Enter ssh container (see step 5.).
-7.3. Generate ssh key in container and add it to Github (https://github.com/settings/ssh)
-7.4. Run `./import.sh` from within the container
+  * Ask server admin to include your Github username to allowed list
+  * Enter ssh container (see step 5.).
+  * Generate ssh key in container and add it to Github (https://github.com/settings/ssh)
+  * Run `./import.sh` from within the container
 
 ###Install manually with Composer
 
