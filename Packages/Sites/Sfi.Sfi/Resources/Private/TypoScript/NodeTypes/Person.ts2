@@ -39,17 +39,15 @@ prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
 }
 
 
-# Add support for PersonShort to renderer of Listable
+# Register support for PersonShort to renderer of Listable
 prototype(Sfi.News:Listable).itemRenderer.Person {
 	condition = ${q(node).is('[instanceof Sfi.Sfi:Person]')}
 	type = 'Sfi.Sfi:PersonShort'
 }
 
 
-prototype(TYPO3.Neos:PrimaryContent) {
-	Person {
-		@position = 'before default'
-		condition = ${q(node).is('[instanceof Sfi.Sfi:Person]')}
-		type = 'Sfi.Sfi:Person'
-	}
+prototype(TYPO3.Neos:PrimaryContent).Person {
+	@position = 'before default'
+	condition = ${q(node).is('[instanceof Sfi.Sfi:Person]')}
+	type = 'Sfi.Sfi:Person'
 }
