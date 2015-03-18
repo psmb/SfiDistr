@@ -1,0 +1,119 @@
+blah: &alohaPlain
+  placeholder: 'Enter title here'
+  format:
+    b: false
+    i: false
+    u: false
+    sub: false
+    sup: false
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
+  table: {  }
+  list: {  }
+  link:
+    a: false
+  alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Enter title here'
+  format:
+    b: true
+    i: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
+  table: {  }
+  list: {  }
+  link:
+    a: true
+  alignment: {  }
+
+
+'Sfi.Sfi:Redirect':
+  ui:
+    label: 'Redirect from old news'
+  superTypes:
+    - 'TYPO3.Neos.NodeTypes:Page'
+
+
+'Sfi.Sfi:Page':
+  abstract: true
+  ui:
+    label: 'Abstract Page'
+  superTypes:
+    - 'TYPO3.Neos.NodeTypes:Page'
+
+'Sfi.Sfi:PageMain':
+  ui:
+    label: 'Page: Main'
+  superTypes:
+    - 'Sfi.Sfi:Page'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+    footerGallery:
+      type: 'TYPO3.Neos:ContentCollection'
+
+'Sfi.Sfi:PagePresentation':
+  ui:
+    label: 'Page: Presentation'
+  superTypes:
+    - 'Sfi.Sfi:Page'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    lead:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        label: 'Author name'
+        aloha:
+          <<: *alohaRich
+          placeholder: 'Лид'
+
+'Sfi.Sfi:PageSection':
+  ui:
+    label: 'Page: Section'
+  superTypes:
+    - 'Sfi.Sfi:Page'
+  childNodes:
+    presentation:
+      type: 'TYPO3.Neos:ContentCollection'
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+    sidebar:
+      type: 'TYPO3.Neos:ContentCollection'
+
+'Sfi.Sfi:PageSubSection':
+  ui:
+    label: 'Page: SubSection'
+  superTypes:
+    - 'Sfi.Sfi:Page'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+    sidebar:
+      type: 'TYPO3.Neos:ContentCollection'
+
+'Sfi.Sfi:PageTag':
+  ui:
+    label: 'Page: Tag'
+  superTypes:
+    - 'Sfi.Sfi:Page'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+    listByTag:
+      type: 'Sfi.News:ListByTag'
+
