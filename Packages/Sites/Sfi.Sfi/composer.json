@@ -5,10 +5,10 @@
     "require": {
         "typo3/neos": "*",
         "typo3/neos-nodetypes": "*",
-        "sfi/shared": "*",
-        "sfi/news": "*",
-        "sfi/styleguide": "*",
-        "sfi/grid": "*"
+        "sfi/shared": "@dev",
+        "sfi/news": "@dev",
+        "sfi/styleguide": "@dev",
+        "sfi/grid": "@dev"
     },
     "autoload": {
         "psr-0": {
