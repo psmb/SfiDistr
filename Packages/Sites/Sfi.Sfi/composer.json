@@ -4,11 +4,7 @@
     "description": "SFI site files",
     "require": {
         "typo3/neos": "*",
-        "typo3/neos-nodetypes": "*",
-        "sfi/shared": "@dev",
-        "sfi/news": "@dev",
-        "sfi/styleguide": "@dev",
-        "sfi/grid": "@dev"
+        "typo3/neos-nodetypes": "*"
     },
     "autoload": {
         "psr-0": {
