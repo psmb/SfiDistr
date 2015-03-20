@@ -5,7 +5,7 @@ Sfi.ru Distribution
 
 ###Install with Docker
 
-1. Install Docker
+1. Install Docker [Docker-maintained Package Installation](https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit)
 2. Create a directory where your project files will be. By convention `/home/username/docker/project-name`
 3. Copy contents of https://github.com/sfi-ru/SfiDistr/blob/master/docker/docker-compose.yml and replace `PATH_TO_PROJECT_FILES` with smth like `/home/username/docker/`
 4. For local development:
