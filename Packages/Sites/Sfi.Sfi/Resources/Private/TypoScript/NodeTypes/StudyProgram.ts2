@@ -1,0 +1,44 @@
+prototype(Sfi.Sfi:StudyProgram) {
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+
+	@cache {
+		mode = 'cached'
+		maximumLifetime = '86400'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+			format = ${request.format}
+		}
+		entryTags {
+			# Whenever the node changes the matched condition could change
+			1 = ${'Node_' + documentNode.identifier}
+			# Whenever one of the parent nodes changes the layout could change
+			2 = ${'DescendantOf_' + documentNode.identifier}
+		}
+	}
+}
+
+prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.Neos:Content) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShort.html'
+	title = ${String.stripTags(q(node).property('title'))}
+}
+
+
+# Add support for StudyProgramShort to renderer of Listable
+prototype(Sfi.News:Listable).itemRenderer.StudyProgram {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:StudyProgram]')}
+	type = 'Sfi.Sfi:StudyProgramShort'
+}
+
+
+prototype(TYPO3.Neos:PrimaryContent) {
+	StudyProgram {
+		@position = 'before default'
+		condition = ${q(node).is('[instanceof Sfi.Sfi:StudyProgram]')}
+		type = 'Sfi.Sfi:StudyProgram'
+	}
+}
