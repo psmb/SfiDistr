@@ -12,7 +12,7 @@ Sfi.ru Distribution
   * Add local domain name (e.g. `sfi` instead of `sfi.ru`) to `/etc/hosts` and point it to `127.0.0.1`
   * Adjust `T3APP_NAME` in `docker-compose.yml` with local domain name
   * Define custom local port for web container to run on. E.g. `- 8080:80` to run on port 8080. This port needs to be different for every local project.
-5. Run `docker-compose up -d` from the same directory and wait some minutes before all needed images are download and started (about 10 min on good connection).
+5. Run `sudo docker-compose up -d` from the same directory and wait some minutes before all needed images are download and started (about 10 min on good connection).
 6. To run Flow commands, ssh into the container with `ssh -p1122 www@localhost`
 7. To import website data:
   * Ask server admin to include your Github username to allowed list
