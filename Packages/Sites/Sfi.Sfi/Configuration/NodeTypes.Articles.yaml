@@ -164,7 +164,7 @@ blah: &alohaRich
         label: 'Срок обучения'
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          <<: *alohaRich
           placeholder: 'Срок обучения'
     price:
       type: string
@@ -172,7 +172,7 @@ blah: &alohaRich
         label: 'Стоимость'
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          <<: *alohaRich
           placeholder: 'Стоимость'
     nextDate:
       type: string
@@ -188,7 +188,7 @@ blah: &alohaRich
         label: 'Форма обучения'
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          <<: *alohaRich
           placeholder: 'Форма обучения'
     level:
       type: string
