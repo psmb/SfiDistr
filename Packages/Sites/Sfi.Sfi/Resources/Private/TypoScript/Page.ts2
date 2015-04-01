@@ -12,8 +12,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			sectionName = 'backendStylesheets'
 			@process.1=${node.context.workspaceName != 'live' ? value:''}
 		}
-
-		javascripts.site = TYPO3.TypoScript:Template {
+		javascripts.headScripts = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Utility.html'
 			sectionName = 'headScripts'
 		}
@@ -55,7 +54,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			}
 		}
 
-		javascripts.site = TYPO3.TypoScript:Template {
+		javascripts.bodyScripts = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Utility.html'
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			sectionName = 'bodyScripts'
