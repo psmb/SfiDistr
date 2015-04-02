@@ -5,3 +5,8 @@
 	@extend .H2;
 	font-weight: normal !important;
 }
+.H3Alt {
+	@extend %mainHeadings;
+	font-weight: normal !important;
+	font-size: rem-calc(22);
+}
