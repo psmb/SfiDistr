@@ -1,21 +1,19 @@
-.BuyBook {
+.MeidaBuyBook {
 	border: $border-thin;
 	background: $gray-bg--light;
 	padding: $u;
 }
-.BuyBook-Image {
-	width: 115px, 
+.MeidaBuyBook-Image {
+	width: 115px;
 	border: $border-thick;
 	margin-right: 2*$u;
 }
-.BuyBook-Title {
+.MeidaBuyBook-Title {
 	@extend .ServiceLight;
 	color: $color-primaryAlt;
+	margin: 0;
 }
-.BuyBook-Details {
+.MeidaBuyBook-Details {
 	@extend .ParagraphAlt--Small;
 	color: $gray--light;
-}
-.BuyBook-Button {
-	margin-top: $u;
 }

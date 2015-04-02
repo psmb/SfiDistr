@@ -132,8 +132,6 @@
   superTypes:
     - 'TYPO3.Neos:Content'
   childNodes:
-    image:
-      type: 'TYPO3.Neos.NodeTypes:Image'
     details:
       type: 'TYPO3.Neos:ContentCollection'
     button:
@@ -143,6 +141,11 @@
     icon: 'icon-picture'
     position: 400
     group: contentBlocks
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          position: 'start 1'
   properties:
     title:
       type: string
@@ -150,3 +153,11 @@
         inlineEditable: TRUE
         aloha:
           placeholder: 'Название книжки'
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+          position: 50
