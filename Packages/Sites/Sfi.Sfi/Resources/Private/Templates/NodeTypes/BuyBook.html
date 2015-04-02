@@ -1,0 +1,15 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<div class="BuyBook">
+	<div class="BuyBook-Image float-left">
+		{image -> f:format.raw()}
+	</div>
+	<div>
+		<h1 class="BuyBook-Headline">{neos:contentElement.editable(property: 'title')}</h1>
+		<div class="BuyBook-Details">
+			{details -> f:format.raw()}	
+		</div>
+		<div class="BuyBook-Button">
+			{button -> f:format.raw()}	
+		</div>
+	</div>
+</div>

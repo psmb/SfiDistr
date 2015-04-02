@@ -1,0 +1,16 @@
+prototype(Sfi.Sfi:BuyBook) {
+	title = ${String.stripTags(q(node).property('title'))}
+
+	details = TYPO3.Neos:ContentCollection {
+		nodePath = 'details'
+	}
+	button = Sfi.Shared:Link {
+		@override.node = ${q(node).children('button').get(0)}
+	}
+	image = TYPO3.Neos.NodeTypes:Image {
+		@override.node = ${q(node).children('image').get(0)}
+	}
+	prototype(TYPO3.Neos.NodeTypes:Image) {
+		maximumWidth = 115
+	}
+}

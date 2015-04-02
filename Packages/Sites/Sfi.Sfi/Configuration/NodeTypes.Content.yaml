@@ -127,3 +127,26 @@
                 label: 'Variant 1'
               '2':
                 label: 'Variant 2'
+
+'Sfi.Sfi:BuyBook':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  childNodes:
+    image:
+      type: 'TYPO3.Neos.NodeTypes:Image'
+    details:
+      type: 'TYPO3.Neos:ContentCollection'
+    button:
+      type: 'Sfi.Shared:Link'
+  ui:
+    label: 'Buy Book'
+    icon: 'icon-picture'
+    position: 400
+    group: contentBlocks
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        aloha:
+          placeholder: 'Название книжки'
