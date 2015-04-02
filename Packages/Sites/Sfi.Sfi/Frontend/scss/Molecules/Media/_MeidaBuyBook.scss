@@ -1,12 +1,10 @@
-.MeidaBuyBook {
-	border: $border-thin;
-	background: $gray-bg--light;
-	padding: $u;
-}
 .MeidaBuyBook-Image {
 	width: 115px;
 	border: $border-thick;
 	margin-right: 2*$u;
+}
+.MeidaBuyBook-Body {
+	margin-left: 115px + 2*$u;
 }
 .MeidaBuyBook-Title {
 	@extend .ServiceLight;
