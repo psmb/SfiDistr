@@ -1,0 +1,26 @@
+styleguide < page {
+	body {
+		templatePath = 'resource://Sfi.Styleguide/Private/Templates/Category.html'
+		sectionName = 'body'
+
+		title = ${node.properties.title}
+
+		menu = Menu
+		menu{
+			 entryLevel = 2
+		}
+	}
+}
+
+root.styleguide {
+        condition = ${q(node).is('[instanceof Sfi.Styleguide:Category]')}
+        renderPath = '/styleguide'
+}
+
+prototype(Sfi.Styleguide:SubCategory){
+	content = TYPO3.Neos:ContentCollectionRenderer
+}
+
+prototype(Sfi.Styleguide:Item){
+	content = TYPO3.Neos:ContentCollectionRenderer
+}
