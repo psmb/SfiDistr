@@ -12,6 +12,12 @@
 	}
 }
 
+.NewsByTag-Grid[data-columns]::before {
+	@include breakpoint('medium') {
+		content: '2 .columns.medium-6';
+	}
+}
+
 .NewsLatest-Grid {
 	margin: 0 !important;
 	padding: 2*$u $u !important;
@@ -20,7 +26,12 @@
 
 .NewsList-Grid {
 	margin: 2*$u 0;
+	padding-top: 2*$u;
 	overflow: auto;
+}
+
+.NewsByTag-Grid {
+	padding-top: 2*$u;
 }
 
 .News-MoreButton {
