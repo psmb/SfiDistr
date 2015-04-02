@@ -5,28 +5,32 @@
 	transition: $transition;
 	&:hover {
 		background: white;
+		.Media-Title {
+			color: $color-primary;
+			text-decoration: underline;
+		}
 	}
 }
-.Media-Title{
+.Media-Title {
 	@extend .Paragraph--Large;
 	line-height: $lineHeight-tight;
 	margin-bottom: $u/2;
 }
-.Media-Teaser{
+.Media-Teaser {
 	@extend .ParagraphAlt;
 	margin-top: $u/2;
 	margin-bottom: $u/2;
 }
-.Media-Date{
+.Media-Date {
 	@extend .ServiceEm;
 	text-transform: lowercase;
 	color: $gray--light;
 	margin-top: $u/2;
 	margin-bottom: $u/2;
 }
-.Media-Category{
+.Media-Category {
 	display: none;
 }
-.Media-Image img{
+.Media-Image img {
 	width: 100%;
 }

@@ -8,6 +8,11 @@
 		bottom: 20%;
 		max-width: 600px;
 	}
+	&:hover {
+		.MediaSlide-Title {
+			text-decoration: underline !important;
+		}
+	}
 }
 .MediaSlide-Title {
 	@extend .H1;

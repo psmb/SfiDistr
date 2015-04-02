@@ -14,6 +14,9 @@
 			padding-right: 3*$u;
 		}
 	}
+	.MainMenu-Item, .MainMenu-SubItem {
+		@include link-state();
+	}
 	.MainMenu-Wrap{
 		overflow: hidden;
 		margin-left: 50px;

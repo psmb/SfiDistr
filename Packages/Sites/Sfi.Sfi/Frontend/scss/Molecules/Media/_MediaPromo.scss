@@ -6,6 +6,10 @@
 	transition: $transition;
 	&:hover {
 		background: white;
+		.MediaPromo-Title {
+			color: $color-primary;
+			text-decoration: underline;
+		}
 	}
 }
 

@@ -1,3 +1,7 @@
+.MediaAnnouncement:hover .MediaAnnouncement-Title {
+	color: $color-primary;
+	text-decoration: underline;
+}
 .MediaAnnouncement-WrapText {
 	margin-left: 65px + 1.5*$u;
 	@include breakpoint('medium') {

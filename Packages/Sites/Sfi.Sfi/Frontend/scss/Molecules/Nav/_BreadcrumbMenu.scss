@@ -4,6 +4,7 @@
 		@extend .ParagraphAlt--Small;
 		float: left;
 		margin: $u/2 $u $u/2 0;
+		@include link-state();
 		@include breakpoint('large') {
 			margin: $u $u $u 0;
 		}

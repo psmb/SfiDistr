@@ -31,17 +31,3 @@
 .SubSectionLayout-SubPageTitle {
 	@extend .H2;
 }
-
-.SubSectionMenu {
-	margin: $u 0;
-	@include breakpoint('medium') {
-		column-count: 2;
-	}
-    list-style-position: inside;
-    list-style-type: decimal;
-}
-.SubSectionMenu-Item {
-	@extend .ParagraphAlt;
-	margin-top: 0;
-	margin-bottom: $u/2;
-}
