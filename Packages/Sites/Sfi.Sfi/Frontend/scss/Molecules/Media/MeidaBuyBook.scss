@@ -1,0 +1,21 @@
+.BuyBook {
+	border: $border-thin;
+	background: $gray-bg--light;
+	padding: $u;
+}
+.BuyBook-Image {
+	width: 115px, 
+	border: $border-thick;
+	margin-right: 2*$u;
+}
+.BuyBook-Title {
+	@extend .ServiceLight;
+	color: $color-primaryAlt;
+}
+.BuyBook-Details {
+	@extend .ParagraphAlt--Small;
+	color: $gray--light;
+}
+.BuyBook-Button {
+	margin-top: $u;
+}
