@@ -1,6 +1,3 @@
-
-
-
 .SectionMenu-Item {
 	@extend .H4;
 	color: $color-primary;
@@ -18,8 +15,5 @@
 	&:first-child {
 		border-top: $border-dotted;
 	}
-}
-
-.SectionMenu-Item.current,.SectionMenu-Item:hover {
-	color: $color-primary;
+	@include link-state();
 }
