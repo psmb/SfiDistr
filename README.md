@@ -7,11 +7,9 @@ Sfi.ru Distribution
 
 1. Install Docker [Docker-maintained Package Installation for Ubuntu](https://docs.docker.com/installation/ubuntulinux/#ubuntu-trusty-1404-lts-64-bit)
 2. Install docker-compose
-```
-curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-sudo mv ~/docker-compose /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
+ * Download the binary file to user folder (to avoid permission issues): `curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose`
+ * Move to bin: `sudo mv ~/docker-compose /usr/local/bin/docker-compose`
+ * Make executable: `sudo chmod +x /usr/local/bin/docker-compose`
 3. Create a directory where your project files will be. By convention `/home/username/docker/project-name`
 4. Copy contents of https://github.com/sfi-ru/SfiDistr/blob/master/docker/docker-compose.yml and replace `PATH_TO_PROJECT_FILES` with something like `/home/username/docker/`
 5. For local development:
