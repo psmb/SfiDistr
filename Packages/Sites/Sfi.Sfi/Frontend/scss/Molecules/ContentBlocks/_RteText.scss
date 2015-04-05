@@ -30,3 +30,23 @@
 		}
 	}
 }
+
+// Map variants to paragrpah styles
+.RteText--Paragraph--Small p{
+	@extend .Paragraph--Small;
+}
+.RteText--Paragraph p{
+	@extend .Paragraph;
+}
+.RteText--Paragraph--Large p{
+	@extend .Paragraph--Large;
+}
+.RteText--ParagraphAlt--Small p{
+	@extend .ParagraphAlt--Small;
+}
+.RteText--ParagraphAlt p{
+	@extend .ParagraphAlt;
+}
+.RteText--ParagraphAlt--Large p{
+	@extend .ParagraphAlt--Large;
+}
