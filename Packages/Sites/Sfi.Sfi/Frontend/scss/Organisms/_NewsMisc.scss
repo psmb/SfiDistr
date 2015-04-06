@@ -20,18 +20,13 @@
 
 .NewsLatest-Grid {
 	margin: 0 !important;
-	padding: 2*$u $u !important;
+	padding: 0 $u !important;
 	background: $gray-bg--light;
 }
 
 .NewsList-Grid {
 	margin: 2*$u 0;
-	padding-top: 2*$u;
 	overflow: auto;
-}
-
-.NewsByTag-Grid {
-	padding-top: 2*$u;
 }
 
 .News-MoreButton {

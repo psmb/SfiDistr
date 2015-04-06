@@ -34,8 +34,9 @@ prototype(Sfi.Sfi:Person) {
 prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/PersonShort.html'
 	title = ${String.stripTags(q(node).property('title'))}
-	position = ${String.stripTags(q(node).property('position'))}
+	subject = ${String.stripTags(q(node).property('subject'))}
 	degree = ${String.stripTags(q(node).property('degree'))}
+	image = ${q(node).find('[instanceof TYPO3.Neos.NodeTypes:Image]').first().property('image')}
 }
 
 

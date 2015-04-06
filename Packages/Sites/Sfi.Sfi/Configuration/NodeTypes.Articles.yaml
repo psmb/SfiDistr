@@ -98,6 +98,7 @@ blah: &alohaRich
 'Sfi.Sfi:Person':
   superTypes:
     - 'TYPO3.Neos:Document'
+    - 'Sfi.News:Listable'
   ui:
     label: 'Person'
     icon: icon-file-text

@@ -9,7 +9,7 @@
 }
 .SectionDivider--Service{
 	@extend .SectionDivider;
-	margin: 0;
+	margin-bottom: 2*$u;
 	padding-bottom: $u;
 	border-bottom: $border-thin;
 }

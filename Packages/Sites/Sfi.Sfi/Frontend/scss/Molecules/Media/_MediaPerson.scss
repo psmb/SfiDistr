@@ -1,0 +1,18 @@
+.MediaPerson {
+	margin-bottom: 30px;
+	transition: $transition;
+	&:hover .MediaPerson-Title {
+		color: $color-primary;
+		text-decoration: underline;
+	}
+}
+.MediaPerson-Title {
+	@extend .Paragraph--Large;
+	line-height: $lineHeight-tight;
+	margin-bottom: $u/2;
+}
+.MediaPerson-Teaser {
+}
+.MediaPerson-Image img {
+	width: 100%;
+}
