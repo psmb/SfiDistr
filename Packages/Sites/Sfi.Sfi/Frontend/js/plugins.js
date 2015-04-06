@@ -101,6 +101,7 @@ var onReadyPlugins = function() {
     // TODO: optimize carousel init code
     $('.js-carousel-1x').slick({
         dots: true,
+        slide: 'li',
         infinite: true,
         speed: 300,
         slidesToShow: 1,
@@ -111,6 +112,7 @@ var onReadyPlugins = function() {
 
     $('.js-carousel-2x').slick({
         dots: true,
+        slide: 'li',
         infinite: true,
         speed: 300,
         slidesToShow: 2,
@@ -137,6 +139,7 @@ var onReadyPlugins = function() {
 
     $('.js-carousel-3x').slick({
         dots: true,
+        slide: 'li',
         infinite: true,
         speed: 300,
         slidesToShow: 3,
