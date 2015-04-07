@@ -44,8 +44,10 @@
 }
 .MediaAnnouncement-Teaser {
 	@extend .ParagraphAlt;
+	margin-bottom: 0;
 }
 .MediaAnnouncement-Place {
 	@extend .ParagraphAlt;
 	color: $gray--light;
+	margin-top: 0;
 }
