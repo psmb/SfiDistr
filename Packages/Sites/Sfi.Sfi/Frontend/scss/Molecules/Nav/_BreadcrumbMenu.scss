@@ -1,13 +1,15 @@
 .BreadcrumbMenu{
-	clear: both;
+	overflow: auto;
+	margin: $u/2 0;
+	@include breakpoint('large') {
+		margin: $u 0;
+	}
 	li{
 		@extend .ParagraphAlt--Small;
 		float: left;
-		margin: $u/2 $u $u/2 0;
+		margin: 0;
+		margin-right: $u;
 		@include link-state();
-		@include breakpoint('large') {
-			margin: $u $u $u 0;
-		}
 	}
 	li:last-child:after{
 		content: '';
