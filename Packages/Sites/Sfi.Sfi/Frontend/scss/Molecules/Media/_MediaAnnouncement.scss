@@ -1,3 +1,6 @@
+.MediaAnnouncement {
+	clear: both;
+}
 .MediaAnnouncement:hover .MediaAnnouncement-Title {
 	color: $color-primary;
 	text-decoration: underline;
