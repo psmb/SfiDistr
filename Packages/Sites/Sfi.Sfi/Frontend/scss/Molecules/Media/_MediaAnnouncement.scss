@@ -21,13 +21,22 @@
 	margin: 0;
 }
 .MediaAnnouncement-DateMonth {
-	@extend .ServiceLight--Small;
+	@extend .H2;
 	color: $color-primary;
+	font-weight: normal;
 	margin: 0;
 }
 .MediaAnnouncement-DateTime {
-	@extend .Service--Small;
+	@extend .H3;
 	color: $color-primary;
+	font-weight: normal;
+	margin: 0;
+}
+.MediaAnnouncement-DateDash {
+	@extend .H2;
+	color: $color-primary;
+	line-height: 0.4;
+	margin-bottom: 4px;
 	margin: 0;
 }
 .MediaAnnouncement-Title {
