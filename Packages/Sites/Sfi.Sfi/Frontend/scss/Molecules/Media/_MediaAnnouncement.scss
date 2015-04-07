@@ -14,6 +14,7 @@
 .MediaAnnouncement-Date {
 	text-align: center;
 	float: left;
+	clear: both;
 }
 .MediaAnnouncement-DateDay {
 	@extend .H2;
