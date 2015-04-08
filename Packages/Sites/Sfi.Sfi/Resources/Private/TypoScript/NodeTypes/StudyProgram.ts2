@@ -35,16 +35,17 @@ prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.Neos:Content) {
 	price = ${q(node).property('price')}
 }
 
-prototype(Sfi.Sfi:StudyProgramsListing) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Shared:Sections) {
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
 	@override.rootNode = ${q(node).property('rootNode')}
-	content = TYPO3.TypoScript:Collection {
-		collection = ${q(rootNode).children().get()}
-		itemName = 'node'
-		itemRenderer = Sfi.Sfi:StudyProgramShort
+	layout = 'Sections--Accordion'
+	tabs>
+	panels.collection = ${q(rootNode).children().get()}
+	panels.itemRenderer {
+		accordion = ${q(node).property('title')}
+		panel = Sfi.Sfi:StudyProgramShort
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
-
 
 # Add support for StudyProgramShort to renderer of Listable
 prototype(Sfi.News:Listable).itemRenderer.StudyProgram {
