@@ -1,5 +1,7 @@
 .MediaAnnouncement {
 	clear: both;
+	overflow: auto;
+	margin-bottom: 2*$u;
 }
 .MediaAnnouncement:hover .MediaAnnouncement-Title {
 	color: $color-primary;
@@ -15,29 +17,32 @@
 	}
 }
 .MediaAnnouncement-Date {
+	margin-top: $u;
 	text-align: center;
 	float: left;
 	clear: both;
 }
 .MediaAnnouncement-DateDay {
-	@extend .H2;
+	@extend .H3;
+	font-size: rem-calc(30);
 	color: $color-primary;
 	margin: 0;
 }
 .MediaAnnouncement-DateMonth {
-	@extend .H2;
+	@extend .H3;
+	font-size: rem-calc(30);
 	color: $color-primary;
 	font-weight: normal;
 	margin: 0;
 }
 .MediaAnnouncement-DateTime {
-	@extend .H3;
+	@extend .H4;
 	color: $color-primary;
 	font-weight: normal;
 	margin: 0;
 }
 .MediaAnnouncement-DateDash {
-	@extend .H2;
+	@extend .H3;
 	color: $color-primary;
 	line-height: 0.3;
 	margin: 0;
