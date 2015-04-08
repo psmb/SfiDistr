@@ -1,6 +1,9 @@
 prototype(Sfi.Sfi:StudyProgram) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 
+	level = ${String.stripTags(q(node).parent().parent().property('title'))}
+	division = ${String.stripTags(q(node).parent().property('title'))}
+
 	main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'
 	}
@@ -25,6 +28,21 @@ prototype(Sfi.Sfi:StudyProgram) {
 prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.Neos:Content) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShort.html'
 	title = ${String.stripTags(q(node).property('title'))}
+	duration = ${q(node).property('duration')}
+	nextDate = ${q(node).property('nextDate')}
+	educationForm = ${q(node).property('educationForm')}
+	details = ${q(node).property('details')}
+	price = ${q(node).property('price')}
+}
+
+prototype(Sfi.Sfi:StudyProgramsListing) < prototype(TYPO3.TypoScript:Tag) {
+	@override.rootNode = ${q(node).property('rootNode')}
+	content = TYPO3.TypoScript:Collection {
+		collection = ${q(rootNode).children().get()}
+		itemName = 'node'
+		itemRenderer = Sfi.Sfi:StudyProgramShort
+	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 
 

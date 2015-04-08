@@ -161,3 +161,26 @@
         inspector:
           group: 'image'
           position: 50
+
+'Sfi.Sfi:StudyProgramsListing':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Study Programs Listing'
+    group: contentBlocks
+    inspector:
+      groups:
+        general:
+          label: 'General'
+          position: 'start 1'
+  properties:
+    rootNode:
+      type: reference
+      ui:
+        label: 'Root node for study programs'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'general'
+          editorOptions:
+            nodeTypes: ['TYPO3.Neos:Document']
+
