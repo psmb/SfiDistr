@@ -159,6 +159,14 @@ blah: &alohaRich
     main:
       type: 'TYPO3.Neos:ContentCollection'
   properties:
+    lead:
+      type: string
+      ui:
+        label: 'Лид'
+        inlineEditable: true
+        aloha:
+          <<: *alohaRich
+          placeholder: 'Тут должен быть лид к программе'
     duration:
       type: string
       ui:
