@@ -42,8 +42,41 @@
     }
 }
 
+.Sections--Accordion {
+    .Sections-Tabs {
+        display: none !important;
+    }
 
+    .Sections-AccordionTitle {
+        display: block !important;
+    }
+}
 
+.Sections--Accordion {
+    .Sections-AccordionTitle {
+        @extend .ParagraphAlt--Large;
+        color: $color-primaryAlt;
+        background-color: $gray-bg;
+        padding: $u;
+        margin: 0;
+        margin-top: $u;
+        @extend .icon-right-dir;
+        &:before {
+            @include icon();
+        }
+    }
+    .isActive .Sections-AccordionTitle {
+        background-color: $color-primaryAlt;
+        color: white;
+        @extend .icon-down-dir;
+    }
+
+    .Sections-Panel {
+        background-color: $gray-bg--light;
+        padding: $u 2*$u;
+        border: $border-thin--dark;
+    }
+}
 
 
 

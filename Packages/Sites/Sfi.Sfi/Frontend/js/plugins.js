@@ -16,12 +16,13 @@ function(){"use strict";if(window.matchMedia&&window.matchMedia("all").addListen
             e.preventDefault();
             var panelId = $(this).attr('href');
 
+            //TODO: this is a very bad code, as it couples normal CSS classes with JS!
             if ($(this).hasClass('isActive') && !parent.children('.Sections-Tabs').is(":visible")) {
                 $(this).removeClass('isActive');
                 $(panelId).removeClass('isActive');
             } else {
-                parent.children('.Sections-Tabs').children('.Sections-Tab').children('.Sections-Anchor').removeClass('isActive');
-                parent.children('.Sections-AccordionTitle').children('.Sections-Anchor').removeClass('isActive');
+                parent.children('.Sections-Tabs').children('.Sections-Anchor').removeClass('isActive');
+                parent.children('.Sections-Anchor').removeClass('isActive');
                 $(this).addClass('isActive');
                 
                 parent.children('.Sections-Panel').removeClass('isActive');
