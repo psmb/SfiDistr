@@ -4,6 +4,9 @@
 .StudyProgramCard-Line {
 	@extend .ParagraphAlt--Large;
 	color: $gray--light;
+	margin: 0;
+	padding: 0;
+	line-height: 2;
 	b, strong {
 		color: $color-primaryAlt;
 		text-transform: uppercase;
