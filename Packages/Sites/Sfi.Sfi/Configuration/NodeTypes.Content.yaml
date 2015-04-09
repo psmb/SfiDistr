@@ -1,3 +1,43 @@
+blah: &alohaPlain
+  placeholder: 'Enter title here'
+  format:
+    b: FALSE
+    i: FALSE
+    u: FALSE
+    sub: FALSE
+    sup: FALSE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: FALSE
+  alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Enter title here'
+  format:
+    b: TRUE
+    i: TRUE
+    u: FALSE
+    sub: TRUE
+    sup: TRUE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: TRUE
+  alignment: {  }
+
 ########################
 #Our site content types#
 ########################
@@ -18,41 +58,25 @@
   properties:
     authorName:
       type: string
-      defaultValue: '<h3>Author Name</h3>'
       ui:
+        label: 'Author name'
         inlineEditable: TRUE
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Имя автора'
     authorDescription:
       type: string
-      defaultValue: '<p>Author description</p>'
       ui:
+        label: 'Author degree'
         inlineEditable: TRUE
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Подробнее об авторе (степень и др)'
     text:
       type: string
       defaultValue: '<p>Enter quotation text here</p>'
       ui:
         inlineEditable: TRUE
-    largeImage:
-      type: TYPO3\Media\Domain\Model\ImageVariant
-      ui:
-        label: 'Large Image'
-        reloadIfChanged: TRUE
-        inspector:
-          group: 'image'
-    variant:
-      defaultValue: 'Image-Right'
-      type: string
-      ui:
-        label: 'Quote variant'
-        reloadIfChanged: true
-        inspector:
-          group: variant
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
-          editorOptions:
-            values:
-              'Image-Left':
-                label: 'Image-Left'
-              'Image-Right':
-                label: 'Image-Right'
 
 'Sfi.Sfi:Card':
   superTypes:
@@ -117,7 +141,7 @@
       type: string
       ui:
         label: 'VCard variant'
-        reloadIfChanged: true
+        reloadIfChanged: TRUE
         inspector:
           group: variant
           editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
