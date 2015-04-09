@@ -1,0 +1,11 @@
+.StudyProgramCard {
+	background-color: $gray-bg--light;
+}
+.StudyProgramCard-Line {
+	@extend .ParagraphAlt--Large;
+	color: $gray--light;
+	b, strong {
+		color: $color-primaryAlt;
+		text-transform: uppercase;
+	}
+}

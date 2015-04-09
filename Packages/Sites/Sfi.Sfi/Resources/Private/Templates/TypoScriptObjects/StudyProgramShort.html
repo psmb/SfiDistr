@@ -1,11 +1,12 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
-<h1 class="Article-Title H2">{title -> f:format.raw()}</h1>
-<div class="Paragraph">{duration -> f:format.raw()}</div>
-<div class="Paragraph">{nextDate -> f:format.raw()}</div>
-<div class="Paragraph">{educationForm -> f:format.raw()}</div>
-<div class="Paragraph">{details -> f:format.raw()}</div>
-<div class="Paragraph">{price -> f:format.raw()}</div>
-<div class="hide">
-	<neos:link.node node="{node}" class="Button">Подробнее</neos:link.node>
+<div class="StudyProgramCard">
+	<div class="StudyProgramCard-Line">{duration -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line">{nextDate -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line">{educationForm -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line">{details -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line">{price -> f:format.raw()}</div>
+	<div class="hide">
+		<neos:link.node node="{node}" class="Button">Подробнее</neos:link.node>
+	</div>
 </div>
