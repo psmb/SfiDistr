@@ -1,25 +1,28 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <div class="row">
-	<div class="columns">
+	<div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
 		<div class="Article">
 			<neos:contentElement.wrap node="{node}">
-				<div class="Paragraph">{level}</div>
-				<h1 class="Article-Title H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
-				<div class="Paragraph">{division}</div>
-				<br>
-				<br>
-				<br>
-				<br> Тут карточка начинается:
-				<br>
-				<div class="Paragraph">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
-				<div class="Paragraph">{neos:contentElement.editable(property: 'duration', tag: 'span')}</div>
-				<div class="Paragraph">{neos:contentElement.editable(property: 'nextDate', tag: 'span')}</div>
-				<div class="Paragraph">{neos:contentElement.editable(property: 'educationForm', tag: 'span')}</div>
-				<div class="Paragraph">{neos:contentElement.editable(property: 'details', tag: 'span')}</div>
-				<div class="Paragraph">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
-				<div class="Article-Content">{main -> f:format.raw()}</div>
+				<div class="textAlign-center">
+					<div class="Service">{level}</div>
+					<h1 class="H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+					<div class="ServiceEm">{division}</div>
+				</div>
+				<div class="Paragraph marginVertical-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+				<div class="StudyProgramCard textAlign-center">
+					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration', tag: 'span')}</div>
+					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate', tag: 'span')}</div>
+					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'educationForm', tag: 'span')}</div>
+					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'details', tag: 'span')}</div>
+					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
+				</div>
 			</neos:contentElement.wrap>
 		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="columns">
+		<div class="Article-Content">{main -> f:format.raw()}</div>
 	</div>
 </div>

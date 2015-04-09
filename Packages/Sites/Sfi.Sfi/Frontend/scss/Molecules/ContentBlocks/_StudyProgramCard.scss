@@ -5,10 +5,19 @@
 	@extend .ParagraphAlt--Large;
 	color: $gray--light;
 	margin: 0;
-	padding: 0;
-	line-height: 2;
+	padding: $u 2*$u;
+	line-height: $lineHeight-tight;
+	border-top: $border-thin;
+	&:last-child {
+		border-bottom: $border-thin;
+	}
 	b, strong {
 		color: $color-primaryAlt;
 		text-transform: uppercase;
 	}
+}
+
+.StudyProgramCard--Short {
+	margin: -$u -2*$u;
+	margin-top: -$u - 1px;
 }
