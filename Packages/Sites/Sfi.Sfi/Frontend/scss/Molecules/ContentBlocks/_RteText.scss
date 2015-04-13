@@ -31,6 +31,10 @@
 	}
 }
 
+.RteTextLinkable a{
+	@extend .Link;
+}
+
 // Map variants to paragrpah styles
 .RteText--Paragraph--Small p{
 	@extend .Paragraph--Small;
