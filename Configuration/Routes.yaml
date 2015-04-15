@@ -7,6 +7,25 @@
 # Please refer to the Flow manual for possible configuration options.    #
 #                                                                        #
 
+-
+  name: 'Paginate for Sfi.News:Listable'
+  uriPattern:    '{node}-p{--listable-paginate.currentPage}.html'
+  defaults:
+    '@package':    'TYPO3.Neos'
+    '@controller': 'Frontend\Node'
+    '@format':     'html'
+    '@action':     'show'
+    '--listable-paginate':
+      '@package': ''
+      '@subpackage': ''
+      '@controller': ''
+      '@action': 'index'
+      'currentPage': '1'
+  routeParts:
+    node:
+      handler: TYPO3\Neos\Routing\FrontendNodeRoutePartHandler
+  appendExceedingArguments: TRUE
+
 ##
 # TYPO3 Neos subroutes
 
@@ -28,3 +47,4 @@
     '@action':     'show'
     '@format':     'html'
     'node': '/sites/sfi/system/rss/all'
+
