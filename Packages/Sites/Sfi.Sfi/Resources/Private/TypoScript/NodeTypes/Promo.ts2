@@ -12,22 +12,6 @@ prototype(Sfi.Sfi:Promo) {
 			@position = 'start'
 		}
 	}
-
-	@cache {
-		mode = 'cached'
-		maximumLifetime = '86400'
-		entryIdentifier {
-			node = ${node}
-			editPreviewMode = ${editPreviewMode}
-			format = ${request.format}
-		}
-		entryTags {
-			# Whenever the node changes the matched condition could change
-			1 = ${'Node_' + documentNode.identifier}
-			# Whenever one of the parent nodes changes the layout could change
-			2 = ${'DescendantOf_' + documentNode.identifier}
-		}
-	}
 }
 
 prototype(Sfi.Sfi:PromoShort) < prototype(TYPO3.Neos:Content) {
@@ -49,17 +33,12 @@ prototype(Sfi.Sfi:PromoList) < prototype(TYPO3.TypoScript:Tag) {
 	}
 	@cache {
 		mode = 'cached'
-		maximumLifetime = '86400'
 		entryIdentifier {
 			node = ${node}
 			editPreviewMode = ${editPreviewMode}
-			format = ${request.format}
 		}
 		entryTags {
-			# Whenever the node changes the matched condition could change
-			1 = ${'Node_' + documentNode.identifier}
-			# Whenever one of the parent nodes changes the layout could change
-			2 = ${'DescendantOf_' + documentNode.identifier}
+			1 = ${'NodeType_Sfi.Sfi:Promo'}
 		}
 	}
 }

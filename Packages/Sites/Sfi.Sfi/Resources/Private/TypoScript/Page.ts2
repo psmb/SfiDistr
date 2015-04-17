@@ -65,17 +65,6 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			@process.1=${node.context.workspaceName != 'live' ? value:''}
 		}
 	}
-	@cache {
-		mode = 'cached'
-		entryIdentifier {
-			documentNode = ${node}
-			baseUri = ${String.toString(request.httpRequest.baseUri)}
-		}
-		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = ${'DescendantOf_' + node.identifier}
-		}
-	}
 }
 page = Sfi.Sfi:Page
 
