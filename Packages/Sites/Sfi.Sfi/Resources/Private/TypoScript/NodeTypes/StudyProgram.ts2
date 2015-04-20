@@ -19,16 +19,25 @@ prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.Neos:Content) {
 	price = ${q(node).property('price')}
 }
 
-prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Shared:Sections) {
+prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections) {
+	panels.collection = 'to-be-set'
+
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
 	@override.rootNode = ${q(node).property('rootNode')}
 	layout = 'Sections--Accordion'
 	tabs>
-	panels.collection = ${q(rootNode).children().get()}
 	panels.itemRenderer {
 		accordion = ${q(node).property('title')}
 		panel = Sfi.Sfi:StudyProgramShort
 	}
+}
+
+prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListingAbstract) {
+	@override.rootNode = ${q(node).property('rootNode')}
+	panels.collection = ${q(rootNode).children().get()}
+	# Guess why it needs to be overriden?
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
+
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
@@ -41,6 +50,25 @@ prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Shared:Sections) {
 		}
 	}
 }
+
+prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProgramsListingAbstract) {
+	panels.collection = ${q(node).property('references')}
+	# Guess why it needs to be overriden?
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${'Node_' + rootNode.identifier}
+			2 = ${'NodeType_Sfi.Sfi:StudyProgramShort'}
+		}
+	}
+}
+
 
 # Add support for StudyProgramShort to renderer of Listable
 prototype(Sfi.News:Listable).itemRenderer.StudyProgram {

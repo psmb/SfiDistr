@@ -208,3 +208,25 @@ blah: &alohaRich
           editorOptions:
             nodeTypes: ['TYPO3.Neos:Document']
 
+'Sfi.Sfi:StudyProgramsListingByReference':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Study Programs Listing By Reference'
+    group: contentBlocks
+    inspector:
+      groups:
+        general:
+          label: 'General'
+          position: 'start 1'
+  properties:
+    references:
+      type: references
+      ui:
+        label: 'Select StudyPrograms to list'
+        reloadIfChanged: TRUE
+        inspector:
+          group: general
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Sfi:StudyProgram'
