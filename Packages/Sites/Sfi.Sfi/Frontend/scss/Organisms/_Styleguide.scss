@@ -19,8 +19,10 @@
 		overflow: auto;
 	}
 	li{
-		float: left;
 		margin: $u;
+	}
+	li li {
+		float: left;
 	}
 	a{
 		padding: $u;
