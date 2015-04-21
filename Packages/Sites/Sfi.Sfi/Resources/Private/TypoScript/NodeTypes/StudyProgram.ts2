@@ -63,8 +63,8 @@ prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProg
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'Node_' + rootNode.identifier}
-			2 = ${'NodeType_Sfi.Sfi:StudyProgramShort'}
+			1 = ${'Node_' + node.identifier}
+			2 = ${'NodeType_Sfi.Sfi:StudyProgram'}
 		}
 	}
 }
