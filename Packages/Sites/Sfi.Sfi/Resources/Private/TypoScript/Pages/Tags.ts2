@@ -6,6 +6,7 @@ tags < page {
 		node = ${q(node).get(0)}
 
 		title = ${q(node).property('title')}
+		listByTag = Sfi.News:ListByTag
 
 		sectionMenu = Menu
 		sectionMenu {
