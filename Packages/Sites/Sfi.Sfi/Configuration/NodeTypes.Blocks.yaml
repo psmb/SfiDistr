@@ -186,6 +186,7 @@ blah: &alohaRich
           group: 'image'
           position: 50
 
+
 'Sfi.Sfi:StudyProgramsListing':
   superTypes:
     - 'TYPO3.Neos:Content'
