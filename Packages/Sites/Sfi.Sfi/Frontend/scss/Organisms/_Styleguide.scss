@@ -12,6 +12,25 @@
 		color: red;
 	}
 }
+
+.StyleguideSubMenu{
+	overflow: auto;
+	ul {
+		overflow: auto;
+	}
+	li{
+		float: left;
+		margin: $u;
+	}
+	a{
+		padding: $u;
+		text-decoration: underline;
+	}
+	li.current a{
+		color: red;
+	}
+}
+
 .Styleguide-CategoryTitle{
 	font-size: 4rem;
 	text-align: center;

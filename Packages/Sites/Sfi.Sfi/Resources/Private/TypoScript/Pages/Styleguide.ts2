@@ -1,26 +1,52 @@
 styleguide < page {
 	body {
-		templatePath = 'resource://Sfi.Styleguide/Private/Templates/Category.html'
-		sectionName = 'body'
+		templatePath = 'resource://Sfi.Styleguide/Private/Templates/NodeTypes/Category.html'
 
 		title = ${node.properties.title}
 
 		menu = Menu
-		menu{
+		menu {
 			 entryLevel = 2
+		}
+
+		subMenu = Menu
+		subMenu {
+			 entryLevel = 3
+			 maximumLevels = 2
+		}
+
+		content = TYPO3.Neos:ContentCollectionRenderer
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${'Node_' + documentNode.identifier}
+			2 = ${'DescendantOf_' + documentNode.identifier}
 		}
 	}
 }
 
-root.styleguide {
-        condition = ${q(node).is('[instanceof Sfi.Styleguide:Category]')}
-        renderPath = '/styleguide'
-}
-
-prototype(Sfi.Styleguide:SubCategory){
+prototype(Sfi.Styleguide:SubCategory) {
 	content = TYPO3.Neos:ContentCollectionRenderer
 }
 
 prototype(Sfi.Styleguide:Item){
 	content = TYPO3.Neos:ContentCollectionRenderer
+}
+
+root.styleguide {
+	condition = ${q(node).is('[instanceof Sfi.Styleguide:Category]')}
+	renderPath = '/styleguide'
+}
+root.styleguide2 {
+	condition = ${q(node).is('[instanceof Sfi.Styleguide:SubCategory]')}
+	renderPath = '/styleguide'
+}
+root.styleguide3 {
+	condition = ${q(node).is('[instanceof Sfi.Styleguide:Item]')}
+	renderPath = '/styleguide'
 }
