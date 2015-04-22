@@ -20,7 +20,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 	bodyTag.attributes.class = 'Page'
 	bodyTag.attributes.id = ${q(node).property('_name')}
 	body {
-		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Default.html'
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
 		partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 		layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 
