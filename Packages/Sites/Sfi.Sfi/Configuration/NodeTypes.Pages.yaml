@@ -46,7 +46,7 @@ blah: &alohaRich
     - 'TYPO3.Neos.NodeTypes:Page'
 
 
-'Sfi.Sfi:Page':
+'Sfi.Sfi:AbstractPage':
   abstract: true
   ui:
     label: 'Abstract Page'
@@ -57,7 +57,7 @@ blah: &alohaRich
   ui:
     label: 'Page: Main'
   superTypes:
-    - 'Sfi.Sfi:Page'
+    - 'Sfi.Sfi:AbstractPage'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -68,7 +68,7 @@ blah: &alohaRich
   ui:
     label: 'Page: Presentation'
   superTypes:
-    - 'Sfi.Sfi:Page'
+    - 'Sfi.Sfi:AbstractPage'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -86,7 +86,7 @@ blah: &alohaRich
   ui:
     label: 'Page: Section'
   superTypes:
-    - 'Sfi.Sfi:Page'
+    - 'Sfi.Sfi:AbstractPage'
   childNodes:
     presentation:
       type: 'TYPO3.Neos:ContentCollection'
@@ -99,7 +99,7 @@ blah: &alohaRich
   ui:
     label: 'Page: SubSection'
   superTypes:
-    - 'Sfi.Sfi:Page'
+    - 'Sfi.Sfi:AbstractPage'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -110,7 +110,7 @@ blah: &alohaRich
   ui:
     label: 'Page: Tag'
   superTypes:
-    - 'Sfi.Sfi:Page'
+    - 'Sfi.Sfi:AbstractPage'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'

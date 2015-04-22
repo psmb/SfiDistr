@@ -1,16 +1,19 @@
-prototype(Sfi.Sfi:Person) {
-	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+prototype(Sfi.Sfi:Person) < prototype(Sfi.Sfi:AbstractPage) {
+	body {
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/NodeTypes/Person.html'
+		partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 
-	main = TYPO3.Neos:ContentCollection {
-		nodePath = 'main'
-	}
+		main = TYPO3.Neos:ContentCollection {
+			nodePath = 'main'
+		}
 
-	coverCollection = TYPO3.Neos:ContentCollection{
-		nodePath = 'coverCollection'
-		prototype(TYPO3.Neos.NodeTypes:Image){
-			maximumWidth = 400
-			maximumHeight = 600
-			allowCropping = TRUE
+		coverCollection = TYPO3.Neos:ContentCollection{
+			nodePath = 'coverCollection'
+			prototype(TYPO3.Neos.NodeTypes:Image){
+				maximumWidth = 400
+				maximumHeight = 600
+				allowCropping = TRUE
+			}
 		}
 	}
 }
@@ -21,18 +24,4 @@ prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
 	subject = ${String.stripTags(q(node).property('subject'))}
 	degree = ${String.stripTags(q(node).property('degree'))}
 	image = ${q(node).find('[instanceof TYPO3.Neos.NodeTypes:Image]').first().property('image')}
-}
-
-
-# Register support for PersonShort to renderer of Listable
-prototype(Sfi.News:Listable).itemRenderer.Person {
-	condition = ${q(node).is('[instanceof Sfi.Sfi:Person]')}
-	type = 'Sfi.Sfi:PersonShort'
-}
-
-
-prototype(TYPO3.Neos:PrimaryContent).Person {
-	@position = 'before default'
-	condition = ${q(node).is('[instanceof Sfi.Sfi:Person]')}
-	type = 'Sfi.Sfi:Person'
 }

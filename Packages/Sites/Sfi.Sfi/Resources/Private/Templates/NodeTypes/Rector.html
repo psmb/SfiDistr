@@ -1,0 +1,46 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace s=Sfi\Shared\ViewHelpers}
+
+<div class="Rector-Article">
+	<div class="Article Article--Soft">
+		<neos:contentElement.wrap node="{node}">
+			<div class="row">
+				<div class="large-10 large-offset-1 columns">
+					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+					<f:if condition="{node.context.workspace.name} != 'live'">
+						<f:then>
+						    <div class="ServiceEm">Научная степень: {neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
+							<div class="ServiceEm">Должность: {neos:contentElement.editable(property: 'position', tag: 'span')}</div>
+							<div class="ServiceEm">Преподаваемые дисциплины: {neos:contentElement.editable(property: 'subject', tag: 'span')}</div>
+							<div class="ServiceEm">Стаж работы: {neos:contentElement.editable(property: 'experience', tag: 'span')}</div>
+							<div class="ServiceEm">Образование: {neos:contentElement.editable(property: 'education', tag: 'span')}</div>
+						</f:then>
+						<f:else>
+							<f:if condition="{degree}">
+								<div class="ServiceEm">Научная степень: {degree}</div>
+							</f:if>
+							<f:if condition="{position}">
+								<div class="ServiceEm">Должность: {position}</div>
+							</f:if>
+							<f:if condition="{subject}">
+								<div class="ServiceEm">Преподаваемые дисциплины: {subject}</div>
+							</f:if>
+							<f:if condition="{experience}">
+								<div class="ServiceEm">Стаж работы: {experience}</div>
+							</f:if>
+							<f:if condition="{education}">
+								<div class="ServiceEm">Образование: {education}</div>
+							</f:if>
+						</f:else>
+					</f:if>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-8 medium-10 large-offset-2 medium-offset-1 columns">
+					{coverCollection -> f:format.raw()}
+					{main -> f:format.raw()}
+				</div>
+			</div>
+		</neos:contentElement.wrap>
+	</div>	
+</div>

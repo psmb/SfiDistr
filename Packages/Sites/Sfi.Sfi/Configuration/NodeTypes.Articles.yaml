@@ -149,6 +149,12 @@ blah: &alohaRich
           <<: *alohaPlain
           placeholder: 'Образование'
 
+'Sfi.Sfi:Rector':
+  superTypes:
+    - 'Sfi.Sfi:Person'
+  ui:
+    label: 'Rector'
+
 'Sfi.Sfi:StudyProgram':
   superTypes:
     - 'TYPO3.Neos:Document'

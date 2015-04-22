@@ -1,0 +1,9 @@
+prototype(Sfi.Sfi:PageMain) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Main.html'
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	newsTop = Sfi.News:TopList
+	newsLatest = Sfi.News:Latest
+	newsAnnouncements = Sfi.News:AnnouncementsList
+	promo = Sfi.Sfi:PromoList
+	breadcrumbMenu>
+}

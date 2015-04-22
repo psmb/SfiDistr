@@ -69,14 +69,6 @@ prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProg
 	}
 }
 
-
-# Add support for StudyProgramShort to renderer of Listable
-prototype(Sfi.News:Listable).itemRenderer.StudyProgram {
-	condition = ${q(node).is('[instanceof Sfi.Sfi:StudyProgram]')}
-	type = 'Sfi.Sfi:StudyProgramShort'
-}
-
-
 prototype(TYPO3.Neos:PrimaryContent) {
 	StudyProgram {
 		@position = 'before default'

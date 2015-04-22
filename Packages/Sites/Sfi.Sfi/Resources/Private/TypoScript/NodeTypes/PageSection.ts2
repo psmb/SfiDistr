@@ -1,0 +1,16 @@
+prototype(Sfi.Sfi:PageSection) {
+	node = ${node}
+
+	sectionMenu = ${sectionMenu}
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+
+	presentation = TYPO3.Neos:ContentCollection {
+		nodePath = 'presentation'
+	}
+
+	sidebar = TYPO3.Neos:ContentCollection {
+		nodePath = 'sidebar'
+	}
+}

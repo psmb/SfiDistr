@@ -1,0 +1,23 @@
+prototype(Sfi.Sfi:PageSubSection) {
+	node = ${node}
+
+	sectionMenu = ${sectionMenu}
+
+	subSectionMenu = Menu {
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SubSectionMenu.html'
+		entryLevel = 3
+		maximumLevels = 0
+	}
+
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+
+	presentation = TYPO3.Neos:ContentCollection {
+		nodePath = 'presentation'
+	}
+
+	sidebar = TYPO3.Neos:ContentCollection {
+		nodePath = 'sidebar'
+	}
+}

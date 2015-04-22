@@ -1,0 +1,11 @@
+prototype(Sfi.Sfi:PagePresentation) {
+	node = ${node}
+
+	title = ${q(node).property('title')}
+	lead = ${q(node).property('lead')}
+
+	sectionMenu = ${sectionMenu}
+	main = ContentCollection {
+		nodePath = 'main'
+	}
+}

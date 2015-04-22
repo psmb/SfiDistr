@@ -1,12 +1,9 @@
 # TODO: Use proper Neos redirects!
-prototype(Sfi.Sfi:Redirect){
-	@class = 'Sfi\\Sfi\\TypoScript\\RedirectImplementation'
-}
 prototype(Sfi.Sfi:CooluriDecode){
 	@class = 'Sfi\\Sfi\\TypoScript\\CooluriDecodeImplementation'
 }
-
-redirect = Sfi.Sfi:Redirect{
+prototype(Sfi.Sfi:Redirect){
+	@class = 'Sfi\\Sfi\\TypoScript\\RedirectImplementation'
 	@override.newsuid = Sfi.Sfi:CooluriDecode{
 		url = ${request.arguments.url}
 	}
@@ -21,8 +18,4 @@ redirect = Sfi.Sfi:Redirect{
 			3 = 'site'
 		}
 	}
-}
-root.redirect {
-	condition = ${q(node).is('[instanceof Sfi.Sfi:Redirect]')}
-	renderPath = '/redirect'
 }

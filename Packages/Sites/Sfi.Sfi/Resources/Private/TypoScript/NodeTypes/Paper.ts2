@@ -15,14 +15,6 @@ prototype(Sfi.Sfi:PaperShort) < prototype(TYPO3.Neos:Content) {
 	authorFrom = ${String.stripTags(q(node).property('authorFrom'))}
 }
 
-
-# Add support for PaperShort to renderer of Listable
-prototype(Sfi.News:Listable).itemRenderer.paper {
-	condition = ${q(node).is('[instanceof Sfi.Sfi:Paper]')}
-	type = 'Sfi.Sfi:PaperShort'
-}
-
-
 prototype(TYPO3.Neos:PrimaryContent) {
 	Paper {
 		@position = 'before default'
