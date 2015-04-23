@@ -1,4 +1,6 @@
 prototype(Sfi.Sfi:PageTag) {
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 	node = ${node}
 
 	title = ${q(node).property('title')}

@@ -1,16 +1,11 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 
-<div class="row PresentationLayout-Wrap">
-	<div class="medium-8 columns PresentationLayout-Content">
-		<h1 class="PresentationLayout-PageTitle">{node.properties.title}</h1>
-		<neos:contentElement.wrap node="{node}">
-			<div class="PresentationLayout-Lead">{neos:contentElement.editable(property: 'lead')}</div>
-		</neos:contentElement.wrap>
-		{main -> f:format.raw()}
-	</div>
-	<div class="medium-4 large-3 large-offset-1 columns PresentationLayout-Sidebar">
-		<div class="js-StickInParent">
-			{sectionMenu -> f:format.raw()}
-		</div>
-	</div>
-</div>
+<f:layout name="Sidebar" />
+
+<f:section name="content">
+	<h1 class="PageTitle">{node.properties.title}</h1>
+	<neos:contentElement.wrap node="{node}">
+		<div class="Lead">{neos:contentElement.editable(property: 'lead')}</div>
+	</neos:contentElement.wrap>
+	{main -> f:format.raw()}
+</f:section>

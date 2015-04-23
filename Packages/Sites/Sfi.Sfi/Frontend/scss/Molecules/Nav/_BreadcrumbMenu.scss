@@ -1,5 +1,5 @@
 .BreadcrumbMenu{
-	overflow: auto;
+	position: absolute;
 	margin: $u/2 0;
 	@include breakpoint('large') {
 		margin: $u 0;

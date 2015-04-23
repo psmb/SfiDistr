@@ -1,18 +1,26 @@
 .RteText {
+	h1,h2,h3,h4,h5,h6{
+		margin-top: 3*$u;
+		margin-bottom: $u;
+	}
 	h1 {
-		@extend .H2;
+		color: pink;
 	}
 	h2 {
-		@extend .H3;
+		@extend .H2;
+		@include breakpoint('medium') {
+			margin-top: 4*$u;
+		}
 	}
 	h3 {
-		@extend .H4;
+		@extend .H3;
 	}
 	h4 {
-		@extend .H5;
+		@extend .H4;
 	}
 	p {
 		@extend .Paragraph;
+		margin-bottom: $lineHeight-normal*1em;;
 	}
 	a {
 		@extend .Link;

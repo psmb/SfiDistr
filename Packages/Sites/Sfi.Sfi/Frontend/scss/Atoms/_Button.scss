@@ -1,5 +1,6 @@
 .Button {
 	@extend .Service--Small;
+	display: inline-block;
 	transition: $transition;
 	margin: 8px 0 !important;
 	background: $color-primary;
@@ -17,6 +18,7 @@
 .ButtonInline {
 	@extend .Link;
 	@extend .ParagraphAlt;
+	margin: $u 0;
 	transition: $transition;
 	&:after {
 		content: "›";

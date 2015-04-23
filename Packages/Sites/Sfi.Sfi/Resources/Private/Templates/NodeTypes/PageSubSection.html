@@ -1,16 +1,10 @@
-<div class="row SubSectionLayout-Wrap">
-	<div class="medium-8 columns SubSectionLayout-Content">
-		<div class="SubSectionLayout-Header">
-			<h1 class="SubSectionLayout-PageTitle">{node.parent.properties.title}</h1>
-			{subSectionMenu -> f:format.raw()}
-		</div>
-		<h2 class="SubSectionLayout-SubPageTitle">{node.properties.title}</h2>
-		{main -> f:format.raw()}
+<f:layout name="Sidebar" />
+
+<f:section name="content">
+	<div class="SubSectionLayout-Header">
+		<h1 class="SubSectionLayout-PageTitle PageTitle">{node.parent.properties.title}</h1>
+		{subSectionMenu -> f:format.raw()}
 	</div>
-	<div class="medium-4 large-3 large-offset-1 columns SubSectionLayout-Sidebar js-StickInParent">
-		{sectionMenu -> f:format.raw()}
-		<div class="SubSectionLayout-Sidebar">
-			{content.sidebar -> f:format.raw()}
-		</div>
-	</div>
-</div>
+	<h2 class="SubSectionLayout-SubPageTitle">{node.properties.title}</h2>
+	{main -> f:format.raw()}
+</f:section>

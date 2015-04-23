@@ -1,3 +1,16 @@
+.Header {
+	margin-bottom: 4*$u;
+	@include breakpoint('medium') {
+		margin-bottom: 6*$u;
+	}
+	@include breakpoint('large') {
+		margin-bottom: 8*$u;
+	}
+}
+#page-sfi .Header{
+	margin-bottom: 0;
+}
+
 .Header-Wrap{
 	position: relative;
 	overflow: auto;

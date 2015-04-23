@@ -18,7 +18,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		}
 	}
 	bodyTag.attributes.class = 'Page'
-	bodyTag.attributes.id = ${q(node).property('_name')}
+	bodyTag.attributes.id = ${'page-' + q(node).property('_name')}
 	body {
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/Pages/Page.html'
 		partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
@@ -41,7 +41,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		}
 
 		breadcrumbMenu = BreadcrumbMenu {
-			attributes.class = 'BreadcrumbMenu'
+			attributes.class = 'BreadcrumbMenu hide-for-small-only'
 			@if.isNotMain = ${q(node).is('[instanceof Sfi.Sfi:PageMain]') ? false : true}
 			@if.isNotNews = ${q(node).is('[instanceof Sfi.News:AbstractNews]') ? false : true}
 		}

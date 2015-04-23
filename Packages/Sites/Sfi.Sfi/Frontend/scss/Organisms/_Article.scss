@@ -24,45 +24,37 @@
 	margin-bottom: 0;
 }
 
+.Article-Bar {
+	margin-bottom: $u;
+}
+
 
 .Article--Soft {
 	.Article-Title {
-		@extend .H1;
+		@extend .PageTitle;
 		text-align: center;
-		margin-top: 0;
-		margin-bottom: 0;
 	}
 	.Article-Teaser {
 		@extend .ServiceLight--Large;
 		text-align: center;
 	}
 	.Article-Lead {
-		@extend .Paragraph--Large;
+		@extend .Lead;
 	}
 }
 
 .Article--Hard {
 	.Article-Title {
-		@extend .H2;
-		margin-top: 0;
-		margin-bottom: 0;
+		@extend .PageTitle--Small;
 	}
 	.Article-Teaser {
 		@extend .ServiceLight;
 	}
 	.Article-Lead {
 		@extend .Paragraph;
+		margin-bottom: $u;
 	}
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -70,15 +62,6 @@
 
 
 // TODO: refactor this
-.NewsDetail {
-	margin-top: 3*$u !important;
-	@include breakpoint('medium') {
-		margin-top: 6*$u !important;
-	}
-}
-
-
-
 @include breakpoint(medium only) {
 	.NewsDetail-MoreItems {
 		.MediaSmall-Image {

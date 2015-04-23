@@ -15,6 +15,7 @@
 
 .MediaPromo-Title{
 	@extend .ServiceLight--Small;
+	margin: $u 0;
 	color: $color-primaryAlt;
 }
 .MediaPromo-Teaser{

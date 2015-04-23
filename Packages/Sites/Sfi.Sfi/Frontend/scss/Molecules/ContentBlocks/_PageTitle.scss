@@ -1,0 +1,8 @@
+.PageTitle {
+	@extend .H1;
+	margin-bottom: 2*$u;
+}
+.PageTitle--Small {
+	@extend .H2;
+	margin-bottom: 2*$u;
+}

@@ -1,5 +1,4 @@
 .Paragraph {
-	margin: $u 0;
 	font-size: rem-calc(14);
 	@include breakpoint('medium') {
 		font-size: rem-calc(18);
@@ -22,7 +21,6 @@
 }
 
 .ParagraphAlt {
-	margin: $u 0;
 	font-family: $fontFamily-alt;
 	font-size: rem-calc(14);
 	line-height: $lineHeight-normal;

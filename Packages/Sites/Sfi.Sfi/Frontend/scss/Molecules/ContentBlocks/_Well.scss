@@ -1,5 +1,9 @@
 .Well {
+	margin: $spacingBetweenContentBlocks 0;
 	border: $border-thin;
 	background: $gray-bg--light;
 	padding: 1.5 * $u;
+	p:last-child {
+		margin-bottom: 0;
+	}
 }

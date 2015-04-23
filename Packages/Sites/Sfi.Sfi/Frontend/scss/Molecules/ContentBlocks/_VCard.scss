@@ -5,14 +5,17 @@
 }
 .VCard-Position {
 	@extend .ServiceEm;
+	margin: $u 0;
 	line-height: 1;
 }
 .VCard-Name {
 	@extend .Paragraph;
+	margin: $u 0;
 	line-height: 1;
 }
 .VCard-Contact {
 	@extend .ParagraphAlt;
+	margin: $u 0;
 	color: $gray--light;
 	line-height: 1;
 }
