@@ -154,6 +154,29 @@ blah: &alohaRich
     - 'Sfi.Sfi:Person'
   ui:
     label: 'Rector'
+  properties:
+    quote:
+      type: string
+      ui:
+        label: 'Цитата'
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Цитата'
+    quoteTitle:
+      type: string
+      ui:
+        label: 'Подпись к цитате'
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Подпись к цитате'
+
+'Sfi.Sfi:ProRector':
+  superTypes:
+    - 'Sfi.Sfi:Person'
+  ui:
+    label: 'ProRector'
 
 'Sfi.Sfi:StudyProgram':
   superTypes:

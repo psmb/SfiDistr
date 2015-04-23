@@ -1,19 +1,14 @@
-prototype(Sfi.Sfi:Person) < prototype(Sfi.Sfi:AbstractPage) {
-	body {
-		templatePath = 'resource://Sfi.Sfi/Private/Templates/NodeTypes/Person.html'
-		partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+prototype(Sfi.Sfi:Person) {
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
 
-		main = TYPO3.Neos:ContentCollection {
-			nodePath = 'main'
-		}
-
-		coverCollection = TYPO3.Neos:ContentCollection{
-			nodePath = 'coverCollection'
-			prototype(TYPO3.Neos.NodeTypes:Image){
-				maximumWidth = 400
-				maximumHeight = 600
-				allowCropping = TRUE
-			}
+	coverCollection = TYPO3.Neos:ContentCollection{
+		nodePath = 'coverCollection'
+		prototype(TYPO3.Neos.NodeTypes:Image){
+			maximumWidth = 400
+			maximumHeight = 600
+			allowCropping = TRUE
 		}
 	}
 }

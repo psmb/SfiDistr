@@ -1,0 +1,7 @@
+prototype(Sfi.Sfi:ProRector) < prototype(Sfi.Sfi:Person) {
+}
+
+prototype(Sfi.Sfi:ProRectorShort) < prototype(Sfi.Sfi:PersonShort) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/ProRectorShort.html'
+	position = ${String.stripTags(q(node).property('position'))}
+}

@@ -43,7 +43,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		breadcrumbMenu = BreadcrumbMenu {
 			attributes.class = 'BreadcrumbMenu'
 			@if.isNotMain = ${q(node).is('[instanceof Sfi.Sfi:PageMain]') ? false : true}
-			@if.isPage = ${q(node).is('[instanceof Sfi.Sfi:AbstractPage]')}
+			@if.isNotNews = ${q(node).is('[instanceof Sfi.News:AbstractNews]') ? false : true}
 		}
 
 		footerGallery = Sfi.Sfi:FooterGallery
