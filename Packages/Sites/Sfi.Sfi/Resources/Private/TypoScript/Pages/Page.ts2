@@ -57,8 +57,12 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 
 		javascripts.bodyScripts = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
-			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			sectionName = 'bodyScripts'
+		}
+		javascripts.analytics = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
+			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+			sectionName = 'analytics'
 		}
 		javascripts.backend = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
@@ -73,7 +77,10 @@ prototype(Sfi.Sfi:Page).@cache.entryIdentifier.pagination = ${request.pluginArgu
 root.@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
 
 # Extend StyleguidePage with Sfi.Sfi:Page, to get correct CSS for Styleguide
-prototype(Sfi.Styleguide:StyleguidePage) < prototype(Sfi.Sfi:Page)
+prototype(Sfi.Styleguide:StyleguidePage) < prototype(Sfi.Sfi:Page) {
+	# disable analytics
+	body.javascripts.analytics >
+}
 
 root.fallbackPage {
 	@position = 'end 9900'
