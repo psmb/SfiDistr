@@ -15,6 +15,7 @@ prototype(Sfi.Sfi:Person) {
 			allowCropping = TRUE
 		}
 	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
