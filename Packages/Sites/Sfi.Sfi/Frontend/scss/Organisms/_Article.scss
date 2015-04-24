@@ -28,6 +28,9 @@
 	margin-bottom: $u;
 }
 
+.Article-Lead a {
+	@extend .Link;
+}
 
 .Article--Soft {
 	.Article-Title {
