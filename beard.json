@@ -5,10 +5,10 @@
     },
     "changes": [
         {
-            "name": "PdoBackend fix",
+            "name": "MoveNode transformation",
             "type": "gerrit",
-            "path": "Packages/Framework/TYPO3.Flow",
-            "change_id": "36724"
+            "path": "Packages/Application/TYPO3.TYPO3CR",
+            "change_id": "38893"
         },
         {
             "name": "Command for cleaning up nodes",

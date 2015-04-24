@@ -1,0 +1,28 @@
+up:
+  comments: 'Move poposovet sections to popsovet page'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeName'
+          settings:
+            nodeName: 'node-545b910519eb7'
+      transformations:
+        -
+          type: 'MoveNode'
+          settings:
+            referenceNodePath: '/sites/sfi/about/popechitelskij-sovet/main'
+down:
+  comments: 'Revert move of poposovet sections to popsovet page'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeName'
+          settings:
+            nodeName: 'node-545b910519eb7'
+      transformations:
+        -
+          type: 'MoveNode'
+          settings:
+            referenceNodePath: '/sites/sfi/about/main'
