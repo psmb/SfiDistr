@@ -41,6 +41,12 @@
 	@extend .Paragraph;
 	font-size: rem-calc(10);
 }
+
+.ServiceEm--Large {
+	@extend .Paragraph;
+	font-style: italic;
+}
+
 .ServiceEm {
 	@extend .Paragraph--Small;
 	font-style: italic;
