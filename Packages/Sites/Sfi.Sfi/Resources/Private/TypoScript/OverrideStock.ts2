@@ -1,5 +1,5 @@
 prototype(TYPO3.Neos:Content) {
-	attributes.itemprop = ${q(node).property('itemprop') ? q(node).property('itemprop') : null }
+	attributes.itemprop = ${q(node).property('itemprop') ? q(node).property('itemprop') : null}
 	attributes.itemscope = ${q(node).property('itemtype') ? true : null}
 	attributes.itemtype = ${q(node).property('itemtype') ? q(node).property('itemtype') : null}
 }

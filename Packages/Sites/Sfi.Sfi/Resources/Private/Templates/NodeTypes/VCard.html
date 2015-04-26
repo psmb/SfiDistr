@@ -6,8 +6,8 @@
 	<div class="VCard VCard--1">
 		<neos:contentElement.wrap node="{node}">
 			<div class="VCard-Position">{neos:contentElement.editable(property: 'position')}</div>
-			<div class="VCard-Name">{neos:contentElement.editable(property: 'name')}</div>
-			<div class="VCard-Contact">{neos:contentElement.editable(property: 'contact')}</div>
+			<div itemprop="Fio" class="VCard-Name">{neos:contentElement.editable(property: 'name')}</div>
+			<div itemprop="E-mail" class="VCard-Contact">{neos:contentElement.editable(property: 'contact')}</div>
 		</neos:contentElement.wrap>
 	</div>
 </f:section>
@@ -15,9 +15,9 @@
 <f:section name="VCard2">
 	<div class="VCard VCard--2">
 		<neos:contentElement.wrap node="{node}">
-			<div class="VCard-Name">{neos:contentElement.editable(property: 'name')}</div>
+			<div itemprop="Fio" class="VCard-Name">{neos:contentElement.editable(property: 'name')}</div>
 			<div class="VCard-Degree">{neos:contentElement.editable(property: 'degree')}</div>
-			<div class="VCard-Contact">{neos:contentElement.editable(property: 'contact')}</div>
+			<div itemprop="E-mail" class="VCard-Contact">{neos:contentElement.editable(property: 'contact')}</div>
 		</neos:contentElement.wrap>
 	</div>
 </f:section>
