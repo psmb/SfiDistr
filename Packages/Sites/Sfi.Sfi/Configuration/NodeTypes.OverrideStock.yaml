@@ -1,0 +1,23 @@
+'TYPO3.Neos:Content':
+  ui:
+    inspector:
+      groups:
+        microformats:
+          label: 'Microformats'
+          position: 1
+          tab: meta
+  properties:
+    itemprop:
+      type: string
+      ui:
+        label: 'itemprop (e.g. RegDate)'
+        reloadIfChanged: FALSE
+        inspector:
+          group: 'microformats'
+    itemtype:
+      type: string
+      ui:
+        label: 'itemtype (e.g. http://obrnadzor.gov.ru/microformats/UchredLaw)'
+        reloadIfChanged: FALSE
+        inspector:
+          group: 'microformats'
