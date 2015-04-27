@@ -6,7 +6,7 @@
 <f:section name="content">
 	<div class="row">
 		<div class="columns">
-			<h1 class="PageTitle">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+			<h1 itemprop="Fio" class="PageTitle">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -16,16 +16,16 @@
 		<div class="medium-6 columns">
 			<div class="marginVertical-single">
 				<s:ifOr condition="{degree}" or="{node.context.workspace.name} != 'live'">
-					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
+					<div itemprop="Degree" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
 				</s:ifOr>
 				<s:ifOr condition="{position}" or="{node.context.workspace.name} != 'live'">
-					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'position', tag: 'span')}</div>
+					<div itemprop="Post" class="ServiceEm--Large">{neos:contentElement.editable(property: 'position', tag: 'span')}</div>
 				</s:ifOr>
 			</div>
 			<s:ifOr condition="{subject}" or="{node.context.workspace.name} != 'live'">
 				<div class="marginVertical-single">
 					<div class="ParagraphAlt--Large color-primaryAlt">Преподаваемые дисциплины:</div>
-					<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'subject', tag: 'span')}</div>
+					<div itemprop="TeachingDiscipline" class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'subject', tag: 'span')}</div>
 				</div>
 			</s:ifOr>
 			<s:ifOr condition="{education}" or="{node.context.workspace.name} != 'live'">

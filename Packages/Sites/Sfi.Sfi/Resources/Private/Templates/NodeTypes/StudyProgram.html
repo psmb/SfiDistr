@@ -5,7 +5,7 @@
 		<div class="Article">
 			<neos:contentElement.wrap node="{node}">
 				<div class="textAlign-center">
-					<div class="Service">{level}</div>
+					<div itemprop="EduLavel" class="Service">{level}</div>
 					<h1 class="H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
 					<div class="ServiceEm">{division}</div>
 				</div>
@@ -23,6 +23,6 @@
 </div>
 <div class="row">
 	<div class="columns">
-		<div class="Article-Content">{main -> f:format.raw()}</div>
+		<div itemprop="OOP_main" class="Article-Content">{main -> f:format.raw()}</div>
 	</div>
 </div>
