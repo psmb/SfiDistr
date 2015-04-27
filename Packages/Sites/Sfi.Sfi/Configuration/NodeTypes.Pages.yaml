@@ -107,13 +107,42 @@ blah: &alohaRich
       type: 'TYPO3.Neos:ContentCollection'
 
 'Sfi.Sfi:PageTag':
-  ui:
-    label: 'Page: Tag'
   superTypes:
     - 'Sfi.Sfi:AbstractPage'
+  ui:
+    label: 'Page: Tag'
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          position: 1
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
     listByTag:
       type: 'Sfi.News:ListByTag'
-
+  properties:
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+          position: 50
+    coverText:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        label: 'CoverText'
+        aloha:
+          <<: *alohaRich
+          placeholder: 'Текст обложки тэга'
+    coverCaption:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        label: 'CoverCaption'
+        aloha:
+          <<: *alohaRich
+          placeholder: 'Подпись к обложке тэга'

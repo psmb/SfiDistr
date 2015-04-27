@@ -18,4 +18,5 @@ prototype(Sfi.Sfi:PageTag) {
 		itemCollection = ${q(documentNode).siblings().get()}
 		itemCollection.@process.sort = ${q(value).count() > 0 ? q(value).sort('navTitle', 'ASC').get() : value}
 	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }

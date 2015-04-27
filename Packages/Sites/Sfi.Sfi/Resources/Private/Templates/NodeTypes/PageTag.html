@@ -1,9 +1,22 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
 
 <f:layout name="Sidebar" />
 
 <f:section name="content">
 	<h1 class="PageTitle">{neos:contentElement.editable(property: 'title')}</h1>
+
+	<div class="row backgroundColor-primary color-white marginVertical-double">
+		<div class="medium-5 columns paddingLeft-none">
+			<f:if condition="{image}">
+				<m:image asset="{image}" maximumWidth="300" maximumHeight="250" alt="{title}" /> 
+			</f:if>
+		</div>
+		<div class="medium-7 columns paddingVertical-double paddingHorizontal-double">
+			<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'coverText')}</div>
+			<div class="Service--Small">— {neos:contentElement.editable(property: 'coverCaption', tag: 'span')}</div>
+		</div>
+	</div>
 	{main -> f:format.raw()}
 	{listByTag  -> f:format.raw()}
 </f:section>
