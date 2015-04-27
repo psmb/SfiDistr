@@ -1,0 +1,11 @@
+prototype(Sfi.Sfi:Poster) {
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	coverCollection = TYPO3.Neos:ContentCollection {
+		nodePath = 'coverCollection'
+	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+}

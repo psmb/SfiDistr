@@ -95,6 +95,15 @@ blah: &alohaRich
           placeholder: 'Место откуда автор'
 
 
+'Sfi.Sfi:Poster':
+  superTypes:
+    - 'Sfi.News:AbstractArticle'
+    - 'Sfi.News:ImportantMixin'
+  ui:
+    label: 'Poster'
+    icon: icon-file-text
+
+
 'Sfi.Sfi:Person':
   superTypes:
     - 'TYPO3.Neos:Document'

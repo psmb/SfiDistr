@@ -1,0 +1,35 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+{namespace s=Sfi\Shared\ViewHelpers}
+
+<div class="row">
+	<div class="columns">
+		<h1 class="PageTitle textAlign-center">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+		<div class="row">
+			<div class="large-10 large-offset-1 columns">
+				<div class="Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-10 large-8 medium-offset-1 large-offset-2 columns">
+				<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-10 large-offset-1 columns">
+	        	{coverCollection -> f:format.raw()}
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-8 large-offset-2 columns">
+				<div class="Article-Content">{main -> f:format.raw()}</div>
+			</div>
+		</div>
+
+		<f:render partial="Tags" arguments="{tags: node.properties.tags}" />
+
+		<div class="marginTop-triple">
+			<f:render partial="Disqus" />
+		</div>
+	</div>
+</div>
