@@ -1,5 +1,5 @@
 .Figure{
-	margin: $u 0;
+	margin: $spacingBetweenContentBlocks 0;
 	// display: table;
 	figcaption{
 		@extend .ServiceEm;

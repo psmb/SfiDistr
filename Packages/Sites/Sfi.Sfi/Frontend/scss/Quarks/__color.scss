@@ -12,26 +12,33 @@ $color-primaryAlt: $blue;
 
 
 
-.color-white{
+.color-white {
 	color: white !important;
 }
-.color-primary{
+.color-primary {
 	color: $color-primary !important;
 }
-.color-primaryAlt{
+.color-primaryAlt {
 	color: $color-primaryAlt !important;
 }
 
-.backgroundColor-white{
+.backgroundColor-primary {
+	background-color: $color-primary !important;
+}
+.backgroundColor-primaryAlt {
+	background-color: $color-primaryAlt !important;
+}
+
+.backgroundColor-white {
 	background-color: white !important;
 }
-.borderColor-white{
+.borderColor-white {
 	border-color: white !important;
 }
 
-.backgroundColor-gray{
+.backgroundColor-gray {
 	background-color: $gray-bg !important;
 }
-.borderColor-gray{
+.borderColor-gray {
 	border-color: $gray-bg !important;
 }

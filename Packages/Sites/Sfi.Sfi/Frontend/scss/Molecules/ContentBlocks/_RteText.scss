@@ -20,7 +20,7 @@
 	}
 	p {
 		@extend .Paragraph;
-		margin-bottom: $lineHeight-normal*1em;;
+		margin-bottom: $lineHeight-normal*1em;
 	}
 	a {
 		@extend .Link;
@@ -30,12 +30,14 @@
 		li {
 			@extend .Paragraph;
 		}
+		margin-bottom: $lineHeight-normal*1em;
 	}
 	ol {
 		@extend .OrderedList;
 		li {
 			@extend .Paragraph;
 		}
+		margin-bottom: $lineHeight-normal*1em;
 	}
 }
 
@@ -44,21 +46,21 @@
 }
 
 // Map variants to paragrpah styles
-.RteText--Paragraph--Small p{
+.RteText--Paragraph--Small p, .RteText--Paragraph--Small li{
 	@extend .Paragraph--Small;
 }
-.RteText--Paragraph p{
+.RteText--Paragraph p, .RteText--Paragraph li{
 	@extend .Paragraph;
 }
-.RteText--Paragraph--Large p{
+.RteText--Paragraph--Large p, .RteText--Paragraph--Large li{
 	@extend .Paragraph--Large;
 }
-.RteText--ParagraphAlt--Small p{
+.RteText--ParagraphAlt--Small p, .RteText--ParagraphAlt--Small li{
 	@extend .ParagraphAlt--Small;
 }
-.RteText--ParagraphAlt p{
+.RteText--ParagraphAlt p, .RteText--ParagraphAlt li{
 	@extend .ParagraphAlt;
 }
-.RteText--ParagraphAlt--Large p{
+.RteText--ParagraphAlt--Large p, .RteText--ParagraphAlt--Large li{
 	@extend .ParagraphAlt--Large;
 }
