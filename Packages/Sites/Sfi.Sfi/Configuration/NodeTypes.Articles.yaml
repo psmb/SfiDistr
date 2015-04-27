@@ -120,7 +120,6 @@ blah: &alohaRich
     degree:
       type: string
       ui:
-        label: 'Степень'
         inlineEditable: true
         aloha:
           <<: *alohaPlain
@@ -128,7 +127,6 @@ blah: &alohaRich
     position:
       type: string
       ui:
-        label: 'Должность'
         inlineEditable: true
         aloha:
           <<: *alohaPlain
@@ -136,7 +134,6 @@ blah: &alohaRich
     subject:
       type: string
       ui:
-        label: 'Преподаваемая дисциплина'
         inlineEditable: true
         aloha:
           <<: *alohaPlain
@@ -144,15 +141,27 @@ blah: &alohaRich
     experience:
       type: string
       ui:
-        label: 'Стаж работы'
         inlineEditable: true
         aloha:
           <<: *alohaPlain
-          placeholder: 'Стаж работы'
+          placeholder: 'Стаж работы общий'
+    experienceSpeciality:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Стаж работы по специальности'
+    experienceSfi:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Стаж работы в СФИ'
     education:
       type: string
       ui:
-        label: 'Образование'
         inlineEditable: true
         aloha:
           <<: *alohaPlain
@@ -164,6 +173,20 @@ blah: &alohaRich
   ui:
     label: 'Rector'
   properties:
+    telephone:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Телефон'
+    email:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'E-mail'
     quote:
       type: string
       ui:
@@ -186,6 +209,21 @@ blah: &alohaRich
     - 'Sfi.Sfi:Person'
   ui:
     label: 'ProRector'
+  properties:
+    telephone:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Телефон'
+    email:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'E-mail'
 
 'Sfi.Sfi:StudyProgram':
   superTypes:

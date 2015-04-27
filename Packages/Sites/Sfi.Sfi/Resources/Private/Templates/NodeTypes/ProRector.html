@@ -13,32 +13,38 @@
 			{coverCollection -> f:format.raw()}
 		</div>
 		<div class="medium-6 columns">
-			<f:if condition="{node.context.workspace.name} != 'live'">
-				<f:then>
-				    <div class="ServiceEm">Научная степень: {neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
-					<div class="ServiceEm">Должность: {neos:contentElement.editable(property: 'position', tag: 'span')}</div>
-					<div class="ServiceEm">Преподаваемые дисциплины: {neos:contentElement.editable(property: 'subject', tag: 'span')}</div>
-					<div class="ServiceEm">Стаж работы: {neos:contentElement.editable(property: 'experience', tag: 'span')}</div>
-					<div class="ServiceEm">Образование: {neos:contentElement.editable(property: 'education', tag: 'span')}</div>
-				</f:then>
-				<f:else>
-					<f:if condition="{degree}">
-						<div class="ServiceEm">Научная степень: {degree}</div>
-					</f:if>
-					<f:if condition="{position}">
-						<div class="ServiceEm">Должность: {position}</div>
-					</f:if>
-					<f:if condition="{subject}">
-						<div class="ServiceEm">Преподаваемые дисциплины: {subject}</div>
-					</f:if>
-					<f:if condition="{experience}">
-						<div class="ServiceEm">Стаж работы: {experience}</div>
-					</f:if>
-					<f:if condition="{education}">
-						<div class="ServiceEm">Образование: {education}</div>
-					</f:if>
-				</f:else>
-			</f:if>
+			<div class="marginVertical-single">
+				<s:ifOr condition="{degree}" or="{node.context.workspace.name} != 'live'">
+					<div itemprop="Degree" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
+				</s:ifOr>
+				<s:ifOr condition="{position}" or="{node.context.workspace.name} != 'live'">
+					<div itemprop="Post" class="ServiceEm--Large">{neos:contentElement.editable(property: 'position', tag: 'span')}</div>
+				</s:ifOr>
+			</div>
+			<s:ifOr condition="{subject}" or="{node.context.workspace.name} != 'live'">
+				<div class="marginVertical-single">
+					<div class="ParagraphAlt--Large color-primaryAlt">Преподаваемые дисциплины:</div>
+					<div itemprop="TeachingDiscipline" class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'subject', tag: 'span')}</div>
+				</div>
+			</s:ifOr>
+			<s:ifOr condition="{education}" or="{node.context.workspace.name} != 'live'">
+				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'education', tag: 'span')}</div>
+			</s:ifOr>
+			<s:ifOr condition="{experience}" or="{node.context.workspace.name} != 'live'">
+				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experience', tag: 'span')}</div>
+			</s:ifOr>
+			<s:ifOr condition="{experienceSpeciality}" or="{node.context.workspace.name} != 'live'">
+				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experienceSpeciality', tag: 'span')}</div>
+			</s:ifOr>
+			<s:ifOr condition="{experienceSfi}" or="{node.context.workspace.name} != 'live'">
+				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experienceSfi', tag: 'span')}</div>
+			</s:ifOr>
+			<s:ifOr condition="{email}" or="{node.context.workspace.name} != 'live'">
+				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'email', tag: 'span')}</div>
+			</s:ifOr>
+			<s:ifOr condition="{telephone}" or="{node.context.workspace.name} != 'live'">
+				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'telephone', tag: 'span')}</div>
+			</s:ifOr>
 		</div>
 	</div>
 	<div class="row">

@@ -34,6 +34,12 @@
 			<s:ifOr condition="{experience}" or="{node.context.workspace.name} != 'live'">
 				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experience', tag: 'span')}</div>
 			</s:ifOr>
+			<s:ifOr condition="{experienceSpeciality}" or="{node.context.workspace.name} != 'live'">
+				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experienceSpeciality', tag: 'span')}</div>
+			</s:ifOr>
+			<s:ifOr condition="{experienceSfi}" or="{node.context.workspace.name} != 'live'">
+				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experienceSfi', tag: 'span')}</div>
+			</s:ifOr>
 		</div>
 	</div>
 	<div class="row">
