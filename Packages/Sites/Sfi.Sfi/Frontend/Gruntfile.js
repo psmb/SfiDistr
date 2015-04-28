@@ -15,7 +15,8 @@ module.exports = function (grunt) {
 				dest: 'Public/Built/_bower.js',
 				cssDest: 'Public/Built/_bower.css',
 				mainFiles: {
-					'audiojs': 'audiojs/audio.min.js'
+					'audiojs': 'audiojs/audio.min.js',
+					'turbolinks': 'lib/assets/javascripts/turbolinks.js'
 				},
 				exclude: [
 				  'foundation',

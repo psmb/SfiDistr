@@ -83,7 +83,10 @@ prototype(Sfi.Styleguide:StyleguidePage) < prototype(Sfi.Sfi:Page) {
 }
 
 root.fallbackPage {
-	@position = 'end 9900'
+	@position = 'before default'
 	condition = TRUE
 	type = 'Sfi.Sfi:Page'
 }
+
+# Disable stupid layout mechanism
+root.layout>

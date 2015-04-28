@@ -40,6 +40,7 @@ function(){"use strict";if(window.matchMedia&&window.matchMedia("all").addListen
 
 
 var onReadyPlugins = function() {
+    salvattore.rescanMediaQueries();
 
     var searchBoxInput = jQuery(".js-SearchBox-Field");
     var defaultValue = "поиск";
