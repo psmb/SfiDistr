@@ -27,17 +27,14 @@
 	}
 	ul {
 		@extend .UnorderedList;
-		li {
-			@extend .Paragraph;
-		}
 		margin-bottom: $lineHeight-normal*1em;
 	}
 	ol {
 		@extend .OrderedList;
-		li {
-			@extend .Paragraph;
-		}
 		margin-bottom: $lineHeight-normal*1em;
+	}
+	li {
+		@extend .Paragraph;
 	}
 }
 
