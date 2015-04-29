@@ -10,7 +10,7 @@
 	<ul class="MainMenu-Wrap overflow-hidden">
 		<f:for each="{items}" as="item" iteration="iterator">
 			<li class="MainMenu-Column {f:if(condition:iterator.isLast,then:'end')} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}" >
-				<div class="MainMenu-Item {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()} Service lineHeight-single marginTop-single">
+				<div class="MainMenu-Item {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()} Service lineHeight-single marginVertical-single">
 					<neos:link.node node="{item.node}"/>
 				</div>
 				<f:if condition="{item.subItems}">
