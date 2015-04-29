@@ -1,4 +1,5 @@
 .Epigraph {
+	margin: $spacingBetweenContentBlocks inherit;
 	@extend .Paragraph;
 	font-style: italic;
 	
