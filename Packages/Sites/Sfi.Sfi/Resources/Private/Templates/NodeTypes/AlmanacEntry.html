@@ -4,10 +4,7 @@
 <div class="marginVertical-double">
 	<a href="{href}" class="LinkState">
 		<div class="lineHeight-tight">
-			<span class="H4">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
-			<s:ifOr condition="{authorInfo}" or="{node.context.workspace.name} != 'live'">
-				<span class="ServiceEm">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span>
-			</s:ifOr>
+			<span class="H4">{neos:contentElement.editable(property: 'author', tag: 'span')}</span><s:ifOr condition="{authorInfo}" or="{node.context.workspace.name} != 'live'"><span class="ServiceEm">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span></s:ifOr>
 		</div>
 		<div class="Paragraph lineHeight-tight color-primary">{neos:contentElement.editable(property: 'title')}</div>
 		<div class="ParagraphAlt--Small">{neos:contentElement.editable(property: 'source', tag: 'span')}</div>
