@@ -241,8 +241,8 @@ blah: &alohaRich
     group: contentBlocks
     inspector:
       groups:
-        assets:
-          label: 'Assets'
+        asset:
+          label: 'Asset'
           position: 'start 1'
   properties:
     author:

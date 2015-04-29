@@ -2,23 +2,88 @@
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <div class="row">
 	<div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
-		<div class="Article">
-			<neos:contentElement.wrap node="{node}">
-				<div class="textAlign-center">
-					<div itemprop="EduLavel" class="Service">{level}</div>
-					<h1 class="H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
-					<div class="ServiceEm">{division}</div>
-				</div>
-				<div class="Paragraph marginVertical-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
-				<div class="StudyProgramCard textAlign-center">
-					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration', tag: 'span')}</div>
-					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate', tag: 'span')}</div>
-					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'educationForm', tag: 'span')}</div>
-					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'details', tag: 'span')}</div>
-					<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
-				</div>
-			</neos:contentElement.wrap>
-		</div>
+		<neos:contentElement.wrap node="{node}">
+			<div class="textAlign-center">
+				<div itemprop="EduLavel" class="Service">{level}</div>
+				<h1 class="H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+				<div class="ServiceEm">{division}</div>
+			</div>
+			<div class="Paragraph marginVertical-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+			<div class="StudyProgramCard textAlign-center">
+				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration', tag: 'span')}</div>
+				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate', tag: 'span')}</div>
+				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'educationForm', tag: 'span')}</div>
+				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'details', tag: 'span')}</div>
+				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
+			</div>
+
+
+			<h2 class="H2">О программе</h2>
+			<div class="Sections js-sections Sections--Tabs">
+				<ul class="Sections-Tabs">
+					<li class="Sections-Tab">
+						<a class="Sections-Anchor" href="#tab-description">Описание программы</a>
+					</li>
+					<li class="Sections-Tab">
+						<a class="Sections-Anchor" href="#tab-subjects">Изучаемые дисциплины</a>
+					</li>
+					<li class="Sections-Tab">
+						<a class="Sections-Anchor" href="#tab-schedule">Учебный график</a>
+					</li>
+				</ul>
+					<a href="#tab-description" class="Sections-Anchor">
+						<div class="Sections-AccordionTitle">Описание программы</div>
+					</a>
+					<div class="Sections-Panel" id="tab-description">
+						{panelDescription -> f:format.raw()}
+					</div>
+					<a href="#tab-subjects" class="Sections-Anchor">
+						<div class="Sections-AccordionTitle">Изучаемые дисциплины</div>
+					</a>
+					<div class="Sections-Panel" id="tab-subjects">
+						{panelSubjects -> f:format.raw()}
+					</div>
+					<a href="#tab-schedule" class="Sections-Anchor">
+						<div class="Sections-AccordionTitle">Учебный график</div>
+					</a>
+					<div class="Sections-Panel" id="tab-schedule">
+						{panelSchedule -> f:format.raw()}
+					</div>
+			</div>
+
+			<h2 class="H2">Поступление</h2>
+			<div class="Sections js-sections Sections--Tabs">
+				<ul class="Sections-Tabs">
+					<li class="Sections-Tab">
+						<a class="Sections-Anchor" href="#tab-description">Описание программы</a>
+					</li>
+					<li class="Sections-Tab">
+						<a class="Sections-Anchor" href="#tab-subjects">Изучаемые дисциплины</a>
+					</li>
+					<li class="Sections-Tab">
+						<a class="Sections-Anchor" href="#tab-schedule">Учебный график</a>
+					</li>
+				</ul>
+					<a href="#tab-description" class="Sections-Anchor">
+						<div class="Sections-AccordionTitle">Описание программы</div>
+					</a>
+					<div class="Sections-Panel" id="tab-description">
+						{panelDescription -> f:format.raw()}
+					</div>
+					<a href="#tab-subjects" class="Sections-Anchor">
+						<div class="Sections-AccordionTitle">Изучаемые дисциплины</div>
+					</a>
+					<div class="Sections-Panel" id="tab-subjects">
+						{panelSubjects -> f:format.raw()}
+					</div>
+					<a href="#tab-schedule" class="Sections-Anchor">
+						<div class="Sections-AccordionTitle">Учебный график</div>
+					</a>
+					<div class="Sections-Panel" id="tab-schedule">
+						{panelSchedule -> f:format.raw()}
+					</div>
+			</div>
+		</neos:contentElement.wrap>
 	</div>
 </div>
 <div class="row">
