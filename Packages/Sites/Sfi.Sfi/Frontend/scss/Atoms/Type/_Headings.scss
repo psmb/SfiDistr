@@ -2,7 +2,6 @@
 %mainHeadings {
 	font-family: $fontFamily-alt;
 	font-weight: bold;
-	color: $gray--dark;
 	line-height: $lineHeight-single;
 	@include breakpoint('medium') {
 		line-height: $lineHeight-tight;
