@@ -36,6 +36,9 @@
 	li {
 		@extend .Paragraph;
 	}
+	table {
+		@include table;
+	}
 }
 
 .RteTextLinkable a{
