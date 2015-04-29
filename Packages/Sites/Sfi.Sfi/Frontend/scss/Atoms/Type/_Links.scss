@@ -6,7 +6,7 @@
 		&,a {cursor: default;}
 	}
 	&:hover {
-		color: $color-primary;
+		color: $color-primary !important;
 		text-decoration: underline;
 	}
 }
