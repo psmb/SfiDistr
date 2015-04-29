@@ -1,4 +1,4 @@
-.Figure{
+.Figure {
 	margin: $spacingBetweenContentBlocks 0;
 	// display: table;
 	figcaption{
@@ -13,4 +13,7 @@
 			font-size: inherit;
 		}
 	}
+}
+.typo3-neos-nodetypes-image:first-child .Figure {
+	margin-top: 0;
 }

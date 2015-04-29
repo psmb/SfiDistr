@@ -14,7 +14,7 @@
 			{coverCollection -> f:format.raw()}
 		</div>
 		<div class="medium-6 columns">
-			<div class="marginVertical-single">
+			<div>
 				<s:ifOr condition="{degree}" or="{node.context.workspace.name} != 'live'">
 					<div itemprop="Degree" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
 				</s:ifOr>
