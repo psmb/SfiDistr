@@ -5,7 +5,7 @@
 	<a href="{href}" class="LinkState">
 		<div class="lineHeight-tight">
 			<span class="H4">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
-			<s:ifOr condition="{position}" or="{node.context.workspace.name} != 'live'">
+			<s:ifOr condition="{authorInfo}" or="{node.context.workspace.name} != 'live'">
 				<span class="ServiceEm">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span>
 			</s:ifOr>
 		</div>
