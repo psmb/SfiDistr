@@ -11,6 +11,9 @@
 	}
 }
 
+.LinkState{
+	@include link-state();
+}
 .Link{
 	color: $color-primary;
 	@include link-state();

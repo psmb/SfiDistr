@@ -1,6 +1,6 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <div class="marginVertical-double">
-	<a{attributes -> f:format.raw()}">
+	<a href="{href}" class="LinkState">
 		<div class="">
 			<span class="H4">{neos:contentElement.editable(property: 'author', tag: 'span')}, </span>
 			<span class="ServiceEm">{neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span>	
