@@ -1,0 +1,4 @@
+prototype(Sfi.Shared:Asset) {
+	attributes.href = ${'asset://' + node.properties.asset.identifier}
+	attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris
+}

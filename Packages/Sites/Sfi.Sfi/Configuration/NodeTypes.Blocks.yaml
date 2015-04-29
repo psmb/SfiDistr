@@ -231,3 +231,48 @@ blah: &alohaRich
           editorOptions:
             nodeTypes:
               - 'Sfi.Sfi:StudyProgram'
+
+
+'Sfi.Sfi:AlmanacEntry':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Almanac Entry'
+    group: contentBlocks
+    inspector:
+      groups:
+        assets:
+          label: 'Assets'
+          position: 'start 1'
+  properties:
+    author:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        aloha:
+          placeholder: 'Имя автора статьи'
+    authorInfo:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        aloha:
+          placeholder: 'Дополнительная информация об авторе'
+    title:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        aloha:
+          placeholder: 'Название статьи'
+    source:
+      type: string
+      ui:
+        inlineEditable: TRUE
+        aloha:
+          placeholder: 'Номера страниц в печатной версии'
+    asset:
+      type: TYPO3\Media\Domain\Model\Asset
+      ui:
+        inspector:
+          group: 'asset'
+        label: 'Assets'
+        reloadIfChanged: TRUE
