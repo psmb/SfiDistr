@@ -1,21 +1,22 @@
 .VCard {
+	margin: 2*$u inherit;
 	@include breakpoint (medium) {
 		margin-left: 4*$u;
 	}
 }
 .VCard-Position {
 	@extend .ServiceEm;
-	margin: $u 0;
+	margin: $u/2 0;
 	line-height: 1;
 }
 .VCard-Name {
 	@extend .Paragraph;
-	margin: $u 0;
+	margin: $u/2 0;
 	line-height: 1;
 }
 .VCard-Contact {
 	@extend .ParagraphAlt;
-	margin: $u 0;
+	margin: $u/2 0;
 	color: $gray--light;
 	line-height: 1;
 }
