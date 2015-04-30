@@ -1,7 +1,7 @@
 @mixin link-state {
 	transition: $transition;
 	&.current, &.current:hover {
-		color: $gray--light;
+		color: $gray--light !important;
 		text-decoration: none;
 		&,a {cursor: default;}
 	}
