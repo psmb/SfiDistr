@@ -1,0 +1,7 @@
+.Blockquote{
+	@extend .ParagraphAlt--Large;
+	margin: $spacingBetweenContentBlocks 0;
+	padding: $u 0;
+	border-top: $border-thin;
+	border-bottom: $border-thin;
+}
