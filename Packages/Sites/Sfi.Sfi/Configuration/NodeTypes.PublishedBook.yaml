@@ -1,0 +1,49 @@
+'Sfi.Sfi:PublishedBook':
+  superTypes:
+    - 'TYPO3.Neos:Document'
+    - 'Sfi.News:Listable'
+  ui:
+    label: 'Published Book'
+    icon: 'icon-book'
+    inspector:
+      groups:
+        book:
+          label: 'Book'
+          position: 'start 1'
+  childNodes:
+    details:
+      type: 'TYPO3.Neos:ContentCollection'
+    button:
+      type: 'Sfi.Shared:Link'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Название книги'
+    imprint:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Выходные данные'
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Image'
+        reloadIfChanged: TRUE
+        inspector:
+          group: book
+    date:
+      type: date
+      defaultValue: 'now'
+      ui:
+        label: Date
+        reloadIfChanged: true
+        inspector:
+          group: book
+          editorOptions:
+            format: 'd-m-Y H:i'
+      validation:
+        'TYPO3.Neos/Validation/DateTimeValidator': []

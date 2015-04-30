@@ -1,0 +1,21 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace media=TYPO3\Media\ViewHelpers}
+
+<div class="overflow-hidden marginVertical-double">
+	<f:if condition="{image}">
+		<div class="float-left marginRight-double marginBottom-single">
+			<media:image asset="{image}" alt="{title}" maximumWidth="115" class="border-thick"/>
+		</div>
+	</f:if>
+	<div class="">
+		<h1 class="ServiceLight color-primaryAlt">{neos:contentElement.editable(property: 'title')}</h1>
+		<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'imprint')}</div>
+		<f:if condition="{details}">
+		        
+		</f:if>
+		{details -> f:format.raw()}
+		<div class="marginTop-single">
+			{button -> f:format.raw()}
+		</div>
+	</div>
+</div>

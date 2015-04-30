@@ -6,3 +6,7 @@ $border-thick: 5px solid $gray-line;
 .border-round {
 	border-radius: 50%;
 }
+
+.border-thick {
+	border: $border-thick;
+}
