@@ -1,7 +1,7 @@
 {namespace m=TYPO3\Media\ViewHelpers}
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <neos:link.node node="{node}">
-	<div class="MediaPerson row">
+	<div class="MediaPerson marginVertical-triple row">
 		<f:if condition="{image}">
 			<div class="MediaPerson-Image medium-7 columns">
 				<m:image asset="{image}" alt="{title}" maximumWidth="370" maximumHeight="555" allowCropping="TRUE"/>
@@ -9,8 +9,8 @@
 		</f:if>
 		<div class="MediaPerson-Body medium-5 columns">
 			<h3 class="MediaPerson-Title">{title}</h3>
-			<div class="ServiceEm">{degree}</div>
-			<div>
+			<div class="ServiceEm--Large">{position}</div>
+			<div class="hide">
 				<div class="ParagraphAlt--Large">
 					{quote}
 				</div>

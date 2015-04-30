@@ -1,7 +1,7 @@
 prototype(Sfi.Sfi:Person) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
-	sectionMenu = ${sectionMenu}
+	sectionMenu = ${siblingsMenu}
 
 	main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'

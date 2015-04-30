@@ -1,4 +1,6 @@
-prototype(Sfi.Sfi:ProRector) < prototype(Sfi.Sfi:Person) {
+# Reuse Rector template for full view. Temporarily?
+prototype(Sfi.Sfi:ProRector) < prototype(Sfi.Sfi:Rector) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/NodeTypes/Rector.html'
 }
 
 prototype(Sfi.Sfi:ProRectorShort) < prototype(Sfi.Sfi:PersonShort) {
