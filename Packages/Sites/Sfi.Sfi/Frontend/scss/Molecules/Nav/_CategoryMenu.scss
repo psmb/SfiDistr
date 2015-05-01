@@ -1,0 +1,14 @@
+.CategoryMenu {
+	overflow: auto;
+	margin: 2*$u 0;
+}
+
+.CategoryMenu-Item {
+	@extend .ServiceLight--Small;
+	color: $color-primaryAlt;
+	float: left;
+	margin-right: 2*$u;
+	&.current {
+		@extend .Service;
+	}
+}
