@@ -9,6 +9,7 @@
 .MediaPerson-Title {
 	@extend .Paragraph--Large;
 	line-height: $lineHeight-tight;
+	margin-top: $u;
 	margin-bottom: $u/2;
 }
 .MediaPerson-Teaser {
