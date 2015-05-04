@@ -18,14 +18,15 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="medium-7 columns">
+		<div class="columns">
 			{coverCollection -> f:format.raw()}
 		</div>
-		<div class="medium-5 large-4 large-offset-1 columns">
-			<div class="Blockquote marginTop-none">
+	</div>
+	<div class="row">
+		<div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
+			<div class="Blockquote">
 				{neos:contentElement.editable(property: 'quote', tag: 'span')}
 			</div>
-			<div class="Service--Small hide">— {neos:contentElement.editable(property: 'quoteTitle', tag: 'span')}</div>
 		</div>
 	</div>
 	<div class="row">

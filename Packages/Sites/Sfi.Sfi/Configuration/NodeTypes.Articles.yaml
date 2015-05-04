@@ -195,14 +195,6 @@ blah: &alohaRich
         aloha:
           <<: *alohaPlain
           placeholder: 'Цитата'
-    quoteTitle:
-      type: string
-      ui:
-        label: 'Подпись к цитате'
-        inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Подпись к цитате'
 
 'Sfi.Sfi:ProRector':
   superTypes:
