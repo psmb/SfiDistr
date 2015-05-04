@@ -216,6 +216,14 @@ blah: &alohaRich
         aloha:
           <<: *alohaPlain
           placeholder: 'E-mail'
+    quote:
+      type: string
+      ui:
+        label: 'Цитата'
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Цитата'
 
 'Sfi.Sfi:StudyProgram':
   superTypes:
