@@ -9,4 +9,5 @@ prototype(Sfi.Sfi:Rector) < prototype(Sfi.Sfi:Person) {
 prototype(Sfi.Sfi:RectorShort) < prototype(Sfi.Sfi:PersonShort) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/RectorShort.html'
 	position = ${String.stripTags(q(node).property('position'))}
+	image = ${q(node).property('image')}
 }

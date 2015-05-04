@@ -22,9 +22,11 @@
 			{coverCollection -> f:format.raw()}
 		</div>
 		<div class="medium-4 medium-offset-1 columns">
-			<div class="Blockquote">
-				{neos:contentElement.editable(property: 'quote', tag: 'span')}
-			</div>
+			<s:ifOr condition="{quote}" or="{node.context.workspace.name} != 'live'">
+				<div class="Blockquote">
+					{neos:contentElement.editable(property: 'quote', tag: 'span')}
+				</div>
+			</s:ifOr>
 		</div>
 	</div>
 	<div class="row">
@@ -32,6 +34,9 @@
 			<div class="medium-6 large-5 float-right paddingHorizontal-double paddingBottom-double">
 				<s:ifOr condition="{education}" or="{node.context.workspace.name} != 'live'">
 					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'education', tag: 'span')}</div>
+				</s:ifOr>
+				<s:ifOr condition="{educationUpgrade}" or="{node.context.workspace.name} != 'live'">
+					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'educationUpgrade', tag: 'span')}</div>
 				</s:ifOr>
 				<s:ifOr condition="{experience}" or="{node.context.workspace.name} != 'live'">
 					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'experience', tag: 'span')}</div>

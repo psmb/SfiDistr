@@ -165,13 +165,25 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           <<: *alohaPlain
-          placeholder: 'Образование'
+          placeholder: 'Направление подготовки и /или специальности'
+    educationUpgrade:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Повышение квалификации и/или профессиональная переподготовка'
 
 'Sfi.Sfi:Rector':
   superTypes:
     - 'Sfi.Sfi:Person'
   ui:
     label: 'Rector'
+    inspector:
+      groups:
+        image:
+          label: 'Фото'
+          position: 5
   properties:
     telephone:
       type: string
@@ -195,6 +207,13 @@ blah: &alohaRich
         aloha:
           <<: *alohaPlain
           placeholder: 'Цитата'
+    image:
+      type: TYPO3\Media\Domain\Model\ImageVariant
+      ui:
+        label: 'Фото на общей странице'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
 
 'Sfi.Sfi:ProRector':
   superTypes:
