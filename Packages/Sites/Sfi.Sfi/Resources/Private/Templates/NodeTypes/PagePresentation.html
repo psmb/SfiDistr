@@ -5,7 +5,7 @@
 <f:section name="content">
 	<h1 class="PageTitle">{node.properties.title}</h1>
 	<neos:contentElement.wrap node="{node}">
-		<div class="Lead">{neos:contentElement.editable(property: 'lead')}</div>
+		<div class="Lead RteTextLinkable">{neos:contentElement.editable(property: 'lead')}</div>
 	</neos:contentElement.wrap>
 	{main -> f:format.raw()}
 </f:section>
