@@ -13,9 +13,7 @@ prototype(Sfi.Sfi:PageTag) {
 	sectionMenu = Menu
 	sectionMenu {
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
-		entryLevel = 3
-		maximumLevels = 0
-		itemCollection = ${q(documentNode).siblings().get()}
+		itemCollection = ${q(documentNode).siblings('[instanceof TYPO3.Neos:Document]').add(q(documentNode)).get()}
 		itemCollection.@process.sort = ${q(value).count() > 0 ? q(value).sort('navTitle', 'ASC').get() : value}
 	}
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
