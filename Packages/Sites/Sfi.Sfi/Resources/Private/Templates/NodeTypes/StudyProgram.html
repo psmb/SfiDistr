@@ -2,88 +2,118 @@
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
 <div class="row">
 	<div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
-		<neos:contentElement.wrap node="{node}">
-			<div class="textAlign-center">
-				<div itemprop="EduLavel" class="Service">{level}</div>
-				<h1 class="H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
-				<div class="ServiceEm">{division}</div>
-			</div>
-			<div class="Paragraph RteTextLinkable marginVertical-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
-			<div class="StudyProgramCard textAlign-center">
-				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration', tag: 'span')}</div>
-				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate', tag: 'span')}</div>
-				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'educationForm', tag: 'span')}</div>
-				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'details', tag: 'span')}</div>
-				<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
-			</div>
+		<div class="textAlign-center">
+			<div itemprop="EduLavel" class="Service">{level}</div>
+			<h1 class="H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+			<div class="ServiceEm">{division}</div>
+		</div>
+		<div class="Paragraph RteTextLinkable marginVertical-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+		<div class="StudyProgramCard textAlign-center">
+			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration', tag: 'span')}</div>
+			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate', tag: 'span')}</div>
+			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'certificate', tag: 'span')}</div>
+			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
+		</div>
 
-
-			<h2 class="H2">О программе</h2>
-			<div class="Sections js-sections Sections--Tabs">
-				<ul class="Sections-Tabs">
-					<li class="Sections-Tab">
-						<a class="Sections-Anchor" href="#tab-description">Описание программы</a>
-					</li>
-					<li class="Sections-Tab">
-						<a class="Sections-Anchor" href="#tab-subjects">Изучаемые дисциплины</a>
-					</li>
-					<li class="Sections-Tab">
-						<a class="Sections-Anchor" href="#tab-schedule">Учебный график</a>
-					</li>
-				</ul>
-					<a href="#tab-description" class="Sections-Anchor">
-						<div class="Sections-AccordionTitle">Описание программы</div>
-					</a>
-					<div class="Sections-Panel" id="tab-description">
-						{panelDescription -> f:format.raw()}
-					</div>
-					<a href="#tab-subjects" class="Sections-Anchor">
-						<div class="Sections-AccordionTitle">Изучаемые дисциплины</div>
-					</a>
-					<div class="Sections-Panel" id="tab-subjects">
-						{panelSubjects -> f:format.raw()}
-					</div>
-					<a href="#tab-schedule" class="Sections-Anchor">
-						<div class="Sections-AccordionTitle">Учебный график</div>
-					</a>
-					<div class="Sections-Panel" id="tab-schedule">
-						{panelSchedule -> f:format.raw()}
-					</div>
+		<h2 class="H2">О программе</h2>
+		<div class="Sections js-sections Sections--Tabs">
+			<ul class="Sections-Tabs">
+				<li class="Sections-Tab">
+					<a class="Sections-Anchor" href="#tab-description">Описание программы</a>
+				</li>
+				<li class="Sections-Tab">
+					<a class="Sections-Anchor" href="#tab-subjects">Изучаемые дисциплины</a>
+				</li>
+				<li class="Sections-Tab">
+					<a class="Sections-Anchor" href="#tab-schedule">Учебный график</a>
+				</li>
+			</ul>
+			<a href="#tab-description" class="Sections-Anchor">
+				<div class="Sections-AccordionTitle">Описание программы</div>
+			</a>
+			<div class="Sections-Panel" id="tab-description">
+				{description -> f:format.raw()}
+				{assetDescription -> f:format.raw()}
+				{assetAccreditation -> f:format.raw()}
+				{assetSampleContract -> f:format.raw()}
 			</div>
-
-			<h2 class="H2">Поступление</h2>
-			<div class="Sections js-sections Sections--Tabs">
-				<ul class="Sections-Tabs">
-					<li class="Sections-Tab">
-						<a class="Sections-Anchor" href="#tab-description">Описание программы</a>
-					</li>
-					<li class="Sections-Tab">
-						<a class="Sections-Anchor" href="#tab-subjects">Изучаемые дисциплины</a>
-					</li>
-					<li class="Sections-Tab">
-						<a class="Sections-Anchor" href="#tab-schedule">Учебный график</a>
-					</li>
-				</ul>
-					<a href="#tab-description" class="Sections-Anchor">
-						<div class="Sections-AccordionTitle">Описание программы</div>
-					</a>
-					<div class="Sections-Panel" id="tab-description">
-						{panelDescription -> f:format.raw()}
-					</div>
-					<a href="#tab-subjects" class="Sections-Anchor">
-						<div class="Sections-AccordionTitle">Изучаемые дисциплины</div>
-					</a>
-					<div class="Sections-Panel" id="tab-subjects">
-						{panelSubjects -> f:format.raw()}
-					</div>
-					<a href="#tab-schedule" class="Sections-Anchor">
-						<div class="Sections-AccordionTitle">Учебный график</div>
-					</a>
-					<div class="Sections-Panel" id="tab-schedule">
-						{panelSchedule -> f:format.raw()}
-					</div>
+			<a href="#tab-subjects" class="Sections-Anchor">
+				<div class="Sections-AccordionTitle">Изучаемые дисциплины</div>
+			</a>
+			<div class="Sections-Panel" id="tab-subjects">
+				{subjects -> f:format.raw()}
+				{assetsSubjectAnnotations -> f:format.raw()}
+				{assetsMethodical -> f:format.raw()}
 			</div>
-		</neos:contentElement.wrap>
+			<a href="#tab-schedule" class="Sections-Anchor">
+				<div class="Sections-AccordionTitle">Учебный график</div>
+			</a>
+			<div class="Sections-Panel" id="tab-schedule">
+				{schedule -> f:format.raw()}
+				{assetSchedule -> f:format.raw()}
+			</div>
+		</div>
+
+		<h2 class="H2">Поступление</h2>
+		<div class="Sections js-sections Sections--Tabs">
+			<ul class="Sections-Tabs">
+				<li class="Sections-Tab">
+					<a class="Sections-Anchor" href="#tab-documentSubmission">Как подать документы</a>
+				</li>
+				<li class="Sections-Tab">
+					<a class="Sections-Anchor" href="#tab-exams">Вступительные испытания</a>
+				</li>
+				<li class="Sections-Tab">
+					<a class="Sections-Anchor" href="#tab-admission">Сроки приема</a>
+				</li>
+				<li class="Sections-Tab">
+					<a class="Sections-Anchor" href="#tab-payment">Оплата</a>
+				</li>
+				<li class="Sections-Tab">
+					<a class="Sections-Anchor" href="#tab-contacts">Контакты</a>
+				</li>
+			</ul>
+			<a href="#tab-documentSubmission" class="Sections-Anchor">
+				<div class="Sections-AccordionTitle">Как подать документы</div>
+			</a>
+			<div class="Sections-Panel" id="tab-documentSubmission">
+				{documentSubmission -> f:format.raw()}
+			</div>
+			<a href="#tab-exams" class="Sections-Anchor">
+				<div class="Sections-AccordionTitle">Вступительные испытания</div>
+			</a>
+			<div class="Sections-Panel" id="tab-exams">
+				{exams -> f:format.raw()}
+			</div>
+			<a href="#tab-admission" class="Sections-Anchor">
+				<div class="Sections-AccordionTitle">Сроки приема</div>
+			</a>
+			<div class="Sections-Panel" id="tab-admission">
+				{neos:contentElement.editable(property: 'nextDate', tag: 'span')}
+				{neos:contentElement.editable(property: 'documentSubmissionDate', tag: 'span')}
+				{neos:contentElement.editable(property: 'examsDate', tag: 'span')}
+
+				{admission -> f:format.raw()}
+
+				{neos:contentElement.editable(property: 'applicationSubmissionDate', tag: 'span')}
+				{neos:contentElement.editable(property: 'payDate', tag: 'span')}
+				{neos:contentElement.editable(property: 'studyBeginDate', tag: 'span')}
+			</div>
+			<a href="#tab-payment" class="Sections-Anchor">
+				<div class="Sections-AccordionTitle">Оплата</div>
+			</a>
+			<div class="Sections-Panel" id="tab-payment">
+				{payment -> f:format.raw()}
+			</div>
+			<a href="#tab-contacts" class="Sections-Anchor">
+				<div class="Sections-AccordionTitle">Оплата</div>
+			</a>
+			<div class="Sections-Panel" id="tab-contacts">
+				{contacts -> f:format.raw()}
+			</div>
+		</div>
+
+		{feedback -> f:format.raw()}
 	</div>
 </div>
 <div class="row">
