@@ -1,12 +1,12 @@
-prototype(Sfi.Sfi:PageSubSection) {
+prototype(Sfi.Sfi:PageSubContentCollection) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 	node = ${node}
 
 	sectionMenu = ${sectionMenu}
 
-	subSectionMenu = Menu {
-		templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SubSectionMenu.html'
+	subContentCollectionMenu = Menu {
+		templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SubContentCollectionMenu.html'
 		entryLevel = 3
 		maximumLevels = 0
 	}

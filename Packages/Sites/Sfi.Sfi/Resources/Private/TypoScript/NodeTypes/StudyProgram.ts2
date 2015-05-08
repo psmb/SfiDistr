@@ -83,12 +83,12 @@ prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.Neos:Content) {
 	price = ${q(node).property('price')}
 }
 
-prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections) {
+prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:ContentCollections) {
 	panels.collection = 'to-be-set'
 
-	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/ContentCollections.html'
 	@override.rootNode = ${q(node).property('rootNode')}
-	layout = 'Sections--Accordion'
+	layout = 'ContentCollections--Accordion'
 	tabs>
 	panels.itemRenderer {
 		accordion = ${q(node).property('title')}
@@ -100,7 +100,7 @@ prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListing
 	@override.rootNode = ${q(node).property('rootNode')}
 	panels.collection = ${q(rootNode).children().get()}
 	# Guess why it needs to be overriden?
-	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/ContentCollections.html'
 
 	@cache {
 		mode = 'cached'
@@ -118,7 +118,7 @@ prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListing
 prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProgramsListingAbstract) {
 	panels.collection = ${q(node).property('references')}
 	# Guess why it needs to be overriden?
-	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/ContentCollections.html'
 
 	@cache {
 		mode = 'cached'

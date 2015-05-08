@@ -3,16 +3,16 @@ prototype(Sfi.Sfi:Page) >
 prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title'))}
-		stylesheets.site = TYPO3.TypoScript:Template {
+		stylesheets.site = TYPO3.Neos:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'stylesheets'
 		}
-		stylesheets.backend = TYPO3.TypoScript:Template {
+		stylesheets.backend = TYPO3.Neos:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'backendStylesheets'
 			@process.1=${node.context.workspaceName != 'live' ? value:''}
 		}
-		javascripts.headScripts = TYPO3.TypoScript:Template {
+		javascripts.headScripts = TYPO3.Neos:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'headScripts'
 		}
@@ -35,12 +35,12 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			itemCollection = ${q(site).children('links').children().get()}
 		}
 		@override.sectionMenu = Menu {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/ContentCollectionMenu.html'
 			entryLevel = 2
 			maximumLevels = 0
 		}
 		@override.siblingsMenu = Menu {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/ContentCollectionMenu.html'
 			itemCollection = ${q(documentNode).parent().children('[instanceof TYPO3.Neos:Document]').get()}
 		}
 
@@ -59,16 +59,16 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			}
 		}
 
-		javascripts.bodyScripts = TYPO3.TypoScript:Template {
+		javascripts.bodyScripts = TYPO3.Neos:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'bodyScripts'
 		}
-		javascripts.analytics = TYPO3.TypoScript:Template {
+		javascripts.analytics = TYPO3.Neos:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			sectionName = 'analytics'
 		}
-		javascripts.backend = TYPO3.TypoScript:Template {
+		javascripts.backend = TYPO3.Neos:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'backendScripts'
 			@process.1=${node.context.workspaceName != 'live' ? value:''}

@@ -1,4 +1,4 @@
-prototype(Sfi.Sfi:PageSection) {
+prototype(Sfi.Sfi:PageContentCollection) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 	node = ${node}
