@@ -53,7 +53,7 @@ blah: &alohaRich
           position: 5
   properties:
     image:
-      type: TYPO3\Media\Domain\Model\ImageVariant
+      type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
         label: 'Image'
         reloadIfChanged: TRUE
@@ -208,7 +208,7 @@ blah: &alohaRich
           <<: *alohaPlain
           placeholder: 'Цитата'
     image:
-      type: TYPO3\Media\Domain\Model\ImageVariant
+      type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
         label: 'Фото на общей странице'
         reloadIfChanged: TRUE

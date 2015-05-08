@@ -111,7 +111,7 @@ blah:
       type: 'Sfi.News:ListByTag'
   properties:
     image:
-      type: TYPO3\Media\Domain\Model\ImageVariant
+      type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
         label: Image
         reloadIfChanged: true
