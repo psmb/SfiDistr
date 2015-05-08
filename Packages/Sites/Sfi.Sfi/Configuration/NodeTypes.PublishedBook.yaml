@@ -36,7 +36,7 @@
         inspector:
           group: book
     date:
-      type: date
+      type: DateTime
       defaultValue: 'now'
       ui:
         label: Date
