@@ -22,13 +22,13 @@ blah:
   ui:
     label: 'Redirect from old news'
   superTypes:
-    - 'TYPO3.Neos:Page'
+    - 'TYPO3.Neos.NodeTypes:Page'
 'Sfi.Sfi:AbstractPage':
   abstract: true
   ui:
     label: 'Abstract Page'
   superTypes:
-    - 'TYPO3.Neos:Page'
+    - 'TYPO3.Neos.NodeTypes:Page'
 'Sfi.Sfi:PageMain':
   ui:
     label: 'Page: Main'
