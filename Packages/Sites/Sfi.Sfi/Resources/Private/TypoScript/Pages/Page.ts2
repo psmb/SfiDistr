@@ -35,12 +35,12 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			itemCollection = ${q(site).children('links').children().get()}
 		}
 		@override.sectionMenu = Menu {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/ContentCollectionMenu.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
 			entryLevel = 2
 			maximumLevels = 0
 		}
 		@override.siblingsMenu = Menu {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/ContentCollectionMenu.html'
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
 			itemCollection = ${q(documentNode).parent().children('[instanceof TYPO3.Neos:Document]').get()}
 		}
 
