@@ -1,16 +1,23 @@
 prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
 	tagName = 'ul'
 	attributes.class = 'FooterGallery small-block-grid-2 medium-block-grid-3 large-block-grid-6'
+	@override.footerGalleryNode = ${q(site).children('footerGallery').get(0)}
 	content = TYPO3.Neos:ContentCollectionRenderer {
 		itemRenderer = Sfi.Shared:AutoRenderWithTag{
 			tagName = 'li'
 			attributes.class = 'FooterGallery-Item'
 		}
-		collection = ${q(site).children('footerGallery').children().slice(0, String.toInteger(6)).get()}
+		collection = ${q(footerGalleryNode).children().slice(0, String.toInteger(6)).get()}
 		prototype(TYPO3.Neos.NodeTypes:Image){
 			maximumWidth = 220
 			maximumHeight = 220
 			allowCropping = TRUE
+		}
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${'DescendantOf_' + footerGalleryNode.identifier}
 		}
 	}
 }
