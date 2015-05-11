@@ -17,7 +17,6 @@ stylesheets
 Configuration/Production/IncludeCachedConfigurations.php
 Configuration/Production/Settings.yaml.example
 Configuration/Development/Settings.yaml.example
-!/Configuration/Settings.yaml
 !/Configuration/Development/
 !/Configuration/Production/
 !/Configuration/Development/Caches.yaml
