@@ -38,6 +38,9 @@
 	}
 	table {
 		@include table;
+		td {
+			@extend .ParagraphAlt;
+		}
 	}
 }
 

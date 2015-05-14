@@ -17,11 +17,6 @@ prototype(Sfi.Sfi:StudyProgram) {
 		content = 'Описание образовательной программы'
 		@override.resourceIdentifier = ${node.properties.assetDescription.identifier}
 	}
-	assetPlan = Sfi.Sfi:StudyProgramAsset {
-		content = 'Учебный план'
-		@override.resourceIdentifier = ${node.properties.assetPlan.identifier}
-
-	}
 	assetSchedule = Sfi.Sfi:StudyProgramAsset {
 		content = 'Календарный учебный график'
 		@override.resourceIdentifier = ${node.properties.assetSchedule.identifier}
@@ -48,6 +43,9 @@ prototype(Sfi.Sfi:StudyProgram) {
 	}
 
 
+	assetsPlan = TYPO3.Neos:ContentCollection {
+		nodePath = 'assetsPlan'
+	}
 	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
 	}
@@ -83,6 +81,52 @@ prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.Neos:Content) {
 	price = ${q(node).property('price')}
 }
 
+prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.Neos:Content) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShortFormal.html'
+	title = ${String.stripTags(q(node).property('title'))}
+	level = ${q(node).parent().parent().property('title')}
+	division = ${q(node).parent().property('title')}
+	duration = ${q(node).property('duration')}
+	accreditationDate = ${q(node).property('accreditationDate')}
+
+	#TODO: translate
+	assetDescription = Sfi.Sfi:StudyProgramAsset {
+		content = 'Описание образовательной программы'
+		@override.resourceIdentifier = ${node.properties.assetDescription.identifier}
+	}
+	assetSchedule = Sfi.Sfi:StudyProgramAsset {
+		content = 'Календарный учебный график'
+		@override.resourceIdentifier = ${node.properties.assetSchedule.identifier}
+	}
+	assetsPracticeAnnotations = Sfi.Sfi:StudyProgramAsset {
+		content = ''
+		@override.resourceIdentifier = ${node.properties.assetsPracticeAnnotations.identifier}
+	}
+	assetInvoice = Sfi.Sfi:StudyProgramAsset {
+		content = 'Квитанция для оплаты обучения'
+		@override.resourceIdentifier = ${node.properties.assetInvoice.identifier}
+	}
+	assetAdmissionRegulations = Sfi.Sfi:StudyProgramAsset {
+		content = 'Правила приема'
+		@override.resourceIdentifier = ${node.properties.assetAdmissionRegulations.identifier}
+	}
+	assetSampleContract = Sfi.Sfi:StudyProgramAsset {
+		content = 'Образец договора об оказании платных образовательных услуг'
+		@override.resourceIdentifier = ${node.properties.assetSampleContract.identifier}
+	}
+	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
+		content = 'Свидетельство о государственной аккредитации'
+		@override.resourceIdentifier = ${node.properties.assetAccreditation.identifier}
+	}
+
+	assetsPlan = TYPO3.Neos:ContentCollection {
+		nodePath = 'assetsPlan'
+	}
+	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
+		nodePath = 'assetsSubjectAnnotations'
+	}
+}
+
 prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections) {
 	panels.collection = 'to-be-set'
 
@@ -91,7 +135,7 @@ prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections)
 	layout = 'Sections--Accordion'
 	tabs>
 	panels.itemRenderer {
-		accordion = ${q(node).property('title')}
+		accordion = ${q(node).property('title') + ' (' + q(node).property('specialityId') + ')'}
 		panel = Sfi.Sfi:StudyProgramShort
 	}
 }
@@ -113,6 +157,11 @@ prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListing
 			2 = ${'DescendantOf_' + rootNode.identifier}
 		}
 	}
+}
+
+prototype(Sfi.Sfi:StudyProgramsListingFormal) < prototype(Sfi.Sfi:StudyProgramsListing) {
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
+	panels.itemRenderer.panel = Sfi.Sfi:StudyProgramShortFormal
 }
 
 prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProgramsListingAbstract) {

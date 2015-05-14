@@ -207,7 +207,13 @@ blah: &alohaRich
         inspector:
           group: 'general'
           editorOptions:
-            nodeTypes: ['TYPO3.Neos:Document']
+            nodeTypes: ['TYPO3.Neos:Document', 'TYPO3.Neos:Shortcut']
+
+'Sfi.Sfi:StudyProgramsListingFormal':
+  superTypes:
+    - 'Sfi.Sfi:StudyProgramsListing'
+  ui:
+    label: 'Study Programs Listing Formal'
 
 'Sfi.Sfi:StudyProgramsListingByReference':
   superTypes:

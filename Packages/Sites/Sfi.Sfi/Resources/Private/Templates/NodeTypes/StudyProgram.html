@@ -4,7 +4,10 @@
 	<div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
 		<div class="textAlign-center">
 			<div itemprop="EduLavel" class="Service">{level}</div>
-			<h1 class="H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+			<h1 class="H2">
+				{neos:contentElement.editable(property: 'title', tag: 'span')}
+				({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
+				</h1>
 			<div class="ServiceEm">{division}</div>
 		</div>
 		<div class="Paragraph RteTextLinkable marginVertical-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
@@ -33,6 +36,7 @@
 			</a>
 			<div class="Sections-Panel" id="tab-description">
 				{description -> f:format.raw()}
+				{neos:contentElement.editable(property: 'accreditationDate', tag: 'span')}
 				{assetDescription -> f:format.raw()}
 				{assetAccreditation -> f:format.raw()}
 				{assetSampleContract -> f:format.raw()}
@@ -104,9 +108,12 @@
 			</a>
 			<div class="Sections-Panel" id="tab-payment">
 				{payment -> f:format.raw()}
+				{neos:contentElement.editable(property: 'prepayAmount', tag: 'span')}
+				{price -> f:format.raw()}
+				{payDate -> f:format.raw()}
 			</div>
 			<a href="#tab-contacts" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Оплата</div>
+				<div class="Sections-AccordionTitle">Контакты</div>
 			</a>
 			<div class="Sections-Panel" id="tab-contacts">
 				{contacts -> f:format.raw()}

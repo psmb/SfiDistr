@@ -74,6 +74,8 @@ blah: &alohaRich
       type: 'TYPO3.Neos:ContentCollection'
     feedback:
       type: 'TYPO3.Neos:ContentCollection'
+    assetsPlan:
+      type: 'TYPO3.Neos:ContentCollection'
   properties:
     lead:
       type: string
@@ -172,12 +174,6 @@ blah: &alohaRich
         inspector:
           group: 'assets'
         label: 'Описание образовательной программы'
-    assetPlan:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'assets'
-        label: 'Учебный план'
     assetSchedule:
       type: TYPO3\Media\Domain\Model\Asset
       ui:

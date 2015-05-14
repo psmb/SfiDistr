@@ -8,11 +8,12 @@
 .StudyProgramCard-Line {
 	@extend .ParagraphAlt--Large;
 	color: $gray--light;
-	margin: 0;
-	line-height: $lineHeight-loose;
 	b, strong {
 		color: $color-primaryAlt;
 		text-transform: uppercase;
+	}
+	.ButtonInline {
+		margin: 0 !important;
 	}
 }
 
@@ -22,3 +23,4 @@
 		padding: 0 2*$u;
 	}
 }
+

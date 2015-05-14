@@ -1,0 +1,32 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<div class="StudyProgramCard StudyProgramCard--Short">
+	<div class="StudyProgramCard-Line">Уровень программы: {level -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line marginBottom-single">Место реализации программы: {division -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line marginBottom-single">{accreditationDate -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line marginBottom-single">{duration -> f:format.raw()}</div>
+
+	<f:if condition="{assetDescription}">
+		<div class="StudyProgramCard-Line">{assetDescription -> f:format.raw()}</div>
+	</f:if>
+	<f:if condition="{assetsPlan}">
+		<div class="StudyProgramCard-Line">{assetsPlan -> f:format.raw()}</div>
+	</f:if>
+	<f:if condition="{assetSchedule}">
+		<div class="StudyProgramCard-Line marginBottom-single">{assetSchedule -> f:format.raw()}</div>
+	</f:if>
+	<f:if condition="{assetAccreditation}">
+		<div class="StudyProgramCard-Line marginBottom-single">{assetAccreditation -> f:format.raw()}</div>
+	</f:if>
+	<f:if condition="{assetsSubjectAnnotations}">
+		<div class="StudyProgramCard-Line">Аннотации к рабочим программам дисциплин:</div>
+		<div class="StudyProgramCard-Line marginBottom-single">{assetsSubjectAnnotations -> f:format.raw()}</div>
+	</f:if>
+	<f:if condition="{assetsPracticeAnnotations}">
+		<div class="StudyProgramCard-Line">Практики:</div>
+		<div class="StudyProgramCard-Line">{assetsPracticeAnnotations -> f:format.raw()}</div>
+	</f:if>
+
+	<div class="hide">
+		<neos:link.node node="{node}" class="Button">Подробнее</neos:link.node>
+	</div>
+</div>
