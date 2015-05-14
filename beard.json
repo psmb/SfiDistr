@@ -15,6 +15,12 @@
             "type": "gerrit",
             "path": "Packages/Application/TYPO3.TYPO3CR",
             "change_id": "34696,6"
+        },
+        {
+            "name": "Fix json search",
+            "type": "gerrit",
+            "path": "Packages/Application/TYPO3.TYPO3CR",
+            "change_id": "39540"
         }
     ]
 }
