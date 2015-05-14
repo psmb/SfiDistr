@@ -36,9 +36,9 @@
 			</a>
 			<div class="Sections-Panel" id="tab-description">
 				{description -> f:format.raw()}
-				{neos:contentElement.editable(property: 'accreditationDate', tag: 'span')}
-				{assetDescription -> f:format.raw()}
+				<div>{neos:contentElement.editable(property: 'accreditationDate', tag: 'span')}</div>
 				{assetAccreditation -> f:format.raw()}
+				{assetDescription -> f:format.raw()}
 				{assetSampleContract -> f:format.raw()}
 			</div>
 			<a href="#tab-subjects" class="Sections-Anchor">
@@ -55,6 +55,7 @@
 			<div class="Sections-Panel" id="tab-schedule">
 				{schedule -> f:format.raw()}
 				{assetSchedule -> f:format.raw()}
+				{assetsPlan -> f:format.raw()}
 			</div>
 		</div>
 

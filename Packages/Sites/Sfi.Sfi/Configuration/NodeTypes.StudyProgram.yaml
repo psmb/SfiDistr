@@ -98,6 +98,13 @@ blah: &alohaRich
         aloha:
           <<: *alohaRich
           placeholder: 'Код специальности'
+    accreditationDate:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaRich
+          placeholder: 'Срок действия государственной аккредитации'
     duration:
       type: string
       ui:
