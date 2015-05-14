@@ -38,9 +38,7 @@
 	}
 	table {
 		@include table;
-		td {
-			@extend .ParagraphAlt;
-		}
+		font-family: $fontFamily-alt;
 	}
 }
 
