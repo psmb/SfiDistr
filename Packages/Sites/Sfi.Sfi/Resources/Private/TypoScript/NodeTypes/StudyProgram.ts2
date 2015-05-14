@@ -135,7 +135,7 @@ prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections)
 	layout = 'Sections--Accordion'
 	tabs>
 	panels.itemRenderer {
-		accordion = ${q(node).property('title') + ' (' + q(node).property('specialityId') + ')'}
+		accordion = ${q(node).property('specialityId') != '' ? q(node).property('title') + ' (' + q(node).property('specialityId') + ')' : q(node).property('title')}
 		panel = Sfi.Sfi:StudyProgramShort
 	}
 }
