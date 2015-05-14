@@ -198,7 +198,7 @@ blah: &alohaRich
       ui:
         inspector:
           group: 'assets'
-        label: ''
+        label: 'Аннотации к практикам'
     assetInvoice:
       type: TYPO3\Media\Domain\Model\Asset
       ui:
