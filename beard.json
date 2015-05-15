@@ -21,12 +21,6 @@
             "type": "gerrit",
             "path": "Packages/Application/TYPO3.TYPO3CR",
             "change_id": "39540"
-        },
-        {
-            "name": "Fix cropping",
-            "type": "gerrit",
-            "path": "Packages/Application/TYPO3.Media",
-            "change_id": "39568"
         }
     ]
 }
