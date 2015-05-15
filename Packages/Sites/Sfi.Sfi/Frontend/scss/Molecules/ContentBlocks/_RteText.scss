@@ -21,6 +21,9 @@
 	p {
 		@extend .Paragraph;
 		margin-bottom: $lineHeight-normal*1em;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 	a {
 		@extend .Link;

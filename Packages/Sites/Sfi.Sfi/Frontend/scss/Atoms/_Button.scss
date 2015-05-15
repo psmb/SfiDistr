@@ -2,7 +2,6 @@
 	@extend .Service--Small;
 	display: inline-block;
 	transition: $transition;
-	margin: 8px 0 !important;
 	background: $color-primary;
 	color: white;
 	margin: 0;
@@ -19,7 +18,6 @@
 	@extend .Link;
 	@extend .ParagraphAlt;
 	display: block;
-	margin: $u 0;
 	transition: $transition;
 	&:after {
 		content: "›";

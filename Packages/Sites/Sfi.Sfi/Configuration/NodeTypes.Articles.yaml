@@ -123,7 +123,14 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           <<: *alohaPlain
-          placeholder: 'Научная степень'
+          placeholder: 'Ученая степень'
+    degreeTitle:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Ученое звание'
     position:
       type: string
       ui:

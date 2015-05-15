@@ -186,6 +186,22 @@ blah: &alohaRich
           group: 'image'
           position: 50
 
+'Sfi.Sfi:PersonFormalListing':
+  superTypes:
+    - 'TYPO3.Neos:Content'
+  ui:
+    label: 'Person Formal Listing'
+    group: contentBlocks
+  properties:
+    rootNode:
+      type: reference
+      ui:
+        label: 'Root node for person'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'general'
+          editorOptions:
+            nodeTypes: ['TYPO3.Neos:Document']
 
 'Sfi.Sfi:StudyProgramsListing':
   superTypes:
@@ -207,7 +223,7 @@ blah: &alohaRich
         inspector:
           group: 'general'
           editorOptions:
-            nodeTypes: ['TYPO3.Neos:Document', 'TYPO3.Neos:Shortcut']
+            nodeTypes: ['TYPO3.Neos:Document']
 
 'Sfi.Sfi:StudyProgramsListingFormal':
   superTypes:

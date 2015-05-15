@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "devDependencies": {
     "compass": "~0.1.0",
-    "csscritic": "~0.3.0",
     "grunt": "~0.4.1",
     "grunt-bower-concat": "~0.4.0",
     "grunt-browser-sync": "~0.9.1",
@@ -16,5 +15,8 @@
     "matchdep": "~0.1.2",
     "bower": "~1.3.12",
     "grunt-autoprefixer": "~2.2.0"
+  },
+  "dependencies": {
+    "csscritic": "^1.2.0"
   }
 }
