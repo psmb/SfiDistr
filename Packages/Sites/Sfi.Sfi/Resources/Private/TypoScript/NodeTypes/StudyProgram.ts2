@@ -86,7 +86,7 @@ prototype(Sfi.Sfi:StudyProgram) {
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 
-prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShort.html'
 	title = ${String.stripTags(q(node).property('title'))}
 	duration = ${q(node).property('duration')}
@@ -96,7 +96,7 @@ prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.Neos:Content) {
 	price = ${q(node).property('price')}
 }
 
-prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShortFormal.html'
 	title = ${String.stripTags(q(node).property('title'))}
 	level = ${q(node).parent().parent().property('title')}
@@ -107,14 +107,14 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.Neos:Content) {
 	#TODO: translate
 	assetDescription = Sfi.Sfi:StudyProgramAsset {
 		content = 'Описание образовательной программы'
-		@override.node = ${q(node).children('assetDescription.get(0)}
+		@override.node = ${q(node).children('assetDescription').get(0)}
 	}
 	assetsPlan = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsPlan'
 	}
 	assetSchedule = Sfi.Sfi:StudyProgramAsset {
 		content = 'Календарный учебный график'
-		@override.node = ${q(node).children('assetSchedule.get(0)}
+		@override.node = ${q(node).children('assetSchedule').get(0)}
 	}
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
 		title = 'Свидетельство о государственной аккредитации'
@@ -166,9 +166,9 @@ prototype(Sfi.Sfi:StudyProgramsListingFormal) < prototype(Sfi.Sfi:StudyProgramsL
 }
 
 prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProgramsListingAbstract) {
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
 	panels.collection = ${q(node).property('references')}
 	# Guess why it needs to be overriden?
-	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
 
 	@cache {
 		mode = 'cached'
@@ -177,8 +177,7 @@ prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProg
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = ${'NodeType_Sfi.Sfi:StudyProgram'}
+			1 = ${'NodeType_Sfi.Sfi:StudyProgram'}
 		}
 	}
 }

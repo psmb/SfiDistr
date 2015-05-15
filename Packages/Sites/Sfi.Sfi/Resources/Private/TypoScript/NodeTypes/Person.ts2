@@ -26,7 +26,7 @@ prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
 	image = ${q(node).find('[instanceof TYPO3.Neos.NodeTypes:Image]').first().property('image')}
 }
 
-prototype(Sfi.Sfi:PersonFormalListing) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.Sfi:PersonFormalListing) {
 	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').get()}
 	@cache {
 		mode = 'cached'
