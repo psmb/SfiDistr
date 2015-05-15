@@ -107,37 +107,24 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.Neos:Content) {
 	#TODO: translate
 	assetDescription = Sfi.Sfi:StudyProgramAsset {
 		content = 'Описание образовательной программы'
-		@override.resourceIdentifier = ${node.properties.assetDescription.identifier}
+		@override.node = ${q(node).children('assetDescription.get(0)}
+	}
+	assetsPlan = TYPO3.Neos:ContentCollection {
+		nodePath = 'assetsPlan'
 	}
 	assetSchedule = Sfi.Sfi:StudyProgramAsset {
 		content = 'Календарный учебный график'
-		@override.resourceIdentifier = ${node.properties.assetSchedule.identifier}
+		@override.node = ${q(node).children('assetSchedule.get(0)}
+	}
+	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
+		title = 'Свидетельство о государственной аккредитации'
+		@override.node = ${q(node).children('assetAccreditation').get(0)}
 	}
 	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
 	}
 	assetsPracticeAnnotations = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotations'
-	}
-	assetInvoice = Sfi.Sfi:StudyProgramAsset {
-		content = 'Квитанция для оплаты обучения'
-		@override.resourceIdentifier = ${node.properties.assetInvoice.identifier}
-	}
-	assetAdmissionRegulations = Sfi.Sfi:StudyProgramAsset {
-		content = 'Правила приема'
-		@override.resourceIdentifier = ${node.properties.assetAdmissionRegulations.identifier}
-	}
-	assetSampleContract = Sfi.Sfi:StudyProgramAsset {
-		content = 'Образец договора об оказании платных образовательных услуг'
-		@override.resourceIdentifier = ${node.properties.assetSampleContract.identifier}
-	}
-	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
-		content = 'Свидетельство о государственной аккредитации'
-		@override.resourceIdentifier = ${node.properties.assetAccreditation.identifier}
-	}
-
-	assetsPlan = TYPO3.Neos:ContentCollection {
-		nodePath = 'assetsPlan'
 	}
 }
 
