@@ -1,9 +1,8 @@
-prototype(Sfi.Sfi:StudyProgramAsset) <  prototype(TYPO3.TypoScript:Tag) {
-	tagName = 'a'
+prototype(Sfi.Sfi:StudyProgramAsset) <  prototype(Sfi.Shared:Asset) {
 	attributes.class = 'ButtonInline AssetInline'
-	attributes.href = ${'asset://' + resourceIdentifier}
+	attributes.href = ${'asset://' + node.properties.asset.identifier}
 	attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris
-	@if.isSet = ${resourceIdentifier != null}
+	@if.assetNotEmptyOrInBackend = ${node.properties.asset.identifier != null || documentNode.context.inBackend}
 }
 
 prototype(Sfi.Sfi:StudyProgram) {
@@ -14,40 +13,38 @@ prototype(Sfi.Sfi:StudyProgram) {
 
 	#TODO: translate
 	assetDescription = Sfi.Sfi:StudyProgramAsset {
-		content = 'Описание образовательной программы'
-		@override.resourceIdentifier = ${node.properties.assetDescription.identifier}
+		title = 'Описание образовательной программы'
+		@override.node = ${q(node).children('assetDescription').get(0)}
 	}
 	assetSchedule = Sfi.Sfi:StudyProgramAsset {
-		content = 'Календарный учебный график'
-		@override.resourceIdentifier = ${node.properties.assetSchedule.identifier}
+		title = 'Календарный учебный график'
+		@override.node = ${q(node).children('assetSchedule').get(0)}
 	}
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
-		content = 'Свидетельство о государственной аккредитации'
-		@override.resourceIdentifier = ${node.properties.assetAccreditation.identifier}
-	}
-	assetsPracticeAnnotations = Sfi.Sfi:StudyProgramAsset {
-		content = ''
-		@override.resourceIdentifier = ${node.properties.assetsPracticeAnnotations.identifier}
+		title = 'Свидетельство о государственной аккредитации'
+		@override.node = ${q(node).children('assetAccreditation').get(0)}
 	}
 	assetInvoice = Sfi.Sfi:StudyProgramAsset {
-		content = 'Квитанция для оплаты обучения'
-		@override.resourceIdentifier = ${node.properties.assetInvoice.identifier}
+		title = 'Квитанция для оплаты обучения'
+		@override.node = ${q(node).children('assetInvoice').get(0)}
 	}
 	assetAdmissionRegulations = Sfi.Sfi:StudyProgramAsset {
-		content = 'Правила приема'
-		@override.resourceIdentifier = ${node.properties.assetAdmissionRegulations.identifier}
+		title = 'Правила приема'
+		@override.node = ${q(node).children('assetAdmissionRegulations').get(0)}
 	}
 	assetSampleContract = Sfi.Sfi:StudyProgramAsset {
-		content = 'Образец договора об оказании платных образовательных услуг'
-		@override.resourceIdentifier = ${node.properties.assetSampleContract.identifier}
+		title = 'Образец договора об оказании платных образовательных услуг'
+		@override.node = ${q(node).children('assetSampleContract').get(0)}
 	}
-
 
 	assetsPlan = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsPlan'
 	}
 	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
+	}
+	assetsPracticeAnnotations = TYPO3.Neos:ContentCollection {
+		nodePath = 'assetsPracticeAnnotations'
 	}
 	assetsMethodical = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsMethodical'
@@ -66,6 +63,24 @@ prototype(Sfi.Sfi:StudyProgram) {
 	}
 	exams = TYPO3.Neos:ContentCollection {
 		nodePath = 'exams'
+	}
+	payment = TYPO3.Neos:ContentCollection {
+		nodePath = 'payment'
+	}
+	admission = TYPO3.Neos:ContentCollection {
+		nodePath = 'admission'
+	}
+	admissionContacts = TYPO3.Neos:ContentCollection {
+		nodePath = 'admissionContacts'
+	}
+	numberOfSeats = TYPO3.Neos:ContentCollection {
+		nodePath = 'numberOfSeats'
+	}
+	admissionRegulations = TYPO3.Neos:ContentCollection {
+		nodePath = 'admissionRegulations'
+	}
+	feedback = TYPO3.Neos:ContentCollection {
+		nodePath = 'feedback'
 	}
 
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
@@ -98,9 +113,11 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.Neos:Content) {
 		content = 'Календарный учебный график'
 		@override.resourceIdentifier = ${node.properties.assetSchedule.identifier}
 	}
-	assetsPracticeAnnotations = Sfi.Sfi:StudyProgramAsset {
-		content = ''
-		@override.resourceIdentifier = ${node.properties.assetsPracticeAnnotations.identifier}
+	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
+		nodePath = 'assetsSubjectAnnotations'
+	}
+	assetsPracticeAnnotations = TYPO3.Neos:ContentCollection {
+		nodePath = 'assetsPracticeAnnotations'
 	}
 	assetInvoice = Sfi.Sfi:StudyProgramAsset {
 		content = 'Квитанция для оплаты обучения'
@@ -121,9 +138,6 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.Neos:Content) {
 
 	assetsPlan = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsPlan'
-	}
-	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotations'
 	}
 }
 

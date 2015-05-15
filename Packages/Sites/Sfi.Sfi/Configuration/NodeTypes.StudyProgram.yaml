@@ -44,12 +44,21 @@ blah: &alohaRich
   ui:
     label: 'Study Program'
     icon: icon-file-text
-    inspector:
-      groups:
-        assets:
-          label: 'Файлы'
-          position: 'start 1'
   childNodes:
+    assetDescription:
+      type: Sfi.Shared:Asset
+    assetSchedule:
+      type: Sfi.Shared:Asset
+    assetAccreditation:
+      type: Sfi.Shared:Asset
+    assetInvoice:
+      type: Sfi.Shared:Asset
+    assetAdmissionRegulations:
+      type: Sfi.Shared:Asset
+    assetSampleContract:
+      type: Sfi.Shared:Asset
+    assetsPracticeAnnotations:
+      type: 'TYPO3.Neos:ContentCollection'
     assetsSubjectAnnotations:
       type: 'TYPO3.Neos:ContentCollection'
     assetsMethodical:
@@ -63,6 +72,8 @@ blah: &alohaRich
     documentSubmission:
       type: 'TYPO3.Neos:ContentCollection'
     exams:
+      type: 'TYPO3.Neos:ContentCollection'
+    admission:
       type: 'TYPO3.Neos:ContentCollection'
     admissionContacts:
       type: 'TYPO3.Neos:ContentCollection'
@@ -133,34 +144,6 @@ blah: &alohaRich
         aloha:
           <<: *alohaRich
           placeholder: 'Ближайший набор'
-    documentSubmissionDate:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          <<: *alohaRich
-          placeholder: 'Срок подачи документов'
-    examsDate:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          <<: *alohaRich
-          placeholder: 'Срок проведения вступительных испытаний'
-    payDate:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          <<: *alohaRich
-          placeholder: 'Срок оплаты обучения'
-    prepayAmount:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          <<: *alohaRich
-          placeholder: 'Объем первого взноса'
     studyBeginDate:
       type: string
       ui:
@@ -168,52 +151,3 @@ blah: &alohaRich
         aloha:
           <<: *alohaRich
           placeholder: 'Срок начала занятий'
-    applicationSubmissionDate:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          <<: *alohaRich
-          placeholder: 'Дата предоставления заявление о согласии на зачисление'
-    assetDescription:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'assets'
-        label: 'Описание образовательной программы'
-    assetSchedule:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'assets'
-        label: 'Календарный учебный график'
-    assetAccreditation:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'assets'
-        label: 'Свидетельство о государственной аккредитации'
-    assetsPracticeAnnotations:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'assets'
-        label: 'Аннотации к практикам'
-    assetInvoice:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'assets'
-        label: 'Квитанция для оплаты обучения'
-    assetAdmissionRegulations:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'assets'
-        label: 'Правила приема'
-    assetSampleContract:
-      type: TYPO3\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: 'assets'
-        label: 'Образец договора об оказании платных образовательных услуг'

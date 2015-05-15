@@ -36,7 +36,7 @@
 			</a>
 			<div class="Sections-Panel" id="tab-description">
 				{description -> f:format.raw()}
-				<div>{neos:contentElement.editable(property: 'accreditationDate', tag: 'span')}</div>
+				<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'accreditationDate')}</div>
 				{assetAccreditation -> f:format.raw()}
 				{assetDescription -> f:format.raw()}
 				{assetSampleContract -> f:format.raw()}
@@ -47,6 +47,7 @@
 			<div class="Sections-Panel" id="tab-subjects">
 				{subjects -> f:format.raw()}
 				{assetsSubjectAnnotations -> f:format.raw()}
+				{assetsPracticeAnnotations -> f:format.raw()}
 				{assetsMethodical -> f:format.raw()}
 			</div>
 			<a href="#tab-schedule" class="Sections-Anchor">
@@ -69,9 +70,6 @@
 					<a class="Sections-Anchor" href="#tab-exams">Вступительные испытания</a>
 				</li>
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-admission">Сроки приема</a>
-				</li>
-				<li class="Sections-Tab">
 					<a class="Sections-Anchor" href="#tab-payment">Оплата</a>
 				</li>
 				<li class="Sections-Tab">
@@ -81,8 +79,11 @@
 			<a href="#tab-documentSubmission" class="Sections-Anchor">
 				<div class="Sections-AccordionTitle">Как подать документы</div>
 			</a>
-			<div class="Sections-Panel" id="tab-documentSubmission">
+			<div class="Sections-Panel" id="tab-documentSubmission">	
+				{neos:contentElement.editable(property: 'nextDate')}
+				{neos:contentElement.editable(property: 'studyBeginDate')}
 				{documentSubmission -> f:format.raw()}
+				{assetAdmissionRegulations -> f:format.raw()}
 			</div>
 			<a href="#tab-exams" class="Sections-Anchor">
 				<div class="Sections-AccordionTitle">Вступительные испытания</div>
@@ -90,34 +91,19 @@
 			<div class="Sections-Panel" id="tab-exams">
 				{exams -> f:format.raw()}
 			</div>
-			<a href="#tab-admission" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Сроки приема</div>
-			</a>
-			<div class="Sections-Panel" id="tab-admission">
-				{neos:contentElement.editable(property: 'nextDate', tag: 'span')}
-				{neos:contentElement.editable(property: 'documentSubmissionDate', tag: 'span')}
-				{neos:contentElement.editable(property: 'examsDate', tag: 'span')}
-
-				{admission -> f:format.raw()}
-
-				{neos:contentElement.editable(property: 'applicationSubmissionDate', tag: 'span')}
-				{neos:contentElement.editable(property: 'payDate', tag: 'span')}
-				{neos:contentElement.editable(property: 'studyBeginDate', tag: 'span')}
-			</div>
 			<a href="#tab-payment" class="Sections-Anchor">
 				<div class="Sections-AccordionTitle">Оплата</div>
 			</a>
 			<div class="Sections-Panel" id="tab-payment">
+				{neos:contentElement.editable(property: 'price')}
 				{payment -> f:format.raw()}
-				{neos:contentElement.editable(property: 'prepayAmount', tag: 'span')}
-				{price -> f:format.raw()}
-				{payDate -> f:format.raw()}
+				{assetInvoice -> f:format.raw()}
 			</div>
 			<a href="#tab-contacts" class="Sections-Anchor">
 				<div class="Sections-AccordionTitle">Контакты</div>
 			</a>
 			<div class="Sections-Panel" id="tab-contacts">
-				{contacts -> f:format.raw()}
+				{admissionContacts -> f:format.raw()}
 			</div>
 		</div>
 

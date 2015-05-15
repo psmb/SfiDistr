@@ -21,7 +21,7 @@ webdata:
   command: echo webdata
   volumes:
     - /data
-    - PATH_TO_PROJECT_FILES/sfi.ru/Persistent:/data/www/sfi.ru/surf/shared/Data/Persistent
+    - Persistent:/data/www/sfi.ru/surf/shared/Data/Persistent
     - /etc/localtime:/etc/localtime:ro
 
 web:
@@ -56,6 +56,6 @@ sshresources:
   ports:
     - '2222:22'
   volumes:
-    - PATH_TO_PROJECT_FILES/sfi.ru/Persistent:/data/www/sfi.ru/surf/shared/Data/Persistent
+    - Persistent:/data/www/sfi.ru/surf/shared/Data/Persistent
   environment:
     IMPORT_GITHUB_PUB_KEYS: dimaip
