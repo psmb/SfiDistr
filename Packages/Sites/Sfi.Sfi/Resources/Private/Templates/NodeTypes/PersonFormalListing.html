@@ -1,0 +1,23 @@
+{namespace m=TYPO3\Media\ViewHelpers}
+{namespace neos=TYPO3\Neos\ViewHelpers}
+
+<table class="Table">
+	<tr>
+		<th>Фамилия Имя Отчество</th>
+		<th>Должность</th>
+		<th>Преподаваемые дисциплины</th>
+		<th>Ученая степень, ученое звание</th>
+		<th>Образование</th>
+		<th>Стаж работы</th>
+	</tr>
+	<f:for each="{collection}" as="item">
+		<tr>
+			<td><neos:link.node node="{item}" class="Link">{item.properties.title -> f:format.stripTags()}</neos:link.node></td>
+			<td>{item.properties.position -> f:format.stripTags()}</td>
+			<td>{item.properties.subject -> f:format.stripTags()}</td>
+			<td>{item.properties.degree -> f:format.stripTags()} {item.properties.degreeTitle -> f:format.stripTags()}</td>
+			<td>{item.properties.education -> f:format.stripTags()}<br>{item.properties.educationUpgrade -> f:format.stripTags()}</td>
+			<td>{item.properties.experience -> f:format.stripTags()}<br>{item.properties.experienceSpeciality -> f:format.stripTags()}<br>{experienceSfi -> f:format.stripTags()}</td>
+		</tr>
+	</f:for>
+</table>
