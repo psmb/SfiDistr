@@ -40,3 +40,17 @@ body{
 		margin: 0;
 	}
 }
+
+
+
+// Configure colour of progress bar
+#nprogress .bar {
+	background-color: $color-primary;
+}
+#nprogress .peg {
+	box-shadow: 0 0 10px $color-primary, 0 0 5px $color-primary;
+}
+#nprogress .spinner-icon {
+	border-top-color: $color-primary;
+	border-left-color: $color-primary;
+}

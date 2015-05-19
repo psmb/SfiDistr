@@ -39,6 +39,11 @@ function(){"use strict";if(window.matchMedia&&window.matchMedia("all").addListen
 }( jQuery ));
 
 
+$(document).on('page:fetch',   function() { NProgress.start(); });
+$(document).on('page:change',  function() { NProgress.done(); });
+$(document).on('page:restore', function() { NProgress.remove(); });
+
+
 var onReadyPlugins = function() {
     salvattore.rescanMediaQueries();
 
