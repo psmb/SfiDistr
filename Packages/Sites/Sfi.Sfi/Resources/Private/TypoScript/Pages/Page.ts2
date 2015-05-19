@@ -3,6 +3,10 @@ prototype(Sfi.Sfi:Page) >
 prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title'))}
+
+		opengraph = Sfi.News:Opengraph
+		opengraph.@if.isNews = ${q(node).is('[instanceof Sfi.News:AbstractArticle]')}
+
 		stylesheets.site = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'stylesheets'
