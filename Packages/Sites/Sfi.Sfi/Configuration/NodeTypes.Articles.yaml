@@ -108,6 +108,7 @@ blah: &alohaRich
   superTypes:
     - 'TYPO3.Neos:Document'
     - 'Sfi.News:Listable'
+    - 'Sfi.Shared:TagMixin'
   ui:
     label: 'Person'
     icon: icon-file-text

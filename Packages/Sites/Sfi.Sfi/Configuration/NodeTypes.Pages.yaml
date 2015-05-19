@@ -1,4 +1,3 @@
-
 blah:
   placeholder: 'Enter title here'
   format:
@@ -97,18 +96,12 @@ blah:
 'Sfi.Sfi:PageTag':
   superTypes:
     - 'Sfi.Sfi:AbstractPage'
+    - 'Sfi.Shared:TagMixin'
   ui:
     label: 'Page: Tag'
-    inspector:
-      groups:
-        image:
-          label: Image
-          position: 1
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
-    listByTag:
-      type: 'Sfi.News:ListByTag'
   properties:
     image:
       type: TYPO3\Media\Domain\Model\ImageInterface
@@ -116,7 +109,7 @@ blah:
         label: Image
         reloadIfChanged: true
         inspector:
-          group: image
+          group: 'tag'
           position: 50
     coverText:
       type: string
