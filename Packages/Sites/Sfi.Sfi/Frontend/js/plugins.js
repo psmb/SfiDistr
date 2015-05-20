@@ -1,3 +1,11 @@
+// TODO make it a jQuery plugin and move into separate file
+var headingAnchors = function() {
+    $(".js-anchor").each(function() {
+        var anchor = $('<a class="HeadingAnchor-Link"><i class="icon-link"></i></a>').attr('href', '#' + $(this).attr('id'));
+        $(this).find("h1,h2,h3,h4,h5,h6").append(anchor);
+    });
+}
+
 //TODO: get from Bower, when issue fixed
 /*!
  * Salvattore 1.0.5 by @rnmp and @ppold
@@ -45,6 +53,7 @@ $(document).on('page:restore', function() { NProgress.remove(); });
 
 
 var onReadyPlugins = function() {
+    headingAnchors();
     salvattore.rescanMediaQueries();
 
     var searchBoxInput = jQuery(".js-SearchBox-Field");

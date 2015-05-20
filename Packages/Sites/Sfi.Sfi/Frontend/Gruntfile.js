@@ -51,6 +51,18 @@ module.exports = function (grunt) {
 				src: 'Public/Built/app.css',
 				dest: 'Public/Built/app-prefixed.css'
 			}
+		},
+		fontello: {
+			dist: {
+				options: {
+					scss: true,
+					force: true,
+					config: 'fontello.json',
+					fonts: 'font',
+					styles: 'scss/Vendor/fontello',
+					zip: 'fontelloTemp'
+				}
+			}
 		}
 	//	browserSync: {
 	//		dev: {
@@ -72,6 +84,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-bower-concat');
 	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-fontello');
 //	grunt.loadNpmTasks('grunt-browser-sync');
 
 	// create custom task-list

@@ -2,11 +2,9 @@
 
 @import "reset";
 @import 
-	"Vendor/*.scss",
-	"Quarks/*.scss",
+	"Vendor/**/*.scss",
+	"Quarks/**/*.scss",
 	"Atoms/**/*.scss",
 	"Molecules/**/*.scss",
 	"Organisms/**/*.scss";
 @import "vendorOverride";
-	
-	
