@@ -62,6 +62,8 @@
 					<div itemprop="TeachingDiscipline" class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'subject', tag: 'span')}</div>
 				</div>
 			</s:ifOr>
+
+			{listByTag -> f:format.raw()}
 		</div>
 	</div>
 </f:section>
