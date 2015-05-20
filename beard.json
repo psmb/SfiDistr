@@ -21,6 +21,12 @@
             "type": "gerrit",
             "path": "Packages/Application/TYPO3.TYPO3CR",
             "change_id": "39540"
+        },
+        {
+            "name": "Fix defaultValue for DateTime",
+            "type": "gerrit",
+            "path": "Packages/Application/TYPO3.TYPO3CR",
+            "change_id": "39633"
         }
     ]
 }
