@@ -28,6 +28,7 @@ blah:
     label: 'Abstract Page'
   superTypes:
     - 'TYPO3.Neos.NodeTypes:Page'
+    - 'Sfi.Shared:TagMixin'
 'Sfi.Sfi:PageMain':
   ui:
     label: 'Page: Main'
