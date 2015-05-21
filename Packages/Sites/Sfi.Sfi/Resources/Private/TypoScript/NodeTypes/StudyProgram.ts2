@@ -83,6 +83,17 @@ prototype(Sfi.Sfi:StudyProgram) {
 		nodePath = 'feedback'
 	}
 
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = ${'DescendantOf_' + node.identifier}
+		}
+	}
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 
