@@ -23,10 +23,10 @@
             "change_id": "39540"
         },
         {
-            "name": "Fix defaultValue for DateTime",
+            "name": "Save unicode characters unescaped in JsonArrayType",
             "type": "gerrit",
-            "path": "Packages/Application/TYPO3.TYPO3CR",
-            "change_id": "39633"
+            "path": "Packages/Framework/<TYPO3 class="Flow"></TYPO3>",
+            "change_id": "39685"
         }
     ]
 }
