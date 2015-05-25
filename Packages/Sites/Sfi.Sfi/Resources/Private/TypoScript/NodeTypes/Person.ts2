@@ -29,7 +29,7 @@ prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
 	degree = ${String.stripTags(q(node).property('degree'))}
 	position = ${String.stripTags(q(node).property('position'))}
 	quote = ${q(node).property('quote')}
-	showPosition = ${q(node).property('isSenior') || q(node).property('isChairperson')}
+	showPosition = ${q(node).property('isStaff') || q(node).property('isSenior') || q(node).property('isChairperson')}
 	freeText = ${q(node).property('freeText')}
 	image = ${q(node).find('[instanceof TYPO3.Neos.NodeTypes:Image]').first().property('image')}
 }

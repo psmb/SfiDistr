@@ -90,6 +90,12 @@ blah: &alohaRich
         label: 'Заведующий кафедры'
         inspector:
           group: 'personType'
+    isStaff:
+      type: boolean
+      ui:
+        label: 'Сотрудник'
+        inspector:
+          group: 'personType'
     freeText:
       type: string
       ui:

@@ -13,7 +13,9 @@
 				<div class="ServiceEm">{position}</div>
 			</f:if>
 			<div class="ServiceEm">{degree}</div>
-			<div class="MediaPerson-Teaser ParagraphAlt"><span class="color-primaryAlt">Преподаваемые дисциплины:</span><br>{subject}</div>
+			<f:if condition="{subject}">
+				<div class="MediaPerson-Teaser ParagraphAlt"><span class="color-primaryAlt">Преподаваемые дисциплины:</span><br>{subject}</div>
+			</f:if>
 		</div>
 	</div>
 </neos:link.node>
