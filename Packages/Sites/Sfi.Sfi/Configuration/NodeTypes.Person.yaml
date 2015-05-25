@@ -1,0 +1,207 @@
+blah: &alohaPlain
+  placeholder: 'Enter title here'
+  format:
+    b: FALSE
+    i: FALSE
+    u: FALSE
+    sub: FALSE
+    sup: FALSE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: FALSE
+  alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Enter title here'
+  format:
+    b: TRUE
+    i: TRUE
+    u: FALSE
+    sub: TRUE
+    sup: TRUE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: TRUE
+  alignment: {  }
+
+'Sfi.Sfi:Person':
+  superTypes:
+    - 'TYPO3.Neos:Document'
+    - 'Sfi.News:Listable'
+    - 'Sfi.Shared:TagMixin'
+  ui:
+    label: 'Person'
+    icon: icon-file-text
+    inspector:
+      groups:
+        personType:
+          label: 'Тип сотрудника'
+          position: 1
+        image:
+          label: 'Фото'
+          position: 5
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+    coverCollection:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    isRector:
+      type: boolean
+      ui:
+        label: 'Ректор'
+        inspector:
+          group: 'personType'
+    isProRector:
+      type: boolean
+      ui:
+        label: 'Проректор'
+        inspector:
+          group: 'personType'
+    isProfessor:
+      type: boolean
+      ui:
+        label: 'Преподаватель'
+        inspector:
+          group: 'personType'
+    isSenior:
+      type: boolean
+      ui:
+        label: 'Руководитель'
+        inspector:
+          group: 'personType'
+    isChairperson:
+      type: boolean
+      ui:
+        label: 'Заведующий кафедры'
+        inspector:
+          group: 'personType'
+    freeText:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Свободное поле (отображается только в карточке)'
+    degree:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Ученая степень'
+    degreeTitle:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Ученое звание'
+    position:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Должность'
+    subject:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Преподаваемая дисциплина'
+    experience:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Стаж работы общий'
+    experienceSpeciality:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Стаж работы по специальности'
+    experienceSfi:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Стаж работы в СФИ'
+    education:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Направление подготовки и /или специальности'
+    educationUpgrade:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Повышение квалификации и/или профессиональная переподготовка'
+    telephone:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Телефон'
+    email:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'E-mail'
+    quote:
+      type: string
+      ui:
+        label: 'Цитата'
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Цитата'
+    image:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото на общей странице'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'image'
+
+
+
+
+
+'Sfi.Sfi:Rector':
+  superTypes:
+    - 'Sfi.Sfi:Person'
+  ui:
+    label: 'Rector'
+
+'Sfi.Sfi:ProRector':
+  superTypes:
+    - 'Sfi.Sfi:Person'
+  ui:
+    label: 'ProRector'

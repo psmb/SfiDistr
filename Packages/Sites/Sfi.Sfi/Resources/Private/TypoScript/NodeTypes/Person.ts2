@@ -1,4 +1,6 @@
 prototype(Sfi.Sfi:Person) {
+	@override.variant = ${q(node).property('isRector') ? 'Rector' : (q(node).property('isProRector') || q(node).property('isSenior') || q(node).property('isChairperson')) ? 'Rich' : 'Simple'}
+	templatePath = ${'resource://Sfi.Sfi/Private/Templates/NodeTypes/Person' + variant + '.html'}
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 	sectionMenu = ${siblingsMenu}
@@ -12,8 +14,8 @@ prototype(Sfi.Sfi:Person) {
 	coverCollection = TYPO3.Neos:ContentCollection{
 		nodePath = 'coverCollection'
 		prototype(TYPO3.Neos.NodeTypes:Image){
-			maximumWidth = 400
-			maximumHeight = 600
+			maximumWidth = ${variant == 'Rector' ? 770 : variant == 'Rich' ? 480 : 400}
+			maximumHeight = ${variant == 'Rector' ? 513 : variant == 'Rich' ? 720 : 600}
 			allowCropping = TRUE
 		}
 	}
@@ -25,11 +27,15 @@ prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
 	title = ${String.stripTags(q(node).property('title'))}
 	subject = ${String.stripTags(q(node).property('subject'))}
 	degree = ${String.stripTags(q(node).property('degree'))}
+	position = ${String.stripTags(q(node).property('position'))}
+	quote = ${q(node).property('quote')}
+	showPosition = ${q(node).property('isSenior') || q(node).property('isChairperson')}
+	freeText = ${q(node).property('freeText')}
 	image = ${q(node).find('[instanceof TYPO3.Neos.NodeTypes:Image]').first().property('image')}
 }
 
 prototype(Sfi.Sfi:PersonFormalListing) {
-	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').get()}
+	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('[isProfessor = TRUE], [isProRector = TRUE], [isRector = TRUE]').get()}
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
@@ -39,5 +45,37 @@ prototype(Sfi.Sfi:PersonFormalListing) {
 		entryTags {
 			1 = ${'NodeType_Sfi.Sfi:Person'}
 		}
+	}
+}
+
+
+
+prototype(Sfi.Sfi:SeniorShort) < prototype(Sfi.Sfi:PersonShort) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SeniorShort.html'
+	image = ${q(node).property('image')}
+}
+
+prototype(Sfi.Sfi:ChairpersonShort) < prototype(Sfi.Sfi:PersonShort) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/ChairpersonShort.html'
+	image = ${q(node).property('image')}
+}
+
+
+prototype(Sfi.Shared:ContentCaseShort) < prototype(TYPO3.Neos:ContentCase) {
+	isRector {
+		condition = ${q(node).property('isRector')}
+		type = 'Sfi.Sfi:RectorShort'
+	}
+	isProRector {
+		condition = ${q(node).property('isProRector')}
+		type = 'Sfi.Sfi:ProRectorShort'
+	}
+	isSenior {
+		condition = ${q(node).property('isSenior')}
+		type = 'Sfi.Sfi:SeniorShort'
+	}
+	isChairperson {
+		condition = ${q(node).property('isChairperson')}
+		type = 'Sfi.Sfi:ChairpersonShort'
 	}
 }

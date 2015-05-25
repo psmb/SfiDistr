@@ -14,6 +14,9 @@
 				<s:ifOr condition="{degree}" or="{node.context.workspace.name} != 'live'">
 					<div itemprop="Degree" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
 				</s:ifOr>
+				<f:if condition="{node.context.workspace.name} != 'live'">
+					<div class="ServiceEm--Large" style="color: pink">{neos:contentElement.editable(property: 'freeText', tag: 'span')}</div> 
+				</f:if>
 			</div>
 		</div>
 	</div>

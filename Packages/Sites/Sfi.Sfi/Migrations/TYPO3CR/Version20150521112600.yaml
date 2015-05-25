@@ -1,0 +1,49 @@
+up:
+  comments: 'Migrate Rector and ProRector to Person, setting properties accordingly. Destructive!'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Sfi:Rector'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Sfi:Person'
+        -
+          type: 'AddNewProperty'
+          settings:
+            newPropertyName: 'isRector'
+            value: '1'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Sfi:ProRector'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Sfi:Person'
+        -
+          type: 'AddNewProperty'
+          settings:
+            newPropertyName: 'isProRector'
+            value: '1'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Sfi:Person'
+      transformations:
+        -
+          type: 'AddNewProperty'
+          settings:
+            newPropertyName: 'isProfessor'
+            value: '1'
+down:
+  comments: 'No way back!'
