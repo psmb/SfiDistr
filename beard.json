@@ -25,7 +25,7 @@
         {
             "name": "Save unicode characters unescaped in JsonArrayType",
             "type": "gerrit",
-            "path": "Packages/Framework/<TYPO3 class="Flow"></TYPO3>",
+            "path": "Packages/Framework/TYPO3.Flow",
             "change_id": "39685"
         }
     ]
