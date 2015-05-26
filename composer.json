@@ -39,7 +39,6 @@
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",
         "m12/neos-plugin-dbexport": "dev-master",
-	"google/apiclient": "1.0.*@dev",
         "typo3/neos-googleanalytics": "@dev"
     },
     "require-dev": {
