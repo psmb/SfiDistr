@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'sfi-icons';
-  src: url('../font/sfi-icons.eot?91274922');
-  src: url('../font/sfi-icons.eot?91274922#iefix') format('embedded-opentype'),
-       url('../font/sfi-icons.woff?91274922') format('woff'),
-       url('../font/sfi-icons.ttf?91274922') format('truetype'),
-       url('../font/sfi-icons.svg?91274922#sfi-icons') format('svg');
+  src: url('../font/sfi-icons.eot?60512029');
+  src: url('../font/sfi-icons.eot?60512029#iefix') format('embedded-opentype'),
+       url('../font/sfi-icons.woff?60512029') format('woff'),
+       url('../font/sfi-icons.ttf?60512029') format('truetype'),
+       url('../font/sfi-icons.svg?60512029#sfi-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'sfi-icons';
-    src: url('../font/sfi-icons.svg?91274922#sfi-icons') format('svg');
+    src: url('../font/sfi-icons.svg?60512029#sfi-icons') format('svg');
   }
 }
 */
@@ -75,6 +75,7 @@
 .icon-right-open:before { content: '\e812'; } /* '' */
 .icon-left-open:before { content: '\e813'; } /* '' */
 .icon-attach:before { content: '\e814'; } /* '' */
+.icon-search:before { content: '\e815'; } /* '' */
 .icon-religious-christian:before { content: '\e816'; } /* '' */
 .icon-religious-islam:before { content: '\e817'; } /* '' */
 .icon-religious-jewish:before { content: '\e818'; } /* '' */
