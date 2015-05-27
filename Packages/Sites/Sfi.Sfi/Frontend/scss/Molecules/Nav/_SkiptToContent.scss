@@ -1,0 +1,23 @@
+a.SkipToContent {
+	position:absolute;
+	left:-10000px;
+	top:-10000px;
+	width:1px;
+	height:1px;
+	text-align: left; 
+	overflow:hidden;
+}
+
+a.SkipToContent:focus, a.SkipToContent:active, a.SkipToContent:hover { 
+	position:absolute;
+	left:0;
+	top:0;
+	padding: 2px;
+	text-decoration: underline;
+	width:auto;
+	height:auto;
+	overflow:visible;
+	color: white;
+	background-color: $color-primary;
+	border: 1px dotted white;
+}
