@@ -47,8 +47,8 @@
     }
 }
 
-.Sections--Accordion {
-    .Sections-AccordionTitle {
+//.Sections--Accordion {
+    .Sections-AccordionTitle, .Sections-Tab {
         @extend .ParagraphAlt--Large;
         color: $color-primaryAlt;
         background-color: $gray-bg;
@@ -60,7 +60,7 @@
             @include icon();
         }
     }
-    .isActive .Sections-AccordionTitle {
+    .isActive .Sections-AccordionTitle, .Sections-Tab .isActive {
         background-color: $color-primaryAlt;
         color: white;
         @extend .icon-down-dir;
@@ -71,7 +71,7 @@
         padding: $u 2*$u;
         border: $border-thin--dark;
     }
-}
+//}
 
 
 
