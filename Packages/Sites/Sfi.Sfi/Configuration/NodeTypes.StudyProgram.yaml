@@ -53,10 +53,10 @@ blah: &alohaRich
       type: Sfi.Shared:Asset
     assetInvoice:
       type: Sfi.Shared:Asset
-    assetAdmissionRegulations:
-      type: Sfi.Shared:Asset
     assetSampleContract:
       type: Sfi.Shared:Asset
+    assetsAdmissionRegulations:
+      type: 'TYPO3.Neos:ContentCollection'
     assetsPracticeAnnotations:
       type: 'TYPO3.Neos:ContentCollection'
     assetsSubjectAnnotations:

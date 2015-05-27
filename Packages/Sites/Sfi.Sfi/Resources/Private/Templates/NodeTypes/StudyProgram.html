@@ -83,7 +83,6 @@
 				{neos:contentElement.editable(property: 'nextDate')}
 				{neos:contentElement.editable(property: 'studyBeginDate')}
 				{documentSubmission -> f:format.raw()}
-				{assetAdmissionRegulations -> f:format.raw()}
 			</div>
 			<a href="#tab-exams" class="Sections-Anchor">
 				<div class="Sections-AccordionTitle">Вступительные испытания</div>
@@ -106,7 +105,7 @@
 				{admissionContacts -> f:format.raw()}
 			</div>
 		</div>
-
+		{assetsAdmissionRegulations -> f:format.raw()}
 		{feedback -> f:format.raw()}
 	</div>
 </div>

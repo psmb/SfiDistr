@@ -28,10 +28,6 @@ prototype(Sfi.Sfi:StudyProgram) {
 		title = 'Квитанция для оплаты обучения'
 		@override.node = ${q(node).children('assetInvoice').get(0)}
 	}
-	assetAdmissionRegulations = Sfi.Sfi:StudyProgramAsset {
-		title = 'Правила приема'
-		@override.node = ${q(node).children('assetAdmissionRegulations').get(0)}
-	}
 	assetSampleContract = Sfi.Sfi:StudyProgramAsset {
 		title = 'Образец договора об оказании платных образовательных услуг'
 		@override.node = ${q(node).children('assetSampleContract').get(0)}
@@ -39,6 +35,9 @@ prototype(Sfi.Sfi:StudyProgram) {
 
 	assetsPlan = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsPlan'
+	}
+	assetsAdmissionRegulations = TYPO3.Neos:ContentCollection {
+		nodePath = 'assetsAdmissionRegulations'
 	}
 	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
