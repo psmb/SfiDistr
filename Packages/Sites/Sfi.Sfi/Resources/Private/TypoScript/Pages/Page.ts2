@@ -21,6 +21,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			sectionName = 'headScripts'
 		}
 	}
+	htmlTag.attributes.lang="ru"
 	bodyTag.attributes.class = 'Page'
 	bodyTag.attributes.id = ${'page-' + q(node).property('_name')}
 	body {
