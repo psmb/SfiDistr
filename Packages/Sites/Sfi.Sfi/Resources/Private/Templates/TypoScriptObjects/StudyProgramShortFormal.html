@@ -26,7 +26,7 @@
 		<div class="StudyProgramCard-Line">{assetsPracticeAnnotations -> f:format.raw()}</div>
 	</f:if>
 
-	<div class="hide">
-		<neos:link.node node="{node}" class="Button">Подробнее</neos:link.node>
-	</div>
+	<f:if condition="{noLink} != 'TRUE'">
+		<neos:link.node node="{node}" class="Button marginTop-single">Подробнее</neos:link.node>
+	</f:if>
 </div>
