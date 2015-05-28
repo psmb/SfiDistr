@@ -22,5 +22,8 @@
 	font-family: $fontFamily-alt;
 	&:after{
 		content: ' »';
+		display: inline-block;
+		position: relative;
+		left: $u/4;
 	}
 }

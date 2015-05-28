@@ -9,8 +9,11 @@
 		padding: 2/3*$u;
 		padding-right: 2*$u;
 	}
-	& a:after {
-		content: ' »';
+	a:after {
+		content: '»';
+		display: inline-block;
+		position: relative;
+		left: $u/4;
 	}
 	&:first-child {
 		border-top: $border-dotted;

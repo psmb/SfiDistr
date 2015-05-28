@@ -15,6 +15,9 @@
 		content: '';
 	}
 	li:after{
-		content: ' »';
+		content: '»';
+		display: inline-block;
+		position: relative;
+		left: $u/4;
 	}
 }

@@ -21,7 +21,9 @@
 	transition: $transition;
 	&:after {
 		content: "›";
-		padding-left: 3px;
+		display: inline-block;
+		position: relative;
+		left: $u/4;
 	}
 }
 
