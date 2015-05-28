@@ -10,7 +10,7 @@
 				</h1>
 			<div class="ServiceEm">{division}</div>
 		</div>
-		<div class="Paragraph RteTextLinkable marginVertical-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+		<div class="Paragraph RteTextLinkable marginVertical-triple">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
 		<div class="StudyProgramCard textAlign-center">
 			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration', tag: 'span')}</div>
 			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate', tag: 'span')}</div>
@@ -18,7 +18,7 @@
 			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
 		</div>
 
-		<h2 class="H2">О программе</h2>
+		<h2 class="H2 marginTop-triple">О программе</h2>
 		<div class="Sections js-sections Sections--Tabs">
 			<ul class="Sections-Tabs">
 				<li class="Sections-Tab">
@@ -31,9 +31,7 @@
 					<a class="Sections-Anchor" href="#tab-schedule">Учебный график</a>
 				</li>
 			</ul>
-			<a href="#tab-description" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Описание программы</div>
-			</a>
+			<a href="#tab-description" class="Sections-Anchor Sections-AccordionTitle">Описание программы</a>
 			<div class="Sections-Panel" id="tab-description">
 				{description -> f:format.raw()}
 				<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'accreditationDate')}</div>
@@ -41,18 +39,14 @@
 				{assetDescription -> f:format.raw()}
 				{assetSampleContract -> f:format.raw()}
 			</div>
-			<a href="#tab-subjects" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Изучаемые дисциплины</div>
-			</a>
+			<a href="#tab-subjects" class="Sections-Anchor Sections-AccordionTitle">Изучаемые дисциплины</a>
 			<div class="Sections-Panel" id="tab-subjects">
 				{subjects -> f:format.raw()}
 				{assetsSubjectAnnotations -> f:format.raw()}
 				{assetsPracticeAnnotations -> f:format.raw()}
 				{assetsMethodical -> f:format.raw()}
 			</div>
-			<a href="#tab-schedule" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Учебный график</div>
-			</a>
+			<a href="#tab-schedule" class="Sections-Anchor Sections-AccordionTitle">Учебный график</a>
 			<div class="Sections-Panel" id="tab-schedule">
 				{schedule -> f:format.raw()}
 				{assetSchedule -> f:format.raw()}
@@ -60,7 +54,7 @@
 			</div>
 		</div>
 
-		<h2 class="H2">Поступление</h2>
+		<h2 class="H2 marginTop-triple">Поступление</h2>
 		<div class="Sections js-sections Sections--Tabs">
 			<ul class="Sections-Tabs">
 				<li class="Sections-Tab">
@@ -76,31 +70,23 @@
 					<a class="Sections-Anchor" href="#tab-contacts">Контакты</a>
 				</li>
 			</ul>
-			<a href="#tab-documentSubmission" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Как подать документы</div>
-			</a>
+			<a href="#tab-documentSubmission" class="Sections-Anchor Sections-AccordionTitle">Как подать документы</a>
 			<div class="Sections-Panel" id="tab-documentSubmission">	
 				{neos:contentElement.editable(property: 'nextDate')}
 				{neos:contentElement.editable(property: 'studyBeginDate')}
 				{documentSubmission -> f:format.raw()}
 			</div>
-			<a href="#tab-exams" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Вступительные испытания</div>
-			</a>
+			<a href="#tab-exams" class="Sections-Anchor Sections-AccordionTitle">Вступительные испытания</a>
 			<div class="Sections-Panel" id="tab-exams">
 				{exams -> f:format.raw()}
 			</div>
-			<a href="#tab-payment" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Оплата</div>
-			</a>
+			<a href="#tab-payment" class="Sections-Anchor Sections-AccordionTitle">Оплата</a>
 			<div class="Sections-Panel" id="tab-payment">
 				{neos:contentElement.editable(property: 'price')}
 				{payment -> f:format.raw()}
 				{assetInvoice -> f:format.raw()}
 			</div>
-			<a href="#tab-contacts" class="Sections-Anchor">
-				<div class="Sections-AccordionTitle">Контакты</div>
-			</a>
+			<a href="#tab-contacts" class="Sections-Anchor Sections-AccordionTitle">Контакты</a>
 			<div class="Sections-Panel" id="tab-contacts">
 				{admissionContacts -> f:format.raw()}
 			</div>

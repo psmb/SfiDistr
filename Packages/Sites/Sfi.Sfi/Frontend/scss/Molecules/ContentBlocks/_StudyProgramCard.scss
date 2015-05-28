@@ -5,6 +5,11 @@
 		padding: 2*$u;
 	}
 }
+
+.Sections-Panel .StudyProgramCard {
+	background-color: initial;
+}
+
 .StudyProgramCard-Line {
 	@extend .ParagraphAlt--Large;
 	color: $gray--light;

@@ -4,7 +4,7 @@
 
 .Sections-Tabs {
     overflow: auto;
-    margin: 2*$u 0;
+    margin-top: 2*$u;
     padding: 0;
 }
 
@@ -33,7 +33,7 @@
     }
 
     .Sections-AccordionTitle {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -47,31 +47,45 @@
     }
 }
 
-//.Sections--Accordion {
-    .Sections-AccordionTitle, .Sections-Tab {
-        @extend .ParagraphAlt--Large;
-        color: $color-primaryAlt;
-        background-color: $gray-bg;
-        padding: $u;
-        margin: 0;
-        margin-top: $u;
-        @extend .icon-right-dir;
-        &:before {
-            @include icon();
-        }
-    }
-    .isActive .Sections-AccordionTitle, .Sections-Tab .isActive {
+
+
+
+
+.Sections-Anchor {
+    @extend .ParagraphAlt--Large;
+    display: block;
+    color: $color-primaryAlt;
+    border: $border-thin--dark;
+    background-color: $gray-bg--light;
+    padding: $u 2*$u;
+    margin: 0;
+    &.isActive {
         background-color: $color-primaryAlt;
         color: white;
+    }
+}
+.Sections-Tabs .Sections-Anchor {
+    border-bottom: 0;
+    border-right-width: 0;
+}
+.Sections-Tabs .Sections-Tab:last-child .Sections-Anchor {
+    border-right-width: 1px;
+}
+.Sections-AccordionTitle {
+    margin-top: $u;
+    @extend .icon-right-dir;
+    &:before {
+        @include icon();
+    }
+    &.isActive {
         @extend .icon-down-dir;
     }
+}
 
-    .Sections-Panel {
-        background-color: $gray-bg--light;
-        padding: $u 2*$u;
-        border: $border-thin--dark;
-    }
-//}
+.Sections-Panel {
+    padding: 3*$u 2*$u;
+    border: $border-thin--dark;
+}
 
 
 
