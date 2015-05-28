@@ -100,11 +100,15 @@ prototype(Sfi.Sfi:StudyProgram) {
 prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShort.html'
 	title = ${String.stripTags(q(node).property('title'))}
+	level = ${String.stripTags(q(node).parent().parent().property('title'))}
+	division = ${String.stripTags(q(node).parent().property('title'))}
 	duration = ${q(node).property('duration')}
 	nextDate = ${q(node).property('nextDate')}
 	educationForm = ${q(node).property('educationForm')}
 	details = ${q(node).property('details')}
 	price = ${q(node).property('price')}
+	noLink = ${q(node).property('noLink')}
+	specialityId = ${q(node).property('specialityId')}
 }
 
 prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.TypoScript:Template) {
@@ -114,6 +118,7 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.TypoScript:Template
 	division = ${q(node).parent().property('title')}
 	duration = ${q(node).property('duration')}
 	accreditationDate = ${q(node).property('accreditationDate')}
+	noLink = ${q(node).property('noLink')}
 
 	#TODO: translate
 	assetDescription = Sfi.Sfi:StudyProgramAsset {
@@ -147,7 +152,7 @@ prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections)
 	layout = 'Sections--Accordion'
 	tabs>
 	panels.itemRenderer {
-		accordion = ${q(node).property('specialityId') != '' ? q(node).property('title') + ' (' + q(node).property('specialityId') + ')' : q(node).property('title')}
+		accordion = ${q(node).property('specialityId') ? q(node).property('title') + ' (' + q(node).property('specialityId') + ')' : q(node).property('title')}
 		panel = Sfi.Sfi:StudyProgramShort
 	}
 }

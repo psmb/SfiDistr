@@ -44,6 +44,10 @@ blah: &alohaRich
   ui:
     label: 'Study Program'
     icon: icon-file-text
+    inspector:
+      groups:
+        studyProgram:
+          label: 'Учебная программа'
   childNodes:
     assetDescription:
       type: Sfi.Shared:Asset
@@ -151,3 +155,10 @@ blah: &alohaRich
         aloha:
           <<: *alohaRich
           placeholder: 'Срок начала занятий'
+    noLink:
+      type: boolean
+      ui:
+        label: 'Не делать ссылку из карточек'
+        reloadIfChanged: FALSE
+        inspector:
+          group: 'studyProgram'
