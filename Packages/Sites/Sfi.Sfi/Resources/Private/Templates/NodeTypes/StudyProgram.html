@@ -20,9 +20,18 @@
 			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'certificate', tag: 'span')}</div>
 			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
 		</div>
+	</div>
+</div>
 
+<div class="row">
+	<div class="columns">
 		<h2 class="H2 marginTop-triple">О программе</h2>
-		<div class="Sections js-sections Sections--Tabs">
+	</div>
+</div>
+<div class="row">
+	<div class="medium-8 columns">
+
+		<div class="Sections js-sections Sections--Tabs marginTop-triple">
 			<ul class="Sections-Tabs">
 				<li class="Sections-Tab">
 					<a class="Sections-Anchor" href="#tab-description">Описание программы</a>
@@ -57,11 +66,11 @@
 			</div>
 		</div>
 
-		<h2 class="H2 marginTop-triple">Поступление</h2>
+		<h2 class="H2 marginTop-triple">Абитуриенту</h2>
 		<div class="Sections js-sections Sections--Tabs">
 			<ul class="Sections-Tabs">
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-documentSubmission">Как подать документы</a>
+					<a class="Sections-Anchor" href="#tab-documentSubmission">Поступление</a>
 				</li>
 				<li class="Sections-Tab">
 					<a class="Sections-Anchor" href="#tab-exams">Вступительные испытания</a>
@@ -73,10 +82,10 @@
 					<a class="Sections-Anchor" href="#tab-contacts">Контакты</a>
 				</li>
 			</ul>
-			<a href="#tab-documentSubmission" class="Sections-Anchor Sections-AccordionTitle">Как подать документы</a>
+			<a href="#tab-documentSubmission" class="Sections-Anchor Sections-AccordionTitle">Поступление</a>
 			<div class="Sections-Panel" id="tab-documentSubmission">	
-				{neos:contentElement.editable(property: 'nextDate')}
-				{neos:contentElement.editable(property: 'studyBeginDate')}
+				<div class="Paragraph">{neos:contentElement.editable(property: 'nextDate')}</div>
+				<div class="Paragraph">{neos:contentElement.editable(property: 'studyBeginDate')}</div>
 				{documentSubmission -> f:format.raw()}
 			</div>
 			<a href="#tab-exams" class="Sections-Anchor Sections-AccordionTitle">Вступительные испытания</a>
@@ -85,7 +94,7 @@
 			</div>
 			<a href="#tab-payment" class="Sections-Anchor Sections-AccordionTitle">Оплата</a>
 			<div class="Sections-Panel" id="tab-payment">
-				{neos:contentElement.editable(property: 'price')}
+				<div class="Paragraph">{neos:contentElement.editable(property: 'price')}</div>
 				{payment -> f:format.raw()}
 				{assetInvoice -> f:format.raw()}
 			</div>
@@ -96,10 +105,11 @@
 		</div>
 		{assetsAdmissionRegulations -> f:format.raw()}
 		{feedback -> f:format.raw()}
+
 	</div>
-</div>
-<div class="row">
-	<div class="columns">
-		<div itemprop="OOP_main" class="Article-Content">{main -> f:format.raw()}</div>
+	<div class="medium-4 large-3 large-offset-1 columns marginVertical-triple">
+		<div class="js-StickInParent">
+			{sectionMenu -> f:format.raw()}
+		</div>
 	</div>
 </div>
