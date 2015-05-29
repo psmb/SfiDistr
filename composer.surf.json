@@ -12,6 +12,7 @@
     "require": {
         "doctrine/migrations": "@dev",
         "typo3/surf": "@dev",
+        "typo3/flow": "@dev",
         "sfi/surf": "@dev"
     },
     "scripts": {
