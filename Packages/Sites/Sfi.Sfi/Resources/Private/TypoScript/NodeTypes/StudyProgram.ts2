@@ -99,6 +99,7 @@ prototype(Sfi.Sfi:StudyProgram) {
 
 prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShort.html'
+	node = ${node}
 	title = ${String.stripTags(q(node).property('title'))}
 	level = ${String.stripTags(q(node).parent().parent().property('title'))}
 	division = ${String.stripTags(q(node).parent().property('title'))}
@@ -113,6 +114,7 @@ prototype(Sfi.Sfi:StudyProgramShort) < prototype(TYPO3.TypoScript:Template) {
 
 prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShortFormal.html'
+	node = ${node}
 	title = ${String.stripTags(q(node).property('title'))}
 	level = ${q(node).parent().parent().property('title')}
 	division = ${q(node).parent().property('title')}
