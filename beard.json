@@ -27,6 +27,12 @@
             "type": "gerrit",
             "path": "Packages/Framework/TYPO3.Flow",
             "change_id": "39685"
+        },
+        {
+            "name": "PropertyEmpty filter",
+            "type": "gerrit",
+            "path": "Packages/Application/TYPO3.TYPO3CR",
+            "change_id": "39781"
         }
     ]
 }
