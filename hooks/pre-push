@@ -1,0 +1,62 @@
+#!/bin/bash
+ 
+# Called by "git push" after it has checked the remote status,
+# but before anything has been pushed.
+#
+# If this script exits with a non-zero status nothing will be pushed.
+#
+# Steps to install, from the root directory of your repo...
+# 1. Copy the file into your repo at `.git/hooks/pre-push`
+# 2. Set executable permissions, run `chmod +x .git/hooks/pre-push`
+#
+# Try a force push to master, you should get a message `*** [Policy] never force push...`
+#
+# The commands below will not be allowed...
+# `git push --force origin master`
+# `git push --delete origin master`
+# `git push origin :master`
+#
+# Nor will a force push while on the master branch be allowed...
+# `git co master`
+# `git push --force origin`
+
+# Only lazy user will be allowed to push to master in any case
+# 
+# Requires git 1.8.2 or newer
+ 
+protected_branch='master'
+ 
+policy='[Policy] Never force push or delete the '$protected_branch' branch! (Prevented with pre-push hook.)'
+
+policy_nonlazy='[Policy] Never push to master is you are not lazy'
+ 
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+ 
+push_command=$(ps -ocommand= -p $PPID)
+
+lazy_user_email='dimaip@gmail.com'
+
+user_email=$(git config user.email)
+ 
+is_destructive='force|delete|\-f'
+ 
+will_remove_protected_branch=':'$protected_branch
+ 
+ 
+if [[ $user_email != $lazy_user_email && ($current_branch = $protected_branch || $push_command =~ $protected_branch) ]]; then
+  echo $policy_nonlazy
+  exit 1
+fi
+ 
+if [[ $push_command =~ $is_destructive && ($current_branch = $protected_branch || $push_command =~ $protected_branch) ]]; then
+  echo $policy
+  exit 1
+fi
+
+if [[ $push_command =~ $will_remove_protected_branch ]]; then
+  echo $policy
+  exit 1
+fi
+
+exit 0
+
