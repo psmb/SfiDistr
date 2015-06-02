@@ -4,6 +4,7 @@ prototype(Sfi.Sfi:Paper) {
 	main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'
 	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:PaperShort) < prototype(TYPO3.Neos:Content) {

@@ -3,36 +3,34 @@
 
 <div class="Paper-Article">
 	<div class="Article Article--Soft">
-		<neos:contentElement.wrap node="{node}">
-			<div class="row">
-				<div class="large-10 large-offset-1 columns">
-					<div class="textAlign-center">
-						<div>
-							<span class="Service--Large">{neos:contentElement.editable(property: 'authorName', tag: 'span')}</span>
-							<span class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'authorDegree', tag: 'span')}</span>
-						</div>
-						<span class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'authorFrom', tag: 'span')}</span>
-						<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
-						<div class="ServiceEm">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
-						<span class="Article-Date">
-							<s:date format="j F Y">{date}</s:date>
-						</span>
-						&bull;
-						<a class="Article-CommentCount" href="#disqus_thread">Комментировать</a>
+		<div class="row">
+			<div class="large-10 large-offset-1 columns">
+				<div class="textAlign-center">
+					<div>
+						<span class="Service--Large">{neos:contentElement.editable(property: 'authorName', tag: 'span')}</span>
+						<span class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'authorDegree', tag: 'span')}</span>
 					</div>
-					<div class="Article-Lead RteTextLinkable">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+					<span class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'authorFrom', tag: 'span')}</span>
+					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+					<div class="ServiceEm">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+					<span class="Article-Date">
+						<s:date format="j F Y">{date}</s:date>
+					</span>
+					&bull;
+					<a class="Article-CommentCount" href="#disqus_thread">Комментировать</a>
 				</div>
+				<div class="Article-Lead RteTextLinkable">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
 			</div>
-			<div class="row">
-				<div class="large-8 medium-10 large-offset-2 medium-offset-1 columns">
-					<div class="Article-Content">{main -> f:format.raw()}</div>
-				</div>
+		</div>
+		<div class="row">
+			<div class="large-8 medium-10 large-offset-2 medium-offset-1 columns">
+				<div class="Article-Content">{main -> f:format.raw()}</div>
 			</div>
-			<div class="row marginTop-triple">
-				<div class="large-10 large-offset-1 columns">
-					<f:render partial="Disqus" />
-				</div>
+		</div>
+		<div class="row marginTop-triple">
+			<div class="large-10 large-offset-1 columns">
+				<f:render partial="Disqus" />
 			</div>
-		</neos:contentElement.wrap>
-	</div>	
+		</div>
+	</div>
 </div>
