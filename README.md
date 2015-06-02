@@ -1,7 +1,10 @@
 Sfi.ru Distribution
 ========
 
-[![Stories in Ready](https://badge.waffle.io/sfi-ru/sfidistr.png?label=ready&title=Ready)](https://waffle.io/sfi-ru/sfidistr)
+**Feeling generous and want to help our non-profit?** Pick one of these issues and contribute: [![Stories in Ready](https://badge.waffle.io/sfi-ru/sfidistr.png?label=ready&title=Ready)](https://waffle.io/sfi-ru/sfidistr)
+
+CircleCI integration status:
+[![Circle CI](https://circleci.com/gh/sfi-ru/SfiDistr/tree/master.svg?style=svg)](https://circleci.com/gh/sfi-ru/SfiDistr/tree/master)
 
 ##Installation
 
@@ -41,6 +44,5 @@ Sfi.ru Distribution
 
 TODO: write proper readme describing all features of this distribution, location of key files etc.
 
-CircleCI integration status:
-[![Circle CI](https://circleci.com/gh/sfi-ru/SfiDistr/tree/master.svg?style=svg)](https://circleci.com/gh/sfi-ru/SfiDistr/tree/master)
+
 
