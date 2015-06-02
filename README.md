@@ -1,6 +1,8 @@
 Sfi.ru Distribution
 ========
 
+[![Stories in Ready](https://badge.waffle.io/sfi-ru/sfidistr.png?label=ready&title=Ready)](https://waffle.io/sfi-ru/sfidistr)
+
 ##Installation
 
 ###Install with Docker
