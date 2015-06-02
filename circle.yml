@@ -2,6 +2,8 @@ machine:
   php:
     version: 5.5.11
 dependencies:
+  pre:
+    - if [ "$CIRCLE_USERNAME" = "dimaip" ] ; then echo "You're dimaip, let's deploy"; else echo "Don't push to master, you ain't no dimaip"; exit; fi
   override:
     - git config --global url."http://git.typo3.org".insteadOf git://git.typo3.org
     - rm Packages/Sites/Sfi.Sfi/composer.json
