@@ -17,22 +17,22 @@
         "typo3/neos-nodetypes": "2.0.x-dev",
         "typo3/neos-kickstarter": "2.0.x-dev",
 
-        "doctrine/migrations": "dev-master",
+        "doctrine/migrations": "@dev",
 
-        "typo3/neos-seo": "@dev",
-        "typo3/imagine": "@dev",
-        "typo3/form": "@dev",
-        "typo3/setup": "@dev",
+        "typo3/neos-seo": "~1.0",
+        "typo3/imagine": "~2.0",
+        "typo3/form": "~2.0",
+        "typo3/setup": "~2.0",
 
         "typo3/typo3cr": "2.0.x-dev",
         "typo3/typoscript": "2.0.x-dev",
         "typo3/media": "2.0.x-dev",
 
-        "typo3/flow": "3.0.x-dev",
-        "typo3/fluid": "3.0.x-dev",
-        "typo3/eel": "3.0.x-dev",
-        "typo3/party": "3.0.x-dev",
-        "typo3/kickstart": "3.0.x-dev",
+        "typo3/flow": "3.0.*@beta",
+        "typo3/fluid": "3.0.*@beta",
+        "typo3/eel": "3.0.*@beta",
+        "typo3/party": "3.0.*@beta",
+        "typo3/kickstart": "3.0.*@beta",
 
         "sfi/shared": "@dev",
         "sfi/news": "@dev",

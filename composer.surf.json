@@ -10,7 +10,7 @@
         { "type": "git", "url": "https://github.com/sfi-ru/Surf.git" }
     ],
     "require": {
-        "doctrine/migrations": "@dev",
+        "doctrine/migrations": "v1.0.0-alpha3",
         "typo3/surf": "@dev",
         "typo3/flow": "@dev",
         "sfi/surf": "@dev"
