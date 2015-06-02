@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/sfi-ru/sfidistr.png?label=ready&title=Ready)](https://waffle.io/sfi-ru/sfidistr)
 Sfi.ru Distribution
 ========
 
