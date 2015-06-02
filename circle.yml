@@ -3,9 +3,9 @@ machine:
     version: 5.5.11
 dependencies:
   override:
-    - rm composer.json && rm composer.lock && rm Packages/Sites/Sfi.Sfi/composer.json && mv composer.surf.json composer.json
     - git config --global url."http://git.typo3.org".insteadOf git://git.typo3.org
-    - composer install --no-interaction --no-dev
+    - rm Packages/Sites/Sfi.Sfi/composer.json
+    - COMPOSER=composer-surf.json composer install --no-interaction --no-dev
     - mv Packages/Libraries/sfi/surf/Build Build
 test:
   override:
