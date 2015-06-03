@@ -16,7 +16,11 @@ stylesheets
 /Configuration/*
 Configuration/Production/IncludeCachedConfigurations.php
 Configuration/Production/Settings.yaml.example
+Configuration/Production/Settings.yaml
+Configuration/Development/IncludeCachedConfigurations.php
 Configuration/Development/Settings.yaml.example
+Configuration/Development/Settings.yaml
+!/Configuration/Settings.yaml
 !/Configuration/Development/
 !/Configuration/Production/
 !/Configuration/Development/Caches.yaml

@@ -30,7 +30,7 @@ protected_branch='master'
  
 policy='[Policy] Never force push or delete the '$protected_branch' branch! (Prevented with pre-push hook.)'
 
-policy_nonlazy='[Policy] Never push to master is you are not lazy'
+policy_nonlazy='[Policy] Never push to master if you are not lazy'
  
 current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
  
