@@ -25,6 +25,7 @@ case $@ in
       cp Configuration/Production/Settings.yaml Configuration/Settings.yaml
     fi
     chmod g+rwx -R .
+    chown 80:80 -R .
     rm -rf .git/hooks
     ln -s ../hooks .git/hooks
     ./beard patch
