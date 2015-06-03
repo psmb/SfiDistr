@@ -43,6 +43,3 @@ CircleCI integration status:
  * <i>Error in docker-compose up</i> client and server don't have same version -- Update docker
 
 TODO: write proper readme describing all features of this distribution, location of key files etc.
-
-
-
