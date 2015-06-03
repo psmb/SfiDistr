@@ -1,2 +1,0 @@
-#!/bin/sh
-echo "# Please take care writing a good commit message!\n# See http://wiki.typo3.org/CommitMessage_Format_(Git) for inspiration" >> $1
