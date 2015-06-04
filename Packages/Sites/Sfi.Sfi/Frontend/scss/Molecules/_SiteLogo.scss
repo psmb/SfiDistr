@@ -8,12 +8,17 @@
 
 @include breakpoint('medium') {
 	.SiteLogo {
-		width: 292px;
+		width: 260px;
 		max-width: initial;
 	}
 }
 @include breakpoint('large') {
 	.SiteLogo {
-		width: 300px;
+		width: 280px;
 	}
+}
+
+.SiteLogo-Title {
+	@extend .Paragraph--Small;
+	font-size: rem-calc(12);
 }
