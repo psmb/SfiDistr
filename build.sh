@@ -24,9 +24,7 @@ case $@ in
     if [ -f Configuration/Production/Settings.yaml ]; then
       cp Configuration/Production/Settings.yaml Configuration/Development/Settings.yaml
     fi
-    sudo ./flow flow:core:setfilepermissions www www www
     rm -rf .git/hooks
     ln -s ../hooks .git/hooks
-    ./beard patch
     ;;
 esac
