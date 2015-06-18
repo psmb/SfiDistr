@@ -150,6 +150,7 @@ var onReadyPlugins = function() {
         var as = audiojs.createAll({
             imageLocation: path + 'player-graphics.gif',
             swfLocation: path + 'audiojs.swf',
+            css: ''
         });
     });
 

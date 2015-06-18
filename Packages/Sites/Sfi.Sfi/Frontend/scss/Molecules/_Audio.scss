@@ -1,9 +1,154 @@
 .Audio {
 	margin-top: 2*$u;
 	margin-bottom: 2*$u;
+	overflow: auto;
 }
 
 .Audio-Download {
 	margin-left: $u;
 	margin-top: $u/2;
+}
+
+
+
+
+.Audio-Player {
+
+	.audiojs audio {
+		position: absolute;
+		left: -1px;
+	}
+	.audiojs {
+		width: 460px;
+		height: 36px;
+		background: $gray-bg;
+		overflow: hidden;
+		font-family: monospace;
+		font-size: 12px;
+	}
+	.audiojs .play-pause {
+		width: 36px;
+		height: 36px;
+		line-height: 36px;
+		margin: 0px;
+		float: left;
+		overflow: hidden;
+		border-right: 1px solid $gray--light;
+		> p {
+			padding-left: 11px;
+		}
+	}
+	.audiojs p {
+		display: none;
+		width: 36px;
+		height: 36px;
+		margin: 0px;
+		cursor: pointer;
+	}
+	.audiojs .play {
+		display: block;
+	}
+	.audiojs .scrubber {
+		position: relative;
+		float: left;
+		width: 280px;
+		background: $gray-bg--light;
+		height: 14px;
+		margin: 10px;
+		border-top: 1px solid $gray--light;
+		border-left: 0px;
+		border-bottom: 0px;
+		overflow: hidden;
+	}
+	.audiojs .progress {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		height: 14px;
+		width: 0px;
+		background: $gray--dark;
+		z-index: 1;
+	}
+	.audiojs .loaded {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		height: 14px;
+		width: 0px;
+		background: $gray--light;
+	}
+	.audiojs .time {
+		float: left;
+		height: 36px;
+		line-height: 36px;
+		margin: 0px 0px 0px 6px;
+		padding: 0px 6px 0px 12px;
+		border-left: 1px solid $gray--light;
+		color: $gray--dark;
+	}
+	.audiojs .time em {
+		padding: 0px 2px 0px 0px;
+		color: $gray--light;
+		font-style: normal;
+	}
+	.audiojs .time strong {
+		padding: 0px 0px 0px 2px;
+		font-weight: normal;
+	}
+	.audiojs .error-message {
+		float: left;
+		display: none;
+		margin: 0px 10px;
+		height: 36px;
+		width: 400px;
+		overflow: hidden;
+		line-height: 36px;
+		white-space: nowrap;
+		color: #fff;
+		text-overflow: ellipsis;
+	}
+	.audiojs .error-message a {
+		color: #eee;
+		text-decoration: none;
+		padding-bottom: 1px;
+		border-bottom: 1px solid #999;
+		white-space: wrap;
+	}
+	.audiojs .play:before {
+		@include icon();
+		content: '\e81b';
+	}
+	.audiojs .pause:before {
+		@include icon();
+		content: '\e81d';
+	}
+	.audiojs .loading {
+		@include icon();
+		content: '\e806';
+	}
+	.playing .play, .playing .loading, .playing .error {
+		display: none;
+	}
+	.playing .pause {
+		display: block;
+	}
+	.loading .play, .loading .pause, .loading .error {
+		display: none;
+	}
+	.loading .loading {
+		display: block;
+	}
+	.error .time, .error .play, .error .pause, .error .scrubber, .error .loading {
+		display: none;
+	}
+	.error .error {
+		display: block;
+	}
+	.error .play-pause p {
+		cursor: auto;
+	}
+	.error .error-message {
+		display: block;
+	}
+
 }
