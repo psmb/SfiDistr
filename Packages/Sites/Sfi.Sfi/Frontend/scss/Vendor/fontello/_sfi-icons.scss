@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'sfi-icons';
-  src: url('../font/sfi-icons.eot?60512029');
-  src: url('../font/sfi-icons.eot?60512029#iefix') format('embedded-opentype'),
-       url('../font/sfi-icons.woff?60512029') format('woff'),
-       url('../font/sfi-icons.ttf?60512029') format('truetype'),
-       url('../font/sfi-icons.svg?60512029#sfi-icons') format('svg');
+  src: url('../font/sfi-icons.eot?96402471');
+  src: url('../font/sfi-icons.eot?96402471#iefix') format('embedded-opentype'),
+       url('../font/sfi-icons.woff?96402471') format('woff'),
+       url('../font/sfi-icons.ttf?96402471') format('truetype'),
+       url('../font/sfi-icons.svg?96402471#sfi-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'sfi-icons';
-    src: url('../font/sfi-icons.svg?60512029#sfi-icons') format('svg');
+    src: url('../font/sfi-icons.svg?96402471#sfi-icons') format('svg');
   }
 }
 */
@@ -60,7 +60,7 @@
 .icon-mail:before { content: '\e803'; } /* '' */
 .icon-angle-double-left:before { content: '\e804'; } /* '' */
 .icon-angle-double-right:before { content: '\e805'; } /* '' */
-.icon-print:before { content: '\e806'; } /* '' */
+.icon-spinner:before { content: '\e806'; } /* '' */
 .icon-audio:before { content: '\e807'; } /* '' */
 .icon-photo:before { content: '\e808'; } /* '' */
 .icon-video:before { content: '\e809'; } /* '' */
@@ -79,6 +79,9 @@
 .icon-religious-christian:before { content: '\e816'; } /* '' */
 .icon-religious-islam:before { content: '\e817'; } /* '' */
 .icon-religious-jewish:before { content: '\e818'; } /* '' */
+.icon-play:before { content: '\e81b'; } /* '' */
+.icon-download:before { content: '\e81c'; } /* '' */
+.icon-pause:before { content: '\e81d'; } /* '' */
 .icon-angle-double-up:before { content: '\e81e'; } /* '' */
 .icon-angle-double-down:before { content: '\e81f'; } /* '' */
 .icon-facebook:before { content: '\e828'; } /* '' */
