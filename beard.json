@@ -9,12 +9,6 @@
             "type": "gerrit",
             "path": "Packages/Application/TYPO3.TYPO3CR",
             "change_id": "38893"
-        },
-        {
-            "name": "Selecting editable requires a second click",
-            "type": "gerrit",
-            "path": "Packages/Application/TYPO3.Neos",
-            "change_id": "40402"
         }
     ]
 }
