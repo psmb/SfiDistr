@@ -22,4 +22,3 @@ deployment:
             REPOSITORY_URL: 'git@github.com:sfi-ru/SfiDistr.git'
             DOMAIN: 'sfi.ru'
             PORT: 1122
-            BUILD_NEOS: FALSE
