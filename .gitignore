@@ -20,11 +20,8 @@ Configuration/Production/Settings.yaml
 Configuration/Development/IncludeCachedConfigurations.php
 Configuration/Development/Settings.yaml.example
 Configuration/Development/Settings.yaml
-!/Configuration/Settings.yaml
 !/Configuration/Development/
 !/Configuration/Production/
-!/Configuration/Development/Caches.yaml
-!/Configuration/Production/Caches.yaml
 /Build/Behat/*
 /Build/BuildEssentials
 /Build/Reports
@@ -39,3 +36,5 @@ Configuration/Development/Settings.yaml
 /Upgrading.txt
 /flow
 /flow.bat
+/Readme.rst
+/Upgrading.rst

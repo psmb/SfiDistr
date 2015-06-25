@@ -1,0 +1,19 @@
+TYPO3_TypoScript_Content:
+  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  backendOptions:
+    hostname: redis
+Flow_Mvc_Routing_Resolve:
+  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  backendOptions:
+    hostname: redis
+Flow_Mvc_Routing_Route:
+  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  backendOptions:
+    hostname: redis
+
+Flow_Session_MetaData:
+  backendOptions:
+    cacheDirectory: '%FLOW_PATH_DATA%Session/Flow_Session_MetaData'
+Flow_Session_Storage:
+  backendOptions:
+    cacheDirectory: '%FLOW_PATH_DATA%Session/Flow_Session_Storage'
