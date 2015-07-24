@@ -1,4 +1,4 @@
-FROM million12/typo3-flow-neos-abstract:latest
+FROM dimaip/typo3-flow-neos-abstract:latest
 MAINTAINER Dmitri Pisarev
 
 ADD container-files /
