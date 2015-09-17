@@ -16,7 +16,7 @@
 	}
 	.MainMenu-Item, .MainMenu-SubItem {
 		@include link-state();
-		display: inline-block;
+		a {display: inline-block;}
 	}
 	.MainMenu-Wrap{
 		overflow: hidden;
