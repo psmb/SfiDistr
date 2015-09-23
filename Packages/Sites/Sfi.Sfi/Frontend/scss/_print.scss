@@ -1,0 +1,38 @@
+@media print {
+
+body {
+	background: white; 
+	font-size: 12pt; 
+	color: black;
+}
+
+header, footer { display: none; }
+
+.sidebar, .Footer, div#disqus_thread, .FooterGallery, 
+.FooterGallery-Header .slick-dots, .SectionMenu, .MainMenu-Wrap, 
+.header.Header.js-MainMenu, ul.SecondaryMenu, .FooterGallery-Header, 
+ul.FooterGallery, .Well.overflow-hidden, .NewsDetail-MoreItems, 
+a.Article-CommentCount {
+    display: none;
+}
+
+.MobileNav-Menu, .MobileNav-Menu.show-for-small-only, .show-for-small-only { 
+	display: none; 
+    overflow: auto;
+    box-shadow: none;
+    right: -1000px;
+}
+
+img {
+	max-width: 50%;
+}
+
+a:link, 
+a:visited { 
+	color: #520; 
+	background: transparent; 
+	font-weight: normal; 
+	text-decoration: underline; 
+}
+
+}
