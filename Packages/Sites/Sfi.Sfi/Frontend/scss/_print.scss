@@ -17,7 +17,7 @@ a.Article-CommentCount {
 }
 
 .MobileNav-Menu, .MobileNav-Menu.show-for-small-only, .show-for-small-only { 
-	display: none; 
+	display: none !important; 
     overflow: auto;
     box-shadow: none;
     right: -1000px;
