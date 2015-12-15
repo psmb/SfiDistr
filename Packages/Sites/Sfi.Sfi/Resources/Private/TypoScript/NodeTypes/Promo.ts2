@@ -2,11 +2,11 @@ prototype(Sfi.Sfi:Promo) {
 	title = ${q(node).property('title')}
 	teaser = ${q(node).property('teaser')}
 
-	main = TYPO3.Neos:ContentCollection{
+	main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 
-	moreItems = Sfi.Sfi:PromoList{
+	moreItems = Sfi.Sfi:PromoList {
 		content.collection.@process.filterOutSelf {
 			expression = ${q(value).filter('[_name != ' + q(node).property('_name') + ']').get()}
 			@position = 'start'
@@ -44,7 +44,7 @@ prototype(Sfi.Sfi:PromoList) < prototype(TYPO3.TypoScript:Tag) {
 }
 
 prototype(TYPO3.Neos:PrimaryContent) {
-    promo{
+    promo {
         @position = 'before default'
         condition = ${q(node).is('[instanceof Sfi.Sfi:Promo]')}
         type = 'Sfi.Sfi:Promo'

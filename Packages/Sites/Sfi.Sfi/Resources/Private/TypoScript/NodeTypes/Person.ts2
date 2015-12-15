@@ -11,9 +11,9 @@ prototype(Sfi.Sfi:Person) {
 
 	listByTag = Sfi.News:ListByTag
 
-	coverCollection = TYPO3.Neos:ContentCollection{
+	coverCollection = TYPO3.Neos:ContentCollection {
 		nodePath = 'coverCollection'
-		prototype(TYPO3.Neos.NodeTypes:Image){
+		prototype(TYPO3.Neos.NodeTypes:Image) {
 			maximumWidth = ${variant == 'Rector' ? 770 : variant == 'Rich' ? 480 : 400}
 			maximumHeight = ${variant == 'Rector' ? 513 : variant == 'Rich' ? 720 : 600}
 			allowCropping = TRUE

@@ -1,13 +1,13 @@
 # TODO: Use proper Neos redirects!
-prototype(Sfi.Sfi:CooluriDecode){
+prototype(Sfi.Sfi:CooluriDecode) {
 	@class = 'Sfi\\Sfi\\TypoScript\\CooluriDecodeImplementation'
 }
-prototype(Sfi.Sfi:Redirect){
+prototype(Sfi.Sfi:Redirect) {
 	@class = 'Sfi\\Sfi\\TypoScript\\RedirectImplementation'
-	@override.newsuid = Sfi.Sfi:CooluriDecode{
+	@override.newsuid = Sfi.Sfi:CooluriDecode {
 		url = ${request.arguments.url}
 	}
-	url = TYPO3.Neos:NodeUri{
+	url = TYPO3.Neos:NodeUri {
 		node = ${q(site).find('[instanceof Sfi.News:AbstractNews]').filter('[originalIdentifier = "' + newsuid + '"]').get(0)}
 	}
 	@cache {
