@@ -1,50 +1,30 @@
-blah: &alohaPlain
+
+blah:
   placeholder: 'Enter title here'
   format:
-    b: FALSE
-    i: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    b: false
+    i: false
+    u: false
+    sub: false
+    sup: false
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: false
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Enter title here'
-  format:
-    b: TRUE
-    i: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.Sfi:Person':
   superTypes:
-    - 'TYPO3.Neos:Document'
-    - 'Sfi.News:Listable'
-    - 'Sfi.Shared:TagMixin'
+    'TYPO3.Neos:Document': true
+    'Sfi.News:Listable': true
+    'Sfi.Shared:TagMixin': true
   ui:
-    label: 'Person'
+    label: Person
     icon: icon-file-text
     inspector:
       groups:
@@ -52,7 +32,7 @@ blah: &alohaRich
           label: 'Тип сотрудника'
           position: 1
         image:
-          label: 'Фото'
+          label: Фото
           position: 5
   childNodes:
     main:
@@ -63,151 +43,353 @@ blah: &alohaRich
     isRector:
       type: boolean
       ui:
-        label: 'Ректор'
+        label: Ректор
         inspector:
-          group: 'personType'
+          group: personType
     isProRector:
       type: boolean
       ui:
-        label: 'Проректор'
+        label: Проректор
         inspector:
-          group: 'personType'
+          group: personType
     isProfessor:
       type: boolean
       ui:
-        label: 'Преподаватель'
+        label: Преподаватель
         inspector:
-          group: 'personType'
+          group: personType
     isSenior:
       type: boolean
       ui:
-        label: 'Руководитель'
+        label: Руководитель
         inspector:
-          group: 'personType'
+          group: personType
     isChairperson:
       type: boolean
       ui:
         label: 'Заведующий кафедры'
         inspector:
-          group: 'personType'
+          group: personType
     isStaff:
       type: boolean
       ui:
-        label: 'Сотрудник'
+        label: Сотрудник
         inspector:
-          group: 'personType'
+          group: personType
     freeText:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Свободное поле (отображается только в карточке)'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     degree:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Ученая степень'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     degreeTitle:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Ученое звание'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     position:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
-          placeholder: 'Должность'
+          placeholder: Должность
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     subject:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Преподаваемая дисциплина'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     experience:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Стаж работы общий'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     experienceSpeciality:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Стаж работы по специальности'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     experienceSfi:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Стаж работы в СФИ'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     education:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Направление подготовки и /или специальности'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     educationUpgrade:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Повышение квалификации и/или профессиональная переподготовка'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     telephone:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
-          placeholder: 'Телефон'
+          placeholder: Телефон
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     email:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
-          placeholder: 'E-mail'
+          placeholder: E-mail
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     quote:
       type: string
       ui:
-        label: 'Цитата'
+        label: Цитата
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
-          placeholder: 'Цитата'
+          placeholder: Цитата
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     image:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
         label: 'Фото на общей странице'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'image'
-
-
-
-
-
+          group: image
 'Sfi.Sfi:Rector':
   superTypes:
-    - 'Sfi.Sfi:Person'
+    'Sfi.Sfi:Person': true
   ui:
-    label: 'Rector'
-
+    label: Rector
 'Sfi.Sfi:ProRector':
   superTypes:
-    - 'Sfi.Sfi:Person'
+    'Sfi.Sfi:Person': true
   ui:
-    label: 'ProRector'
+    label: ProRector

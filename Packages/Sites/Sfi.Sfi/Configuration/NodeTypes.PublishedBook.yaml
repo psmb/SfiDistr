@@ -1,14 +1,15 @@
+
 'Sfi.Sfi:PublishedBook':
   superTypes:
-    - 'TYPO3.Neos:Document'
-    - 'Sfi.News:Listable'
+    'TYPO3.Neos:Document': true
+    'Sfi.News:Listable': true
   ui:
     label: 'Published Book'
-    icon: 'icon-book'
+    icon: icon-book
     inspector:
       groups:
         book:
-          label: 'Book'
+          label: Book
           position: 'start 1'
   childNodes:
     details:
@@ -31,13 +32,13 @@
     image:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Image'
-        reloadIfChanged: TRUE
+        label: Image
+        reloadIfChanged: true
         inspector:
           group: book
     date:
       type: DateTime
-      defaultValue: 'now'
+      defaultValue: now
       ui:
         label: Date
         reloadIfChanged: true
@@ -46,4 +47,4 @@
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        'TYPO3.Neos/Validation/DateTimeValidator': []
+        TYPO3.Neos/Validation/DateTimeValidator: {  }

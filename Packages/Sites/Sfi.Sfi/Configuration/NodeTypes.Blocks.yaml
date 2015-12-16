@@ -1,160 +1,165 @@
-blah: &alohaPlain
+
+blah:
   placeholder: 'Enter title here'
   format:
-    b: FALSE
-    i: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    b: false
+    i: false
+    u: false
+    sub: false
+    sup: false
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: false
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Enter title here'
-  format:
-    b: TRUE
-    i: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
-########################
-#Our site content types#
-########################
-
 'Sfi.Sfi:QuoteBlock':
   superTypes:
-    - 'TYPO3.Neos:Content'
-    - 'TYPO3.Neos.NodeTypes:Image'
+    'TYPO3.Neos:Content': true
+    'TYPO3.Neos.NodeTypes:Image': true
   ui:
     label: 'Quote block'
-    icon: 'icon-edit'
+    icon: icon-edit
     group: contentBlocks
     inspector:
       groups:
         variant:
-          label: 'Variant'
+          label: Variant
           position: 'start 1'
   properties:
     authorName:
       type: string
       ui:
         label: 'Author name'
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Имя автора'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     authorDescription:
       type: string
       ui:
         label: 'Author degree'
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Подробнее об авторе (степень и др)'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     text:
       type: string
       defaultValue: '<p>Enter quotation text here</p>'
       ui:
-        inlineEditable: TRUE
-
+        inlineEditable: true
 'Sfi.Sfi:Card':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Content': true
   ui:
-    label: 'Card'
-    icon: 'icon-edit'
+    label: Card
+    icon: icon-edit
     group: contentBlocks
   properties:
     title:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
           placeholder: 'Заголовок карточки'
     text:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
           placeholder: 'Тут текст карточки'
-
 'Sfi.Sfi:VCard':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Content': true
   ui:
-    label: 'VCard'
-    icon: 'icon-edit'
+    label: VCard
+    icon: icon-edit
     group: contentBlocks
     inspector:
       groups:
         variant:
-          label: 'Variant'
+          label: Variant
           position: 'start 1'
   properties:
     name:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
-          placeholder: 'Имя'
+          placeholder: Имя
     position:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
-          placeholder: 'Должность'
+          placeholder: Должность
     degree:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
           placeholder: 'Научная степень'
     contact:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
-          placeholder: 'Адрес'
+          placeholder: Адрес
     variant:
       defaultValue: '1'
       type: string
       ui:
         label: 'VCard variant'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
           group: variant
           editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
-              '1':
+              1:
                 label: 'Variant 1'
-              '2':
+              2:
                 label: 'Variant 2'
-
 'Sfi.Sfi:BuyBook':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Content': true
   childNodes:
     details:
       type: 'TYPO3.Neos:ContentCollection'
@@ -162,33 +167,32 @@ blah: &alohaRich
       type: 'Sfi.Shared:Link'
   ui:
     label: 'Buy Book'
-    icon: 'icon-picture'
+    icon: icon-picture
     position: 400
     group: contentBlocks
     inspector:
       groups:
         image:
-          label: 'Image'
+          label: Image
           position: 'start 1'
   properties:
     title:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
           placeholder: 'Название книжки'
     image:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Image'
-        reloadIfChanged: TRUE
+        label: Image
+        reloadIfChanged: true
         inspector:
-          group: 'image'
+          group: image
           position: 50
-
 'Sfi.Sfi:PersonFormalListing':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Content': true
   ui:
     label: 'Person Formal Listing'
     group: contentBlocks
@@ -197,104 +201,101 @@ blah: &alohaRich
       type: reference
       ui:
         label: 'Root node for person'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'general'
+          group: general
           editorOptions:
-            nodeTypes: ['TYPO3.Neos:Document']
-
+            nodeTypes:
+              - 'TYPO3.Neos:Document'
 'Sfi.Sfi:StudyProgramsListing':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Content': true
   ui:
     label: 'Study Programs Listing'
     group: contentBlocks
     inspector:
       groups:
         general:
-          label: 'General'
+          label: General
           position: 'start 1'
   properties:
     rootNode:
       type: reference
       ui:
         label: 'Root node for study programs'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'general'
+          group: general
           editorOptions:
-            nodeTypes: ['TYPO3.Neos:Document']
-
+            nodeTypes:
+              - 'TYPO3.Neos:Document'
 'Sfi.Sfi:StudyProgramsListingFormal':
   superTypes:
-    - 'Sfi.Sfi:StudyProgramsListing'
+    'Sfi.Sfi:StudyProgramsListing': true
   ui:
     label: 'Study Programs Listing Formal'
-
 'Sfi.Sfi:StudyProgramsListingByReference':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Content': true
   ui:
     label: 'Study Programs Listing By Reference'
     group: contentBlocks
     inspector:
       groups:
         general:
-          label: 'General'
+          label: General
           position: 'start 1'
   properties:
     references:
       type: references
       ui:
         label: 'Select StudyPrograms to list'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
           group: general
           editorOptions:
             nodeTypes:
               - 'Sfi.Sfi:StudyProgram'
-
-
 'Sfi.Sfi:AlmanacEntry':
   superTypes:
-    - 'TYPO3.Neos:Content'
+    'TYPO3.Neos:Content': true
   ui:
     label: 'Almanac Entry'
     group: contentBlocks
     inspector:
       groups:
         asset:
-          label: 'Asset'
+          label: Asset
           position: 'start 1'
   properties:
     author:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
           placeholder: 'Имя автора статьи'
     authorInfo:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
           placeholder: 'Дополнительная информация об авторе'
     title:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
           placeholder: 'Название статьи'
     source:
       type: string
       ui:
-        inlineEditable: TRUE
+        inlineEditable: true
         aloha:
           placeholder: 'Номера страниц в печатной версии'
     asset:
       type: TYPO3\Media\Domain\Model\Asset
       ui:
         inspector:
-          group: 'asset'
-        label: 'Assets'
-        reloadIfChanged: TRUE
+          group: asset
+        label: Assets
+        reloadIfChanged: true

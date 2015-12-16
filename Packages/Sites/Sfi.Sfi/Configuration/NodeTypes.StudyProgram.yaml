@@ -1,46 +1,26 @@
-blah: &alohaPlain
+
+blah:
   placeholder: 'Enter title here'
   format:
-    b: FALSE
-    i: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    b: false
+    i: false
+    u: false
+    sub: false
+    sup: false
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: false
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Enter title here'
-  format:
-    b: TRUE
-    i: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.Sfi:StudyProgram':
   superTypes:
-    - 'TYPO3.Neos:Shortcut'
+    'TYPO3.Neos:Shortcut': true
   ui:
     label: 'Study Program'
     icon: icon-file-text
@@ -50,15 +30,15 @@ blah: &alohaRich
           label: 'Учебная программа'
   childNodes:
     assetDescription:
-      type: Sfi.Shared:Asset
+      type: 'Sfi.Shared:Asset'
     assetSchedule:
-      type: Sfi.Shared:Asset
+      type: 'Sfi.Shared:Asset'
     assetAccreditation:
-      type: Sfi.Shared:Asset
+      type: 'Sfi.Shared:Asset'
     assetInvoice:
-      type: Sfi.Shared:Asset
+      type: 'Sfi.Shared:Asset'
     assetSampleContract:
-      type: Sfi.Shared:Asset
+      type: 'Sfi.Shared:Asset'
     assetsAdmissionRegulations:
       type: 'TYPO3.Neos:ContentCollection'
     assetsPracticeAnnotations:
@@ -97,68 +77,212 @@ blah: &alohaRich
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Тут должен быть лид к программе'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     level:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Уровень программы?'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     specialityId:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Код специальности'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     accreditationDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Срок действия государственной аккредитации'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     duration:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Нормативный срок обучения по всем формам обучения'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     price:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
-          placeholder: 'Стоимость'
+          placeholder: Стоимость
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     certificate:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Документ по завершении'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     nextDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Ближайший набор'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     studyBeginDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Срок начала занятий'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     noLink:
       type: boolean
       ui:
         label: 'Не делать ссылку из карточек'
-        reloadIfChanged: FALSE
+        reloadIfChanged: false
         inspector:
-          group: 'studyProgram'
+          group: studyProgram
