@@ -10,5 +10,12 @@
         "psr-0": {
             "Sfi\\Sfi": "Classes"
         }
+    },
+    "extra": {
+        "applied-flow-migrations": [
+            "TYPO3.Neos-20150303231600",
+            "TYPO3.Neos.NodeTypes-201309111655",
+            "TYPO3.Neos.NodeTypes-130516220640"
+        ]
     }
 }
