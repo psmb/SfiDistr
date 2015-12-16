@@ -30,7 +30,6 @@ blah:
       groups:
         variant:
           label: Variant
-          position: 'start 1'
   properties:
     authorName:
       type: string
@@ -116,7 +115,6 @@ blah:
       groups:
         variant:
           label: Variant
-          position: 'start 1'
   properties:
     name:
       type: string
@@ -174,7 +172,6 @@ blah:
       groups:
         image:
           label: Image
-          position: 'start 1'
   properties:
     title:
       type: string
@@ -217,7 +214,6 @@ blah:
       groups:
         general:
           label: General
-          position: 'start 1'
   properties:
     rootNode:
       type: reference
@@ -244,7 +240,6 @@ blah:
       groups:
         general:
           label: General
-          position: 'start 1'
   properties:
     references:
       type: references
@@ -266,7 +261,6 @@ blah:
       groups:
         asset:
           label: Asset
-          position: 'start 1'
   properties:
     author:
       type: string

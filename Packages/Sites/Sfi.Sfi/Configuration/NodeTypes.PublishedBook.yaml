@@ -10,7 +10,6 @@
       groups:
         book:
           label: Book
-          position: 'start 1'
   childNodes:
     details:
       type: 'TYPO3.Neos:ContentCollection'
