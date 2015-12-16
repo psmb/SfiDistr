@@ -20,7 +20,7 @@ blah:
   alignment: {  }
 'Sfi.Sfi:StudyProgram':
   superTypes:
-    'TYPO3.Neos:Shortcut': true
+    'TYPO3.Neos:Shortcut': '1'
   ui:
     label: 'Study Program'
     icon: icon-file-text

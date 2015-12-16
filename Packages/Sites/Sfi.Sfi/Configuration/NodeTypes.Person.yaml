@@ -20,9 +20,9 @@ blah:
   alignment: {  }
 'Sfi.Sfi:Person':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.News:Listable': true
-    'Sfi.Shared:TagMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.News:Listable': '1'
+    'Sfi.Shared:TagMixin': '1'
   ui:
     label: Person
     icon: icon-file-text
@@ -385,11 +385,11 @@ blah:
           group: image
 'Sfi.Sfi:Rector':
   superTypes:
-    'Sfi.Sfi:Person': true
+    'Sfi.Sfi:Person': '1'
   ui:
     label: Rector
 'Sfi.Sfi:ProRector':
   superTypes:
-    'Sfi.Sfi:Person': true
+    'Sfi.Sfi:Person': '1'
   ui:
     label: ProRector

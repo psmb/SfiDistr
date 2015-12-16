@@ -22,19 +22,19 @@ blah:
   ui:
     label: 'Redirect from old news'
   superTypes:
-    'TYPO3.Neos.NodeTypes:Page': true
+    'TYPO3.Neos.NodeTypes:Page': '1'
 'Sfi.Sfi:AbstractPage':
   abstract: true
   ui:
     label: 'Abstract Page'
   superTypes:
-    'TYPO3.Neos.NodeTypes:Page': true
-    'Sfi.Shared:TagMixin': true
+    'TYPO3.Neos.NodeTypes:Page': '1'
+    'Sfi.Shared:TagMixin': '1'
 'Sfi.Sfi:PageMain':
   ui:
     label: 'Page: Main'
   superTypes:
-    'Sfi.Sfi:AbstractPage': true
+    'Sfi.Sfi:AbstractPage': '1'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -44,7 +44,7 @@ blah:
   ui:
     label: 'Page: Presentation'
   superTypes:
-    'Sfi.Sfi:AbstractPage': true
+    'Sfi.Sfi:AbstractPage': '1'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -77,7 +77,7 @@ blah:
   ui:
     label: 'Page: Section'
   superTypes:
-    'Sfi.Sfi:AbstractPage': true
+    'Sfi.Sfi:AbstractPage': '1'
   childNodes:
     presentation:
       type: 'TYPO3.Neos:ContentCollection'
@@ -89,7 +89,7 @@ blah:
   ui:
     label: 'Page: SubSection'
   superTypes:
-    'Sfi.Sfi:AbstractPage': true
+    'Sfi.Sfi:AbstractPage': '1'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -97,8 +97,8 @@ blah:
       type: 'TYPO3.Neos:ContentCollection'
 'Sfi.Sfi:PageTag':
   superTypes:
-    'Sfi.Sfi:AbstractPage': true
-    'Sfi.Shared:TagMixin': true
+    'Sfi.Sfi:AbstractPage': '1'
+    'Sfi.Shared:TagMixin': '1'
   ui:
     label: 'Page: Tag'
   childNodes:

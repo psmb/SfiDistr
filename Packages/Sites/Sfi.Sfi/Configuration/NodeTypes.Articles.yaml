@@ -20,8 +20,8 @@ blah:
   alignment: {  }
 'Sfi.Sfi:Promo':
   superTypes:
-    'Sfi.News:AbstractArticle': true
-    'Sfi.News:ImportantMixin': true
+    'Sfi.News:AbstractArticle': '1'
+    'Sfi.News:ImportantMixin': '1'
   ui:
     label: Promo
     icon: icon-file-text
@@ -41,7 +41,7 @@ blah:
           position: 50
 'Sfi.Sfi:Paper':
   superTypes:
-    'Sfi.News:AbstractArticle': true
+    'Sfi.News:AbstractArticle': '1'
   ui:
     label: Paper
     icon: icon-file-text
@@ -120,8 +120,8 @@ blah:
           alignment: {  }
 'Sfi.Sfi:Poster':
   superTypes:
-    'Sfi.News:AbstractArticle': true
-    'Sfi.News:ImportantMixin': true
+    'Sfi.News:AbstractArticle': '1'
+    'Sfi.News:ImportantMixin': '1'
   ui:
     label: Poster
     icon: icon-file-text
