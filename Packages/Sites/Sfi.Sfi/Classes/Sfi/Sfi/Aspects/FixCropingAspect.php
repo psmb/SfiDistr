@@ -12,7 +12,7 @@ use TYPO3\Media\Domain\Model\ImageInterface;
 class FixCropingAspect {
 
 	/**
-	 * @param \TYPO3\Flow\AOP\JoinPointInterface $joinPoint
+	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
 	 * @Flow\Before("method(TYPO3\Media\Domain\Model\Adjustment\ResizeImageAdjustment->__construct())")
 	 * @return void
 	 */
