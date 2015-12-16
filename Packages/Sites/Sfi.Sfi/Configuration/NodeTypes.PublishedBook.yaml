@@ -1,8 +1,8 @@
 
 'Sfi.Sfi:PublishedBook':
   superTypes:
-    'TYPO3.Neos:Document': '1'
-    'Sfi.News:Listable': '1'
+    'TYPO3.Neos:Document': true
+    'Sfi.News:Listable': true
   ui:
     label: 'Published Book'
     icon: icon-book

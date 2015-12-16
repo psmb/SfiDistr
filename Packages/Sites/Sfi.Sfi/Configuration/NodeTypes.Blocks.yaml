@@ -20,8 +20,8 @@ blah:
   alignment: {  }
 'Sfi.Sfi:QuoteBlock':
   superTypes:
-    'TYPO3.Neos:Content': '1'
-    'TYPO3.Neos.NodeTypes:Image': '1'
+    'TYPO3.Neos:Content': true
+    'TYPO3.Neos.NodeTypes:Image': true
   ui:
     label: 'Quote block'
     icon: icon-edit
@@ -87,7 +87,7 @@ blah:
         inlineEditable: true
 'Sfi.Sfi:Card':
   superTypes:
-    'TYPO3.Neos:Content': '1'
+    'TYPO3.Neos:Content': true
   ui:
     label: Card
     icon: icon-edit
@@ -107,7 +107,7 @@ blah:
           placeholder: 'Тут текст карточки'
 'Sfi.Sfi:VCard':
   superTypes:
-    'TYPO3.Neos:Content': '1'
+    'TYPO3.Neos:Content': true
   ui:
     label: VCard
     icon: icon-edit
@@ -143,7 +143,7 @@ blah:
         aloha:
           placeholder: Адрес
     variant:
-      defaultValue: '1'
+      defaultValue: true
       type: string
       ui:
         label: 'VCard variant'
@@ -159,7 +159,7 @@ blah:
                 label: 'Variant 2'
 'Sfi.Sfi:BuyBook':
   superTypes:
-    'TYPO3.Neos:Content': '1'
+    'TYPO3.Neos:Content': true
   childNodes:
     details:
       type: 'TYPO3.Neos:ContentCollection'
@@ -192,7 +192,7 @@ blah:
           position: 50
 'Sfi.Sfi:PersonFormalListing':
   superTypes:
-    'TYPO3.Neos:Content': '1'
+    'TYPO3.Neos:Content': true
   ui:
     label: 'Person Formal Listing'
     group: contentBlocks
@@ -209,7 +209,7 @@ blah:
               - 'TYPO3.Neos:Document'
 'Sfi.Sfi:StudyProgramsListing':
   superTypes:
-    'TYPO3.Neos:Content': '1'
+    'TYPO3.Neos:Content': true
   ui:
     label: 'Study Programs Listing'
     group: contentBlocks
@@ -231,12 +231,12 @@ blah:
               - 'TYPO3.Neos:Document'
 'Sfi.Sfi:StudyProgramsListingFormal':
   superTypes:
-    'Sfi.Sfi:StudyProgramsListing': '1'
+    'Sfi.Sfi:StudyProgramsListing': true
   ui:
     label: 'Study Programs Listing Formal'
 'Sfi.Sfi:StudyProgramsListingByReference':
   superTypes:
-    'TYPO3.Neos:Content': '1'
+    'TYPO3.Neos:Content': true
   ui:
     label: 'Study Programs Listing By Reference'
     group: contentBlocks
@@ -258,7 +258,7 @@ blah:
               - 'Sfi.Sfi:StudyProgram'
 'Sfi.Sfi:AlmanacEntry':
   superTypes:
-    'TYPO3.Neos:Content': '1'
+    'TYPO3.Neos:Content': true
   ui:
     label: 'Almanac Entry'
     group: contentBlocks
