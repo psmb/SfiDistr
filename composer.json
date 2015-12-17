@@ -13,14 +13,15 @@
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Grid.git" }
     ],
     "require": {
-        "typo3/neos": "dev-master",
-        "typo3/neos-nodetypes": "dev-master",
+        "typo3/neos": "2.1.x-dev",
+        "typo3/neos-nodetypes": "2.1.x-dev",
 
-        "typo3/eel": "@dev",
-        "typo3/flow": "@dev",
-        "typo3/fluid": "@dev",
+        "neos/diff": "@dev",
+        "typo3/flow": "3.1.x-dev",
+        "typo3/eel": "3.1.x-dev",
+        "typo3/fluid": "3.1.x-dev",
         "typo3/party": "@dev",
-        "typo3/kickstart": "@dev",
+        "typo3/kickstart": "3.1.x-dev",
         "typo3/imagine": "@dev",
         "typo3/media": "@dev",
         "typo3/form": "@dev",
@@ -32,12 +33,11 @@
         "sfi/news": "@dev",
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",
-        "m12/neos-plugin-dbexport": "dev-master",
-        "typo3/neos-googleanalytics": "@dev"
+        "m12/neos-plugin-dbexport": "dev-master"
     },
 
     "require-dev": {
-        "typo3/buildessentials": "dev-master",
+        "typo3/buildessentials": "3.1.x-dev",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~4.8 || ~5.0",
         "flowpack/behat": "dev-master"
