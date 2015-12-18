@@ -1,0 +1,56 @@
+dbdata:
+  image: busybox:latest
+  command: echo dbdata
+  volumes:
+    - /var/lib/mysql
+
+db:
+  image: million12/mariadb:latest
+  expose:
+    - 3306
+  volumes_from:
+    - dbdata
+  environment:
+    MARIADB_PASS: pass
+  restart: always
+
+webdata:
+  image: busybox:latest
+  command: echo webdata
+  volumes:
+    - /data
+    - Persistent:/data/www/shared/Data/Persistent
+
+web:
+  image: dimaip/neos-bare:latest
+  ports:
+    - '80'
+  links:
+    - db:db
+  volumes_from:
+    - webdata
+  environment:
+    VIRTUAL_HOST: 'sfi.ru,dev.sfi.ru,next.sfi.ru'
+  restart: always
+
+ssh:
+  image: million12/php-app-ssh:php7
+  ports:
+    - '1122:22'
+  links:
+    - db:db
+    - web:web
+  volumes_from:
+    - webdata
+  environment:
+    IMPORT_GITHUB_PUB_KEYS: dimaip
+  restart: always
+
+#sshresources:
+#  image: million12/php-app-ssh
+#  ports:
+#    - '2222:22'
+# volumes:
+#   - Persistent:/data/www/sfi.ru/surf/shared/Data/Persistent
+#  environment:
+#    IMPORT_GITHUB_PUB_KEYS: dimaip,zaveryukha,SleaD80
