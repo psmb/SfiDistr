@@ -1,24 +1,22 @@
 machine:
+  python:
+    version: 2.7.5
   php:
-    version: 5.5.11
+    version: 7.0.0RC7
 dependencies:
-  pre:
-    - if [ "$CIRCLE_USERNAME" = "dimaip" ] ; then echo "You're dimaip, let's deploy"; else echo "Don't push to master, you ain't no dimaip"; exit 1; fi
   override:
-    - git config --global url."http://git.typo3.org".insteadOf git://git.typo3.org
-    - rm Packages/Sites/Sfi.Sfi/composer.json
-    - COMPOSER=composer-surf.json composer install --no-interaction --no-dev
-    - mv Packages/Libraries/sfi/surf/Build Build
+    - if [ -d ../ansible-deploy ]; then (cd ../ansible-deploy && git pull); else git clone https://github.com/sfi-ru/ansible-deploy ../ansible-deploy;fi
+    - pip install ansible
+    - pip install httplib2
+  cache_directories:
+    - "~/ansible-deploy"
 test:
   override:
     - echo "No tests to run"
 deployment:
-  production:
+  prod:
     branch: master
     commands:
-      - ./flow surf:deploy Surf:
-          timeout: 1500
-          environment:
-            REPOSITORY_URL: 'git@github.com:sfi-ru/SfiDistr.git'
-            DOMAIN: 'sfi.ru'
-            PORT: 1122
+      - cd ~/ansible-deploy
+      - touch 'i'
+      - ansible-playbook ~/ansible-deploy/deploy.yml --extra-vars "REPOSITORY_URL=https://github.com/sfi-ru/SfiDistr DOMAIN=sfi.ru HOST=server.psmb.ru PORT=1122" -i 'i'
