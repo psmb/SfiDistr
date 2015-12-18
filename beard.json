@@ -1,0 +1,32 @@
+{
+    "changes": [
+        {
+            "name": "TASK: Add method to get public URI by path",
+            "type": "github",
+            "repository": "neos/flow-development-collection",
+            "pull_request": "188",
+            "path": "Packages/Framework"
+        },
+        {
+            "name": "TASK: Use the new ResourceManager API in ResourceUriImplementation",
+            "type": "github",
+            "repository": "neos/neos-development-collection",
+            "pull_request": "291",
+            "path": "Packages/Neos"
+        },
+        {
+            "name": "BUGFIX: ContentController::getAssetProperties must use the new Thumbnail API",
+            "type": "github",
+            "repository": "neos/neos-development-collection",
+            "pull_request": "286",
+            "path": "Packages/Neos"
+        },
+        {
+            "name": "BUGFIX: Do not automatically persist thumbnails for new asset objects",
+            "type": "github",
+            "repository": "neos/neos-development-collection",
+            "pull_request": "283",
+            "path": "Packages/Neos"
+        }
+    ]
+}
