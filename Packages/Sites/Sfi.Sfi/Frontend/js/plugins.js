@@ -7,7 +7,7 @@ $.fn.switchstylesheet = function(options) {
         seperator : 'alt'
     };
 
-    var options = $.extend(defaults, options);  
+    var options = $.extend(defaults, options);
 
     //read the style
     var c = cookie.readCookie(options.seperator);
@@ -23,7 +23,7 @@ $.fn.switchstylesheet = function(options) {
     function switchss(title) {
         //goes thru all the styles having seperator - alt
         $('link[rel*=style][title*='+options.seperator+']').each(function(i) {
-            this.disabled = true;   
+            this.disabled = true;
             if ($(this).attr('title') == title) {
                 this.disabled = false;
             }
@@ -49,7 +49,7 @@ var cookie;
             else var expires = "";
             document.cookie = name+"="+value+expires+"; path=/";
         },
-        
+
         readCookie: function(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
@@ -64,7 +64,7 @@ var cookie;
     };
 })(jQuery);
 
-$(document).ready(function(){ 
+$(document).ready(function(){
     $(".js-switchStylesheet").switchstylesheet( { seperator:"stylesheet"} );
 });
 
@@ -106,7 +106,7 @@ function(){"use strict";if(window.matchMedia&&window.matchMedia("all").addListen
                     parent.children('.Sections-Tabs').find('.Sections-Anchor').removeClass('isActive');
                     parent.children('.Sections-Anchor').removeClass('isActive');
                     $(this).addClass('isActive');
-                    
+
                     parent.children('.Sections-Panel').removeClass('isActive');
                     $(panelId).addClass('isActive');
                 }
@@ -157,7 +157,8 @@ var onReadyPlugins = function() {
     // Open external urls in new window
     $('a').each(function() {
        var a = new RegExp('/' + window.location.host + '/');
-       if(!a.test(this.href)) {
+       // Starts with http and does not contain current domain
+       if(!a.test(this.href) && this.href.indexOf('http') === 0) {
            $(this).click(function(event) {
                event.preventDefault();
                event.stopPropagation();
