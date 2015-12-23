@@ -1,127 +1,97 @@
-
-blah:
-  placeholder: 'Enter title here'
+blah: &alohaPlain
+  placeholder: 'Текст тут'
   format:
-    b: false
-    i: false
-    u: false
-    sub: false
-    sup: false
-    p: false
-    h1: false
-    h2: false
-    h3: false
-    pre: false
-    removeFormat: false
+    b: FALSE
+    i: FALSE
+    u: FALSE
+    sub: FALSE
+    sup: FALSE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
   table: {  }
   list: {  }
   link:
-    a: false
+    a: FALSE
   alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Текст тут'
+  format:
+    b: TRUE
+    i: TRUE
+    u: FALSE
+    sub: TRUE
+    sup: TRUE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: TRUE
+  alignment: {  }
+
 'Sfi.Sfi:Promo':
   superTypes:
     'Sfi.News:AbstractArticle': true
     'Sfi.News:ImportantMixin': true
   ui:
-    label: Promo
-    icon: icon-file-text
-    inspector:
-      groups:
-        image:
-          label: Image
-          position: 5
+    label: Промо
+    icon: icon-usd
+    help:
+      message: 'Рекламный элемент, который используется на главной странице'
   properties:
     image:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
-        label: Image
+        label: Картинка
         reloadIfChanged: true
         inspector:
-          group: image
-          position: 50
+          group: news
 'Sfi.Sfi:Paper':
   superTypes:
     'Sfi.News:AbstractArticle': true
   ui:
-    label: Paper
+    label: Доклад
     icon: icon-file-text
+    help:
+      message: 'Материал доклада на конференциях и т.п.'
   properties:
     authorName:
       type: string
       ui:
-        label: 'Author name'
+        label: 'Имя докладчика'
         inlineEditable: true
         aloha:
-          placeholder: 'Имя автора'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
+          <<: *alohaPlain
+          placeholder: 'Имя докладчика'
     authorDegree:
       type: string
       ui:
-        label: 'Author degree'
+        label: 'Научная степень докладчика'
         inlineEditable: true
         aloha:
-          placeholder: 'Научная степень'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
+          <<: *alohaPlain
+          placeholder: 'Научная степень докладчика'
     authorFrom:
       type: string
       ui:
-        label: 'Author from'
+        label: 'Место откуда автор'
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Место откуда автор'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
 'Sfi.Sfi:Poster':
   superTypes:
     'Sfi.News:AbstractArticle': true
     'Sfi.News:ImportantMixin': true
   ui:
-    label: Poster
+    label: Постер?
     icon: icon-file-text

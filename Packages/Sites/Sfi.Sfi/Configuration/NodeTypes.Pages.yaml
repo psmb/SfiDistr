@@ -1,23 +1,43 @@
-
-blah:
-  placeholder: 'Enter title here'
+blah: &alohaPlain
+  placeholder: 'Текст тут'
   format:
-    b: true
-    i: true
-    u: false
-    sub: true
-    sup: true
-    p: false
-    h1: false
-    h2: false
-    h3: false
-    pre: false
-    removeFormat: false
+    b: FALSE
+    i: FALSE
+    u: FALSE
+    sub: FALSE
+    sup: FALSE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
   table: {  }
   list: {  }
   link:
-    a: true
+    a: FALSE
   alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Текст тут'
+  format:
+    b: TRUE
+    i: TRUE
+    u: FALSE
+    sub: TRUE
+    sup: TRUE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: TRUE
+  alignment: {  }
+
 'Sfi.Sfi:Redirect':
   ui:
     label: 'Redirect from old news'
@@ -32,7 +52,7 @@ blah:
     'Sfi.Shared:TagMixin': true
 'Sfi.Sfi:PageMain':
   ui:
-    label: 'Page: Main'
+    label: 'Страница: Главная'
   superTypes:
     'Sfi.Sfi:AbstractPage': true
   childNodes:
@@ -41,10 +61,12 @@ blah:
     footerGallery:
       type: 'TYPO3.Neos:ContentCollection'
 'Sfi.Sfi:PagePresentation':
-  ui:
-    label: 'Page: Presentation'
   superTypes:
     'Sfi.Sfi:AbstractPage': true
+  ui:
+    label: 'Страница: Презентационная'
+    help:
+      message: 'Главные презентационные разделы сайта (1-й уровень)'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -53,31 +75,15 @@ blah:
       type: string
       ui:
         inlineEditable: true
-        label: 'Author name'
+        label: 'Лид'
         aloha:
+          <<: *alohaRich
           placeholder: Лид
-          format:
-            b: true
-            i: true
-            u: false
-            sub: true
-            sup: true
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: true
-          alignment: {  }
 'Sfi.Sfi:PageSection':
-  ui:
-    label: 'Page: Section'
   superTypes:
     'Sfi.Sfi:AbstractPage': true
+  ui:
+    label: 'Страница: Раздел 2-го уровня'
   childNodes:
     presentation:
       type: 'TYPO3.Neos:ContentCollection'
@@ -86,10 +92,10 @@ blah:
     sidebar:
       type: 'TYPO3.Neos:ContentCollection'
 'Sfi.Sfi:PageSubSection':
-  ui:
-    label: 'Page: SubSection'
   superTypes:
     'Sfi.Sfi:AbstractPage': true
+  ui:
+    label: 'Страница: Раздел 3-го уровня'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -100,7 +106,7 @@ blah:
     'Sfi.Sfi:AbstractPage': true
     'Sfi.Shared:TagMixin': true
   ui:
-    label: 'Page: Tag'
+    label: 'Страница: Тэг'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -117,47 +123,15 @@ blah:
       type: string
       ui:
         inlineEditable: true
-        label: CoverText
+        label: 'Текст обложки тэга'
         aloha:
+          <<: *alohaPlain
           placeholder: 'Текст обложки тэга'
-          format:
-            b: true
-            i: true
-            u: false
-            sub: true
-            sup: true
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: true
-          alignment: {  }
     coverCaption:
       type: string
       ui:
         inlineEditable: true
-        label: CoverCaption
+        label: 'Подпись к обложке тэга'
         aloha:
+          <<: *alohaPlain
           placeholder: 'Подпись к обложке тэга'
-          format:
-            b: true
-            i: true
-            u: false
-            sub: true
-            sup: true
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: true
-          alignment: {  }

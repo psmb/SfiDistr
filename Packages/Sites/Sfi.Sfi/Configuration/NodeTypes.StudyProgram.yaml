@@ -1,28 +1,48 @@
-
-blah:
-  placeholder: 'Enter title here'
+blah: &alohaPlain
+  placeholder: 'Текст тут'
   format:
-    b: false
-    i: false
-    u: false
-    sub: false
-    sup: false
-    p: false
-    h1: false
-    h2: false
-    h3: false
-    pre: false
-    removeFormat: false
+    b: FALSE
+    i: FALSE
+    u: FALSE
+    sub: FALSE
+    sup: FALSE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
   table: {  }
   list: {  }
   link:
-    a: false
+    a: FALSE
   alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Текст тут'
+  format:
+    b: TRUE
+    i: TRUE
+    u: FALSE
+    sub: TRUE
+    sup: TRUE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: TRUE
+  alignment: {  }
+
 'Sfi.Sfi:StudyProgram':
   superTypes:
     'TYPO3.Neos:Shortcut': true
   ui:
-    label: 'Study Program'
+    label: 'Учебная программа'
     icon: icon-file-text
     inspector:
       groups:
@@ -77,208 +97,64 @@ blah:
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Тут должен быть лид к программе'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     level:
       type: string
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Уровень программы?'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     specialityId:
       type: string
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Код специальности'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     accreditationDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Срок действия государственной аккредитации'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     duration:
       type: string
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Нормативный срок обучения по всем формам обучения'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     price:
       type: string
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: Стоимость
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     certificate:
       type: string
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Документ по завершении'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     nextDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Ближайший набор'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     studyBeginDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Срок начала занятий'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     noLink:
       type: boolean
       ui:

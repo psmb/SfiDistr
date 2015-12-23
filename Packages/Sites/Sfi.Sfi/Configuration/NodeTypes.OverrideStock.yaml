@@ -3,7 +3,7 @@
     inspector:
       groups:
         microformats:
-          label: 'Microformats'
+          label: 'Тэги для Рособрнадзора'
           position: 1
           tab: meta
   properties:

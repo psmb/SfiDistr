@@ -4,7 +4,9 @@
     'TYPO3.Neos:Document': true
     'Sfi.News:Listable': true
   ui:
-    label: 'Published Book'
+    label: 'Опубликованная книга'
+    help:
+      message: 'Используется в каталоге издательства'
     icon: icon-book
     inspector:
       groups:
@@ -39,7 +41,7 @@
       type: DateTime
       defaultValue: now
       ui:
-        label: Date
+        label: Дата
         reloadIfChanged: true
         inspector:
           group: book

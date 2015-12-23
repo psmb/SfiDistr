@@ -1,29 +1,51 @@
-
-blah:
-  placeholder: 'Enter title here'
+blah: &alohaPlain
+  placeholder: 'Текст тут'
   format:
-    b: false
-    i: false
-    u: false
-    sub: false
-    sup: false
-    p: false
-    h1: false
-    h2: false
-    h3: false
-    pre: false
-    removeFormat: false
+    b: FALSE
+    i: FALSE
+    u: FALSE
+    sub: FALSE
+    sup: FALSE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
   table: {  }
   list: {  }
   link:
-    a: false
+    a: FALSE
   alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Текст тут'
+  format:
+    b: TRUE
+    i: TRUE
+    u: FALSE
+    sub: TRUE
+    sup: TRUE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: TRUE
+  alignment: {  }
+
 'Sfi.Sfi:QuoteBlock':
   superTypes:
     'TYPO3.Neos:Content': true
     'TYPO3.Neos.NodeTypes:Image': true
   ui:
-    label: 'Quote block'
+    label: 'Блок цитати'
+    help:
+      message: 'Блок с цитатой, состоит из имени и описании автора и картинки'
     icon: icon-edit
     group: contentBlocks
     inspector:
@@ -34,61 +56,32 @@ blah:
     authorName:
       type: string
       ui:
-        label: 'Author name'
+        label: 'Имя автора'
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Имя автора'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     authorDescription:
       type: string
       ui:
-        label: 'Author degree'
+        label: 'Подробнее об авторе (степень и др)'
         inlineEditable: true
         aloha:
+          <<: *alohaPlain
           placeholder: 'Подробнее об авторе (степень и др)'
-          format:
-            b: false
-            i: false
-            u: false
-            sub: false
-            sup: false
-            p: false
-            h1: false
-            h2: false
-            h3: false
-            pre: false
-            removeFormat: false
-          table: {  }
-          list: {  }
-          link:
-            a: false
-          alignment: {  }
     text:
       type: string
-      defaultValue: '<p>Enter quotation text here</p>'
       ui:
+        aloha:
+          placeholder: 'Текст цитаты'
         inlineEditable: true
 'Sfi.Sfi:Card':
   superTypes:
     'TYPO3.Neos:Content': true
   ui:
-    label: Card
+    label: Карточка
+    help:
+      message: 'Просто карточка с заголовком и текстом, симпатичная такая'
     icon: icon-edit
     group: contentBlocks
   properties:
@@ -108,13 +101,13 @@ blah:
   superTypes:
     'TYPO3.Neos:Content': true
   ui:
-    label: VCard
+    label: 'Визитная карточка'
     icon: icon-edit
     group: contentBlocks
     inspector:
       groups:
         variant:
-          label: Variant
+          label: Вариант
   properties:
     name:
       type: string
@@ -144,7 +137,7 @@ blah:
       defaultValue: true
       type: string
       ui:
-        label: 'VCard variant'
+        label: 'Вариант визитки'
         reloadIfChanged: true
         inspector:
           group: variant
@@ -152,9 +145,9 @@ blah:
           editorOptions:
             values:
               1:
-                label: 'Variant 1'
+                label: 'Вариант 1'
               2:
-                label: 'Variant 2'
+                label: 'Вариант 2'
 'Sfi.Sfi:BuyBook':
   superTypes:
     'TYPO3.Neos:Content': true
@@ -164,7 +157,9 @@ blah:
     button:
       type: 'Sfi.Shared:Link'
   ui:
-    label: 'Buy Book'
+    label: 'Купить книгу'
+    help:
+      message: 'Элемент рекламирующий книгу, с обложкой, названием книги и ссылкой'
     icon: icon-picture
     position: 400
     group: contentBlocks
@@ -191,13 +186,13 @@ blah:
   superTypes:
     'TYPO3.Neos:Content': true
   ui:
-    label: 'Person Formal Listing'
+    label: 'Список персон (законодательство)'
     group: contentBlocks
   properties:
     rootNode:
       type: reference
       ui:
-        label: 'Root node for person'
+        label: 'Корневой элемент с персонами'
         reloadIfChanged: true
         inspector:
           group: general
@@ -208,7 +203,7 @@ blah:
   superTypes:
     'TYPO3.Neos:Content': true
   ui:
-    label: 'Study Programs Listing'
+    label: 'Список учебных программ'
     group: contentBlocks
     inspector:
       groups:
@@ -218,7 +213,7 @@ blah:
     rootNode:
       type: reference
       ui:
-        label: 'Root node for study programs'
+        label: 'Корневой элемент с программами'
         reloadIfChanged: true
         inspector:
           group: general
@@ -229,12 +224,12 @@ blah:
   superTypes:
     'Sfi.Sfi:StudyProgramsListing': true
   ui:
-    label: 'Study Programs Listing Formal'
+    label: 'Список учебных программ (законодательство)'
 'Sfi.Sfi:StudyProgramsListingByReference':
   superTypes:
     'TYPO3.Neos:Content': true
   ui:
-    label: 'Study Programs Listing By Reference'
+    label: 'Список учебных программ (по выбору)'
     group: contentBlocks
     inspector:
       groups:
@@ -244,7 +239,7 @@ blah:
     references:
       type: references
       ui:
-        label: 'Select StudyPrograms to list'
+        label: 'Выберите учебные программы'
         reloadIfChanged: true
         inspector:
           group: general
@@ -255,7 +250,9 @@ blah:
   superTypes:
     'TYPO3.Neos:Content': true
   ui:
-    label: 'Almanac Entry'
+    label: 'Элемент альманаха'
+    help:
+      messages: 'Элемент для каждой статьи альманаха, состоит из информации о статье, авторе и самом файле статьи'
     group: contentBlocks
     inspector:
       groups:
@@ -291,5 +288,5 @@ blah:
       ui:
         inspector:
           group: asset
-        label: Assets
+        label: Файл статьи (желательно pdf)
         reloadIfChanged: true
