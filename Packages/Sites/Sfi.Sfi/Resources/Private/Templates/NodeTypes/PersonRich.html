@@ -15,7 +15,7 @@
 					<div itemprop="Degree" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
 				</s:ifOr>
 				<f:if condition="{node.context.workspace.name} != 'live'">
-					<div class="ServiceEm--Large" style="color: pink">{neos:contentElement.editable(property: 'freeText', tag: 'span')}</div> 
+					<div class="ServiceEm--Large" style="color: pink">{neos:contentElement.editable(property: 'freeText', tag: 'span')}</div>
 				</f:if>
 			</div>
 		</div>
@@ -58,7 +58,6 @@
 				</s:ifOr>
 			</div>
 
-			{main -> f:format.raw()}
 			<s:ifOr condition="{subject}" or="{node.context.workspace.name} != 'live'">
 				<div class="marginVertical-single">
 					<div class="ParagraphAlt--Large color-primaryAlt">Преподаваемые дисциплины:</div>
@@ -66,6 +65,7 @@
 				</div>
 			</s:ifOr>
 
+			{main -> f:format.raw()}
 			{listByTag -> f:format.raw()}
 		</div>
 	</div>
