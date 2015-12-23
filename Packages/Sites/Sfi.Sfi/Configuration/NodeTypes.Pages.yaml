@@ -107,6 +107,7 @@ blah: &alohaRich
     'Sfi.Shared:TagMixin': true
   ui:
     label: 'Страница: Тэг'
+    icon: icon-file-text
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -114,7 +115,7 @@ blah: &alohaRich
     image:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
-        label: Image
+        label: 'Обложка тэга'
         reloadIfChanged: true
         inspector:
           group: tag
