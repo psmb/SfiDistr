@@ -24,13 +24,14 @@ webdata:
 web:
   image: dimaip/neos-bare:latest
   ports:
-    - '80'
+    - '8888:80'
   links:
     - db:db
   volumes_from:
     - webdata
   environment:
     VIRTUAL_HOST: 'sfi.ru,dev.sfi.ru,next.sfi.ru'
+    REPOSITORY_URL: 'https://github.com/psmb/SfiDistr'
   restart: always
 
 ssh:
@@ -45,12 +46,3 @@ ssh:
   environment:
     IMPORT_GITHUB_PUB_KEYS: dimaip
   restart: always
-
-#sshresources:
-#  image: million12/php-app-ssh
-#  ports:
-#    - '2222:22'
-# volumes:
-#   - Persistent:/data/www/sfi.ru/surf/shared/Data/Persistent
-#  environment:
-#    IMPORT_GITHUB_PUB_KEYS: dimaip,zaveryukha,SleaD80
