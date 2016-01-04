@@ -1,10 +1,10 @@
 Sfi.ru Distribution
 ========
 
-**Feeling generous and want to help our non-profit?** Pick one of these issues and contribute: [![Stories in Ready](https://badge.waffle.io/sfi-ru/sfidistr.png?label=ready&title=Ready)](https://waffle.io/sfi-ru/sfidistr)
+**Feeling generous and want to help our non-profit?** Pick one of these issues and contribute: [![Stories in Ready](https://badge.waffle.io/psmb/sfidistr.png?label=ready&title=Ready)](https://waffle.io/psmb/sfidistr)
 
 CircleCI integration status:
-[![Circle CI](https://circleci.com/gh/sfi-ru/SfiDistr/tree/master.svg?style=svg)](https://circleci.com/gh/sfi-ru/SfiDistr/tree/master)
+[![Circle CI](https://circleci.com/gh/psmb/SfiDistr/tree/master.svg?style=svg)](https://circleci.com/gh/psmb/SfiDistr/tree/master)
 
 ##Installation
 
@@ -16,7 +16,7 @@ CircleCI integration status:
  * Move to bin: `sudo mv ~/docker-compose /usr/local/bin/docker-compose`
  * Make executable: `sudo chmod +x /usr/local/bin/docker-compose`
 3. Create a directory where your project files will be. By convention `/home/username/docker/project-name`
-4. Copy contents of https://github.com/sfi-ru/SfiDistr/blob/master/docker/docker-compose.yml and replace `PATH_TO_PROJECT_FILES` with something like `/home/username/docker/`
+4. Copy contents of https://github.com/psmb/SfiDistr/blob/master/docker/docker-compose.yml and replace `PATH_TO_PROJECT_FILES` with something like `/home/username/docker/`
 5. For local development:
   * Add local domain name (e.g. `sfi` instead of `sfi.ru`) to `/etc/hosts` and point it to `127.0.0.1`
   * Adjust `T3APP_NAME` in `docker-compose.yml` with local domain name
