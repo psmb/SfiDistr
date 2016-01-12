@@ -1,0 +1,28 @@
+up:
+  comments: 'Migration rename Sfi.News:ListNode to Sfi.News:List'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.News:ListNode'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.News:List'
+down:
+  comments: 'Revert migration rename Sfi.News:ListNode to Sfi.News:List'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.News:List'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.News:ListNode'

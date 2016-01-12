@@ -1,0 +1,126 @@
+TYPO3:
+  Neos:
+    nodeTypes:
+      groups:
+        news:
+          position: end
+          label: News
+    typoScript:
+      autoInclude:
+        Sfi.News: true
+  TypoScript:
+    defaultContext:
+      NewsConfiguration: 'Sfi\News\TypoScript\Eel\Helper\ConfigurationHelper'
+Sfi:
+  News:
+    listNode:
+      numberOfItems: 10000
+      paginationEnabled: false
+      pagination:
+        itemsPerPage: 24
+        maximumNumberOfLinks: 15
+      sortOrder: 'DESC'
+      sortProperty: 'date'
+      itemRenderer: ''
+      listTitle: ''
+      listTitleClass: ''
+      class: 'row'
+      itemClass: 'medium-4 columns'
+      archiveLink: ''
+    newsArchive:
+      numberOfItems: 10000
+      paginationEnabled: true
+      pagination:
+        itemsPerPage: 24
+        maximumNumberOfLinks: 15
+      sortProperty: date
+      listTitle: ''
+      listTitleClass: 'SectionDivider--Service'
+      class: 'NewsList-Grid row'
+      dataColumns: true
+      itemClass: ''
+      archiveLink: ''
+      showOnlyNews: true
+      layout: 'ContentDefault'
+    publishedBooksArchive:
+      numberOfItems: 10000
+      paginationEnabled: true
+      pagination:
+        itemsPerPage: 24
+        maximumNumberOfLinks: 15
+      sortProperty: date
+      listTitle: ''
+      listTitleClass: 'PageTitle'
+      class: 'medium-block-grid-2'
+      dataColumns: false
+      itemClass: ''
+      archiveLink: ''
+      showOnlyNews: false
+      layout: 'ContentWithSidebar'
+    articlesList:
+      numberOfItems: 100
+      pagination: ~
+      listTitle: ''
+      listTitleClass: 'H3 textAlign-center'
+      class: ''
+      archiveLink: ''
+    newsLatest:
+      numberOfItems: 6
+      pagination: ~
+      sortProperty: date
+      listTitle: 'СФИ сегодня'
+      listTitleClass: 'SectionDivider--Service'
+      class: 'NewsLatest-Grid row'
+      wrapClass: 'NewsLatest'
+      archiveLink: '~/sfi-today'
+      archiveLinkTitle: 'Все новости'
+    newsRelated:
+      numberOfItems: 4
+      sortProperty: date
+      listTitle: ''
+      class: ''
+      archiveLink: '~/sfi-today'
+      archiveLinkTitle: 'Все новости'
+      thumbnailWidth: 100
+      thumbnailHeight: 100
+      dateFormat: 'dd MMMM yyyy'
+    newsShort:
+      thumbnailWidth: 420
+      thumbnailHeight: 222
+      dateFormat: 'dd MMMM yyyy'
+    newsDetail:
+      dateFormat: 'dd MMMM yyyy'
+    announcementsList:
+      numberOfItems: 6
+      pagination: ~
+      sortProperty: date
+      listTitle: ''
+      class: ''
+      archiveLink: ''
+    announcementShort:
+      thumbnailWidth: 420
+      thumbnailHeight: 222
+      dateFormat: ''
+    announcementDetail:
+      dateFormat: 'dd MMMM yyyy HH:mm'
+    topList:
+      numberOfItems: 3
+      sortProperty: date
+      listTitle: ~
+      class: 'Carousel--Cover js-carousel-1x'
+      archiveLink: ''
+    topShort:
+      thumbnailWidth: 1440
+      thumbnailHeight: 700
+      dateFormat: d.M
+    listByTag:
+      numberOfItems: 10000
+      paginationEnabled: true
+      pagination:
+        itemsPerPage: 24
+        maximumNumberOfLinks: 15
+      sortProperty: date
+      listTitle: 'Материалы по теме'
+      listTitleClass: 'SectionDivider--Service'
+      class: 'NewsByTag-Grid row'
+      archiveLink: ''

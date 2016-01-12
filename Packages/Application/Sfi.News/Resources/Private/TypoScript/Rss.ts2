@@ -1,0 +1,39 @@
+prototype(Sfi.News:RssList) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Sfi.News/Private/Templates/RssList.html'
+	@override.collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:News]').get()}
+	@override.collection.@process.sort = ${q(value).sort('date', 'DESC').get()}
+	@override.collection.@process.yandexOnly = ${q(value).count() > 0 ? q(value).filter('[yandex = TRUE]').get() : value}
+	@override.collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.subtract(Date.now(), 'P7D')).get() : value}
+
+	childItems = TYPO3.TypoScript:Collection {
+		collection = ${collection}
+		itemRenderer = Sfi.News:RssItem
+		itemName = 'node'
+	}
+	@cache {
+		mode = 'cached'
+		# Elements should be removed, once their age reaches 1W. Find out the time last element in collection has left to live
+		maximumLifetime = ${q(collection).last().property('date').timestamp - Date.subtract(Date.now(), 'P7D').timestamp}
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${'NodeType_Sfi.News:AbstractNews'}
+		}
+	}
+}
+
+prototype(Sfi.News:RssItem) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Sfi.News/Private/Templates/RssItem.html'
+	node = ${node}
+	title = ${String.stripTags(q(node).property('title'))}
+	author = ${String.stripTags(q(node).property('author'))}
+	date = ${q(node).property('date')}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	@override.main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	# TODO fix
+	bodytext = ${'<yandex:full-text>' + String.Trim(String.htmlSpecialChars(String.stripTags(main))) + '</yandex:full-text>'}
+}

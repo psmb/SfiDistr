@@ -1,0 +1,78 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+{namespace s=Sfi\Shared\ViewHelpers}
+
+<div class="row">
+	<div class="columns">
+		<div class="NewsDetail">
+			<div class="NewsDetail-Article NewsDetail-Article--Soft">
+
+				<div class="Article Article--Soft">
+					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+					<div class="row">
+						<div class="large-10 large-offset-1 columns">
+							<div class="Article-Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+							<div class="textAlign-center">
+								<span class="Article-Date">
+									<f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date>
+								</span>
+								&bull;
+								<a class="Article-CommentCount" href="#disqus_thread">Комментировать</a>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="medium-10 large-8 medium-offset-1 large-offset-2 columns">
+							<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-10 large-offset-1 columns">
+							<f:if condition="{coverCollection}">
+					        	<div class="Article-CoverPhoto">{coverCollection -> f:format.raw()}</div>
+					    	</f:if>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-8 large-offset-2 columns">
+							<div class="Article-Content">{main -> f:format.raw()}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="columns">
+							<div class="Article-Gallery">{gallery -> f:format.raw()}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-8 large-offset-2 columns">
+							<div class="Article-Assets">{assets -> f:format.raw()}</div>
+							<div class="Article-Author marginTop-triple">
+								<f:if condition="{node.context.workspace.name} != 'live'">
+									<f:then>
+										<span class="Article-AuthorLabel">Автор: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
+										<span class="Article-AuthorLabel">Фото: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
+									</f:then>
+									<f:else>
+										<f:if condition="{author}">
+											<span class="Article-AuthorLabel">Автор: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
+										</f:if>
+										<f:if condition="{authorPhoto}">
+											<span class="Article-AuthorLabel">Фото: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
+										</f:if>
+									</f:else>
+								</f:if>
+							</div>
+
+							<f:render partial="Tags" arguments="{tags: node.properties.tags}" />
+
+							<div class="marginTop-triple">
+								<f:render partial="Disqus" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>	
+	</div>
+</div>

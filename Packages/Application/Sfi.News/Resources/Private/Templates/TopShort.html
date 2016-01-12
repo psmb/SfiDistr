@@ -1,0 +1,29 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+{namespace s=Sfi\Shared\ViewHelpers}
+
+<div class="MediaSlide Cover" style="background-image:url('{m:uri.image(asset: thumbnailImage, maximumWidth: configuration.thumbnailWidth, maximumHeight: configuration.thumbnailHeight, allowCropping: true, allowUpScaling: true)}')">
+	<neos:link.node node="{node}">
+		<div class="row">
+			<div class="MediaSlide-Wrap columns">
+				<div class="MediaSlide-Body">
+					<h3 class="MediaSlide-Title">
+						<f:if condition="{node.nodeType.name} == 'Sfi.News:Announcement'">
+							<div class="MediaSlide-Date">
+								<f:if condition="{node.properties.dateStart}">
+									<f:if condition="{f:format.date(date: node.properties.dateStart format: 'Y-m-d')} < {f:format.date(date: date, format: 'Y-m-d')}">
+										<span><f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{node.properties.dateStart}</f:format.date></span>
+										<span>-</span>
+									</f:if>
+								</f:if>
+								<span><f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date></span>
+							</div>
+						</f:if>
+						{title}
+					</h3>
+					<div class="MediaSlide-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
+				</div>
+			</div>
+		</div>
+	</neos:link.node>
+</div>

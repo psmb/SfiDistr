@@ -1,0 +1,144 @@
+
+'Sfi.News:List':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Список материалов'
+    icon: icon-list
+    inlineEditable: true
+    group: lists
+    inspector:
+      groups:
+        list:
+          label: 'Настройки списка'
+  properties:
+    paginationEnabled:
+      type: boolean
+      ui:
+        label: 'Enable pagination'
+        reloadIfChanged: true
+        inspector:
+          group: list
+    sortProperty:
+      type: string
+      defaultValue: date
+      ui:
+        label: 'Sort property'
+        reloadIfChanged: true
+        inspector:
+          group: list
+    sortOrder:
+      type: string
+      defaultValue: date
+      ui:
+        label: 'Sort order'
+        reloadIfChanged: true
+        inspector:
+          group: list
+    wrapClass:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Wrap class'
+        reloadIfChanged: true
+        inspector:
+          group: list
+    class:
+      type: string
+      defaultValue: row
+      ui:
+        label: 'List class'
+        reloadIfChanged: true
+        inspector:
+          group: list
+    itemClass:
+      type: string
+      defaultValue: columns
+      ui:
+        label: 'Item class'
+        reloadIfChanged: true
+        inspector:
+          group: list
+    listTitleClass:
+      type: string
+      defaultValue: SectionDivider--Service
+      ui:
+        label: 'List title class'
+        reloadIfChanged: true
+        inspector:
+          group: list
+    listTitle:
+      type: string
+      defaultValue: 'Заголовок списка'
+      ui:
+        label: 'List title'
+        reloadIfChanged: true
+        inspector:
+          group: list
+    itemRenderer:
+      type: string
+      defaultValue: ''
+      ui:
+        label: itemRenderer
+        reloadIfChanged: true
+        inspector:
+          group: list
+    rootNode:
+      type: reference
+      ui:
+        label: 'Root node (defaults to current page)'
+        reloadIfChanged: true
+        inspector:
+          group: list
+          editorOptions:
+            nodeTypes:
+              - 'TYPO3.Neos:Document'
+    archiveLink:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Archive link'
+        reloadIfChanged: true
+        inspector:
+          group: list
+'Sfi.News:Rss':
+  superTypes:
+    'TYPO3.Neos:Document': true
+  ui:
+    label: 'Rss list'
+    icon: icon-file
+    group: system
+  constraints:
+    nodeTypes:
+      '*': false
+'Sfi.News:CategorizedList':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Categorized Articles list'
+    group: lists
+    inspector:
+      groups:
+        news:
+          label: News
+'Sfi.News:ListByTag':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'List news by tag'
+    group: lists
+    inspector:
+      groups:
+        news:
+          label: News
+  properties:
+    tag:
+      type: reference
+      ui:
+        label: 'Tag to list news by'
+        reloadIfChanged: true
+        inspector:
+          group: news
+          editorOptions:
+            nodeTypes:
+              - 'TYPO3.Neos.NodeTypes:Page'

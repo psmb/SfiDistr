@@ -1,0 +1,15 @@
+{namespace yandex}{namespace ts=TYPO3\TypoScript\ViewHelpers}<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns="http://backend.userland.com/rss2" xmlns:yandex="http://news.yandex.ru">
+	<channel>
+		<title>Свято-Филаретовский православно-христианский институт</title>
+		<link>http://sfi.ru/</link>
+		<description>Новости Свято-Филаретовского института</description>
+		<language>ru_RU</language>
+		<generator>TYPO3 Neos</generator>
+		<yandex:logo>http://sfi.ru/_Resources/Static/Packages/Sfi.Sfi/Images/sfiAnchorLarge.png</yandex:logo>
+		<yandex:logo type="square">http://sfi.ru/_Resources/Static/Packages/Sfi.Sfi/Images/sfiAnchorLarge.png</yandex:logo>
+
+		{childItems -> f:format.raw()}
+
+	</channel>
+</rss>

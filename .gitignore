@@ -29,7 +29,8 @@ Configuration/Development/Settings.yaml
 /Build/Reports
 /Build/Resources
 /Data/
-/Packages/Application/
+/Packages/Application/*
+!/Packages/Application/Sfi.News/
 /Packages/Framework/
 /Packages/Libraries/
 /Packages/Plugins/

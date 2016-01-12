@@ -1,0 +1,15 @@
+prototype(Sfi.News:Opengraph) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Sfi.News/Private/Templates/Opengraph.html'
+	title = ${String.stripTags(q(node).property('title'))}
+	description = ${String.stripTags(q(node).property('teaser'))}
+	url = TYPO3.Neos:NodeUri {
+		node = ${node}
+		absolute = TRUE
+	}
+	image = TYPO3.Neos:ImageUri {
+		asset = ${q(node).find('[instanceof TYPO3.Neos.NodeTypes:Image]').first().property('image')}
+		maximumWidth = 1200
+		maximumHeight = 630
+		allowCropping = TRUE
+	}
+}

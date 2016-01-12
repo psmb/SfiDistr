@@ -1,0 +1,24 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+{namespace s=Sfi\Shared\ViewHelpers}
+
+<div class="Media">
+	<neos:link.node node="{node}">
+		<div class="Media-Image">
+			<f:if condition="{thumbnailImage}">
+				<f:if condition="{thumbnailImage}">
+					<m:image asset="{thumbnailImage}" maximumWidth="{configuration.thumbnailWidth}" maximumHeight="{configuration.thumbnailHeight}" allowCropping="true" allowUpScaling="true" alt="{title}" />
+				</f:if>
+			</f:if>
+		</div>
+		<div class="Media-Body">
+			<h3 class="Media-Title">
+				{title}
+			</h3>
+			<div class="Media-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
+			<f:if condition="{date}">
+				<div class="Media-Date"><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date></div>
+			</f:if>
+		</div>
+	</neos:link.node>
+</div>

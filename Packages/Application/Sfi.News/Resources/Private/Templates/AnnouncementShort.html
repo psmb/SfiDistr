@@ -1,0 +1,29 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace m=TYPO3\Media\ViewHelpers}
+{namespace s=Sfi\Shared\ViewHelpers}
+
+<div class="MediaAnnouncement">
+	<neos:link.node node="{node}">
+		
+		<f:if condition="{date}">
+			<div class="MediaAnnouncement-Date">
+				<f:if condition="{dateStart}">
+					<div><span class="MediaAnnouncement-DateDay"><f:format.date format="j">{dateStart}</f:format.date>.</span><span class="MediaAnnouncement-DateMonth"><f:format.date format="m">{dateStart}</f:format.date></span></div>
+					<div class="MediaAnnouncement-DateDash">—</div>
+				</f:if>
+				<span class="MediaAnnouncement-DateDay"><f:format.date format="j">{date}</f:format.date>.</span><span class="MediaAnnouncement-DateMonth"><f:format.date format="m">{date}</f:format.date></span>
+				<!-- Sorry -->
+				<f:if condition="{date -> f:format.date(format:'G:i')} != '0:00'">
+					<div class="MediaAnnouncement-DateTime">
+						<f:format.date format="G:i">{date}</f:format.date>
+					</div>
+				</f:if>
+			</div>
+		</f:if>
+		<div class="MediaAnnouncement-WrapText">
+			<h3 class="MediaAnnouncement-Title">{title}</h3>
+			<p class="MediaAnnouncement-Teaser RteTextLinkable">{teaser}</p>
+			<div class="MediaAnnouncement-Place">{place -> f:format.raw()}</div>
+		</div>
+	</neos:link.node>
+</div>

@@ -1,0 +1,9 @@
+# Redirects for RSS may be set in Routes.yaml
+rssPage = TYPO3.TypoScript:Http.Message {
+	httpResponseHead.headers.Content-Type = 'application/xml'
+	content = Sfi.News:RssList
+}
+root.rssPage {
+	condition = ${q(node).is('[instanceof Sfi.News:Rss]')}
+	renderPath = '/rssPage'
+}

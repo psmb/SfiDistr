@@ -9,7 +9,6 @@
     "repositories": [
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Styleguide.git" },
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Shared.git" },
-        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.News.git" },
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Grid.git" }
     ],
     "require": {
@@ -30,7 +29,6 @@
         "flowpack/behat": "dev-master",
 
         "sfi/shared": "@dev",
-        "sfi/news": "@dev",
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",
         "m12/neos-plugin-dbexport": "dev-master"

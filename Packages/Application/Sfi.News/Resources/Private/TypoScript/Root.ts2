@@ -1,0 +1,6 @@
+include: Model.ts2
+include: Lists.ts2
+include: Announcements.ts2
+include: Rss.ts2
+include: Opengraph.ts2
+include: PageObjects.ts2
