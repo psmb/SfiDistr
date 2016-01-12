@@ -1,0 +1,85 @@
+# Sections object renders children into responsive tabs.
+# Tabs content is completely decoupled from structure.
+# You can use the same principle to create very advanced content blocks decoupled from its content.
+prototype(Sfi.Shared:Sections) {
+	sectionName = 'main'
+	layout = ${q(node).property('layout')}
+
+	tabs = TYPO3.TypoScript:Collection {
+		collection = ${q(node).children()}
+		itemRenderer = Sfi.Shared:SectionsTabRenderer
+		itemName = 'node'
+	}
+
+	panels = TYPO3.TypoScript:Collection {
+		collection = ${q(node).children()}
+		itemRenderer = Sfi.Shared:SectionsPanelRenderer
+		itemName = 'node'
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = ${'DescendantOf_' + node.identifier}
+		}
+	}
+}
+
+prototype(Sfi.Shared:SectionsAbstractRenderer) < prototype(TYPO3.TypoScript:Template) {
+	sectionName = 'to-be-set'
+	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
+	node = ${node}
+	title = ${q(node).property('title')}
+}
+prototype(Sfi.Shared:SectionsTabRenderer) < prototype(Sfi.Shared:SectionsAbstractRenderer) {
+	sectionName = 'tab'
+	tab = TYPO3.Neos:ContentCase {
+		@override.section = 'tab'
+	}
+}
+prototype(Sfi.Shared:SectionsPanelRenderer) < prototype(Sfi.Shared:SectionsAbstractRenderer) {
+	sectionName = 'panel'
+	accordion = TYPO3.Neos:ContentCase {
+		@override.section = 'accordion'
+	}
+	panel = TYPO3.Neos:ContentCase {
+		@override.section = 'panel'
+	}
+}
+
+
+
+# Example simple tab content implementation with just content collection.
+# Can be something way more fancy like tabs with images or whatever you can imagine.
+# Its template must provide 3 sections: tab, accordion and panel.
+prototype(Sfi.Shared:Section) {
+	sectionName = ${section}
+	node = ${q(node).get(0)}
+	content = TYPO3.Neos:ContentCollectionRenderer
+}
+
+# More advanced implementation: tabs with pictures for anchors, in two variants
+prototype(Sfi.Shared:SectionWithImage) {
+	templatePath = ${'resource://Sfi.Shared/Private/Templates/NodeTypes/' + q(node).property('sectionVariant') + '.html'}
+
+	sectionName = ${section}
+    node = ${q(node).get(0)}
+    @override.theNode = ${this.node}
+
+    imageMaximumWidth = ${q(node).property('sectionVariant') == 'SectionWithImageVariant2' ? 200 : 120}
+    imageMaximumHeight = ${q(node).property('sectionVariant') == 'SectionWithImageVariant2' ? 200 : 120}
+
+    accordionImageMaximumWidth = 150
+    accordionImageMaximumHeight = 150
+
+    title = ${String.stripTags(q(theNode).children('headline').property('title'))}
+    subTitle = ${q(theNode).children('headline').property('subTitle')}
+
+	content = Sfi.Shared:TextWithImage {
+		@override.node = ${q(theNode).get(0)}
+	}
+}

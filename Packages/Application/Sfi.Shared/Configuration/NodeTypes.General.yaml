@@ -1,0 +1,48 @@
+
+'Sfi.Shared:Epigraph':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: Эпиграф
+    icon: icon-edit
+    inlineEditable: true
+  properties:
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Текст к эпиграфу'
+'Sfi.Shared:Note':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: Примечание
+    icon: icon-edit
+    inlineEditable: true
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Заголовок примечания'
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Текст примечания'
+'Sfi.Shared:Blockquote':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: Цитата
+  properties:
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: '<p>Текст цитаты</p>'
+          autoparagraph: true

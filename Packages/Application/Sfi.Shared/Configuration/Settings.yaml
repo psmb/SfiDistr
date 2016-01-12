@@ -1,0 +1,28 @@
+TYPO3:
+  Neos:
+    typoScript:
+      autoInclude:
+        'Sfi.Shared': TRUE
+    nodeTypes:
+      groups:
+        contentElements:
+          position: 105
+          label: 'Элемент контента'
+        contentBlocks:
+          position: 110
+          label: 'Блоки контента'
+        structure:
+          position: 115
+          label: 'Структура'
+        contentWidgets:
+          position: 120
+          label: 'Виджеты'
+        lists:
+          position: 130
+          label: 'Списки'
+        system:
+          position: end
+          label: 'Системные'
+  TypoScript:
+    defaultContext:
+      NodeTypeConfiguration: 'Sfi\Shared\TypoScript\Eel\Helper\NodeTypeConfigurationHelper'

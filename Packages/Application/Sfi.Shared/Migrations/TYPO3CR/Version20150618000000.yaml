@@ -1,0 +1,31 @@
+up:
+  comments: 'Convert AssetList to AudioAsset or Asset'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'TYPO3.Neos.NodeTypes:AssetList'
+            withSubTypes: TRUE
+      transformations:
+        -
+          type: '\Sfi\Shared\TYPO3CR\Transformations\ConvertAssetsToAudioTransformation'
+          settings:
+            assetType: '\TYPO3\Media\Domain\Model\Audio'
+            targetNodeType: 'Sfi.Shared:AudioAsset'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'TYPO3.Neos.NodeTypes:AssetList'
+            withSubTypes: TRUE
+      transformations:
+        -
+          type: '\Sfi\Shared\TYPO3CR\Transformations\ConvertAssetsToAudioTransformation'
+          settings:
+            assetType: '\TYPO3\Media\Domain\Model\Asset'
+            targetNodeType: 'Sfi.Shared:Asset'
+down:
+  comments: 'No way back!'

@@ -1,0 +1,16 @@
+
+'Sfi.Shared:Group':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: Группа
+    group: structure
+    inlineEditable: true
+  constraints:
+    nodeTypes:
+      '*': true
+'Sfi.Shared:Well':
+  superTypes:
+    'Sfi.Shared:Group': true
+  ui:
+    label: Корзинка

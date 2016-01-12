@@ -1,0 +1,27 @@
+<f:if condition="{assets}">
+	<f:then>
+		<ul{attributes -> f:format.raw()}>
+			<f:for each="{assets}" as="asset">
+				<li>
+					<div class="Audio">
+						<div class="Audio-Player left">
+							<audio src="{f:uri.resource(resource: asset.resource)}" preload="auto" />
+						</div>
+						<div class="Audio-Download left">
+							<a class="Link ParagraphAlt" href="{f:uri.resource(resource: asset.resource)}"><i class="icon-download"></i> Скачать</a>
+						</div>
+					</div>
+				</li>
+			</f:for>
+		</ul>
+	</f:then>
+	<f:else>
+		<f:security.ifAccess privilegeTarget="TYPO3.Neos:Backend.GeneralAccess">
+			<f:if condition="{node.context.workspace.name} != 'live'">
+				<ul{attributes -> f:format.raw()}>
+					<li>Empty asset list</li>
+				</ul>
+			</f:if>
+		</f:security.ifAccess>
+	</f:else>
+</f:if>

@@ -8,7 +8,6 @@
     },
     "repositories": [
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Styleguide.git" },
-        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Shared.git" },
         { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Grid.git" }
     ],
     "require": {
@@ -28,7 +27,6 @@
         "symfony/css-selector": "~2.0",
         "flowpack/behat": "dev-master",
 
-        "sfi/shared": "@dev",
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",
         "m12/neos-plugin-dbexport": "dev-master"

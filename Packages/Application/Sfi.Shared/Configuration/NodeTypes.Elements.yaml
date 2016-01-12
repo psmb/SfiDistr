@@ -1,0 +1,164 @@
+
+'Sfi.Shared:YouTube':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Видео YouTube'
+    group: contentElements
+    icon: fa-youtube
+    inspector:
+      groups:
+        video:
+          label: Video
+  properties:
+    videoUrl:
+      type: string
+      ui:
+        label: 'Обычная ссылка на видео YouTube'
+        reloadIfChanged: true
+        inspector:
+          group: video
+      validation:
+        TYPO3.Neos/Validation/NotEmptyValidator: {  }
+        regularExpression:
+          regularExpression: '/\?v=[a-z0-9-]+/i'
+'Sfi.Shared:Link':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: Ссылка
+    icon: icon-external-link
+    group: contentElements
+    inspector:
+      groups:
+        link:
+          label: Ссылка
+          position: 100
+  properties:
+    variant:
+      defaultValue: Link-Button
+      type: string
+      ui:
+        label: 'Вариант ссылки'
+        reloadIfChanged: true
+        inspector:
+          group: link
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              Link-Button:
+                label: Ссылка-кнопка
+              Link-Inline:
+                label: Строчкая ссылка
+    target:
+      type: string
+      ui:
+        label: 'Адрес ссылки'
+        reloadIfChanged: false
+        inspector:
+          group: link
+          editor: TYPO3.Neos/Inspector/Editors/LinkEditor
+    text:
+      type: string
+      defaultValue: 'Текс ссылки'
+      ui:
+        inlineEditable: true
+'Sfi.Shared:ImageLink':
+  superTypes:
+    'TYPO3.Neos.NodeTypes:Image': true
+  ui:
+    label: 'Ссылка с картинкой'
+    icon: icon-external-link
+    group: contentElements
+  properties:
+    variant:
+      defaultValue: ''
+      type: string
+      ui:
+        label: 'Вариант ссылки'
+        reloadIfChanged: true
+        inspector:
+          group: link
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              Reserved:
+                label: Reserved
+    target:
+      type: string
+      ui:
+        label: 'Адрес ссылки'
+        reloadIfChanged: false
+        inspector:
+          group: link
+          editor: TYPO3.Neos/Inspector/Editors/LinkEditor
+    text:
+      type: string
+      defaultValue: 'Текст ссылки'
+      ui:
+        inlineEditable: true
+'Sfi.Shared:Asset':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: Файл
+    icon: icon-edit
+    group: contentElements
+    inspector:
+      groups:
+        asset:
+          label: Файл
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Введите подпись к файлу'
+    asset:
+      type: TYPO3\Media\Domain\Model\Asset
+      ui:
+        inspector:
+          group: asset
+        label: Assets
+        reloadIfChanged: true
+    variant:
+      defaultValue: Asset-Button
+      type: string
+      ui:
+        label: 'Вариант отображения файла'
+        reloadIfChanged: true
+        inspector:
+          group: asset
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              Asset-Button:
+                label: Кнопкой
+              Asset-Inline:
+                label: Строчной
+'Sfi.Shared:AudioAsset':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Аудио файл'
+    icon: icon-edit
+    group: contentElements
+    inspector:
+      groups:
+        asset:
+          label: 'Аудио файл'
+  properties:
+    title:
+      type: string
+      ui:
+        label: 'Подпись аудиозаписи'
+        inspector:
+          group: asset
+    asset:
+      type: TYPO3\Media\Domain\Model\Asset
+      ui:
+        inspector:
+          group: asset
+        label: 'Аудио файл'
+        reloadIfChanged: true

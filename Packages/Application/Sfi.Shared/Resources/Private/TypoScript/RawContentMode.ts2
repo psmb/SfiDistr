@@ -1,0 +1,34 @@
+prototype(Sfi.Shared:RawContentChildNodes) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://TYPO3.Neos/Private/Templates/RawContentMode/TypoScriptObjects/GeneralContentCollectionRendering.html'
+	columns = TYPO3.TypoScript:Collection {
+		collection = ${q(node).children()}
+		itemName = 'node'
+		itemRenderer = TYPO3.TypoScript:Template {
+			templatePath = 'resource://TYPO3.Neos/Private/Templates/RawContentMode/TypoScriptObjects/ContentCollectionTemplate.html'
+			node = ${node}
+			attributes = TYPO3.TypoScript:Attributes {
+				class = 'column'
+			}
+			columnContent = TYPO3.Neos:ContentCase
+		}
+	}
+	@if.inBackend = ${rawContent && documentNode.context.inBackend}
+}
+
+# Render with own type
+rawContent.body.allContentCollections = PrimaryContent {
+	renderByType {
+		condition = TRUE
+		type = ${q(node).property('_nodeType.name')}
+	}
+}
+# Set flag that we are in rawContentMode
+rawContent.@override.rawContentMode = ${true}
+rawContent.@override.rawContentChildNodes = Sfi.Shared:RawContentChildNodes
+
+prototype(TYPO3.Neos:Document) {
+	templatePath.@process.rawContent = ${rawContentMode ? 'resource://Sfi.Shared/Private/Templates/RawContentMode/NodeProperties.html' : value}
+	nodeProperties = ${NodeTypeConfiguration.getNodeType(q(node).property('_nodeType').name).localConfiguration.properties}
+	nodeProperties.@if.isRaw = ${rawContentMode}
+	@process.rawContentMode = ${rawContentMode ? value + rawContentChildNodes : value}
+}

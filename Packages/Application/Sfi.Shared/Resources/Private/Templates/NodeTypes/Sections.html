@@ -1,0 +1,29 @@
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<f:section name="main">
+	<div class="Sections js-sections {layout}">
+		<ul class="Sections-Tabs">
+			{tabs -> f:format.raw()}
+		</ul>
+		{panels -> f:format.raw()}
+	</div>
+</f:section>
+
+
+<f:section name="tab">
+	<li class="Sections-Tab">
+		<a class="Sections-Anchor" href="#tab-{node.identifier}">
+			{tab -> f:format.raw()}
+		</a>
+	</li>
+</f:section>
+
+<f:section name="panel">
+	<a href="#tab-{node.identifier}" class="Sections-Anchor Sections-AccordionTitle">
+		{accordion -> f:format.raw()}
+	</a>
+
+    <div class="Sections-Panel" id="tab-{node.identifier}">
+		{panel -> f:format.raw()}
+    </div>
+</f:section>

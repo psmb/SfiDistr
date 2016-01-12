@@ -1,0 +1,6 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<div class="marginVertical-single">
+	<a{attributes -> f:format.raw()}>
+		{neos:contentElement.editable(property: 'text', tag: 'span')} </a>
+	</a>
+</div>

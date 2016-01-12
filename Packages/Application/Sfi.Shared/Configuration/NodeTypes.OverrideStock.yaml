@@ -1,0 +1,169 @@
+
+'TYPO3.Neos:PluginView':
+  abstract: true
+'TYPO3.Neos.NodeTypes:Menu':
+  abstract: true
+'TYPO3.Neos.NodeTypes:Form':
+  abstract: true
+'TYPO3.Neos.NodeTypes:ImageMixin':
+  properties:
+    title:
+      ui:
+        inspector:
+          group: unset
+'TYPO3.Neos.NodeTypes:ImageAlignmentMixin':
+  properties:
+    alignment:
+      ui:
+        inspector:
+          group: unset
+'TYPO3.Neos.NodeTypes:TextMixin':
+  abstract: true
+  properties:
+    text:
+      type: string
+      defaultValue: '<p>Введите текст</p>'
+      ui:
+        inlineEditable: true
+        aloha:
+          format:
+            strong: true
+            em: true
+            u: false
+            sub: true
+            sup: true
+            p: true
+            h1: false
+            h2: true
+            h3: true
+            h4: true
+            pre: true
+            removeFormat: true
+          table:
+            table: true
+          list:
+            ol: true
+            ul: true
+          link:
+            a: true
+        alignment: {  }
+'TYPO3.Neos.NodeTypes:TitleMixin':
+  abstract: true
+  properties:
+    title:
+      type: string
+      defaultValue: '<h2>Заголовок</h2>'
+      ui:
+        inlineEditable: true
+        aloha:
+          format:
+            p: false
+            h1: false
+            h2: true
+            h3: true
+            h4: true
+          link:
+            a: true
+        alignment: {  }
+'TYPO3.Neos.NodeTypes:TextWithImage':
+  abstract: true
+'TYPO3.Neos.NodeTypes:Headline':
+  superTypes:
+    'TYPO3.Neos:Content': true
+    'TYPO3.Neos.NodeTypes:TitleMixin': true
+  ui:
+    icon: icon-font
+    inspector:
+      groups:
+        subtitle:
+          label: Подзаголовок
+  properties:
+    subTitle:
+      type: string
+      defaultValue: '<p>Подзаголовок</p>'
+      ui:
+        inlineEditable: true
+    hasSubTitle:
+      type: boolean
+      ui:
+        label: 'Включить подзаголовок'
+        reloadIfChanged: true
+        inspector:
+          group: subtitle
+'TYPO3.Neos.NodeTypes:Text':
+  superTypes:
+    'TYPO3.Neos:Content': true
+    'TYPO3.Neos.NodeTypes:TextMixin': true
+  ui:
+    inspector:
+      groups:
+        variant:
+          label: Вариант
+  properties:
+    isBlockquote:
+      type: boolean
+      ui:
+        label: Является цитатой
+        reloadIfChanged: true
+        inspector:
+          group: variant
+    paragraphVariant:
+      defaultValue: Paragraph
+      type: string
+      ui:
+        label: 'Вариант параграфа'
+        reloadIfChanged: true
+        inspector:
+          group: variant
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              Paragraph:
+                label: Средний
+              Paragraph--Small:
+                label: Маленький
+              Paragraph--Large:
+                label: Большой
+              ParagraphAlt:
+                label: Альтернативный средний
+              ParagraphAlt--Small:
+                label: Альтернативный маленький
+              ParagraphAlt--Large:
+                label: Альтернативный большой
+'TYPO3.Neos.NodeTypes:ContentReferences':
+  ui:
+    group: lists
+'TYPO3.Neos.NodeTypes:Page':
+  label: '${node.properties.navTitle ? node.properties.navTitle : node.properties.title}'
+  properties:
+    navTitle:
+      type: string
+      ui:
+        label: 'Название в меню'
+        reloadIfChanged: true
+        inspector:
+          group: document
+      validation:
+        TYPO3.Neos/Validation/StringLengthValidator:
+          minimum: 1
+          maximum: 255
+'TYPO3.Neos:Node':
+  properties:
+    searchid:
+      type: string
+      ui:
+        label: 'Идентификатор для поиска'
+        inspector:
+          group: nodeInfo
+'TYPO3.Neos:Shortcut':
+  ui:
+    icon: icon-share-alt
+  properties:
+    targetMode:
+      defaultValue: noShortcut
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              noShortcut:
+                label: 'Нет ссылки'

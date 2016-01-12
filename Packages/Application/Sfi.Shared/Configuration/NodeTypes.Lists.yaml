@@ -1,0 +1,30 @@
+
+'Sfi.Shared:ListByReferences':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Вставка страниц'
+    group: lists
+    inspector:
+      groups:
+        news:
+          label: News
+  properties:
+    references:
+      type: references
+      ui:
+        label: 'Выберите элементы типа Документ'
+        reloadIfChanged: true
+        inspector:
+          group: news
+          editorOptions:
+            nodeTypes:
+              - 'TYPO3.Neos:Document'
+    itemRenderer:
+      type: string
+      defaultValue: ''
+      ui:
+        label: itemRenderer
+        reloadIfChanged: true
+        inspector:
+          group: news

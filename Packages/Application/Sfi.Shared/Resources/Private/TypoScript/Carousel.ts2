@@ -1,0 +1,23 @@
+#Carousel
+prototype(Sfi.Shared:Carousel) < prototype(TYPO3.TypoScript:Tag) {
+    attributes.class = ${'Carousel js-carousel-' + q(node).property('responsive')}
+	content = TYPO3.Neos:ContentCollectionRenderer
+
+	@override.responsive = ${q(node).property('responsive')}
+	prototype(TYPO3.Neos.NodeTypes:Image) {
+		attributes.class = 'Carousel-Item'
+		maximumWidth = ${responsive == '2x' ? 600 : (responsive == '3x' ? 320 : 980)}
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = ${'DescendantOf_' + node.identifier}
+		}
+	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+}

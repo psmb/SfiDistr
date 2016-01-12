@@ -1,0 +1,248 @@
+up:
+  comments: 'Migration to rename Widgets into Shared'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Epigraph'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:Epigraph'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Note'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:Note'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:TextWithImage'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:TextWithImage'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Link'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:Link'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:ImageLink'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:ImageLink'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:YouTube'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:YouTube'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Asset'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:Asset'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Carousel'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:Carousel'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Sections'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:Sections'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:Section'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:Section'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Widgets:SectionWithImage'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Shared:SectionWithImage'
+down:
+  comments: 'Revert migration to rename Widgets into Shared'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:Epigraph'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Epigraph'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:Note'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Note'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:TextWithImage'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:TextWithImage'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:Link'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Link'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:ImageLink'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:ImageLink'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:YouTube'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:YouTube'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:Asset'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Asset'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:Carousel'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Carousel'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:Sections'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Sections'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:Section'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:Section'
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Shared:SectionWithImage'
+      transformations:
+        -
+          type: 'ChangeNodeType'
+          settings:
+            newType: 'Sfi.Widgets:SectionWithImage'

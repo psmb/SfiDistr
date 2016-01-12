@@ -1,0 +1,21 @@
+<f:if condition="{asset}">
+	<f:then>
+		<div class="Audio">
+			<div class="Audio-Player left">
+				<audio src="{f:uri.resource(resource: asset.resource)}" preload="auto" />
+			</div>
+			<div class="Audio-Download left">
+				<a class="Link ParagraphAlt" href="{f:uri.resource(resource: asset.resource)}"><i class="icon-download"></i> Скачать</a>
+			</div>
+		</div>
+	</f:then>
+	<f:else>
+		<f:security.ifAccess privilegeTarget="TYPO3.Neos:Backend.GeneralAccess">
+			<f:if condition="{node.context.workspace.name} != 'live'">
+				<div class="Audio">
+					Empty audio asset
+				</div>
+			</f:if>
+		</f:security.ifAccess>
+	</f:else>
+</f:if>

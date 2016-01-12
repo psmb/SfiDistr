@@ -1,0 +1,122 @@
+
+'Sfi.Shared:Carousel':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: Карусель
+    group: contentWidgets
+    inlineEditable: true
+    icon: icon-chevron-right
+    inspector:
+      groups:
+        carousel:
+          label: Карусель
+          position: 5
+  properties:
+    responsive:
+      defaultValue: 1x
+      type: string
+      ui:
+        label: 'Количество слайдов бок о бок'
+        reloadIfChanged: true
+        inspector:
+          group: carousel
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              1x:
+                label: 1x
+              2x:
+                label: 2x
+              3x:
+                label: 3x
+  constraints:
+    nodeTypes:
+      '*': true
+'Sfi.Shared:Sections':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Вкладки'
+    icon: icon-ellipsis-horizontal
+    group: contentWidgets
+    inlineEditable: true
+    inspector:
+      groups:
+        sections:
+          label: Вкладки
+          position: 5
+  properties:
+    layout:
+      defaultValue: Sections--Tabs
+      type: string
+      ui:
+        label: 'Вариант вкладок'
+        reloadIfChanged: true
+        inspector:
+          group: sections
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              Sections--Tabs:
+                label: Влкадки
+              Sections--VerticalTabs:
+                label: 'Вертикальные вкладки'
+              Sections--Pills:
+                label: Пилюльки
+              Sections--Accordion:
+                label: Аккордион
+  constraints:
+    nodeTypes:
+      'Sfi.Shared:Section': true
+      'Sfi.Shared:SectionWithImage': true
+'Sfi.Shared:Section':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: Вкладка
+    group: contentWidgets
+    inlineEditable: true
+    inspector:
+      groups:
+        title:
+          label: 'Свойства вкладки'
+          position: 100
+  properties:
+    title:
+      type: string
+      defaultValue: 'One more tab'
+  constraints:
+    nodeTypes:
+      '*': true
+'Sfi.Shared:SectionWithImage':
+  superTypes:
+    'Sfi.Shared:TextWithImage': true
+    'TYPO3.Neos.NodeTypes:Image': true
+  ui:
+    label: 'Вкладка с картинкой в качестве якоря'
+    group: contentWidgets
+    icon: icon-edit
+  properties:
+    anchorImage:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Картинка якоря'
+        reloadIfChanged: true
+        inspector:
+          group: image
+    sectionVariant:
+      defaultValue: SectionWithImageVariant1
+      type: string
+      ui:
+        label: 'Вариант вкладки'
+        reloadIfChanged: true
+        inspector:
+          group: variant
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              SectionWithImageVariant1:
+                label: 'Вариант 1'
+              SectionWithImageVariant2:
+                label: 'Вариант 2'

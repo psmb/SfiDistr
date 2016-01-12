@@ -1,0 +1,22 @@
+up:
+  comments: 'If shortcut targetMode is empty, set it to defaultValue (noShortcut)'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'TYPO3.Neos:Shortcut'
+            withSubTypes: TRUE
+        -
+          type: 'PropertyEmpty'
+          settings:
+            propertyName: 'targetMode'
+      transformations:
+        -
+          type: 'AddNewProperty'
+          settings:
+            newPropertyName: 'targetMode'
+            value: 'noShortcut'
+down:
+  comments: 'No way back!'

@@ -1,0 +1,92 @@
+include: **/*.ts2
+
+prototype(Sfi.Shared:TextWithImage) {
+	attributes.class = ${'TextWithImage ' + node.properties.variant}
+	headline = TYPO3.Neos.NodeTypes:Headline {
+		@override.node = ${q(node).children('headline').get(0)}
+	}
+	text = TYPO3.Neos.NodeTypes:Text {
+		@override.node = ${q(node).children('text').get(0)}
+	}
+	image = TYPO3.Neos.NodeTypes:Image {
+		@override.node = ${q(node).children('image').get(0)}
+	}
+	prototype(TYPO3.Neos.NodeTypes:Image) {
+		maximumWidth = 600
+	}
+}
+
+prototype(Sfi.Shared:Asset) {
+	attributes.class = ${node.properties.variant == 'Asset-Button' ? 'Button AssetButton' : 'ButtonInline AssetInline'}
+	attributes.href = ${'asset://' + node.properties.asset.identifier}
+	attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris
+}
+
+prototype(Sfi.Shared:Link) {
+	attributes.class = ${node.properties.variant == 'Link-Button' ? 'Button LinkButton' : 'ButtonInline LinkInline'}
+	attributes.href = ${node.properties.target}
+	attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris {
+		forceConversion = true
+	}
+}
+
+prototype(Sfi.Shared:ImageLink) {
+	attributes.class = ${'ImageLink ' + node.properties.variant}
+	maximumWidth = 300
+	maximumHeight = 250
+	allowCropping = TRUE
+	allowUpScaling = TRUE
+	link.@process.convertUris = TYPO3.Neos:ConvertUris {
+		forceConversion = TRUE
+	}
+}
+
+prototype(Sfi.Shared:Group) {
+	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\TagImplementation'
+	iterator = ${iterator}
+	content = TYPO3.Neos:ContentCollectionRenderer
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = ${'DescendantOf_' + node.identifier}
+		}
+	}
+}
+
+prototype(Sfi.Shared:Well) < prototype(Sfi.Shared:Group) {
+	attributes.class = 'Well'
+}
+
+
+prototype(Sfi.Shared:ListByReferences) < prototype(TYPO3.TypoScript:Tag) {
+	@override.itemRendererType = ${q(node).property('itemRenderer')}
+	content = TYPO3.TypoScript:Collection {
+		collection = ${q(node).property('references')}
+		itemRenderer = Sfi.Shared:ContentCaseShort {
+			byType {
+				@position = 'start'
+				condition = ${itemRendererType}
+				type = ${itemRendererType}
+			}
+		}
+		itemName = 'node'
+		iterationName = 'iterator'
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${'NodeType_Sfi.News:Listable'}
+			2 = ${'Node_' + node.identifier}
+		}
+	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+}

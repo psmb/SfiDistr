@@ -1,0 +1,11 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<div{attributes -> f:format.raw()}>
+	<div class="Headline-Title">
+		{neos:contentElement.editable(property: 'title')}
+	</div>
+	<f:if condition="{hasSubTitle}">
+		<div class="Headline-Subtitle">
+			{neos:contentElement.editable(property: 'subTitle')}
+		</div>
+	</f:if>
+</div>
