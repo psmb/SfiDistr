@@ -112,7 +112,7 @@ Sfi:
     topShort:
       thumbnailWidth: 1440
       thumbnailHeight: 700
-      dateFormat: d.M
+      dateFormat: d.MM
     listByTag:
       numberOfItems: 10000
       paginationEnabled: true
