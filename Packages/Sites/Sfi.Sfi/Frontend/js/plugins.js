@@ -133,8 +133,7 @@ var onReadyPlugins = function() {
     salvattore.rescanMediaQueries();
 
     var searchBoxInput = jQuery(".js-SearchBox-Field");
-    var defaultValue = "поиск";
-    searchBoxInput.val(defaultValue);
+    var defaultValue = searchBoxInput.val();
     searchBoxInput.focus(function() {
         if($(this).val() == defaultValue) {
             $(this).val("");

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" source-language="ru" target-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="footer.about.sfi">
+                <source>Свято-Филаретовский православно-христианский институт (СФИ)</source>
+                <target>St Philaret`s Christian Orthodox Institute (SFI)</target>
+            </trans-unit>
+            <trans-unit id="footer.about.text">
+                <source>негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</source>
+                <target>негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</target>
+            </trans-unit>
+            <trans-unit id="footer.social.title">
+                <source>Социальные сети</source>
+                <target>Social</target>
+            </trans-unit>
+            <trans-unit id="footer.social.text">
+                <source>Мы в Facebook</source>
+                <target>Find us in Facebook</target>
+            </trans-unit>
+            <trans-unit id="footer.contacts.title">
+                <source>Контакты</source>
+                <target>Contacts</target>
+            </trans-unit>
+            <trans-unit id="footer.contacts.phone">
+                <source>Телефон</source>
+                <target>Phone</target>
+            </trans-unit>
+            <trans-unit id="footer.contacts.email">
+                <source>E-mail</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="footer.contacts.address">
+                <source>105062 Москва, Покровка, 29</source>
+                <target>105062 Moscow, Pokrovka st. 29</target>
+            </trans-unit>
+            <trans-unit id="footer.contacts.map">
+                <source>Карта проезда</source>
+                <target>Directions</target>
+            </trans-unit>
+            <trans-unit id="footer.stream">
+                <source>Жизнь СФИ в фотографиях</source>
+                <target>Explore SFI in Pictures</target>
+            </trans-unit>
+            <trans-unit id="accessibility.normal">
+                <source>Обычная версия сайта</source>
+                <target>Normal version</target>
+            </trans-unit>
+            <trans-unit id="accessibility.accessible">
+                <source>Версия для слабовидящих</source>
+                <target>Accessible version</target>
+            </trans-unit>
+            <trans-unit id="header.contacts.title">
+                <source>Наши контакты</source>
+                <target>Our contacts</target>
+            </trans-unit>
+            <trans-unit id="header.contacts.address">
+                <source>Москва, Покровка, 29</source>
+                <target>Moscow, Pokrovka st. 29</target>
+            </trans-unit>
+            <trans-unit id="header.menu">
+                <source>Меню</source>
+                <target>Menu</target>
+            </trans-unit>
+            <trans-unit id="header.search">
+                <source>поиск</source>
+                <target>search</target>
+            </trans-unit>
+            <trans-unit id="sfi.fulltitle">
+                <source>Свято-Филаретовский православно-христианский институт</source>
+                <target>St Philaret`s Christian Orthodox Institute</target>
+            </trans-unit>
+            <trans-unit id="sfi.abbrev">
+                <source>СФИ</source>
+                <target>SFI</target>
+            </trans-unit>
+            <trans-unit id="common.tags">
+                <source>Тэги</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="common.comment">
+                <source>Комментировать</source>
+                <target>Comment</target>
+            </trans-unit>
+            <trans-unit id="common.download">
+                <source>Скачать</source>
+                <target>Download</source>
+            </trans-unit>
+            <trans-unit id="staff.subjects">
+                <source>Преподаваемые дисциплины</source>
+                <target>Taught subjects</target>
+            </trans-unit>
+            <trans-unit id="news.all">
+                <source>Все</source>
+                <target>All</target>
+            </trans-unit>
+            <trans-unit id="news.photo">
+                <source>Фото</source>
+                <target>Photo</target>
+            </trans-unit>
+            <trans-unit id="news.author">
+                <source>Автор</source>
+                <target>Author</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

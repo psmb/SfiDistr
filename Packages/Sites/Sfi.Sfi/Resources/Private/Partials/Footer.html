@@ -2,40 +2,41 @@
 <footer class="Footer">
 	<div class="row">
 		<div class="columns medium-6 columns">
-			<p class="Footer-Description Footer-Paragraph"><strong>Свято-Филаретовский православно-христианский институт (СФИ)</strong> — негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: <a href="http://ogkochetkov.ru">священник Георгий Кочетков</a>. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры. 
-			</p>
+			<p class="Footer-Description Footer-Paragraph"><strong><f:translate package="Sfi.Sfi" id="footer.about.sfi"/></strong> — <f:translate package="Sfi.Sfi" id="footer.about.text"/></p>
 		</div>
 		<div class="columns medium-offset-1 medium-2 columns">
-			<div class="Service">Социальные сети</div>
+			<div class="Service"><f:translate package="Sfi.Sfi" id="footer.social.title"/></div>
 			<div class="Footer-Social">
-				<p class="Footer-Paragraph Link"><a href="https://www.facebook.com/sfi.ru">Мы в Facebook</a></p>
+				<p class="Footer-Paragraph Link"><a href="https://www.facebook.com/sfi.ru"><f:translate package="Sfi.Sfi" id="footer.social.text"/></a></p>
 			</div>
 		</div>
 		<div class="columns medium-3 columns">
-			<div class="Service">Контакты</div>
+			<div class="Service"><f:translate package="Sfi.Sfi" id="footer.contacts.title"/></div>
 			<div class="Footer-Contacts">
-				<p class="Footer-Paragraph">Телефон: <a class="Link" href="tel:+74956230380">+7 495 623 0380</a></p>
-				<p class="Footer-Paragraph">E-mail: <a class="Link" href="mailto:info@sfi.ru">info@sfi.ru</a></p>
-				<p class="Footer-Paragraph">105062 Москва, Покровка, 29</p>
+				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.phone"/>: <a class="Link" href="tel:+74956230380">+7 495 623 0380</a></p>
+				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.email"/>: <a class="Link" href="mailto:info@sfi.ru">info@sfi.ru</a></p>
+				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.address"/></p>
 				<p class="Footer-Paragraph">
-					<a href="/about/kontakty.html" class="ButtonInline">Карта проезда</a>
+					<neos:link.node node="~/about/node-557966c3b906d" class="ButtonInline"><f:translate package="Sfi.Sfi" id="footer.contacts.map"/></neos:link.node>
 				</p>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="columns">
-			<div class="Footer-Copyright">
-				<div class="Plus12 float-left">12+</div>
-	            <p class="ServiceTiny">
-		            © Свято-Филаретовский православно-христианский институт. Использование в любой форме материалов этого сайта допустимо только при наличии активной ссылки на <a href="http://sfi.ru/">http://sfi.ru/</a> 
-	            </p>
-	        </div>
+	<f:if condition="{lang} == 'ru'">
+		<div class="row">
+			<div class="columns">
+				<div class="Footer-Copyright">
+					<div class="Plus12 float-left">12+</div>
+		            <p class="ServiceTiny">
+			            © Свято-Филаретовский православно-христианский институт. Использование в любой форме материалов этого сайта допустимо только при наличии активной ссылки на <a href="http://sfi.ru/">http://sfi.ru/</a>
+		            </p>
+		        </div>
+			</div>
 		</div>
-	</div>
+	</f:if>
 </footer>
 
 <div class="FooterGallery-Header">
-	Жизнь СФИ в фотографиях
+	<f:translate package="Sfi.Sfi" id="footer.stream"/>
 </div>
 {footerGallery -> f:format.raw()}

@@ -58,7 +58,7 @@
 			{main -> f:format.raw()}
 			<s:ifOr condition="{subject}" or="{node.context.workspace.name} != 'live'">
 				<div class="marginVertical-single">
-					<div class="ParagraphAlt--Large color-primaryAlt">Преподаваемые дисциплины:</div>
+					<div class="ParagraphAlt--Large color-primaryAlt"><f:translate package="Sfi.Sfi" id="staff.subjects"/>:</div>
 					<div itemprop="TeachingDiscipline" class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'subject', tag: 'span')}</div>
 				</div>
 			</s:ifOr>

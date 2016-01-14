@@ -2,7 +2,7 @@
 
 <f:if condition="{tags}">
 	<div class="Tags">
-		<span class="ServiceLight--Small">Тэги: </span><f:for each="{tags}" as="tag" iteration="Iterator">
+		<span class="ServiceLight--Small"><f:translate package="Sfi.Sfi" id="common.tags"/>: </span><f:for each="{tags}" as="tag" iteration="Iterator">
 			<neos:link.node node="{tag}" class="ParagraphAlt Link color-primaryAlt" >
 				{tag.properties.title}{f:if(condition: Iterator.isLast, else: ', ')}
 			</neos:link.node>

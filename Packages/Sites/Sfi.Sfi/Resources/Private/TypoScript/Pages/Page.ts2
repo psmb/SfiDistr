@@ -57,6 +57,9 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 
 		footerGallery = Sfi.Sfi:FooterGallery
 
+		# Dirty hack but I'm lazy today
+		lang = ${Array.first(node.context.dimensions.language)}
+
 		main = PrimaryContent {
 			renderByType {
 				condition = TRUE

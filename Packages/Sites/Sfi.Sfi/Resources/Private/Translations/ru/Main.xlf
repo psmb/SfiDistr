@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" source-language="ru" datatype="plaintext">
+        <body>
+            <trans-unit id="footer.about.sfi">
+                <source>Свято-Филаретовский православно-христианский институт (СФИ)</source>
+            </trans-unit>
+            <trans-unit id="footer.about.text">
+                <source>негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</source>
+            </trans-unit>
+            <trans-unit id="footer.social.title">
+                <source>Социальные сети</source>
+            </trans-unit>
+            <trans-unit id="footer.social.text">
+                <source>Мы в Facebook</source>
+            </trans-unit>
+            <trans-unit id="footer.contacts.title">
+                <source>Контакты</source>
+            </trans-unit>
+            <trans-unit id="footer.contacts.phone">
+                <source>Телефон</source>
+            </trans-unit>
+            <trans-unit id="footer.contacts.email">
+                <source>E-mail</source>
+            </trans-unit>
+            <trans-unit id="footer.contacts.address">
+                <source>105062 Москва, Покровка, 29</source>
+            </trans-unit>
+            <trans-unit id="footer.contacts.map">
+                <source>Карта проезда</source>
+            </trans-unit>
+            <trans-unit id="footer.stream">
+                <source>Жизнь СФИ в фотографиях</source>
+            </trans-unit>
+            <trans-unit id="accessibility.normal">
+                <source>Обычная версия сайта</source>
+            </trans-unit>
+            <trans-unit id="accessibility.accessible">
+                <source>Версия для слабовидящих</source>
+            </trans-unit>
+            <trans-unit id="header.contacts.title">
+                <source>Наши контакты</source>
+            </trans-unit>
+            <trans-unit id="header.contacts.address">
+                <source>Москва, Покровка, 29</source>
+            </trans-unit>
+            <trans-unit id="header.menu">
+                <source>Меню</source>
+            </trans-unit>
+            <trans-unit id="header.search">
+                <source>поиск</source>
+            </trans-unit>
+            <trans-unit id="sfi.fulltitle">
+                <source>Свято-Филаретовский православно-христианский институт</source>
+            </trans-unit>
+            <trans-unit id="sfi.abbrev">
+                <source>СФИ</source>
+            </trans-unit>
+            <trans-unit id="common.tags">
+                <source>Тэги</source>
+            </trans-unit>
+            <trans-unit id="common.comment">
+                <source>Комментировать</source>
+            </trans-unit>
+            <trans-unit id="common.download">
+                <source>Скачать</source>
+            </trans-unit>
+            <trans-unit id="staff.subjects">
+                <source>Преподаваемые дисциплины</source>
+            </trans-unit>
+            <trans-unit id="news.all">
+                <source>Все</source>
+            </trans-unit>
+            <trans-unit id="news.photo">
+                <source>Фото</source>
+            </trans-unit>
+            <trans-unit id="news.author">
+                <source>Автор</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
