@@ -84,7 +84,7 @@
             </trans-unit>
             <trans-unit id="common.download">
                 <source>Скачать</source>
-                <target>Download</source>
+                <target>Download</target>
             </trans-unit>
             <trans-unit id="staff.subjects">
                 <source>Преподаваемые дисциплины</source>
