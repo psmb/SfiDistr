@@ -35,6 +35,12 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			entryLevel = 1
 			maximumLevels = 2
 		}
+
+		lang = ${Array.first(node.context.dimensions.language)}
+		@context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
+
+		languageMenu = Sfi.Sfi:LanguageMenu
+
 		secondaryMenu = Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SecondaryMenu.html'
 			itemCollection = ${q(site).children('links').children().get()}
@@ -56,9 +62,6 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		}
 
 		footerGallery = Sfi.Sfi:FooterGallery
-
-		# Dirty hack but I'm lazy today
-		lang = ${Array.first(node.context.dimensions.language)}
 
 		main = PrimaryContent {
 			renderByType {

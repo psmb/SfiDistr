@@ -6,6 +6,7 @@
 include: resource://Sfi.Shared/Private/TypoScript/Root.ts2
 include: NodeTypes/**/*.ts2
 include: Pages/**/*.ts2
+include: TypoScriptObjects/**/*.ts2
 include: OverrideStock.ts2
 
 print < Sfi.Sfi:Page

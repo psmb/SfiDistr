@@ -37,6 +37,21 @@ prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
 
 	category = ${q(node).parent().get(0)}
 
+	languageMenu = TYPO3.TypoScript:Tag {
+	    lang = ${Array.first(node.context.dimensions.language)}
+	    @context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
+	    tagName = 'a'
+	    attributes.class = 'Link Service--Small marginBottom-single'
+		attributes.style = 'display: block'
+		@context.altNode = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}})}
+		@if.nodeExists = ${altNode.count() > 0}
+	    attributes.href = TYPO3.Neos:NodeUri {
+	        node = ${altNode.get(0)}
+	    }
+	    content = ${altLang == 'en' ? 'Read this in English' : 'Читать по-русски'}
+	}
+
+
 	#####
 	moreItems = Sfi.News:NewsRelated {
 		newsCollection = ${q(site).find('[instanceof Sfi.News:News]').get()}

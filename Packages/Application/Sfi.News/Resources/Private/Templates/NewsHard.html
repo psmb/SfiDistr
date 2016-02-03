@@ -23,6 +23,8 @@
 						<div class="Article-CoverPhoto">{coverCollection -> f:format.raw()}</div>
 					</f:if>
 
+					{languageMenu -> f:format.raw()}
+
 					<div class="Article-Content">{main -> f:format.raw()}</div>
 					<div class="Article-Author marginTop-double">
 						<f:if condition="{node.context.workspace.name} != 'live'">

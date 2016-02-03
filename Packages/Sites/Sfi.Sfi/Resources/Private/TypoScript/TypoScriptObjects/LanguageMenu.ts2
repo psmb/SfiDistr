@@ -1,0 +1,12 @@
+prototype(Sfi.Sfi:LanguageMenu) < prototype(TYPO3.TypoScript:Tag) {
+    lang = ${Array.first(node.context.dimensions.language)}
+    @context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
+    tagName = 'a'
+    attributes.class = 'Link Service--Small lineHeight-single'
+    attributes.href = TYPO3.Neos:NodeUri {
+        node = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).count() > 0 ?
+            q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0) :
+            q(site).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0)}
+    }
+    content = ${altLang == 'en' ? 'English' : 'Русский'}
+}
