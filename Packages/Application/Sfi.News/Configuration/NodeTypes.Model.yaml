@@ -248,6 +248,13 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           placeholder: 'Автор новости'
+    translator:
+      type: string
+      ui:
+        label: 'Переводчик'
+        inlineEditable: true
+        aloha:
+          placeholder: 'Переводчик'
 
 'Sfi.News:AbstractNews':
   abstract: true

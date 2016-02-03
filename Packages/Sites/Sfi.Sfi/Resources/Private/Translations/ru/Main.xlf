@@ -80,6 +80,9 @@
             <trans-unit id="news.author">
                 <source>Автор</source>
             </trans-unit>
+            <trans-unit id="news.translator">
+                <source>Перевод</source>
+            </trans-unit>
             <trans-unit id="news.announcements">
                 <source>Анонсы</source>
             </trans-unit>

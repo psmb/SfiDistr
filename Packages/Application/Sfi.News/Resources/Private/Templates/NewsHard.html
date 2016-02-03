@@ -31,6 +31,7 @@
 							<f:then>
 								<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.author"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
 								<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.photo"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
+								<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.translator"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'translator', tag: 'span')}</span>
 							</f:then>
 							<f:else>
 								<f:if condition="{author}">
@@ -38,6 +39,9 @@
 								</f:if>
 								<f:if condition="{authorPhoto}">
 									<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.photo"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
+								</f:if>
+								<f:if condition="{translator}">
+									<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.translator"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'translator', tag: 'span')}</span>
 								</f:if>
 							</f:else>
 						</f:if>

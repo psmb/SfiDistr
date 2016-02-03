@@ -106,6 +106,10 @@
                 <source>Автор</source>
                 <target>Author</target>
             </trans-unit>
+            <trans-unit id="news.translator">
+                <source>Перевод</source>
+                <target>Translated by</target>
+            </trans-unit>
             <trans-unit id="news.announcements">
                 <source>Анонсы</source>
                 <target>Upcoming Events</target>

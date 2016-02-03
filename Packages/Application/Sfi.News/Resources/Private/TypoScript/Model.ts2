@@ -11,6 +11,7 @@ prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
 	lead = ${q(node).property('lead')}
 	author = ${String.stripTags(q(node).property('author'))}
 	authorPhoto = ${String.stripTags(q(node).property('authorPhoto'))}
+	translator = ${String.stripTags(q(node).property('translator'))}
 	date = ${q(node).property('date')}
 
 	coverCollection = TYPO3.Neos:ContentCollection {
