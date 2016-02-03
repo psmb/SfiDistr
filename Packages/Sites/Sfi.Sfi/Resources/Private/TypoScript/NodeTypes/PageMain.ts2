@@ -5,4 +5,7 @@ prototype(Sfi.Sfi:PageMain) {
 	newsAnnouncements = Sfi.News:AnnouncementsList
 	promo = Sfi.Sfi:PromoList
 	breadcrumbMenu>
+	main = ContentCollection {
+		nodePath = 'main'
+	}
 }
