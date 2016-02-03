@@ -19,7 +19,7 @@ prototype(Sfi.News:AbstractList) < prototype(TYPO3.TypoScript:Tag) {
 		listTitleTag = TYPO3.TypoScript:Tag {
 			tagName = 'h2'
 			attributes.class = ${configuration.listTitleClass}
-			content = ${configuration.listTitle}
+			content = ${Translation.translate(configuration.listTitle, null, [], null, 'Sfi.Sfi')}
 			@if.isSet = ${configuration.listTitle != ''}
 		}
 		list = Sfi.News:Listable {
@@ -38,7 +38,7 @@ prototype(Sfi.News:AbstractList) < prototype(TYPO3.TypoScript:Tag) {
 			attributes.href = TYPO3.Neos:NodeUri {
 				node = ${configuration.archiveLink}
 			}
-			content = ${configuration.archiveLinkTitle}
+			content = ${Translation.translate(configuration.archiveLinkTitle, null, [], null, 'Sfi.Sfi')}
 			@if.isSet = ${configuration.archiveLink != ''}
 		}
 	}

@@ -7,8 +7,8 @@
                 <target>St Philaret`s Christian Orthodox Institute (SFI)</target>
             </trans-unit>
             <trans-unit id="footer.about.text">
-                <source>негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</source>
-                <target>негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</target>
+                <source>— негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</source>
+                <target>is a non-government theology school. Founder: 'Sretenie', regional non-government organisation for the promotion of personal spiritual development. Rector: Fr Georgy Kochetkov. The Institute comprises the School of Theology and the School of Religious Studies. The Institute also offers a two-year pre-Bachelor programme in theology (Theology College). SFI offers a Bachelor’s degree in theology along with foundation and advanced professional training programmes in Theology, Religious Studies and the Foundations of Orthodox Culture.</target>
             </trans-unit>
             <trans-unit id="footer.social.title">
                 <source>Социальные сети</source>
@@ -48,11 +48,11 @@
             </trans-unit>
             <trans-unit id="accessibility.accessible">
                 <source>Версия для слабовидящих</source>
-                <target>Accessible version</target>
+                <target>Accessible Version</target>
             </trans-unit>
             <trans-unit id="header.contacts.title">
                 <source>Наши контакты</source>
-                <target>Our contacts</target>
+                <target>Our Contacts</target>
             </trans-unit>
             <trans-unit id="header.contacts.address">
                 <source>Москва, Покровка, 29</source>
@@ -74,6 +74,10 @@
                 <source>СФИ</source>
                 <target>SFI</target>
             </trans-unit>
+            <trans-unit id="sfi.siteLogoFileName">
+                <source>SiteLogoRu.svg</source>
+                <target>SiteLogoEn.svg</target>
+            </trans-unit>
             <trans-unit id="common.tags">
                 <source>Тэги</source>
                 <target>Tags</target>
@@ -88,7 +92,7 @@
             </trans-unit>
             <trans-unit id="staff.subjects">
                 <source>Преподаваемые дисциплины</source>
-                <target>Taught subjects</target>
+                <target>Taught disciplines</target>
             </trans-unit>
             <trans-unit id="news.all">
                 <source>Все</source>
@@ -101,6 +105,22 @@
             <trans-unit id="news.author">
                 <source>Автор</source>
                 <target>Author</target>
+            </trans-unit>
+            <trans-unit id="news.announcements">
+                <source>Анонсы</source>
+                <target>Upcoming Events</target>
+            </trans-unit>
+            <trans-unit id="newsLatest.listTitle">
+                <source>СФИ сегодня</source>
+                <target>SFI Today</target>
+            </trans-unit>
+            <trans-unit id="newsLatest.archiveLinkTitle">
+                <source>Все новости</source>
+                <target>All news</target>
+            </trans-unit>
+            <trans-unit id="listByTag.archiveLinkTitle">
+                <source>Материалы по теме</source>
+                <target>Related Articles</target>
             </trans-unit>
         </body>
     </file>

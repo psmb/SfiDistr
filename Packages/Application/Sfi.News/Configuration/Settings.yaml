@@ -68,19 +68,19 @@ Sfi:
       numberOfItems: 6
       pagination: ~
       sortProperty: date
-      listTitle: 'СФИ сегодня'
+      listTitle: 'newsLatest.listTitle'
       listTitleClass: 'SectionDivider--Service'
       class: 'NewsLatest-Grid row'
       wrapClass: 'NewsLatest'
       archiveLink: '~/sfi-today'
-      archiveLinkTitle: 'Все новости'
+      archiveLinkTitle: 'newsLatest.archiveLinkTitle'
     newsRelated:
       numberOfItems: 4
       sortProperty: date
       listTitle: ''
       class: ''
       archiveLink: '~/sfi-today'
-      archiveLinkTitle: 'Все новости'
+      archiveLinkTitle: 'newsLatest.archiveLinkTitle'
       thumbnailWidth: 100
       thumbnailHeight: 100
       dateFormat: 'dd MMMM yyyy'
@@ -120,7 +120,7 @@ Sfi:
         itemsPerPage: 24
         maximumNumberOfLinks: 15
       sortProperty: date
-      listTitle: 'Материалы по теме'
+      listTitle: 'listByTag.archiveLinkTitle'
       listTitleClass: 'SectionDivider--Service'
       class: 'NewsByTag-Grid row'
       archiveLink: ''

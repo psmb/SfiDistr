@@ -6,7 +6,7 @@
                 <source>Свято-Филаретовский православно-христианский институт (СФИ)</source>
             </trans-unit>
             <trans-unit id="footer.about.text">
-                <source>негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</source>
+                <source>— негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</source>
             </trans-unit>
             <trans-unit id="footer.social.title">
                 <source>Социальные сети</source>
@@ -56,6 +56,9 @@
             <trans-unit id="sfi.abbrev">
                 <source>СФИ</source>
             </trans-unit>
+            <trans-unit id="sfi.siteLogoFileName">
+                <source>SiteLogoRu.svg</source>
+            </trans-unit>
             <trans-unit id="common.tags">
                 <source>Тэги</source>
             </trans-unit>
@@ -76,6 +79,18 @@
             </trans-unit>
             <trans-unit id="news.author">
                 <source>Автор</source>
+            </trans-unit>
+            <trans-unit id="news.announcements">
+                <source>Анонсы</source>
+            </trans-unit>
+            <trans-unit id="newsLatest.listTitle">
+                <source>СФИ сегодня</source>
+            </trans-unit>
+            <trans-unit id="newsLatest.archiveLinkTitle">
+                <source>Все новости</source>
+            </trans-unit>
+            <trans-unit id="listByTag.archiveLinkTitle">
+                <source>Материалы по теме</source>
             </trans-unit>
         </body>
     </file>
