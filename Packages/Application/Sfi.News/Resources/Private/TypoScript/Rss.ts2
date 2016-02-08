@@ -35,5 +35,5 @@ prototype(Sfi.News:RssItem) < prototype(TYPO3.TypoScript:Template) {
 		nodePath = 'main'
 	}
 	# TODO fix
-	bodytext = ${'<yandex:full-text>' + String.Trim(String.htmlSpecialChars(String.stripTags(String.pregReplace(main, '/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2')))) + '</yandex:full-text>'}
+	bodytext = ${'<yandex:full-text>' + String.Trim(String.htmlSpecialChars(String.stripTags(String.pregReplace(String.pregReplace(main, '/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2'), /<\w[^>]+?>/, ' '))) + '</yandex:full-text>'}
 }
