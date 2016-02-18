@@ -1,5 +1,4 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
-{namespace s=Sfi\Shared\ViewHelpers}
 
 <div class="Paper-Article">
 	<div class="Article Article--Soft">
@@ -14,7 +13,7 @@
 					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
 					<div class="ServiceEm">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
 					<span class="Article-Date">
-						<s:date format="j F Y">{date}</s:date>
+						<f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
 					</span>
 					&bull;
 					<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
