@@ -2,6 +2,7 @@ prototype(TYPO3.Neos.NodeTypes:Image) {
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Image.html'
 	imageClassName = "Figure"
 	maximumWidth = 980
+	alternativeText = ${node.properties.alternativeText ? node.properties.alternativeText : String.stripTags(node.properties.caption)}
 	hasCaption = ${node.context.workspace.name == 'live' ? (((this.caption == "<p>Enter caption here</p>") || (this.caption == "")) ? null : true) : true}
 }
 
