@@ -130,14 +130,20 @@ prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
 	@override.configuration = ${Configuration.setting('Sfi.News.topList')}
 	configuration = ${configuration}
 
+	importantNews = ${q(site).find('[instanceof Sfi.News:ImportantMixin]').filter('[important = TRUE]').get()}
+	# We have to filter out past announcements
+	importantAnnouncements = ${q(this.importantNews).filter('[instanceof Sfi.News:Announcement]').get()}
+	importantAnnouncements.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.Now()).get() : value}
+	importantNotAnnouncements = ${q(this.importantNews).filter('[!instanceof Sfi.News:Announcement]').get()}
+	collection = ${q(this.importantAnnouncements).add(q(this.importantNotAnnouncements)).get()}
+	@context.collection = ${this.collection}
 	prototype(Sfi.News:Listable) {
-		collection = ${q(site).find('[instanceof Sfi.News:ImportantMixin]').filter('[important = TRUE]').get()}
-		collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('importantSort', 'ASC').get() : value}
 		itemRenderer = Sfi.News:TopShort
+		collection = ${collection}
 	}
-
 	@cache {
 		mode = 'cached'
+		maximumLifetime = ${q(collection).first().property('date').timestamp - Date.now().timestamp}
 		entryIdentifier {
 			node = ${node}
 			editPreviewMode = ${editPreviewMode}
