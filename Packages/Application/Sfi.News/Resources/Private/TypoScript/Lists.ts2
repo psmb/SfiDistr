@@ -136,6 +136,7 @@ prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
 	importantAnnouncements.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.Now()).get() : value}
 	importantNotAnnouncements = ${q(this.importantNews).filter('[!instanceof Sfi.News:Announcement]').get()}
 	collection = ${q(this.importantAnnouncements).add(q(this.importantNotAnnouncements)).get()}
+	collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('importantSort', 'ASC').get() : value}
 	@context.collection = ${this.collection}
 	prototype(Sfi.News:Listable) {
 		itemRenderer = Sfi.News:TopShort
