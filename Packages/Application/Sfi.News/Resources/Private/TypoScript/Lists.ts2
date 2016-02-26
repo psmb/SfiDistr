@@ -141,6 +141,7 @@ prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
 	prototype(Sfi.News:Listable) {
 		itemRenderer = Sfi.News:TopShort
 		collection = ${collection}
+		collection.@process.sort>
 	}
 	@cache {
 		mode = 'cached'
