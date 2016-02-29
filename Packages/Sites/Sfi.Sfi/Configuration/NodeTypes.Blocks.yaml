@@ -43,7 +43,7 @@ blah: &alohaRich
     'TYPO3.Neos:Content': true
     'TYPO3.Neos.NodeTypes:Image': true
   ui:
-    label: 'Блок цитати'
+    label: 'Блок цитаты'
     help:
       message: 'Блок с цитатой, состоит из имени и описании автора и картинки'
     icon: icon-edit
