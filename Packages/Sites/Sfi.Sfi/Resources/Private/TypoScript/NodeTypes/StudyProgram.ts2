@@ -172,8 +172,9 @@ prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListing
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'Node_' + rootNode.identifier}
-			2 = ${'DescendantOf_' + rootNode.identifier}
+			1 = ${'Node_' + node.identifier}
+			2 = ${'Node_' + rootNode.identifier}
+			3 = ${'DescendantOf_' + rootNode.identifier}
 		}
 	}
 }
@@ -196,6 +197,7 @@ prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProg
 		}
 		entryTags {
 			1 = ${'NodeType_Sfi.Sfi:StudyProgram'}
+			2 = ${'Node_' + node.identifier}
 		}
 	}
 }
