@@ -5,7 +5,7 @@ machine:
     version: 5.6.14
 dependencies:
   override:
-    - if [ -d ../ansible-deploy ]; then (cd ../ansible-deploy && git pull); else git clone https://github.com/sfi-ru/ansible-deploy ../ansible-deploy;fi
+    - if [ -d ~/ansible-deploy ]; then (cd ~/ansible-deploy && git pull); else git clone https://github.com/sfi-ru/ansible-deploy ~/ansible-deploy;fi
     - pip install ansible
     - pip install httplib2
   cache_directories:
