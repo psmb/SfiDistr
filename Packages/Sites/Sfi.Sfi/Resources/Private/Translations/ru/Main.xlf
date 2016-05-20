@@ -32,6 +32,15 @@
             <trans-unit id="footer.stream">
                 <source>Жизнь СФИ в фотографиях</source>
             </trans-unit>
+            <trans-unit id="stream.loadMore">
+                <source>Больше фоток!</source>
+            </trans-unit>
+            <trans-unit id="stream.loading">
+                <source>Загружаем</source>
+            </trans-unit>
+            <trans-unit id="stream.done">
+                <source>Пока всё!</source>
+            </trans-unit>
             <trans-unit id="accessibility.normal">
                 <source>Обычная версия сайта</source>
             </trans-unit>

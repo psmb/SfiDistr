@@ -1,17 +1,37 @@
+# This file turned into a big mess, but I have no energy to refactor it right now
+
+prototype(Sfi.Sfi:FooterGalleryItem) < prototype(Sfi.Shared:AutoRenderWithTag) {
+	tagName = 'li'
+	attributes.class = 'FooterGallery-Item'
+	prototype(TYPO3.Neos.NodeTypes:Image) {
+		maximumWidth = 220
+		maximumHeight = 220
+		allowCropping = TRUE
+	}
+}
+
 prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
-	tagName = 'ul'
-	attributes.class = 'FooterGallery small-block-grid-2 medium-block-grid-3 large-block-grid-6'
-	@override.footerGalleryNode = ${q(site).children('footerGallery').get(0)}
-	content = TYPO3.Neos:ContentCollectionRenderer {
-		itemRenderer = Sfi.Shared:AutoRenderWithTag {
-			tagName = 'li'
-			attributes.class = 'FooterGallery-Item'
+	@context.footerGalleryNode = ${q(site).children('footerGallery').get(0)}
+	@context.offset = 6
+
+	attributes.class = 'FooterGallery js-FooterGallery'
+	content = TYPO3.TypoScript:Array {
+		1 = TYPO3.TypoScript:Tag {
+			tagName = 'ul'
+			attributes.class = 'js-FooterGallery-content small-block-grid-2 medium-block-grid-3 large-block-grid-6 marginHorizontal-none'
+			content = TYPO3.Neos:ContentCollectionRenderer {
+				collection = ${q(footerGalleryNode).children().get()}
+				collection.@process.paginate = ${q(value).slice(0, offset).get()}
+				itemRenderer = Sfi.Sfi:FooterGalleryItem
+			}
 		}
-		collection = ${q(footerGalleryNode).children().slice(0, String.toInteger(6)).get()}
-		prototype(TYPO3.Neos.NodeTypes:Image) {
-			maximumWidth = 220
-			maximumHeight = 220
-			allowCropping = TRUE
+		2 = TYPO3.TypoScript:Tag {
+			tagName = 'button'
+			attributes.class = 'js-FooterGallery-loadMore FooterGallery-loadMore Button Button'
+			attributes.data-loadMore = ${Translation.translate('stream.loadMore', null, [], null, 'Sfi.Sfi')}
+			attributes.data-loading = ${Translation.translate('stream.loading', null, [], null, 'Sfi.Sfi')}
+			attributes.data-done = ${Translation.translate('stream.done', null, [], null, 'Sfi.Sfi')}
+			content = ${Translation.translate('stream.loadMore', null, [], null, 'Sfi.Sfi')}
 		}
 	}
 	@cache {
@@ -20,4 +40,40 @@ prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
 			1 = ${'DescendantOf_' + footerGalleryNode.identifier}
 		}
 	}
+}
+prototype(Sfi.Sfi:FooterGalleryAjax) < prototype(TYPO3.TypoScript:RawArray) {
+	# Not DRY :(
+	@context.footerGalleryNode = ${q(site).children('footerGallery').get(0)}
+	@context.offset = 6
+	@context.itemsPerPage = 18
+	@context.pageNumber = ${request.arguments.galleryPage ? String.toInteger(request.arguments.galleryPage) : 0}
+
+	# Check if we have already fetched all of the records or not. Not DRY!
+	loadMore = ${q(footerGalleryNode).children().count() > pageNumber * itemsPerPage + offset}
+
+	content = TYPO3.Neos:ContentCollectionRenderer {
+		collection = ${q(footerGalleryNode).children().get()}
+		collection.@process.paginate = ${q(value).slice((pageNumber - 1) * itemsPerPage + offset, pageNumber * itemsPerPage + offset).get()}
+		itemRenderer = Sfi.Sfi:FooterGalleryItem
+	}
+	@process.1 = ${Json.stringify(value)}
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			galleryPage = ${request.arguments.galleryPage}
+		}
+		entryTags {
+			1 = ${'DescendantOf_' + footerGalleryNode.identifier}
+		}
+	}
+}
+
+root.ajaxGallery {
+	condition = ${request.arguments.galleryPage}
+	renderer = Sfi.Sfi:FooterGalleryAjax
+}
+
+root.@cache.entryIdentifier {
+	galleryPage = ${request.arguments.galleryPage}
 }

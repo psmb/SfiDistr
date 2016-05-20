@@ -42,6 +42,18 @@
                 <source>Жизнь СФИ в фотографиях</source>
                 <target>Explore SFI in Pictures</target>
             </trans-unit>
+            <trans-unit id="stream.loadMore">
+                <source>Больше фоток!</source>
+                <target>More pictures!</target>
+            </trans-unit>
+            <trans-unit id="stream.loading">
+                <source>Загружаем...</source>
+                <target>Loading...</target>
+            </trans-unit>
+            <trans-unit id="stream.done">
+                <source>Пока всё!</source>
+                <target>Done!</target>
+            </trans-unit>
             <trans-unit id="accessibility.normal">
                 <source>Обычная версия сайта</source>
                 <target>Normal version</target>
