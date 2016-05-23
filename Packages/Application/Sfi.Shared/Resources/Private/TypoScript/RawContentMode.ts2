@@ -1,7 +1,7 @@
 prototype(Sfi.Shared:RawContentChildNodes) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://TYPO3.Neos/Private/Templates/RawContentMode/TypoScriptObjects/GeneralContentCollectionRendering.html'
 	columns = TYPO3.TypoScript:Collection {
-		collection = ${q(node).children()}
+		collection = ${q(node).children().filter('[instanceof TYPO3.Neos:Content],[instanceof TYPO3.Neos:ContentCollection]').get()}
 		itemName = 'node'
 		itemRenderer = TYPO3.TypoScript:Template {
 			templatePath = 'resource://TYPO3.Neos/Private/Templates/RawContentMode/TypoScriptObjects/ContentCollectionTemplate.html'
