@@ -14,9 +14,13 @@
                 <source>Социальные сети</source>
                 <target>Social</target>
             </trans-unit>
-            <trans-unit id="footer.social.text">
+            <trans-unit id="footer.social.fb">
                 <source>Мы в Facebook</source>
-                <target>Find us in Facebook</target>
+                <target>Find us on Facebook</target>
+            </trans-unit>
+            <trans-unit id="footer.social.vk">
+                <source>Мы в VK</source>
+                <target>Find us on VK.com</target>
             </trans-unit>
             <trans-unit id="footer.contacts.title">
                 <source>Контакты</source>

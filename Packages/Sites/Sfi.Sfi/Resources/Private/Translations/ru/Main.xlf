@@ -11,8 +11,11 @@
             <trans-unit id="footer.social.title">
                 <source>Социальные сети</source>
             </trans-unit>
-            <trans-unit id="footer.social.text">
+            <trans-unit id="footer.social.fb">
                 <source>Мы в Facebook</source>
+            </trans-unit>
+            <trans-unit id="footer.social.vk">
+                <source>Мы в VK</source>
             </trans-unit>
             <trans-unit id="footer.contacts.title">
                 <source>Контакты</source>
