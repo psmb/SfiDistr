@@ -1,6 +1,16 @@
 // TODO this whole file is really broke: needs to be split into separate
 // files and then concatened and minified by Grunt.
 
+
+// Move Header inside StickInParent on main page
+(function () {
+  var header = document.getElementsByClassName("Header")[0];
+  var stick = document.querySelector("#page-sfi .js-StickInParent");
+  if (header && stick) {
+    stick.insertBefore(header, stick.childNodes[0]);
+  }
+}());
+
 $.fn.switchstylesheet = function(options) {
     //default vals
     defaults = {
