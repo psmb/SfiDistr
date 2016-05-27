@@ -9,8 +9,7 @@ prototype(Sfi.News:Announcement) < prototype(Sfi.News:News) {
 	moreItems = Sfi.News:AnnouncementsList {
 		@context.configuration = ${Configuration.setting('Sfi.News.newsRelated')}
 		configuration = ${configuration}
-
-		collection.@process.filterOutSelf {
+		@context.collection.@process.filterOutSelf {
 			expression = ${q(value).filter('[_name != ' + q(node).property('_name') + ']').get()}
 			@position = 'start'
 		}
