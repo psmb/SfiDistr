@@ -1,12 +1,12 @@
-<a class="SkipToContent" href="#maincontent">Перейти к основному содержимому</a> 
+<a class="SkipToContent" href="#maincontent">Перейти к основному содержимому</a>
 <div class="js-MobileNav">
 	<div class="MobileNav-Content">
 		<f:render partial="Header" arguments="{_all}"/>
 		<f:render section="content" />
-		<f:render partial="Footer"  arguments="{_all}"/>
+		<f:render partial="Footer" arguments="{_all}"/>
 	</div>
 	<div class="MobileNav-Menu show-for-small-only">
-		<f:render partial="EnglishLink"/>
+		<f:render partial="EnglishLink" arguments="{_all}"/>
 		{secondaryMenu -> f:format.raw()}
 		<div class="SearchBox" id="cse-search-form3"></div>
 		{mainMenu -> f:format.raw()}
