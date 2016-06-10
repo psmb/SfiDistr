@@ -15,7 +15,7 @@
     paginationEnabled:
       type: boolean
       ui:
-        label: 'Enable pagination'
+        label: 'Включить пагинацию'
         reloadIfChanged: true
         inspector:
           group: list
@@ -71,7 +71,7 @@
       type: string
       defaultValue: 'Заголовок списка'
       ui:
-        label: 'List title'
+        label: 'Заголовок списка'
         reloadIfChanged: true
         inspector:
           group: list
@@ -86,7 +86,17 @@
     rootNode:
       type: reference
       ui:
-        label: 'Root node (defaults to current page)'
+        label: 'Родительский элемент (по умолчанию текущая страница)'
+        reloadIfChanged: true
+        inspector:
+          group: list
+          editorOptions:
+            nodeTypes:
+              - 'TYPO3.Neos:Document'
+    nodes:
+      type: references
+      ui:
+        label: 'Выбор элементов в ручную (переопределяет родительский элемент)'
         reloadIfChanged: true
         inspector:
           group: list
