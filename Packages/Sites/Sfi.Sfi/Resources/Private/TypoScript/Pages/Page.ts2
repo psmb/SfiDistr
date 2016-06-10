@@ -16,9 +16,17 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			sectionName = 'backendStylesheets'
 			@process.1=${node.context.workspaceName != 'live' ? value:''}
 		}
+		stylesheets.@cache {
+			mode = 'cached'
+			entryIdentifier.a = 'a'
+		}
 		javascripts.headScripts = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'headScripts'
+		}
+		javascripts.@cache {
+			mode = 'cached'
+			entryIdentifier.a = 'a'
 		}
 	}
 	htmlTag.attributes.lang = ${Array.first(node.context.dimensions.language)}
@@ -83,6 +91,10 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'backendScripts'
 			@process.1=${node.context.workspaceName != 'live' ? value:''}
+		}
+		javascripts.@cache {
+			mode = 'cached'
+			entryIdentifier.a = 'a'
 		}
 	}
 }
