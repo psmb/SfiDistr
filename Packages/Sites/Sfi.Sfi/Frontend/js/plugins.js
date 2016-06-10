@@ -313,6 +313,10 @@ if (typeof document.addEventListener === 'function') {
               loadMore.innerHTML = loadMore.attributes['data-done'].value;
               loadMore.disabled = true;
             }
+            // Do you know how to do it better?
+            setTimeout(function() {
+              window.scrollBy(0, window.innerHeight);
+            }, 100);
           }
         };
         request.send();
