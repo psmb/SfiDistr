@@ -10,15 +10,22 @@
 				<h1 class="Article-Title">{neos:contentElement.editable(property: 'title')}</h1>
 				<div class="Article-Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser')}</div>
 				<div class="Article-Lead">{neos:contentElement.editable(property: 'lead')}</div>
-				<div class="Article-Bar overflow-hidden">
-					<div class="Article-Date float-left">
+				<div class="Article-Bar">
+					<div>
 						<f:if condition="{dateStart}">
-							<f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{dateStart}</f:format.date> –
+							<span><span class="MediaAnnouncement-DateDay"><f:format.date format="j">{dateStart}</f:format.date>.</span><span class="MediaAnnouncement-DateMonth"><f:format.date format="m">{dateStart}</f:format.date></span></span>
+							<span class="MediaAnnouncement-DateDash">—</span>
 						</f:if>
-						<f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date>
+						<span class="MediaAnnouncement-DateDay"><f:format.date format="j">{date}</f:format.date>.</span><span class="MediaAnnouncement-DateMonth"><f:format.date format="m">{date}</f:format.date></span>
+						<!-- Sorry -->
+						<f:if condition="{date -> f:format.date(format:'G:i')} != '0:00'">
+							<span class="MediaAnnouncement-DateTime">
+								<f:format.date format="G:i">{date}</f:format.date>
+							</span>
+						</f:if>
 					</div>
-					<div class="Article-Place float-right">
-						<span class="Article-Place">{neos:contentElement.editable(property: 'place')}</span>
+					<div class="MediaAnnouncement-DateTime">
+						{neos:contentElement.editable(property: 'place')}
 					</div>
 				</div>
 				<f:if condition="{coverCollection}">
