@@ -1,0 +1,92 @@
+blah: &alohaPlain
+  placeholder: 'Текст тут'
+  format:
+    b: FALSE
+    i: FALSE
+    u: FALSE
+    sub: FALSE
+    sup: FALSE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: FALSE
+  alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Текст тут'
+  format:
+    b: TRUE
+    i: TRUE
+    u: FALSE
+    sub: TRUE
+    sup: TRUE
+    p: FALSE
+    h1: FALSE
+    h2: FALSE
+    h3: FALSE
+    pre: FALSE
+    removeFormat: FALSE
+  table: {  }
+  list: {  }
+  link:
+    a: TRUE
+  alignment: {  }
+
+'Sfi.Sfi:ScribdList':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Список бакалварских работ'
+    help:
+      message: 'Выбираютс все дочерние работы у данного элемента'
+    group: contentBlocks
+
+'Sfi.Sfi:ScribdPaper':
+  superTypes:
+    'TYPO3.Neos:Document': true
+  ui:
+    label: Бакалаврская (Scribd)
+    icon: icon-file-text
+    help:
+      message: 'Размещается на scribd и вставляется сюда через iframe'
+    inspector:
+      groups:
+        scribd:
+          lable: 'Бакалаврская'
+  properties:
+    title:
+      type: string
+      ui:
+        label: 'Имя докладчика'
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Имя докладчика'
+    paperName:
+      type: string
+      ui:
+        label: 'Название работы'
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Название работы'
+    mentor:
+      type: string
+      ui:
+        label: 'Научный руководитель'
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Научный руководитель, ФИО и степень'
+    scribd:
+      type: string
+      ui:
+        label: 'Код из Scribd'
+        inspector:
+          group: scribd

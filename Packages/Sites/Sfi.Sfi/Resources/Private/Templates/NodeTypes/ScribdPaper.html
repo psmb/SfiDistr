@@ -1,0 +1,19 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<f:layout name="ContentWithSidebar" />
+
+<f:section name="content">
+	<div class="row">
+		<div class="columns">
+			<div class="textAlign-center">
+				<div class="Service--Large">{neos:contentElement.editable(property: 'title', tag: 'span')}</div>
+				<div class="ParagraphAlt--Large">Научный руководитель: {neos:contentElement.editable(property: 'mentor', tag: 'span')}</div>
+				<h1 class="H1">{neos:contentElement.editable(property: 'paperName', tag: 'span')}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row marginTop-triple">
+		<div class="columns">
+			${scribd -> f:format.raw()}
+		</div>
+	</div>
+</f:section>
