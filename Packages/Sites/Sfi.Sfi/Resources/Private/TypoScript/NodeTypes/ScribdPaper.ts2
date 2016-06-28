@@ -33,7 +33,7 @@ prototype(Sfi.Sfi:ScribdPaperShort) < prototype(TYPO3.TypoScript:Tag) {
 		attributes.class = 'marginVertical-double'
 		content = TYPO3.TypoScript:Array {
 			title = ${'<div class="H4">' + node.properties.title + '</div>'}
-			mentor = ${'<div class="ServiceEm margin-none">' + node.properties.mentor + '</div>'}
+			mentor = ${'<div class="ServiceEm margin-none">Научный руководитель: ' + node.properties.mentor + '</div>'}
 			paperName = ${'<h3 class="Paragraph Link margin-none">' + node.properties.paperName + '</h3>'}
 		}
 	}
