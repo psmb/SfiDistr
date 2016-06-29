@@ -21,6 +21,7 @@ prototype(Sfi.Sfi:PageTag) {
 
 prototype(Sfi.Sfi:PageTagShort) < prototype(TYPO3.TypoScript:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/PageTagShort.html'
+	node = ${node}
 	image = ${q(node).property('image')}
-	title = ${String.stripTags(q(node).property('title'))}
+	title = ${q(node).property('title')}
 }
