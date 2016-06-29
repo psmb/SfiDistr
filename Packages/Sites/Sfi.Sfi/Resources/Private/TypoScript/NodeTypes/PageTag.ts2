@@ -18,3 +18,9 @@ prototype(Sfi.Sfi:PageTag) {
 	}
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
+
+prototype(Sfi.Sfi:PageTagShort) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/PageTagShort.html'
+	image = ${q(node).property('image')}
+	title = ${String.stripTags(q(node).property('title'))}
+}
