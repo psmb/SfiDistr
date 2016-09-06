@@ -5,7 +5,6 @@
         microformats:
           label: 'Тэги для Рособрнадзора'
           position: 1
-          tab: meta
   properties:
     itemprop:
       type: string
