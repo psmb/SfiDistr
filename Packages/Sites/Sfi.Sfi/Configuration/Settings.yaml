@@ -12,6 +12,8 @@ TYPO3:
           title: 'Print'
           position: 200
       navigateComponent:
+        structureTree:
+          loadingDepth: 0
         nodeTree:
           loadingDepth: 1
     nodeTypes:
