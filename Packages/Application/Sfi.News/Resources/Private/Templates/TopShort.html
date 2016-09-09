@@ -2,28 +2,52 @@
 {namespace m=TYPO3\Media\ViewHelpers}
 {namespace s=Sfi\Shared\ViewHelpers}
 
-<div class="MediaSlide Cover" style="background-image:url('{m:uri.image(asset: thumbnailImage, maximumWidth: configuration.thumbnailWidth, maximumHeight: configuration.thumbnailHeight, allowCropping: true, allowUpScaling: true)}')">
-	<neos:link.node node="{node}">
-		<div class="row">
-			<div class="MediaSlide-Wrap columns">
-				<div class="MediaSlide-Body">
-					<h3 class="MediaSlide-Title">
-						<f:if condition="{node.nodeType.name} == 'Sfi.News:Announcement'">
-							<div class="MediaSlide-Date">
-								<f:if condition="{node.properties.dateStart}">
-									<f:if condition="{f:format.date(date: node.properties.dateStart format: 'Y-m-d')} < {f:format.date(date: date, format: 'Y-m-d')}">
-										<span><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{node.properties.dateStart}</f:format.date></span>
-										<span>-</span>
-									</f:if>
-								</f:if>
-								<span><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date></span>
-							</div>
-						</f:if>
+<div>
+	<div class="show-for-small-only">
+		<div class="MediaSlideSmall">
+			<neos:link.node node="{node}">
+				<div class="MediaSlideSmall-Image">
+					<f:if condition="{thumbnailImage}">
+						<m:image asset="{thumbnailImage}" maximumWidth="420" maximumHeight="222" allowCropping="true" allowUpScaling="true" alt="{title}" />
+					</f:if>
+				</div>
+				<div class="MediaSlideSmall-Body">
+					<h3 class="MediaSlideSmall-Title">
 						{title}
 					</h3>
-					<div class="MediaSlide-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
+					<div class="MediaSlideSmall-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
+					<f:if condition="{date}">
+						<div class="MediaSlideSmall-Date"><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date></div>
+					</f:if>
 				</div>
-			</div>
+			</neos:link.node>
 		</div>
-	</neos:link.node>
+	</div>
+	<div class="show-for-medium-up">
+		<div class="MediaSlideMedium Cover" style="background-image:url('{m:uri.image(asset: thumbnailImage, maximumWidth: configuration.thumbnailWidth, maximumHeight: configuration.thumbnailHeight, allowCropping: true, allowUpScaling: true)}')">
+			<neos:link.node node="{node}">
+				<div class="row">
+					<div class="MediaSlideMedium-Wrap columns">
+						<div class="MediaSlideMedium-Body">
+							<h3 class="MediaSlideMedium-Title">
+								<f:if condition="{node.nodeType.name} == 'Sfi.News:Announcement'">
+									<div class="MediaSlideMedium-Date">
+										<f:if condition="{node.properties.dateStart}">
+											<f:if condition="{f:format.date(date: node.properties.dateStart format: 'Y-m-d')} < {f:format.date(date: date, format: 'Y-m-d')}">
+												<span><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{node.properties.dateStart}</f:format.date></span>
+												<span>-</span>
+											</f:if>
+										</f:if>
+										<span><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date></span>
+									</div>
+								</f:if>
+								{title}
+							</h3>
+							<div class="MediaSlideMedium-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
+						</div>
+					</div>
+				</div>
+			</neos:link.node>
+		</div>
+	</div>
 </div>

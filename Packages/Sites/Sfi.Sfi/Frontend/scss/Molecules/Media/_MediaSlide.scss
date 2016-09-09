@@ -1,31 +1,71 @@
-.MediaSlide {
+.MediaSlideMedium {
 	margin-top: 0 !important;
 	position: relative;
 }
-.MediaSlide-Wrap {
+.MediaSlideMedium-Wrap {
 	@include breakpoint('medium') {
 		position: absolute;
 		bottom: 20%;
 		max-width: 600px;
 	}
 	&:hover {
-		.MediaSlide-Title {
+		.MediaSlideMedium-Title {
 			text-decoration: underline !important;
 		}
 	}
 }
-.MediaSlide-Title {
+.MediaSlideMedium-Title {
 	@extend .H1;
 	color: white;
 	text-shadow: 0px 2px 2px rgba(0,0,0,0.75);
 }
-.MediaSlide-Teaser {
+.MediaSlideMedium-Teaser {
 	@extend .Paragraph--Large;
 	color: white;
 	text-shadow: 0px 2px 2px rgba(0,0,0,0.75);
 	margin-top: $u/2;
 }
-.MediaSlide-Body {
+.MediaSlideMedium-Body {
 	margin: 1.5*$u 0;
 	margin-right: $u;
+}
+
+
+
+.MediaSlideSmall {
+	transition: $transition;
+	&:hover {
+		.MediaSlideSmall-Body {
+			background-color: darken($color-sfi, 5%);
+		}
+	}
+}
+.MediaSlideSmall-Body {
+	transition: $transition;
+	padding: $u 2*$u 2*$u 2*$u;
+	background-color: $color-sfi;
+}
+.MediaSlideSmall-Title {
+	@extend .Paragraph--Large;
+	color: white;
+	line-height: $lineHeight-tight;
+	margin-top: $u;
+}
+.MediaSlideSmall-Teaser {
+	@extend .ParagraphAlt;
+	color: white;
+	margin-bottom: $u/2;
+}
+.MediaSlideSmall-Date {
+	@extend .ServiceEm;
+	text-transform: lowercase;
+	color: white;
+	margin-top: $u/2;
+	margin-bottom: $u/2;
+}
+.MediaSlideSmall-Category {
+	display: none;
+}
+.MediaSlideSmall-Image img {
+	width: 100%;
 }

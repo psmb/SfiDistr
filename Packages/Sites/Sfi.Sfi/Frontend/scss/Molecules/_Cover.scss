@@ -1,10 +1,12 @@
-.Cover {
-	height: calc(100vh - 157px);
-	background-size: cover;
-	background-position-y: 40%;
-}
+@media #{$medium-up} {
+	.Cover {
+		height: calc(100vh - 157px);
+		background-size: cover;
+		background-position-y: 40%;
+	}
 
-.Carousel--Cover {
-	height: calc(100vh - 157px);
-	margin-bottom: 0;
+	.Carousel--Cover {
+		height: calc(100vh - 157px);
+		margin-bottom: 0;
+	}
 }

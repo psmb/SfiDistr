@@ -1,24 +1,5 @@
 .SiteLogo {
 	display: block;
-	max-width: 272px;
-	width: 100%;
-	padding-right: 50px;
-	height:100%;
-}
-
-@include breakpoint('medium') {
-	.SiteLogo {
-		width: 260px;
-		max-width: initial;
-	}
-}
-@include breakpoint('large') {
-	.SiteLogo {
-		width: 280px;
-	}
-}
-
-.SiteLogo-Title {
-	@extend .Paragraph--Small;
-	font-size: rem-calc(12);
+	text-align: center;
+	margin: $u;
 }

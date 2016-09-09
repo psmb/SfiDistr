@@ -4,87 +4,87 @@
 
 // Move Header inside StickInParent on main page
 (function () {
-  var header = document.getElementsByClassName("Header")[0];
-  var stick = document.querySelector("#page-sfi .js-StickInParent");
-  if (header && stick) {
-    stick.insertBefore(header, stick.childNodes[0]);
-  }
+	var header = document.getElementsByClassName("Header")[0];
+	var stick = document.querySelector("#page-sfi .js-stickInParent");
+	if (header && stick) {
+		stick.insertBefore(header, stick.childNodes[0]);
+	}
 }());
 
 $.fn.switchstylesheet = function(options) {
-    //default vals
-    defaults = {
-        seperator : 'alt'
-    };
+		//default vals
+		defaults = {
+				seperator : 'alt'
+		};
 
-    var options = $.extend(defaults, options);
+		var options = $.extend(defaults, options);
 
-    //read the style
-    var c = cookie.readCookie(options.seperator);
-    if (c) switchss(c);
+		//read the style
+		var c = cookie.readCookie(options.seperator);
+		if (c) switchss(c);
 
-    //goes thru the links to find out the ones having the selector
-    $(this).click(function(e) {
-        e.preventDefault();
-        var title = $(this).attr('title'); //gets the title=?
-        switchss(title);
-    });
+		//goes thru the links to find out the ones having the selector
+		$(this).click(function(e) {
+				e.preventDefault();
+				var title = $(this).attr('title'); //gets the title=?
+				switchss(title);
+		});
 
-    function switchss(title) {
-        //goes thru all the styles having seperator - alt
-        $('link[rel*=style][title*='+options.seperator+']').each(function(i) {
-            this.disabled = true;
-            if ($(this).attr('title') == title) {
-                this.disabled = false;
-            }
-        });
-        $('a[title*='+options.seperator+']').css('display', 'block');
-        $('a[title='+title+']').hide();
-        //create a cookie to store the style
-        cookie.createCookie(options.seperator, title, 365);
-    }
+		function switchss(title) {
+				//goes thru all the styles having seperator - alt
+				$('link[rel*=style][title*='+options.seperator+']').each(function(i) {
+						this.disabled = true;
+						if ($(this).attr('title') == title) {
+								this.disabled = false;
+						}
+				});
+				$('a[title*='+options.seperator+']').css('display', 'block');
+				$('a[title='+title+']').hide();
+				//create a cookie to store the style
+				cookie.createCookie(options.seperator, title, 365);
+		}
 };
 
 //cookie functions
 var cookie;
 (function($) {
-    cookie = {
-        createCookie: function(name,value,days) {
-            if (days)
-            {
-                var date = new Date();
-                date.setTime(date.getTime()+(days*24*60*60*1000));
-                var expires = "; expires="+date.toGMTString();
-            }
-            else var expires = "";
-            document.cookie = name+"="+value+expires+"; path=/";
-        },
+		cookie = {
+				createCookie: function(name,value,days) {
+						if (days)
+						{
+								var date = new Date();
+								date.setTime(date.getTime()+(days*24*60*60*1000));
+								var expires = "; expires="+date.toGMTString();
+						}
+						else var expires = "";
+						document.cookie = name+"="+value+expires+"; path=/";
+				},
 
-        readCookie: function(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for(var i=0;i < ca.length;i++)
-            {
-                var c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-            }
-            return null;
-        }
-    };
+				readCookie: function(name) {
+						var nameEQ = name + "=";
+						var ca = document.cookie.split(';');
+						for(var i=0;i < ca.length;i++)
+						{
+								var c = ca[i];
+								while (c.charAt(0)==' ') c = c.substring(1,c.length);
+								if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+						}
+						return null;
+				}
+		};
 })(jQuery);
 
 $(document).ready(function(){
-    $(".js-switchStylesheet").switchstylesheet( { seperator:"stylesheet"} );
+		$(".js-switchStylesheet").switchstylesheet( { seperator:"stylesheet"} );
 });
 
 
 
 var headingAnchors = function() {
-    $(".js-anchor").each(function() {
-        var anchor = $('<a class="HeadingAnchor-Link"><i class="icon-link"></i></a>').attr('href', '#' + $(this).attr('id'));
-        $(this).find("h1,h2,h3,h4,h5,h6").append(anchor);
-    });
+		$(".js-anchor").each(function() {
+				var anchor = $('<a class="HeadingAnchor-Link"><i class="icon-link"></i></a>').attr('href', '#' + $(this).attr('id'));
+				$(this).find("h1,h2,h3,h4,h5,h6").append(anchor);
+		});
 }
 
 //TODO: get from Bower, when issue fixed
@@ -98,176 +98,176 @@ function(){"use strict";if(window.matchMedia&&window.matchMedia("all").addListen
 
 //TODO: move to plugin
 (function($) {
-    $.fn.responsiveTabs = function() {
+		$.fn.responsiveTabs = function() {
 
-        this.each(function() {
-            var _this = $(this)
+				this.each(function() {
+						var _this = $(this)
 
-            _this.find('.Sections-Anchor').click(function(e){
-                var parent = $(this).parents('.js-sections').eq(0);
-                e.preventDefault();
-                var panelId = $(this).attr('href');
+						_this.find('.Sections-Anchor').click(function(e){
+								var parent = $(this).parents('.js-sections').eq(0);
+								e.preventDefault();
+								var panelId = $(this).attr('href');
 
-                //TODO: this is a very bad code, as it couples normal CSS classes with JS!
-                if ($(this).hasClass('isActive') && !parent.children('.Sections-Tabs').is(":visible")) {
-                    $(this).removeClass('isActive');
-                    $(panelId).removeClass('isActive');
-                } else {
-                    parent.children('.Sections-Tabs').find('.Sections-Anchor').removeClass('isActive');
-                    parent.children('.Sections-Anchor').removeClass('isActive');
-                    $(this).addClass('isActive');
+								//TODO: this is a very bad code, as it couples normal CSS classes with JS!
+								if ($(this).hasClass('isActive') && !parent.children('.Sections-Tabs').is(":visible")) {
+										$(this).removeClass('isActive');
+										$(panelId).removeClass('isActive');
+								} else {
+										parent.children('.Sections-Tabs').find('.Sections-Anchor').removeClass('isActive');
+										parent.children('.Sections-Anchor').removeClass('isActive');
+										$(this).addClass('isActive');
 
-                    parent.children('.Sections-Panel').removeClass('isActive');
-                    $(panelId).addClass('isActive');
-                }
-            });
+										parent.children('.Sections-Panel').removeClass('isActive');
+										$(panelId).addClass('isActive');
+								}
+						});
 
-            // If tabs, activate first tab
-            if ( _this.find('.Sections-Tabs').is(":visible") ) {
-                _this.find('.Sections-Anchor').eq(0).click();
-            }
-        });
+						// If tabs, activate first tab
+						if ( _this.find('.Sections-Tabs').is(":visible") ) {
+								_this.find('.Sections-Anchor').eq(0).click();
+						}
+				});
 
-        return this;
-    };
+				return this;
+		};
 }( jQuery ));
 
 
-$(document).on('page:fetch',   function() { NProgress.start(); });
-$(document).on('page:change',  function() { NProgress.done(); });
+$(document).on('page:fetch',	 function() { NProgress.start(); });
+$(document).on('page:change',	function() { NProgress.done(); });
 $(document).on('page:restore', function() { NProgress.remove(); });
 
 
 var onReadyPlugins = function() {
-    headingAnchors();
-    salvattore.rescanMediaQueries();
+		headingAnchors();
+		salvattore.rescanMediaQueries();
 
-    var searchBoxInput = jQuery(".js-SearchBox-Field");
-    var defaultValue = searchBoxInput.val();
-    searchBoxInput.focus(function() {
-        if($(this).val() == defaultValue) {
-            $(this).val("");
-        }
-    }).blur(function(){
-        if($(this).val().length == 0) {
-            $(this).val(defaultValue);
-        }
-    });
+		var searchBoxInput = jQuery(".js-SearchBox-Field");
+		var defaultValue = searchBoxInput.val();
+		searchBoxInput.focus(function() {
+				if($(this).val() == defaultValue) {
+						$(this).val("");
+				}
+		}).blur(function(){
+				if($(this).val().length == 0) {
+						$(this).val(defaultValue);
+				}
+		});
 
-    audiojs.events.ready(function() {
-        path = '/_Resources/Static/Packages/Sfi.Sfi/Built/';
-        var as = audiojs.createAll({
-            imageLocation: path + 'player-graphics.gif',
-            swfLocation: path + 'audiojs.swf',
-            css: ''
-        });
-    });
+		audiojs.events.ready(function() {
+				path = '/_Resources/Static/Packages/Sfi.Sfi/Built/';
+				var as = audiojs.createAll({
+						imageLocation: path + 'player-graphics.gif',
+						swfLocation: path + 'audiojs.swf',
+						css: ''
+				});
+		});
 
-    // Open external urls in new window
-    $('a').each(function() {
-       var a = new RegExp('/' + window.location.host + '/');
-       // Starts with http and does not contain current domain
-       if(!a.test(this.href) && this.href.indexOf('http') === 0) {
-           $(this).click(function(event) {
-               event.preventDefault();
-               event.stopPropagation();
-               window.open(this.href, '_blank');
-           });
-       }
-    });
+		// Open external urls in new window
+		$('a').each(function() {
+			 var a = new RegExp('/' + window.location.host + '/');
+			 // Starts with http and does not contain current domain
+			 if(!a.test(this.href) && this.href.indexOf('http') === 0) {
+					 $(this).click(function(event) {
+							 event.preventDefault();
+							 event.stopPropagation();
+							 window.open(this.href, '_blank');
+					 });
+			 }
+		});
 
-    // MainMenu toggle
-    $('.js-MainMenu-Toggle').click(function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        $('.js-MainMenu').toggleClass('isActive');
-    });
-    $('body').click(function(e){
-        $('.js-MainMenu').removeClass('isActive');
-    });
-    $('.js-MainMenu-Wrap').click(function(e){
-        e.stopPropagation();
-    });
+		// MainMenu toggle
+		$('.js-MainMenu-Toggle').click(function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$('.js-MainMenu').toggleClass('isActive');
+		});
+		$('body').click(function(e){
+				$('.js-MainMenu').removeClass('isActive');
+		});
+		$('.js-MainMenu-Wrap').click(function(e){
+				e.stopPropagation();
+		});
 
-    $('.js-MobileNav-Toggle').click(function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        $('.js-MobileNav').toggleClass('isActive');
-    });
-    $('body').click(function(e){
-        $('.js-MobileNav').removeClass('isActive');
-    });
+		$('.js-MobileNav-Toggle').click(function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$('.js-MobileNav').toggleClass('isActive');
+		});
+		$('body').click(function(e){
+				$('.js-MobileNav').removeClass('isActive');
+		});
 
 
 	$('.js-sections').responsiveTabs();
 
-    // TODO: optimize carousel init code
-    $('.js-carousel-1x').slick({
-        dots: true,
-        slide: '*',
-        infinite: true,
-        speed: 300,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        prevArrow: '<button type="button" class="slick-prev icon-left-open">Назад</button>',
-        nextArrow: '<button type="button" class="slick-next icon-right-open">Вперед</button>'
-    });
+		// TODO: optimize carousel init code
+		$('.js-carousel-1x').slick({
+				dots: true,
+				slide: '*',
+				infinite: true,
+				speed: 300,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				prevArrow: '<button type="button" class="slick-prev icon-left-open">Назад</button>',
+				nextArrow: '<button type="button" class="slick-next icon-right-open">Вперед</button>'
+		});
 
-    $('.js-carousel-2x').slick({
-        dots: true,
-        slide: '*',
-        infinite: true,
-        speed: 300,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        prevArrow: '<button type="button" class="slick-prev icon-left-open">Назад</button>',
-        nextArrow: '<button type="button" class="slick-next icon-right-open">Вперед</button>',
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 560,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
+		$('.js-carousel-2x').slick({
+				dots: true,
+				slide: '*',
+				infinite: true,
+				speed: 300,
+				slidesToShow: 2,
+				slidesToScroll: 2,
+				prevArrow: '<button type="button" class="slick-prev icon-left-open">Назад</button>',
+				nextArrow: '<button type="button" class="slick-next icon-right-open">Вперед</button>',
+				responsive: [
+						{
+								breakpoint: 1024,
+								settings: {
+										slidesToShow: 2,
+										slidesToScroll: 2
+								}
+						},
+						{
+								breakpoint: 560,
+								settings: {
+										slidesToShow: 1,
+										slidesToScroll: 1
+								}
+						}
+				]
+		});
 
-    $('.js-carousel-3x').slick({
-        dots: true,
-        slide: '*',
-        infinite: true,
-        speed: 300,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        prevArrow: '<button type="button" class="slick-prev icon-left-open">Назад</button>',
-        nextArrow: '<button type="button" class="slick-next icon-right-open">Вперед</button>',
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 560,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
+		$('.js-carousel-3x').slick({
+				dots: true,
+				slide: '*',
+				infinite: true,
+				speed: 300,
+				slidesToShow: 3,
+				slidesToScroll: 3,
+				prevArrow: '<button type="button" class="slick-prev icon-left-open">Назад</button>',
+				nextArrow: '<button type="button" class="slick-next icon-right-open">Вперед</button>',
+				responsive: [
+						{
+								breakpoint: 1024,
+								settings: {
+										slidesToShow: 2,
+										slidesToScroll: 2
+								}
+						},
+						{
+								breakpoint: 560,
+								settings: {
+										slidesToShow: 1,
+										slidesToScroll: 1
+								}
+						}
+				]
+		});
 
-    $(".js-StickInParent").stick_in_parent();
+		//$(".js-stickInParent").stick_in_parent();
 }
 
 $(document).ready(function () {
@@ -284,43 +284,126 @@ if (typeof document.addEventListener === 'function') {
 
 // FooterGallery
 (function () {
-  'use strict';
+	'use strict';
 
-  Array.prototype.forEach.call(document.getElementsByClassName('js-FooterGallery'), function (item) {
-    FooterGallery(item);
-  });
+	Array.prototype.forEach.call(document.getElementsByClassName('js-FooterGallery'), function (item) {
+		FooterGallery(item);
+	});
 
-  function FooterGallery(node) {
-    var nextPage = 1;
-    var content = node.querySelector('.js-FooterGallery-content');
-    var loadMore = node.querySelector('.js-FooterGallery-loadMore');
-    if (loadMore && content) {
-      loadMore.addEventListener('click', function (evt) {
-        evt.preventDefault();
-        var request = new XMLHttpRequest();
-        request.open('GET', '/?galleryPage=' + nextPage, true);
-        loadMore.innerHTML = loadMore.attributes['data-loading'].value;
-        loadMore.disabled = true;
-        request.onload = function () {
-          if (this.status >= 200 && this.status < 400) {
-            var resp = JSON.parse(this.response);
-            loadMore.innerHTML = loadMore.attributes['data-loadMore'].value;
-            content.innerHTML += resp.content;
-            loadMore.disabled = false;
-            nextPage++;
-            // If nothing left to load
-            if (!resp.loadMore) {
-              loadMore.innerHTML = loadMore.attributes['data-done'].value;
-              loadMore.disabled = true;
-            }
-            // Do you know how to do it better?
-            setTimeout(function() {
-              window.scrollBy(0, window.innerHeight);
-            }, 100);
-          }
-        };
-        request.send();
-      });
-    }
+	function FooterGallery(node) {
+		var nextPage = 1;
+		var content = node.querySelector('.js-FooterGallery-content');
+		var loadMore = node.querySelector('.js-FooterGallery-loadMore');
+		if (loadMore && content) {
+			loadMore.addEventListener('click', function (evt) {
+				evt.preventDefault();
+				var request = new XMLHttpRequest();
+				request.open('GET', '/?galleryPage=' + nextPage, true);
+				loadMore.innerHTML = loadMore.attributes['data-loading'].value;
+				loadMore.disabled = true;
+				request.onload = function () {
+					if (this.status >= 200 && this.status < 400) {
+						var resp = JSON.parse(this.response);
+						loadMore.innerHTML = loadMore.attributes['data-loadMore'].value;
+						content.innerHTML += resp.content;
+						loadMore.disabled = false;
+						nextPage++;
+						// If nothing left to load
+						if (!resp.loadMore) {
+							loadMore.innerHTML = loadMore.attributes['data-done'].value;
+							loadMore.disabled = true;
+						}
+						// Do you know how to do it better?
+						setTimeout(function() {
+							window.scrollBy(0, window.innerHeight);
+						}, 100);
+					}
+				};
+				request.send();
+			});
+		}
+	}
+}());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Init the stickInParent plugin
+(function () {
+  var node = document.querySelector('.js-stickInParent');
+  if (node) {
+    stickInParent(node);
   }
 }());
+
+function stickInParent (element, options) {
+	if (!element) {
+		return null;
+	}
+	options = options || {};
+	var minWidth = options.minWidth || 640;
+
+	var parent = element.parentElement;
+	parent.style.position = 'relative';
+	var fixer = document.createElement('div');
+	parent.insertBefore(fixer, element.nextSibling);
+	if (window.innerWidth > minWidth) {
+		setFixed();
+	}
+	debouncedScroll(update);
+
+	function update (scrollPosition) {
+		if (window.innerWidth > minWidth) {
+			if (scrollPosition > parent.offsetTop && scrollPosition + window.innerHeight < parent.offsetTop + parent.offsetHeight) {
+				setFixed();
+			} else if (scrollPosition + window.innerHeight > parent.offsetTop + parent.offsetHeight) {
+				setAbsolute();
+			} else {
+				setStatic();
+			}
+		}
+	}
+	function setFixed() {
+		element.style = 'position: fixed; left: 0; right: 0; top: 0;';
+		fixer.style = 'display: block; height: ' + element.offsetHeight + 'px';
+	}
+	function setAbsolute() {
+		element.style = 'position: absolute; left: 0; right: 0; top: auto; bottom: 0;';
+		fixer.style = 'display: block; height: ' + element.offsetHeight + 'px';
+	}
+	function setStatic() {
+		element.style = 'position: static';
+		fixer.style = 'display: none;';
+	}
+}
+
+function debouncedScroll(callback) {
+	var lastKnownScrollPosition = 0;
+	var isTicking = false;
+
+	window.addEventListener('scroll', function(e) {
+		lastKnownScrollPosition = window.scrollY;
+		if (!isTicking) {
+			window.requestAnimationFrame(function() {
+				callback(lastKnownScrollPosition);
+				isTicking = false;
+			});
+		}
+		isTicking = true;
+	});
+}
