@@ -358,20 +358,19 @@ function stickInParent (element, options) {
 	options = options || {};
 	var minWidth = options.minWidth || 640;
 
+	var originalStyles = element.style.cssText;
 	var parent = element.parentElement;
 	parent.style.position = 'relative';
 	var fixer = document.createElement('div');
 	parent.insertBefore(fixer, element.nextSibling);
-	if (window.innerWidth > minWidth) {
-		setFixed();
-	}
+	update(window.scrollY);
 	debouncedScroll(update);
 
 	function update (scrollPosition) {
 		if (window.innerWidth > minWidth) {
-			if (scrollPosition > parent.offsetTop && scrollPosition + window.innerHeight < parent.offsetTop + parent.offsetHeight) {
+			if (scrollPosition > parent.offsetTop && scrollPosition + window.innerHeight < parent.offsetTop + parent.offsetHeight + window.innerHeight - element.offsetHeight) {
 				setFixed();
-			} else if (scrollPosition + window.innerHeight > parent.offsetTop + parent.offsetHeight) {
+			} else if (scrollPosition + window.innerHeight > parent.offsetTop + parent.offsetHeight + window.innerHeight - element.offsetHeight) {
 				setAbsolute();
 			} else {
 				setStatic();
@@ -379,15 +378,15 @@ function stickInParent (element, options) {
 		}
 	}
 	function setFixed() {
-		element.style = 'position: fixed; left: 0; right: 0; top: 0;';
+		element.style = 'position: fixed; top: 0; right: 0;' + originalStyles;
 		fixer.style = 'display: block; height: ' + element.offsetHeight + 'px';
 	}
 	function setAbsolute() {
-		element.style = 'position: absolute; left: 0; right: 0; top: auto; bottom: 0;';
+		element.style = 'position: absolute; top: auto; bottom: 0;' + originalStyles;
 		fixer.style = 'display: block; height: ' + element.offsetHeight + 'px';
 	}
 	function setStatic() {
-		element.style = 'position: static';
+		element.style = 'position: static;' + originalStyles;
 		fixer.style = 'display: none;';
 	}
 }

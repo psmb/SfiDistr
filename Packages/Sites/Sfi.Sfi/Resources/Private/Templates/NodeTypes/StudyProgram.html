@@ -9,7 +9,7 @@
 				{neos:contentElement.editable(property: 'title', tag: 'span')}
 				<s:ifOr condition="{specialityId}" or="{node.context.workspace.name} != 'live'">
 					({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
-				</s:ifOr>	
+				</s:ifOr>
 				</h1>
 			<div class="ServiceEm">{division}</div>
 		</div>
@@ -83,7 +83,7 @@
 				</li>
 			</ul>
 			<a href="#tab-documentSubmission" class="Sections-Anchor Sections-AccordionTitle">Поступление</a>
-			<div class="Sections-Panel" id="tab-documentSubmission">	
+			<div class="Sections-Panel" id="tab-documentSubmission">
 				<div class="Paragraph">{neos:contentElement.editable(property: 'nextDate')}</div>
 				<div class="Paragraph">{neos:contentElement.editable(property: 'studyBeginDate')}</div>
 				{documentSubmission -> f:format.raw()}
@@ -107,9 +107,7 @@
 		{feedback -> f:format.raw()}
 
 	</div>
-	<div class="medium-4 large-3 large-offset-1 columns marginVertical-triple">
-		<div class="js-stickInParent">
-			{sectionMenu -> f:format.raw()}
-		</div>
+	<div class="medium-4 large-3 large-offset-1 columns marginVertical-triple js-stickInParent" style="right: 0">
+		{sectionMenu -> f:format.raw()}
 	</div>
 </div>
