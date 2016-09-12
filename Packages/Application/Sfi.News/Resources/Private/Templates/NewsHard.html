@@ -2,69 +2,65 @@
 {namespace m=TYPO3\Media\ViewHelpers}
 {namespace s=Sfi\Shared\ViewHelpers}
 
-<div class="row">
-	<div class="columns">
-		<div class="NewsDetail row js-stickInParent-parent">
-			<div class="NewsDetail-Article NewsDetail-Article--Hard columns">
+<div class="NewsDetail row js-stickInParent-parent">
+	<div class="NewsDetail-Article NewsDetail-Article--Hard columns">
 
-				<div class="Article Article--Hard">
-					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
-					<div class="Article-Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
-					<div>
-						<span class="Article-Date">
-							<f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date>
-						</span>
-						&bull;
-						<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
-					</div>
-					<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+		<div class="Article Article--Hard">
+			<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+			<div class="Article-Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+			<div>
+				<span class="Article-Date">
+					<f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date>
+				</span>
+				&bull;
+				<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
+			</div>
+			<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
 
-					<f:if condition="{coverCollection}">
-						<div class="Article-CoverPhoto">{coverCollection -> f:format.raw()}</div>
-					</f:if>
+			<f:if condition="{coverCollection}">
+				<div class="Article-CoverPhoto">{coverCollection -> f:format.raw()}</div>
+			</f:if>
 
-					{languageMenu -> f:format.raw()}
+			{languageMenu -> f:format.raw()}
 
-					<div class="Article-Content">{main -> f:format.raw()}</div>
-					<div class="Article-Author marginTop-double">
-						<f:if condition="{node.context.workspace.name} != 'live'">
-							<f:then>
-								<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.author"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
-								<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.photo"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
-								<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.translator"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'translator', tag: 'span')}</span>
-							</f:then>
-							<f:else>
-								<f:if condition="{author}">
-									<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.author"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
-								</f:if>
-								<f:if condition="{authorPhoto}">
-									<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.photo"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
-								</f:if>
-								<f:if condition="{translator}">
-									<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.translator"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'translator', tag: 'span')}</span>
-								</f:if>
-							</f:else>
+			<div class="Article-Content">{main -> f:format.raw()}</div>
+			<div class="Article-Author marginTop-double">
+				<f:if condition="{node.context.workspace.name} != 'live'">
+					<f:then>
+						<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.author"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
+						<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.photo"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
+						<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.translator"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'translator', tag: 'span')}</span>
+					</f:then>
+					<f:else>
+						<f:if condition="{author}">
+							<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.author"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
 						</f:if>
-					</div>
-
-
-
-					<div class="Article-Gallery">{gallery -> f:format.raw()}</div>
-					<div class="Article-Assets">{assets -> f:format.raw()}</div>
-
-					<f:render partial="Tags" arguments="{tags: node.properties.tags}" />
-
-					<div class="marginTop-triple">
-						<f:render partial="Disqus" />
-					</div>
-				</div>
-
+						<f:if condition="{authorPhoto}">
+							<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.photo"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
+						</f:if>
+						<f:if condition="{translator}">
+							<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.translator"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'translator', tag: 'span')}</span>
+						</f:if>
+					</f:else>
+				</f:if>
 			</div>
-			<div class="NewsDetail-MoreItems columns">
-				<div class="js-stickInParent">
-					{moreItems -> f:format.raw()}
-				</div>
+
+
+
+			<div class="Article-Gallery">{gallery -> f:format.raw()}</div>
+			<div class="Article-Assets">{assets -> f:format.raw()}</div>
+
+			<f:render partial="Tags" arguments="{tags: node.properties.tags}" />
+
+			<div class="marginTop-triple">
+				<f:render partial="Disqus" />
 			</div>
+		</div>
+
+	</div>
+	<div class="NewsDetail-MoreItems columns">
+		<div class="js-stickInParent">
+			{moreItems -> f:format.raw()}
 		</div>
 	</div>
 </div>

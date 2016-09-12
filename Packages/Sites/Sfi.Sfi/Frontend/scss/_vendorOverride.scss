@@ -21,13 +21,23 @@ body{
 		}
 	}
 	.slick-prev, .slick-next{
-		top: 25%;
+		top: 49%;
 		margin-top: 0;
 		width: 32px;
 		height: 32px;
 		&:before{
 			color: $color-primary;
 			opacity: 1;
+		}
+	}
+	.NewsTop {
+		@include breakpoint(small only) {
+			.slick-prev, .slick-next{
+				top: 28%;
+			}
+			.slick-track {
+				background-color: $color-sfi;
+			}
 		}
 	}
 	.slick-prev{

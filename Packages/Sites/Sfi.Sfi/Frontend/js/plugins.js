@@ -352,12 +352,14 @@ function stickInParent (element, options) {
 		return null;
 	}
 	options = options || {};
-	var minWidth = options.minWidth || 640;
+	var minWidth = options.minWidth || 600;
+	var minHeight = options.minHeight || 640;
 	var parentClass = options.parentClass || 'js-stickInParent-parent';
 
 	var parent = findParent(element, parentClass);
 
-	var originalStyles = element.style.cssText;
+	element.style.width = element.offsetWidth;
+	var originalStyles = 'width:' + element.offsetWidth + 'px;' + element.style.cssText;
 	parent.style.position = 'relative';
 	var fixer = document.createElement('div');
 	element.parentElement.insertBefore(fixer, element.nextSibling);
@@ -365,7 +367,7 @@ function stickInParent (element, options) {
 	debouncedScroll(update);
 
 	function update (scrollPosition) {
-		if (window.innerWidth > minWidth) {
+		if (window.innerWidth > minWidth && window.innerHeight > minHeight) {
 			if (scrollPosition > parent.offsetTop && scrollPosition + window.innerHeight < parent.offsetTop + parent.offsetHeight + window.innerHeight - element.offsetHeight) {
 				setFixed();
 			} else if (scrollPosition + window.innerHeight > parent.offsetTop + parent.offsetHeight + window.innerHeight - element.offsetHeight) {

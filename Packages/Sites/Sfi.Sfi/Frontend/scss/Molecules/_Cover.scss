@@ -1,12 +1,14 @@
 @media #{$medium-up} {
 	.Cover {
-		height: calc(100vh - 157px);
+		height: calc(66vw);
+		max-height: calc(100vh - 205px);
 		background-size: cover;
 		background-position-y: 40%;
 	}
 
 	.Carousel--Cover {
-		height: calc(100vh - 157px);
+		height: calc(66vw);
+		max-height: calc(100vh - 205px);
 		margin-bottom: 0;
 	}
 }

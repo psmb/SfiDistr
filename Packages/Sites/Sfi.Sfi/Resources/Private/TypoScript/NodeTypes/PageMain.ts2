@@ -3,6 +3,8 @@ prototype(Sfi.Sfi:PageMain) {
 	newsTop = Sfi.News:TopList
 	newsLatest = Sfi.News:Latest
 	newsAnnouncements = Sfi.News:AnnouncementsList
+	# TODO: hackish
+	showAnnouncements = ${String.length(this.newsAnnouncements) > 150}
 	promo = Sfi.Sfi:PromoList
 	breadcrumbMenu>
 	main = ContentCollection {
