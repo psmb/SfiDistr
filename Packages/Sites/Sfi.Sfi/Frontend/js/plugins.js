@@ -339,10 +339,6 @@ if (typeof document.addEventListener === 'function') {
 
 
 
-
-
-
-
 // Init the stickInParent plugin
 (function () {
   var node = document.querySelector('.js-stickInParent');
@@ -357,12 +353,14 @@ function stickInParent (element, options) {
 	}
 	options = options || {};
 	var minWidth = options.minWidth || 640;
+	var parentClass = options.parentClass || 'js-stickInParent-parent';
+
+	var parent = findParent(element, parentClass);
 
 	var originalStyles = element.style.cssText;
-	var parent = element.parentElement;
 	parent.style.position = 'relative';
 	var fixer = document.createElement('div');
-	parent.insertBefore(fixer, element.nextSibling);
+	element.parentElement.insertBefore(fixer, element.nextSibling);
 	update(window.scrollY);
 	debouncedScroll(update);
 
@@ -378,7 +376,7 @@ function stickInParent (element, options) {
 		}
 	}
 	function setFixed() {
-		element.style = 'position: fixed; top: 0; right: 0;' + originalStyles;
+		element.style = 'position: fixed; top: 0;' + originalStyles;
 		fixer.style = 'display: block; height: ' + element.offsetHeight + 'px';
 	}
 	function setAbsolute() {
@@ -388,6 +386,16 @@ function stickInParent (element, options) {
 	function setStatic() {
 		element.style = 'position: static;' + originalStyles;
 		fixer.style = 'display: none;';
+	}
+	function findParent(el, parentClass) {
+		var firstParent = el.parentElement;
+		while (el.parentElement) {
+			el = el.parentElement;
+			if (el.classList.contains(parentClass)) {
+				return el;
+			}
+		}
+		return firstParent;
 	}
 }
 

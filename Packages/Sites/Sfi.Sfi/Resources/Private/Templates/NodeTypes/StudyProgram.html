@@ -28,7 +28,7 @@
 		<h2 class="H2 marginTop-triple">О программе</h2>
 	</div>
 </div>
-<div class="row">
+<div class="row js-stickInParent-parent">
 	<div class="medium-8 columns">
 
 		<div class="Sections js-sections Sections--Tabs marginTop-triple">
@@ -107,7 +107,9 @@
 		{feedback -> f:format.raw()}
 
 	</div>
-	<div class="medium-4 large-3 large-offset-1 columns marginVertical-triple js-stickInParent" style="right: 0">
-		{sectionMenu -> f:format.raw()}
+	<div class="medium-4 large-3 large-offset-1 columns marginVertical-triple">
+		<div class="js-stickInParent">
+			{sectionMenu -> f:format.raw()}
+		</div>
 	</div>
 </div>
