@@ -359,12 +359,18 @@ function stickInParent (element, options) {
 	var parent = findParent(element, parentClass);
 
 	element.style.width = element.offsetWidth;
-	var originalStyles = 'width:' + element.offsetWidth + 'px;' + element.style.cssText;
+	var initStyles = element.style.cssText;
+	var originalStyles = 'width:' + element.offsetWidth + 'px;' + initStyles;
 	parent.style.position = 'relative';
 	var fixer = document.createElement('div');
 	element.parentElement.insertBefore(fixer, element.nextSibling);
 	update(window.scrollY);
 	debouncedScroll(update);
+
+	window.addEventListener('resize', function(e) {
+		element.style.width = 'auto';
+		originalStyles = 'width:' + element.offsetWidth + 'px;' + initStyles;
+	});
 
 	function update (scrollPosition) {
 		if (window.innerWidth > minWidth && window.innerHeight > minHeight) {
