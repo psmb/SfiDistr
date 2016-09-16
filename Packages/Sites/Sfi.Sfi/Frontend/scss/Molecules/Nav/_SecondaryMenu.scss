@@ -1,11 +1,6 @@
 .SecondaryMenu-Item {
+	display: inline-block;
 	line-height: 1;
-	@include breakpoint(medium only) {
-		float: left;
-		margin-right: $u;
-		@include breakpoint(700px down) {
-			margin-top: $u + 1px;
-			font-size: rem-calc(12);
-		}
-	}
+	text-transform: uppercase;
+	font-size: rem-calc(12);
 }

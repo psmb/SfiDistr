@@ -2,7 +2,8 @@ prototype(Sfi.Sfi:LanguageMenu) < prototype(TYPO3.TypoScript:Tag) {
     lang = ${Array.first(node.context.dimensions.language)}
     @context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
     tagName = 'a'
-    attributes.class = 'Link Service--Small lineHeight-single'
+    attributes.class = 'Link Service--Small lineHeight-single paddingVertical-single'
+    attributes.style = 'display:block'
     attributes.href = TYPO3.Neos:NodeUri {
         node = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).count() > 0 ?
             q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0) :

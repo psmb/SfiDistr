@@ -62,6 +62,9 @@
             <trans-unit id="header.search">
                 <source>поиск</source>
             </trans-unit>
+            <trans-unit id="header.tomain">
+                <source>на главную</source>
+            </trans-unit>
             <trans-unit id="sfi.fulltitle">
                 <source>Свято-Филаретовский православно-христианский институт</source>
             </trans-unit>
@@ -70,6 +73,9 @@
             </trans-unit>
             <trans-unit id="sfi.siteLogoFileName">
                 <source>SiteLogoRu.svg</source>
+            </trans-unit>
+            <trans-unit id="sfi.siteLogoFileName-wide">
+                <source>SiteLogoRu-wide.svg</source>
             </trans-unit>
             <trans-unit id="common.tags">
                 <source>Тэги</source>

@@ -27,12 +27,8 @@
 }
 
 .MobileNav-Toggle {
-	position: absolute;
-	top: 18px;
-	right: 18px;
 	cursor: pointer;
 	// Stay on top of menu to render clicks
-	z-index: 110;
 	display: inline-block;
 	.IconMenu {
 		display: inline-block;
