@@ -1,7 +1,7 @@
 @media #{$medium-up} {
 	.Cover {
 		height: calc(66vw);
-		max-height: calc(100vh - 205px);
+		max-height: calc(100vh - 243px);
 		min-height: 400px;
 		background-size: cover;
 		background-position-y: 40%;
@@ -9,7 +9,7 @@
 
 	.Carousel--Cover {
 		height: calc(66vw);
-		max-height: calc(100vh - 205px);
+		max-height: calc(100vh - 243px);
 		min-height: 400px;
 		margin-bottom: 0;
 	}
