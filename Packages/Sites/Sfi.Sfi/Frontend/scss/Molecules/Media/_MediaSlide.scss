@@ -1,6 +1,17 @@
 .MediaSlideMedium {
 	margin-top: 0 !important;
 	position: relative;
+	@include breakpoint('medium') {
+		&:after {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			content: '';
+			background: linear-gradient(to top, rgba(0,0,0,0.35) 0%,rgba(0,0,0,0) 60%);;
+		}
+	}
 }
 .MediaSlideMedium-Wrap {
 	@include breakpoint('medium') {
@@ -9,6 +20,7 @@
 		bottom: 20%;
 		max-width: 960px;
 		padding: 0 !important;
+		z-index: 1;
 	}
 	&:hover {
 		.MediaSlideMedium-Title {
