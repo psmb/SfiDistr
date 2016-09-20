@@ -39,9 +39,19 @@
 				</div>
 			</div>
 		</div>
-		<neos:link.node node="~" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
-			<img width="620" alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName-wide')}?2">
-		</neos:link.node>
+		<div style="position: relative" class="paddingTop-sesquialteral">
+			<f:if condition="{lang} == 'ru'">
+				<div class="row">
+					<div class="columns" style="position: absolute; top: 3px">
+						<a class="PaleLink" href="/sveden/common">Сведения об образовательной организации</a>
+						<a class="PaleLink" href="/Abitur">Абитуриенту</a>
+					</div>
+				</div>
+			</f:if>
+			<neos:link.node node="~" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
+				<img width="620" alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName-wide')}?2">
+			</neos:link.node>
+		</div>
 		<div class="textAlign-center marginBottom-double" style="font-size: 12px">
 			<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node> • <a href="tel:+74956230380">+7 | 495 | 623 03 80</a> • <a href="mailto:info@sfi.ru">info@sfi.ru</a>
 		</div>
@@ -108,6 +118,7 @@
 		</div>
 	</div>
 </div>
+
 	<f:if condition="{breadcrumbMenu}">
 		<div class="row">
 			<div class="columns">

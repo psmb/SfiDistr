@@ -18,3 +18,16 @@
 	color: $color-primary;
 	@include link-state();
 }
+
+.PaleLink {
+	@extend .ButtonInline;
+	&:hover {
+		text-decoration: underline;
+		color: $gray--light !important;
+	}
+	display: inline-block !important;
+	padding-right: 1.5*$u;
+	font-family: $fontFamily-alt;
+	font-size: rem-calc(12);
+	color: $gray--light !important;
+}
