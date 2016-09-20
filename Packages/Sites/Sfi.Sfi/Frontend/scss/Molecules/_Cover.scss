@@ -2,6 +2,7 @@
 	.Cover {
 		height: calc(66vw);
 		max-height: calc(100vh - 205px);
+		min-height: 360px;
 		background-size: cover;
 		background-position-y: 40%;
 	}
@@ -9,6 +10,7 @@
 	.Carousel--Cover {
 		height: calc(66vw);
 		max-height: calc(100vh - 205px);
+		min-height: 360px;
 		margin-bottom: 0;
 	}
 }

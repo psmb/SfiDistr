@@ -5,8 +5,10 @@
 .MediaSlideMedium-Wrap {
 	@include breakpoint('medium') {
 		position: absolute;
+		left: 50%;
 		bottom: 20%;
-		max-width: 600px;
+		max-width: 800px;
+		padding: 0 !important;
 	}
 	&:hover {
 		.MediaSlideMedium-Title {
@@ -26,8 +28,10 @@
 	margin-top: $u/2;
 }
 .MediaSlideMedium-Body {
-	margin: 1.5*$u 0;
-	margin-right: $u;
+	position: relative;
+	text-align: center;
+	left: -50%;
+	margin: 1.5*$u 2*$u;
 }
 
 
