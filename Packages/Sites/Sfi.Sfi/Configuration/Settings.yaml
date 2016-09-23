@@ -4,6 +4,7 @@ TYPO3:
       autoInclude:
         'Sfi.Sfi': TRUE
     userInterface:
+      loadMinifiedJavascript: FALSE
       editPreviewModes:
         print:
           isEditingMode: FALSE
@@ -21,8 +22,6 @@ TYPO3:
         contentBlocks:
           position: 110
           label: 'Content Blocks'
-    userInterface:
-      loadMinifiedJavascript: FALSE
   TYPO3CR:
     contentDimensions:
     # Content dimension "language" serves for translation of content into different languages. Its value specifies
