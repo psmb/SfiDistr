@@ -4,7 +4,7 @@
             "name": "PATCH: make aloha support microdata",
             "type": "github",
             "repository": "dimaip/neos-development-collection",
-            "commit": "2f690f47c68c0001135b189e0738ff907502c901",
+            "commit": "0a59a75148213025e5dc8f5a2a735292f4ef33fd",
             "ref": "patch_microdata",
             "path": "Packages/Neos"
         }
