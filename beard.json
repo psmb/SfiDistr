@@ -1,17 +1,11 @@
 {
     "changes": [
         {
-            "name": "TASK: Add method to get public URI by path",
+            "name": "PATCH: make aloha support microdata",
             "type": "github",
-            "repository": "neos/flow-development-collection",
-            "pull_request": "188",
-            "path": "Packages/Framework"
-        },
-        {
-            "name": "BUGFIX: ContentController::getAssetProperties must use the new Thumbnail API",
-            "type": "github",
-            "repository": "neos/neos-development-collection",
-            "pull_request": "286",
+            "repository": "dimaip/neos-development-collection",
+            "commit": "2f690f47c68c0001135b189e0738ff907502c901",
+            "ref": "patch_microdata",
             "path": "Packages/Neos"
         }
     ]
