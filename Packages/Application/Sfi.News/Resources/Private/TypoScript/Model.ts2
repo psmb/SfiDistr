@@ -79,6 +79,8 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 	templatePath = 'resource://Sfi.News/Private/Templates/TopShort.html'
 	@override.configuration = ${Configuration.setting('Sfi.News.topShort')}
 	configuration = ${configuration}
+
+	place = ${String.stripTags(q(node).property('place'))}
 }
 
 
