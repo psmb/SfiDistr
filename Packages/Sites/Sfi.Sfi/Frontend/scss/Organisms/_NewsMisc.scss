@@ -13,7 +13,7 @@
 }
 
 .NewsByTag-Grid[data-columns]::before {
-	@include breakpoint(medium only) {
+	@include breakpoint('medium') {
 		content: '2 .columns.medium-6';
 	}
 }
