@@ -19,5 +19,5 @@ deployment:
     commands:
       - cd ~/ansible-deploy
       - touch 'i'
-      - ansible-playbook ~/ansible-deploy/deploy.yml --extra-vars "REPOSITORY_URL=https://github.com/sfi-ru/SfiDistr DOMAIN=sfi.ru HOST=server.psmb.ru PORT=1122" -i 'i':
+      - ansible-playbook ~/ansible-deploy/deploy.yml --extra-vars "REPOSITORY_URL=https://github.com/sfi-ru/SfiDistr DOMAIN=sfi.ru HOST=server.psmb.ru PORT=1122 PROTOCOL=https" -i 'i':
           timeout: 1800
