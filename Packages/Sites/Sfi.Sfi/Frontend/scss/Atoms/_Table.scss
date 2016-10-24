@@ -1,4 +1,5 @@
 .Table {
 	@include table;
 	font-family: $fontFamily-alt;
+	font-size: rem-calc(14);
 }
