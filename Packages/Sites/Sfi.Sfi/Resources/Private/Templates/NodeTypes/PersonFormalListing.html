@@ -1,23 +1,31 @@
 {namespace m=TYPO3\Media\ViewHelpers}
 {namespace neos=TYPO3\Neos\ViewHelpers}
 
-<table class="Table">
-	<tr>
-		<th>Фамилия Имя Отчество</th>
-		<th>Должность</th>
-		<th>Преподаваемые дисциплины</th>
-		<th>Ученая степень, ученое звание</th>
-		<th>Образование</th>
-		<th>Стаж работы</th>
-	</tr>
-	<f:for each="{collection}" as="item">
+<div style="overflow-x: scroll; overflow-y: scroll; max-height: 600px">
+	<table class="Table">
 		<tr>
-			<td itemprop="fio"><neos:link.node node="{item}" class="Link">{item.properties.title -> f:format.stripTags()}</neos:link.node></td>
-			<td itemprop="Post">{item.properties.position -> f:format.stripTags()}</td>
-			<td itemprop="TeachingDiscipline">{item.properties.subject -> f:format.stripTags()}</td>
-			<td><span itemprop="Degree">{item.properties.degree -> f:format.stripTags()}</span> <span itemprop="AcademStat">{item.properties.degreeTitle -> f:format.stripTags()}</span></td>
-			<td><span itemprop="EmployeeQualification">{item.properties.education -> f:format.stripTags()}</span><br><spanitemprop="ProfDevelopment">{item.properties.educationUpgrade -> f:format.stripTags()}</span></td>
-			<td><span itemprop="GenExperience">{item.properties.experience -> f:format.stripTags()}</span><br><span itemprop="SpecExperience">{item.properties.experienceSpeciality -> f:format.stripTags()}</span><br>{item.properties.experienceSfi -> f:format.stripTags()}</td>
+			<th>Фамилия Имя Отчество</th>
+			<th>Должность</th>
+			<th>Преподаваемые дисциплины</th>
+			<th>Ученая степень</th>
+			<th>Ученое звание</th>
+			<th>Направление подготовки и специальности</th>
+			<th>Повышение квалификации и профессиональная переподготовка</th>
+			<th>Общий стаж работы</th>
+			<th>Стаж работы по специальности</th>
 		</tr>
-	</f:for>
-</table>
+		<f:for each="{collection}" as="item">
+			<tr>
+				<td itemprop="fio"><neos:link.node node="{item}" class="Link">{item.properties.title -> f:format.stripTags()}</neos:link.node></td>
+				<td itemprop="Post">{item.properties.position -> f:format.stripTags()}</td>
+				<td itemprop="TeachingDiscipline">{item.properties.subject -> f:format.stripTags()}</td>
+				<td><span itemprop="Degree">{item.properties.degree -> f:format.stripTags()}</span></td>
+				<td><span itemprop="AcademStat">{item.properties.degreeTitle -> f:format.stripTags()}</span></td>
+				<td><span itemprop="EmployeeQualification">{item.properties.education -> f:format.stripTags()}</span></td>
+				<td><span itemprop="ProfDevelopment">{item.properties.educationUpgrade -> f:format.stripTags()}</span></td>
+				<td><span itemprop="GenExperience">{item.properties.experience -> f:format.stripTags()}</span></td>
+				<td><span itemprop="SpecExperience">{item.properties.experienceSpeciality -> f:format.stripTags()}</span></td>
+			</tr>
+		</f:for>
+	</table>
+</div>
