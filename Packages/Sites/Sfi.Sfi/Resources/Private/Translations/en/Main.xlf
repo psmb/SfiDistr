@@ -47,8 +47,8 @@
                 <target>Explore SFI in Pictures</target>
             </trans-unit>
             <trans-unit id="stream.loadMore">
-                <source>Больше фоток!</source>
-                <target>More pictures!</target>
+                <source>Загрузить еще</source>
+                <target>Load more</target>
             </trans-unit>
             <trans-unit id="stream.loading">
                 <source>Загружаем...</source>
