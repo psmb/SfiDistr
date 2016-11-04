@@ -36,10 +36,10 @@
                 <source>Жизнь СФИ в фотографиях</source>
             </trans-unit>
             <trans-unit id="stream.loadMore">
-                <source>Больше фоток!</source>
+                <source>Загрузить еще</source>
             </trans-unit>
             <trans-unit id="stream.loading">
-                <source>Загружаем</source>
+                <source>Загружаем...</source>
             </trans-unit>
             <trans-unit id="stream.done">
                 <source>Пока всё!</source>
