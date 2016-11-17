@@ -68,9 +68,9 @@ Sfi:
       numberOfItems: 6
       pagination: ~
       sortProperty: date
-      listTitle: 'newsLatest.listTitle'
+      listTitle: ''
       listTitleClass: 'SectionDivider--Service'
-      class: 'NewsLatest-Grid row'
+      class: 'NewsLatest-Grid large-block-grid-3 medium-block-grid-2 small-block-grid-1'
       wrapClass: 'NewsLatest'
       archiveLink: '~/sfi-today'
       archiveLinkTitle: 'newsLatest.archiveLinkTitle'
@@ -110,8 +110,8 @@ Sfi:
       class: 'Carousel--Cover js-carousel-1x'
       archiveLink: ''
     topShort:
-      thumbnailWidth: 1440
-      thumbnailHeight: 700
+      thumbnailWidth: 1200
+      thumbnailHeight: 400
       dateFormat: d.MM
     listByTag:
       numberOfItems: 10000

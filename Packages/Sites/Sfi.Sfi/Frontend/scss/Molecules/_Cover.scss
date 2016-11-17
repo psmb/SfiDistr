@@ -1,16 +1,15 @@
 @media #{$medium-up} {
 	.Cover {
-		height: calc(66vw);
-		max-height: calc(100vh - 243px);
-		min-height: 400px;
+		height: 400px;
+		min-height: 300px;
 		background-size: cover;
 		background-position-y: 40%;
+		background-position-x: 50%;
 	}
 
 	.Carousel--Cover {
-		height: calc(66vw);
-		max-height: calc(100vh - 243px);
-		min-height: 400px;
+		height: 400px;
+		min-height: 300px;
 		margin-bottom: 0;
 	}
 }

@@ -3,24 +3,7 @@
 	background: white;
 }
 
-.NewsLatest-Grid[data-columns]::before, .NewsList-Grid[data-columns]::before {
-	@include breakpoint('medium') {
-		content: '2 .columns.medium-6';
-	}
-	@include breakpoint('large') {
-		content: '3 .columns.large-4';
-	}
-}
-
-.NewsByTag-Grid[data-columns]::before {
-	@include breakpoint('medium') {
-		content: '2 .columns.medium-6';
-	}
-}
-
 .NewsLatest-Grid {
-	margin: 0 !important;
-	padding: 0 $u !important;
 }
 
 .NewsList-Grid {

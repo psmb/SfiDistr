@@ -74,9 +74,6 @@
             <trans-unit id="sfi.siteLogoFileName">
                 <source>SiteLogoRu.svg</source>
             </trans-unit>
-            <trans-unit id="sfi.siteLogoFileName-wide">
-                <source>SiteLogoRu-wide.svg</source>
-            </trans-unit>
             <trans-unit id="common.tags">
                 <source>Тэги</source>
             </trans-unit>

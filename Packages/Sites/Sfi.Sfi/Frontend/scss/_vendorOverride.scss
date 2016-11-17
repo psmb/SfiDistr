@@ -1,15 +1,19 @@
 .audiojs p{
 	margin: 0 !important;
 }
-body{
+body {
 	.slick-dots{
 		// lucky number :(
-		width: 97%;
+		width: initial;
+		display: inline-block;
 		margin-top: 0;
 		margin-left: 16px;
 		margin-right: 16px;
-		top: 3px;
-		bottom: initial;
+		bottom: $u;
+		left: $u;
+		li {
+			margin: 0;
+		}
 		li button:before{
 			font-size: 8px;
 			opacity: 1;
@@ -23,8 +27,8 @@ body{
 	.slick-prev, .slick-next{
 		top: 49%;
 		margin-top: 0;
-		width: 32px;
-		height: 32px;
+		width: 48px;
+		height: 48px;
 		&:before{
 			color: $color-primary;
 			opacity: 1;
