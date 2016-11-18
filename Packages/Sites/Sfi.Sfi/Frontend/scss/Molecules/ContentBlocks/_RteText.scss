@@ -40,6 +40,7 @@
 		@include table;
 		font-family: $fontFamily-alt;
 		p {margin-bottom: 0;}
+		* {font-size: rem-calc(14) !important;}
 	}
 }
 
