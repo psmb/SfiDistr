@@ -3,3 +3,7 @@
 	font-family: $fontFamily-alt;
 	font-size: rem-calc(14);
 }
+
+.Table * {
+	font-size: rem-calc(14) !important;
+}
