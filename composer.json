@@ -13,13 +13,10 @@
     "require": {
         "neos/neos-development-collection": "2.3.x-dev",
         "neos/flow-development-collection": "3.3.x-dev",
-        
-        // TEMP https://github.com/neos/neos-development-collection/pull/1275/files
         "typo3/flow": "~3.3.0",
-        "typo3/imagine": "~2.0"
+        "typo3/imagine": "~2.0",
 
         "typo3/party": "@dev",
-        // "typo3/imagine": "@dev",
         "typo3/setup": "@dev",
 
         "sfi/styleguide": "@dev",
