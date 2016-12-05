@@ -18,6 +18,9 @@
 				<s:ifOr condition="{degree}" or="{node.context.workspace.name} != 'live'">
 					<div itemprop="Degree" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
 				</s:ifOr>
+				<s:ifOr condition="{degreeTitle}" or="{node.context.workspace.name} != 'live'">
+					<div itemprop="DegreeTitle" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degreeTitle', tag: 'span')}</div>
+				</s:ifOr>
 				<s:ifOr condition="{position}" or="{node.context.workspace.name} != 'live'">
 					<div itemprop="Post" class="ServiceEm--Large">{neos:contentElement.editable(property: 'position', tag: 'span')}</div>
 				</s:ifOr>
