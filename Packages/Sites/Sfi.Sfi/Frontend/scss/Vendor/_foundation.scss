@@ -1,7 +1,8 @@
 @import "foundation/functions";
 $rem-base: 16px;
 $row-width: rem-calc(1200);
-$global-padding: 15px;
+$global-padding: 12;
+$block-grid-default-spacing: rem-calc(24);
 $include-html-classes: true;
 $default-float: left;
 $flex-video-padding-bottom: 54.55% !default;

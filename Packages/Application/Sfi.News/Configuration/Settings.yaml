@@ -70,7 +70,7 @@ Sfi:
       sortProperty: date
       listTitle: ''
       listTitleClass: 'SectionDivider--Service'
-      class: 'NewsLatest-Grid large-block-grid-3 medium-block-grid-2 small-block-grid-1'
+      class: 'NewsLatest-Grid medium-block-grid-2 small-block-grid-1'
       wrapClass: 'NewsLatest'
       archiveLink: '~/sfi-today'
       archiveLinkTitle: 'newsLatest.archiveLinkTitle'

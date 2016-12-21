@@ -3,31 +3,22 @@
 <div>
 	<div class="row">
 		<div class="columns">
-			<div class="NewsTop marginVertical-double">
+			<div class="NewsTop marginTop-sesquialteral marginBottom-triple">
 				{newsTop -> f:format.raw()}
-			</div>
-			<div class="Cover-OnTop">
-				{newsLatest -> f:format.raw()}
 			</div>
 		</div>
 	</div>
 </div>
 
-
-<f:if condition="{showAnnouncements}">
-	<div class="row">
-		<div class="columns">
-			<h2 class="SectionDivider--Service" style="background: white"><f:translate package="Sfi.Sfi" id="news.announcements"/></h2>
-		</div>
+<div class="row">
+	<div class="columns medium-8">
+		{newsLatest -> f:format.raw()}
 	</div>
-</f:if>
-
-<div class="row marginTop-double">
-	<div class="medium-4 large-3 columns">
+	<div class="columns medium-4">
+		<f:if condition="{showAnnouncements}">
+			{newsAnnouncements -> f:format.raw()}
+		</f:if>
 		{promo -> f:format.raw()}
-	</div>
-	<div class="medium-8 large-offset-1 columns">
-		{newsAnnouncements -> f:format.raw()}
 	</div>
 </div>
 

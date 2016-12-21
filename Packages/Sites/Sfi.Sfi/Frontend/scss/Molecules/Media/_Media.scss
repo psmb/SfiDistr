@@ -12,17 +12,18 @@
 .Media-Title {
 	@extend .Paragraph--Large;
 	line-height: $lineHeight-tight;
-	margin-top: $u;
+	margin-top: 1.5*$u;
+	border-bottom: 1px solid $gray-line;
+	padding-bottom: $u/4;
+	margin-bottom: $u/4;
 }
 .Media-Teaser {
 	@extend .ParagraphAlt;
-	margin-bottom: $u/2;
 }
 .Media-Date {
-	@extend .ServiceEm;
+	@extend .ParagraphAlt;
 	text-transform: lowercase;
 	color: $gray--light;
-	margin-top: $u/2;
 	margin-bottom: $u/2;
 }
 .Media-Category {

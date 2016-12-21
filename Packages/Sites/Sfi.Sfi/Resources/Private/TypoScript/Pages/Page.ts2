@@ -48,7 +48,9 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		@context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
 
 		languageMenu = Sfi.Sfi:LanguageMenu
-
+		subMenu = Sfi.Sfi:SubMenu {
+			@if.isMain = ${q(node).is('[instanceof Sfi.Sfi:PageMain]') ? true : false}
+		}
 		secondaryMenu = Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SecondaryMenu.html'
 			itemCollection = ${q(site).children('links').children().get()}
@@ -90,7 +92,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		javascripts.backend = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'backendScripts'
-			@process.1=${node.context.workspaceName != 'live' ? value:''}
+			@process.1 = ${node.context.workspaceName != 'live' ? value:''}
 		}
 		javascripts.@cache {
 			mode = 'cached'

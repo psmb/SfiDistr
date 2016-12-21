@@ -2,42 +2,24 @@
 	clear: both;
 	overflow: auto;
 	margin-bottom: 2*$u;
+	text-align: center;
 }
 .MediaAnnouncement:hover .MediaAnnouncement-Title {
 	color: $color-primary;
 	text-decoration: underline;
 }
-.MediaAnnouncement-WrapText {
-	margin-left: 65px + 1.5*$u;
-	@include breakpoint('medium') {
-		margin-left: 65px + 3*$u;
-	}
-	@include breakpoint('large') {
-		margin-left: 65px + 4*$u;
-	}
-}
-.MediaAnnouncement-Date {
-	text-align: center;
-	float: left;
-	clear: both;
-}
-.MediaAnnouncement-DateDay {
+.MediaAnnouncement-DateDay, .MediaAnnouncement-DateMonth {
 	@extend .H3;
 	font-size: rem-calc(30);
 	color: $color-primary;
-	margin: 0;
-}
-.MediaAnnouncement-DateMonth {
-	@extend .H3;
-	font-size: rem-calc(30);
-	color: $color-primary;
-	font-weight: normal;
 	margin: 0;
 }
 .MediaAnnouncement-DateTime {
-	@extend .H4;
-	color: $color-primary;
+	@extend .H3;
+	font-size: rem-calc(30);
+	color: $gray--light;
 	font-weight: normal;
+	padding-left: $u/2;
 	margin: 0;
 }
 .MediaAnnouncement-DateDash {
@@ -48,6 +30,9 @@
 }
 .MediaAnnouncement-Title {
 	@extend .H3;
+	border-bottom: 1px solid $gray-line;
+	padding-bottom: $u/4;
+	margin-bottom: $u/4;
 }
 .MediaAnnouncement-Teaser {
 	@extend .ParagraphAlt;

@@ -34,7 +34,7 @@ prototype(Sfi.News:AbstractList) < prototype(TYPO3.TypoScript:Tag) {
 		}
 		archiveLink = TYPO3.TypoScript:Tag {
 			tagName = 'a'
-			attributes.class = 'ButtonInline News-MoreButton right'
+			attributes.class = 'ButtonInline News-MoreButton paddingLeft-none'
 			attributes.href = TYPO3.Neos:NodeUri {
 				node = ${configuration.archiveLink}
 			}

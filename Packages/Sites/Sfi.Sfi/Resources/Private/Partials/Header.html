@@ -18,38 +18,46 @@
 		<neos:link.node node="~" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
 			<img alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
 		</neos:link.node>
-		<p class="Paragraph--Small lineHeight-loose marginTop-single textAlign-center" title="{f:translate(package:'Sfi.Sfi', id:'header.contacts.title')}">
-			<a href="tel:+74956230380">+7 | 495 | 623 03 80</a> • <a href="mailto:info@sfi.ru">info@sfi.ru</a>
-			<br/>
-			<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
-		</p>
 	</div>
 
 
 	<div class="show-for-medium-up">
-		<div style="position: relative" class="paddingTop-half">
+		<div style="position: relative" class="paddingTop-single">
 			<div class="row">
-				<div class="columns large-6">
+				<div class="columns large-7">
 					<neos:link.node node="~" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
 						<img alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
 					</neos:link.node>
-					<div class="paddingBottom-double" style="font-size: 12px">
-						<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node> • <a href="tel:+74956230380">+7 | 495 | 623 03 80</a> • <a href="mailto:info@sfi.ru">info@sfi.ru</a>
-					</div>
 				</div>
-				<div class="columns large-6">
-
+				<div class="columns large-4 end">
 					<div class="row">
 						<div class="columns large-6">
-							<f:render partial="EnglishLink" arguments="{_all}"/>
 							{secondaryMenu -> f:format.raw()}
+							<f:if condition="{lang} == 'ru'">
+								<div class="ParagraphAlt color-grayAlt lineHeight-tight paddingVertical-half LinkState"><a href="/sveden/common">Сведения об образовательной организации</a></div>
+							</f:if>
 						</div>
 						<div class="columns large-6">
-							<f:render partial="AccessibleLink"/>
-							<f:if condition="{lang} == 'ru'">
-								<div class="ParagraphAlt--Small lineHeight-single paddingVertical-half"><a href="/sveden/common">Сведения об образовательной организации</a></div>
-								<div class="ParagraphAlt--Small lineHeight-single paddingVertical-half"><a href="/Abitur">Абитуриенту</a></div>
-							</f:if>
+							<div class="lineHeight-tight" style="padding-top: 6px; padding-bottom: 3px; display:flex">
+								<f:render partial="EnglishLink" arguments="{_all}"/>
+								<div class="paddingHorizontal-single">
+									<f:render partial="AccessibleLink"/>
+								</div>
+								<f:if condition="{lang} == 'ru'">
+									<div>
+										<a class="icon-user-1 color-primary" href="http://lk.sfi.ru" target="_blank" title="Личный кабинет"></a>
+									</div>
+								</f:if>
+							</div>
+							<p class="color-grayAlt ParagraphAlt lineHeight-tight paddingVertical-half LinkState">
+								<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
+							</p>
+							<p class="color-grayAlt ParagraphAlt lineHeight-tight paddingVertical-half LinkState">
+								<a href="tel:+74956230380">+7 |495| 623 03 80</a>
+							</p>
+							<p class="color-grayAlt ParagraphAlt lineHeight-tight paddingVertical-half LinkState">
+								<a href="mailto:info@sfi.ru">info@sfi.ru</a>
+							</p>
 							<f:render partial="Search" />
 						</div>
 					</div>
@@ -57,10 +65,11 @@
 			</div>
 		</div>
 
-		<div class="Header-Bar">
+		<div class="">
 			<div class="row">
 				<div class="columns">
 					{mainMenu -> f:format.raw()}
+					{subMenu -> f:format.raw()}
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,3 @@
-/* 
-Font declarations
- */
-
 @font-face{
 font-family:"Franklin";
 src:url("/_Resources/Static/Packages/Sfi.Sfi/font/FranklinGothic-Book.woff") format("woff");
@@ -19,10 +15,33 @@ src:url("/_Resources/Static/Packages/Sfi.Sfi/font/FranklinGothic-DemiCond.woff")
 font-weight:400;font-style:bold;
 }
 
+
+@font-face {
+	font-family: 'SchoolBook';
+	src: url('/_Resources/Static/Packages/Sfi.Sfi/font/SchoolBook-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SchoolBook';
+	src: url('/_Resources/Static/Packages/Sfi.Sfi/font/SchoolBook-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SchoolBook';
+	src: url('/_Resources/Static/Packages/Sfi.Sfi/font/SchoolBook-Italic.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+
 // Icon font declaraions are in different place
 
-$fontFamily-main: "Georgia",serif;
-$fontFamily-alt: "Franklin",sans-serif;
+$fontFamily-main: SchoolBook,Georgia,serif;
+$fontFamily-alt: Franklin,sans-serif;
 
 body{
 	font-size: rem-calc(16);

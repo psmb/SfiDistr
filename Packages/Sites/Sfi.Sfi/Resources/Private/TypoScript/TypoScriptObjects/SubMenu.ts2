@@ -1,0 +1,12 @@
+prototype(Sfi.Sfi:SubMenu) < prototype(TYPO3.TypoScript:Collection) {
+	@process.tmpl = ${'<div style="display: flex; justify-content: center;" class="textAlign-center">' + value + '</div>'}
+	collection = ${q(site).find('#c92fbbcb-2092-463c-b1c1-3a74b981fba4').children().get()}
+	itemName = 'node'
+	itemRenderer = TYPO3.TypoScript:Tag {
+		@process.tmpl = ${'<div class="ParagraphAlt--Large marginTop-half paddingHorizontal-double">' + value + '</div>'}
+		tagName = 'a'
+		attributes.class = 'color-primary'
+		attributes.href = NodeUri
+		content = ${node.properties.title}
+	}
+}

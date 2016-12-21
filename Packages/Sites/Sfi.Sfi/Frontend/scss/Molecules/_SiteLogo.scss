@@ -1,5 +1,8 @@
 .SiteLogo {
 	display: block;
-	margin: $u;
-	max-width: 360px
+	margin-bottom: $u;
+	max-width: 310px;
+	img {
+		width: 100%;
+	}
 }
