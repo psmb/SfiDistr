@@ -1,6 +1,7 @@
 prototype(Sfi.Sfi:SubMenu) < prototype(TYPO3.TypoScript:Collection) {
 	@process.tmpl = ${'<div style="display: flex; justify-content: center;" class="SubMenu textAlign-center">' + value + '</div>'}
 	subMenuNode = ${q(site).find('#c030240e-7c32-40d8-aa84-586f1019966d')}
+	@context.subMenuNode = ${this.subMenuNode}
 	collection = ${this.subMenuNode.get(0) ? this.subMenuNode.children().get() : []}
 	itemName = 'node'
 	itemRenderer = TYPO3.TypoScript:Tag {
@@ -15,7 +16,7 @@ prototype(Sfi.Sfi:SubMenu) < prototype(TYPO3.TypoScript:Collection) {
 	@cache {
 		mode = 'cached'
 		entryTags {
-			1 = ${'DescendantOf_' + this.subMenuNode.get(0).identifier}
+			1 = ${'DescendantOf_' + subMenuNode.get(0).identifier}
 		}
 	}
 }
