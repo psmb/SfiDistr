@@ -7,7 +7,15 @@ prototype(Sfi.Sfi:SubMenu) < prototype(TYPO3.TypoScript:Collection) {
 		@process.tmpl = ${'<div class="SubMenu-item ParagraphAlt--Large marginTop-half paddingHorizontal-double">' + value + '</div>'}
 		tagName = 'a'
 		attributes.class = 'color-primary'
-		attributes.href = NodeUri
+		attributes.href = NodeUri {
+			node = ${node}
+		}
 		content = ${node.properties.title}
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${'DescendantOf_' + this.subMenuNode.get(0).identifier}
+		}
 	}
 }
