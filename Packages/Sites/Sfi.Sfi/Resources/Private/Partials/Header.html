@@ -1,13 +1,23 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 <header class="Header js-MainMenu">
-	<div class="show-for-small-only marginBottom-single">
-		<div class="Header-Bar">
+
+
+	<div class="show-for-small-only marginBottom-single textAlign-center">
+
+		<div class="HeaderSmall-Bar marginBottom-single">
 			<div class="row">
 				<div class="columns" style="display:flex">
 					<f:render partial="Search" />
 					<div style="flex-grow: 1"></div>
-					<f:render partial="EnglishLink" arguments="{_all}"/>
-					<div href="#menu" class="marginLeft-double MobileNav-Toggle js-MobileNav-Toggle">
+					<div style="margin-top: 9px">
+						<f:render partial="EnglishLink" arguments="{_all}"/>
+					</div>
+					<f:if condition="{lang} == 'ru'">
+						<div style="margin-top: 9px" class="marginLeft-single">
+							<a class="icon-user-1 color-primary" href="http://lk.sfi.ru" target="_blank" title="Личный кабинет"></a>
+						</div>
+					</f:if>
+					<div href="#menu" class="marginLeft-single MobileNav-Toggle js-MobileNav-Toggle">
 						<div class="IconMenu">
 							<img alt="{f:translate(package:'Sfi.Sfi', id:'header.menu')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/IconMenu.svg">
 						</div>
@@ -15,29 +25,42 @@
 				</div>
 			</div>
 		</div>
-		<neos:link.node node="~" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
+
+		<neos:link.node node="~" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" >
 			<img alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
 		</neos:link.node>
+
+		<p class="color-grayAlt ParagraphAlt lineHeight-normal marginTop-single">
+			<a class="LinkState" href="tel:+74956230380">+7 |495| 623 03 80</a> &bull; <a class="LinkState" href="mailto:info@sfi.ru">info@sfi.ru</a>
+		</p>
+		<p class="color-grayAlt ParagraphAlt lineHeight-normal LinkState">
+			<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
+		</p>
+
 	</div>
 
 
 	<div class="show-for-medium-up">
 		<div style="position: relative" class="paddingTop-single">
 			<div class="row">
-				<div class="columns large-7">
+
+				<div class="columns large-7 medium-5">
 					<neos:link.node node="~" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
 						<img alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
 					</neos:link.node>
 				</div>
-				<div class="columns large-4 end">
+
+				<div class="columns large-4 medium-6 medium-offset-1 end">
 					<div class="row">
-						<div class="columns large-6">
+
+						<div class="columns medium-6">
 							{secondaryMenu -> f:format.raw()}
 							<f:if condition="{lang} == 'ru'">
-								<div class="ParagraphAlt color-grayAlt lineHeight-tight paddingVertical-half LinkState"><a href="/sveden/common">Сведения об образовательной организации</a></div>
+								<div class="hack-HeaderPetit color-grayAlt paddingVertical-half"><a href="/sveden/common">Сведения об образовательной организации</a></div>
 							</f:if>
 						</div>
-						<div class="columns large-6">
+
+						<div class="columns medium-6">
 							<div class="lineHeight-tight" style="padding-top: 6px; padding-bottom: 3px; display:flex">
 								<f:render partial="EnglishLink" arguments="{_all}"/>
 								<div class="paddingHorizontal-single">
@@ -49,19 +72,21 @@
 									</div>
 								</f:if>
 							</div>
-							<p class="color-grayAlt ParagraphAlt lineHeight-tight paddingVertical-half LinkState">
+							<p class="color-grayAlt hack-HeaderPetit paddingVertical-half">
 								<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
 							</p>
-							<p class="color-grayAlt ParagraphAlt lineHeight-tight paddingVertical-half LinkState">
+							<p class="color-grayAlt hack-HeaderPetit paddingVertical-half">
 								<a href="tel:+74956230380">+7 |495| 623 03 80</a>
 							</p>
-							<p class="color-grayAlt ParagraphAlt lineHeight-tight paddingVertical-half LinkState">
+							<p class="color-grayAlt hack-HeaderPetit paddingVertical-half">
 								<a href="mailto:info@sfi.ru">info@sfi.ru</a>
 							</p>
 							<f:render partial="Search" />
 						</div>
+
 					</div>
 				</div>
+
 			</div>
 		</div>
 
@@ -114,7 +139,7 @@
 		</div>
 
 	</div>
-	<div class="Header-Bar">
+	<div>
 		<div class="row">
 			<div class="columns show-for-medium-up">
 				{mainMenu -> f:format.raw()}

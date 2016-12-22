@@ -10,13 +10,13 @@ $flex-video-padding-bottom: 54.55% !default;
 // Two range declrations, from old and new doundation
 $breakpoints: (
   small: rem-calc(0),
-  medium: rem-calc(600),
+  medium: rem-calc(640),
   large: rem-calc(1024),
   xlarge: rem-calc(1440),
   xxlarge: rem-calc(1920),
 ) !default;
-$small-range: (0, 37.4375) !default;
-$medium-range: (37.5em, 63.9375em) !default;
+$small-range: (0, 39.9375em) !default;
+$medium-range: (40em, 63.9375em) !default;
 $large-range: (64em, 89.9375em) !default;
 $xlarge-range: (90em, 119.9375em) !default;
 $xxlarge-range: (120em, 99999999em) !default;

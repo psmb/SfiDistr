@@ -33,13 +33,28 @@
 	}
 
 	.MainMenu-Column {
-		padding-right: 1.5*$u;
+		padding: 0 $u;
 		@include breakpoint('large') {
 			padding: 0 1.5*$u;
 		}
 	}
+	.MainMenu-Column:nth-child(3) {
+		min-width: 11*$u;
+	}
 	.MainMenu-Item {
-		font-size: rem-calc(32);
+		text-align: center;
+		@include breakpoint('medium') {
+			font-size: rem-calc(19);
+		}
+		@include breakpoint(660px) {
+			font-size: rem-calc(21);
+		}
+		@include breakpoint(710px) {
+			font-size: rem-calc(24);
+		}
+		@include breakpoint('large') {
+			font-size: rem-calc(32);
+		}
 	}
 	.MainMenu-Item, .MainMenu-SubItem {
 		@include link-state();

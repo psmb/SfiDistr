@@ -7,8 +7,8 @@ body {
 		width: initial;
 		display: inline-block;
 		margin-top: 0;
-		margin-left: 16px;
-		margin-right: 16px;
+		margin-left: 7px;
+		margin-right: 12px;
 		bottom: $u;
 		left: $u;
 		li {
@@ -40,7 +40,7 @@ body {
 				top: 28%;
 			}
 			.slick-track {
-				background-color: $color-sfi;
+				background-color: black;
 			}
 		}
 	}

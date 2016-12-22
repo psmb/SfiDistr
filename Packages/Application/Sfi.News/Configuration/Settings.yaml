@@ -122,5 +122,5 @@ Sfi:
       sortProperty: date
       listTitle: 'listByTag.archiveLinkTitle'
       listTitleClass: 'SectionDivider--Service'
-      class: 'NewsByTag-Grid row'
+      class: 'medium-block-grid-2 small-block-grid-1'
       archiveLink: ''

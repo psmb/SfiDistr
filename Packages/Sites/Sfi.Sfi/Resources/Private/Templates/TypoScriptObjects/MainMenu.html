@@ -4,7 +4,7 @@
 <ul class="MainMenu">
 	<f:for each="{items}" as="item" iteration="iterator">
 		<li class="MainMenu-Column {f:if(condition:iterator.isLast,then:'end')} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}" >
-			<div class="MainMenu-Item Paragraph--Large lineHeight-single marginVertical-single {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}">
+			<div class="MainMenu-Item Paragraph--Large lineHeight-single marginVertical-half {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}">
 				<neos:link.node node="{item.node}"/>
 			</div>
 			<f:if condition="{item.subItems}">

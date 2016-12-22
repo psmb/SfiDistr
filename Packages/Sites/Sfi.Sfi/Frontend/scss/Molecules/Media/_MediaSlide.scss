@@ -47,19 +47,10 @@
 }
 
 
-
-.MediaSlideSmall {
-	transition: $transition;
-	&:hover {
-		.MediaSlideSmall-Body {
-			background-color: darken($color-sfi, 5%);
-		}
-	}
-}
 .MediaSlideSmall-Body {
 	transition: $transition;
-	padding: $u 2*$u 2*$u 2*$u;
-	background-color: $color-sfi;
+	padding: $u 2*$u 2.5*$u 2*$u;
+	background-color: black;
 }
 .MediaSlideSmall-Title {
 	@extend .Paragraph--Large;
@@ -70,13 +61,11 @@
 .MediaSlideSmall-Teaser {
 	@extend .ParagraphAlt;
 	color: white;
-	margin-bottom: $u/2;
 }
 .MediaSlideSmall-Date {
-	@extend .ServiceEm;
+	@extend .ParagraphAlt;
 	text-transform: lowercase;
 	color: white;
-	margin-top: $u/2;
 	margin-bottom: $u/2;
 }
 .MediaSlideSmall-Category {
