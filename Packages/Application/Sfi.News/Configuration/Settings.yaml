@@ -24,8 +24,8 @@ Sfi:
       itemRenderer: ''
       listTitle: ''
       listTitleClass: ''
-      class: 'row'
-      itemClass: 'medium-4 columns'
+      class: 'medium-block-grid-2 small-block-grid-1'
+      itemClass: ''
       archiveLink: ''
     newsArchive:
       numberOfItems: 10000
@@ -36,7 +36,7 @@ Sfi:
       sortProperty: date
       listTitle: ''
       listTitleClass: 'SectionDivider--Service'
-      class: 'NewsList-Grid row'
+      class: 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'
       dataColumns: true
       itemClass: ''
       archiveLink: ''
@@ -51,7 +51,7 @@ Sfi:
       sortProperty: date
       listTitle: ''
       listTitleClass: 'PageTitle'
-      class: 'medium-block-grid-2'
+      class: 'medium-block-grid-2 small-block-grid-1'
       dataColumns: false
       itemClass: ''
       archiveLink: ''
