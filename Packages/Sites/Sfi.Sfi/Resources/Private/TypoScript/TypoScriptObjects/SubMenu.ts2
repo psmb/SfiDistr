@@ -15,6 +15,9 @@ prototype(Sfi.Sfi:SubMenu) < prototype(TYPO3.TypoScript:Collection) {
 	}
 	@cache {
 		mode = 'cached'
+		entryIdentifier {
+			site = ${site}
+		}
 		entryTags {
 			1 = ${'DescendantOf_' + subMenuNode.get(0).identifier}
 		}
