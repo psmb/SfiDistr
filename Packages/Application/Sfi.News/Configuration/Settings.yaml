@@ -68,7 +68,7 @@ Sfi:
       numberOfItems: 6
       pagination: ~
       sortProperty: date
-      listTitle: ''
+      listTitle: 'newsLatest.listTitle'
       listTitleClass: 'SectionDivider--Service'
       class: 'NewsLatest-Grid medium-block-grid-2 small-block-grid-1'
       wrapClass: 'NewsLatest'
@@ -94,7 +94,8 @@ Sfi:
       numberOfItems: 6
       pagination: ~
       sortProperty: date
-      listTitle: ''
+      listTitle: 'news.announcements'
+      listTitleClass: 'SectionDivider--Service'
       class: ''
       archiveLink: ''
     announcementShort:
