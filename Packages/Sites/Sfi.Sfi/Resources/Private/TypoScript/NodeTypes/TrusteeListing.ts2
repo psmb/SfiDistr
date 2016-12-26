@@ -14,4 +14,14 @@ prototype(Sfi.Sfi:TrusteeListing) < prototype(TYPO3.TypoScript:Collection) {
 	itemRenderer = Sfi.Sfi:TrusteeShort
 
 	@process.contentElementWrapping = ContentElementWrapping
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = 'NodeType_Sfi.Sfi:PageTag'
+		}
+	}
 }
