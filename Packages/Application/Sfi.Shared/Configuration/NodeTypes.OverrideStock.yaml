@@ -133,7 +133,7 @@
 'TYPO3.Neos.NodeTypes:ContentReferences':
   ui:
     group: lists
-'TYPO3.Neos.NodeTypes:Page':
+'TYPO3.Neos:Document':
   label: '${node.properties.navTitle ? node.properties.navTitle : node.properties.title}'
   properties:
     navTitle:
