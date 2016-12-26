@@ -289,7 +289,8 @@ if (typeof document.addEventListener === 'function') {
 			loadMore.addEventListener('click', function (evt) {
 				evt.preventDefault();
 				var request = new XMLHttpRequest();
-				request.open('GET', '/?galleryPage=' + nextPage, true);
+				var baseUri = loadMore.attributes['data-baseUri'].value;
+				request.open('GET', baseUri + '/?galleryPage=' + nextPage, true);
 				loadMore.innerHTML = loadMore.attributes['data-loading'].value;
 				loadMore.disabled = true;
 				request.onload = function () {

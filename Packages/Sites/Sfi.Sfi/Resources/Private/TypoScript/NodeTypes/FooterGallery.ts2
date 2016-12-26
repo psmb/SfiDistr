@@ -31,11 +31,18 @@ prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
 			attributes.data-loadMore = ${Translation.translate('stream.loadMore', null, [], null, 'Sfi.Sfi')}
 			attributes.data-loading = ${Translation.translate('stream.loading', null, [], null, 'Sfi.Sfi')}
 			attributes.data-done = ${Translation.translate('stream.done', null, [], null, 'Sfi.Sfi')}
+			attributes.data-baseUri = NodeUri {
+				node = ${site}
+				absolute = ${true}
+			}
 			content = ${Translation.translate('stream.loadMore', null, [], null, 'Sfi.Sfi')}
 		}
 	}
 	@cache {
 		mode = 'cached'
+		entryIdentifier {
+			site = ${site}
+		}
 		entryTags {
 			1 = ${'DescendantOf_' + footerGalleryNode.identifier}
 		}
@@ -62,6 +69,7 @@ prototype(Sfi.Sfi:FooterGalleryAjax) < prototype(TYPO3.TypoScript:RawArray) {
 		mode = 'cached'
 		entryIdentifier {
 			galleryPage = ${request.arguments.galleryPage}
+			site = ${site}
 		}
 		entryTags {
 			1 = ${'DescendantOf_' + footerGalleryNode.identifier}
