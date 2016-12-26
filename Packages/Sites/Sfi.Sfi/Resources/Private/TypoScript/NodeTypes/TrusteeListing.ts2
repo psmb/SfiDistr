@@ -1,0 +1,17 @@
+prototype(Sfi.Sfi:TrusteeShort) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/TrusteeShort.html'
+	title = ${node.properties.title}
+	freeText = ${node.properties.freeText}
+	image = ${node.properties.image}
+	coverText = ${node.properties.coverText}
+	node = ${node}
+}
+
+prototype(Sfi.Sfi:TrusteeListing) < prototype(TYPO3.TypoScript:Collection) {
+	@process.tmpl = ${'<div>' + value + '</div>'}
+	collection = ${node.properties.trustees}
+	itemName = 'node'
+	itemRenderer = Sfi.Sfi:TrusteeShort
+
+	@process.contentElementWrapping = ContentElementWrapping
+}

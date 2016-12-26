@@ -1,0 +1,21 @@
+'Sfi.Sfi:TrusteeListing':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Список Попсовет'
+    group: contentBlocks
+    inspector:
+      groups:
+        trustees:
+          label: 'Попсовет'
+  properties:
+    trustees:
+      type: references
+      ui:
+        label: 'Попечители'
+        reloadIfChanged: true
+        inspector:
+          group: trustees
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Shared:TagMixin'

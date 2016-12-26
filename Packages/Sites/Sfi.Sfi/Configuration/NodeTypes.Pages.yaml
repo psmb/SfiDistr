@@ -120,6 +120,14 @@ blah: &alohaRich
         inspector:
           group: tag
           position: 50
+    freeText:
+      type: string
+      ui:
+        inlineEditable: true
+        label: 'Свободный текст'
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Свободный текст'
     coverText:
       type: string
       ui:
