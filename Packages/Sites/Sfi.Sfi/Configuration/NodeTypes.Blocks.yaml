@@ -283,6 +283,24 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           placeholder: 'Номера страниц в печатной версии'
+    annotation:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Аннотация'
+    keywords:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Ключевые слова'
+    source:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Номера страниц в печатной версии'
     asset:
       type: TYPO3\Media\Domain\Model\Asset
       ui:
