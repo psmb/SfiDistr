@@ -7,8 +7,9 @@ prototype(Sfi.Sfi:PageSubSection) {
 
 	subSectionMenu = Menu {
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SubSectionMenu.html'
-		entryLevel = 3
+		entryLevel = 0
 		maximumLevels = 0
+		startingPoint = ${q(node).parent().get(0)}
 	}
 
 	main = TYPO3.Neos:ContentCollection {
