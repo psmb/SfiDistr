@@ -3,3 +3,12 @@
   options:
     templateRootPaths:
       'TYPO3.TYPO3CR': 'resource://Sfi.Sfi/Private/Templates'
+-
+  requestFilter: 'isPackage("Psmb.Newsletter")'
+  options:
+    templateRootPaths:
+      - 'resource://Sfi.Sfi/Private/Newsletter/Templates/'
+      - 'resource://Psmb.Newsletter/Private/Templates'
+    partialRootPaths:
+      - 'resource://Sfi.Sfi/Private/Newsletter/Partials/'
+      - 'resource://Psmb.Newsletter/Private/Partials/'

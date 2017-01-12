@@ -12,8 +12,10 @@
 				<span class="Article-Date">
 					<f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date>
 				</span>
-				&bull;
-				<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
+				<f:if condition="{isNewsletter} != 1">
+					&bull;
+					<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
+				</f:if>
 			</div>
 			<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
 
@@ -52,9 +54,11 @@
 
 			<f:render partial="Tags" arguments="{tags: node.properties.tags}" />
 
-			<div class="marginTop-triple">
-				<f:render partial="Disqus" />
-			</div>
+			<f:if condition="{isNewsletter} != 1">
+				<div class="marginTop-triple">
+					<f:render partial="Disqus" />
+				</div>
+			</f:if>
 		</div>
 
 	</div>

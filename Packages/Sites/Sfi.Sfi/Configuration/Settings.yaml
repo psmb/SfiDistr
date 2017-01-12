@@ -52,3 +52,47 @@ Sfi:
   Sfi:
     viewHelpers:
       partialRootPath: 'resource://Sfi.Sfi/Private/Partials/'
+
+
+Psmb:
+  Newsletter:
+    globalSettings:
+      senderAddress: 'no-reply@sfi.ru'
+      senderName: 'SFI.ru'
+    subscriptions:
+      -
+        identifier: 'instant_ru'
+        renderer: 'Sfi.Sfi:InstantMail'
+        label: 'Мгновенное уведомление'
+        description: 'Получать полные версии статей как только они опубликованы'
+        interval: PT1H
+        senderName: 'Свято-Филаретовский православно-христианский институт'
+        dimensions:
+          language: ['ru']
+      -
+        identifier: 'digest_ru'
+        renderer: 'Sfi.Sfi:DigestMail'
+        label: 'Авторский дайджест'
+        description: 'Получать раз в три недели обзор публикаций и что-то интересное в подарок'
+        interval: manual
+        senderName: 'Свято-Филаретовский православно-христианский институт'
+        dimensions:
+          language: ['ru']
+      -
+        identifier: 'instant_en'
+        renderer: 'Sfi.Sfi:InstantMail'
+        label: 'Instant Notification'
+        description: 'Recevie full versions of articles as they are published'
+        interval: PT1H
+        senderName: 'St Philaret`s Christian Orthodox Institute'
+        dimensions:
+          language: ['en']
+      -
+        identifier: 'digest_en'
+        renderer: 'Sfi.Sfi:DigestMail'
+        label: 'Monthly Digest'
+        description: 'Receive newsletter by Sofia Androsenko to your inbox'
+        interval: manual
+        senderName: 'St Philaret`s Christian Orthodox Institute'
+        dimensions:
+          language: ['en']

@@ -8,6 +8,13 @@
 #                                                                        #
 
 -
+  name: 'Subscription'
+  uriPattern: '<NewsletterSubroutes>'
+  subRoutes:
+    'NewsletterSubroutes':
+      package: 'Psmb.Newsletter'
+
+-
   name: 'Paginate for Sfi.News:Listable'
   uriPattern:    '{node}-p{--listable-paginate.currentPage}.html'
   defaults:
@@ -47,4 +54,3 @@
     '@action':     'show'
     '@format':     'html'
     'node': '/sites/sfi/system/rss/all'
-

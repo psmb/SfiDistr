@@ -1,0 +1,28 @@
+prototype(Sfi.Sfi:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
+	@context.node = ${q(site).find('[instanceof Sfi.News:AbstractNews]').sort('date', 'DESC').get(0)}
+	@context.node.@process.sort = ${q(value).count() > 0 && this.sortProperty ? q(value).sort(this.sortProperty, this.sortOrder).get() : value}
+	# TODO: better ideas how to check if node is found?
+	@if.notEmpty = ${String.length(node.identifier) > 0}
+	subject = ${String.stripTags(node.properties.title)}
+	body = TYPO3.TypoScript:Value {
+		value = Sfi.News:News {
+			isNewsletter = true
+			prototype(NodeUri) {
+				absolute = ${true}
+			}
+			prototype(Psmb.Term:ReplaceTerms) {
+				absolute = ${true}
+			}
+			@process.layout = Sfi.Sfi:MailLayout
+			@cache {
+				entryIdentifier {
+					node = ${node}
+				}
+				mode = 'cached'
+			}
+		}
+		@process.styles = Psmb.Newsletter:CssToInline {
+			cssPath = 'resource://Sfi.Sfi/Public/Built/app.css'
+		}
+	}
+}

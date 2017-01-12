@@ -1,9 +1,9 @@
 #Display full view of article
 prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
-	@override.variant = ${q(node).property('variant') != 'Inherit' ? q(node).property('variant') : q(node).parent().property('variant')}
+	@context.variant = ${q(node).property('variant') != 'Inherit' ? q(node).property('variant') : q(node).parent().property('variant')}
 	templatePath = ${'resource://Sfi.News/Private/Templates/News' + q(node).parent().property('variant') + '.html'}
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
-	@override.configuration = ${Configuration.setting('Sfi.News.newsDetail')}
+	@context.configuration = ${Configuration.setting('Sfi.News.newsDetail')}
 	configuration = ${configuration}
 
 	title = ${q(node).property('title')}
@@ -62,7 +62,7 @@ prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
 #Breif rendering of article, used in NewsList
 prototype(Sfi.News:NewsShort) < prototype(TYPO3.Neos:Content) {
 	templatePath = 'resource://Sfi.News/Private/Templates/NewsShort.html'
-	@override.configuration = ${Configuration.setting('Sfi.News.newsShort')}
+	@context.configuration = ${Configuration.setting('Sfi.News.newsShort')}
 	configuration = ${configuration}
 
 	title = ${String.stripTags(q(node).property('title'))}
@@ -77,7 +77,7 @@ prototype(Sfi.News:NewsShort) < prototype(TYPO3.Neos:Content) {
 
 prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 	templatePath = 'resource://Sfi.News/Private/Templates/TopShort.html'
-	@override.configuration = ${Configuration.setting('Sfi.News.topShort')}
+	@context.configuration = ${Configuration.setting('Sfi.News.topShort')}
 	configuration = ${configuration}
 
 	place = ${String.stripTags(q(node).property('place'))}
@@ -85,8 +85,8 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 
 
 prototype(Sfi.News:Category) {
-	@override.rootNode = ${q(documentNode).parent().is('[instanceof Sfi.News:Category]') ? q(documentNode).parent().get(0) : documentNode}
-	@override.configuration = ${Configuration.setting('Sfi.News.' + q(q(documentNode).parent().is('[instanceof Sfi.News:Category]') ? q(documentNode).parent().get(0) : documentNode).property('preset'))}
+	@context.rootNode = ${q(documentNode).parent().is('[instanceof Sfi.News:Category]') ? q(documentNode).parent().get(0) : documentNode}
+	@context.configuration = ${Configuration.setting('Sfi.News.' + q(q(documentNode).parent().is('[instanceof Sfi.News:Category]') ? q(documentNode).parent().get(0) : documentNode).property('preset'))}
 	templatePath = 'resource://Sfi.News/Private/Templates/NewsCategory.html'
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'

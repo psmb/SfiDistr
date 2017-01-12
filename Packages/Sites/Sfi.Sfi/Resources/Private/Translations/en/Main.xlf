@@ -3,144 +3,172 @@
     <file original="" source-language="ru" target-language="en" datatype="plaintext">
         <body>
             <trans-unit id="footer.about.sfi">
-                <source>Свято-Филаретовский православно-христианский институт (СФИ)</source>
                 <target>St Philaret`s Christian Orthodox Institute (SFI)</target>
             </trans-unit>
             <trans-unit id="footer.about.text">
-                <source>— негосударственное высшее богословское учебное заведение, церковная школа, сохраняющая светский статус. Учредитель: РОО «Сретение». Ректор: священник Георгий Кочетков. В институте действуют богословский и религиоведческий факультеты. При институте также работает Богословский колледж. СФИ предлагает программы высшего профессионального образования по теологии и дополнительного профессионального образования по теологии, религиоведению и основам православной культуры.</source>
                 <target>is a non-government theology school. Founder: 'Sretenie', regional non-government organisation for the promotion of personal spiritual development. Rector: Fr Georgy Kochetkov. The Institute comprises the School of Theology and the School of Religious Studies. The Institute also offers a two-year pre-Bachelor programme in theology (Theology College). SFI offers a Bachelor’s degree in theology along with foundation and advanced professional training programmes in Theology, Religious Studies and the Foundations of Orthodox Culture.</target>
             </trans-unit>
             <trans-unit id="footer.social.title">
-                <source>Социальные сети</source>
                 <target>Social</target>
             </trans-unit>
             <trans-unit id="footer.social.fb">
-                <source>Мы в Facebook</source>
                 <target>Find us on Facebook</target>
             </trans-unit>
             <trans-unit id="footer.social.vk">
-                <source>Мы в VK</source>
                 <target>Find us on VK.com</target>
             </trans-unit>
             <trans-unit id="footer.contacts.title">
-                <source>Контакты</source>
                 <target>Contacts</target>
             </trans-unit>
             <trans-unit id="footer.contacts.phone">
-                <source>Телефон</source>
                 <target>Phone</target>
             </trans-unit>
             <trans-unit id="footer.contacts.email">
-                <source>E-mail</source>
                 <target>E-mail</target>
             </trans-unit>
             <trans-unit id="footer.contacts.address">
-                <source>105062 Москва, Покровка, 29</source>
                 <target>105062 Moscow, Pokrovka st. 29</target>
             </trans-unit>
             <trans-unit id="footer.contacts.map">
-                <source>Карта проезда</source>
                 <target>Directions</target>
             </trans-unit>
             <trans-unit id="footer.stream">
-                <source>Жизнь СФИ в фотографиях</source>
                 <target>Explore SFI in Pictures</target>
             </trans-unit>
             <trans-unit id="stream.loadMore">
-                <source>Загрузить еще</source>
                 <target>Load more</target>
             </trans-unit>
             <trans-unit id="stream.loading">
-                <source>Загружаем...</source>
                 <target>Loading...</target>
             </trans-unit>
             <trans-unit id="stream.done">
-                <source>Пока всё!</source>
                 <target>Done!</target>
             </trans-unit>
             <trans-unit id="accessibility.normal">
-                <source>Обычная версия сайта</source>
                 <target>Normal version</target>
             </trans-unit>
             <trans-unit id="accessibility.accessible">
-                <source>Версия для слабовидящих</source>
                 <target>Accessible Version</target>
             </trans-unit>
             <trans-unit id="header.contacts.title">
-                <source>Наши контакты</source>
                 <target>Our Contacts</target>
             </trans-unit>
             <trans-unit id="header.contacts.address">
-                <source>Москва, Покровка, 29</source>
                 <target>Moscow, Pokrovka st. 29</target>
             </trans-unit>
             <trans-unit id="header.menu">
-                <source>Меню</source>
                 <target>Menu</target>
             </trans-unit>
             <trans-unit id="header.search">
-                <source>поиск</source>
                 <target>search</target>
             </trans-unit>
             <trans-unit id="sfi.fulltitle">
-                <source>Свято-Филаретовский православно-христианский институт</source>
                 <target>St Philaret`s Christian Orthodox Institute</target>
             </trans-unit>
             <trans-unit id="sfi.abbrev">
-                <source>СФИ</source>
                 <target>SFI</target>
             </trans-unit>
             <trans-unit id="sfi.siteLogoFileName">
-                <source>SiteLogoRu.svg</source>
                 <target>SiteLogoEn.svg</target>
             </trans-unit>
             <trans-unit id="common.tags">
-                <source>Тэги</source>
                 <target>Tags</target>
             </trans-unit>
             <trans-unit id="common.comment">
-                <source>Комментировать</source>
                 <target>Comment</target>
             </trans-unit>
             <trans-unit id="common.download">
-                <source>Скачать</source>
                 <target>Download</target>
             </trans-unit>
             <trans-unit id="staff.subjects">
-                <source>Преподаваемые дисциплины</source>
                 <target>Taught disciplines</target>
             </trans-unit>
             <trans-unit id="news.all">
-                <source>Все</source>
                 <target>All</target>
             </trans-unit>
             <trans-unit id="news.photo">
-                <source>Фото</source>
                 <target>Photo</target>
             </trans-unit>
             <trans-unit id="news.author">
-                <source>Автор</source>
                 <target>Author</target>
             </trans-unit>
             <trans-unit id="news.translator">
-                <source>Перевод</source>
                 <target>Translated by</target>
             </trans-unit>
             <trans-unit id="news.announcements">
-                <source>Анонсы</source>
                 <target>Upcoming Events</target>
             </trans-unit>
             <trans-unit id="newsLatest.listTitle">
-                <source>СФИ сегодня</source>
                 <target>SFI Today</target>
             </trans-unit>
             <trans-unit id="newsLatest.archiveLinkTitle">
-                <source>Все новости</source>
                 <target>All news</target>
             </trans-unit>
             <trans-unit id="listByTag.archiveLinkTitle">
-                <source>Материалы по теме</source>
                 <target>Related Articles</target>
+            </trans-unit>
+
+
+
+            <trans-unit id="newsletter.editTitle">
+                <target>Revise subscription parameters for the address</target>
+            </trans-unit>
+            <trans-unit id="newsletter.indexTitle">
+                <target>Subscribe to our mailing list</target>
+            </trans-unit>
+            <trans-unit id="newsletter.subscription.instant.label">
+                <target>Flash Alert</target>
+            </trans-unit>
+            <trans-unit id="newsletter.subscription.digest.description">
+                <target>Letter with this week’s top publications</target>
+            </trans-unit>
+            <trans-unit id="newsletter.namePlaceholder">
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="newsletter.emailPlaceholder">
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="newsletter.subscribeButton">
+                <target>Subscribe</target>
+            </trans-unit>
+            <trans-unit id="newsletter.updateButton">
+                <target>Save Changes</target>
+            </trans-unit>
+            <trans-unit id="newsletter.feedbackTitle">
+                <target>Mailing List</target>
+            </trans-unit>
+            <trans-unit id="newsletter.editTitle">
+                <target>Change mailing list parameters for</target>
+            </trans-unit>
+            <trans-unit id="newsletter.confirmationText">
+                <target>Follow the link to confirm your subscription to receive materials from the St Philaret`s Christian Orthodox Institute’s site:</target>
+            </trans-unit>
+            <trans-unit id="newsletter.confirmationButton">
+                <target>Confirm your subscription</target>
+            </trans-unit>
+            <trans-unit id="newsletter.confirmationSubject">
+                <target>Confirm your subscription to receive psmb.ru materials</target>
+            </trans-unit>
+            <trans-unit id="newsletter.readAllLink">
+                <target>Read materials on the site</target>
+            </trans-unit>
+            <trans-unit id="newsletter.unsubscribeLink">
+                <target>Unsubscribe</target>
+            </trans-unit>
+            <trans-unit id="newsletter.or">
+                <target>or</target>
+            </trans-unit>
+            <trans-unit id="newsletter.editLink">
+                <target>change the parameters of your subscription</target>
+            </trans-unit>
+            <trans-unit id="newsletter.digestSubject">
+                <target>Weekly Digest of the St Philaret`s Christian Orthodox Institute</target>
+            </trans-unit>
+            <trans-unit id="newsletter.digestHeadline">
+                <target>New materials on our site</target>
+            </trans-unit>
+            <trans-unit id="newsletter.digestReadMore">
+                <target>Go to the website</target>
             </trans-unit>
         </body>
     </file>

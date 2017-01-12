@@ -24,7 +24,8 @@
         "m12/neos-plugin-dbexport": "dev-master",
         "neos/redirecthandler-databasestorage": "^1.0",
         "neos/redirecthandler-neosadapter": "^1.0",
-        "typo3/neos-googleanalytics": "^1.0"
+        "typo3/neos-googleanalytics": "^1.0",
+        "psmb/newsletter": "@dev"
     },
 
     "suggest": {

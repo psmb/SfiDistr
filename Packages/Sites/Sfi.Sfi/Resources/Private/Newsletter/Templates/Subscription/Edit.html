@@ -1,0 +1,43 @@
+<div class="bg-gray paddingVertical-triple">
+    <div class="row">
+        <div class="columns">
+            <h2 class="H2"><f:translate id="newsletter.editTitle" package="Sfi.Sfi" /> {subscriber.email}</h2>
+        </div>
+    </div>
+    <f:form
+        method="post"
+        action="update"
+        controller="Subscription"
+        package="Psmb.Newsletter"
+        object="{subscriber}"
+        objectName="subscriber"
+    >
+        <div class="row marginVertical-single">
+            <f:for each="{subscriptions}" as="subscription">
+                <div class="medium-6 columns marginVertical-single">
+                    <label>
+                        <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" multiple="true" property="subscriptions" value="{subscription.identifier}" />
+                        <div class="margin-none" style="margin-left: 40px !important">
+                            <div class="H4">{subscription.label}</div>
+                            <div class="ParagraphAlt">{subscription.description}</div>
+                        </div>
+                    </label>
+                </div>
+            </f:for>
+        </div>
+        <div class="row">
+            <div class="medium-4 columns">
+                <label>
+                    <p class="paragraph">{f:translate(id:'newsletter.namePlaceholder', package:'Sfi.Sfi')}: </p>
+                    <f:form.textfield class="input" property="name" placeholder="{f:translate(id:'newsletter.namePlaceholder', package:'Sfi.Sfi')}" />
+                </label>
+                <div><f:form.submit class="Button" style="padding: 10px 12px" value="{f:translate(id:'newsletter.updateButton', package:'Sfi.Sfi')}"/></div>
+            </div>
+        </div>
+    </f:form>
+    <div class="row">
+        <div class="columns">
+            <f:flashMessages />
+        </div>
+    </div>
+</div>

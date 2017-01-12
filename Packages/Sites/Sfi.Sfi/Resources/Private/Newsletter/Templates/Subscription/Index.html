@@ -1,0 +1,59 @@
+<div class="bg-gray paddingTop-double" id="newsletter">
+    <div class="fixed-width">
+        <div class="row">
+            <div class="columns">
+                <h2 class="H2"><f:translate id="newsletter.indexTitle" package="Sfi.Sfi"/></h2>
+            </div>
+        </div>
+        <f:form
+                method="post"
+                action="register"
+                controller="Subscription"
+                package="Psmb.Newsletter"
+                objectName="subscriber"
+        >
+            <div class="row marginVertical-single">
+                <f:for each="{subscriptions}" as="subscription">
+                    <f:if condition="{subscription.dimensions.language.0} == {currentLocale.language}">
+                        <div class="medium-4 columns">
+                            <label>
+                                <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" checked="true" multiple="true" property="subscriptions" value="{subscription.identifier}" />
+                                <div class="margin-none" style="margin-left: 40px !important">
+                                    <div class="H4">{subscription.label}</div>
+                                    <div class="ParagraphAlt">{subscription.description}</div>
+                                </div>
+                            </label>
+                        </div>
+                    </f:if>
+                </f:for>
+                <div class="medium-4 columns"></div>
+            </div>
+            <div class="row marginVertical-single">
+                <f:for each="{subscriptions}" as="subscription">
+                    <f:if condition="{subscription.dimensions.language.0} != {currentLocale.language}">
+                        <div class="medium-4 columns">
+                            <label>
+                                <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" multiple="true" property="subscriptions" value="{subscription.identifier}" />
+                                <div class="margin-none" style="margin-left: 40px !important">
+                                    <div class="H4">{subscription.label}</div>
+                                    <div class="ParagraphAlt">{subscription.description}</div>
+                                </div>
+                            </label>
+                        </div>
+                    </f:if>
+                </f:for>
+                <div class="medium-4 columns"></div>
+            </div>
+            <div class="row">
+                <div class="medium-4 columns"><f:form.textfield class="input" property="name" placeholder="{f:translate(id:'newsletter.namePlaceholder', package:'Sfi.Sfi')}" /></div>
+                <div class="medium-4 columns"><f:form.textfield class="input" property="email" placeholder="{f:translate(id:'newsletter.emailPlaceholder', package:'Sfi.Sfi')}" /></div>
+                <div class="medium-4 columns"><f:form.submit class="Button" style="padding: 10px 12px" value="{f:translate(id:'newsletter.subscribeButton', package:'Sfi.Sfi')}"/></div>
+            </div>
+        </f:form>
+        <div class="row">
+            <div class="columns">
+                <f:flashMessages />
+            </div>
+        </div>
+    </div>
+</div>

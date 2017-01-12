@@ -1,0 +1,12 @@
+.flashmessages-warning {
+  @extend .ParagraphAlt--Large;
+  padding: $u $u 3*$u 0;
+  color: $red;
+	font-weight: bold;
+}
+
+.flashmessages-ok {
+  @extend .ParagraphAlt--Large;
+  padding: $u $u 3*$u 0;
+  color: $acid-blue;
+}

@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="newsletter">
+    <div style="max-width: 800px; margin: 0 auto; overflow: auto;">
+        <div class="row">
+            <div class="columns">
+                <div class="paddingBottom-triple" style="text-align: center">
+                    <img src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                </div>
+                {value -> f:format.raw()}
+            </div>
+        </div>
+    </div>
+    <div class="marginTop-triple padding-double backgroundColor-gray">
+        <div class="Paragraph--Small color-grayAlt " style="max-width: 800px; margin: 0 auto; overflow: auto">
+            <div class="row">
+                <div class="columns">
+                    <a class="Link" href="{unsubscribeLink -> f:format.raw()}">
+                        <f:translate id="newsletter.unsubscribeLink" package="Sfi.Sfi"/>
+                    </a>
+                    <f:translate id="newsletter.or" package="Sfi.Sfi"/>
+                    <a class="Link" href="{editSubscriptionLink -> f:format.raw()}">
+                        <f:translate id="newsletter.editLink" package="Sfi.Sfi"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

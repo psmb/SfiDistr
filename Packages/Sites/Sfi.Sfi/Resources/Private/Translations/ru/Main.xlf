@@ -110,6 +110,69 @@
             <trans-unit id="listByTag.archiveLinkTitle">
                 <source>Материалы по теме</source>
             </trans-unit>
+
+
+
+            <trans-unit id="newsletter.editTitle">
+                <source>Обновить параметры подписки для адреса</source>
+            </trans-unit>
+            <trans-unit id="newsletter.indexTitle">
+                <source>Подпишитесь на нашу почтовую рассылку</source>
+            </trans-unit>
+            <trans-unit id="newsletter.subscription.instant.label">
+                <source>Мгновенное уведомление</source>
+            </trans-unit>
+            <trans-unit id="newsletter.subscription.digest.description">
+                <source>Письмо с лучшими публикациями за неделю</source>
+            </trans-unit>
+            <trans-unit id="newsletter.namePlaceholder">
+                <source>Имя</source>
+            </trans-unit>
+            <trans-unit id="newsletter.emailPlaceholder">
+                <source>E-mail</source>
+            </trans-unit>
+            <trans-unit id="newsletter.subscribeButton">
+                <source>Подписаться</source>
+            </trans-unit>
+            <trans-unit id="newsletter.updateButton">
+                <source>Сохранить изменения</source>
+            </trans-unit>
+            <trans-unit id="newsletter.feedbackTitle">
+                <source>Почтовая рассылка</source>
+            </trans-unit>
+            <trans-unit id="newsletter.editTitle">
+                <source>Изменение параметров рассылки для</source>
+            </trans-unit>
+            <trans-unit id="newsletter.confirmationText">
+                <source>Перейдите по ссылке чтобы подтвердить подписку на материалы сайта Свято-Филаретовского православн-христианского института:</source>
+            </trans-unit>
+            <trans-unit id="newsletter.confirmationButton">
+                <source>Подтвердить подписку</source>
+            </trans-unit>
+            <trans-unit id="newsletter.confirmationSubject">
+                <source>Подтвердите подписку на материалы sfi.ru</source>
+            </trans-unit>
+            <trans-unit id="newsletter.readAllLink">
+                <source>Читать материал на сайте</source>
+            </trans-unit>
+            <trans-unit id="newsletter.unsubscribeLink">
+                <source>Отписаться</source>
+            </trans-unit>
+            <trans-unit id="newsletter.or">
+                <source>или</source>
+            </trans-unit>
+            <trans-unit id="newsletter.editLink">
+                <source>изменить параметры подписки</source>
+            </trans-unit>
+            <trans-unit id="newsletter.digestSubject">
+                <source>Еженедельный дайджест СФИ</source>
+            </trans-unit>
+            <trans-unit id="newsletter.digestHeadline">
+                <source>Новые материалы на нашем сайте</source>
+            </trans-unit>
+            <trans-unit id="newsletter.digestReadMore">
+                <source>Перейти на сайт</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
