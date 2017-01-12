@@ -22,7 +22,7 @@ prototype(Sfi.Sfi:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
 			}
 		}
 		@process.styles = Psmb.Newsletter:CssToInline {
-			cssPath = 'resource://Sfi.Sfi/Public/Built/app.css'
+			cssPath = 'resource://Sfi.Sfi/Public/Built/app-prefixed.css'
 		}
 	}
 }

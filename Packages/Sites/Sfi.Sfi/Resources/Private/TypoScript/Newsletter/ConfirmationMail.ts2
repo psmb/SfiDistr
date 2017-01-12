@@ -5,7 +5,7 @@ prototype(Psmb.Newsletter:ConfirmationMailRenderer) {
         templatePath = 'resource://Sfi.Sfi/Private/TypoScript/Newsletter/ConfirmationMail.html'
         activationLink = ${activationLink}
         @process.cssToInline = Psmb.Newsletter:CssToInline {
-            cssPath = 'resource://Sfi.Sfi/Public/Built/app.css'
+            cssPath = 'resource://Sfi.Sfi/Public/Built/app-prefixed.css'
         }
 	}
 }
