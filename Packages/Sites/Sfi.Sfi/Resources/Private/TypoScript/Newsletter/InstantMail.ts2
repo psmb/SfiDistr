@@ -1,6 +1,5 @@
 prototype(Sfi.Sfi:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
-	@context.node = ${q(site).find('[instanceof Sfi.News:AbstractNews]').sort('date', 'DESC').get(0)}
-	@context.node.@process.sort = ${q(value).count() > 0 && this.sortProperty ? q(value).sort(this.sortProperty, this.sortOrder).get() : value}
+	@context.node = ${q(site).find('[instanceof Sfi.News:AbstractNews]').sort('date', 'DESC').filterByDate('date', Date.subtract(Date.now(), subscription.interval)).get(0)}
 	# TODO: better ideas how to check if node is found?
 	@if.notEmpty = ${String.length(node.identifier) > 0}
 	subject = ${String.stripTags(node.properties.title)}
