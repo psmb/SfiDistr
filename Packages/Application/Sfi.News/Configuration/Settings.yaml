@@ -40,7 +40,7 @@ Sfi:
       dataColumns: true
       itemClass: ''
       archiveLink: ''
-      showOnlyNews: true
+      showOnlyNews: false
       layout: 'ContentDefault'
     publishedBooksArchive:
       numberOfItems: 10000
