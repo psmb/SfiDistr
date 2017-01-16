@@ -8,7 +8,7 @@
 		<div class="Article Article--Hard">
 			<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
 			<div class="Article-Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
-			<div>
+			<div class="marginBottom-half">
 				<span class="Article-Date">
 					<f:format.date  forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date>
 				</span>
@@ -17,7 +17,9 @@
 					<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
 				</f:if>
 			</div>
-			<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+			<s:ifOr condition="{lead}" or="{node.context.workspace.name} != 'live'">
+				<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+			</s:ifOr>
 
 			<f:if condition="{coverCollection}">
 				<div class="Article-CoverPhoto">{coverCollection -> f:format.raw()}</div>

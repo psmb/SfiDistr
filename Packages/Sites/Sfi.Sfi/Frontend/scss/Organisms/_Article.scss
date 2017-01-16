@@ -45,9 +45,11 @@
 .Article--Hard {
 	.Article-Title {
 		@extend .PageTitle--Small;
+		margin-bottom: $u;
 	}
 	.Article-Teaser {
-		@extend .ServiceLight;
+		@extend .ParagraphAlt--Large;
+		margin-bottom: $u/2;
 	}
 	.Article-Lead {
 		@extend .Paragraph;
