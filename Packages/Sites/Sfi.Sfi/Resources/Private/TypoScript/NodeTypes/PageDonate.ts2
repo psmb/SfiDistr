@@ -1,0 +1,16 @@
+prototype(Sfi.Sfi:PageDonate) {
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
+	node = ${node}
+
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	imageUri = ImageUri {
+		asset = ${node.properties.image}
+	}
+
+	moto = ${node.properties.moto}
+
+	@process.contentElementWrapping = ContentElementWrapping
+}

@@ -1,0 +1,32 @@
+'Sfi.Sfi:DonateProject':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Пожертвовать на проект'
+    help:
+      messages: 'Элемент с описанием проекта на который можно пожертвовать'
+    group: contentBlocks
+    inspector:
+      groups:
+        image:
+          label: Фото
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Название проекта'
+    description:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Описание проекта'
+    image:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: Фоновое фото
+        reloadIfChanged: true
+        inspector:
+          group: image

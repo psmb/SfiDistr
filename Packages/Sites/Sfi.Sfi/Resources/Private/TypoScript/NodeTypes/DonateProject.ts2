@@ -1,0 +1,5 @@
+prototype(Sfi.Sfi:DonateProject) {
+	imageUri = ImageUri {
+		asset = ${node.properties.image}
+	}
+}

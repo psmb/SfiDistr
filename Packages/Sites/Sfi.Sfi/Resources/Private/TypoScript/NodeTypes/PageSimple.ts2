@@ -1,0 +1,9 @@
+prototype(Sfi.Sfi:PageSimple) {
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
+	node = ${node}
+
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+}

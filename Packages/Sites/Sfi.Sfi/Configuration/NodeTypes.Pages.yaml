@@ -144,3 +144,11 @@ blah: &alohaRich
         aloha:
           <<: *alohaPlain
           placeholder: 'Подпись к обложке тэга'
+'Sfi.Sfi:PageSimple':
+  superTypes:
+    'Sfi.Sfi:AbstractPage': true
+  ui:
+    label: 'Страница: обычная'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'

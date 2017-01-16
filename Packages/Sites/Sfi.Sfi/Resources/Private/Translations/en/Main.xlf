@@ -107,6 +107,9 @@
             <trans-unit id="listByTag.archiveLinkTitle">
                 <target>Related Articles</target>
             </trans-unit>
+            <trans-unit id="donate.donate">
+                <source>Support SFI »</source>
+            </trans-unit>
 
 
 

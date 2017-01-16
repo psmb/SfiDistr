@@ -1,0 +1,26 @@
+'Sfi.Sfi:PageDonate':
+  superTypes:
+    'Sfi.Sfi:AbstractPage': true
+  ui:
+    label: 'Страница: пожертвования'
+    inspector:
+      groups:
+        image:
+          label: Фото
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    image:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото обложки'
+        reloadIfChanged: true
+        inspector:
+          group: image
+    moto:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Мото текст'

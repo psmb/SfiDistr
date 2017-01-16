@@ -1,0 +1,11 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+
+{main -> f:format.raw()}
+
+<div style="background-image: url({imageUri}); min-height: 300px; background-size: cover; display: flex; align-items: center; background-position: center;">
+	<div class="row">
+		<div class="columns medium-10 medium-offset-1 large-8 large-offset-2">
+			<div class="color-white H3">{neos:contentElement.editable(property: 'moto')}</div>
+		</div>
+	</div>
+</div>
