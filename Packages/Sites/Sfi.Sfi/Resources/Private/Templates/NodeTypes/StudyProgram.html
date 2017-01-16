@@ -45,23 +45,34 @@
 			</ul>
 			<a href="#tab-description" class="Sections-Anchor Sections-AccordionTitle">Описание программы</a>
 			<div class="Sections-Panel" id="tab-description">
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Описание программы</div></f:if>
 				{description -> f:format.raw()}
 				<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'accreditationDate')}</div>
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Свидетельство о государственной аккредитации</div></f:if>
 				{assetAccreditation -> f:format.raw()}
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Описание образовательной программы</div></f:if>
 				{assetDescription -> f:format.raw()}
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Образец договора об оказании платных образовательных услуг</div></f:if>
 				{assetSampleContract -> f:format.raw()}
 			</div>
 			<a href="#tab-subjects" class="Sections-Anchor Sections-AccordionTitle">Изучаемые дисциплины</a>
 			<div class="Sections-Panel" id="tab-subjects">
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Список изучаемых дисциплин</div></f:if>
 				{subjects -> f:format.raw()}
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Аннотации к рабочим программам дисциплин</div></f:if>
 				{assetsSubjectAnnotations -> f:format.raw()}
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Практики</div></f:if>
 				{assetsPracticeAnnotations -> f:format.raw()}
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Методические и иные документы</div></f:if>
 				{assetsMethodical -> f:format.raw()}
 			</div>
 			<a href="#tab-schedule" class="Sections-Anchor Sections-AccordionTitle">Учебный график</a>
 			<div class="Sections-Panel" id="tab-schedule">
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Календарный учебный график (описание)</div></f:if>
 				{schedule -> f:format.raw()}
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Календарный учебный график (файлы)</div></f:if>
 				{assetSchedule -> f:format.raw()}
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Учебный план</div></f:if>
 				{assetsPlan -> f:format.raw()}
 			</div>
 		</div>
@@ -86,24 +97,31 @@
 			<div class="Sections-Panel" id="tab-documentSubmission">
 				<div class="Paragraph">{neos:contentElement.editable(property: 'nextDate')}</div>
 				<div class="Paragraph">{neos:contentElement.editable(property: 'studyBeginDate')}</div>
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Список необходимых документов</div></f:if>
 				{documentSubmission -> f:format.raw()}
 			</div>
 			<a href="#tab-exams" class="Sections-Anchor Sections-AccordionTitle">Вступительные испытания</a>
 			<div class="Sections-Panel" id="tab-exams">
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Вступительные испытания</div></f:if>
 				{exams -> f:format.raw()}
 			</div>
 			<a href="#tab-payment" class="Sections-Anchor Sections-AccordionTitle">Оплата</a>
 			<div class="Sections-Panel" id="tab-payment">
 				<div class="Paragraph">{neos:contentElement.editable(property: 'price')}</div>
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Оплата (описание)</div></f:if>
 				{payment -> f:format.raw()}
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Квитанция для оплаты обучения</div></f:if>
 				{assetInvoice -> f:format.raw()}
 			</div>
 			<a href="#tab-contacts" class="Sections-Anchor Sections-AccordionTitle">Контакты</a>
 			<div class="Sections-Panel" id="tab-contacts">
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Контакты</div></f:if>
 				{admissionContacts -> f:format.raw()}
 			</div>
 		</div>
+		<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Правила приема</div></f:if>
 		{assetsAdmissionRegulations -> f:format.raw()}
+		<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Обратная связь</div></f:if>
 		{feedback -> f:format.raw()}
 
 	</div>
