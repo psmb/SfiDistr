@@ -24,3 +24,20 @@
         inlineEditable: true
         aloha:
           placeholder: 'Мото текст'
+          format:
+            b: TRUE
+            i: TRUE
+            u: FALSE
+            sub: TRUE
+            sup: TRUE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: TRUE
+          alignment: {  }

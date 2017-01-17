@@ -16,6 +16,23 @@
       ui:
         inlineEditable: true
         aloha:
+          format:
+            b: TRUE
+            i: TRUE
+            u: FALSE
+            sub: TRUE
+            sup: TRUE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: TRUE
+          alignment: {  }
           placeholder: 'Название проекта'
     description:
       type: string
@@ -23,6 +40,23 @@
         inlineEditable: true
         aloha:
           placeholder: 'Описание проекта'
+          format:
+            b: TRUE
+            i: TRUE
+            u: FALSE
+            sub: TRUE
+            sup: TRUE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: TRUE
+          alignment: {  }
     image:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
