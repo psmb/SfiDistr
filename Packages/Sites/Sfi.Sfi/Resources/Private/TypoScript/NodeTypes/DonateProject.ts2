@@ -1,5 +1,72 @@
 prototype(Sfi.Sfi:DonateProject) {
+	image = TYPO3.TypoScript:Tag {
+		tagName = 'picture'
+		content = TYPO3.TypoScript:Array {
+			large = TYPO3.TypoScript:Tag {
+				tagName = 'source'
+				attributes {
+					media = '(min-width: 1024px)'
+					srcset = TYPO3.TypoScript:Array {
+						1 = ImageUri {
+							asset = ${node.properties.imageLarge}
+							maximumWidth = 1280
+							@process.size = ${value + ' 1280w, '}
+						}
+						2 = ImageUri {
+							asset = ${node.properties.imageLarge}
+							maximumWidth = 1920
+							@process.size = ${value + ' 1920w, '}
+						}
+					}
+				}
+			}
+			medium = TYPO3.TypoScript:Tag {
+				tagName = 'source'
+				attributes {
+					media = '(min-width: 640px)'
+					srcset = TYPO3.TypoScript:Array {
+						1 = ImageUri {
+							asset = ${node.properties.imageMedium}
+							maximumWidth = 960
+							@process.size = ${value + ' 960w, '}
+						}
+						2 = ImageUri {
+							asset = ${node.properties.imageMedium}
+							maximumWidth = 1080
+							@process.size = ${value + ' 1080w, '}
+						}
+					}
+				}
+			}
+			small = TYPO3.TypoScript:Tag {
+				tagName = 'source'
+				attributes {
+					srcset = TYPO3.TypoScript:Array {
+						1 = ImageUri {
+							asset = ${node.properties.imageSmall}
+							maximumWidth = 480
+							@process.size = ${value + ' 480w, '}
+						}
+						2 = ImageUri {
+							asset = ${node.properties.imageSmall}
+							maximumWidth = 960
+							@process.size = ${value + ' 960w, '}
+						}
+					}
+				}
+			}
+			img = TYPO3.TypoScript:Tag {
+				tagName = 'img'
+				attributes {
+					src = ImageUri {
+						asset = ${node.properties.imageSmall}
+					}
+				}
+			}
+		}
+	}
+	image.content.img.attributes.style = 'width: 100%; height: 300px; object-fit: cover; object-position: 50% 38%; position: absolute'
 	imageUri = ImageUri {
-		asset = ${node.properties.image}
+		asset = ${node.properties.imageSmall}
 	}
 }

@@ -1,6 +1,7 @@
 'Sfi.Sfi:DonateProject':
   superTypes:
     'TYPO3.Neos:Content': true
+    'Sfi.Sfi:ResponsiveImageMixin': true
   ui:
     label: 'Пожертвовать на проект'
     help:
@@ -11,6 +12,45 @@
         image:
           label: Фото
   properties:
+    imageSmall:
+      ui:
+        inspector:
+          editorOptions:
+            features:
+              resize: TRUE
+            crop:
+              aspectRatio:
+                enableOriginal: FALSE
+                allowCustom: TRUE
+                locked:
+                  width: 400
+                  height: 300
+    imageMedium:
+      ui:
+        inspector:
+          editorOptions:
+            features:
+              resize: TRUE
+            crop:
+              aspectRatio:
+                enableOriginal: FALSE
+                allowCustom: TRUE
+                locked:
+                  width: 768
+                  height: 300
+    imageLarge:
+      ui:
+        inspector:
+          editorOptions:
+            features:
+              resize: TRUE
+            crop:
+              aspectRatio:
+                enableOriginal: FALSE
+                allowCustom: TRUE
+                locked:
+                  width: 1280
+                  height: 300
     title:
       type: string
       ui:
@@ -57,10 +97,3 @@
           link:
             a: TRUE
           alignment: {  }
-    image:
-      type: TYPO3\Media\Domain\Model\ImageInterface
-      ui:
-        label: Фоновое фото
-        reloadIfChanged: true
-        inspector:
-          group: image
