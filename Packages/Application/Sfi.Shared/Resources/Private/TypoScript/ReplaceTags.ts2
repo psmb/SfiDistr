@@ -4,5 +4,4 @@ prototype(Sfi.Shared:ReplaceTags) {
 	node = ${node}
 	documentNode = ${documentNode}
 	tags = ${q(site).find('[instanceof Sfi.Shared:TagMixin]').filter('[replaceVariants][replaceVariants != ""]').get()}
-	
 }

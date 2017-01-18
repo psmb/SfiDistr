@@ -29,6 +29,7 @@ class ReplaceTagsImplementation extends AbstractTypoScriptObject {
 		$text = $this->tsValue('value');
 		$tags = $this->tsValue('tags');
 		$node = $this->tsValue('node');
+		$absolute = $this->tsValue('absolute') ? true : false;
 		$documentNode = $this->tsValue('documentNode');
 		if ($text === '' || $text === NULL) {
 			return '';
@@ -53,6 +54,8 @@ class ReplaceTagsImplementation extends AbstractTypoScriptObject {
 					$replacementVariant = str_replace(' ', '\s*', $replacementVariant);
 					if (preg_match('/' . $replacementVariant . '/ui', $text) !== false) {
 						$tagUri = $linkingService->createNodeUri($controllerContext, $tag);
+						$tagUri = $linkingService->createNodeUri($controllerContext, $tag, null, null, $absolute);
+
 						// Match not within links
 						$text = preg_replace('/(?!(?:[^<]+>|[^>]+<\/a>))\b(' . $replacementVariant . ')\b/ui', '<a href="' . $tagUri . '">$1</a>', $text);
 					}
