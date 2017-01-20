@@ -12,8 +12,12 @@ Flow_Mvc_Routing_Route:
     hostname: redis
 
 Flow_Session_MetaData:
+  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  persistent: TRUE
   backendOptions:
-    cacheDirectory: '%FLOW_PATH_DATA%Session/Flow_Session_MetaData'
+    hostname: redis
 Flow_Session_Storage:
+  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  persistent: TRUE
   backendOptions:
-    cacheDirectory: '%FLOW_PATH_DATA%Session/Flow_Session_Storage'
+    hostname: redis
