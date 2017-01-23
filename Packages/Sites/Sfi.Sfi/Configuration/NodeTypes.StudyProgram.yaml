@@ -1,43 +1,3 @@
-blah: &alohaPlain
-  placeholder: 'Текст тут'
-  format:
-    b: FALSE
-    i: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: FALSE
-  alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Текст тут'
-  format:
-    b: TRUE
-    i: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.Sfi:StudyProgram':
   superTypes:
     'TYPO3.Neos:Document': true
@@ -97,63 +57,207 @@ blah: &alohaRich
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: 'Тут должен быть лид к программе'
     level:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: 'Уровень программы?'
     specialityId:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: 'Код специальности'
     accreditationDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: 'Срок действия государственной аккредитации'
     duration:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: 'Нормативный срок обучения по всем формам обучения'
     price:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: Стоимость
     certificate:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: 'Документ по завершении'
     nextDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: 'Ближайший набор'
     studyBeginDate:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
           placeholder: 'Срок начала занятий'
     noLink:
       type: boolean
