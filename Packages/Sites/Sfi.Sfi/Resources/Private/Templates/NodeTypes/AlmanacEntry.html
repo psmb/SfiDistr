@@ -1,18 +1,18 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace s=Sfi\Shared\ViewHelpers}
 
-<div class="marginVertical-double">
+<div class="marginVertical-double AlmanacEntry">
 	<a href="{href}">
 		<div class="LinkState">
 			<div class="lineHeight-tight">
-				<span class="H4">{neos:contentElement.editable(property: 'author', tag: 'span')}</span><s:ifOr condition="{authorInfo}" or="{node.context.workspace.name} != 'live'"><span class="ServiceEm">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span></s:ifOr>
+				<span class="H4 AlmanacEntry-author">{neos:contentElement.editable(property: 'author', tag: 'span')}</span><s:ifOr condition="{authorInfo}" or="{node.context.workspace.name} != 'live'"><span class="ServiceEm AlmanacEntry-authorInfo">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span></s:ifOr>
 			</div>
-			<div class="Paragraph lineHeight-tight color-primary">{neos:contentElement.editable(property: 'title')}</div>
+			<div class="Paragraph lineHeight-tight color-primary AlmanacEntry-title">{neos:contentElement.editable(property: 'title')}</div>
 		</div>
-		<div class="ParagraphAlt--Small">{neos:contentElement.editable(property: 'source', tag: 'span')}</div>
-		<div class="ParagraphAlt marginVertical-half">{neos:contentElement.editable(property: 'annotation', tag: 'span')}</div>
+		<div class="ParagraphAlt--Small AlmanacEntry-source">{neos:contentElement.editable(property: 'source', tag: 'span')}</div>
+		<div class="ParagraphAlt marginVertical-half AlmanacEntry-annotation">{neos:contentElement.editable(property: 'annotation', tag: 'span')}</div>
 		<s:ifOr condition="{keywords}" or="{node.context.workspace.name} != 'live'">
-			<div class="ParagraphAlt">
+			<div class="ParagraphAlt AlmanacEntry-keywords">
 				Ключевые слова: {neos:contentElement.editable(property: 'keywords', tag: 'span')}
 			</div>
 		</s:ifOr>
