@@ -96,7 +96,7 @@ blah: &alohaRich
 'Sfi.News:AbstractArticle':
   abstract: true
   superTypes:
-    'TYPO3.Neos:Shortcut': true
+    'TYPO3.Neos:Document': true
     'Sfi.News:Listable': true
   childNodes:
     main:
