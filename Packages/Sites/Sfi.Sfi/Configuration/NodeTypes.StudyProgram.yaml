@@ -40,7 +40,7 @@ blah: &alohaRich
 
 'Sfi.Sfi:StudyProgram':
   superTypes:
-    'TYPO3.Neos:Shortcut': true
+    'TYPO3.Neos:Document': true
   ui:
     label: 'Учебная программа'
     icon: icon-file-text

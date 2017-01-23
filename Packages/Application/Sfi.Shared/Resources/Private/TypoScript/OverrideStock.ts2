@@ -32,5 +32,3 @@ prototype(TYPO3.Neos:Content) {
 }
 
 prototype(TYPO3.Neos:ContentCollection).@if.notEmptyOrInBackend = ${this.content != '' || documentNode.context.inBackend}
-
-root.shortcut.condition = ${false}
