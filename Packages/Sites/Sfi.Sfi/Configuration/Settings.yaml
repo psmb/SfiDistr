@@ -73,7 +73,7 @@ Psmb:
         identifier: 'digest_ru'
         renderer: 'Sfi.Sfi:DigestMail'
         label: 'Авторский дайджест'
-        description: 'Получать раз в три недели обзор публикаций и что-то интересное в подарок'
+        description: 'Получать раз в две недели авторский обзор лучших публикаций'
         interval: manual
         senderName: 'Свято-Филаретовский православно-христианский институт'
         dimensions:
