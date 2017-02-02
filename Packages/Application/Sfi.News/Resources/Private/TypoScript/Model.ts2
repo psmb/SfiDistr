@@ -16,7 +16,7 @@ prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
 
 	coverCollection = TYPO3.Neos:ContentCollection {
 		nodePath = 'coverCollection'
-		prototype(TYPO3.Neos.NodeTypes:Image) {
+		prototype(Neos.NodeTypes:Image) {
 			maximumWidth = 980
 			maximumHeight = 653
 			allowCropping = TRUE
