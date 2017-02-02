@@ -31,7 +31,7 @@ prototype(Sfi.News:RssItem) < prototype(Neos.Fusion:Template) {
 	author = ${String.stripTags(q(node).property('author'))}
 	date = ${q(node).property('date')}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
-	@override.main = TYPO3.Neos:ContentCollection {
+	@override.main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 	# TODO fix

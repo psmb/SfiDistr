@@ -1,4 +1,4 @@
-prototype(Sfi.News:Listable) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.News:Listable) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.News/Private/Templates/Listable.html'
 	sortProperty = ''
 	sortOrder = 'DESC'
@@ -35,7 +35,7 @@ prototype(Sfi.News:AbstractList) < prototype(Neos.Fusion:Tag) {
 		archiveLink = Neos.Fusion:Tag {
 			tagName = 'a'
 			attributes.class = 'ButtonInline News-MoreButton paddingLeft-none'
-			attributes.href = TYPO3.Neos:NodeUri {
+			attributes.href = Neos.Neos:NodeUri {
 				node = ${configuration.archiveLink}
 			}
 			content = ${Translation.translate(configuration.archiveLinkTitle, null, [], null, 'Sfi.Sfi')}
@@ -71,7 +71,7 @@ prototype(Sfi.News:List) < prototype(Sfi.News:AbstractList) {
 			4 = ${'DescendantOf_' + rootNode.identifier}
 		}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 # Show latest news
@@ -182,7 +182,7 @@ prototype(Sfi.News:CategorizedList) < prototype(Neos.Fusion:Tag) {
 			1 = ${'DescendantOf_' + documentNode.identifier}
 		}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 
@@ -208,12 +208,12 @@ prototype(Sfi.News:ListByTag) < prototype(Sfi.News:AbstractList) {
 			2 = ${'Node_' + node.identifier}
 		}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 	@if.notEmpty = ${q(collection).count() > 0}
 }
 
 
-prototype(Sfi.News:CategoryMenu) < prototype(TYPO3.Neos:Menu) {
+prototype(Sfi.News:CategoryMenu) < prototype(Neos.Neos:Menu) {
 	templatePath = 'resource://Sfi.News/Private/Templates/CategoryMenu.html'
 
 	rootNode = ${rootNode}

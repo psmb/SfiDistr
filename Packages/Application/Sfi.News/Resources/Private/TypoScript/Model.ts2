@@ -1,5 +1,5 @@
 #Display full view of article
-prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 	@context.variant = ${q(node).property('variant') != 'Inherit' ? q(node).property('variant') : q(node).parent().property('variant')}
 	templatePath = ${'resource://Sfi.News/Private/Templates/News' + q(node).parent().property('variant') + '.html'}
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
@@ -14,7 +14,7 @@ prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
 	translator = ${String.stripTags(q(node).property('translator'))}
 	date = ${q(node).property('date')}
 
-	coverCollection = TYPO3.Neos:ContentCollection {
+	coverCollection = Neos.Neos:ContentCollection {
 		nodePath = 'coverCollection'
 		prototype(Neos.NodeTypes:Image) {
 			maximumWidth = 980
@@ -29,10 +29,10 @@ prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
 		@if.hassGallery = ${q(node).children('gallery').children().count() > 0}
 	}
 
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
-	assets = TYPO3.Neos:ContentCollection {
+	assets = Neos.Neos:ContentCollection {
 		nodePath = 'assets'
 	}
 
@@ -46,7 +46,7 @@ prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
 		attributes.style = 'display: block'
 		@context.altNode = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}})}
 		@if.nodeExists = ${altNode.count() > 0}
-	    attributes.href = TYPO3.Neos:NodeUri {
+	    attributes.href = Neos.Neos:NodeUri {
 	        node = ${altNode.get(0)}
 	    }
 	    content = ${altLang == 'en' ? 'Read this in English' : 'Читать по-русски'}
@@ -60,7 +60,7 @@ prototype(Sfi.News:News) < prototype(TYPO3.Neos:Content) {
 }
 
 #Breif rendering of article, used in NewsList
-prototype(Sfi.News:NewsShort) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.News/Private/Templates/NewsShort.html'
 	@context.configuration = ${Configuration.setting('Sfi.News.newsShort')}
 	configuration = ${configuration}
