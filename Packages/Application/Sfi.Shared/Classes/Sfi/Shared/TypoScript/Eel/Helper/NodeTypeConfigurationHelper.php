@@ -12,7 +12,7 @@ class NodeTypeConfigurationHelper implements ProtectedContextAwareInterface {
 
 	/**
 	 * @Flow\Inject
-	 * @var \TYPO3\TYPO3CR\Domain\Service\NodeTypeManager
+	 * @var \Neos\ContentRepository\Domain\Service\NodeTypeManager
 	 */
 	protected $nodeTypeManager;
 
