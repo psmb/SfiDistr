@@ -1,8 +1,8 @@
 #YouTube
-prototype(Sfi.Shared:YouTube) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Shared:YouTube) < prototype(Neos.Fusion:Tag) {
     tagName = "div"
     attributes.class = "YouTube flex-video"
-    content = TYPO3.TypoScript:Tag {
+    content = Neos.Fusion:Tag {
         tagName = "iframe"
         attributes {
             width = 853

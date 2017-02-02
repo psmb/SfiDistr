@@ -5,13 +5,13 @@ prototype(Sfi.Shared:Sections) {
 	sectionName = 'main'
 	layout = ${q(node).property('layout')}
 
-	tabs = TYPO3.TypoScript:Collection {
+	tabs = Neos.Fusion:Collection {
 		collection = ${q(node).children()}
 		itemRenderer = Sfi.Shared:SectionsTabRenderer
 		itemName = 'node'
 	}
 
-	panels = TYPO3.TypoScript:Collection {
+	panels = Neos.Fusion:Collection {
 		collection = ${q(node).children()}
 		itemRenderer = Sfi.Shared:SectionsPanelRenderer
 		itemName = 'node'
@@ -29,7 +29,7 @@ prototype(Sfi.Shared:Sections) {
 	}
 }
 
-prototype(Sfi.Shared:SectionsAbstractRenderer) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.Shared:SectionsAbstractRenderer) < prototype(Neos.Fusion:Template) {
 	sectionName = 'to-be-set'
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
 	node = ${node}

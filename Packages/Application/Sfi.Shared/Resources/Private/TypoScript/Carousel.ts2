@@ -1,5 +1,5 @@
 #Carousel
-prototype(Sfi.Shared:Carousel) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Shared:Carousel) < prototype(Neos.Fusion:Tag) {
     attributes.class = ${'Carousel js-carousel-' + q(node).property('responsive')}
 	content = TYPO3.Neos:ContentCollectionRenderer
 

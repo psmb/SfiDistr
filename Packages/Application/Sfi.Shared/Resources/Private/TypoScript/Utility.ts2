@@ -1,5 +1,5 @@
 # Wrap AutoRender with tag. You can also use tag atrributes and other properties
-prototype(Sfi.Shared:AutoRenderWithTag) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Shared:AutoRenderWithTag) < prototype(Neos.Fusion:Tag) {
 	content = TYPO3.Neos:ContentCase
 	tagName = 'div'
 }

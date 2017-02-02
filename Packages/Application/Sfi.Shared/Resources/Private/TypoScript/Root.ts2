@@ -63,9 +63,9 @@ prototype(Sfi.Shared:Well) < prototype(Sfi.Shared:Group) {
 }
 
 
-prototype(Sfi.Shared:ListByReferences) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Shared:ListByReferences) < prototype(Neos.Fusion:Tag) {
 	@override.itemRendererType = ${q(node).property('itemRenderer')}
-	content = TYPO3.TypoScript:Collection {
+	content = Neos.Fusion:Collection {
 		collection = ${q(node).property('references')}
 		itemRenderer = Sfi.Shared:ContentCaseShort {
 			byType {
