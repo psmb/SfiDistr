@@ -1,11 +1,11 @@
-prototype(Sfi.News:RssList) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.News:RssList) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.News/Private/Templates/RssList.html'
 	@override.collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:News]').get()}
 	@override.collection.@process.sort = ${q(value).sort('date', 'DESC').get()}
 	@override.collection.@process.yandexOnly = ${q(value).count() > 0 ? q(value).filter('[yandex = TRUE]').get() : value}
 	@override.collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.subtract(Date.now(), 'P7D')).get() : value}
 
-	childItems = TYPO3.TypoScript:Collection {
+	childItems = Neos.Fusion:Collection {
 		collection = ${collection}
 		itemRenderer = Sfi.News:RssItem
 		itemName = 'node'
@@ -24,7 +24,7 @@ prototype(Sfi.News:RssList) < prototype(TYPO3.TypoScript:Template) {
 	}
 }
 
-prototype(Sfi.News:RssItem) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.News:RssItem) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.News/Private/Templates/RssItem.html'
 	node = ${node}
 	title = ${String.stripTags(q(node).property('title'))}

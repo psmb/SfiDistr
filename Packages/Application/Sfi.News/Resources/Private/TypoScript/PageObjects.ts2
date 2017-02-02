@@ -1,5 +1,5 @@
 # Redirects for RSS may be set in Routes.yaml
-rssPage = TYPO3.TypoScript:Http.Message {
+rssPage = Neos.Fusion:Http.Message {
 	httpResponseHead.headers.Content-Type = 'application/xml'
 	content = Sfi.News:RssList
 }

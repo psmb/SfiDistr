@@ -13,10 +13,10 @@ prototype(Sfi.News:Listable) < prototype(TYPO3.Neos:Content) {
 }
 
 # Abstract List object
-prototype(Sfi.News:AbstractList) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.News:AbstractList) < prototype(Neos.Fusion:Tag) {
 	attributes.class = ${configuration.wrapClass}
-	content = TYPO3.TypoScript:Array {
-		listTitleTag = TYPO3.TypoScript:Tag {
+	content = Neos.Fusion:Array {
+		listTitleTag = Neos.Fusion:Tag {
 			tagName = 'h2'
 			attributes.class = ${configuration.listTitleClass}
 			content = ${Translation.translate(configuration.listTitle, null, [], null, 'Sfi.Sfi')}
@@ -28,11 +28,11 @@ prototype(Sfi.News:AbstractList) < prototype(TYPO3.TypoScript:Tag) {
 			sortOrder = ${configuration.sortOrder}
 			paginationEnabled = ${configuration.paginationEnabled}
 			numberOfItems = ${configuration.numberOfItems}
-			attributes = TYPO3.TypoScript:Attributes {
+			attributes = Neos.Fusion:Attributes {
 				class = ${configuration.class}
 			}
 		}
-		archiveLink = TYPO3.TypoScript:Tag {
+		archiveLink = Neos.Fusion:Tag {
 			tagName = 'a'
 			attributes.class = 'ButtonInline News-MoreButton paddingLeft-none'
 			attributes.href = TYPO3.Neos:NodeUri {
@@ -157,8 +157,8 @@ prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
 }
 
 
-prototype(Sfi.News:CategorizedList) < prototype(TYPO3.TypoScript:Tag) {
-	content = TYPO3.TypoScript:Collection {
+prototype(Sfi.News:CategorizedList) < prototype(Neos.Fusion:Tag) {
+	content = Neos.Fusion:Collection {
 		collection = ${q(documentNode).find('[instanceof Sfi.News:Category]').get()}
 		itemName = 'categoryNode'
 		iterationName = 'iterator'

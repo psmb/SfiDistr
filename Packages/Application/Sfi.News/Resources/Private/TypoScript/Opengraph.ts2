@@ -1,4 +1,4 @@
-prototype(Sfi.News:Opengraph) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.News:Opengraph) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.News/Private/Templates/Opengraph.html'
 	title = ${String.stripTags(q(node).property('title'))}
 	description = ${String.stripTags(q(node).property('teaser'))}
