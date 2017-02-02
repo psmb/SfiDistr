@@ -1,5 +1,5 @@
 prototype(Sfi.Sfi:Rector) < prototype(Sfi.Sfi:Person) {
-	coverCollection.prototype(TYPO3.Neos.NodeTypes:Image) {
+	coverCollection.prototype(Neos.NodeTypes:Image) {
 		maximumWidth = 770
 		maximumHeight = 513
 		allowCropping = FALSE

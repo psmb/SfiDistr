@@ -13,7 +13,7 @@ prototype(Sfi.Sfi:Person) {
 
 	coverCollection = TYPO3.Neos:ContentCollection {
 		nodePath = 'coverCollection'
-		prototype(TYPO3.Neos.NodeTypes:Image) {
+		prototype(Neos.NodeTypes:Image) {
 			maximumWidth = ${variant == 'Rector' ? 770 : variant == 'Rich' ? 480 : 400}
 			maximumHeight = ${variant == 'Rector' ? 513 : variant == 'Rich' ? 720 : 600}
 			allowCropping = TRUE
@@ -31,7 +31,7 @@ prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
 	quote = ${q(node).property('quote')}
 	showPosition = ${q(node).property('isStaff') || q(node).property('isSenior') || q(node).property('isChairperson')}
 	freeText = ${q(node).property('freeText')}
-	image = ${q(node).find('[instanceof TYPO3.Neos.NodeTypes:Image]').first().property('image')}
+	image = ${q(node).find('[instanceof Neos.NodeTypes:Image]').first().property('image')}
 }
 
 prototype(Sfi.Sfi:PersonFormalListing) {
