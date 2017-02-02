@@ -2,7 +2,7 @@
 prototype(Psmb.Newsletter:ConfirmationMailRenderer) {
     subject = ${Translation.translate('newsletter.confirmationSubject', null, [], null, 'Sfi.Sfi')}
     body = Neos.Fusion:Template {
-        templatePath = 'resource://Sfi.Sfi/Private/TypoScript/Newsletter/ConfirmationMail.html'
+        templatePath = 'resource://Sfi.Sfi/Private/Fusion/Newsletter/ConfirmationMail.html'
         activationLink = ${activationLink}
         @process.cssToInline = Psmb.Newsletter:CssToInline {
             cssPath = 'resource://Sfi.Sfi/Public/Built/app-prefixed.css'

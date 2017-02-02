@@ -1,5 +1,5 @@
 prototype(Sfi.Sfi:MailLayout) < prototype(Neos.Fusion:Template) {
-    templatePath = 'resource://Sfi.Sfi/Private/TypoScript/Newsletter/Objects/MailLayout.html'
+    templatePath = 'resource://Sfi.Sfi/Private/Fusion/Newsletter/Objects/MailLayout.html'
     value = ${value}
 
     logoUri = Neos.Fusion:ResourceUri {
