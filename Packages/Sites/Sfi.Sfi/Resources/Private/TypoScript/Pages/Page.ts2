@@ -7,11 +7,11 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		opengraph = Sfi.News:Opengraph
 		opengraph.@if.isNews = ${q(node).is('[instanceof Sfi.News:AbstractArticle]')}
 
-		stylesheets.site = TYPO3.TypoScript:Template {
+		stylesheets.site = Neos.Fusion:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'stylesheets'
 		}
-		stylesheets.backend = TYPO3.TypoScript:Template {
+		stylesheets.backend = Neos.Fusion:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'backendStylesheets'
 			@process.1=${node.context.workspaceName != 'live' ? value:''}
@@ -20,7 +20,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 			mode = 'cached'
 			entryIdentifier.a = 'a'
 		}
-		javascripts.headScripts = TYPO3.TypoScript:Template {
+		javascripts.headScripts = Neos.Fusion:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'headScripts'
 		}
@@ -82,16 +82,16 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		}
 		subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
 
-		javascripts.bodyScripts = TYPO3.TypoScript:Template {
+		javascripts.bodyScripts = Neos.Fusion:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'bodyScripts'
 		}
-		javascripts.analytics = TYPO3.TypoScript:Template {
+		javascripts.analytics = Neos.Fusion:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			sectionName = 'analytics'
 		}
-		javascripts.backend = TYPO3.TypoScript:Template {
+		javascripts.backend = Neos.Fusion:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'backendScripts'
 			@process.1 = ${node.context.workspaceName != 'live' ? value:''}

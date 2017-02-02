@@ -10,13 +10,13 @@ prototype(Sfi.Sfi:FooterGalleryItem) < prototype(Sfi.Shared:AutoRenderWithTag) {
 	}
 }
 
-prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Sfi:FooterGallery) < prototype(Neos.Fusion:Tag) {
 	@context.footerGalleryNode = ${q(site).children('footerGallery').get(0)}
 	@context.offset = 6
 
 	attributes.class = 'FooterGallery js-FooterGallery'
-	content = TYPO3.TypoScript:Array {
-		1 = TYPO3.TypoScript:Tag {
+	content = Neos.Fusion:Array {
+		1 = Neos.Fusion:Tag {
 			tagName = 'ul'
 			attributes.class = 'js-FooterGallery-content small-block-grid-2 medium-block-grid-3 large-block-grid-6 marginHorizontal-none'
 			content = TYPO3.Neos:ContentCollectionRenderer {
@@ -25,7 +25,7 @@ prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
 				itemRenderer = Sfi.Sfi:FooterGalleryItem
 			}
 		}
-		2 = TYPO3.TypoScript:Tag {
+		2 = Neos.Fusion:Tag {
 			tagName = 'button'
 			attributes.class = 'js-FooterGallery-loadMore FooterGallery-loadMore Button Button'
 			attributes.data-loadMore = ${Translation.translate('stream.loadMore', null, [], null, 'Sfi.Sfi')}
@@ -48,7 +48,7 @@ prototype(Sfi.Sfi:FooterGallery) < prototype(TYPO3.TypoScript:Tag) {
 		}
 	}
 }
-prototype(Sfi.Sfi:FooterGalleryAjax) < prototype(TYPO3.TypoScript:RawArray) {
+prototype(Sfi.Sfi:FooterGalleryAjax) < prototype(Neos.Fusion:RawArray) {
 	# Not DRY :(
 	@context.footerGalleryNode = ${q(site).children('footerGallery').get(0)}
 	@context.offset = 6

@@ -3,7 +3,7 @@ prototype(Sfi.Sfi:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
 	# TODO: better ideas how to check if node is found?
 	@if.notEmpty = ${String.length(node.identifier) > 0}
 	subject = ${String.stripTags(node.properties.title)}
-	body = TYPO3.TypoScript:Value {
+	body = Neos.Fusion:Value {
 		value = Sfi.News:News {
 			isNewsletter = true
 			prototype(NodeUri) {

@@ -1,4 +1,4 @@
-prototype(Sfi.Sfi:TrusteeShort) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.Sfi:TrusteeShort) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/TrusteeShort.html'
 	title = ${node.properties.title}
 	freeText = ${node.properties.freeText}
@@ -7,7 +7,7 @@ prototype(Sfi.Sfi:TrusteeShort) < prototype(TYPO3.TypoScript:Template) {
 	node = ${node}
 }
 
-prototype(Sfi.Sfi:TrusteeListing) < prototype(TYPO3.TypoScript:Collection) {
+prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Collection) {
 	@process.tmpl = ${'<div>' + value + '</div>'}
 	collection = ${node.properties.trustees}
 	itemName = 'node'

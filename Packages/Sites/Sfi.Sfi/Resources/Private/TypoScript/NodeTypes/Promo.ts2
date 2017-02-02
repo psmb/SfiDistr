@@ -24,7 +24,7 @@ prototype(Sfi.Sfi:PromoShort) < prototype(TYPO3.Neos:Content) {
 
 
 
-prototype(Sfi.Sfi:PromoList) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Sfi:PromoList) < prototype(Neos.Fusion:Tag) {
 	tagName = 'div'
 	attributes.class = 'PromoList'
 	content = TYPO3.Neos:ContentCollectionRenderer {

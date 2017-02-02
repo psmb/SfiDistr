@@ -1,4 +1,4 @@
-prototype(Sfi.Sfi:LanguageMenu) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Sfi:LanguageMenu) < prototype(Neos.Fusion:Tag) {
     lang = ${Array.first(node.context.dimensions.language)}
     @context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
     tagName = 'a'

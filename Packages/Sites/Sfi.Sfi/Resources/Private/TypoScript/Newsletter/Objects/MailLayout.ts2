@@ -1,8 +1,8 @@
-prototype(Sfi.Sfi:MailLayout) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.Sfi:MailLayout) < prototype(Neos.Fusion:Template) {
     templatePath = 'resource://Sfi.Sfi/Private/TypoScript/Newsletter/Objects/MailLayout.html'
     value = ${value}
 
-    logoUri = TYPO3.TypoScript:ResourceUri {
+    logoUri = Neos.Fusion:ResourceUri {
         path = 'resource://Sfi.Sfi/Public/Images/sfi-newsletter.png'
     }
 

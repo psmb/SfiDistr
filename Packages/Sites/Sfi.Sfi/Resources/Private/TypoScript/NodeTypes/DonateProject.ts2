@@ -1,12 +1,12 @@
 prototype(Sfi.Sfi:DonateProject) {
-	image = TYPO3.TypoScript:Tag {
+	image = Neos.Fusion:Tag {
 		tagName = 'picture'
-		content = TYPO3.TypoScript:Array {
-			large = TYPO3.TypoScript:Tag {
+		content = Neos.Fusion:Array {
+			large = Neos.Fusion:Tag {
 				tagName = 'source'
 				attributes {
 					media = '(min-width: 1024px)'
-					srcset = TYPO3.TypoScript:Array {
+					srcset = Neos.Fusion:Array {
 						1 = ImageUri {
 							asset = ${node.properties.imageLarge}
 							maximumWidth = 1280
@@ -20,11 +20,11 @@ prototype(Sfi.Sfi:DonateProject) {
 					}
 				}
 			}
-			medium = TYPO3.TypoScript:Tag {
+			medium = Neos.Fusion:Tag {
 				tagName = 'source'
 				attributes {
 					media = '(min-width: 640px)'
-					srcset = TYPO3.TypoScript:Array {
+					srcset = Neos.Fusion:Array {
 						1 = ImageUri {
 							asset = ${node.properties.imageMedium}
 							maximumWidth = 960
@@ -38,10 +38,10 @@ prototype(Sfi.Sfi:DonateProject) {
 					}
 				}
 			}
-			small = TYPO3.TypoScript:Tag {
+			small = Neos.Fusion:Tag {
 				tagName = 'source'
 				attributes {
-					srcset = TYPO3.TypoScript:Array {
+					srcset = Neos.Fusion:Array {
 						1 = ImageUri {
 							asset = ${node.properties.imageSmall}
 							maximumWidth = 480
@@ -55,7 +55,7 @@ prototype(Sfi.Sfi:DonateProject) {
 					}
 				}
 			}
-			img = TYPO3.TypoScript:Tag {
+			img = Neos.Fusion:Tag {
 				tagName = 'img'
 				attributes {
 					src = ImageUri {
