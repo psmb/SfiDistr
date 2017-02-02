@@ -1,23 +1,4 @@
 
-TYPO3:
-  TYPO3CR:
-    contentDimensions:
-      language:
-        default: ru
-        defaultPreset: ru
-        label: Language
-        icon: icon-language
-        presets:
-          ru:
-            label: Russian
-            values:
-              - ru
-            uriSegment: ''
-          en:
-            label: English
-            values:
-              - en
-            uriSegment: en
 Sfi:
   Sfi:
     viewHelpers:
@@ -97,3 +78,21 @@ Neos:
         contentBlocks:
           position: 110
           label: 'Content Blocks'
+  ContentRepository:
+    contentDimensions:
+      language:
+        default: ru
+        defaultPreset: ru
+        label: Language
+        icon: icon-language
+        presets:
+          ru:
+            label: Russian
+            values:
+              - ru
+            uriSegment: ''
+          en:
+            label: English
+            values:
+              - en
+            uriSegment: en
