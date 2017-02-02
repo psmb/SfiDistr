@@ -13,13 +13,13 @@ namespace Sfi\Sfi\TypoScript;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Log\SystemLoggerInterface;
-use Neos\Fusion\TypoScriptObjects\AbstractTypoScriptObject;
+use Neos\Fusion\FusionObjects\AbstractFusionObject;
 use Neos\Neos\Exception as NeosException;
 
 /**
  * Create a link to a node
  */
-class RedirectImplementation extends AbstractTypoScriptObject {
+class RedirectImplementation extends AbstractFusionObject {
 
 	/**
 	 * Url for redirect
