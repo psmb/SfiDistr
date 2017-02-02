@@ -1,8 +1,4 @@
 
-TYPO3:
-  TypoScript:
-    defaultContext:
-      NewsConfiguration: Sfi\News\TypoScript\Eel\Helper\ConfigurationHelper
 Sfi:
   News:
     listNode:
@@ -127,3 +123,6 @@ Neos:
     typoScript:
       autoInclude:
         Sfi.News: true
+  Fusion:
+    defaultContext:
+      NewsConfiguration: Sfi\News\TypoScript\Eel\Helper\ConfigurationHelper
