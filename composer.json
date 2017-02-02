@@ -1,40 +1,39 @@
 {
     "name": "sfi/sfi-distr",
-    "description" : "TYPO3 Neos Distribution for Sfi.ru",
+    "description": "Neos Distribution for Sfi.ru",
     "license": "GPL-3.0+",
     "config": {
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
     "repositories": [
-        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Styleguide.git" },
-        { "type": "git", "url": "https://github.com/sfi-ru/Sfi.Grid.git" }
+        {
+            "type": "git",
+            "url": "https://github.com/sfi-ru/Sfi.Styleguide.git"
+        }
     ],
     "require": {
-        "neos/neos-development-collection": "2.3.x-dev",
-        "neos/flow-development-collection": "3.3.x-dev",
-        "typo3/flow": "~3.3.0",
-        "typo3/imagine": "~2.0",
-
-        "typo3/party": "~3.1",
-        "typo3/setup": "~2.0",
-
+        "neos/neos-development-collection": "3.0.x-dev",
+        "neos/flow-development-collection": "4.0.x-dev",
+        "neos/party": "~4.0.0",
+        "neos/imagine": "~3.0.0",
+        "neos/form": "~3.0.0",
+        "neos/setup": "~4.0.0",
         "sfi/styleguide": "@dev",
-        "sfi/grid": "dev-master#0c08c5c8",
-        "m12/neos-plugin-dbexport": "dev-master",
-        "neos/redirecthandler-databasestorage": "^1.0",
-        "neos/redirecthandler-neosadapter": "^1.0",
-        "typo3/neos-googleanalytics": "^1.0",
-        "psmb/newsletter": "@dev"
+        "sfi/grid": "@dev",
+        "neos/redirecthandler": "@dev",
+        "neos/redirecthandler-databasestorage": "@dev",
+        "neos/redirecthandler-neosadapter": "@dev",
+        "neos/googleanalytics": "~2.0.0",
+        "psmb/newsletter": "~2.0"
     },
-
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },
     "scripts": {
-        "post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-        "post-install-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-        "post-package-update":"TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-        "post-package-install":"TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+        "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
     }
 }

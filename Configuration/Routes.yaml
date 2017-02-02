@@ -18,7 +18,7 @@
   name: 'Paginate for Sfi.News:Listable'
   uriPattern:    '{node}-p{--listable-paginate.currentPage}.html'
   defaults:
-    '@package':    'TYPO3.Neos'
+    '@package':    'Neos.Neos'
     '@controller': 'Frontend\Node'
     '@format':     'html'
     '@action':     'show'
@@ -30,18 +30,18 @@
       'currentPage': '1'
   routeParts:
     node:
-      handler: TYPO3\Neos\Routing\FrontendNodeRoutePartHandler
+      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandler
   appendExceedingArguments: TRUE
 
 ##
-# TYPO3 Neos subroutes
+# Neos Neos subroutes
 
 -
-  name: 'TYPO3 Neos'
-  uriPattern: '<TYPO3NeosSubroutes>'
+  name: 'Neos Neos'
+  uriPattern: '<NeosNeosSubroutes>'
   subRoutes:
-    'TYPO3NeosSubroutes':
-      package: 'TYPO3.Neos'
+    'NeosNeosSubroutes':
+      package: 'Neos.Neos'
       variables:
         'defaultUriSuffix': '.html'
 
@@ -49,7 +49,7 @@
   name: 'yandex-news'
   uriPattern: 'rss-feed-yandex'
   defaults:
-    '@package':    'TYPO3.Neos'
+    '@package':    'Neos.Neos'
     '@controller': 'Frontend\Node'
     '@action':     'show'
     '@format':     'html'
