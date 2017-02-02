@@ -1,9 +1,6 @@
 
 Neos:
   Neos:
-    typoScript:
-      autoInclude:
-        Sfi.Shared: true
     nodeTypes:
       groups:
         contentElements:
@@ -24,6 +21,9 @@ Neos:
         system:
           position: end
           label: Системные
+    fusion:
+      autoInclude:
+        Sfi.Shared: true
   Fusion:
     defaultContext:
       NodeTypeConfiguration: Sfi\Shared\TypoScript\Eel\Helper\NodeTypeConfigurationHelper
