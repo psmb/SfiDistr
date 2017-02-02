@@ -120,7 +120,7 @@ Neos:
         news:
           position: end
           label: News
-    typoScript:
+    fusion:
       autoInclude:
         Sfi.News: true
   Fusion:
