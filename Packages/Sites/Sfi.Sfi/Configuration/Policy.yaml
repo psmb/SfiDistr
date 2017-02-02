@@ -1,5 +1,5 @@
 privilegeTargets:
-  'TYPO3\Neos\Security\Authorization\Privilege\NodeTreePrivilege':
+  'Neos\Neos\Security\Authorization\Privilege\NodeTreePrivilege':
     'Sfi.Sfi:SystemPages':
       matcher: >-
           isDescendantNodeOf("f99ec33b-024b-bc16-62fb-92252b38411f")
@@ -10,7 +10,7 @@ privilegeTargets:
           || isDescendantNodeOf("7a33cf3f-28a6-1ff2-2d8a-882dcedaa2a2")
 
 roles:
-  'TYPO3.Neos:Administrator':
+  'Neos.Neos:Administrator':
     privileges:
       -
         privilegeTarget: 'Sfi.Sfi:SystemPages'

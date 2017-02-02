@@ -40,7 +40,7 @@ blah: &alohaRich
 
 'Sfi.Sfi:Person':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
     'Sfi.News:Listable': true
     'Sfi.Shared:TagMixin': true
   ui:
@@ -56,9 +56,9 @@ blah: &alohaRich
           position: 5
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     coverCollection:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   properties:
     isRector:
       type: boolean

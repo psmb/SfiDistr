@@ -1,28 +1,5 @@
 
 TYPO3:
-  Neos:
-    typoScript:
-      autoInclude:
-        Sfi.Sfi: true
-    userInterface:
-      loadMinifiedJavascript: false
-      editPreviewModes:
-        print:
-          isEditingMode: false
-          isPreviewMode: true
-          typoScriptRenderingPath: print
-          title: Print
-          position: 200
-      navigateComponent:
-        structureTree:
-          loadingDepth: 0
-        nodeTree:
-          loadingDepth: 1
-    nodeTypes:
-      groups:
-        contentBlocks:
-          position: 110
-          label: 'Content Blocks'
   TYPO3CR:
     contentDimensions:
       language:
@@ -97,3 +74,26 @@ Neos:
       defaultLocale: ru
     http:
       baseUri: 'https://sfi.ru/'
+  Neos:
+    typoScript:
+      autoInclude:
+        Sfi.Sfi: true
+    userInterface:
+      loadMinifiedJavascript: false
+      editPreviewModes:
+        print:
+          isEditingMode: false
+          isPreviewMode: true
+          typoScriptRenderingPath: print
+          title: Print
+          position: 200
+      navigateComponent:
+        structureTree:
+          loadingDepth: 0
+        nodeTree:
+          loadingDepth: 1
+    nodeTypes:
+      groups:
+        contentBlocks:
+          position: 110
+          label: 'Content Blocks'

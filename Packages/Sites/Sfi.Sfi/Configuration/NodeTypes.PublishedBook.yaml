@@ -1,7 +1,7 @@
 
 'Sfi.Sfi:PublishedBook':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
     'Sfi.News:Listable': true
   ui:
     label: 'Опубликованная книга'
@@ -14,7 +14,7 @@
           label: Book
   childNodes:
     details:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     button:
       type: 'Sfi.Shared:Link'
   properties:
@@ -48,4 +48,4 @@
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        TYPO3.Neos/Validation/DateTimeValidator: {  }
+        Neos.Neos/Validation/DateTimeValidator: {  }

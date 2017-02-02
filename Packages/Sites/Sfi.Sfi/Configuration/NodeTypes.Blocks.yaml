@@ -40,7 +40,7 @@ blah: &alohaRich
 
 'Sfi.Sfi:QuoteBlock':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
     'Neos.NodeTypes:Image': true
   ui:
     label: 'Блок цитаты'
@@ -77,7 +77,7 @@ blah: &alohaRich
         inlineEditable: true
 'Sfi.Sfi:Card':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Карточка
     help:
@@ -99,7 +99,7 @@ blah: &alohaRich
           placeholder: 'Тут текст карточки'
 'Sfi.Sfi:VCard':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Визитная карточка'
     icon: icon-edit
@@ -141,7 +141,7 @@ blah: &alohaRich
         reloadIfChanged: true
         inspector:
           group: variant
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               1:
@@ -150,10 +150,10 @@ blah: &alohaRich
                 label: 'Вариант 2'
 'Sfi.Sfi:BuyBook':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   childNodes:
     details:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     button:
       type: 'Sfi.Shared:Link'
   ui:
@@ -184,7 +184,7 @@ blah: &alohaRich
           position: 50
 'Sfi.Sfi:PersonFormalListing':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Список персон (законодательство)'
     group: contentBlocks
@@ -198,10 +198,10 @@ blah: &alohaRich
           group: general
           editorOptions:
             nodeTypes:
-              - 'TYPO3.Neos:Document'
+              - 'Neos.Neos:Document'
 'Sfi.Sfi:StudyProgramsListing':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Список учебных программ'
     group: contentBlocks
@@ -219,7 +219,7 @@ blah: &alohaRich
           group: general
           editorOptions:
             nodeTypes:
-              - 'TYPO3.Neos:Document'
+              - 'Neos.Neos:Document'
 'Sfi.Sfi:StudyProgramsListingFormal':
   superTypes:
     'Sfi.Sfi:StudyProgramsListing': true
@@ -227,7 +227,7 @@ blah: &alohaRich
     label: 'Список учебных программ (законодательство)'
 'Sfi.Sfi:StudyProgramsListingByReference':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Список учебных программ (по выбору)'
     group: contentBlocks
@@ -248,7 +248,7 @@ blah: &alohaRich
               - 'Sfi.Sfi:StudyProgram'
 'Sfi.Sfi:AlmanacEntry':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Элемент альманаха'
     help:

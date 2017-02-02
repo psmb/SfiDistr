@@ -1,6 +1,6 @@
 'Sfi.Sfi:DonateProject':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
     'Sfi.Sfi:ResponsiveImageMixin': true
   ui:
     label: 'Пожертвовать на проект'

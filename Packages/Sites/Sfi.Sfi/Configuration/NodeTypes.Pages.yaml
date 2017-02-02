@@ -57,9 +57,9 @@ blah: &alohaRich
     'Sfi.Sfi:AbstractPage': true
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     footerGallery:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
 'Sfi.Sfi:PagePresentation':
   superTypes:
     'Sfi.Sfi:AbstractPage': true
@@ -69,7 +69,7 @@ blah: &alohaRich
       message: 'Главные презентационные разделы сайта (1-й уровень)'
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   properties:
     lead:
       type: string
@@ -86,11 +86,11 @@ blah: &alohaRich
     label: 'Страница: Раздел 2-го уровня'
   childNodes:
     presentation:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     sidebar:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
 'Sfi.Sfi:PageSubSection':
   superTypes:
     'Sfi.Sfi:AbstractPage': true
@@ -98,9 +98,9 @@ blah: &alohaRich
     label: 'Страница: Раздел 3-го уровня'
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     sidebar:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
 'Sfi.Sfi:PageTag':
   superTypes:
     'Sfi.Sfi:AbstractPage': true
@@ -110,7 +110,7 @@ blah: &alohaRich
     icon: icon-file-text
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   properties:
     image:
       type: Neos\Media\Domain\Model\ImageInterface
@@ -151,4 +151,4 @@ blah: &alohaRich
     label: 'Страница: обычная'
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'

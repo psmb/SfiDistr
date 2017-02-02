@@ -1,6 +1,6 @@
 'Sfi.Sfi:TrusteeListing':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Список Попсовет'
     group: contentBlocks

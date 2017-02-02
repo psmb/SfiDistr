@@ -2,7 +2,7 @@
 namespace Sfi\Sfi\TypoScript;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "TYPO3.Neos".            *
+ * This script belongs to the TYPO3 Flow package "Neos.Neos".            *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU General Public License, either version 3 of the   *
@@ -14,7 +14,7 @@ namespace Sfi\Sfi\TypoScript;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Log\SystemLoggerInterface;
 use TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject;
-use TYPO3\Neos\Exception as NeosException;
+use Neos\Neos\Exception as NeosException;
 
 /**
  * Create a link to a node
