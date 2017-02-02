@@ -1,13 +1,13 @@
 prototype(Sfi.Sfi:PublishedBook) {
 	title = ${String.stripTags(q(node).property('title'))}
 
-	details = TYPO3.Neos:ContentCollection {
+	details = Neos.Neos:ContentCollection {
 		nodePath = 'details'
 	}
 	button = Sfi.Shared:Link {
 		@override.node = ${q(node).children('button').get(0)}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:PublishedBookShort) < prototype(Sfi.Sfi:PublishedBook)

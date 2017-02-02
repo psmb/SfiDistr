@@ -1,7 +1,7 @@
 prototype(Sfi.Sfi:StudyProgramAsset) <  prototype(Sfi.Shared:Asset) {
 	attributes.class = 'ButtonInline AssetInline'
 	attributes.href = ${'asset://' + node.properties.asset.identifier}
-	attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris
+	attributes.href.@process.convertUris = Neos.Neos:ConvertUris
 	@if.assetNotEmptyOrInBackend = ${node.properties.asset.identifier != null || documentNode.context.inBackend}
 }
 
@@ -34,52 +34,52 @@ prototype(Sfi.Sfi:StudyProgram) {
 		@override.node = ${q(node).children('assetSampleContract').get(0)}
 	}
 
-	assetsPlan = TYPO3.Neos:ContentCollection {
+	assetsPlan = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlan'
 	}
-	assetsAdmissionRegulations = TYPO3.Neos:ContentCollection {
+	assetsAdmissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
 	}
-	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
+	assetsSubjectAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
 	}
-	assetsPracticeAnnotations = TYPO3.Neos:ContentCollection {
+	assetsPracticeAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotations'
 	}
-	assetsMethodical = TYPO3.Neos:ContentCollection {
+	assetsMethodical = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodical'
 	}
-	description = TYPO3.Neos:ContentCollection {
+	description = Neos.Neos:ContentCollection {
 		nodePath = 'description'
 	}
-	subjects = TYPO3.Neos:ContentCollection {
+	subjects = Neos.Neos:ContentCollection {
 		nodePath = 'subjects'
 	}
-	schedule = TYPO3.Neos:ContentCollection {
+	schedule = Neos.Neos:ContentCollection {
 		nodePath = 'schedule'
 	}
-	documentSubmission = TYPO3.Neos:ContentCollection {
+	documentSubmission = Neos.Neos:ContentCollection {
 		nodePath = 'documentSubmission'
 	}
-	exams = TYPO3.Neos:ContentCollection {
+	exams = Neos.Neos:ContentCollection {
 		nodePath = 'exams'
 	}
-	payment = TYPO3.Neos:ContentCollection {
+	payment = Neos.Neos:ContentCollection {
 		nodePath = 'payment'
 	}
-	admission = TYPO3.Neos:ContentCollection {
+	admission = Neos.Neos:ContentCollection {
 		nodePath = 'admission'
 	}
-	admissionContacts = TYPO3.Neos:ContentCollection {
+	admissionContacts = Neos.Neos:ContentCollection {
 		nodePath = 'admissionContacts'
 	}
-	numberOfSeats = TYPO3.Neos:ContentCollection {
+	numberOfSeats = Neos.Neos:ContentCollection {
 		nodePath = 'numberOfSeats'
 	}
-	admissionRegulations = TYPO3.Neos:ContentCollection {
+	admissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'admissionRegulations'
 	}
-	feedback = TYPO3.Neos:ContentCollection {
+	feedback = Neos.Neos:ContentCollection {
 		nodePath = 'feedback'
 	}
 
@@ -94,7 +94,7 @@ prototype(Sfi.Sfi:StudyProgram) {
 			2 = ${'DescendantOf_' + node.identifier}
 		}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:StudyProgramShort) < prototype(Neos.Fusion:Template) {
@@ -127,7 +127,7 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 		content = 'Описание образовательной программы'
 		@override.node = ${q(node).children('assetDescription').get(0)}
 	}
-	assetsPlan = TYPO3.Neos:ContentCollection {
+	assetsPlan = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlan'
 	}
 	assetSchedule = Sfi.Sfi:StudyProgramAsset {
@@ -138,10 +138,10 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 		title = 'Свидетельство о государственной аккредитации'
 		@override.node = ${q(node).children('assetAccreditation').get(0)}
 	}
-	assetsSubjectAnnotations = TYPO3.Neos:ContentCollection {
+	assetsSubjectAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
 	}
-	assetsPracticeAnnotations = TYPO3.Neos:ContentCollection {
+	assetsPracticeAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotations'
 	}
 }
@@ -202,7 +202,7 @@ prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProg
 	}
 }
 
-prototype(TYPO3.Neos:PrimaryContent) {
+prototype(Neos.Neos:PrimaryContent) {
 	StudyProgram {
 		@position = 'before default'
 		condition = ${q(node).is('[instanceof Sfi.Sfi:StudyProgram]')}

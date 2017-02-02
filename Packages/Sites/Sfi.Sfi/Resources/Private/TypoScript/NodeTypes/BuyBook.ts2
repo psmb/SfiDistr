@@ -1,7 +1,7 @@
 prototype(Sfi.Sfi:BuyBook) {
 	title = ${String.stripTags(q(node).property('title'))}
 
-	details = TYPO3.Neos:ContentCollection {
+	details = Neos.Neos:ContentCollection {
 		nodePath = 'details'
 	}
 	button = Sfi.Shared:Link {

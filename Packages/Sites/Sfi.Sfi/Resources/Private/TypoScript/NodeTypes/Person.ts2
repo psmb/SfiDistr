@@ -5,13 +5,13 @@ prototype(Sfi.Sfi:Person) {
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 	sectionMenu = ${siblingsMenu}
 
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 
 	listByTag = Sfi.News:ListByTag
 
-	coverCollection = TYPO3.Neos:ContentCollection {
+	coverCollection = Neos.Neos:ContentCollection {
 		nodePath = 'coverCollection'
 		prototype(Neos.NodeTypes:Image) {
 			maximumWidth = ${variant == 'Rector' ? 770 : variant == 'Rich' ? 480 : 400}
@@ -19,10 +19,10 @@ prototype(Sfi.Sfi:Person) {
 			allowCropping = TRUE
 		}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
-prototype(Sfi.Sfi:PersonShort) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.Sfi:PersonShort) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/PersonShort.html'
 	title = ${String.stripTags(q(node).property('title'))}
 	subject = ${String.stripTags(q(node).property('subject'))}
@@ -61,7 +61,7 @@ prototype(Sfi.Sfi:ChairpersonShort) < prototype(Sfi.Sfi:PersonShort) {
 }
 
 
-prototype(Sfi.Shared:ContentCaseShort) < prototype(TYPO3.Neos:ContentCase) {
+prototype(Sfi.Shared:ContentCaseShort) < prototype(Neos.Neos:ContentCase) {
 	isRector {
 		condition = ${q(node).property('isRector')}
 		type = 'Sfi.Sfi:RectorShort'

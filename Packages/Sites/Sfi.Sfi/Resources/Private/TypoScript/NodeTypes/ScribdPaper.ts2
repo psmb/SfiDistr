@@ -1,12 +1,12 @@
 prototype(Sfi.Sfi:ScribdPaper) {
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 	sectionMenu = ${siblingsMenu}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:ScribdList) >
 prototype(Sfi.Sfi:ScribdList) < prototype(Neos.Fusion:Collection) {
-	collection = ${q(documentNode).children('[instanceof TYPO3.Neos:Shortcut]').get()}
+	collection = ${q(documentNode).children('[instanceof Neos.Neos:Shortcut]').get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Collection {
 		@process.tmpl = ${'<div><h2 class="H3 textAlign-center">' + node.properties.title + '</h2>' + value + '</div>'}
@@ -15,7 +15,7 @@ prototype(Sfi.Sfi:ScribdList) < prototype(Neos.Fusion:Collection) {
 		itemRenderer = Sfi.Sfi:ScribdPaperShort
 	}
 
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 	@cache {
 		mode = 'cached'
 		entryTags {

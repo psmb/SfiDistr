@@ -1,4 +1,4 @@
-prototype(TYPO3.Neos:Content) {
+prototype(Neos.Neos:Content) {
 	@process.applyTags = Neos.Fusion:Tag {
 		attributes.itemprop = ${q(node).property('itemprop') ? q(node).property('itemprop') : null}
 		attributes.itemscope = ${q(node).property('itemtype') ? true : null}

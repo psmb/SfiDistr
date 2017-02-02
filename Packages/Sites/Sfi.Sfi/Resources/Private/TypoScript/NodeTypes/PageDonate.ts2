@@ -3,7 +3,7 @@ prototype(Sfi.Sfi:PageDonate) {
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 	node = ${node}
 
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 	imageUri = ImageUri {

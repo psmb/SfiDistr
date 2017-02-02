@@ -1,6 +1,6 @@
 #This is a default page object. It's being extended and never used directly.
 prototype(Sfi.Sfi:Page) >
-prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
+prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('sfi.abbrev', null, [], null, 'Sfi.Sfi')}
 
@@ -62,7 +62,7 @@ prototype(Sfi.Sfi:Page) < prototype(TYPO3.Neos:Page) {
 		}
 		@override.siblingsMenu = Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
-			itemCollection = ${q(documentNode).parent().children('[instanceof TYPO3.Neos:Document]').get()}
+			itemCollection = ${q(documentNode).parent().children('[instanceof Neos.Neos:Document]').get()}
 		}
 
 		breadcrumbMenu = BreadcrumbMenu {

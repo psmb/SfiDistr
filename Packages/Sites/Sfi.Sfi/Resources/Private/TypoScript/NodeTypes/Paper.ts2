@@ -1,13 +1,13 @@
 prototype(Sfi.Sfi:Paper) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
-prototype(Sfi.Sfi:PaperShort) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.Sfi:PaperShort) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/PaperShort.html'
 	title = ${String.stripTags(q(node).property('title'))}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
@@ -16,7 +16,7 @@ prototype(Sfi.Sfi:PaperShort) < prototype(TYPO3.Neos:Content) {
 	authorFrom = ${String.stripTags(q(node).property('authorFrom'))}
 }
 
-prototype(TYPO3.Neos:PrimaryContent) {
+prototype(Neos.Neos:PrimaryContent) {
 	Paper {
 		@position = 'before default'
 		condition = ${q(node).is('[instanceof Sfi.Sfi:Paper]')}

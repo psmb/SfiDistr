@@ -3,7 +3,7 @@ prototype(Sfi.Sfi:LanguageMenu) < prototype(Neos.Fusion:Tag) {
     @context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
     tagName = 'a'
     attributes.class = 'color-primary'
-    attributes.href = TYPO3.Neos:NodeUri {
+    attributes.href = Neos.Neos:NodeUri {
         node = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).count() > 0 ?
             q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0) :
             q(site).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0)}

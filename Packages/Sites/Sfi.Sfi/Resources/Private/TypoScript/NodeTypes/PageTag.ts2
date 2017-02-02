@@ -6,17 +6,17 @@ prototype(Sfi.Sfi:PageTag) {
 	title = ${q(node).property('title')}
 	listByTag = Sfi.News:ListByTag
 
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 
 	sectionMenu = Menu
 	sectionMenu {
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
-		itemCollection = ${q(documentNode).siblings('[instanceof TYPO3.Neos:Document]').add(q(documentNode)).get()}
+		itemCollection = ${q(documentNode).siblings('[instanceof Neos.Neos:Document]').add(q(documentNode)).get()}
 		itemCollection.@process.sort = ${q(value).count() > 0 ? q(value).sort('navTitle', 'ASC').get() : value}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:PageTagShort) < prototype(Neos.Fusion:Template) {

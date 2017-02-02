@@ -19,7 +19,7 @@ prototype(Sfi.Sfi:FooterGallery) < prototype(Neos.Fusion:Tag) {
 		1 = Neos.Fusion:Tag {
 			tagName = 'ul'
 			attributes.class = 'js-FooterGallery-content small-block-grid-2 medium-block-grid-3 large-block-grid-6 marginHorizontal-none'
-			content = TYPO3.Neos:ContentCollectionRenderer {
+			content = Neos.Neos:ContentCollectionRenderer {
 				collection = ${q(footerGalleryNode).children().get()}
 				collection.@process.paginate = ${q(value).slice(0, offset).get()}
 				itemRenderer = Sfi.Sfi:FooterGalleryItem
@@ -58,7 +58,7 @@ prototype(Sfi.Sfi:FooterGalleryAjax) < prototype(Neos.Fusion:RawArray) {
 	# Check if we have already fetched all of the records or not. Not DRY!
 	loadMore = ${q(footerGalleryNode).children().count() > pageNumber * itemsPerPage + offset}
 
-	content = TYPO3.Neos:ContentCollectionRenderer {
+	content = Neos.Neos:ContentCollectionRenderer {
 		collection = ${q(footerGalleryNode).children().get()}
 		collection.@process.paginate = ${q(value).slice((pageNumber - 1) * itemsPerPage + offset, pageNumber * itemsPerPage + offset).get()}
 		itemRenderer = Sfi.Sfi:FooterGalleryItem

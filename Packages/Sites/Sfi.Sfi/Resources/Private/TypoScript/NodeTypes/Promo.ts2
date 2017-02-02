@@ -2,7 +2,7 @@ prototype(Sfi.Sfi:Promo) {
 	title = ${q(node).property('title')}
 	teaser = ${q(node).property('teaser')}
 
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 
@@ -14,7 +14,7 @@ prototype(Sfi.Sfi:Promo) {
 	}
 }
 
-prototype(Sfi.Sfi:PromoShort) < prototype(TYPO3.Neos:Content) {
+prototype(Sfi.Sfi:PromoShort) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/PromoShort.html'
 	title = ${String.stripTags(q(node).property('title'))}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
@@ -27,7 +27,7 @@ prototype(Sfi.Sfi:PromoShort) < prototype(TYPO3.Neos:Content) {
 prototype(Sfi.Sfi:PromoList) < prototype(Neos.Fusion:Tag) {
 	tagName = 'div'
 	attributes.class = 'PromoList'
-	content = TYPO3.Neos:ContentCollectionRenderer {
+	content = Neos.Neos:ContentCollectionRenderer {
 		itemRenderer = Sfi.Sfi:PromoShort
 		collection = ${q(site).children('promo').children().get()}
 	}
@@ -43,7 +43,7 @@ prototype(Sfi.Sfi:PromoList) < prototype(Neos.Fusion:Tag) {
 	}
 }
 
-prototype(TYPO3.Neos:PrimaryContent) {
+prototype(Neos.Neos:PrimaryContent) {
     promo {
         @position = 'before default'
         condition = ${q(node).is('[instanceof Sfi.Sfi:Promo]')}

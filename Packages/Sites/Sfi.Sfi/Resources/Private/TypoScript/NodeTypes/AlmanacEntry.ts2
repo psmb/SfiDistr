@@ -1,4 +1,4 @@
 prototype(Sfi.Sfi:AlmanacEntry) {
 	href = ${'asset://' + node.properties.asset.identifier}
-	href.@process.convertUris = TYPO3.Neos:ConvertUris
+	href.@process.convertUris = Neos.Neos:ConvertUris
 }
