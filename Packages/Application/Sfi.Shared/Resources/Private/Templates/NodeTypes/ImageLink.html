@@ -1,5 +1,5 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
-{namespace media=TYPO3\Media\ViewHelpers}
+{namespace media=Neos\Media\ViewHelpers}
 <f:if condition="{image}">
 	<f:then>
 		<a {attributes -> f:format.raw()} href="{link}" style="background-image:url({media:uri.image(asset: image, maximumWidth: maximumWidth, maximumHeight: maximumHeight, allowCropping: allowCropping, allowUpScaling: allowUpScaling)})">{neos:contentElement.editable(property: 'title', tag: 'span')}</a>

@@ -99,7 +99,7 @@
     icon: icon-edit
   properties:
     anchorImage:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Картинка якоря'
         reloadIfChanged: true

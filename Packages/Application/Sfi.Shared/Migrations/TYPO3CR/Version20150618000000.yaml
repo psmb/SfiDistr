@@ -12,7 +12,7 @@ up:
         -
           type: '\Sfi\Shared\TYPO3CR\Transformations\ConvertAssetsToAudioTransformation'
           settings:
-            assetType: '\TYPO3\Media\Domain\Model\Audio'
+            assetType: '\Neos\Media\Domain\Model\Audio'
             targetNodeType: 'Sfi.Shared:AudioAsset'
     -
       filters:
@@ -25,7 +25,7 @@ up:
         -
           type: '\Sfi\Shared\TYPO3CR\Transformations\ConvertAssetsToAudioTransformation'
           settings:
-            assetType: '\TYPO3\Media\Domain\Model\Asset'
+            assetType: '\Neos\Media\Domain\Model\Asset'
             targetNodeType: 'Sfi.Shared:Asset'
 down:
   comments: 'No way back!'

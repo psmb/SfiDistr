@@ -116,7 +116,7 @@
         aloha:
           placeholder: 'Введите подпись к файлу'
     asset:
-      type: TYPO3\Media\Domain\Model\Asset
+      type: Neos\Media\Domain\Model\Asset
       ui:
         inspector:
           group: asset
@@ -156,7 +156,7 @@
         inspector:
           group: asset
     asset:
-      type: TYPO3\Media\Domain\Model\Asset
+      type: Neos\Media\Domain\Model\Asset
       ui:
         inspector:
           group: asset
