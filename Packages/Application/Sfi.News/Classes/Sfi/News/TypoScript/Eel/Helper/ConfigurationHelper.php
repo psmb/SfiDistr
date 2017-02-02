@@ -5,7 +5,7 @@ namespace Sfi\News\TypoScript\Eel\Helper;
  *                                                                        *
  *                                                                        */
 use Neos\Eel\ProtectedContextAwareInterface;
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Flow\Annotations as Flow;
 /**
  * News helpers for Eel contexts
