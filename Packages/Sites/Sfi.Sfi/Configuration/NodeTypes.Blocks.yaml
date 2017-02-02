@@ -41,7 +41,7 @@ blah: &alohaRich
 'Sfi.Sfi:QuoteBlock':
   superTypes:
     'TYPO3.Neos:Content': true
-    'TYPO3.Neos.NodeTypes:Image': true
+    'Neos.NodeTypes:Image': true
   ui:
     label: 'Блок цитаты'
     help:
