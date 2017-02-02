@@ -1,7 +1,7 @@
 
 'Sfi.News:List':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Список материалов'
     icon: icon-list
@@ -92,7 +92,7 @@
           group: list
           editorOptions:
             nodeTypes:
-              - 'TYPO3.Neos:Document'
+              - 'Neos.Neos:Document'
     nodes:
       type: references
       ui:
@@ -102,7 +102,7 @@
           group: list
           editorOptions:
             nodeTypes:
-              - 'TYPO3.Neos:Document'
+              - 'Neos.Neos:Document'
     archiveLink:
       type: string
       defaultValue: ''
@@ -113,7 +113,7 @@
           group: list
 'Sfi.News:Rss':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
   ui:
     label: 'Rss list'
     icon: icon-file
@@ -123,7 +123,7 @@
       '*': false
 'Sfi.News:CategorizedList':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Categorized Articles list'
     group: lists
@@ -133,7 +133,7 @@
           label: News
 'Sfi.News:ListByTag':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'List news by tag'
     group: lists

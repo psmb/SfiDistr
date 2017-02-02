@@ -1,16 +1,8 @@
+
 TYPO3:
-  Neos:
-    nodeTypes:
-      groups:
-        news:
-          position: end
-          label: News
-    typoScript:
-      autoInclude:
-        Sfi.News: true
   TypoScript:
     defaultContext:
-      NewsConfiguration: 'Sfi\News\TypoScript\Eel\Helper\ConfigurationHelper'
+      NewsConfiguration: Sfi\News\TypoScript\Eel\Helper\ConfigurationHelper
 Sfi:
   News:
     listNode:
@@ -19,8 +11,8 @@ Sfi:
       pagination:
         itemsPerPage: 24
         maximumNumberOfLinks: 15
-      sortOrder: 'DESC'
-      sortProperty: 'date'
+      sortOrder: DESC
+      sortProperty: date
       itemRenderer: ''
       listTitle: ''
       listTitleClass: ''
@@ -35,13 +27,13 @@ Sfi:
         maximumNumberOfLinks: 15
       sortProperty: date
       listTitle: ''
-      listTitleClass: 'SectionDivider--Service'
+      listTitleClass: SectionDivider--Service
       class: 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'
       dataColumns: true
       itemClass: ''
       archiveLink: ''
       showOnlyNews: false
-      layout: 'ContentDefault'
+      layout: ContentDefault
     publishedBooksArchive:
       numberOfItems: 10000
       paginationEnabled: true
@@ -50,37 +42,37 @@ Sfi:
         maximumNumberOfLinks: 15
       sortProperty: date
       listTitle: ''
-      listTitleClass: 'PageTitle'
+      listTitleClass: PageTitle
       class: 'medium-block-grid-2 small-block-grid-1'
       dataColumns: false
       itemClass: ''
       archiveLink: ''
       showOnlyNews: false
-      layout: 'ContentWithSidebar'
+      layout: ContentWithSidebar
     articlesList:
       numberOfItems: 100
-      pagination: ~
+      pagination: null
       listTitle: ''
       listTitleClass: 'H3 textAlign-center'
       class: ''
       archiveLink: ''
     newsLatest:
       numberOfItems: 6
-      pagination: ~
+      pagination: null
       sortProperty: date
-      listTitle: 'newsLatest.listTitle'
-      listTitleClass: 'SectionDivider--Service'
+      listTitle: newsLatest.listTitle
+      listTitleClass: SectionDivider--Service
       class: 'NewsLatest-Grid medium-block-grid-2 small-block-grid-1'
-      wrapClass: 'NewsLatest'
-      archiveLink: '~/sfi-today'
-      archiveLinkTitle: 'newsLatest.archiveLinkTitle'
+      wrapClass: NewsLatest
+      archiveLink: ~/sfi-today
+      archiveLinkTitle: newsLatest.archiveLinkTitle
     newsRelated:
       numberOfItems: 4
       sortProperty: date
       listTitle: ''
       class: ''
-      archiveLink: '~/sfi-today'
-      archiveLinkTitle: 'newsLatest.archiveLinkTitle'
+      archiveLink: ~/sfi-today
+      archiveLinkTitle: newsLatest.archiveLinkTitle
       thumbnailWidth: 100
       thumbnailHeight: 100
       dateFormat: 'dd MMMM yyyy'
@@ -92,10 +84,10 @@ Sfi:
       dateFormat: 'dd MMMM yyyy'
     announcementsList:
       numberOfItems: 6
-      pagination: ~
+      pagination: null
       sortProperty: date
-      listTitle: 'news.announcements'
-      listTitleClass: 'SectionDivider--Service'
+      listTitle: news.announcements
+      listTitleClass: SectionDivider--Service
       class: ''
       archiveLink: ''
     announcementShort:
@@ -107,7 +99,7 @@ Sfi:
     topList:
       numberOfItems: 3
       sortProperty: date
-      listTitle: ~
+      listTitle: null
       class: 'Carousel--Cover js-carousel-1x'
       archiveLink: ''
     topShort:
@@ -121,7 +113,17 @@ Sfi:
         itemsPerPage: 24
         maximumNumberOfLinks: 15
       sortProperty: date
-      listTitle: 'listByTag.archiveLinkTitle'
-      listTitleClass: 'SectionDivider--Service'
+      listTitle: listByTag.archiveLinkTitle
+      listTitleClass: SectionDivider--Service
       class: 'medium-block-grid-2 small-block-grid-1'
       archiveLink: ''
+Neos:
+  Neos:
+    nodeTypes:
+      groups:
+        news:
+          position: end
+          label: News
+    typoScript:
+      autoInclude:
+        Sfi.News: true

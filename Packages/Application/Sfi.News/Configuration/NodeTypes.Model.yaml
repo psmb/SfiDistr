@@ -42,7 +42,7 @@ blah: &alohaRich
 
 'Sfi.News:Category':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
   ui:
     label: 'Категория новостей'
     icon: icon-file
@@ -54,7 +54,7 @@ blah: &alohaRich
           position: 5
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   properties:
     preset:
       defaultValue: newsArchive
@@ -64,7 +64,7 @@ blah: &alohaRich
         reloadIfChanged: true
         inspector:
           group: news
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               newsArchive:
@@ -79,7 +79,7 @@ blah: &alohaRich
         reloadIfChanged: false
         inspector:
           group: news
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               Hard:
@@ -96,17 +96,17 @@ blah: &alohaRich
 'Sfi.News:AbstractArticle':
   abstract: true
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
     'Sfi.News:Listable': true
   childNodes:
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     coverCollection:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     gallery:
       type: 'Sfi.Shared:Carousel'
     assets:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   ui:
     label: Новость
     icon: icon-file-text
@@ -171,7 +171,7 @@ blah: &alohaRich
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        TYPO3.Neos/Validation/DateTimeValidator: {  }
+        Neos.Neos/Validation/DateTimeValidator: {  }
     hasVideo:
       type: boolean
       ui:
@@ -202,7 +202,7 @@ blah: &alohaRich
           group: news
           editorOptions:
             nodeTypes:
-              - 'TYPO3.Neos:Document'
+              - 'Neos.Neos:Document'
 'Sfi.News:ImportantMixin':
   abstract: true
   properties:
@@ -283,7 +283,7 @@ blah: &alohaRich
         reloadIfChanged: false
         inspector:
           group: news
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               Inherit:
