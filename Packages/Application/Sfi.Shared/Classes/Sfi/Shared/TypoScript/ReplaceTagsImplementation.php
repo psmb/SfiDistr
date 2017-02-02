@@ -5,12 +5,12 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Domain\Exception;
 use Neos\Neos\Service\LinkingService;
 use Neos\ContentRepository\Domain\Model\NodeInterface;
-use Neos\Fusion\TypoScriptObjects\AbstractTypoScriptObject;
+use Neos\Fusion\FusionObjects\AbstractFusionObject;
 
 /**
  * A TypoScript Object that automatically creates links to tags pages
  */
-class ReplaceTagsImplementation extends AbstractTypoScriptObject {
+class ReplaceTagsImplementation extends AbstractFusionObject {
 
 	/**
 	 * @Flow\Inject
