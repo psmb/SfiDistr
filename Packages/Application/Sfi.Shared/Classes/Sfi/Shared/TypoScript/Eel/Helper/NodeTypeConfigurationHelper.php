@@ -2,7 +2,7 @@
 namespace Sfi\Shared\TypoScript\Eel\Helper;
 
 use Neos\Flow\Annotations as Flow;
-use TYPO3\Eel\ProtectedContextAwareInterface;
+use Neos\Eel\ProtectedContextAwareInterface;
 use Neos\Flow\Configuration\ConfigurationManager;
 
 /**
