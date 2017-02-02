@@ -1,7 +1,7 @@
 <?php
 namespace Sfi\Shared\TypoScript;
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use TYPO3\Neos\Domain\Exception;
 use TYPO3\Neos\Service\LinkingService;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;

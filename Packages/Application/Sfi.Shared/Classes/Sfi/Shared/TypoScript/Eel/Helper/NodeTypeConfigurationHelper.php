@@ -1,9 +1,9 @@
 <?php
 namespace Sfi\Shared\TypoScript\Eel\Helper;
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use TYPO3\Eel\ProtectedContextAwareInterface;
-use TYPO3\Flow\Configuration\ConfigurationManager;
+use Neos\Flow\Configuration\ConfigurationManager;
 
 /**
  * Configuration helpers for Eel contexts

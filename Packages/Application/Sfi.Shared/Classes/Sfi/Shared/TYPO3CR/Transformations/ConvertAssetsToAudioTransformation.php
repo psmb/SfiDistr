@@ -5,7 +5,7 @@ namespace Sfi\Shared\TYPO3CR\Transformations;
  * This script belongs to the TYPO3 Flow package "Sfi.Shared".                *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use TYPO3\TYPO3CR\Migration\Transformations\AbstractTransformation;
 
 /**
