@@ -1,5 +1,5 @@
 
-'TYPO3.Neos:PluginView':
+'Neos.Neos:PluginView':
   abstract: true
 'Neos.NodeTypes:Menu':
   abstract: true
@@ -69,7 +69,7 @@
   abstract: true
 'Neos.NodeTypes:Headline':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
     'Neos.NodeTypes:TitleMixin': true
   ui:
     icon: icon-font
@@ -92,7 +92,7 @@
           group: subtitle
 'Neos.NodeTypes:Text':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
     'Neos.NodeTypes:TextMixin': true
   ui:
     inspector:
@@ -115,7 +115,7 @@
         reloadIfChanged: true
         inspector:
           group: variant
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               Paragraph:
@@ -133,7 +133,7 @@
 'Neos.NodeTypes:ContentReferences':
   ui:
     group: lists
-'TYPO3.Neos:Document':
+'Neos.Neos:Document':
   label: '${node.properties.navTitle ? node.properties.navTitle : node.properties.title}'
   properties:
     navTitle:
@@ -144,10 +144,10 @@
         inspector:
           group: document
       validation:
-        TYPO3.Neos/Validation/StringLengthValidator:
+        Neos.Neos/Validation/StringLengthValidator:
           minimum: 1
           maximum: 255
-'TYPO3.Neos:Node':
+'Neos.Neos:Node':
   properties:
     searchid:
       type: string
@@ -155,7 +155,7 @@
         label: 'Идентификатор для поиска'
         inspector:
           group: nodeInfo
-'TYPO3.Neos:Shortcut':
+'Neos.Neos:Shortcut':
   ui:
     icon: icon-share-alt
   properties:

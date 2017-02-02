@@ -1,7 +1,7 @@
 
 'Sfi.Shared:Carousel':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Карусель
     group: contentWidgets
@@ -21,7 +21,7 @@
         reloadIfChanged: true
         inspector:
           group: carousel
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               1x:
@@ -35,7 +35,7 @@
       '*': true
 'Sfi.Shared:Sections':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Вкладки'
     icon: icon-ellipsis-horizontal
@@ -55,7 +55,7 @@
         reloadIfChanged: true
         inspector:
           group: sections
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               Sections--Tabs:
@@ -72,7 +72,7 @@
       'Sfi.Shared:SectionWithImage': true
 'Sfi.Shared:Section':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Вкладка
     group: contentWidgets
@@ -113,7 +113,7 @@
         reloadIfChanged: true
         inspector:
           group: variant
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               SectionWithImageVariant1:

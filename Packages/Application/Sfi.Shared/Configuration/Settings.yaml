@@ -1,8 +1,13 @@
+
 TYPO3:
+  TypoScript:
+    defaultContext:
+      NodeTypeConfiguration: Sfi\Shared\TypoScript\Eel\Helper\NodeTypeConfigurationHelper
+Neos:
   Neos:
     typoScript:
       autoInclude:
-        'Sfi.Shared': TRUE
+        Sfi.Shared: true
     nodeTypes:
       groups:
         contentElements:
@@ -13,16 +18,13 @@ TYPO3:
           label: 'Блоки контента'
         structure:
           position: 115
-          label: 'Структура'
+          label: Структура
         contentWidgets:
           position: 120
-          label: 'Виджеты'
+          label: Виджеты
         lists:
           position: 130
-          label: 'Списки'
+          label: Списки
         system:
           position: end
-          label: 'Системные'
-  TypoScript:
-    defaultContext:
-      NodeTypeConfiguration: 'Sfi\Shared\TypoScript\Eel\Helper\NodeTypeConfigurationHelper'
+          label: Системные

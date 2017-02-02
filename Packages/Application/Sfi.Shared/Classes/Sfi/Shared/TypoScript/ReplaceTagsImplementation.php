@@ -2,8 +2,8 @@
 namespace Sfi\Shared\TypoScript;
 
 use Neos\Flow\Annotations as Flow;
-use TYPO3\Neos\Domain\Exception;
-use TYPO3\Neos\Service\LinkingService;
+use Neos\Neos\Domain\Exception;
+use Neos\Neos\Service\LinkingService;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 use TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject;
 

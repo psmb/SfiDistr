@@ -16,7 +16,7 @@
 		</ul>
 	</f:then>
 	<f:else>
-		<f:security.ifAccess privilegeTarget="TYPO3.Neos:Backend.GeneralAccess">
+		<f:security.ifAccess privilegeTarget="Neos.Neos:Backend.GeneralAccess">
 			<f:if condition="{node.context.workspace.name} != 'live'">
 				<ul{attributes -> f:format.raw()}>
 					<li>Empty asset list</li>

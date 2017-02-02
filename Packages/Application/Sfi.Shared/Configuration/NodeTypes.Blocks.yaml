@@ -1,7 +1,7 @@
 
 'Sfi.Shared:TextWithImage':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   childNodes:
     headline:
       type: 'Neos.NodeTypes:Headline'
@@ -28,7 +28,7 @@
         reloadIfChanged: true
         inspector:
           group: variant
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               Image-Top:

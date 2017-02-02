@@ -1,7 +1,7 @@
 
 'Sfi.Shared:Group':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Группа
     group: structure

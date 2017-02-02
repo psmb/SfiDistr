@@ -1,7 +1,7 @@
 
 'Sfi.Shared:YouTube':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Видео YouTube'
     group: contentElements
@@ -19,12 +19,12 @@
         inspector:
           group: video
       validation:
-        TYPO3.Neos/Validation/NotEmptyValidator: {  }
+        Neos.Neos/Validation/NotEmptyValidator: {  }
         regularExpression:
           regularExpression: '/\?v=[a-z0-9-]+/i'
 'Sfi.Shared:Link':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Ссылка
     icon: icon-external-link
@@ -43,7 +43,7 @@
         reloadIfChanged: true
         inspector:
           group: link
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               Link-Button:
@@ -57,7 +57,7 @@
         reloadIfChanged: false
         inspector:
           group: link
-          editor: TYPO3.Neos/Inspector/Editors/LinkEditor
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     text:
       type: string
       defaultValue: 'Текс ссылки'
@@ -79,7 +79,7 @@
         reloadIfChanged: true
         inspector:
           group: link
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               Reserved:
@@ -91,7 +91,7 @@
         reloadIfChanged: false
         inspector:
           group: link
-          editor: TYPO3.Neos/Inspector/Editors/LinkEditor
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
     text:
       type: string
       defaultValue: 'Текст ссылки'
@@ -99,7 +99,7 @@
         inlineEditable: true
 'Sfi.Shared:Asset':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Файл
     icon: icon-edit
@@ -130,7 +130,7 @@
         reloadIfChanged: true
         inspector:
           group: asset
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             values:
               Asset-Button:
@@ -139,7 +139,7 @@
                 label: Строчной
 'Sfi.Shared:AudioAsset':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Аудио файл'
     icon: icon-edit

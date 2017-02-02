@@ -1,7 +1,7 @@
 
 'Sfi.Shared:Epigraph':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Эпиграф
     icon: icon-edit
@@ -15,7 +15,7 @@
           placeholder: 'Текст к эпиграфу'
 'Sfi.Shared:Note':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Примечание
     icon: icon-edit
@@ -35,7 +35,7 @@
           placeholder: 'Текст примечания'
 'Sfi.Shared:Blockquote':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Цитата
   properties:

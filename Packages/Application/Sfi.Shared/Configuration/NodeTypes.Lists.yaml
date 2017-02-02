@@ -1,7 +1,7 @@
 
 'Sfi.Shared:ListByReferences':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Вставка страниц'
     group: lists
@@ -19,7 +19,7 @@
           group: news
           editorOptions:
             nodeTypes:
-              - 'TYPO3.Neos:Document'
+              - 'Neos.Neos:Document'
     itemRenderer:
       type: string
       defaultValue: ''
