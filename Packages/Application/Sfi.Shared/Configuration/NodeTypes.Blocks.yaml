@@ -4,11 +4,11 @@
     'TYPO3.Neos:Content': true
   childNodes:
     headline:
-      type: 'TYPO3.Neos.NodeTypes:Headline'
+      type: 'Neos.NodeTypes:Headline'
     text:
-      type: 'TYPO3.Neos.NodeTypes:Text'
+      type: 'Neos.NodeTypes:Text'
     image:
-      type: 'TYPO3.Neos.NodeTypes:Image'
+      type: 'Neos.NodeTypes:Image'
   ui:
     label: 'Текст с картинкой'
     icon: icon-picture

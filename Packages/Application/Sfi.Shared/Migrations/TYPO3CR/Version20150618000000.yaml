@@ -6,7 +6,7 @@ up:
         -
           type: 'NodeType'
           settings:
-            nodeType: 'TYPO3.Neos.NodeTypes:AssetList'
+            nodeType: 'Neos.NodeTypes:AssetList'
             withSubTypes: TRUE
       transformations:
         -
@@ -19,7 +19,7 @@ up:
         -
           type: 'NodeType'
           settings:
-            nodeType: 'TYPO3.Neos.NodeTypes:AssetList'
+            nodeType: 'Neos.NodeTypes:AssetList'
             withSubTypes: TRUE
       transformations:
         -

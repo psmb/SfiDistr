@@ -92,7 +92,7 @@
 'Sfi.Shared:SectionWithImage':
   superTypes:
     'Sfi.Shared:TextWithImage': true
-    'TYPO3.Neos.NodeTypes:Image': true
+    'Neos.NodeTypes:Image': true
   ui:
     label: 'Вкладка с картинкой в качестве якоря'
     group: contentWidgets

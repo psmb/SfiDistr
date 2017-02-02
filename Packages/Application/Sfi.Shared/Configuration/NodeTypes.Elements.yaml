@@ -65,7 +65,7 @@
         inlineEditable: true
 'Sfi.Shared:ImageLink':
   superTypes:
-    'TYPO3.Neos.NodeTypes:Image': true
+    'Neos.NodeTypes:Image': true
   ui:
     label: 'Ссылка с картинкой'
     icon: icon-external-link

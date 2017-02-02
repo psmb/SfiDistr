@@ -1,23 +1,23 @@
 
 'TYPO3.Neos:PluginView':
   abstract: true
-'TYPO3.Neos.NodeTypes:Menu':
+'Neos.NodeTypes:Menu':
   abstract: true
-'TYPO3.Neos.NodeTypes:Form':
+'Neos.NodeTypes:Form':
   abstract: true
-'TYPO3.Neos.NodeTypes:ImageMixin':
+'Neos.NodeTypes:ImageMixin':
   properties:
     title:
       ui:
         inspector:
           group: unset
-'TYPO3.Neos.NodeTypes:ImageAlignmentMixin':
+'Neos.NodeTypes:ImageAlignmentMixin':
   properties:
     alignment:
       ui:
         inspector:
           group: unset
-'TYPO3.Neos.NodeTypes:TextMixin':
+'Neos.NodeTypes:TextMixin':
   abstract: true
   properties:
     text:
@@ -47,7 +47,7 @@
           link:
             a: true
         alignment: {  }
-'TYPO3.Neos.NodeTypes:TitleMixin':
+'Neos.NodeTypes:TitleMixin':
   abstract: true
   properties:
     title:
@@ -65,12 +65,12 @@
           link:
             a: true
         alignment: {  }
-'TYPO3.Neos.NodeTypes:TextWithImage':
+'Neos.NodeTypes:TextWithImage':
   abstract: true
-'TYPO3.Neos.NodeTypes:Headline':
+'Neos.NodeTypes:Headline':
   superTypes:
     'TYPO3.Neos:Content': true
-    'TYPO3.Neos.NodeTypes:TitleMixin': true
+    'Neos.NodeTypes:TitleMixin': true
   ui:
     icon: icon-font
     inspector:
@@ -90,10 +90,10 @@
         reloadIfChanged: true
         inspector:
           group: subtitle
-'TYPO3.Neos.NodeTypes:Text':
+'Neos.NodeTypes:Text':
   superTypes:
     'TYPO3.Neos:Content': true
-    'TYPO3.Neos.NodeTypes:TextMixin': true
+    'Neos.NodeTypes:TextMixin': true
   ui:
     inspector:
       groups:
@@ -130,7 +130,7 @@
                 label: Альтернативный маленький
               ParagraphAlt--Large:
                 label: Альтернативный большой
-'TYPO3.Neos.NodeTypes:ContentReferences':
+'Neos.NodeTypes:ContentReferences':
   ui:
     group: lists
 'TYPO3.Neos:Document':
