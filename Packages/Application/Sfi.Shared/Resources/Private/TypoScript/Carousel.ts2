@@ -4,7 +4,7 @@ prototype(Sfi.Shared:Carousel) < prototype(Neos.Fusion:Tag) {
 	content = TYPO3.Neos:ContentCollectionRenderer
 
 	@override.responsive = ${q(node).property('responsive')}
-	prototype(TYPO3.Neos.NodeTypes:Image) {
+	prototype(Neos.NodeTypes:Image) {
 		attributes.class = 'Carousel-Item'
 		maximumWidth = ${responsive == '2x' ? 600 : (responsive == '3x' ? 320 : 980)}
 	}

@@ -1,4 +1,4 @@
-prototype(TYPO3.Neos.NodeTypes:Image) {
+prototype(Neos.NodeTypes:Image) {
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Image.html'
 	imageClassName = "Figure"
 	maximumWidth = 980
@@ -6,19 +6,19 @@ prototype(TYPO3.Neos.NodeTypes:Image) {
 	hasCaption = ${node.context.workspace.name == 'live' ? (((this.caption == "<p>Enter caption here</p>") || (this.caption == "")) ? null : true) : true}
 }
 
-prototype(TYPO3.Neos.NodeTypes:Text) {
+prototype(Neos.NodeTypes:Text) {
 	attributes.class = ${'RteText RteText--' + q(node).property('paragraphVariant')}
 	text.@process.replaceTags = Sfi.Shared:ReplaceTags
 }
 
-prototype(TYPO3.Neos.NodeTypes:Headline) {
+prototype(Neos.NodeTypes:Headline) {
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Headline.html'
 	attributes.id = ${q(node).property('_name')}
 	attributes.class = 'RteText HeadingAnchor js-anchor'
 }
 
 # TODO: implement it the write way
-prototype(TYPO3.Neos.NodeTypes:AssetList) {
+prototype(Neos.NodeTypes:AssetList) {
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/AssetList.html'
 }
 

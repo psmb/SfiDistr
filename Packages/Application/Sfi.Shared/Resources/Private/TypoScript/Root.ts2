@@ -2,16 +2,16 @@ include: **/*.ts2
 
 prototype(Sfi.Shared:TextWithImage) {
 	attributes.class = ${'TextWithImage ' + node.properties.variant}
-	headline = TYPO3.Neos.NodeTypes:Headline {
+	headline = Neos.NodeTypes:Headline {
 		@override.node = ${q(node).children('headline').get(0)}
 	}
-	text = TYPO3.Neos.NodeTypes:Text {
+	text = Neos.NodeTypes:Text {
 		@override.node = ${q(node).children('text').get(0)}
 	}
-	image = TYPO3.Neos.NodeTypes:Image {
+	image = Neos.NodeTypes:Image {
 		@override.node = ${q(node).children('image').get(0)}
 	}
-	prototype(TYPO3.Neos.NodeTypes:Image) {
+	prototype(Neos.NodeTypes:Image) {
 		maximumWidth = 600
 	}
 }
