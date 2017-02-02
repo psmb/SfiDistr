@@ -13,7 +13,7 @@ namespace Sfi\Sfi\TypoScript;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Log\SystemLoggerInterface;
-use TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject;
+use Neos\Fusion\TypoScriptObjects\AbstractTypoScriptObject;
 use Neos\Neos\Exception as NeosException;
 
 /**

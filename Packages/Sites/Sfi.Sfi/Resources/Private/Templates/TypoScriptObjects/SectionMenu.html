@@ -1,5 +1,5 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace ts=Neos\Fusion\ViewHelpers}
 <ul class="SectionMenu">
     <f:for each="{items}" as="item">
         <li class="{ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()} SectionMenu-Item">
