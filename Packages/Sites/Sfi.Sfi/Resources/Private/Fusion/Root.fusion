@@ -3,7 +3,7 @@
  */
 
 # Explicitly include Sfi.Shared, because autoInclude may messup inclussion order
-include: resource://Sfi.Shared/Private/TypoScript/Root.ts2
+include: resource://Sfi.Shared/Private/Fusion/Root.fusion
 include: NodeTypes/**/*.ts2
 include: Pages/**/*.ts2
 include: TypoScriptObjects/**/*.ts2

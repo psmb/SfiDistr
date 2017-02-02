@@ -7,7 +7,7 @@
 				<f:if condition="{link}">
 					<f:then>
 						<a href="{link}">
-							<media:image asset="{image}" alt="{alternativeText}" title="{title}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" allowCropping="{allowCropping}" allowUpScaling="{allowUpScaling}" />
+							<media:image image="{image}" alt="{alternativeText}" title="{title}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" allowCropping="{allowCropping}" allowUpScaling="{allowUpScaling}" />
 							<f:if condition="{hasCaption}">
 								<figcaption>
 									{neos:contentElement.editable(property: 'caption', node: node)}
@@ -16,7 +16,7 @@
 						</a>
 					</f:then>
 					<f:else>
-						<media:image asset="{image}" alt="{alternativeText}" title="{title}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" allowCropping="{allowCropping
+						<media:image image="{image}" alt="{alternativeText}" title="{title}" maximumWidth="{maximumWidth}" maximumHeight="{maximumHeight}" allowCropping="{allowCropping
 	}" allowUpScaling="{allowUpScaling}" />
 						<f:if condition="{hasCaption}">
 							<figcaption>
