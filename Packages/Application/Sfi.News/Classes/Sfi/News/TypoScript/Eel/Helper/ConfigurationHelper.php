@@ -4,7 +4,7 @@ namespace Sfi\News\TypoScript\Eel\Helper;
  * This script was borrowed from package "Lelesys.News".          *
  *                                                                        *
  *                                                                        */
-use TYPO3\Eel\ProtectedContextAwareInterface;
+use Neos\Eel\ProtectedContextAwareInterface;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 use Neos\Flow\Annotations as Flow;
 /**

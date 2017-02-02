@@ -6,8 +6,8 @@ namespace Sfi\News\TypoScript\Eel\FlowQueryOperations;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Eel\FlowQuery\FlowQuery;
-use TYPO3\Eel\FlowQuery\Operations\AbstractOperation;
+use Neos\Eel\FlowQuery\FlowQuery;
+use Neos\Eel\FlowQuery\Operations\AbstractOperation;
 use Neos\Flow\Annotations as Flow;
 use TYPO3\TYPO3CR\Domain\Model\Node;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
@@ -53,9 +53,9 @@ class FilterByReferenceOperation extends AbstractOperation {
 	 */
 	public function evaluate(FlowQuery $flowQuery, array $arguments) {
 		if (!isset($arguments[0]) || empty($arguments[0])) {
-			throw new \TYPO3\Eel\FlowQuery\FlowQueryException('FilterByReference() needs reference property name by which nodes should be filtered', 1332492263);
+			throw new \Neos\Eel\FlowQuery\FlowQueryException('FilterByReference() needs reference property name by which nodes should be filtered', 1332492263);
 		} else if (!isset($arguments[1]) || empty($arguments[1])) {
-			throw new \TYPO3\Eel\FlowQuery\FlowQueryException('FilterByReference() needs object by which nodes should be filtered', 1332493263);
+			throw new \Neos\Eel\FlowQuery\FlowQueryException('FilterByReference() needs object by which nodes should be filtered', 1332493263);
 		} else {
 			$nodes = $flowQuery->getContext();
 			$filterByPropertyPath = $arguments[0];
