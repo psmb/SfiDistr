@@ -56,9 +56,6 @@ Neos:
     http:
       baseUri: 'https://sfi.ru/'
   Neos:
-    typoScript:
-      autoInclude:
-        Sfi.Sfi: true
     userInterface:
       loadMinifiedJavascript: false
       editPreviewModes:
@@ -78,6 +75,9 @@ Neos:
         contentBlocks:
           position: 110
           label: 'Content Blocks'
+    fusion:
+      autoInclude:
+        Sfi.Sfi: true
   ContentRepository:
     contentDimensions:
       language:
