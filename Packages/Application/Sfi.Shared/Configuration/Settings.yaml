@@ -1,8 +1,4 @@
 
-TYPO3:
-  TypoScript:
-    defaultContext:
-      NodeTypeConfiguration: Sfi\Shared\TypoScript\Eel\Helper\NodeTypeConfigurationHelper
 Neos:
   Neos:
     typoScript:
@@ -28,3 +24,6 @@ Neos:
         system:
           position: end
           label: Системные
+  Fusion:
+    defaultContext:
+      NodeTypeConfiguration: Sfi\Shared\TypoScript\Eel\Helper\NodeTypeConfigurationHelper
