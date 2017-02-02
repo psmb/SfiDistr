@@ -19,13 +19,13 @@ prototype(Sfi.Shared:TextWithImage) {
 prototype(Sfi.Shared:Asset) {
 	attributes.class = ${node.properties.variant == 'Asset-Button' ? 'Button AssetButton' : 'ButtonInline AssetInline'}
 	attributes.href = ${'asset://' + node.properties.asset.identifier}
-	attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris
+	attributes.href.@process.convertUris = Neos.Neos:ConvertUris
 }
 
 prototype(Sfi.Shared:Link) {
 	attributes.class = ${node.properties.variant == 'Link-Button' ? 'Button LinkButton' : 'ButtonInline LinkInline'}
 	attributes.href = ${node.properties.target}
-	attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris {
+	attributes.href.@process.convertUris = Neos.Neos:ConvertUris {
 		forceConversion = true
 	}
 }
@@ -36,7 +36,7 @@ prototype(Sfi.Shared:ImageLink) {
 	maximumHeight = 250
 	allowCropping = TRUE
 	allowUpScaling = TRUE
-	link.@process.convertUris = TYPO3.Neos:ConvertUris {
+	link.@process.convertUris = Neos.Neos:ConvertUris {
 		forceConversion = TRUE
 	}
 }
@@ -44,7 +44,7 @@ prototype(Sfi.Shared:ImageLink) {
 prototype(Sfi.Shared:Group) {
 	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\TagImplementation'
 	iterator = ${iterator}
-	content = TYPO3.Neos:ContentCollectionRenderer
+	content = Neos.Neos:ContentCollectionRenderer
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
@@ -88,5 +88,5 @@ prototype(Sfi.Shared:ListByReferences) < prototype(Neos.Fusion:Tag) {
 			2 = ${'Node_' + node.identifier}
 		}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

@@ -1,10 +1,10 @@
 # Wrap AutoRender with tag. You can also use tag atrributes and other properties
 prototype(Sfi.Shared:AutoRenderWithTag) < prototype(Neos.Fusion:Tag) {
-	content = TYPO3.Neos:ContentCase
+	content = Neos.Neos:ContentCase
 	tagName = 'div'
 }
 
-prototype(Sfi.Shared:ContentCaseShort) < prototype(TYPO3.Neos:ContentCase) {
+prototype(Sfi.Shared:ContentCaseShort) < prototype(Neos.Neos:ContentCase) {
 	default {
 		@position = 'end'
 		condition = TRUE

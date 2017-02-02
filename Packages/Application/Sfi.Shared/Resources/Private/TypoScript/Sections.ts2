@@ -37,16 +37,16 @@ prototype(Sfi.Shared:SectionsAbstractRenderer) < prototype(Neos.Fusion:Template)
 }
 prototype(Sfi.Shared:SectionsTabRenderer) < prototype(Sfi.Shared:SectionsAbstractRenderer) {
 	sectionName = 'tab'
-	tab = TYPO3.Neos:ContentCase {
+	tab = Neos.Neos:ContentCase {
 		@override.section = 'tab'
 	}
 }
 prototype(Sfi.Shared:SectionsPanelRenderer) < prototype(Sfi.Shared:SectionsAbstractRenderer) {
 	sectionName = 'panel'
-	accordion = TYPO3.Neos:ContentCase {
+	accordion = Neos.Neos:ContentCase {
 		@override.section = 'accordion'
 	}
-	panel = TYPO3.Neos:ContentCase {
+	panel = Neos.Neos:ContentCase {
 		@override.section = 'panel'
 	}
 }
@@ -59,7 +59,7 @@ prototype(Sfi.Shared:SectionsPanelRenderer) < prototype(Sfi.Shared:SectionsAbstr
 prototype(Sfi.Shared:Section) {
 	sectionName = ${section}
 	node = ${q(node).get(0)}
-	content = TYPO3.Neos:ContentCollectionRenderer
+	content = Neos.Neos:ContentCollectionRenderer
 }
 
 # More advanced implementation: tabs with pictures for anchors, in two variants

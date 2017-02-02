@@ -22,8 +22,8 @@ prototype(Neos.NodeTypes:AssetList) {
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/AssetList.html'
 }
 
-prototype(TYPO3.Neos:Content) {
-	prototype(TYPO3.Neos:ContentCollection) {
+prototype(Neos.Neos:Content) {
+	prototype(Neos.Neos:ContentCollection) {
 		# As we render CC inside content often, we should cache them as separae entries
 		@cache {
 			mode = 'cached'
@@ -31,4 +31,4 @@ prototype(TYPO3.Neos:Content) {
 	}
 }
 
-prototype(TYPO3.Neos:ContentCollection).@if.notEmptyOrInBackend = ${this.content != '' || documentNode.context.inBackend}
+prototype(Neos.Neos:ContentCollection).@if.notEmptyOrInBackend = ${this.content != '' || documentNode.context.inBackend}

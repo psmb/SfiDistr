@@ -1,7 +1,7 @@
 #Carousel
 prototype(Sfi.Shared:Carousel) < prototype(Neos.Fusion:Tag) {
     attributes.class = ${'Carousel js-carousel-' + q(node).property('responsive')}
-	content = TYPO3.Neos:ContentCollectionRenderer
+	content = Neos.Neos:ContentCollectionRenderer
 
 	@override.responsive = ${q(node).property('responsive')}
 	prototype(Neos.NodeTypes:Image) {
@@ -19,5 +19,5 @@ prototype(Sfi.Shared:Carousel) < prototype(Neos.Fusion:Tag) {
 			2 = ${'DescendantOf_' + node.identifier}
 		}
 	}
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
