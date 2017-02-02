@@ -1,21 +1,17 @@
+
 TYPO3:
-  Flow:
-    i18n:
-      defaultLocale: 'ru'
-    http:
-      baseUri: 'https://sfi.ru/'
   Neos:
     typoScript:
       autoInclude:
-        'Sfi.Sfi': TRUE
+        Sfi.Sfi: true
     userInterface:
-      loadMinifiedJavascript: FALSE
+      loadMinifiedJavascript: false
       editPreviewModes:
         print:
-          isEditingMode: FALSE
-          isPreviewMode: TRUE
-          typoScriptRenderingPath: 'print'
-          title: 'Print'
+          isEditingMode: false
+          isPreviewMode: true
+          typoScriptRenderingPath: print
+          title: Print
           position: 200
       navigateComponent:
         structureTree:
@@ -29,70 +25,75 @@ TYPO3:
           label: 'Content Blocks'
   TYPO3CR:
     contentDimensions:
-    # Content dimension "language" serves for translation of content into different languages. Its value specifies
-    # the language or language variant by means of a locale.
-      'language':
-        # The default dimension that is applied when creating nodes without specifying a dimension
-        default: 'ru'
-        # The default preset to use if no URI segment was given when resolving languages in the router
-        defaultPreset: 'ru'
-        label: 'Language'
-        icon: 'icon-language'
+      language:
+        default: ru
+        defaultPreset: ru
+        label: Language
+        icon: icon-language
         presets:
-          'ru':
-            label: 'Russian'
-            values: ['ru']
+          ru:
+            label: Russian
+            values:
+              - ru
             uriSegment: ''
-          'en':
-            label: 'English'
-            values: ['en']
-            uriSegment: 'en'
-
+          en:
+            label: English
+            values:
+              - en
+            uriSegment: en
 Sfi:
   Sfi:
     viewHelpers:
       partialRootPath: 'resource://Sfi.Sfi/Private/Partials/'
-
-
 Psmb:
   Newsletter:
     globalSettings:
-      senderAddress: 'no-reply@sfi.ru'
-      senderName: 'SFI.ru'
+      senderAddress: no-reply@sfi.ru
+      senderName: SFI.ru
     subscriptions:
       -
-        identifier: 'instant_ru'
+        identifier: instant_ru
         renderer: 'Sfi.Sfi:InstantMail'
         label: 'Мгновенное уведомление'
         description: 'Получать полные версии статей как только они опубликованы'
         interval: PT1H
         senderName: 'Свято-Филаретовский православно-христианский институт'
         dimensions:
-          language: ['ru']
+          language:
+            - ru
       -
-        identifier: 'digest_ru'
+        identifier: digest_ru
         renderer: 'Sfi.Sfi:DigestMail'
         label: 'Авторский дайджест'
         description: 'Получать раз в две недели авторский обзор лучших публикаций'
         interval: manual
         senderName: 'Свято-Филаретовский православно-христианский институт'
         dimensions:
-          language: ['ru']
+          language:
+            - ru
       -
-        identifier: 'instant_en'
+        identifier: instant_en
         renderer: 'Sfi.Sfi:InstantMail'
         label: 'Instant Notification'
         description: 'Recevie full versions of articles as they are published'
         interval: PT1H
         senderName: 'St Philaret`s Christian Orthodox Institute'
         dimensions:
-          language: ['en']
+          language:
+            - en
       -
-        identifier: 'digest_en'
+        identifier: digest_en
         renderer: 'Sfi.Sfi:DigestMail'
         label: 'Monthly Digest'
         description: 'Receive newsletter by Sofia Androsenko to your inbox'
         interval: manual
         senderName: 'St Philaret`s Christian Orthodox Institute'
         dimensions:
-          language: ['en']
+          language:
+            - en
+Neos:
+  Flow:
+    i18n:
+      defaultLocale: ru
+    http:
+      baseUri: 'https://sfi.ru/'

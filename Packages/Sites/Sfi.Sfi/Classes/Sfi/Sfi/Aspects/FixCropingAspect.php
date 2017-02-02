@@ -1,8 +1,8 @@
 <?php
 namespace Sfi\Sfi\Aspects;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Aop\JoinPointInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Aop\JoinPointInterface;
 use TYPO3\Media\Domain\Model\ImageInterface;
 
 /**
@@ -12,7 +12,7 @@ use TYPO3\Media\Domain\Model\ImageInterface;
 class FixCropingAspect {
 
 	/**
-	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+	 * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
 	 * @Flow\Before("method(TYPO3\Media\Domain\Model\Adjustment\ResizeImageAdjustment->__construct())")
 	 * @return void
 	 */

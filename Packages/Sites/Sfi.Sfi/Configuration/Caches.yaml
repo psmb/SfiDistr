@@ -1,23 +1,23 @@
 TYPO3_TypoScript_Content:
-  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  backend: Neos\Flow\Cache\Backend\RedisBackend
   backendOptions:
     hostname: redis
 Flow_Mvc_Routing_Resolve:
-  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  backend: Neos\Flow\Cache\Backend\RedisBackend
   backendOptions:
     hostname: redis
 Flow_Mvc_Routing_Route:
-  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  backend: Neos\Flow\Cache\Backend\RedisBackend
   backendOptions:
     hostname: redis
 
 Flow_Session_MetaData:
-  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  backend: Neos\Flow\Cache\Backend\RedisBackend
   persistent: TRUE
   backendOptions:
     hostname: redis
 Flow_Session_Storage:
-  backend: TYPO3\Flow\Cache\Backend\RedisBackend
+  backend: Neos\Flow\Cache\Backend\RedisBackend
   persistent: TRUE
   backendOptions:
     hostname: redis
