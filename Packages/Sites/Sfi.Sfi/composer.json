@@ -3,8 +3,8 @@
     "type": "typo3-flow-site",
     "description": "SFI site files",
     "require": {
-        "typo3/neos": "*",
-        "typo3/neos-nodetypes": "*"
+        "neos/neos": "*",
+        "neos/neos-nodetypes": "*"
     },
     "autoload": {
         "psr-0": {

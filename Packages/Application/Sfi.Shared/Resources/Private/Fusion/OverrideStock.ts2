@@ -8,7 +8,7 @@ prototype(Neos.NodeTypes:Image) {
 
 prototype(Neos.NodeTypes:Text) {
 	attributes.class = ${'RteText RteText--' + q(node).property('paragraphVariant')}
-	text.@process.replaceTags = Sfi.Shared:ReplaceTags
+	text.@process.replaceTerms = Psmb.Term:ReplaceTerms
 }
 
 prototype(Neos.NodeTypes:Headline) {

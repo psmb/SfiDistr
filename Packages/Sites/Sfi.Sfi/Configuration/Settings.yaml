@@ -62,7 +62,6 @@ Neos:
         print:
           isEditingMode: false
           isPreviewMode: true
-          typoScriptRenderingPath: print
           title: Print
           position: 200
       navigateComponent:

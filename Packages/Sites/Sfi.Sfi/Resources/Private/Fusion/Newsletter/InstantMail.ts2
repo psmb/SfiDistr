@@ -9,7 +9,7 @@ prototype(Sfi.Sfi:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
 			prototype(NodeUri) {
 				absolute = ${true}
 			}
-			prototype(Sfi.Shared:ReplaceTags) {
+			prototype(Psmb.Term:ReplaceTerms) {
 				absolute = ${true}
 			}
 			@process.layout = Sfi.Sfi:MailLayout

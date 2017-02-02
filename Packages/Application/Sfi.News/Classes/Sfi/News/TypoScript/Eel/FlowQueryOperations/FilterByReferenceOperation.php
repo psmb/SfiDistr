@@ -1,11 +1,6 @@
 <?php
 namespace Sfi\News\TypoScript\Eel\FlowQueryOperations;
 
-/*                                                                        *
- * This script belongs to the TYPO3 Flow package "Sfi.News".              *
- *                                                                        *
- *                                                                        */
-
 use Neos\Eel\FlowQuery\FlowQuery;
 use Neos\Eel\FlowQuery\Operations\AbstractOperation;
 use Neos\Flow\Annotations as Flow;
@@ -33,7 +28,7 @@ class FilterByReferenceOperation extends AbstractOperation {
 	/**
 	 * {@inheritdoc}
 	 *
-	 * We can only handle TYPO3CR Nodes.
+	 * We can only handle Nodes.
 	 *
 	 * @param mixed $context
 	 * @return boolean
@@ -47,8 +42,8 @@ class FilterByReferenceOperation extends AbstractOperation {
 	 *
 	 * @param FlowQuery $flowQuery the FlowQuery object
 	 * @param array $arguments the arguments for this operation.
-	 * First argument is property to filter by, must be of reference of references type. 
-	 * Second is object to filter by, must be Node. 
+	 * First argument is property to filter by, must be of reference of references type.
+	 * Second is object to filter by, must be Node.
 	 * @return mixed
 	 */
 	public function evaluate(FlowQuery $flowQuery, array $arguments) {

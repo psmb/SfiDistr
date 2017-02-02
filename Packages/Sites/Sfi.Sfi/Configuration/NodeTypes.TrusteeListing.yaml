@@ -18,4 +18,4 @@
           group: trustees
           editorOptions:
             nodeTypes:
-              - 'Sfi.Shared:TagMixin'
+              - 'Psmb.Term:TermMixin'

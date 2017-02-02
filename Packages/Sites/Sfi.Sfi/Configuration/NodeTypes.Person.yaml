@@ -42,7 +42,7 @@ blah: &alohaRich
   superTypes:
     'Neos.Neos:Document': true
     'Sfi.News:Listable': true
-    'Sfi.Shared:TagMixin': true
+    'Psmb.Term:TermMixin': true
   ui:
     label: Персона
     icon: icon-file-text

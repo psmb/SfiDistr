@@ -33,7 +33,7 @@ class SortOperation extends AbstractOperation {
 	/**
 	 * {@inheritdoc}
 	 *
-	 * We can only handle TYPO3CR Nodes.
+	 * We can only handle Nodes.
 	 *
 	 * @param mixed $context
 	 * @return boolean

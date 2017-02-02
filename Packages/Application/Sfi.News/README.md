@@ -1,4 +1,4 @@
-News extension for TYPO3 Neos.
+News extension for Neos CMS.
 
 Origianlly influenced by https://github.com/lelesys/Lelesys.News
 

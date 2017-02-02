@@ -42,7 +42,7 @@ prototype(Sfi.Shared:ImageLink) {
 }
 
 prototype(Sfi.Shared:Group) {
-	@class = 'TYPO3\\TypoScript\\TypoScriptObjects\\TagImplementation'
+	@class = 'Neos\\Fusion\\FusionObjects\\TagImplementation'
 	iterator = ${iterator}
 	content = Neos.Neos:ContentCollectionRenderer
 	@cache {

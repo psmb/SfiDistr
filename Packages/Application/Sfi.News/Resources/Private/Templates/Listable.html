@@ -1,11 +1,11 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-{namespace typo3cr=Neos\ContentRepository\ViewHelpers}
+{namespace neoscr=Neos\ContentRepository\ViewHelpers}
 {namespace ts=Neos\Fusion\ViewHelpers}
 <f:if condition="{collection}">
 	<f:if condition="{paginationEnabled}">
 		<f:then>
 			<f:if condition="{configuration.pagination}">
-				<typo3cr:widget.paginate nodes="{collection}" as="paginatedItems" widgetId="listable-paginate" configuration="{configuration.pagination}">
+				<neoscr:widget.paginate nodes="{collection}" as="paginatedItems" widgetId="listable-paginate" configuration="{configuration.pagination}">
 					<ul{attributes -> f:format.raw()} >
 						<f:for each="{paginatedItems}" as="news">
 							<li class="{configuration.itemClass}">
@@ -13,7 +13,7 @@
 							</li>
 						</f:for>
 					</ul>
-				</typo3cr:widget.paginate>
+				</neoscr:widget.paginate>
 			</f:if>
 		</f:then>
 		<f:else>
