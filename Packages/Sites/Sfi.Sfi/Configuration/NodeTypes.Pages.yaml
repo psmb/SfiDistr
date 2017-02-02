@@ -113,7 +113,7 @@ blah: &alohaRich
       type: 'TYPO3.Neos:ContentCollection'
   properties:
     image:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Обложка тэга'
         reloadIfChanged: true

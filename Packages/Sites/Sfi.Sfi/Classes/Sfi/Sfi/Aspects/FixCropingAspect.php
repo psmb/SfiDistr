@@ -3,7 +3,7 @@ namespace Sfi\Sfi\Aspects;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Aop\JoinPointInterface;
-use TYPO3\Media\Domain\Model\ImageInterface;
+use Neos\Media\Domain\Model\ImageInterface;
 
 /**
  * @Flow\Aspect
@@ -13,7 +13,7 @@ class FixCropingAspect {
 
 	/**
 	 * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
-	 * @Flow\Before("method(TYPO3\Media\Domain\Model\Adjustment\ResizeImageAdjustment->__construct())")
+	 * @Flow\Before("method(Neos\Media\Domain\Model\Adjustment\ResizeImageAdjustment->__construct())")
 	 * @return void
 	 */
 	public function fixThumbnailerBehavior(JoinPointInterface $joinPoint) {

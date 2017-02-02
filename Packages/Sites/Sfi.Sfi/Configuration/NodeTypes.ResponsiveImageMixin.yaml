@@ -6,21 +6,21 @@
         label: 'Резиновые фото'
   properties:
     imageSmall:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Маленькое фото (small)'
         reloadIfChanged: true
         inspector:
           group: image
     imageMedium:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Среднее фото (medium)'
         reloadIfChanged: true
         inspector:
           group: image
     imageLarge:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Большое фото (large)'
         reloadIfChanged: true

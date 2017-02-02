@@ -175,7 +175,7 @@ blah: &alohaRich
         aloha:
           placeholder: 'Название книжки'
     image:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: Image
         reloadIfChanged: true
@@ -302,7 +302,7 @@ blah: &alohaRich
         aloha:
           placeholder: 'Номера страниц в печатной версии'
     asset:
-      type: TYPO3\Media\Domain\Model\Asset
+      type: Neos\Media\Domain\Model\Asset
       ui:
         inspector:
           group: asset

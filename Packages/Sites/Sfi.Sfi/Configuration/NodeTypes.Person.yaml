@@ -189,7 +189,7 @@ blah: &alohaRich
           <<: *alohaPlain
           placeholder: Цитата
     image:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Фото на общей странице'
         reloadIfChanged: true

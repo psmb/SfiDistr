@@ -49,7 +49,7 @@ blah: &alohaRich
       message: 'Рекламный элемент, который используется на главной странице'
   properties:
     image:
-      type: TYPO3\Media\Domain\Model\ImageInterface
+      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: Картинка
         reloadIfChanged: true
