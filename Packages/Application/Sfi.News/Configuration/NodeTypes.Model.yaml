@@ -263,6 +263,7 @@ blah: &alohaRich
   properties:
     firstPublicationDateTime:
       type: DateTime
+      defaultValue: '1990-01-01'
     yandex:
       type: boolean
       defaultValue: true
