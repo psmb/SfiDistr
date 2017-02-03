@@ -2,6 +2,8 @@ prototype(Sfi.Sfi:MailLayout) < prototype(Neos.Fusion:Template) {
     templatePath = 'resource://Sfi.Sfi/Private/Fusion/Newsletter/Objects/MailLayout.html'
     value = ${value}
 
+    footerInfo = ${subscription.footerInfo}
+
     logoUri = Neos.Fusion:ResourceUri {
         path = 'resource://Sfi.Sfi/Public/Images/sfi-newsletter.png'
     }

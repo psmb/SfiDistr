@@ -9,7 +9,7 @@
             <div class="columns">
                 <f:if condition="{logoBefore}">
                     <div style="text-align: center">
-                        <img src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                        <img height="190" src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
                     </div>
                 </f:if>
                 <div class="paddingVertical-triple">
@@ -17,7 +17,7 @@
                 </div>
                 <f:if condition="{logoAfter}">
                     <div>
-                        <img src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                        <img height="190" src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
                     </div>
                 </f:if>
             </div>
@@ -27,6 +27,9 @@
         <div class="Paragraph--Small color-grayAlt " style="max-width: 800px; margin: 0 auto; overflow: auto">
             <div class="row">
                 <div class="columns">
+                    <f:if condition="{footerInfo}">
+                      {footerInfo}<br>
+                    </f:if>
                     <a class="Link" href="{unsubscribeLink -> f:format.raw()}">
                         <f:translate id="newsletter.unsubscribeLink" package="Sfi.Sfi"/>
                     </a>
