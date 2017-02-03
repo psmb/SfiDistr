@@ -21,7 +21,7 @@ Psmb:
             - ru
       -
         identifier: digest_ru
-        renderer: 'Sfi.Sfi:DigestMail'
+        renderer: 'Sfi.Sfi:NewsletterMail'
         label: 'Авторский дайджест'
         description: 'Получать раз в две недели авторский обзор лучших публикаций'
         interval: manual

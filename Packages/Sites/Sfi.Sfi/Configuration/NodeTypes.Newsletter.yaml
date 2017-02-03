@@ -1,0 +1,21 @@
+'Sfi.Sfi:Newsletter':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Psmb.Newsletter:NewsletterMixin': true
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  ui:
+    label: Рассылка
+    icon: icon-file-text
+    group: news
+    inspector:
+      groups:
+        news:
+          label: Новость
+  properties:
+    title:
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Заголовок рассылки'

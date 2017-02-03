@@ -4,7 +4,7 @@
     templateRootPaths:
       'Neos.ContentRepository': 'resource://Sfi.Sfi/Private/Templates'
 -
-  requestFilter: 'isPackage("Psmb.Newsletter")'
+  requestFilter: 'isPackage("Psmb.Newsletter") && isController("Subscription")'
   options:
     templateRootPaths:
       - 'resource://Sfi.Sfi/Private/Newsletter/Templates/'

@@ -1,0 +1,23 @@
+prototype(Sfi.Sfi:NewsletterMail) < prototype(Psmb.Newsletter:MailRenderer) {
+	subject = ${String.stripTags(node.properties.title)}
+	body = Neos.Fusion:Value {
+		value = Sfi.Sfi:Newsletter {
+			isNewsletter = true
+			prototype(NodeUri) {
+				absolute = ${true}
+			}
+			prototype(Psmb.Term:ReplaceTerms) {
+				absolute = ${true}
+			}
+			@cache {
+				entryIdentifier {
+					node = ${node}
+				}
+				mode = 'cached'
+			}
+		}
+		@process.styles = Psmb.Newsletter:CssToInline {
+			cssPath = 'resource://Sfi.Sfi/Public/Built/app-prefixed.css'
+		}
+	}
+}

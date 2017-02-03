@@ -7,10 +7,19 @@
     <div style="max-width: 800px; margin: 0 auto; overflow: auto;">
         <div class="row">
             <div class="columns">
-                <div class="paddingBottom-triple" style="text-align: center">
-                    <img src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                <f:if condition="{logoBefore}">
+                    <div style="text-align: center">
+                        <img src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                    </div>
+                </f:if>
+                <div class="paddingVertical-triple">
+                    {value -> f:format.raw()}
                 </div>
-                {value -> f:format.raw()}
+                <f:if condition="{logoAfter}">
+                    <div>
+                        <img src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                    </div>
+                </f:if>
             </div>
         </div>
     </div>

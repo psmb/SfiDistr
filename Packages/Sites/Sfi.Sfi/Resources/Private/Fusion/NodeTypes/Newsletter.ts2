@@ -1,0 +1,17 @@
+prototype(Sfi.Sfi:Newsletter) {
+	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/Newsletter.html'
+	main = ContentCollection {
+		nodePath = 'main'
+	}
+	@process.layout = Sfi.Sfi:MailLayout {
+		logoAfter = true
+	}
+}
+
+root.newsletter {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:Newsletter]')}
+	renderer = Page {
+		head.stylesheets = Sfi.Sfi:Stylesheets
+		body = Sfi.Sfi:Newsletter
+	}
+}
