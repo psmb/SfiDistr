@@ -261,6 +261,8 @@ blah: &alohaRich
   superTypes:
     'Sfi.News:AbstractArticle': true
   properties:
+    firstPublicationDateTime:
+      type: DateTime
     yandex:
       type: boolean
       defaultValue: true
