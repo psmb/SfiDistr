@@ -236,8 +236,8 @@ blah: &alohaRich
                 enableOriginal: false
                 allowCustom: false
                 locked:
-                  width: 1440
-                  height: 700
+                  width: 1200
+                  height: 400
 'Sfi.News:AuthorMixin':
   abstract: true
   properties:
