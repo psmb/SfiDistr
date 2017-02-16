@@ -107,10 +107,8 @@ $(document).ready(function(){
 								}
 						});
 
-						// If tabs, activate first tab
-						if ( _this.find('.Sections-Tabs').is(":visible") ) {
-								_this.find('.Sections-Anchor').eq(0).click();
-						}
+						// Activate first tab
+						_this.find('.Sections-Anchor').eq(0).click();
 				});
 
 				return this;
