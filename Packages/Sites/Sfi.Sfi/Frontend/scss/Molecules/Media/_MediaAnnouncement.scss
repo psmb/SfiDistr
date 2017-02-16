@@ -43,3 +43,8 @@
 	color: $gray--light;
 	margin-top: 0;
 }
+.Announcement-Place {
+	@extend .ParagraphAlt--Large;
+	color: $gray--light;
+	line-height: $lineHeight-tight;
+}
