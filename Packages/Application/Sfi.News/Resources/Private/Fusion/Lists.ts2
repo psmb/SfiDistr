@@ -135,6 +135,7 @@ prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
 	importantAnnouncements = ${q(this.importantNews).filter('[instanceof Sfi.News:Announcement]').get()}
 	importantAnnouncements.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.Now()).get() : value}
 	importantNotAnnouncements = ${q(this.importantNews).filter('[!instanceof Sfi.News:Announcement]').get()}
+	@context.importantAnnouncements = ${this.importantAnnouncements}
 	collection = ${q(this.importantAnnouncements).add(q(this.importantNotAnnouncements)).get()}
 	collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('importantSort', 'ASC').get() : value}
 	@context.collection = ${this.collection}
@@ -145,7 +146,8 @@ prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
 	}
 	@cache {
 		mode = 'cached'
-		maximumLifetime = ${q(collection).first().property('date').timestamp - Date.now().timestamp}
+		# Get the nearest announcement and calculate the maximumLifetime for cache based on time to it
+		maximumLifetime = ${q(importantAnnouncements).count() > 0 ? q(importantAnnouncements).sort('date', 'ASC').first().property('date').timestamp - Date.now().timestamp : null}
 		entryIdentifier {
 			node = ${node}
 			editPreviewMode = ${editPreviewMode}
