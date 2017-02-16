@@ -1,9 +1,9 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace ts=Neos\Fusion\ViewHelpers}
-<ul class="SubSectionMenu">
+<ul class="SubSectionMenu" id="SubSectionMenu">
     <f:for each="{items}" as="item">
         <li class="{ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()} SubSectionMenu-Item">
-            <neos:link.node class="" node="{item.node}" />
+            <neos:link.node class="" node="{item.node}" section="SubSectionMenu" />
         </li>
     </f:for>
 </ul>

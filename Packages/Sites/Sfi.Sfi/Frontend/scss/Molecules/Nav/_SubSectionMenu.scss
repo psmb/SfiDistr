@@ -3,8 +3,6 @@
 	@include breakpoint('medium') {
 		column-count: 2;
 	}
-    list-style-position: inside;
-    list-style-type: decimal;
 }
 .SubSectionMenu-Item {
 	@extend .ParagraphAlt;
