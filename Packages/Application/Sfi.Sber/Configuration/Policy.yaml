@@ -1,0 +1,11 @@
+privilegeTargets:
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'Sfi.Sber:Donate':
+      matcher: 'method(Sfi\Sber\Controller\PaymentController->(.*)Action())'
+
+roles:
+  'Neos.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'Sfi.Sber:Donate'
+        permission: GRANT

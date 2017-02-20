@@ -1,0 +1,9 @@
+-
+  name: 'Sber routes'
+  uriPattern: 'sber/{@action}'
+  defaults:
+    '@package':    'Sfi.Sber'
+    '@controller': 'Payment'
+    '@format':     'html'
+    '@action':     'register'
+  appendExceedingArguments: TRUE

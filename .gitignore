@@ -32,6 +32,7 @@ Configuration/Development/Settings.yaml
 /Packages/Application/*
 !/Packages/Application/Sfi.News/
 !/Packages/Application/Sfi.Shared/
+!/Packages/Application/Sfi.Sber/
 /Packages/Framework/
 /Packages/Libraries/
 /Packages/Plugins/

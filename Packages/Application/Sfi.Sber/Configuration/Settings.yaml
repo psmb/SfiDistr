@@ -1,0 +1,15 @@
+
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'Sfi.Sber':
+          position: 'before Neos.Neos'
+
+Sfi:
+  Sber:
+    options:
+      endpointUrl: 'https://3dsec.sberbank.ru/payment/rest/register.do'
+      returnUrl: 'https://sfi.ru/support.html'
+      userName: 'username'
+      password: 'password'

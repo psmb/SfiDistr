@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "sfi/sber",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sfi\\Sber\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Sfi.Sber"
+        }
+    }
+}
