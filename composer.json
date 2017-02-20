@@ -17,7 +17,7 @@
         "neos/flow-development-collection": "4.0.x-dev",
         "neos/party": "~4.0.0",
         "neos/imagine": "~3.0.0",
-        "neos/form": "~3.0.0",
+        "neos/form": "~4.0.0",
         "neos/setup": "~4.0.0",
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",
