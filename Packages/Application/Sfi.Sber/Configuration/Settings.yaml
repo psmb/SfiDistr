@@ -9,7 +9,8 @@ Neos:
 Sfi:
   Sber:
     options:
-      endpointUrl: 'https://3dsec.sberbank.ru/payment/rest/register.do'
-      returnUrl: 'https://sfi.ru/support.html'
-      userName: 'username'
-      password: 'password'
+      endpointUrl: 'https://securepayments.sberbank.ru/payment/rest/register.do'
+      returnUrl: 'https://sfi.ru/support/thanks.html'
+      #endpointUrl: 'https://3dsec.sberbank.ru/payment/rest/register.do'
+      #userName: 'username'
+      #password: 'password'

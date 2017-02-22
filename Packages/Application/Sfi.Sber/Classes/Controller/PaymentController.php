@@ -16,28 +16,40 @@ class PaymentController extends ActionController
      * @param int $amount
      * @param string $email
      * @param string $name
+     * @param string $agreeOffer
+     * @param string $agreeRf
      * @return void
      */
-    public function registerAction($amount, $email, $name = '')
+    public function registerAction($amount = null, $email = null, $name = '', $agreeOffer = null, $agreeRf = null)
     {
-        $endpointUrl = $this->options['endpointUrl'];
-        $params = [
-            'userName' => $this->options['userName'],
-            'password' => $this->options['password'],
-            'returnUrl' => $this->options['returnUrl'],
-            'orderNumber' => \uniqid(),
-            'amount' => $amount,
-            'jsonParams' => json_encode(['name' => $name, 'email' => $email])
-        ];
-        $request = $endpointUrl . "?" . http_build_query($params);
+        if (!isset($this->options['userName'])) {
+            $this->addFlashMessage('userName not set');
+        } else if (!isset($this->options['password'])) {
+            $this->addFlashMessage('password not set');
+        } else if ($amount === null) {
+            $this->addFlashMessage('Вы не указали сумму пожертвования');
+        } else if ($email === null) {
+            $this->addFlashMessage('Вы не указали ваш Email');
+        } else if ($agreeOffer === null) {
+            $this->addFlashMessage('Вы не согласились с договором-оффертой');
+        } else if ($agreeRf === null) {
+            $this->addFlashMessage('Вы не подтвердили, что являетесь гражданином Российской Федерации');
+        } else {
+            $endpointUrl = $this->options['endpointUrl'];
+            $params = [
+                'userName' => $this->options['userName'],
+                'password' => $this->options['password'],
+                'returnUrl' => $this->options['returnUrl'],
+                'orderNumber' => \uniqid(),
+                'amount' => $amount,
+                'jsonParams' => json_encode(['name' => $name, 'email' => $email])
+            ];
+            $requestUrl = $endpointUrl . "?" . http_build_query($params);
 
-        try {
-            $response = file_get_contents($request);
+            $response = file_get_contents($requestUrl);
             $json = json_decode($response);
             $redirect = $json->formUrl;
             header("Location: $redirect");
-        } catch (Exception $e) {
-            $this->view->assign('error', 'Извините, что-то пошло не так! Попробуйте повторить ваш платеж.');
         }
     }
 }

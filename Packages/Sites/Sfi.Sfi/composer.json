@@ -4,7 +4,8 @@
     "description": "SFI site files",
     "require": {
         "neos/neos": "*",
-        "neos/neos-nodetypes": "*"
+        "neos/neos-nodetypes": "*",
+        "opsdev/cache-breaker": "*"
     },
     "autoload": {
         "psr-0": {

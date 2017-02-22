@@ -1,13 +1,14 @@
 {namespace neos=Neos\Neos\ViewHelpers}
+{namespace opsdev=OpsDev\CacheBreaker\ViewHelpers}
 
 <head>
 	<f:section name="backendStylesheets">
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/backend.css', package: 'Sfi.Sfi')}" />
 	</f:section>
 	<f:section name="stylesheets">
-		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/_bower.css', package: 'Sfi.Sfi')}?{f:format.date(date:'now',format:'U')}" />
-		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/app-prefixed.css', package: 'Sfi.Sfi')}?{f:format.date(date:'now',format:'U')}" />
-		<link rel="alternate stylesheet" title="accessible-stylesheet" href="{f:uri.resource(path: 'Built/accessible.css', package: 'Sfi.Sfi')}?{f:format.date(date:'now',format:'U')}" />
+		<link rel="stylesheet" href="{opsdev:resource(path: 'Built/_bower.css', package: 'Sfi.Sfi')}" />
+		<link rel="stylesheet" href="{opsdev:resource(path: 'Built/app-prefixed.css', package: 'Sfi.Sfi')}" />
+		<link rel="alternate stylesheet" title="accessible-stylesheet" href="{opsdev:resource(path: 'Built/accessible.css', package: 'Sfi.Sfi')}" />
 	</f:section>
 	<f:section name="headScripts">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -25,8 +26,8 @@
 </head>
 <body>
 	<f:section name="bodyScripts">
-		<script src="{f:uri.resource(path: 'Built/_bower.js', package: 'Sfi.Sfi')}?{f:format.date(date:'now',format:'U')}"></script>
-		<script src="{f:uri.resource(path: 'js/plugins.js', package: 'Sfi.Sfi')}?{f:format.date(date:'now',format:'U')}"></script>
+		<script src="{opsdev:resource(path: 'Built/_bower.js', package: 'Sfi.Sfi')}"></script>
+		<script src="{opsdev:resource(path: 'js/plugins.js', package: 'Sfi.Sfi')}"></script>
 	</f:section>
 	<f:section name="analytics">
 		<f:render partial="Analytics" />

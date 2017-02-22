@@ -19,7 +19,7 @@
 	<f:form package="Sfi.Sber" controller="Payment" action="register" id="donate">
 		<div class="row paddingVertical-triple">
 			<div class="columns medium-8 medium-offset-2 large-6 large-offset-3">
-				<div class="row">
+				<!--<div class="row">
 					<div class="medium-6 large-7 columns">
 						<label class="ParagraphAlt--Large" for="type">Тип пожертвования</label>
 						<f:form.select name="type" class="input" style="background-color: white; height: 46px;" options="{montly: 'Ежемесячный платеж', once: 'Разовое'}" />
@@ -28,15 +28,19 @@
 						<label class="ParagraphAlt--Large" for="amount">Сумма, руб.</label>
 						<f:form.textfield class="input" name="amount" placeholder="руб."/>
 					</div>
-				</div>
+				</div>-->
+
+				<label class="ParagraphAlt--Large" for="amount">Сумма, руб.</label>
+				<f:form.textfield class="input" name="amount" placeholder="руб."/>
 
 				<label class="ParagraphAlt--Large" for="email">E-mail</label>
 				<f:form.textfield class="input" type="email" name="email" placeholder="your@email.ru"/>
+
 				<label class="ParagraphAlt--Large" for="name">Имя (необязательно)</label>
 				<f:form.textfield class="input" name="name" placeholder="Фамилия Имя Отчество"/>
 
-				<p class="ParagraphAlt"><input type="checkbox" name="offer"/> Я ознакомился c <a href="https://sfi.ru/_Resources/Persistent/abec2e5c8bbf1618d044a0b08aa541f30886e9f9/donation-offerta.pdf" target="_blank" style="text-decoration: underline">договором-офертой</a> и согласен с ней</p>
-				<p class="ParagraphAlt"><input type="checkbox" name="offer"/> Я являюсь гражданином Российской Федерации</p>
+				<p class="ParagraphAlt"><f:form.checkbox name="agreeOffer" value="agreeOffer" checked="true"/> Я ознакомился c <a href="https://sfi.ru/_Resources/Persistent/abec2e5c8bbf1618d044a0b08aa541f30886e9f9/donation-offerta.pdf" target="_blank" style="text-decoration: underline">договором-офертой</a> и согласен с ней</p>
+				<p class="ParagraphAlt"><f:form.checkbox name="agreeRf" value="agreeRf" checked="true"/> Я являюсь гражданином Российской Федерации</p>
 				<p class="ParagraphAlt--Small marginTop-single">Оплата происходит через авторизационный сервер процессингового центра ПАО Сбербанк с использованием банковских кредитных карт VISA и MasterCard. <neos:link.node node="node://ef5cfeb8-cbad-4959-9b10-ffec48717eeb" target="_blank" style="text-decoration: underline">Подробнее о процессе оплаты.</neos:link.node></p>
 			</div>
 		</div>
