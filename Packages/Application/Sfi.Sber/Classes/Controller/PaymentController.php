@@ -41,7 +41,7 @@ class PaymentController extends ActionController
                 'password' => $this->options['password'],
                 'returnUrl' => $this->options['returnUrl'],
                 'orderNumber' => \uniqid(),
-                'amount' => $amount,
+                'amount' => $amount * 100, // amount in cents
                 'jsonParams' => json_encode(['name' => $name, 'email' => $email])
             ];
             $requestUrl = $endpointUrl . "?" . http_build_query($params);
