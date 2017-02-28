@@ -20,7 +20,11 @@ class Package extends BasePackage
         $dispatcher = $bootstrap->getSignalSlotDispatcher();
         $dispatcher->connect(Workspace::class, 'beforeNodePublishing', function ($node, $targetWorkspace) use ($bootstrap) {
           $bootstrap->getObjectManager()->get(PersistenceManagerInterface::class)->persistAll();
-            if ($targetWorkspace->getName() === 'live' && $node->getProperty('firstPublicationDateTime') == new \DateTime('1990-01-01')) {
+            if (
+                $targetWorkspace->getName() === 'live' &&
+                $node->isHidden() !== TRUE &&
+                $node->getProperty('firstPublicationDateTime') == new \DateTime('1990-01-01')
+            ) {
                 $node->setProperty('firstPublicationDateTime', new \DateTime());
                 $bootstrap->getObjectManager()->get(PersistenceManagerInterface::class)->persistAll();
             }
