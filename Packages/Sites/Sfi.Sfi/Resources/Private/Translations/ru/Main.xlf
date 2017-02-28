@@ -176,6 +176,9 @@
             <trans-unit id="newsletter.digestReadMore">
                 <source>Перейти на сайт</source>
             </trans-unit>
+            <trans-unit id="newsletter.previousSubscriptions">
+                <source>Предыдущие рассылки</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
