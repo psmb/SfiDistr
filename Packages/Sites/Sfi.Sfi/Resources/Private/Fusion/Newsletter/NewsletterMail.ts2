@@ -1,7 +1,7 @@
 prototype(Sfi.Sfi:NewsletterMail) < prototype(Psmb.Newsletter:MailRenderer) {
 	subject = ${String.stripTags(node.properties.title)}
 	body = Neos.Fusion:Value {
-		value = Sfi.Sfi:Newsletter {
+		value = Sfi.Sfi:NewsletterObject {
 			isNewsletter = true
 			prototype(NodeUri) {
 				absolute = ${true}

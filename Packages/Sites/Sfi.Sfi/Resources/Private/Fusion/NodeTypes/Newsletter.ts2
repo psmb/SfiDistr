@@ -1,11 +1,26 @@
 prototype(Sfi.Sfi:Newsletter) {
 	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/Newsletter.html'
-	main = ContentCollection {
-		nodePath = 'main'
+	main = Sfi.Sfi:NewsletterObject {
+		prototype(Sfi.Sfi:MailLayout).showFooter = ${false}
 	}
-	@process.layout = Sfi.Sfi:MailLayout {
-		logoAfter = true
+
+	menu = Neos.Fusion:Collection {
+		@process.tmpl = ${'<ul class="marginVertical-double">' + value + '</ul>'}
+		collection = ${q(node).parent().children().get()}
+		itemName = 'node'
+		itemRenderer = Neos.Fusion:Tag {
+			@process.tmpl = ${'<li>' + value + '</li>'}
+			tagName = 'a'
+			attributes.class = 'Link'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = ${node.properties.title}
+			@process.isCurrent = ${node == documentNode ? node.properties.title : value}
+		}
 	}
+
+	subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
 }
 
 root.newsletter {

@@ -10,4 +10,6 @@ prototype(Sfi.Sfi:MailLayout) < prototype(Neos.Fusion:Template) {
 
     unsubscribeLink = Psmb.Newsletter:UnsubscribeLink
     editSubscriptionLink = Psmb.Newsletter:EditSubscriptionLink
+
+    showFooter = ${true}
 }
