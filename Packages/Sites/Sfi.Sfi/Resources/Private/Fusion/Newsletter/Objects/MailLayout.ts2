@@ -8,8 +8,11 @@ prototype(Sfi.Sfi:MailLayout) < prototype(Neos.Fusion:Template) {
         path = 'resource://Sfi.Sfi/Public/Images/sfi-newsletter.png'
     }
 
+
     unsubscribeLink = Psmb.Newsletter:UnsubscribeLink
     editSubscriptionLink = Psmb.Newsletter:EditSubscriptionLink
 
     showFooter = ${true}
+
+    showBanner = ${subscription.dimensions.language == 'ru'}
 }

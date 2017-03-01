@@ -9,7 +9,7 @@
             <div class="columns">
                 <f:if condition="{logoBefore}">
                     <div style="text-align: center">
-                        <img height="190" style="height: 190px !important" src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                        <img height="190" style="image-rendering:crisp-edges; image-rendering:-moz-crisp-edges; image-rendering: -webkit-optimize-contrast; height: 190px !important" src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
                     </div>
                 </f:if>
                 <div class="paddingVertical-triple">
@@ -17,7 +17,20 @@
                 </div>
                 <f:if condition="{logoAfter}">
                     <div>
-                        <img height="190" style="height: 190px !important" src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                        <img height="190" style="image-rendering:crisp-edges; image-rendering:-moz-crisp-edges; image-rendering: -webkit-optimize-contrast; height: 190px !important" src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}"/>
+                    </div>
+                </f:if>
+                <f:if condition="{showBanner}">
+                    <div class="marginTop-triple" style="background-image: url(https://sfi.ru/_Resources/Persistent/be424180fff14408e829bb45c3b181c995df1fe1/IMG_1193-2560x1477.jpg); min-height: 300px; background-size: cover; display: flex; align-items: center; background-position: center 92%; justify-content: center; position: relative;">
+                        <div style="width: 100%; height: 300px; position: absolute; background-color: rgba(0, 0, 0, 0.4)"></div>
+                        <div class="row" style="z-index:1">
+                            <div class="columns">
+                                <div class="color-white H1 textAlign-center">Вы можете поддержать наш институт</div>
+                                <div class="textAlign-center marginTop-triple">
+                                    <a href="https://sfi.ru/support.html" class="Button LinkButton Service paddingHorizontal-triple paddingVertical-single" style="border: 2px solid white; margin-right: 0; color: white; background-color: transparent;">Поддержать СФИ »</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </f:if>
             </div>

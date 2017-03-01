@@ -1,7 +1,10 @@
 prototype(Sfi.Sfi:Newsletter) {
 	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/Newsletter.html'
 	main = Sfi.Sfi:NewsletterObject {
-		prototype(Sfi.Sfi:MailLayout).showFooter = ${false}
+		prototype(Sfi.Sfi:MailLayout) {
+			showFooter = ${false}
+			showBanner = ${true}
+		}
 	}
 
 	menu = Neos.Fusion:Collection {
