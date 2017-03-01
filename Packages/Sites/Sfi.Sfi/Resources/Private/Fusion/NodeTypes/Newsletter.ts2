@@ -21,7 +21,7 @@ prototype(Sfi.Sfi:Newsletter) {
 	}
 
 	subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin {
-		additionalData = ${{onlyDigest: true}}
+		additionalData.onlyDigest = ${true}
 	}
 }
 
