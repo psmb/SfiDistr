@@ -20,7 +20,9 @@ prototype(Sfi.Sfi:Newsletter) {
 		}
 	}
 
-	subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
+	subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin {
+		additionalData = ${{onlyDigest: true}}
+	}
 }
 
 root.newsletter {

@@ -112,7 +112,6 @@
             </trans-unit>
 
 
-
             <trans-unit id="newsletter.editTitle">
                 <target>Revise subscription parameters for the address</target>
             </trans-unit>
@@ -175,6 +174,12 @@
             </trans-unit>
             <trans-unit id="newsletter.previousSubscriptions">
                 <source>Previous Newsletters</source>
+            </trans-unit>
+            <trans-unit id="newsletter.moreOptions">
+                <source>Subscription options</source>
+            </trans-unit>
+            <trans-unit id="newsletter.onlyDigestTitle">
+                <source>Subscribe to this digest</source>
             </trans-unit>
         </body>
     </file>

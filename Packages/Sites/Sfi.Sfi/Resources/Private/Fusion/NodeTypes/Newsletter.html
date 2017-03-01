@@ -1,10 +1,10 @@
-<div class="row">
-	<div class="medium-4 large-3 columns paddingTop-triple">
+<div class="row marginBottom-double">
+	<div class="medium-8 columns">
+		{subscriptionPlugin -> f:format.raw()}
+		{main -> f:format.raw()}
+	</div>
+	<div class="medium-4 columns paddingTop-triple">
 		<h3 class="H3"><f:translate id="newsletter.previousSubscriptions" package="Sfi.Sfi"/></h3>
 		{menu -> f:format.raw()}
-	</div>
-	<div class="medium-8 large-9 columns">
-		{main -> f:format.raw()}
-		{subscriptionPlugin -> f:format.raw()}
 	</div>
 </div>

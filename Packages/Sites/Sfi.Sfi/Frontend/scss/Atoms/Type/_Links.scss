@@ -1,5 +1,6 @@
 @mixin link-state {
 	transition: $transition;
+	cursor: pointer;
 	&.current, &.current:hover {
 		color: $gray--light !important;
 		text-decoration: none;

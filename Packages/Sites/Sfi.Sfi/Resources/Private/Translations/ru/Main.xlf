@@ -179,6 +179,12 @@
             <trans-unit id="newsletter.previousSubscriptions">
                 <source>Предыдущие рассылки</source>
             </trans-unit>
+            <trans-unit id="newsletter.moreOptions">
+                <source>Варианты подписки</source>
+            </trans-unit>
+            <trans-unit id="newsletter.onlyDigestTitle">
+                <source>Подпишитесь на авторский дайджест</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

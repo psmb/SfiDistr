@@ -8,7 +8,7 @@ prototype(Sfi.Sfi:Stylesheets) < prototype(Neos.Fusion:Array) {
 	backend = Neos.Fusion:Template {
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 		sectionName = 'backendStylesheets'
-		@process.1=${node.context.workspaceName != 'live' ? value:''}
+		@process.1 = ${node.context.workspaceName != 'live' ? value:''}
 	}
 	@cache {
 		mode = 'cached'
