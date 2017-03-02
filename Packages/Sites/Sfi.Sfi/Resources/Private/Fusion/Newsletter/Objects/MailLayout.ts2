@@ -14,5 +14,5 @@ prototype(Sfi.Sfi:MailLayout) < prototype(Neos.Fusion:Template) {
 
     showFooter = ${true}
 
-    showBanner = ${subscription.dimensions.language == 'ru'}
+    showBanner = ${Array.first(subscription.dimensions.language) == 'ru' ? true : false}
 }
