@@ -26,7 +26,7 @@
         "neos/redirecthandler-neosadapter": "@dev",
         "neos/googleanalytics": "~2.0.0",
         "flowpack/jobqueue-common": "@dev",
-        "psmb/newsletter": "~2.0",
+        "psmb/newsletter": "~2.1",
         "psmb/term": "^2.0",
         "opsdev/cache-breaker": "^2.0"
     },
