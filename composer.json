@@ -1,7 +1,6 @@
 {
     "name": "sfi/sfi-distr",
     "description": "Neos Distribution for Sfi.ru",
-    "license": "GPL-3.0+",
     "config": {
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
