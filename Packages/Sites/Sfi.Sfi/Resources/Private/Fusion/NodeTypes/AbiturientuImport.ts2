@@ -1,8 +1,10 @@
 prototype(Sfi.Sfi:AbiturientuImport)>
 prototype(Sfi.Sfi:AbiturientuImport) < prototype(Neos.Fusion:Array) {
     @process.tmpl = ${'<div style="background-color: lightgrey">' + value + '</div>'}
+    @process.tmpl.@if.inBackend = ${node.context.inBackend}
     @context.rootNode = ${q(documentNode).children('[instanceof Neos.Neos:Document]').first().children('main').get(0)}
     1 = Neos.Fusion:Tag {
+        @if.inBackend = ${node.context.inBackend}
         @context.node = ${q(documentNode).children('[instanceof Neos.Neos:Document]').get(0)}
         tagName = 'a'
         attributes.href = NodeUri {
