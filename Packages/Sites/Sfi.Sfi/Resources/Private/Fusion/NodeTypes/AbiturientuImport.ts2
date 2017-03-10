@@ -23,6 +23,7 @@ prototype(Sfi.Sfi:AbiturientuImport) < prototype(Neos.Fusion:Array) {
             entryIdentifier.node = ${node}
             entryTags {
                 1 = ${'DescendantOf_' + rootNode.identifier}
+                2 = ${Neos.Caching.nodeTag(q(documentNode).children('[instanceof Neos.Neos:Document]').get())}
             }
         }
     }
