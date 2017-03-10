@@ -1,0 +1,6 @@
+'Sfi.Sfi:AbiturientuImport':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Импорт подраздела абитуриенту'
+    group: contentBlocks
