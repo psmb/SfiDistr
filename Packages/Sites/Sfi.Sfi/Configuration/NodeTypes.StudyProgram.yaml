@@ -11,8 +11,6 @@
   childNodes:
     assetDescription:
       type: 'Sfi.Shared:Asset'
-    assetSchedule:
-      type: 'Sfi.Shared:Asset'
     assetAccreditation:
       type: 'Sfi.Shared:Asset'
     assetInvoice:

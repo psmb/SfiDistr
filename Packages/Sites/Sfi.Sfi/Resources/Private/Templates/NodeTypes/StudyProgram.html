@@ -68,10 +68,8 @@
 			</div>
 			<a href="#tab-schedule" class="Sections-Anchor Sections-AccordionTitle">Учебный график</a>
 			<div class="Sections-Panel" id="tab-schedule">
-				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Календарный учебный график (описание)</div></f:if>
+				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Календарный учебный график</div></f:if>
 				{schedule -> f:format.raw()}
-				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Календарный учебный график (файлы)</div></f:if>
-				{assetSchedule -> f:format.raw()}
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Учебный план</div></f:if>
 				{assetsPlan -> f:format.raw()}
 			</div>

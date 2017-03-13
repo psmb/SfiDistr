@@ -225,6 +225,7 @@ blah: &alohaRich
     'Sfi.Sfi:StudyProgramsListing': true
   ui:
     label: 'Список учебных программ (законодательство)'
+    inlineEditable: true
 'Sfi.Sfi:StudyProgramsListingByReference':
   superTypes:
     'Neos.Neos:Content': true

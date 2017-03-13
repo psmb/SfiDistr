@@ -1,32 +1,17 @@
-{namespace neos=Neos\Neos\ViewHelpers}
-<div class="StudyProgramCard StudyProgramCard--Short">
-	<div class="StudyProgramCard-Line" itemprop="EduLavel">Уровень программы: {level -> f:format.raw()}</div>
-	<div class="StudyProgramCard-Line marginBottom-single">Место реализации программы: {division -> f:format.raw()}</div>
-	<div class="StudyProgramCard-Line marginBottom-single">{accreditationDate -> f:format.raw()}</div>
-	<div class="StudyProgramCard-Line marginBottom-single">{duration -> f:format.raw()}</div>
-
-	<f:if condition="{assetDescription}">
-		<div class="StudyProgramCard-Line" itemprop="OOP_main">{assetDescription -> f:format.raw()}</div>
-	</f:if>
-	<f:if condition="{assetsPlan}">
-		<div class="StudyProgramCard-Line" itemprop="education_plan">{assetsPlan -> f:format.raw()}</div>
-	</f:if>
-	<f:if condition="{assetSchedule}">
-		<div class="StudyProgramCard-Line marginBottom-single" itemprop="education_shedule">{assetSchedule -> f:format.raw()}</div>
-	</f:if>
-	<f:if condition="{assetAccreditation}">
-		<div class="StudyProgramCard-Line marginBottom-single">{assetAccreditation -> f:format.raw()}</div>
-	</f:if>
-	<f:if condition="{assetsSubjectAnnotations}">
-		<div class="StudyProgramCard-Line">Аннотации к рабочим программам дисциплин:</div>
-		<div class="StudyProgramCard-Line marginBottom-single" itemprop="education_annotation">{assetsSubjectAnnotations -> f:format.raw()}</div>
-	</f:if>
-	<f:if condition="{assetsPracticeAnnotations}">
-		<div class="StudyProgramCard-Line">Практики:</div>
-		<div class="StudyProgramCard-Line" itemprop="EduPr">{assetsPracticeAnnotations -> f:format.raw()}</div>
-	</f:if>
-
-	<f:if condition="{noLink} != 'TRUE'">
-		<neos:link.node node="{node}" class="Button marginTop-single">Подробнее</neos:link.node>
-	</f:if>
-</div>
+<tr>
+	<td style="vertical-align: top" itemprop="OOP_main">
+		{assetDescription -> f:format.raw()}
+	</td>
+	<td style="vertical-align: top" itemprop="education_plan">
+		{assetsPlan -> f:format.raw()}
+	</td>
+	<td style="vertical-align: top" itemprop="education_annotation">
+		{assetsSubjectAnnotations -> f:format.raw()}
+	</td>
+	<td style="vertical-align: top" itemprop="education_shedule">
+		{schedule -> f:format.raw()}
+	<td style="vertical-align: top" itemprop="EduPr">
+		{assetsPracticeAnnotations -> f:format.raw()}
+	</td>
+	<td style="vertical-align: top" itemprop="methodology"></td>
+</tr>
