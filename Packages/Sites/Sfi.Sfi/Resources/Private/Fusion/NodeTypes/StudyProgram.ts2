@@ -32,30 +32,37 @@ prototype(Sfi.Sfi:StudyProgram) {
 
 	assetsPlan = ContentCollection {
 		nodePath = 'assetsPlan'
+		@process.title = ${'<h3 class="H3">Учебный план</h3>' + value}
 	}
 	assetsAdmissionRegulations = ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
 	}
 	assetsSubjectAnnotations = ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
+		@process.title = ${'<h3 class="H3">Аннотации к рабочим программам дисциплин</h3>' + value}
 	}
 	assetsPracticeAnnotations = ContentCollection {
 		nodePath = 'assetsPracticeAnnotations'
+		@process.title = ${'<h3 class="H3">Практики</h3>' + value}
 	}
 	assetsMethodical = ContentCollection {
 		nodePath = 'assetsMethodical'
+		@process.title = ${'<h3 class="H3">Методические и иные документы</h3>' + value}
 	}
 	description = ContentCollection {
 		nodePath = 'description'
 	}
 	subjects = ContentCollection {
 		nodePath = 'subjects'
+		@process.title = ${'<h3 class="H3">Список изучаемых дисциплин</h3>' + value}
 	}
 	schedule = ContentCollection {
 		nodePath = 'schedule'
+		@process.title = ${'<h3 class="H3">Календарный учебный график</h3>' + value}
 	}
 	documentSubmission = ContentCollection {
 		nodePath = 'documentSubmission'
+		@process.title = ${'<h3 class="H3">Список необходимых документов</h3>' + value}
 	}
 	exams = ContentCollection {
 		nodePath = 'exams'

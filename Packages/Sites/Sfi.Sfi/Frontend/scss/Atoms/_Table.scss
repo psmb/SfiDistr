@@ -2,6 +2,9 @@
 	@include table;
 	font-family: $fontFamily-alt;
 	font-size: rem-calc(14);
+	h2, h3, h4 {
+		margin: 0 !important;
+	}
 }
 
 .Table * {
