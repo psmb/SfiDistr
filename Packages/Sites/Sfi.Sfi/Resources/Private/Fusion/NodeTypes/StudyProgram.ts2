@@ -118,10 +118,14 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	accreditationDate = ${q(node).property('accreditationDate')}
 	noLink = ${q(node).property('noLink')}
 
-	#TODO: translate
-	assetDescription = Sfi.Sfi:StudyProgramAsset {
-		content = 'Описание образовательной программы'
+	assetDescription = Neos.Fusion:Tag {
+		content = ${String.stripTags(q(node).property('title'))}
 		@context.node = ${q(node).children('assetDescription').get(0)}
+		tagName = 'a'
+		attributes.class = 'ButtonInline AssetInline'
+		attributes.href = ${'asset://' + node.properties.asset.identifier}
+		attributes.href.@process.convertUris = ConvertUris
+		@if.assetNotEmptyOrInBackend = ${node.properties.asset.identifier != null || documentNode.context.inBackend}
 	}
 	assetsPlan = ContentCollection {
 		nodePath = 'assetsPlan'
@@ -138,6 +142,9 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	}
 	assetsPracticeAnnotations = ContentCollection {
 		nodePath = 'assetsPracticeAnnotations'
+	}
+	assetsMethodical = ContentCollection {
+		nodePath = 'assetsMethodical'
 	}
 }
 
