@@ -277,6 +277,7 @@ blah: &alohaRich
     'Sfi.News:AbstractNews': true
     'Sfi.News:ImportantMixin': true
     'Sfi.News:AuthorMixin': true
+    'Psmb.Newsletter:NewsletterMixin': true
   properties:
     variant:
       type: string

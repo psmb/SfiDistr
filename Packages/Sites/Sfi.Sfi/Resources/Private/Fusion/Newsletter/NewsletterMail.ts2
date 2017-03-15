@@ -3,12 +3,6 @@ prototype(Sfi.Sfi:NewsletterMail) < prototype(Psmb.Newsletter:MailRenderer) {
 	body = Neos.Fusion:Value {
 		value = Sfi.Sfi:NewsletterObject {
 			isNewsletter = true
-			prototype(NodeUri) {
-				absolute = ${true}
-			}
-			prototype(Psmb.Term:ReplaceTerms) {
-				absolute = ${true}
-			}
 			@cache {
 				entryIdentifier {
 					node = ${node}

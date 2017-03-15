@@ -12,6 +12,7 @@ Psmb:
       -
         identifier: instant_ru
         renderer: 'Sfi.Sfi:InstantMail'
+        sendFromUiNodeType: 'Sfi.News:News'
         label: 'Мгновенное уведомление'
         description: 'Получать полные версии статей как только они опубликованы'
         interval: PT1H
@@ -22,6 +23,7 @@ Psmb:
       -
         identifier: digest_ru
         renderer: 'Sfi.Sfi:NewsletterMail'
+        sendFromUiNodeType: 'Sfi.Sfi:Newsletter'
         label: 'Авторский дайджест'
         description: 'Получать раз в две недели авторский обзор лучших публикаций'
         footerInfo: 'Вы получили это письмо, поскольку подписаны на Авторский обзор лучших публикаций сайта Свято-Филаретовского института. Дайджест приходит раз в две недели.'
@@ -33,6 +35,7 @@ Psmb:
       -
         identifier: instant_en
         renderer: 'Sfi.Sfi:InstantMail'
+        sendFromUiNodeType: 'Sfi.News:News'
         label: 'Instant Notification'
         description: 'Recevie full versions of articles as they are published'
         interval: PT1H
@@ -43,6 +46,7 @@ Psmb:
       -
         identifier: digest_en
         renderer: 'Sfi.Sfi:DigestMail'
+        sendFromUiNodeType: 'Sfi.Sfi:Newsletter'
         label: 'Monthly Digest'
         description: 'Receive newsletter by Sofia Androsenko to your inbox'
         interval: manual

@@ -25,9 +25,11 @@
         "neos/redirecthandler-neosadapter": "@dev",
         "neos/googleanalytics": "~2.0.0",
         "flowpack/jobqueue-common": "@dev",
-        "psmb/newsletter": "~2.1",
+        "psmb/newsletter": "~2.2",
         "psmb/term": "^2.0",
-        "opsdev/cache-breaker": "^2.0"
+        "opsdev/cache-breaker": "^2.0",
+        "neos/neos-ui": "dev-master",
+        "neos/neos-ui-compiled": "dev-master"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
