@@ -3,7 +3,7 @@
 {namespace s=Sfi\Shared\ViewHelpers}
 
 <div class="Media">
-	<neos:link.node node="{node}">
+	<neos:link.node absolute="true" node="{node}">
 		<div class="Media-Image">
 			<f:if condition="{thumbnailImage}">
 				<m:image image="{thumbnailImage}" maximumWidth="{configuration.thumbnailWidth}" maximumHeight="{configuration.thumbnailHeight}" allowCropping="true" allowUpScaling="true" alt="{title}" />

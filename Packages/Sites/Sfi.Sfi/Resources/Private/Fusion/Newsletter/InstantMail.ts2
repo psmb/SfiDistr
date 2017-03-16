@@ -1,6 +1,6 @@
 prototype(Sfi.Sfi:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
 	# if isTest, then don't override node
-	@context.node = ${subscription.isTest ? node : q(site).find('[instanceof Sfi.News:AbstractNews]').sort('date', 'DESC').filterByDate('firstPublicationDateTime', Date.subtract(Date.now(), subscription.interval)).get(0)}
+	@context.node = ${subscription.isSendFromUi ? node : q(site).find('[instanceof Sfi.News:AbstractNews]').sort('date', 'DESC').filterByDate('firstPublicationDateTime', Date.subtract(Date.now(), subscription.interval)).get(0)}
 	# TODO: better ideas how to check if node is found?
 	@if.notEmpty = ${String.length(node.identifier) > 0}
 	subject = ${String.stripTags(node.properties.title)}

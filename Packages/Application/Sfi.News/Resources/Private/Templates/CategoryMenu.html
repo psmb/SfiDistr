@@ -2,11 +2,11 @@
 {namespace ts=Neos\Fusion\ViewHelpers}
 <ul class="CategoryMenu">
 	<li class="CategoryMenu-Item {f:if(condition:rootIsCurrent, then:'current')}">
-		<neos:link.node class="" node="{rootNode}" ><f:translate package="Sfi.Sfi" id="news.all"/></neos:link.node>
+		<neos:link.node absolute="true" class="" node="{rootNode}" ><f:translate package="Sfi.Sfi" id="news.all"/></neos:link.node>
 	</li>
 	<f:for each="{items}" as="item">
 		<li class="{ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()} CategoryMenu-Item">
-			<neos:link.node class="" node="{item.node}" />
+			<neos:link.node absolute="true" class="" node="{item.node}" />
 		</li>
 	</f:for>
 </ul>

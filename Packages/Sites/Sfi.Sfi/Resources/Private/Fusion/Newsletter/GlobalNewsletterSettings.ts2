@@ -1,7 +1,4 @@
 prototype(Psmb.Newsletter:MailRenderer) {
-	prototype(Psmb.Term:ReplaceTerms) {
-		absolute = ${true}
-	}
 	prototype(Sfi.Shared:YouTube) {
 		tagName = 'a'
 		attributes.href = ${q(node).property('videoUrl')}
@@ -11,7 +8,13 @@ prototype(Psmb.Newsletter:MailRenderer) {
 			thumbUri = ${'https://img.youtube.com/vi/' + Array.First(Array.Slice(String.pregMatch(q(node).property('videoUrl'),'#\?v=([a-z0-9-_]+)#i'),1)) + '/hqdefault.jpg'}
 		}
 	}
+	prototype(Psmb.Term:ReplaceTerms) {
+		absolute = ${true}
+	}
 	prototype(NodeUri) {
+		absolute = ${true}
+	}
+	prototype(ConvertUris) {
 		absolute = ${true}
 	}
 }
