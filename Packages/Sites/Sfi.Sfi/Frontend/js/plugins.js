@@ -336,6 +336,12 @@ if (typeof document.addEventListener === 'function') {
     stickInParent(node);
   }
 }());
+(function () {
+  var node = document.querySelector('.js-stickInParent--large');
+  if (node) {
+    stickInParent(node, {minWidth: 1024});
+  }
+}());
 
 function stickInParent (element, options) {
 	if (!element) {

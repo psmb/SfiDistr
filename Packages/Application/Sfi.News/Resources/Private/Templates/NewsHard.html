@@ -3,7 +3,7 @@
 {namespace s=Sfi\Shared\ViewHelpers}
 
 <div class="NewsDetail row js-stickInParent-parent">
-	<div class="NewsDetail-Article NewsDetail-Article--Hard columns">
+	<div class="NewsDetail-Article NewsDetail-Article--Hard columns marginBottom-double">
 
 		<div class="Article Article--Hard">
 			<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
@@ -65,7 +65,7 @@
 
 	</div>
 	<div class="NewsDetail-MoreItems columns">
-		<div class="js-stickInParent">
+		<div class="js-stickInParent--large">
 			{moreItems -> f:format.raw()}
 		</div>
 	</div>
