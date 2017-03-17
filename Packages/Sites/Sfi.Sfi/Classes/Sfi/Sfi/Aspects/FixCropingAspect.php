@@ -27,11 +27,11 @@ class FixCropingAspect {
 			&& !isset($options['height'])
 			&& isset($options['maximumHeight'])
 		){
-				$options['height'] = $options['maximumHeight'];
-				unset($options['maximumHeight']);
+			$options['height'] = $options['maximumHeight'];
+			unset($options['maximumHeight']);
 
-				$options['width'] = $options['maximumWidth'];
-				unset($options['maximumWidth']);
+			$options['width'] = $options['maximumWidth'];
+			unset($options['maximumWidth']);
 		}
 
 		$joinPoint->setMethodArgument('options', $options);

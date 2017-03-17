@@ -15,7 +15,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.News:News'
         label: 'Мгновенное уведомление'
         description: 'Получать полные версии статей как только они опубликованы'
-        interval: PT1H
+        interval: manual
         senderName: 'Свято-Филаретовский православно-христианский институт'
         dimensions:
           language:
@@ -38,7 +38,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.News:News'
         label: 'Instant Notification'
         description: 'Recevie full versions of articles as they are published'
-        interval: PT1H
+        interval: manual
         senderName: 'St Philaret`s Christian Orthodox Institute'
         dimensions:
           language:
