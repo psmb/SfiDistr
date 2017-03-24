@@ -1,7 +1,6 @@
 prototype(Sfi.Sfi:PaperWithAuthor.TopList) < prototype(Neos.Fusion:Array) {
     @process.tmpl = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
-    storageTitle = ${q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor.Store]').first().property('title')}
-    title = ${'<h2 class="SectionDivider--Service">' + this.storageTitle + '</h2>'}
+    title = ${'<h2 class="SectionDivider--Service">' + q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor.Store]').first().property('title') + '</h2>'}
     list = Neos.Fusion:Collection {
         collection = ${q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor]').filter('[isImportant = true]').sort('date', 'DESC').slice(0, 3).get()}
         itemName = 'node'

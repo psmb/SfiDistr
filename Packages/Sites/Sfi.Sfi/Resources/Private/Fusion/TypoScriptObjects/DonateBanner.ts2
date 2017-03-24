@@ -1,0 +1,3 @@
+prototype(Sfi.Sfi:DonateBanner) < prototype(Neos.Fusion:Template) {
+    templatePath = 'resource://Sfi.Sfi/Private/Fusion/TypoScriptObjects/DonateBanner.html'
+}

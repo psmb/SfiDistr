@@ -7,6 +7,7 @@ prototype(Sfi.Sfi:PageMain) {
 	showAnnouncements = ${String.length(this.newsAnnouncements) > 150}
 	promo = Sfi.Sfi:PromoList
 	papers = Sfi.Sfi:PaperWithAuthor.TopList
+	donate = Sfi.Sfi:DonateBanner
 	breadcrumbMenu>
 	main = ContentCollection {
 		nodePath = 'main'

@@ -195,6 +195,22 @@ blah: &alohaRich
         reloadIfChanged: true
         inspector:
           group: image
+    squareImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото квадратное (для всяких там докладов)'
+        inspector:
+          group: image
+          editorOptions:
+            features:
+              resize: TRUE
+            crop:
+              aspectRatio:
+                enableOriginal: FALSE
+                allowCustom: TRUE
+                locked:
+                  width: 100
+                  height: 100
 'Sfi.Sfi:Rector':
   superTypes:
     'Sfi.Sfi:Person': true

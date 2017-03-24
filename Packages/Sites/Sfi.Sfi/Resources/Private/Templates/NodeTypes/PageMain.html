@@ -18,19 +18,20 @@
 		<f:if condition="{showAnnouncements}">
 			{newsAnnouncements -> f:format.raw()}
 		</f:if>
+		{promo -> f:format.raw()}
 	</div>
-	{promo -> f:format.raw()}
 </div>
 <div class="row">
 	<div class="columns medium-8">
 		{papers -> f:format.raw()}
 	</div>
 	<div class="columns medium-4">
-		{main -> f:format.raw()}
+		{donate -> f:format.raw()}
 	</div>
 </div>
 
 <div class="FooterMain marginTop-triple">
 	<div class="row">
+		{main -> f:format.raw()}
 	</div>
 </div>
