@@ -88,6 +88,7 @@ blah: &alohaRich
         aloha:
           <<: *alohaPlain
           placeholder: 'Место откуда автор'
+
 'Sfi.Sfi:Poster':
   superTypes:
     'Sfi.News:AbstractArticle': true

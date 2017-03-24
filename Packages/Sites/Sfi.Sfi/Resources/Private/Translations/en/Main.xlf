@@ -2,6 +2,18 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" source-language="ru" target-language="en" datatype="plaintext">
         <body>
+            <trans-unit id="photo">
+                <source>Photo</source>
+            </trans-unit>
+            <trans-unit id="video">
+                <source>Video</source>
+            </trans-unit>
+            <trans-unit id="audio">
+                <source>Audio</source>
+            </trans-unit>
+            <trans-unit id="allPapers">
+                <source>All papers</source>
+            </trans-unit>
             <trans-unit id="footer.about.sfi">
                 <target>St Philaret`s Christian Orthodox Institute (SFI)</target>
             </trans-unit>

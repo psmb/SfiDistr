@@ -1,13 +1,13 @@
 prototype(Sfi.News:Listable) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.News/Private/Templates/Listable.html'
-	sortProperty = ''
-	sortOrder = 'DESC'
-	numberOfItems = 10
+	@context.sortProperty = ''
+	@context.sortOrder = 'DESC'
+	@context.numberOfItems = 10
 	paginationEnabled = ${true}
 
 	collection = ${q(site).find('[instanceof Sfi.News:Listable]').get()}
-	collection.@process.sort = ${q(value).count() > 0 && this.sortProperty ? q(value).sort(this.sortProperty, this.sortOrder).get() : value}
-	collection.@process.slice = ${q(value).count() > 0 ? q(value).slice(0, String.toInteger(this.numberOfItems)).get() : value}
+	collection.@process.sort = ${q(value).count() > 0 && sortProperty ? q(value).sort(sortProperty, sortOrder).get() : value}
+	collection.@process.slice = ${q(value).count() > 0 ? q(value).slice(0, String.toInteger(numberOfItems)).get() : value}
 
 	itemRenderer = Sfi.Shared:ContentCaseShort
 }

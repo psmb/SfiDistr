@@ -1,0 +1,25 @@
+prototype(Sfi.Sfi:PaperWithAuthor.AuthorDegree) < prototype(Neos.Fusion:Array) {
+	1 = ${String.stripTags(node.properties.author.properties.degree)}
+	2 = ${node.properties.author.properties.degreeTitle && node.properties.author.properties.degree && '. '}
+	3 = ${String.stripTags(node.properties.author.properties.degreeTitle)}
+}
+
+prototype(Sfi.Sfi:PaperWithAuthor) {
+	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/PaperWithAuthor/PaperWithAuthor.html'
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	authorName = ${String.stripTags(node.properties.author.properties.title)}
+	authorDegree = Sfi.Sfi:PaperWithAuthor.AuthorDegree
+
+	main = ContentCollection {
+		nodePath = 'main'
+	}
+	@process.contentElementWrapping = ContentElementWrapping
+}
+
+prototype(PrimaryContent) {
+	Paper {
+		@position = 'before default'
+		condition = ${q(node).is('[instanceof Sfi.Sfi:PaperWithAuthor]')}
+		type = 'Sfi.Sfi:PaperWithAuthor'
+	}
+}

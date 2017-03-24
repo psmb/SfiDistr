@@ -16,7 +16,7 @@ Psmb:
         label: 'Мгновенное уведомление'
         description: 'Получать полные версии статей как только они опубликованы'
         interval: manual
-        senderName: 'Свято-Филаретовский православно-христианский институт'
+        senderName: 'СФИ'
         dimensions:
           language:
             - ru
@@ -28,7 +28,7 @@ Psmb:
         description: 'Получать раз в две недели авторский обзор лучших публикаций'
         footerInfo: 'Вы получили это письмо, поскольку подписаны на Авторский обзор лучших публикаций сайта Свято-Филаретовского института. Дайджест приходит раз в две недели.'
         interval: manual
-        senderName: 'Свято-Филаретовский православно-христианский институт'
+        senderName: 'СФИ'
         dimensions:
           language:
             - ru
@@ -39,7 +39,7 @@ Psmb:
         label: 'Instant Notification'
         description: 'Recevie full versions of articles as they are published'
         interval: manual
-        senderName: 'St Philaret`s Christian Orthodox Institute'
+        senderName: 'SFI'
         dimensions:
           language:
             - en
@@ -50,7 +50,7 @@ Psmb:
         label: 'Monthly Digest'
         description: 'Receive newsletter by Sofia Androsenko to your inbox'
         interval: manual
-        senderName: 'St Philaret`s Christian Orthodox Institute'
+        senderName: 'SFI'
         dimensions:
           language:
             - en

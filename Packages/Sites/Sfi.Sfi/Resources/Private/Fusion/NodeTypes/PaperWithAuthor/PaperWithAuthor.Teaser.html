@@ -1,0 +1,18 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<neos:link.node absolute="true" node="{node}">
+	<div class="marginVertical-triple" style="display: flex">
+		<div class="marginRight-double" style="flex-shrink: 0">
+			<img class="borderColor-gray" style="border-radius: 50%; border: 5px solid" src="{imageUri}"/>
+		</div>
+		<div>
+			<p>
+				<span class="H4">{authorName}</span>
+				<span class="ServiceEm margin-none">{authorDegree}</span>
+			</p>
+			<h3 class="marginVertical-half Paragraph lineHeight-tight Link margin-none">{title}</h3>
+			<p class="Paragraph--Small margin-none">{parent}</p>
+			<p class="marginTop-half Service--Small color-grayAlt">{tags}</p>
+		</div>
+	</div>
+</neos:link.node>

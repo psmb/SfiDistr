@@ -1,0 +1,25 @@
+'Sfi.Sfi:PaperWithAuthor':
+  superTypes:
+    'Sfi.News:AbstractArticle': true
+  ui:
+    label: 'Доклад с автором'
+    icon: icon-file-text
+    help:
+      message: 'Материал доклада на конференциях и т.п. с автором, выводится в специальный раздел'
+  properties:
+    author:
+      type: reference
+      ui:
+        label: 'Автор'
+        reloadIfChanged: true
+        inspector:
+          group: news
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Sfi:Person'
+    isImportant:
+      type: boolean
+      ui:
+        label: Важный доклад (на главной)
+        inspector:
+          group: news

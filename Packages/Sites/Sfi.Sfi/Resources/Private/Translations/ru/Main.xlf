@@ -2,6 +2,18 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file original="" source-language="ru" datatype="plaintext">
         <body>
+            <trans-unit id="photo">
+                <source>Фото</source>
+            </trans-unit>
+            <trans-unit id="video">
+                <source>Видео</source>
+            </trans-unit>
+            <trans-unit id="audio">
+                <source>Аудио</source>
+            </trans-unit>
+            <trans-unit id="allPapers">
+                <source>Все доклады</source>
+            </trans-unit>
             <trans-unit id="footer.about.sfi">
                 <source>Свято-Филаретовский православно-христианский институт (СФИ)</source>
             </trans-unit>

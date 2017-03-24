@@ -1,0 +1,24 @@
+prototype(Sfi.Sfi:PaperWithAuthorShort) < prototype(Content) {
+	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/PaperWithAuthor/PaperWithAuthor.Teaser.html'
+	title = ${String.stripTags(q(node).property('title'))}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	authorName = ${String.stripTags(node.properties.author.properties.title)}
+	authorDegree = Sfi.Sfi:PaperWithAuthor.AuthorDegree
+	imageUri = ImageUri {
+		asset = ${node.properties.author.properties.image}
+		maximumWidth = 100
+		maximumHeight = 100
+		allowCropping = true
+	}
+	parent = ${q(node).parent().property('title')}
+	# OMG what's this shit?
+	tags = ${[]}
+	tags.@process.hasPhoto = ${node.properties.hasPhoto ? Array.push(value, Translation.translate('photo', null, [], null, 'Sfi.Sfi')) : value}
+	tags.@process.hasAudio = ${node.properties.hasAudio ? Array.push(value, Translation.translate('audio', null, [], null, 'Sfi.Sfi')) : value}
+	tags.@process.hasVideo = ${node.properties.hasVideo ? Array.push(value, Translation.translate('video', null, [], null, 'Sfi.Sfi')) : value}
+	tags.@process.concat = Neos.Fusion:Collection {
+		collection = ${value}
+		itemName = 'item'
+		itemRenderer = ${item && item + (iterator.isLast ? ' ' : ', ')}
+	}
+}
