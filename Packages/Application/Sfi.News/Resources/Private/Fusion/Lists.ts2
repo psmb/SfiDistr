@@ -1,6 +1,6 @@
 prototype(Sfi.News:Listable) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.News/Private/Templates/Listable.html'
-	@context.sortProperty = ''
+	@context.sortProperty = 'date'
 	@context.sortOrder = 'DESC'
 	@context.numberOfItems = 10
 	paginationEnabled = ${true}
