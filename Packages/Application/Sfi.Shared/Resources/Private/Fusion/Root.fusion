@@ -84,7 +84,7 @@ prototype(Sfi.Shared:ListByReferences) < prototype(Neos.Fusion:Tag) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.News:Listable'}
+			1 = ${'NodeType_Flowpack.Listable:ListableMixin'}
 			2 = ${'Node_' + node.identifier}
 		}
 	}

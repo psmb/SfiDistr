@@ -6,7 +6,7 @@
 	<neos:link.node absolute="true" node="{node}">
 		<div class="Media-Image">
 			<f:if condition="{thumbnailImage}">
-				<m:image image="{thumbnailImage}" maximumWidth="{configuration.thumbnailWidth}" maximumHeight="{configuration.thumbnailHeight}" allowCropping="true" allowUpScaling="true" alt="{title}" />
+				<m:image image="{thumbnailImage}" maximumWidth="420" maximumHeight="222" allowCropping="true" allowUpScaling="true" alt="{title}" />
 			</f:if>
 		</div>
 		<div class="Media-Body">
@@ -15,7 +15,7 @@
 			</h3>
 			<div class="Media-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
 			<f:if condition="{date}">
-				<div class="Media-Date"><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date></div>
+				<div class="Media-Date"><f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date></div>
 			</f:if>
 		</div>
 	</neos:link.node>

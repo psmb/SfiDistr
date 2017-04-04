@@ -41,7 +41,7 @@ blah: &alohaRich
 'Sfi.Sfi:Person':
   superTypes:
     'Neos.Neos:Document': true
-    'Sfi.News:Listable': true
+    'Flowpack.Listable:ListableMixin': true
     'Psmb.Term:TermMixin': true
   ui:
     label: Персона

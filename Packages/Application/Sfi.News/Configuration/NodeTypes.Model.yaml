@@ -56,21 +56,6 @@ blah: &alohaRich
     main:
       type: 'Neos.Neos:ContentCollection'
   properties:
-    preset:
-      defaultValue: newsArchive
-      type: string
-      ui:
-        label: 'Пресет архива'
-        reloadIfChanged: true
-        inspector:
-          group: news
-          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
-          editorOptions:
-            values:
-              newsArchive:
-                label: 'Новостной архив (СФИ-сегодня)'
-              publishedBooksArchive:
-                label: 'Архив опубликованных книг'
     variant:
       defaultValue: Hard
       type: string
@@ -89,15 +74,15 @@ blah: &alohaRich
   constraints:
     nodeTypes:
       '*': false
-      'Sfi.News:Listable': true
+      'Flowpack.Listable:ListableMixin': true
       'Sfi.News:Category': true
-'Sfi.News:Listable':
+'Flowpack.Listable:ListableMixin':
   abstract: true
 'Sfi.News:AbstractArticle':
   abstract: true
   superTypes:
     'Neos.Neos:Document': true
-    'Sfi.News:Listable': true
+    'Flowpack.Listable:ListableMixin': true
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'

@@ -17,14 +17,14 @@
 					</h3>
 					<div class="MediaSlideSmall-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
 					<f:if condition="{date}">
-						<div class="MediaSlideSmall-Date"><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date></div>
+						<div class="MediaSlideSmall-Date"><f:format.date forceLocale="{true}" cldrFormat="d.MM">{date}</f:format.date></div>
 					</f:if>
 				</div>
 			</neos:link.node>
 		</div>
 	</div>
 	<div class="show-for-medium-up">
-		<div class="MediaSlideMedium Cover" style="background-image:url('{m:uri.image(image: thumbnailImage, maximumWidth: configuration.thumbnailWidth, maximumHeight: configuration.thumbnailHeight, allowCropping: true, allowUpScaling: true)}')">
+		<div class="MediaSlideMedium Cover" style="background-image:url('{m:uri.image(image: thumbnailImage, maximumWidth: 1200, maximumHeight: 400, allowCropping: true, allowUpScaling: true)}')">
 			<neos:link.node absolute="true" node="{node}">
 				<div class="row">
 					<div class="MediaSlideMedium-Wrap columns">
@@ -34,11 +34,11 @@
 									<div class="MediaSlideMedium-Date">
 										<f:if condition="{node.properties.dateStart}">
 											<f:if condition="{f:format.date(date: node.properties.dateStart format: 'Y-m-d')} < {f:format.date(date: date, format: 'Y-m-d')}">
-												<span><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{node.properties.dateStart}</f:format.date></span>
+												<span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{node.properties.dateStart}</f:format.date></span>
 												<span>–</span>
 											</f:if>
 										</f:if>
-										<span><f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date></span>
+										<span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{date}</f:format.date></span>
 									</div>
 								</f:if>
 								{title}

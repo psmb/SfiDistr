@@ -1,94 +1,26 @@
-prototype(Sfi.News:Listable) < prototype(Neos.Neos:Content) {
-	templatePath = 'resource://Sfi.News/Private/Templates/Listable.html'
-	@context.sortProperty = 'date'
-	@context.sortOrder = 'DESC'
-	@context.numberOfItems = 10
-	paginationEnabled = ${true}
-
-	collection = ${q(site).find('[instanceof Sfi.News:Listable]').get()}
-	collection.@process.sort = ${q(value).count() > 0 && sortProperty ? q(value).sort(sortProperty, sortOrder).get() : value}
-	collection.@process.slice = ${q(value).count() > 0 ? q(value).slice(0, String.toInteger(numberOfItems)).get() : value}
-
-	itemRenderer = Sfi.Shared:ContentCaseShort
-}
-
-# Abstract List object
-prototype(Sfi.News:AbstractList) < prototype(Neos.Fusion:Tag) {
-	attributes.class = ${configuration.wrapClass}
-	content = Neos.Fusion:Array {
-		listTitleTag = Neos.Fusion:Tag {
-			tagName = 'h2'
-			attributes.class = ${configuration.listTitleClass}
-			content = ${Translation.translate(configuration.listTitle, null, [], null, 'Sfi.Sfi')}
-			@if.isSet = ${configuration.listTitle != ''}
-		}
-		list = Sfi.News:Listable {
-			configuration = ${configuration}
-			sortProperty = ${configuration.sortProperty}
-			sortOrder = ${configuration.sortOrder}
-			paginationEnabled = ${configuration.paginationEnabled}
-			numberOfItems = ${configuration.numberOfItems}
-			attributes = Neos.Fusion:Attributes {
-				class = ${configuration.class}
-			}
-		}
-		archiveLink = Neos.Fusion:Tag {
-			tagName = 'a'
-			attributes.class = 'ButtonInline News-MoreButton paddingLeft-none'
-			attributes.href = Neos.Neos:NodeUri {
-				node = ${configuration.archiveLink}
-			}
-			content = ${Translation.translate(configuration.archiveLinkTitle, null, [], null, 'Sfi.Sfi')}
-			@if.isSet = ${configuration.archiveLink != ''}
-		}
-	}
-}
-
-# List all Listable items descendant of current node
-prototype(Sfi.News:List) < prototype(Sfi.News:AbstractList) {
-	@override.configuration = ${Configuration.setting('Sfi.News.listNode')}
-	@override.configuration.@process.mergeConfiguration = ${NewsConfiguration.mergeWithNodeProperties(value, node)}
-	@override.itemRendererProperty = ${q(node).property('itemRenderer')}
-	@override.rootNode = ${q(node).property('rootNode') ? q(node).property('rootNode') : documentNode}
-	prototype(Sfi.News:Listable) {
-		collection = ${node.properties.nodes && !Array.isEmpty(node.properties.nodes) ? node.properties.nodes : q(rootNode).children('[instanceof Sfi.News:Listable]').get()}
-		itemRenderer.itemRendererByProperty {
-			condition = ${itemRendererProperty}
-			@position = 'start'
-			type = ${itemRendererProperty}
-		}
-	}
-	@cache {
-		mode = 'cached'
-		entryIdentifier {
-			node = ${node}
-			editPreviewMode = ${editPreviewMode}
-		}
-		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = ${'Node_' + documentNode.identifier}
-			3 = ${'Node_' + rootNode.identifier}
-			4 = ${'DescendantOf_' + rootNode.identifier}
-		}
-	}
-	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
-}
-
 # Show latest news
-prototype(Sfi.News:Latest) < prototype(Sfi.News:AbstractList) {
-	@override.configuration = ${Configuration.setting('Sfi.News.newsLatest')}
-	configuration = ${configuration}
+prototype(Sfi.News:Latest) < prototype(Flowpack.Listable:List) {
+	wrapClass = 'NewsLatest'
+	listTitle = ${Translation.translate('newsLatest.listTitle', null, [], null, 'Sfi.Sfi')}
+	listTitleClass = 'SectionDivider--Service'
+	archiveLink = '~/sfi-today'
+	archiveLinkTitle =  ${Translation.translate('newsLatest.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
+	archiveLinkClass = 'ButtonInline News-MoreButton paddingLeft-none'
 
-	prototype(Sfi.News:Listable) {
+	prototype(Flowpack.Listable:Listable) {
+		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
+		listClass = 'NewsLatest-Grid medium-block-grid-2 small-block-grid-1'
+		sortProperty = 'date'
+		sortOrder = 'DESC'
+		limit = 6
+		paginationEnabled = false
 		collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
-		attributes.data-columns = true
 	}
 
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
 			node = ${node}
-			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
 			1 = ${'NodeType_Sfi.News:AbstractNews'}
@@ -96,12 +28,13 @@ prototype(Sfi.News:Latest) < prototype(Sfi.News:AbstractList) {
 	}
 }
 
+prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
+	archiveLink = '~/sfi-today'
+	archiveLinkTitle = ${Translation.translate('newsLatest.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
 
-prototype(Sfi.News:NewsRelated) < prototype(Sfi.News:AbstractList) {
-	@override.configuration = ${Configuration.setting('Sfi.News.newsRelated')}
-	configuration = ${configuration}
-
-	prototype(Sfi.News:Listable) {
+	prototype(Flowpack.Listable:Listable) {
+		limit = 4
+		paginationEnabled = ${false}
 		collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
 		collection.@process.filterOutSelf {
 			expression = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
@@ -109,7 +42,6 @@ prototype(Sfi.News:NewsRelated) < prototype(Sfi.News:AbstractList) {
 		}
 	}
 	prototype(Sfi.News:NewsShort) {
-		@override.configuration = ${Configuration.setting('Sfi.News.newsRelated')}
 		templatePath = 'resource://Sfi.News/Private/Templates/NewsShortSmall.html'
 	}
 
@@ -126,10 +58,8 @@ prototype(Sfi.News:NewsRelated) < prototype(Sfi.News:AbstractList) {
 }
 
 
-prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
-	@override.configuration = ${Configuration.setting('Sfi.News.topList')}
-	configuration = ${configuration}
 
+prototype(Sfi.News:TopList) < prototype(Flowpack.Listable:Listable) {
 	importantNews = ${q(site).find('[instanceof Sfi.News:ImportantMixin]').filter('[important = TRUE]').get()}
 	# We have to filter out past announcements
 	importantAnnouncements = ${q(this.importantNews).filter('[instanceof Sfi.News:Announcement]').get()}
@@ -139,18 +69,20 @@ prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
 	collection = ${q(this.importantAnnouncements).add(q(this.importantNotAnnouncements)).get()}
 	collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('importantSort', 'ASC').get() : value}
 	@context.collection = ${this.collection}
-	prototype(Sfi.News:Listable) {
-		itemRenderer = Sfi.News:TopShort
-		collection = ${collection}
-		collection.@process.sort>
-	}
+
+	listClass = 'Carousel--Cover js-carousel-1x'
+	sortProperty = 'date'
+	sortOrder = 'DESC'
+	itemRenderer = 'Sfi.News:TopShort'
+	limit = 3
+	paginationEnabled = ${false}
+
 	@cache {
 		mode = 'cached'
 		# Get the nearest announcement and calculate the maximumLifetime for cache based on time to it
 		maximumLifetime = ${q(importantAnnouncements).count() > 0 ? q(importantAnnouncements).sort('date', 'ASC').first().property('date').timestamp - Date.now().timestamp : null}
 		entryIdentifier {
 			node = ${node}
-			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
 			1 = ${'NodeType_Sfi.News:ImportantMixin'}
@@ -159,18 +91,19 @@ prototype(Sfi.News:TopList) < prototype(Sfi.News:AbstractList) {
 }
 
 
+
+
 prototype(Sfi.News:CategorizedList) < prototype(Neos.Fusion:Tag) {
 	content = Neos.Fusion:Collection {
 		collection = ${q(documentNode).find('[instanceof Sfi.News:Category]').get()}
 		itemName = 'categoryNode'
 		iterationName = 'iterator'
-		itemRenderer = Sfi.News:AbstractList {
-			@override.configuration = ${Configuration.setting('Sfi.News.articlesList')}
-			configuration = ${configuration}
-			content.listTitleTag.content = ${categoryNode.properties.title}
-			content.listTitleTag.@if.isSet = ${true}
-			prototype(Sfi.News:Listable) {
-				collection = ${q(categoryNode).find('[instanceof Sfi.News:Listable]').get()}
+		itemRenderer = Flowpack.Listable:List {
+			listTitle = ${categoryNode.properties.title}
+			listTitleClass = 'H3 textAlign-center'
+			prototype(Flowpack.Listable:Listable) {
+				paginationEnabled = ${false}
+				collection = ${q(categoryNode).find('[instanceof Flowpack.Listable:ListableMixin]').get()}
 			}
 		}
 	}
@@ -178,25 +111,24 @@ prototype(Sfi.News:CategorizedList) < prototype(Neos.Fusion:Tag) {
 		mode = 'cached'
 		entryIdentifier {
 			node = ${node}
-			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
 			1 = ${'DescendantOf_' + documentNode.identifier}
 		}
 	}
-	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+	@process.contentElementWrapping = ContentElementWrapping
 }
 
+prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
+	listTitle = ${Translation.translate('listByTag.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
+	listTitleClass = 'SectionDivider--Service'
 
-prototype(Sfi.News:ListByTag) < prototype(Sfi.News:AbstractList) {
-	@override.configuration = ${Configuration.setting('Sfi.News.listByTag')}
-	configuration = ${configuration}
-
-	@override.collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
-	@override.collection.@process.filterByReference = ${q(node).property('tag') ? q(value).filterByReference('tags', q(node).property('tag')).get() : q(value).filterByReference('tags', documentNode).get()}
-	prototype(Sfi.News:Listable) {
+	@context.collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
+	@context.collection.@process.filterByReference = ${q(node).property('tag') ? q(value).filterByReference('tags', q(node).property('tag')).get() : q(value).filterByReference('tags', documentNode).get()}
+	prototype(Flowpack.Listable:Listable) {
+		paginationEnabled = true
+		listClass = 'medium-block-grid-2 small-block-grid-1'
 		collection = ${collection}
-		attributes.data-columns = true
 	}
 
 	@cache {
@@ -210,12 +142,12 @@ prototype(Sfi.News:ListByTag) < prototype(Sfi.News:AbstractList) {
 			2 = ${'Node_' + node.identifier}
 		}
 	}
-	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 	@if.notEmpty = ${q(collection).count() > 0}
+	@process.contentElementWrapping = ContentElementWrapping
 }
 
 
-prototype(Sfi.News:CategoryMenu) < prototype(Neos.Neos:Menu) {
+prototype(Sfi.News:CategoryMenu) < prototype(Menu) {
 	templatePath = 'resource://Sfi.News/Private/Templates/CategoryMenu.html'
 
 	rootNode = ${rootNode}
@@ -224,29 +156,40 @@ prototype(Sfi.News:CategoryMenu) < prototype(Neos.Neos:Menu) {
 	itemCollection = ${q(rootNode).children('[instanceof Sfi.News:Category]').get()}
 }
 
-prototype(Sfi.News:Archive) < prototype(Sfi.News:AbstractList) {
-	#Requires configuration and rootNode context vars to be set (in News:Category)
-	content.listTitleTag.content = ${configuration.listTitle ? configuration.listTitle : rootNode.properties.title}
-	content.listTitleTag.@if.isSet = ${true}
 
-	content.listMenu = Sfi.News:CategoryMenu
-	content.listMenu.@position = 'after listTitleTag'
-
-	prototype(Sfi.News:Listable) {
-		collection = ${configuration.showOnlyNews ? q(documentNode).find('[instanceof Sfi.News:AbstractNews]').get() : q(documentNode).find('[instanceof Sfi.News:Listable]').get()}
-		attributes.data-columns = ${configuration.dataColumns ? true : false}
+prototype(Sfi.News:Archive) < prototype(Flowpack.Listable:List) {
+	renderer.content.listMenu = Sfi.News:CategoryMenu {
+		@position = 'after listTitleTag'
 	}
-	@cache {
-		mode = 'cached'
-		entryIdentifier {
-			node = ${node}
-			editPreviewMode = ${editPreviewMode}
-			# See Sfi.Sfi:Page to understand why it works
-			pagination = ${request.pluginArguments.listable-paginate.currentPage}
-		}
-		entryTags {
-			1 = ${'Node_' + documentNode.identifier}
-			2 = ${'DescendantOf_' + documentNode.identifier}
+
+	listTitle = ${q(node).property('title')}
+	listTitleClass = 'SectionDivider--Service'
+	archiveLink = ''
+
+	prototype(Flowpack.Listable:Listable) {
+		listClass = 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'
+		sortProperty = 'date'
+		sortOrder = 'DESC'
+		limit = 10000
+		itemsPerPage = 24
+		paginationEnabled = true
+		collection = ${q(documentNode).find('[instanceof Flowpack.Listable:Listable]').get()}
+
+		@cache {
+			mode = 'dynamic'
+			entryIdentifier {
+				node = ${node}
+			}
+			entryDiscriminator = ${request.arguments.currentPage}
+			context {
+				1 = 'node'
+				2 = 'documentNode'
+				3 = 'site'
+			}
+			entryTags {
+				1 = ${'Node_' + documentNode.identifier}
+				2 = ${'DescendantOf_' + documentNode.identifier}
+			}
 		}
 	}
 }

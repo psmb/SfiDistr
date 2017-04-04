@@ -62,8 +62,6 @@ prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 #Breif rendering of article, used in NewsList
 prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.News/Private/Templates/NewsShort.html'
-	@context.configuration = ${Configuration.setting('Sfi.News.newsShort')}
-	configuration = ${configuration}
 
 	title = ${String.stripTags(q(node).property('title'))}
 	date = ${q(node).property('date')}

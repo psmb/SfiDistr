@@ -2,7 +2,7 @@
 'Sfi.Sfi:PublishedBook':
   superTypes:
     'Neos.Neos:Document': true
-    'Sfi.News:Listable': true
+    'Flowpack.Listable:ListableMixin': true
   ui:
     label: 'Опубликованная книга'
     help:
