@@ -14,7 +14,7 @@
 							<div class="Article-Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
 							<div class="textAlign-center">
 								<span class="Article-Date">
-									<f:format.date forceLocale="{true}" cldrFormat="{configuration.dateFormat}">{date}</f:format.date>
+									<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
 								</span>
 								<f:if condition="{isNewsletter} != 1">
 									&bull;
