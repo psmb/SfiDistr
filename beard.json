@@ -8,15 +8,5 @@
             "ref": "patch_microdata",
             "path": "Packages/Neos"
         }
-    ],
-    "changes": [
-        {
-            "name": "PATCH: fix upmerge mistake in ResizeImageAdjustment",
-            "type": "github",
-            "repository": "dimaip/neos-development-collection",
-            "commit": "dad008b3836cb1b1ce79d1fafd88e76499e894dd",
-            "ref": "upmerge-resize",
-            "path": "Packages/Neos"
-        }
     ]
 }
