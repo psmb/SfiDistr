@@ -173,7 +173,7 @@ prototype(Sfi.News:Archive) < prototype(Flowpack.Listable:List) {
 		limit = 10000
 		itemsPerPage = 24
 		paginationEnabled = true
-		collection = ${q(documentNode).find('[instanceof Flowpack.Listable:Listable]').get()}
+		collection = ${q(documentNode).find('[instanceof Flowpack.Listable:ListableMixin]').get()}
 
 		@cache {
 			mode = 'dynamic'
