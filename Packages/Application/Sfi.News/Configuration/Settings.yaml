@@ -8,6 +8,3 @@ Neos:
     fusion:
       autoInclude:
         Sfi.News: true
-  Fusion:
-    defaultContext:
-      NewsConfiguration: Sfi\News\TypoScript\Eel\Helper\ConfigurationHelper
