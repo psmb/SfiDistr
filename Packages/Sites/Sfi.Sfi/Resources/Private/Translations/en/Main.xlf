@@ -14,6 +14,9 @@
             <trans-unit id="allPapers">
                 <source>All papers</source>
             </trans-unit>
+            <trans-unit id="keywords">
+                <source>Keywords</source>
+            </trans-unit>
             <trans-unit id="footer.about.sfi">
                 <target>St Philaret`s Christian Orthodox Institute (SFI)</target>
             </trans-unit>

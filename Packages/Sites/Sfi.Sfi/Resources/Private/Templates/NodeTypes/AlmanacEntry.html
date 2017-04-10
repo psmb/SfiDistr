@@ -13,7 +13,7 @@
 		<div class="ParagraphAlt marginVertical-half AlmanacEntry-annotation">{neos:contentElement.editable(property: 'annotation', tag: 'span')}</div>
 		<s:ifOr condition="{keywords}" or="{node.context.workspace.name} != 'live'">
 			<div class="ParagraphAlt AlmanacEntry-keywords">
-				Ключевые слова: {neos:contentElement.editable(property: 'keywords', tag: 'span')}
+				{keywordsStr}: {neos:contentElement.editable(property: 'keywords', tag: 'span')}
 			</div>
 		</s:ifOr>
 	</a>

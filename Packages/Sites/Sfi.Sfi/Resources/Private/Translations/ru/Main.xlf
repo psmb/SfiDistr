@@ -14,6 +14,9 @@
             <trans-unit id="allPapers">
                 <source>Все доклады</source>
             </trans-unit>
+            <trans-unit id="keywords">
+                <source>Ключевые слова</source>
+            </trans-unit>
             <trans-unit id="footer.about.sfi">
                 <source>Свято-Филаретовский православно-христианский институт (СФИ)</source>
             </trans-unit>

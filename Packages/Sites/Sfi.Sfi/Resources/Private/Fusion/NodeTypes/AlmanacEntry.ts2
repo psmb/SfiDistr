@@ -1,4 +1,5 @@
 prototype(Sfi.Sfi:AlmanacEntry) {
 	href = ${'asset://' + node.properties.asset.identifier}
 	href.@process.convertUris = Neos.Neos:ConvertUris
+	keywordsStr = ${Translation.translate('keywords', null, [], null, 'Sfi.Sfi')}
 }
