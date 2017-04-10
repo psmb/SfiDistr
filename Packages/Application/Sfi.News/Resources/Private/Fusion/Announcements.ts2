@@ -32,6 +32,8 @@ prototype(Sfi.News:AnnouncementsList) < prototype(Flowpack.Listable:List) {
 	@context.collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.Now()).get() : value}
 	@context.collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('date', 'ASC').get() : value}
 	prototype(Flowpack.Listable:Listable) {
+		sortProperty>
+		sortOrder>
 		limit = 6
 		paginationEnabled = ${false}
 		collection = ${collection}
