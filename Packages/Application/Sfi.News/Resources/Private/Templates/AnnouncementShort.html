@@ -7,11 +7,7 @@
 
 		<f:if condition="{date}">
 			<div class="MediaAnnouncement-Date">
-				<f:if condition="{dateStart}">
-					<div><span class="MediaAnnouncement-DateDay"><f:format.date format="j">{dateStart}</f:format.date>.</span><span class="MediaAnnouncement-DateMonth"><f:format.date format="m">{dateStart}</f:format.date></span></div>
-					<div class="MediaAnnouncement-DateDash">—</div>
-				</f:if>
-				<span class="MediaAnnouncement-DateDay"><f:format.date format="j">{date}</f:format.date>.</span><span class="MediaAnnouncement-DateMonth"><f:format.date format="m">{date}</f:format.date></span>
+				<f:if condition="{dateStart}"><span class="MediaAnnouncement-DateDay"><f:format.date format="j">{dateStart}</f:format.date>.</span><span class="MediaAnnouncement-DateMonth"><f:format.date format="m">{dateStart}</f:format.date>—</span></f:if><span class="MediaAnnouncement-DateDay"><f:format.date format="j">{date}</f:format.date>.</span><span class="MediaAnnouncement-DateMonth"><f:format.date format="m">{date}</f:format.date></span>
 				<!-- Sorry -->
 				<f:if condition="{date -> f:format.date(format:'G:i')} != '0:00'">
 					<span class="MediaAnnouncement-DateTime">

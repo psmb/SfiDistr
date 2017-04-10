@@ -2,7 +2,6 @@
 	clear: both;
 	overflow: auto;
 	margin-bottom: 2*$u;
-	text-align: center;
 }
 .MediaAnnouncement:hover .MediaAnnouncement-Title {
 	color: $color-primary;
@@ -20,12 +19,6 @@
 	color: $gray--light;
 	font-weight: normal;
 	padding-left: $u/2;
-	margin: 0;
-}
-.MediaAnnouncement-DateDash {
-	@extend .H3;
-	color: $color-primary;
-	line-height: 0.3;
 	margin: 0;
 }
 .MediaAnnouncement-Title {
