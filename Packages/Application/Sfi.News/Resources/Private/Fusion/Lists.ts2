@@ -1,3 +1,8 @@
+prototype(Flowpack.Listable:Listable) {
+	sortProperty = 'date'
+	sortOrder = 'DESC'
+}
+
 # Show latest news
 prototype(Sfi.News:Latest) < prototype(Flowpack.Listable:List) {
 	wrapClass = 'NewsLatest'
@@ -10,8 +15,6 @@ prototype(Sfi.News:Latest) < prototype(Flowpack.Listable:List) {
 	prototype(Flowpack.Listable:Listable) {
 		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
 		listClass = 'NewsLatest-Grid medium-block-grid-2 small-block-grid-1'
-		sortProperty = 'date'
-		sortOrder = 'DESC'
 		limit = 6
 		paginationEnabled = false
 		collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
@@ -71,8 +74,6 @@ prototype(Sfi.News:TopList) < prototype(Flowpack.Listable:Listable) {
 	@context.collection = ${this.collection}
 
 	listClass = 'Carousel--Cover js-carousel-1x'
-	sortProperty = 'date'
-	sortOrder = 'DESC'
 	itemRenderer = 'Sfi.News:TopShort'
 	limit = 3
 	paginationEnabled = ${false}
@@ -168,8 +169,6 @@ prototype(Sfi.News:Archive) < prototype(Flowpack.Listable:List) {
 
 	prototype(Flowpack.Listable:Listable) {
 		listClass = 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'
-		sortProperty = 'date'
-		sortOrder = 'DESC'
 		limit = 10000
 		itemsPerPage = 24
 		paginationEnabled = true
