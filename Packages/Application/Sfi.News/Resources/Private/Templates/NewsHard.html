@@ -1,6 +1,5 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace m=Neos\Media\ViewHelpers}
-{namespace s=Sfi\Shared\ViewHelpers}
 
 <div class="NewsDetail row js-stickInParent-parent">
 	<div class="NewsDetail-Article NewsDetail-Article--Hard columns marginBottom-double">
@@ -17,9 +16,9 @@
 					<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
 				</f:if>
 			</div>
-			<s:ifOr condition="{lead}" or="{node.context.workspace.name} != 'live'">
+			<f:if condition="{node.context.workspace.name} != 'live' || {lead}">
 				<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
-			</s:ifOr>
+			</f:if>
 
 			<f:if condition="{coverCollection}">
 				<div class="Article-CoverPhoto">{coverCollection -> f:format.raw()}</div>

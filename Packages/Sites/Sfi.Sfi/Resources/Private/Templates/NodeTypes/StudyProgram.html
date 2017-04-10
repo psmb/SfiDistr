@@ -7,9 +7,9 @@
 			<div itemprop="EduLavel" class="Service">{level}</div>
 			<h1 class="H2">
 				{neos:contentElement.editable(property: 'title', tag: 'span')}
-				<s:ifOr condition="{specialityId}" or="{node.context.workspace.name} != 'live'">
+				<f:if condition="{node.context.workspace.name} != 'live' || {specialityId}">
 					({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
-				</s:ifOr>
+				</f:if>
 				</h1>
 			<div class="ServiceEm">{division}</div>
 		</div>

@@ -1,20 +1,19 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-{namespace s=Sfi\Shared\ViewHelpers}
 
 <div class="marginVertical-double AlmanacEntry">
 	<a href="{href}">
 		<div class="LinkState">
 			<div class="lineHeight-tight">
-				<span class="H4 AlmanacEntry-author">{neos:contentElement.editable(property: 'author', tag: 'span')}</span><s:ifOr condition="{authorInfo}" or="{node.context.workspace.name} != 'live'"><span class="ServiceEm AlmanacEntry-authorInfo">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span></s:ifOr>
+				<span class="H4 AlmanacEntry-author">{neos:contentElement.editable(property: 'author', tag: 'span')}</span><f:if condition="{node.context.workspace.name} != 'live' || {authorInfo}"><span class="ServiceEm AlmanacEntry-authorInfo">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span></f:if>
 			</div>
 			<div class="Paragraph lineHeight-tight color-primary AlmanacEntry-title">{neos:contentElement.editable(property: 'title')}</div>
 		</div>
 		<div class="ParagraphAlt--Small AlmanacEntry-source">{neos:contentElement.editable(property: 'source', tag: 'span')}</div>
 		<div class="ParagraphAlt marginVertical-half AlmanacEntry-annotation">{neos:contentElement.editable(property: 'annotation', tag: 'span')}</div>
-		<s:ifOr condition="{keywords}" or="{node.context.workspace.name} != 'live'">
+		<f:if condition="{node.context.workspace.name} != 'live' || {keywords}">
 			<div class="ParagraphAlt AlmanacEntry-keywords">
 				{keywordsStr}: {neos:contentElement.editable(property: 'keywords', tag: 'span')}
 			</div>
-		</s:ifOr>
+		</f:if>
 	</a>
 </div>
