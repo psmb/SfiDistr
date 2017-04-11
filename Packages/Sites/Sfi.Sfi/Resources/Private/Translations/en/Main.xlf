@@ -199,6 +199,9 @@
             <trans-unit id="aboutAuthor">
                 <source>About author</source>
             </trans-unit>
+            <trans-unit id="otherArticlesByAuthor">
+                <source>Other articles by this author</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

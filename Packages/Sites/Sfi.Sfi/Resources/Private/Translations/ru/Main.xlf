@@ -203,6 +203,9 @@
             <trans-unit id="aboutAuthor">
                 <source>Об авторе</source>
             </trans-unit>
+            <trans-unit id="otherArticlesByAuthor">
+                <source>Другие материалы этого автора</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
