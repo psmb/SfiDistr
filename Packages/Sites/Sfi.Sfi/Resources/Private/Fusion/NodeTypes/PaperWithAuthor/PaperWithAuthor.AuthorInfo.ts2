@@ -1,0 +1,22 @@
+prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfo) < prototype(Neos.Fusion:Template) {
+	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/PaperWithAuthor/PaperWithAuthor.AuthorInfo.html'
+
+    title = ${String.stripTags(q(node).property('title'))}
+    teaser = ${String.stripTags(q(node).property('teaser'))}
+    authorName = ${String.stripTags(node.properties.author.properties.title)}
+    authorDegree = Sfi.Sfi:PaperWithAuthor.AuthorDegree
+    imageUri = ImageUri {
+        asset = ${node.properties.author.properties.squareImage}
+        maximumWidth = 100
+        maximumHeight = 100
+        allowCropping = true
+    }
+
+    authorLink = NodeUri {
+        node = ${node.properties.author}
+    }
+
+    authorArticles = Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList
+
+    aboutAuthorStr = ${Translation.translate('aboutAuthor', null, [], null, 'Sfi.Sfi')}
+}

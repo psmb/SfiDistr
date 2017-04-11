@@ -1,0 +1,15 @@
+<div class="H2 textAlign-center marginVertical-triple">{aboutAuthorStr}</div>
+<div style="display: flex">
+    <div class="marginRight-double" style="flex-shrink: 0">
+        <img class="borderColor-gray" style="border-radius: 50%; border: 5px solid" src="{imageUri}"/>
+    </div>
+    <div>
+        <a href="{authorLink}">
+            <h4 class="H3">{authorName}</h4>
+            <p class="Paragraph margin-none">{authorDegree}</p>
+        </a>
+        <div class="marginTop-triple paddingTop-double">
+            {authorArticles -> f:format.raw()}
+        </div>
+    </div>
+</div>

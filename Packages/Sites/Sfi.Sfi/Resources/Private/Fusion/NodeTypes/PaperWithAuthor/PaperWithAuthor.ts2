@@ -10,6 +10,8 @@ prototype(Sfi.Sfi:PaperWithAuthor) {
 	authorName = ${String.stripTags(node.properties.author.properties.title)}
 	authorDegree = Sfi.Sfi:PaperWithAuthor.AuthorDegree
 
+	authorInfo = Sfi.Sfi:PaperWithAuthor.AuthorInfo
+
 	main = ContentCollection {
 		nodePath = 'main'
 	}

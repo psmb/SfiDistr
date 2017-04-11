@@ -196,6 +196,9 @@
             <trans-unit id="newsletter.onlyDigestTitle">
                 <source>Subscribe to this digest</source>
             </trans-unit>
+            <trans-unit id="aboutAuthor">
+                <source>About author</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
