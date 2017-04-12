@@ -102,3 +102,10 @@ Neos:
             values:
               - en
             uriSegment: en
+  GoogleAnalytics:
+    stats:
+      uniquePageviewsBySource:
+        metrics: 'ga:uniquePageviews'
+        dimensions: 'ga:source'
+        sort: '-ga:uniquePageviews'
+        max-results: 25
