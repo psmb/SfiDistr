@@ -5,5 +5,5 @@ prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList) < prototype(Neos.Fusio
     collection.@process.filterByAuthor = ${q(value).filterByReference('author', node.properties.author).get()}
     itemName = 'node'
     itemRenderer = Sfi.Sfi:PaperWithAuthor.TeaserForAuthorInfo
-    @if.notEmpty = ${q(collection).count() > 0}
+    @if.notEmpty = ${q(this.collection).count() > 0}
 }
