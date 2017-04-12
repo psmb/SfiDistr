@@ -1,0 +1,24 @@
+'Neos.GoogleAnalytics:StatsTabMixin':
+  ui:
+    inspector:
+      views:
+        gaUniquePageviewsBySource:
+          label: 'Источники посещений'
+          group: 'analytics'
+          position: 50
+          view: 'Content/Inspector/Views/Data/TableView'
+          viewOptions:
+            dataSource: 'GoogleAnalytics'
+            arguments:
+              stat: 'uniquePageviewsBySource'
+              startDate: '3 months ago'
+              endDate: '1 day ago'
+            collection: 'rows'
+            columns:
+              -
+                data: 'ga_source'
+              -
+                data: 'ga_uniquePageviews'
+              -
+                data: 'percent'
+                suffix: '%'
