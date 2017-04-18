@@ -3,6 +3,9 @@ prototype(Flowpack.Listable:Listable) {
 	sortOrder = 'DESC'
 }
 
+prototype(Flowpack.Listable:ContentCaseShort) < prototype(Sfi.Shared:ContentCaseShort)
+
+# Needed for legacy
 prototype(Sfi.News:List) < prototype(Flowpack.Listable:ListNode)
 
 # Show latest news
