@@ -3,6 +3,8 @@ prototype(Flowpack.Listable:Listable) {
 	sortOrder = 'DESC'
 }
 
+prototype(Sfi.News:List) < prototype(Flowpack.Listable:ListNode)
+
 # Show latest news
 prototype(Sfi.News:Latest) < prototype(Flowpack.Listable:List) {
 	wrapClass = 'NewsLatest'
