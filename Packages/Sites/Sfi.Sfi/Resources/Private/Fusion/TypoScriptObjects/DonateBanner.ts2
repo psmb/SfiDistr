@@ -1,3 +1,4 @@
 prototype(Sfi.Sfi:DonateBanner) < prototype(Neos.Fusion:Template) {
+    @if.isRus = ${Array.first(node.context.dimensions.language) == 'ru'}
     templatePath = 'resource://Sfi.Sfi/Private/Fusion/TypoScriptObjects/DonateBanner.html'
 }
