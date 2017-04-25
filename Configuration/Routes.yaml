@@ -15,37 +15,6 @@
       package: 'Psmb.Newsletter'
 
 -
-  name: 'Paginate for Sfi.News:Listable'
-  uriPattern:    '{node}-p{--listable-paginate.currentPage}.html'
-  defaults:
-    '@package':    'Neos.Neos'
-    '@controller': 'Frontend\Node'
-    '@format':     'html'
-    '@action':     'show'
-    '--listable-paginate':
-      '@package': ''
-      '@subpackage': ''
-      '@controller': ''
-      '@action': 'index'
-      'currentPage': '1'
-  routeParts:
-    node:
-      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandler
-  appendExceedingArguments: TRUE
-
-##
-# Neos Neos subroutes
-
--
-  name: 'Neos Neos'
-  uriPattern: '<NeosNeosSubroutes>'
-  subRoutes:
-    'NeosNeosSubroutes':
-      package: 'Neos.Neos'
-      variables:
-        'defaultUriSuffix': '.html'
-
--
   name: 'yandex-news'
   uriPattern: 'rss-feed-yandex'
   defaults:
