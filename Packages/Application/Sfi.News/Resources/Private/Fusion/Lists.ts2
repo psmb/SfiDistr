@@ -75,7 +75,8 @@ prototype(Sfi.News:TopList) < prototype(Flowpack.Listable:Listable) {
 	importantNotAnnouncements = ${q(this.importantNews).filter('[!instanceof Sfi.News:Announcement]').get()}
 	@context.importantAnnouncements = ${this.importantAnnouncements}
 	collection = ${q(this.importantAnnouncements).add(q(this.importantNotAnnouncements)).get()}
-	collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('importantSort', 'ASC').get() : value}
+	sortProperty = 'importantSort'
+	sortOrder = 'ASC'
 	@context.collection = ${this.collection}
 
 	listClass = 'Carousel--Cover js-carousel-1x'
