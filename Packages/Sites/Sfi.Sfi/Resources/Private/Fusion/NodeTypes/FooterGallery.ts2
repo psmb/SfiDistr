@@ -4,8 +4,8 @@ prototype(Sfi.Sfi:FooterGalleryItem) < prototype(Sfi.Shared:AutoRenderWithTag) {
 	tagName = 'li'
 	attributes.class = 'FooterGallery-Item'
 	prototype(Neos.NodeTypes:Image) {
-		maximumWidth = 220
-		maximumHeight = 220
+		maximumWidth = 360
+		maximumHeight = 360
 		allowCropping = TRUE
 	}
 }
