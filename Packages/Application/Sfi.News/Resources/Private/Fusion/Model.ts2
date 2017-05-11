@@ -91,7 +91,7 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Content) {
 		}
 		entryTags {
 			1 = ${'Node_' + node.identifer}
-			2 = ${'DescendantOf_' + node.identifer}
+			2 = ${'DescendantOf_' + node.identifier}
 		}
 	}
 }
