@@ -70,6 +70,17 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Content) {
 	thumbnailImage = ${q(node).property('coverImage') ? q(node).property('coverImage') : ( q(node).children('coverCollection').children().count() > 0 ? q(node).children('coverCollection').children().first().property('image') : null )}
 	# parrent node is the category
 	category = ${q(node).parent().get(0)}
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifer}
+			2 = ${'DescendantOf_' + node.identifer}
+		}
+	}
 }
 
 
@@ -79,6 +90,17 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 	configuration = ${configuration}
 
 	place = ${String.stripTags(q(node).property('place'))}
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifer}
+			2 = ${'DescendantOf_' + node.identifer}
+		}
+	}
 }
 
 
