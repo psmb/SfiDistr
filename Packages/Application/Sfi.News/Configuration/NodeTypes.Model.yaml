@@ -188,21 +188,6 @@ blah: &alohaRich
           editorOptions:
             nodeTypes:
               - 'Neos.Neos:Document'
-'Sfi.News:ImportantMixin':
-  abstract: true
-  properties:
-    important:
-      type: boolean
-      ui:
-        label: Важная (в карусель)
-        inspector:
-          group: news
-    importantSort:
-      type: string
-      ui:
-        label: 'Сортировка в карусели (1-3)'
-        inspector:
-          group: news
     coverImage:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
@@ -221,8 +206,44 @@ blah: &alohaRich
                 enableOriginal: false
                 allowCustom: false
                 locked:
+                  width: 420
+                  height: 222
+    importantCoverImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото на обложку карусели'
+        help:
+          message: 'Eесли не задана, то используется фото из coverImage или coverCollection. Внутри новости не отображается.'
+        reloadIfChanged: false
+        inspector:
+          group: news
+          position: 50
+          editorOptions:
+            features:
+              resize: true
+            crop:
+              aspectRatio:
+                enableOriginal: false
+                allowCustom: false
+                locked:
                   width: 1200
                   height: 400
+'Sfi.News:ImportantMixin':
+  abstract: true
+  properties:
+    important:
+      type: boolean
+      ui:
+        label: Важная (в карусель)
+        inspector:
+          group: news
+    importantSort:
+      type: string
+      ui:
+        label: 'Сортировка в карусели (1-3)'
+        inspector:
+          group: news
+
 'Sfi.News:AuthorMixin':
   abstract: true
   properties:
@@ -288,7 +309,6 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           placeholder: 'Автор фото'
-
     originalIdentifier:
       type: string
 'Sfi.News:Announcement':

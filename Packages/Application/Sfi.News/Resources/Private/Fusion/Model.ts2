@@ -68,6 +68,11 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Content) {
 	teaser = ${String.stripTags(q(node).property('teaser'))}
 	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
 	thumbnailImage = Neos.Fusion:Case {
+		hasCoverImage {
+			condition = ${node.properties.coverImage}
+			renderer = ${node.properties.coverImage}
+			@position = 'start'
+		}
 		hasCoverCollectionImage {
 			condition = ${q(node).children('coverCollection').children().count() > 0}
 			renderer = ${q(node).children('coverCollection').children().first().property('image')}
@@ -100,9 +105,9 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 
 	place = ${String.stripTags(q(node).property('place'))}
 
-	thumbnailImage.hasCoverImage {
-		condition = ${node.properties.coverImage}
-		renderer = ${node.properties.coverImage}
+	thumbnailImage.hasImportantCoverImage {
+		condition = ${node.properties.importantCoverImage}
+		renderer = ${node.properties.importantCoverImage}
 		@position = 'start'
 	}
 
