@@ -71,7 +71,6 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Content) {
 		hasCoverImage {
 			condition = ${node.properties.coverImage}
 			renderer = ${node.properties.coverImage}
-			@position = 'start'
 		}
 		hasCoverCollectionImage {
 			condition = ${q(node).children('coverCollection').children().count() > 0}
