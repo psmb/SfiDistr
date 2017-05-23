@@ -104,7 +104,8 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 
 	place = ${String.stripTags(q(node).property('place'))}
 
-	thumbnailImage.hasImportantCoverImage {
+	thumbnailImageLarge = ${this.thumbnailImage}
+	thumbnailImageLarge.hasImportantCoverImage {
 		condition = ${node.properties.importantCoverImage}
 		renderer = ${node.properties.importantCoverImage}
 		@position = 'start'
