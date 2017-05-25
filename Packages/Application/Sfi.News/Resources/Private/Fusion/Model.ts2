@@ -59,6 +59,21 @@ prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 	}
 }
 
+prototype(Sfi.News:ThumbnailImage) < prototype(Neos.Fusion:Case) {
+	hasCoverImage {
+		condition = ${node.properties.coverImage}
+		renderer = ${node.properties.coverImage}
+	}
+	hasCoverCollectionImage {
+		condition = ${q(node).children('coverCollection').children().count() > 0}
+		renderer = ${q(node).children('coverCollection').children().first().property('image')}
+	}
+	default {
+		condition = ${true}
+		renderer = ${null}
+	}
+}
+
 #Breif rendering of article, used in NewsList
 prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.News/Private/Templates/NewsShort.html'
@@ -67,20 +82,7 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Content) {
 	date = ${q(node).property('date')}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
 	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
-	thumbnailImage = Neos.Fusion:Case {
-		hasCoverImage {
-			condition = ${node.properties.coverImage}
-			renderer = ${node.properties.coverImage}
-		}
-		hasCoverCollectionImage {
-			condition = ${q(node).children('coverCollection').children().count() > 0}
-			renderer = ${q(node).children('coverCollection').children().first().property('image')}
-		}
-		default {
-			condition = ${true}
-			renderer = ${null}
-		}
-	}
+	thumbnailImage = Sfi.News:ThumbnailImage
 	# parrent node is the category
 	category = ${q(node).parent().get(0)}
 
@@ -104,11 +106,12 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 
 	place = ${String.stripTags(q(node).property('place'))}
 
-	thumbnailImageLarge = ${this.thumbnailImage}
-	thumbnailImageLarge.hasImportantCoverImage {
-		condition = ${node.properties.importantCoverImage}
-		renderer = ${node.properties.importantCoverImage}
-		@position = 'start'
+	thumbnailImageLarge = Sfi.News:ThumbnailImage {
+		hasImportantCoverImage {
+			condition = ${node.properties.importantCoverImage}
+			renderer = ${node.properties.importantCoverImage}
+			@position = 'start'
+		}
 	}
 
 	@cache {
