@@ -3,19 +3,19 @@
     <file original="" source-language="ru" target-language="en" datatype="plaintext">
         <body>
             <trans-unit id="photo">
-                <source>Photo</source>
+                <target>Photo</target>
             </trans-unit>
             <trans-unit id="video">
-                <source>Video</source>
+                <target>Video</target>
             </trans-unit>
             <trans-unit id="audio">
-                <source>Audio</source>
+                <target>Audio</target>
             </trans-unit>
             <trans-unit id="allPapers">
-                <source>All papers</source>
+                <target>All papers</target>
             </trans-unit>
             <trans-unit id="keywords">
-                <source>Keywords</source>
+                <target>Keywords</target>
             </trans-unit>
             <trans-unit id="footer.about.sfi">
                 <target>St Philaret`s Christian Orthodox Institute (SFI)</target>
@@ -123,7 +123,7 @@
                 <target>Related Articles</target>
             </trans-unit>
             <trans-unit id="donate.donate">
-                <source>Support SFI »</source>
+                <target>Support SFI »</target>
             </trans-unit>
 
 
@@ -188,19 +188,19 @@
                 <target>Go to the website</target>
             </trans-unit>
             <trans-unit id="newsletter.previousSubscriptions">
-                <source>Previous Newsletters</source>
+                <target>Previous Newsletters</target>
             </trans-unit>
             <trans-unit id="newsletter.moreOptions">
-                <source>Subscription options</source>
+                <target>Subscription options</target>
             </trans-unit>
             <trans-unit id="newsletter.onlyDigestTitle">
-                <source>Subscribe to this digest</source>
+                <target>Subscribe to this digest</target>
             </trans-unit>
             <trans-unit id="aboutAuthor">
-                <source>About author</source>
+                <target>About author</target>
             </trans-unit>
             <trans-unit id="otherArticlesByAuthor">
-                <source>Other articles by this author</source>
+                <target>Other articles by this author</target>
             </trans-unit>
         </body>
     </file>
