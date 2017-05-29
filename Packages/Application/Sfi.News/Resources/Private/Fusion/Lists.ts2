@@ -173,6 +173,11 @@ prototype(Sfi.News:Archive) < prototype(Flowpack.Listable:List) {
 	listTitleClass = 'SectionDivider--Service'
 	archiveLink = ''
 
+	prototype(Sfi.News:NewsShort) {
+		@cache {
+			mode = 'embed'
+		}
+	}
 	prototype(Flowpack.Listable:Listable) {
 		listClass = 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'
 		limit = 10000
