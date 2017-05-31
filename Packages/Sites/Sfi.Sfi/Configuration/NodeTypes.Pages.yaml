@@ -106,8 +106,12 @@ blah: &alohaRich
     'Sfi.Sfi:AbstractPage': true
     'Psmb.Term:TermMixin': true
   ui:
-    label: 'Страница: Тэг'
+    label: 'Страница: Тег'
     icon: icon-file-text
+    inspector:
+      groups:
+        tag:
+          label: 'Тег'
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
