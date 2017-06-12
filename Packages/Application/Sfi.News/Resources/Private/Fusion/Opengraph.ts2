@@ -7,7 +7,7 @@ prototype(Sfi.News:Opengraph) < prototype(Neos.Fusion:Template) {
 		absolute = TRUE
 	}
 	image = Neos.Neos:ImageUri {
-		asset = ${q(node).find('[instanceof Neos.NodeTypes:Image]').first().property('image')}
+		asset = Sfi.News:ThumbnailImage
 		maximumWidth = 1200
 		maximumHeight = 630
 		allowCropping = TRUE
