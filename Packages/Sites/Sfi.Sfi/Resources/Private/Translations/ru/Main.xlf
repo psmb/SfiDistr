@@ -200,6 +200,9 @@
             <trans-unit id="newsletter.onlyDigestTitle">
                 <source>Подпишитесь на авторский дайджест</source>
             </trans-unit>
+            <trans-unit id="newsletter.readOnWebsite">
+                <source>Читать на сайте</source>
+            </trans-unit>
             <trans-unit id="aboutAuthor">
                 <source>Об авторе</source>
             </trans-unit>

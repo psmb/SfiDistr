@@ -39,6 +39,11 @@
 						<div class="large-8 large-offset-2 columns">
 							{languageMenu -> f:format.raw()}
 							<div class="Article-Content">{main -> f:format.raw()}</div>
+							<f:if condition="{isNewsletter}">
+								<div class="marginVertical-triple">
+									<a class="Button" href="{selfUri}"><f:translate package="Sfi.Sfi" id="newsletter.readOnWebsite"/></a>
+								</div>
+							</f:if>
 						</div>
 					</div>
 					<div class="row">
