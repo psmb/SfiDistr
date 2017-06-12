@@ -16,36 +16,86 @@
 			<h2 class="H1 textAlign-center">Поддержите наш институт</h2>
 		</div>
 	</div>
-	<f:form package="Sfi.Sber" controller="Payment" action="register" id="donate">
+
+
+
+
+
+
+
+
+
+
+	<form id="donate">
 		<div class="row paddingVertical-triple">
 			<div class="columns medium-8 medium-offset-2 large-6 large-offset-3">
-				<!--<div class="row">
+				<div class="row">
 					<div class="medium-6 large-7 columns">
 						<label class="ParagraphAlt--Large" for="type">Тип пожертвования</label>
-						<f:form.select name="type" class="input" style="background-color: white; height: 46px;" options="{montly: 'Ежемесячный платеж', once: 'Разовое'}" />
+						<select class="input" style="background-color: white; height: 46px;" name="type">
+							<option value="monthly">Ежемесячный платеж</option>
+							<option value="once">Разовое</option>
+						</select>
 					</div>
 					<div class="medium-6 large-5 columns">
 						<label class="ParagraphAlt--Large" for="amount">Сумма, руб.</label>
-						<f:form.textfield class="input" name="amount" placeholder="руб."/>
+						<input placeholder="руб." class="input" type="number" name="amount" value="500" required="true">
 					</div>
-				</div>-->
-
-				<label class="ParagraphAlt--Large" for="amount">Сумма, руб.</label>
-				<f:form.textfield class="input" name="amount" placeholder="руб."/>
+				</div>
 
 				<label class="ParagraphAlt--Large" for="email">E-mail</label>
-				<f:form.textfield class="input" type="email" name="email" placeholder="your@email.ru"/>
+				<input placeholder="your@email.ru" class="input" type="email" name="email" required="true">
 
 				<label class="ParagraphAlt--Large" for="name">Имя (необязательно)</label>
-				<f:form.textfield class="input" name="name" placeholder="Фамилия Имя Отчество"/>
+				<input placeholder="Фамилия Имя Отчество" class="input" type="text" name="name">
 
-				<p class="ParagraphAlt"><f:form.checkbox name="agreeOffer" value="agreeOffer" checked="true"/> Я ознакомился c <a href="https://sfi.ru/_Resources/Persistent/abec2e5c8bbf1618d044a0b08aa541f30886e9f9/donation-offerta.pdf" target="_blank" style="text-decoration: underline">договором-офертой</a> и согласен с ней</p>
-				<p class="ParagraphAlt"><f:form.checkbox name="agreeRf" value="agreeRf" checked="true"/> Я являюсь гражданином Российской Федерации</p>
-				<p class="ParagraphAlt--Small marginTop-single">Оплата происходит через авторизационный сервер процессингового центра ПАО Сбербанк с использованием банковских кредитных карт VISA и MasterCard. <neos:link.node node="node://ef5cfeb8-cbad-4959-9b10-ffec48717eeb" target="_blank" style="text-decoration: underline">Подробнее о процессе оплаты.</neos:link.node></p>
+				<p class="ParagraphAlt"><label><input type="checkbox" name="agreeOffer" value="agreeOffer" checked="checked" required="true"> Я ознакомился c <a href="https://sfi.ru/_Resources/Persistent/abec2e5c8bbf1618d044a0b08aa541f30886e9f9/donation-offerta.pdf" target="_blank" style="text-decoration: underline">договором-офертой</a> и согласен с ней</label></p>
+				<p class="ParagraphAlt"><label><input type="checkbox" name="agreeRf" value="agreeRf" checked="checked" required="true"> Я являюсь гражданином Российской Федерации</label></p>
+				<p class="ParagraphAlt--Small marginTop-single">Отменить ваше регулярное пожертвование (при его наличии) вы можете на <a style="text-decoration: underline" title="Отмена периодического платежа" href="https://my.cloudpayments.ru/unsubscribe" target="_blank">этой странице</a>.</p>
 			</div>
 		</div>
 		<div class="textAlign-center">
-			<f:form.submit style="border: 2px solid white; margin-right: 0; color: white" class="Button LinkButton Service paddingHorizontal-triple paddingVertical-single" value="Пожертвовать »" />
+			<input class="Button LinkButton Service paddingHorizontal-triple paddingVertical-single" style="border: 2px solid white; margin-right: 0; color: white" type="submit" name="" value="Пожертвовать »">
 		</div>
-	</f:form>
+	</form>
+
+	<script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
+	<script type="text/javascript">
+var form = document.getElementById('donate');
+var pay = function (event) {
+	event.preventDefault();
+	if (form.querySelector('[name=agreeOffer]').value && form.querySelector('[name=agreeRf]').value) {
+		var widget = new cp.CloudPayments();
+		var data = {
+			name: form.querySelector('[name=name]').value
+		};
+		var isRecurrent = form.querySelector('[name=type]').value === 'monthly';
+		if (isRecurrent) {
+			data.cloudPayments = {
+				recurrent: {
+					interval: 'Month',
+					period: 1
+				}
+			};
+		}
+		widget.charge({
+			publicId: 'pk_6bca8ae9eeae557548776757180c3',
+			description: 'Пожертвование на Свято-Филаретовский православно-христианский институт' + (isRecurrent && ' (регулярное)'),
+			amount: Number(form.querySelector('[name=amount]').value),
+			currency: 'RUB',
+			accountId: form.querySelector('[name=email]').value,
+			data: data
+		},
+		function (options) {
+			window.location = '/support/thanks.html';
+		},
+		function (reason, options) {
+			alert('Ошибка' + reason);
+		});
+	} else {
+		alert('Ошибка');
+	}
+};
+form.addEventListener('submit', pay);
+	</script>
 </div>
