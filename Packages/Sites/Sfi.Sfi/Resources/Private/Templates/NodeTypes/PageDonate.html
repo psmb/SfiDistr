@@ -81,7 +81,7 @@ var pay = function (event) {
 		}
 		widget.charge({
 			publicId: 'pk_6bca8ae9eeae557548776757180c3',
-			description: 'Пожертвование на Свято-Филаретовский православно-христианский институт' + (isRecurrent && ' (регулярное)'),
+			description: 'Пожертвование на Свято-Филаретовский православно-христианский институт' + (isRecurrent ? ' (регулярное)' : ''),
 			amount: Number(form.querySelector('[name=amount]').value),
 			currency: 'RUB',
 			accountId: form.querySelector('[name=email]').value,
