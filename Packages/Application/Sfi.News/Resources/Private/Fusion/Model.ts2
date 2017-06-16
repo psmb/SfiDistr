@@ -82,6 +82,7 @@ prototype(Sfi.News:ThumbnailImage) < prototype(Neos.Fusion:Case) {
 prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.News/Private/Templates/NewsShort.html'
 
+	node = ${node}
 	title = ${String.stripTags(q(node).property('title'))}
 	date = ${q(node).property('date')}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
