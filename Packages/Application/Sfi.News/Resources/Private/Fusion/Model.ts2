@@ -79,7 +79,7 @@ prototype(Sfi.News:ThumbnailImage) < prototype(Neos.Fusion:Case) {
 }
 
 #Breif rendering of article, used in NewsList
-prototype(Sfi.News:NewsShort) < prototype(Neos.Neos:Template) {
+prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.News/Private/Templates/NewsShort.html'
 
 	title = ${String.stripTags(q(node).property('title'))}
