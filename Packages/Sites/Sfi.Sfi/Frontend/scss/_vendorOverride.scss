@@ -1,6 +1,7 @@
 .audiojs p{
 	margin: 0 !important;
 }
+
 body {
 	.slick-dots{
 		// lucky number :(
@@ -9,8 +10,9 @@ body {
 		margin-top: 0;
 		margin-left: 7px;
 		margin-right: 12px;
-		bottom: $u;
+		top: $u;
 		left: $u;
+		right: $u;
 		li {
 			margin: 0;
 		}
