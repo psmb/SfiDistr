@@ -1,7 +1,8 @@
 .Blockquote{
-	@extend .ParagraphAlt--Large;
+	@extend .H4;
 	margin: $spacingBetweenContentBlocks 0;
 	padding: $u 0;
 	border-top: $border-thin;
 	border-bottom: $border-thin;
+	text-align: center;
 }
