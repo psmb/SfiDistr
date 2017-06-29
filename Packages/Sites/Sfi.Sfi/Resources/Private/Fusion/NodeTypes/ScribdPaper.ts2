@@ -21,6 +21,9 @@ prototype(Sfi.Sfi:ScribdList) < prototype(Neos.Fusion:Collection) {
 		entryTags {
 			1 = ${'DescendantOf_' + documentNode.identifier}
 		}
+		entryIdentifier {
+			node = ${node}
+		}
 	}
 }
 
