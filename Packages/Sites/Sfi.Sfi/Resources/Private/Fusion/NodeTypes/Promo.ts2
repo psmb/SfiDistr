@@ -29,13 +29,12 @@ prototype(Sfi.Sfi:PromoList) < prototype(Neos.Fusion:Tag) {
 	attributes.class = 'PromoList'
 	content = Neos.Neos:ContentCollectionRenderer {
 		itemRenderer = Sfi.Sfi:PromoShort
-		collection = ${q(site).children('promo').children().get()}
+		collection = ${q(site).find('[instanceof Sfi.Sfi:Promo]').get()}
 	}
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
 			node = ${node}
-			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
 			1 = ${'NodeType_Sfi.Sfi:Promo'}
