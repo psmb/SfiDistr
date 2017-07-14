@@ -1,8 +1,16 @@
-.Blockquote{
+.Blockquote {
 	@extend .H3;
 	margin: $spacingBetweenContentBlocks 0;
 	padding: $u 0;
 	border-top: $border-thin;
 	border-bottom: $border-thin;
 	text-align: center;
+}
+
+.BlockquoteSmall {
+	@extend .ParagraphAlt--Large;
+	margin: $spacingBetweenContentBlocks 0;
+	padding: $u 0;
+	border-top: $border-thin;
+	border-bottom: $border-thin;
 }
