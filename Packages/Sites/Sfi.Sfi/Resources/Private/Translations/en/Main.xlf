@@ -197,7 +197,7 @@
                 <target>Subscribe to this digest</target>
             </trans-unit>
             <trans-unit id="newsletter.readOnWebsite">
-                <source>Read on the website</source>
+                <target>Read on the website</target>
             </trans-unit>
             <trans-unit id="aboutAuthor">
                 <target>About author</target>
