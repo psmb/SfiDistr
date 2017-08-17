@@ -62,6 +62,9 @@ Neos:
       defaultLocale: ru
     http:
       baseUri: 'https://sfi.ru/'
+    error:
+      exceptionHandler:
+        className: 'Yeebase\Graylog\Error\GraylogExceptionHandler'
   Neos:
     userInterface:
       loadMinifiedJavascript: false
@@ -109,3 +112,8 @@ Neos:
         dimensions: 'ga:source'
         sort: '-ga:uniquePageviews'
         max-results: 25
+Yeebase:
+  Graylog:
+    host: '172.17.42.1'
+    port: 12201
+    chunksize: 'wan'
