@@ -16,12 +16,12 @@
         }
     ],
     "require": {
-        "neos/neos-development-collection": "3.0.x-dev",
-        "neos/flow-development-collection": "4.0.x-dev",
-        "neos/party": "~4.0.0",
-        "neos/imagine": "~3.0.0",
-        "neos/form": "~4.0.0",
-        "neos/setup": "~4.0.0",
+        "neos/neos-development-collection": "3.2.x-dev",
+        "neos/flow-development-collection": "4.2.x-dev",
+        "neos/party": "@dev",
+        "neos/imagine": "@dev",
+        "neos/form": "@dev",
+        "neos/setup": "@dev",
 
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",
