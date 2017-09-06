@@ -31,7 +31,7 @@
         "neos/googleanalytics": "~2.0.0",
         "flowpack/jobqueue-common": "@dev",
         "psmb/term": "^3.0",
-        "psmb/newsletter": "~2.2",
+        "psmb/newsletter": "~2.3",
         "opsdev/cache-breaker": "^3.0",
         "neos/neos-ui": "dev-master",
         "neos/neos-ui-compiled": "dev-master",
