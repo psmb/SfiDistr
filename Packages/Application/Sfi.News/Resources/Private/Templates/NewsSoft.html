@@ -7,10 +7,10 @@
 			<div class="NewsDetail-Article NewsDetail-Article--Soft">
 
 				<div class="Article Article--Soft">
-					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title')}</h1>
 					<div class="row">
 						<div class="large-10 large-offset-1 columns">
-							<div class="Article-Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+							<div class="Article-Teaser RteTextLinkable">{neos:contentElement.editable(property: 'teaser')}</div>
 							<div class="textAlign-center">
 								<span class="Article-Date">
 									<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
@@ -24,7 +24,7 @@
 					</div>
 					<div class="row">
 						<div class="medium-10 large-8 medium-offset-1 large-offset-2 columns">
-							<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+							<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead')}</div>
 						</div>
 					</div>
 					<div class="row">
@@ -57,9 +57,9 @@
 							<div class="Article-Author marginTop-triple">
 								<f:if condition="{node.context.workspace.name} != 'live'">
 									<f:then>
-										<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.author"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
-										<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.photo"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto', tag: 'span')}</span>
-										<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.translator"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'translator', tag: 'span')}</span>
+										<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.author"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'author')}</span>
+										<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.photo"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'authorPhoto')}</span>
+										<span class="Article-AuthorLabel"><f:translate package="Sfi.Sfi" id="news.translator"/>: </span> <span class="Article-AuthorName">{neos:contentElement.editable(property: 'translator')}</span>
 									</f:then>
 									<f:else>
 										<f:if condition="{author}">

@@ -10,15 +10,15 @@
 						<span class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'authorDegree', tag: 'span')}</span>
 					</div>
 					<span class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'authorFrom', tag: 'span')}</span>
-					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
-					<div class="ServiceEm">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+					<h1 class="Article-Title">{neos:contentElement.editable(property: 'title')}</h1>
+					<div class="ServiceEm">{neos:contentElement.editable(property: 'teaser')}</div>
 					<span class="Article-Date">
 						<f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
 					</span>
 					&bull;
 					<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
 				</div>
-				<div class="Article-Lead RteTextLinkable">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+				<div class="Article-Lead RteTextLinkable">{neos:contentElement.editable(property: 'lead')}</div>
 			</div>
 		</div>
 		<div class="row">

@@ -6,19 +6,19 @@
 		<div class="textAlign-center">
 			<div itemprop="EduLavel" class="Service">{level}</div>
 			<h1 class="H2">
-				{neos:contentElement.editable(property: 'title', tag: 'span')}
+				{neos:contentElement.editable(property: 'title')}
 				<f:if condition="{node.context.workspace.name} != 'live' || {specialityId}">
-					({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
+					({neos:contentElement.editable(property: 'specialityId')})
 				</f:if>
 				</h1>
 			<div class="ServiceEm">{division}</div>
 		</div>
-		<div class="Paragraph RteTextLinkable marginVertical-triple">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
+		<div class="Paragraph RteTextLinkable marginVertical-triple">{neos:contentElement.editable(property: 'lead')}</div>
 		<div class="StudyProgramCard textAlign-center">
-			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration', tag: 'span')}</div>
-			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate', tag: 'span')}</div>
-			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'certificate', tag: 'span')}</div>
-			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price', tag: 'span')}</div>
+			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration')}</div>
+			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate')}</div>
+			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'certificate')}</div>
+			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price')}</div>
 		</div>
 	</div>
 </div>

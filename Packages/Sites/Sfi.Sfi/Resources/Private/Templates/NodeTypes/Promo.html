@@ -4,8 +4,8 @@
 	<div class="PromoDetail-Article medium-7 columns">
 		<div class="Article Article--Hard">
 			<neos:contentElement.wrap node="{node}">
-				<h1 class="Article-Title H2">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
-				<div class="Article-Teaser Paragraph">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+				<h1 class="Article-Title H2">{neos:contentElement.editable(property: 'title')}</h1>
+				<div class="Article-Teaser Paragraph">{neos:contentElement.editable(property: 'teaser')}</div>
 
 				<div class="Article-Content">{main -> f:format.raw()}</div>
 			</neos:contentElement.wrap>

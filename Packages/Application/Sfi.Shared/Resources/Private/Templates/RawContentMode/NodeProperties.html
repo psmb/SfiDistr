@@ -2,7 +2,7 @@
 <h2>Node properties</h2>
 <f:for each="{nodeProperties}" as="propertyConfiguration" key="propertyName">
 	<f:if condition="{propertyConfiguration.ui.inlineEditable} == true">
-		<div>{neos:contentElement.editable(property: '{propertyName}', tag: 'span')}</div>
+		<div>{neos:contentElement.editable(property: '{propertyName}'}</div>
 		<hr>
 	</f:if>
 </f:for>
