@@ -16,8 +16,8 @@
 			</div>
 		</f:if>
 		<div class="MediaAnnouncement-WrapText">
-			<h3 class="MediaAnnouncement-Title">{title}</h3>
-			<p class="MediaAnnouncement-Teaser RteTextLinkable">{teaser}</p>
+			<h3 class="MediaAnnouncement-Title">{title -> f:format.raw()}</h3>
+			<p class="MediaAnnouncement-Teaser RteTextLinkable">{teaser -> f:format.raw()}</p>
 			<div class="MediaAnnouncement-Place">{place -> f:format.raw()}</div>
 		</div>
 	</neos:link.node>
