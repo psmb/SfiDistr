@@ -12,7 +12,7 @@
 		</div>
 		<div class="MediaSmall-Body">
 			<h3 class="MediaSmall-Title">
-				{title}
+				{title -> f:format.raw()}
 			</h3>
 			<div class="MediaSmall-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
 			<f:if condition="{date}">
