@@ -8,7 +8,7 @@
 			<h1 class="H2">
 				{neos:contentElement.editable(property: 'title')}
 				<f:if condition="{node.context.workspace.name} != 'live' || {specialityId}">
-					({neos:contentElement.editable(property: 'specialityId', tagName: 'span')})
+					({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
 				</f:if>
 				</h1>
 			<div class="ServiceEm">{division}</div>
