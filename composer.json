@@ -37,7 +37,8 @@
         "neos/neos-ui-compiled": "dev-master",
         "packagefactory/atomicfusion": "^2.0",
         "flowpack/listable": "dev-sfi-legacy",
-        "yeebase/graylog": "@dev"
+        "yeebase/graylog": "@dev",
+        "flowpack/nodetemplates": " @dev"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

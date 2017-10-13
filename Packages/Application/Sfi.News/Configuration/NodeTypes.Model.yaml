@@ -92,6 +92,19 @@ blah: &alohaRich
       type: 'Sfi.Shared:Carousel'
     assets:
       type: 'Neos.Neos:ContentCollection'
+  options:
+    template:
+      childNodes:
+        cover:
+          name: 'coverCollection'
+          childNodes:
+            firstImageNode:
+              type: 'Neos.NodeTypes:Image'
+        main:
+          name: 'main'
+          childNodes:
+            firstTextNode:
+              type: 'Neos.NodeTypes:Text'
   ui:
     label: Новость
     icon: icon-file-text
