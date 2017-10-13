@@ -13,7 +13,7 @@ node_modules
 stylesheets
 
 /Web/.htaccess
-/Web/_Resources/
+/Web/_Resources
 /Web/index.php
 /Configuration/*
 Configuration/Production/IncludeCachedConfigurations.php
