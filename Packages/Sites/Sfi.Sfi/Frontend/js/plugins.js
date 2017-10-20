@@ -25,10 +25,14 @@ $.fn.switchstylesheet = function(options) {
 
 		//goes thru the links to find out the ones having the selector
 		$(this).click(function(e) {
-				e.preventDefault();
+				// e.preventDefault();
 				var title = $(this).attr('title'); //gets the title=?
 				switchss(title);
 		});
+
+		if (window.location.hash === 'eye') {
+			switchss('accessible-stylesheet');
+		}
 
 		function switchss(title) {
 				//goes thru all the styles having seperator - alt
