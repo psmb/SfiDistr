@@ -30,7 +30,7 @@ $.fn.switchstylesheet = function(options) {
 				switchss(title);
 		});
 
-		if (window.location.hash === 'eye') {
+		if (window.location.hash === '#eye') {
 			switchss('accessible-stylesheet');
 		}
 
