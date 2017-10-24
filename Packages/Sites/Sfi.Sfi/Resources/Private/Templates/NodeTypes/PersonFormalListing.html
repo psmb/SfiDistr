@@ -15,16 +15,16 @@
 			<th>Стаж работы по специальности</th>
 		</tr>
 		<f:for each="{collection}" as="item">
-			<tr>
+			<tr itemprop="teachingStaff">
 				<td itemprop="fio"><neos:link.node node="{item}" class="Link">{item.properties.title -> f:format.stripTags()}</neos:link.node></td>
-				<td itemprop="Post">{item.properties.position -> f:format.stripTags()}</td>
-				<td itemprop="TeachingDiscipline">{item.properties.subject -> f:format.stripTags()}</td>
-				<td><span itemprop="Degree">{item.properties.degree -> f:format.stripTags()}</span></td>
-				<td><span itemprop="AcademStat">{item.properties.degreeTitle -> f:format.stripTags()}</span></td>
-				<td><span itemprop="EmployeeQualification">{item.properties.education -> f:format.stripTags()}</span></td>
-				<td><span itemprop="ProfDevelopment">{item.properties.educationUpgrade -> f:format.stripTags()}</span></td>
-				<td><span itemprop="GenExperience">{item.properties.experience -> f:format.stripTags()}</span></td>
-				<td><span itemprop="SpecExperience">{item.properties.experienceSpeciality -> f:format.stripTags()}</span></td>
+				<td itemprop="post">{item.properties.position -> f:format.stripTags()}</td>
+				<td itemprop="teachingDiscipline">{item.properties.subject -> f:format.stripTags()}</td>
+				<td><span itemprop="degree">{item.properties.degree -> f:format.stripTags()}</span></td>
+				<td><span itemprop="academStat">{item.properties.degreeTitle -> f:format.stripTags()}</span></td>
+				<td><span itemprop="employeeQualification">{item.properties.education -> f:format.stripTags()}</span></td>
+				<td><span itemprop="profDevelopment">{item.properties.educationUpgrade -> f:format.stripTags()}</span></td>
+				<td><span itemprop="genExperience">{item.properties.experience -> f:format.stripTags()}</span></td>
+				<td><span itemprop="specExperience">{item.properties.experienceSpeciality -> f:format.stripTags()}</span></td>
 			</tr>
 		</f:for>
 	</table>

@@ -16,7 +16,7 @@
     itemtype:
       type: string
       ui:
-        label: 'itemtype (e.g. http://obrnadzor.gov.ru/microformats/UchredLaw)'
+        label: 'НЕДЕЙСТВИТЕЛЬНО, использовать itemprop!!!'
         reloadIfChanged: FALSE
         inspector:
           group: 'microformats'

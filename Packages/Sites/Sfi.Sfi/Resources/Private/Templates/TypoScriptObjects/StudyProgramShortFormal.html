@@ -1,16 +1,22 @@
-<tr>
-	<td style="vertical-align: top" itemprop="OOP_main">
+<tr itemprop="eduOp">
+	<td style="vertical-align: top" itemprop="opMain eduName">
 		{assetDescription -> f:format.raw()}
 	</td>
-	<td style="vertical-align: top" itemprop="education_plan">
+	<td style="vertical-align: top" itemprop="eduCode">
+		{specialityId -> f:format.raw()}
+	</td>
+	<td style="vertical-align: top" itemprop="eduLevel">
+		{level -> f:format.raw()}
+	</td>
+	<td style="vertical-align: top" itemprop="educationPlan">
 		{assetsPlan -> f:format.raw()}
 	</td>
-	<td style="vertical-align: top" itemprop="education_annotation">
+	<td style="vertical-align: top" itemprop="educationAnnotation">
 		{assetsSubjectAnnotations -> f:format.raw()}
 	</td>
-	<td style="vertical-align: top" itemprop="education_shedule">
+	<td style="vertical-align: top" itemprop="educationShedule">
 		{schedule -> f:format.raw()}
-	<td style="vertical-align: top" itemprop="EduPr">
+	<td style="vertical-align: top" itemprop="eduPr">
 		{assetsPracticeAnnotations -> f:format.raw()}
 	</td>
 	<td style="vertical-align: top" itemprop="methodology">

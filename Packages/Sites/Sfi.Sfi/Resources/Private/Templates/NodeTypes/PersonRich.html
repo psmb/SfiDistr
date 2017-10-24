@@ -8,13 +8,13 @@
 			<h1 class="PageTitle">{neos:contentElement.editable(property: 'title')}</h1>
 			<div class="marginTop-triple marginBottom-double">
 				<f:if condition="{node.context.workspace.name} != 'live' || {position}">
-					<div itemprop="Post" class="Paragraph">{neos:contentElement.editable(property: 'position')}</div>
+					<div class="Paragraph">{neos:contentElement.editable(property: 'position')}</div>
 				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {degree}">
-					<div itemprop="Degree" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree')}</div>
+					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree')}</div>
 				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {degreeTitle}">
-					<div itemprop="DegreeTitle" class="ServiceEm--Large">{neos:contentElement.editable(property: 'degreeTitle')}</div>
+					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'degreeTitle')}</div>
 				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {node.context.workspace.name} != 'live'">
 					<div class="ServiceEm--Large" style="color: pink">{neos:contentElement.editable(property: 'freeText')}</div>
@@ -63,7 +63,7 @@
 			<f:if condition="{node.context.workspace.name} != 'live' || {subject}">
 				<div class="marginVertical-single">
 					<div class="ParagraphAlt--Large color-primaryAlt"><f:translate package="Sfi.Sfi" id="staff.subjects"/> дисциплины:</div>
-					<div itemprop="TeachingDiscipline" class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'subject')}</div>
+					<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'subject')}</div>
 				</div>
 			</f:if>
 

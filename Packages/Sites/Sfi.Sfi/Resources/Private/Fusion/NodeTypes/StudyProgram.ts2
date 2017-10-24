@@ -122,6 +122,7 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	level = ${q(node).parent().parent().property('title')}
 	division = ${q(node).parent().property('title')}
 	duration = ${q(node).property('duration')}
+	specialityId = ${q(node).property('specialityId')}
 	accreditationDate = ${q(node).property('accreditationDate')}
 	noLink = ${q(node).property('noLink')}
 
