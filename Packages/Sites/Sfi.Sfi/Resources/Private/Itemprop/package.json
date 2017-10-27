@@ -1,0 +1,15 @@
+{
+  "description": "Itemprop",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "neos-react-scripts build",
+    "watch": "neos-react-scripts watch"
+  },
+  "devDependencies": {
+    "@neos-project/neos-ui-extensibility": "1.0.0-beta6"
+  },
+  "neos": {
+    "buildTargetDirectory": "../../Public/JavaScript/Itemprop"
+  }
+}

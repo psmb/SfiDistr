@@ -66,6 +66,12 @@ Neos:
       exceptionHandler:
         className: 'Yeebase\Graylog\Error\GraylogExceptionHandler'
   Neos:
+    Ui:
+      resources:
+        javascript:
+          'Sfi.Site:Itemprop':
+            resource: '${"resource://" + Neos.Ui.StaticResources.compiledResourcePackage() + "/Public/JavaScript/Itemprop/Plugin.js"}'
+
     userInterface:
       loadMinifiedJavascript: false
       editPreviewModes:
