@@ -70,7 +70,7 @@ Neos:
       resources:
         javascript:
           'Sfi.Site:Itemprop':
-            resource: '${"resource://" + Neos.Ui.StaticResources.compiledResourcePackage() + "/Public/JavaScript/Itemprop/Plugin.js"}'
+            resource: '${"resource://Sfi.Site/Public/JavaScript/Itemprop/Plugin.js"}'
 
     userInterface:
       loadMinifiedJavascript: false
