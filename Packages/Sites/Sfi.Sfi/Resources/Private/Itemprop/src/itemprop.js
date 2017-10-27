@@ -30,7 +30,8 @@ export default CKEDITOR => {
                     onShow() {
                         const selection = editor.getSelection();
                         const element = selection.getStartElement();
-                        this.element = element;
+                        const tdElement = element.getAscendant('td', true);
+                        this.element = tdElement ? tdElement : element;
                         this.setupContent(this.element);
                     },
                     onOk() {
