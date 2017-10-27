@@ -69,8 +69,8 @@ Neos:
     Ui:
       resources:
         javascript:
-          'Sfi.Site:Itemprop':
-            resource: '${"resource://Sfi.Site/Public/JavaScript/Itemprop/Plugin.js"}'
+          'Sfi.Sfi:Itemprop':
+            resource: '${"resource://Sfi.Site/Public/js/Itemprop/Plugin.js"}'
 
     userInterface:
       loadMinifiedJavascript: false
