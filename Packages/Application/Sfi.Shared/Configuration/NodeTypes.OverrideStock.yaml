@@ -39,6 +39,7 @@
             h4: true
             pre: true
             removeFormat: true
+            itemprop: true
           table:
             table: true
           list:
