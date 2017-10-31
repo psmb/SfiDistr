@@ -52,6 +52,12 @@
 				<f:if condition="{node.context.workspace.name} != 'live' || {experienceSfi}">
 					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'experienceSfi')}</div>
 				</f:if>
+				<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevel}">
+					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'teachingLevel')}</div>
+				</f:if>
+				<f:if condition="{node.context.workspace.name} != 'live' || {teachingQual}">
+					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'teachingQual')}</div>
+				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {email}">
 					<div class="ParagraphAlt marginTop-single">{neos:contentElement.editable(property: 'email')}</div>
 				</f:if>
