@@ -30,9 +30,17 @@ prototype(Sfi.Sfi:StudyProgram) {
 		@context.node = ${q(node).children('assetSampleContract').get(0)}
 	}
 
-	assetsPlan = ContentCollection {
-		nodePath = 'assetsPlan'
-		@process.title = ${'<h3 class="H3">Учебный план</h3>' + value}
+	assetsPlanO = ContentCollection {
+		nodePath = 'assetsPlanO'
+		@process.title = ${'<h3 class="H3 marginVertical-single">Учебный план</h3><h4 class="H4">Очное отделение</h4>' + value}
+	}
+	assetsPlanOZ = ContentCollection {
+		nodePath = 'assetsPlanOZ'
+		@process.title = ${'<h4 class="H4">Очно-заочное отделение</h4>' + value}
+	}
+	assetsPlanZ = ContentCollection {
+		nodePath = 'assetsPlanZ'
+		@process.title = ${'<h4 class="H4">Заочное отделение</h4>' + value}
 	}
 	assetsAdmissionRegulations = ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
@@ -56,9 +64,17 @@ prototype(Sfi.Sfi:StudyProgram) {
 		nodePath = 'subjects'
 		@process.title = ${'<h3 class="H3">Список изучаемых дисциплин</h3>' + value}
 	}
-	schedule = ContentCollection {
-		nodePath = 'schedule'
-		@process.title = ${'<h3 class="H3">Календарный учебный график</h3>' + value}
+	scheduleO = ContentCollection {
+		nodePath = 'scheduleO'
+		@process.title = ${'<h3 class="H3 marginVertical-single">Календарный учебный график</h3><h4 class="H4">Очное отделение</h4>' + value}
+	}
+	scheduleOZ = ContentCollection {
+		nodePath = 'scheduleOZ'
+		@process.title = ${'<h4 class="H4">Очно-заочное отделение</h4>' + value}
+	}
+	scheduleZ = ContentCollection {
+		nodePath = 'scheduleZ'
+		@process.title = ${'<h4 class="H4">Заочное отделение</h4>' + value}
 	}
 	documentSubmission = ContentCollection {
 		nodePath = 'documentSubmission'
@@ -123,23 +139,37 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	division = ${q(node).parent().property('title')}
 	duration = ${q(node).property('duration')}
 	specialityId = ${q(node).property('specialityId')}
+	specialityName = Neos.Fusion:Tag {
+		content = ${q(node).property('specialityName')}
+		@process.editable = ContentElementEditable {
+			property = 'specialityName'
+		}
+		@process.contentElementWrapping = ContentElementWrapping
+	}
 	accreditationDate = ${q(node).property('accreditationDate')}
 	noLink = ${q(node).property('noLink')}
 
-	assetDescription = Neos.Fusion:Tag {
-		content = ${String.stripTags(q(node).property('title'))}
+	assetDescription = Sfi.Sfi:StudyProgramAsset {
+		title = ${String.stripTags(q(node).property('title'))}
 		@context.node = ${q(node).children('assetDescription').get(0)}
-		tagName = 'a'
-		attributes.class = 'ButtonInline AssetInline'
-		attributes.href = ${'asset://' + node.properties.asset.identifier}
-		attributes.href.@process.convertUris = ConvertUris
-		@if.assetNotEmptyOrInBackend = ${node.properties.asset.identifier != null || documentNode.context.inBackend}
 	}
-	assetsPlan = ContentCollection {
-		nodePath = 'assetsPlan'
+	assetsPlanO = ContentCollection {
+		nodePath = 'assetsPlanO'
 	}
-	schedule = ContentCollection {
-		nodePath = 'schedule'
+	assetsPlanOZ = ContentCollection {
+		nodePath = 'assetsPlanOZ'
+	}
+	assetsPlanZ = ContentCollection {
+		nodePath = 'assetsPlanZ'
+	}
+	scheduleO = ContentCollection {
+		nodePath = 'scheduleO'
+	}
+	scheduleOZ = ContentCollection {
+		nodePath = 'scheduleOZ'
+	}
+	scheduleZ = ContentCollection {
+		nodePath = 'scheduleZ'
 	}
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
 		title = 'Свидетельство о государственной аккредитации'
@@ -154,6 +184,7 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	assetsMethodical = ContentCollection {
 		nodePath = 'assetsMethodical'
 	}
+	@process.contentElementWrapping = ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections) {
@@ -189,9 +220,8 @@ prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListing
 
 prototype(Sfi.Sfi:StudyProgramsListingFormal) {
 	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/StudyProgramsListingFormal.html'
-	@context.rootNode = ${q(node).property('rootNode')}
 	collection = Neos.Fusion:Collection {
-		collection = ${q(rootNode).children().get()}
+		collection = ${q(node).property('references')}
 		itemName = 'node'
 		itemRenderer = Sfi.Sfi:StudyProgramShortFormal
 	}
@@ -202,8 +232,7 @@ prototype(Sfi.Sfi:StudyProgramsListingFormal) {
 		}
 		entryTags {
 			1 = ${'Node_' + node.identifier}
-			2 = ${'Node_' + rootNode.identifier}
-			3 = ${'DescendantOf_' + rootNode.identifier}
+			3 = ${'DescendantOf_' + site.identifier}
 		}
 	}
 }

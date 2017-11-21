@@ -1,25 +1,47 @@
-<tr itemprop="eduOp">
-	<td style="vertical-align: top" itemprop="opMain eduName">
-		{assetDescription -> f:format.raw()}
+{namespace neos=Neos\Neos\ViewHelpers}
+<tr>
+	<neos:contentElement.wrap>
+		<td itemprop="eduCode" rowspan="3">
+			{specialityId -> f:format.raw()}
+		</td>
+		<td rowspan="3">{specialityName -> f:format.raw()}</td>
+		<td itemprop="eduLevel" rowspan="3">
+			{level -> f:format.raw()}
+		</td>
+		<td>Очная</td>
+		<td itemprop="opMain eduName" rowspan="3">
+			{assetDescription -> f:format.raw()}
+		</td>
+		<td itemprop="educationPlan">
+			{assetsPlanO -> f:format.raw()}
+		</td>
+		<td itemprop="educationAnnotation" rowspan="3">
+			{assetsSubjectAnnotations -> f:format.raw()}
+		</td>
+		<td itemprop="educationShedule">
+			{scheduleO -> f:format.raw()}
+		</td>
+		<td itemprop="methodology" rowspan="3">
+			{assetsMethodical -> f:format.raw()}
+		</td>
+		<td rowspan="3">Электронное обучение и дистанционные образовательные технологии</td>
+	</neos:contentElement.wrap>
+</tr>
+<tr>
+	<td>Очно-заочная</td>
+	<td itemprop="educationPlan">
+		{assetsPlanOZ -> f:format.raw()}
 	</td>
-	<td style="vertical-align: top" itemprop="eduCode">
-		{specialityId -> f:format.raw()}
+	<td itemprop="educationShedule">
+		{scheduleOZ -> f:format.raw()}
 	</td>
-	<td style="vertical-align: top" itemprop="eduLevel">
-		{level -> f:format.raw()}
+</tr>
+<tr>
+	<td>Заочная</td>
+	<td itemprop="educationPlan">
+		{assetsPlanZ -> f:format.raw()}
 	</td>
-	<td style="vertical-align: top" itemprop="educationPlan">
-		{assetsPlan -> f:format.raw()}
-	</td>
-	<td style="vertical-align: top" itemprop="educationAnnotation">
-		{assetsSubjectAnnotations -> f:format.raw()}
-	</td>
-	<td style="vertical-align: top" itemprop="educationShedule">
-		{schedule -> f:format.raw()}
-	<td style="vertical-align: top" itemprop="eduPr">
-		{assetsPracticeAnnotations -> f:format.raw()}
-	</td>
-	<td style="vertical-align: top" itemprop="methodology">
-		{assetsMethodical -> f:format.raw()}
+	<td itemprop="educationShedule">
+		{scheduleZ -> f:format.raw()}
 	</td>
 </tr>

@@ -222,10 +222,26 @@ blah: &alohaRich
               - 'Neos.Neos:Document'
 'Sfi.Sfi:StudyProgramsListingFormal':
   superTypes:
-    'Sfi.Sfi:StudyProgramsListing': true
+    'Neos.Neos:Content': true
   ui:
     label: 'Список учебных программ (законодательство)'
     inlineEditable: true
+    group: contentBlocks
+    inspector:
+      groups:
+        general:
+          label: General
+  properties:
+    references:
+      type: references
+      ui:
+        label: 'Выберите учебные программы'
+        reloadIfChanged: true
+        inspector:
+          group: general
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Sfi:StudyProgram'
 'Sfi.Sfi:StudyProgramsListingByReference':
   superTypes:
     'Neos.Neos:Content': true

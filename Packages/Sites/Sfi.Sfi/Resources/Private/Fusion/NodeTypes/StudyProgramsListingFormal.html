@@ -1,14 +1,21 @@
-<table class="Table">
+<style>
+table.Table td {
+	vertical-align: top;
+}
+</style>
+<table class="Table" itemprop="eduOp">
 	<tbody>
 		<tr>
-			<td style="vertical-align: top">Образовательная программа</td>
 			<td style="vertical-align: top">Код специальности</td>
+			<td style="vertical-align: top">Наименование специальности, направления подготовки</td>
 			<td style="vertical-align: top">Уровень образования</td>
+			<td style="vertical-align: top">Реализуемые формы обучения</td>
+			<td style="vertical-align: top">Описание образовательной программы</td>
 			<td style="vertical-align: top">Учебный план</td>
 			<td style="vertical-align: top">Аннотации к рабочим программам дисциплин</td>
 			<td style="vertical-align: top">Календарный учебный график</td>
-			<td style="vertical-align: top">Практики</td>
 			<td style="vertical-align: top">Методические и иные документы</td>
+			<td style="vertical-align: top">Использование при реализации образовательных программ электронного обучения и дистанционных образовательных технологий</td>
 		</tr>
 		{collection -> f:format.raw()}
 	</tbody>

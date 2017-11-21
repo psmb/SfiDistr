@@ -1,4 +1,13 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-<a{attributes -> f:format.raw()}">
-	{neos:contentElement.editable(property: 'title', tag: 'span')}
-</a>
+<f:if condition="{neos:rendering.live()}">
+	<f:then>
+		<a{attributes -> f:format.raw()}">
+			{title -> f:format.raw()}
+		</a>
+	</f:then>
+	<f:else>
+		<a>
+			{neos:contentElement.editable(property: 'title', tag: 'span')}
+		</a>
+	</f:else>
+</f:if>

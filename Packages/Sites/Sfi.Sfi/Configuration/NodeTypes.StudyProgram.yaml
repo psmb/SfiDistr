@@ -29,7 +29,11 @@
       type: 'Neos.Neos:ContentCollection'
     subjects:
       type: 'Neos.Neos:ContentCollection'
-    schedule:
+    scheduleO:
+      type: 'Neos.Neos:ContentCollection'
+    scheduleOZ:
+      type: 'Neos.Neos:ContentCollection'
+    scheduleZ:
       type: 'Neos.Neos:ContentCollection'
     documentSubmission:
       type: 'Neos.Neos:ContentCollection'
@@ -47,7 +51,11 @@
       type: 'Neos.Neos:ContentCollection'
     feedback:
       type: 'Neos.Neos:ContentCollection'
-    assetsPlan:
+    assetsPlanO:
+      type: 'Neos.Neos:ContentCollection'
+    assetsPlanOZ:
+      type: 'Neos.Neos:ContentCollection'
+    assetsPlanZ:
       type: 'Neos.Neos:ContentCollection'
   properties:
     lead:
@@ -119,6 +127,29 @@
             a: FALSE
           alignment: {  }
           placeholder: 'Код специальности'
+    specialityName:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          format:
+            b: FALSE
+            i: FALSE
+            u: FALSE
+            sub: FALSE
+            sup: FALSE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: FALSE
+          alignment: {  }
+          placeholder: 'Наименование специальности, направления подготовки'
     accreditationDate:
       type: string
       ui:
