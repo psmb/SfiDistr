@@ -6,6 +6,7 @@ machine:
 dependencies:
   override:
     - if [ -d ~/ansible-deploy ]; then (cd ~/ansible-deploy && git pull); else git clone https://github.com/sfi-ru/ansible-deploy ~/ansible-deploy;fi
+    - sudo apt-get -y update && sudo apt-get install -y python-pip libffi-dev libssl-dev
     - pip install --upgrade setuptools
     - pip install 'ansible>=2.0.0,<2.3.0'
     - pip install httplib2
