@@ -6,7 +6,11 @@ prototype(Flowpack.Listable:Listable) {
 prototype(Flowpack.Listable:ContentCaseShort) < prototype(Sfi.Shared:ContentCaseShort)
 
 # Needed for legacy
-prototype(Sfi.News:List) < prototype(Flowpack.Listable:ListNode)
+prototype(Sfi.News:List) < prototype(Flowpack.Listable:ListNode) {
+	prototype(Flowpack.Listable:Listable) {
+		collection.@process.nodes = ${q(node.properties.nodes).count() > 0 ? node.properties.nodes : value}
+	}
+}
 
 # Show latest news
 prototype(Sfi.News:Latest) < prototype(Flowpack.Listable:List) {
