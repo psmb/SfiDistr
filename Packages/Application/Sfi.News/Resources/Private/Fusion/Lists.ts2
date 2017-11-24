@@ -9,6 +9,7 @@ prototype(Flowpack.Listable:ContentCaseShort) < prototype(Sfi.Shared:ContentCase
 prototype(Sfi.News:List) < prototype(Flowpack.Listable:ListNode) {
 	prototype(Flowpack.Listable:Listable) {
 		collection.@process.nodes = ${q(node.properties.nodes).count() > 0 ? node.properties.nodes : value}
+		sortProperty = ''
 	}
 }
 
