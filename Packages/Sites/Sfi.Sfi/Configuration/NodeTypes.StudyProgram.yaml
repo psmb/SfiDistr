@@ -29,6 +29,8 @@
       type: 'Neos.Neos:ContentCollection'
     subjects:
       type: 'Neos.Neos:ContentCollection'
+    schedule:
+      type: 'Neos.Neos:ContentCollection'
     scheduleO:
       type: 'Neos.Neos:ContentCollection'
     scheduleOZ:

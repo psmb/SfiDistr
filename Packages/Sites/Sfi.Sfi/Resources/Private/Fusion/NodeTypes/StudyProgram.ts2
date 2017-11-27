@@ -64,6 +64,9 @@ prototype(Sfi.Sfi:StudyProgram) {
 		nodePath = 'subjects'
 		@process.title = ${'<h3 class="H3">Список изучаемых дисциплин</h3>' + value}
 	}
+	schedule = ContentCollection {
+		nodePath = 'schedule'
+	}
 	scheduleO = ContentCollection {
 		nodePath = 'scheduleO'
 		@process.title = ${'<h3 class="H3 marginVertical-single">Календарный учебный график</h3><h4 class="H4">Очное отделение</h4>' + value}
