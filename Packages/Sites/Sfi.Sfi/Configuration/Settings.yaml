@@ -62,9 +62,15 @@ Neos:
       defaultLocale: ru
     http:
       baseUri: 'https://sfi.ru/'
-    error:
-      exceptionHandler:
-        className: 'Yeebase\Graylog\Error\GraylogExceptionHandler'
+    log:
+      systemLogger:
+        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+      securityLogger:
+        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+      sqlLogger:
+        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+      i18nLogger:
+        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
   Neos:
     Ui:
       resources:
