@@ -1,0 +1,27 @@
+'Sfi.Site:Images':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  options:
+    template:
+      childNodes:
+        image:
+          name: '${"image" + key}'
+          type: 'Neos.NodeTypes:Image'
+          properties:
+            image: '${item}'
+          withItems: '${data.images}'
+  ui:
+    creationDialog:
+      elements:
+        images:
+          type: array<Neos\Media\Domain\Model\ImageInterface>
+          ui:
+            label: 'Картинки'
+            editor: 'Neos.Neos/Inspector/Editors/AssetEditor'
+            editorOptions:
+              multiple: true
+    label: 'Много картинок'
+    inlineEditable: true
+    icon: icon-picture
+    position: 'after Neos.NodeTypes:Image'

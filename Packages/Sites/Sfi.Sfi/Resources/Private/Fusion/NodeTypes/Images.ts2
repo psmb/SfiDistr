@@ -1,0 +1,6 @@
+prototype(Psmb.NodeTypes:Images) < prototype(Neos.Fusion:Tag) {
+	attributes.class = 'Images'
+	content = ContentCollectionRenderer {
+		@process.contentElementWrapping = ContentElementWrapping
+	}
+}

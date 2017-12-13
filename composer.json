@@ -38,7 +38,8 @@
         "packagefactory/atomicfusion": "^2.0",
         "flowpack/listable": "dev-sfi-legacy",
         "yeebase/graylog": "@dev",
-        "flowpack/nodetemplates": "@dev"
+        "flowpack/nodetemplates": "@dev",
+        "psmb/createnodebutton": "@dev"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
