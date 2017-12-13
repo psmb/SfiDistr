@@ -20,3 +20,89 @@
         reloadIfChanged: FALSE
         inspector:
           group: 'microformats'
+
+'Neos.Neos:Node':
+  ui:
+    inspector:
+      tabs:
+        createNode:
+          label: 'Создание элементов'
+          position: 100
+          icon: plus-circle
+      groups:
+        createNode:
+          label: 'Создание элементов'
+          tab: createNode
+      views:
+        news:
+          label: 'Новость'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/sfi-today/news'
+            enabled: true
+        article:
+          label: 'Репортаж'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/sfi-today/article'
+            enabled: true
+        interview:
+          label: 'Интервью'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/sfi-today/interview'
+            enabled: true
+        publication:
+          label: 'Публикация'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/sfi-today/publication'
+            enabled: true
+        propoved:
+          label: 'Проповедь'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/sfi-today/propoved'
+            enabled: true
+        publishing:
+          label: 'Издание'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/sfi-today/publishing'
+            enabled: true
+        announcements:
+          label: 'Анонс'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/announcements'
+            enabled: true
+        personTag:
+          label: 'Персона (тэг)'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.Site:PageTag'
+            referenceNodePath: '/sites/sfi/tegi/personalii'
+            enabled: true
