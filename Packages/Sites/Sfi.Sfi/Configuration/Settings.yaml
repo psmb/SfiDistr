@@ -91,6 +91,9 @@ Neos:
           loadingDepth: 0
         nodeTree:
           loadingDepth: 1
+        presets:
+            default:
+              baseNodeType: 'Neos.Neos:Document,!Sfi.News:News'
     nodeTypes:
       groups:
         contentBlocks:
