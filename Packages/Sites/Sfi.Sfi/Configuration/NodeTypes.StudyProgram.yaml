@@ -45,6 +45,10 @@
       type: 'Neos.Neos:ContentCollection'
     admissionContacts:
       type: 'Neos.Neos:ContentCollection'
+    practice:
+      type: 'Neos.Neos:ContentCollection'
+    distantEdu:
+      type: 'Neos.Neos:ContentCollection'
     payment:
       type: 'Neos.Neos:ContentCollection'
     numberOfSeats:

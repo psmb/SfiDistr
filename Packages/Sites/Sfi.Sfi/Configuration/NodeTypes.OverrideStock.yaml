@@ -43,6 +43,7 @@
             type: 'Sfi.News:News'
             referenceNodePath: '/sites/sfi/sfi-today/news'
             enabled: true
+            placeholder: 'Название'
         article:
           label: 'Репортаж'
           group: createNode
@@ -52,6 +53,7 @@
             type: 'Sfi.News:News'
             referenceNodePath: '/sites/sfi/sfi-today/article'
             enabled: true
+            placeholder: 'Название'
         interview:
           label: 'Интервью'
           group: createNode
@@ -61,6 +63,7 @@
             type: 'Sfi.News:News'
             referenceNodePath: '/sites/sfi/sfi-today/interview'
             enabled: true
+            placeholder: 'Название'
         publication:
           label: 'Публикация'
           group: createNode
@@ -70,6 +73,7 @@
             type: 'Sfi.News:News'
             referenceNodePath: '/sites/sfi/sfi-today/publication'
             enabled: true
+            placeholder: 'Название'
         propoved:
           label: 'Проповедь'
           group: createNode
@@ -79,6 +83,7 @@
             type: 'Sfi.News:News'
             referenceNodePath: '/sites/sfi/sfi-today/propoved'
             enabled: true
+            placeholder: 'Название'
         publishing:
           label: 'Издание'
           group: createNode
@@ -88,6 +93,7 @@
             type: 'Sfi.News:News'
             referenceNodePath: '/sites/sfi/sfi-today/publishing'
             enabled: true
+            placeholder: 'Название'
         announcements:
           label: 'Анонс'
           group: createNode
@@ -97,6 +103,7 @@
             type: 'Sfi.News:News'
             referenceNodePath: '/sites/sfi/announcements'
             enabled: true
+            placeholder: 'Название'
         personTag:
           label: 'Персона (тэг)'
           group: createNode
@@ -106,3 +113,4 @@
             type: 'Sfi.Site:PageTag'
             referenceNodePath: '/sites/sfi/tegi/personalii'
             enabled: true
+            placeholder: 'Название'
