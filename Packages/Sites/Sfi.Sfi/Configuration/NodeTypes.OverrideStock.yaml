@@ -100,7 +100,7 @@
           view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
           viewOptions:
             position: 'into'
-            type: 'Sfi.News:News'
+            type: 'Sfi.News:Announcement'
             referenceNodePath: '/sites/sfi/announcements'
             enabled: true
             placeholder: 'Название'
