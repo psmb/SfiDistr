@@ -73,8 +73,6 @@ prototype(Sfi.News:ThumbnailImageUri) < prototype(Neos.Fusion:Case) {
 		condition = ${true}
 		renderer = ImageUri {
 			asset = ${thumb}
-			maximumWidth = 640
-			maximumHeight = 338
 			allowCropping = true
 			allowUpScaling = true
 		}
@@ -111,10 +109,20 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
 	thumbnailImage = Neos.Fusion:Tag {
 		tagName = 'img'
-		attributes.src = Sfi.News:ThumbnailImageUri
+		attributes.src = Sfi.News:ThumbnailImageUri {
+			prototype(ImageUri) {
+				maximumWidth = 640
+				maximumHeight = 338
+			}
+		}
 		attributes.alt = ${node.properties.title}
 	}
-	thumbnailImageUri = Sfi.News:ThumbnailImageUri
+	thumbnailImageUri = Sfi.News:ThumbnailImageUri {
+		prototype(ImageUri) {
+			maximumWidth = 640
+			maximumHeight = 338
+		}
+	}
 	hasVideo = ${node.properties.hasVideo}
 
 	# parrent node is the category
