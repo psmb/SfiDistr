@@ -53,21 +53,25 @@
 		</td>
 	</neos:contentElement.wrap>
 </tr>
-<tr>
-	<td itemprop="eduForm">Очно-заочная</td>
-	<td itemprop="educationPlan">
-		{assetsPlanOZ -> f:format.raw()}
-	</td>
-	<td itemprop="educationShedule">
-		{scheduleOZ -> f:format.raw()}
-	</td>
-</tr>
-<tr>
-	<td itemprop="eduForm">Заочная</td>
-	<td itemprop="educationPlan">
-		{assetsPlanZ -> f:format.raw()}
-	</td>
-	<td itemprop="educationShedule">
-		{scheduleZ -> f:format.raw()}
-	</td>
-</tr>
+<f:if condition="{node.context.workspace.name} != 'live' || {assetsPlanOZ}">
+	<tr>
+		<td itemprop="eduForm">Очно-заочная</td>
+		<td itemprop="educationPlan">
+			{assetsPlanOZ -> f:format.raw()}
+		</td>
+		<td itemprop="educationShedule">
+			{scheduleOZ -> f:format.raw()}
+		</td>
+	</tr>
+</f:if>
+<f:if condition="{node.context.workspace.name} != 'live' || {assetsPlanZ}">
+	<tr>
+		<td itemprop="eduForm">Заочная</td>
+		<td itemprop="educationPlan">
+			{assetsPlanZ -> f:format.raw()}
+		</td>
+		<td itemprop="educationShedule">
+			{scheduleZ -> f:format.raw()}
+		</td>
+	</tr>
+</f:if>
