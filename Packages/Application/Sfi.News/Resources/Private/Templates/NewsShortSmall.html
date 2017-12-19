@@ -4,11 +4,7 @@
 <div class="MediaSmall">
 	<neos:link.node absolute="true" node="{node}">
 		<div class="MediaSmall-Image" >
-			<f:if condition="{thumbnailImage}">
-				<f:if condition="{thumbnailImage}">
-					<m:image image="{thumbnailImage}" maximumWidth="100" maximumHeight="100" allowCropping="true" allowUpScaling="true" alt="{title}" />
-				</f:if>
-			</f:if>
+			{thumbnailImage -> f:format.raw()}
 		</div>
 		<div class="MediaSmall-Body">
 			<h3 class="MediaSmall-Title">
