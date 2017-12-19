@@ -85,13 +85,12 @@ prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Collection) {
 
 	@cache {
 		mode = 'cached'
-		# Get the nearest announcement and calculate the maximumLifetime for cache based on time to it
 		entryIdentifier {
-			node = ${node}
+			site = ${site}
 		}
 		entryTags {
 			1 = ${'Node_' + site.identifier}
-			1 = ${'NodeType_Sfi.News:AbstractNews'}
+			1 = ${'NodeType_Sfi.News:ImportantMixin'}
 		}
 	}
 }

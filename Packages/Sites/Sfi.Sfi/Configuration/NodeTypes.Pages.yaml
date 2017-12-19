@@ -67,7 +67,7 @@ blah: &alohaRich
         inspector:
           group: 'important'
           editorOptions:
-            nodeTypes: ['Sfi.News:AbstractNews']
+            nodeTypes: ['Sfi.News:ImportantMixin']
         label: 'Новости в карусель'
         reloadIfChanged: true
   childNodes:
