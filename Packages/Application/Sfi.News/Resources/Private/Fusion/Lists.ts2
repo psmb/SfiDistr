@@ -56,6 +56,10 @@ prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
 	}
 	prototype(Sfi.News:NewsShort) {
 		templatePath = 'resource://Sfi.News/Private/Templates/NewsShortSmall.html'
+		prototype(Sfi.News:ThumbnailImageUri).prototype(ImageUri) {
+			maximumWidth = 100
+			maximumHeight = 100
+		}
 	}
 
 	@cache {
@@ -72,32 +76,22 @@ prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
 
 
 
-prototype(Sfi.News:TopList) < prototype(Flowpack.Listable:Listable) {
-	importantNews = ${q(site).find('[instanceof Sfi.News:ImportantMixin]').filter('[important = TRUE]').get()}
-	# We have to filter out past announcements
-	importantAnnouncements = ${q(this.importantNews).filter('[instanceof Sfi.News:Announcement]').get()}
-	importantAnnouncements.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.Now()).get() : value}
-	importantNotAnnouncements = ${q(this.importantNews).filter('[!instanceof Sfi.News:Announcement]').get()}
-	@context.importantAnnouncements = ${this.importantAnnouncements}
-	collection = ${q(this.importantAnnouncements).add(q(this.importantNotAnnouncements)).get()}
-	sortProperty = 'importantSort'
-	sortOrder = 'ASC'
-	@context.collection = ${this.collection}
+prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Collection) {
+	collection = ${site.properties.important}
 
-	listClass = 'Carousel--Cover js-carousel-1x'
-	itemRenderer = 'Sfi.News:TopShort'
-	limit = 3
-	paginationEnabled = ${false}
+	@process.tmpl = ${'<div class="Carousel--Cover js-carousel-1x">' + value + '</div>'}
+	itemRenderer = Sfi.News:TopShort
+	itemName = 'node'
 
 	@cache {
 		mode = 'cached'
 		# Get the nearest announcement and calculate the maximumLifetime for cache based on time to it
-		maximumLifetime = ${q(importantAnnouncements).count() > 0 ? q(importantAnnouncements).sort('date', 'ASC').first().property('date').timestamp - Date.now().timestamp : null}
 		entryIdentifier {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.News:ImportantMixin'}
+			1 = ${'Node_' + site.identifier}
+			1 = ${'NodeType_Sfi.News:AbstractNews'}
 		}
 	}
 }

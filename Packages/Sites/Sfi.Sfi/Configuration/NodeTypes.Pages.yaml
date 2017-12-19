@@ -53,8 +53,23 @@ blah: &alohaRich
 'Sfi.Sfi:PageMain':
   ui:
     label: 'Страница: Главная'
+    inspector:
+      groups:
+        important:
+          label: 'Карусель'
+          position: '0'
   superTypes:
     'Sfi.Sfi:AbstractPage': true
+  properties:
+    important:
+      type: 'references'
+      ui:
+        inspector:
+          group: 'important'
+          editorOptions:
+            nodeTypes: ['Sfi.News:AbstractNews']
+        label: 'Новости в карусель'
+        reloadIfChanged: true
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
