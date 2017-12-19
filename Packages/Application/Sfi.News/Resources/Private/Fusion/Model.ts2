@@ -63,10 +63,32 @@ prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 	}
 }
 
-prototype(Sfi.News:ThumbnailImage) < prototype(Neos.Fusion:Case) {
+prototype(Sfi.News:ThumbnailImageUri) < prototype(Neos.Fusion:Case) {
+	@context.thumb = Sfi.News:ThumbnailImageSrc
+	isString {
+		condition = ${Type.isString(thumb)}
+		renderer = ${thumb}
+	}
+	default {
+		condition = ${true}
+		renderer = ImageUri {
+			asset = ${thumb}
+			maximumWidth = 640
+			maximumHeight = 338
+			allowCropping = true
+			allowUpScaling = true
+		}
+	}
+}
+prototype(Sfi.News:ThumbnailImageSrc) < prototype(Neos.Fusion:Case) {
 	hasCoverImage {
 		condition = ${node.properties.coverImage}
 		renderer = ${node.properties.coverImage}
+	}
+	hasYouTubeVideo {
+		@context.youtubeVideo = ${q(node).children('coverCollection').children('[instanceof Sfi.Shared:YouTube]').get(0)}
+		condition = ${youtubeVideo}
+		renderer = ${'https://img.youtube.com/vi/' + Array.First(Array.Slice(String.pregMatch(q(youtubeVideo).property('videoUrl'),'#\?v=([a-z0-9-_]+)#i'),1)) + '/maxresdefault.jpg'}
 	}
 	hasCoverCollectionImage {
 		condition = ${q(node).children('coverCollection').children().count() > 0}
@@ -87,7 +109,14 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 	date = ${q(node).property('date')}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
 	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
-	thumbnailImage = Sfi.News:ThumbnailImage
+	thumbnailImage = Neos.Fusion:Tag {
+		tagName = 'img'
+		attributes.src = Sfi.News:ThumbnailImageUri
+		attributes.alt = ${node.properties.title}
+	}
+	thumbnailImageUri = Sfi.News:ThumbnailImageUri
+	hasVideo = ${node.properties.hasVideo}
+
 	# parrent node is the category
 	category = ${q(node).parent().get(0)}
 
@@ -111,11 +140,17 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 
 	place = ${String.stripTags(q(node).property('place'))}
 
-	thumbnailImageLarge = Sfi.News:ThumbnailImage {
-		hasImportantCoverImage {
-			condition = ${node.properties.importantCoverImage}
-			renderer = ${node.properties.importantCoverImage}
-			@position = 'start'
+	thumbnailImageLargeUri = Sfi.News:ThumbnailImageUri {
+		prototype(Sfi.News:ThumbnailImageSrc) {
+			hasImportantCoverImage {
+				condition = ${node.properties.importantCoverImage}
+				renderer = ${node.properties.importantCoverImage}
+				@position = 'start'
+			}
+		}
+		prototype(ImageUri) {
+			maximumWidth = 1200
+			maximumHeight = 400
 		}
 	}
 

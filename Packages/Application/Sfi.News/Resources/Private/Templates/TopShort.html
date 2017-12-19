@@ -6,9 +6,7 @@
 		<div class="MediaSlideSmall">
 			<neos:link.node absolute="true" node="{node}">
 				<div class="MediaSlideSmall-Image">
-					<f:if condition="{thumbnailImage}">
-						<m:image image="{thumbnailImage}" maximumWidth="640" maximumHeight="338" allowCropping="true" allowUpScaling="true" alt="{title}" />
-					</f:if>
+					{thumbnailImage -> f:format.raw()}
 				</div>
 				<div class="MediaSlideSmall-Body">
 					<h3 class="MediaSlideSmall-Title">
@@ -23,7 +21,7 @@
 		</div>
 	</div>
 	<div class="show-for-medium-up">
-		<div class="MediaSlideMedium Cover" style="background-image:url('{m:uri.image(image: thumbnailImageLarge, maximumWidth: 1200, maximumHeight: 400, allowCropping: true, allowUpScaling: true)}')">
+		<div class="MediaSlideMedium Cover" style="background-image:url('{thumbnailImageLargeUri}')">
 			<neos:link.node absolute="true" node="{node}">
 				<div class="row">
 					<div class="MediaSlideMedium-Wrap columns">

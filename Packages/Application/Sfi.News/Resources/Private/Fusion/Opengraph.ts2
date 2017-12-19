@@ -6,10 +6,10 @@ prototype(Sfi.News:Opengraph) < prototype(Neos.Fusion:Template) {
 		node = ${node}
 		absolute = TRUE
 	}
-	image = Neos.Neos:ImageUri {
-		asset = Sfi.News:ThumbnailImage
-		maximumWidth = 1200
-		maximumHeight = 630
-		allowCropping = TRUE
+	image = Sfi.News:ThumbnailImageUri {
+		prototype(ImageUri) {
+			maximumWidth = 1200
+			maximumHeight = 630
+		}
 	}
 }
