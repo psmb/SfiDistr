@@ -110,7 +110,7 @@
           view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
           viewOptions:
             position: 'into'
-            type: 'Sfi.Site:PageTag'
+            type: 'Sfi.Sfi:PageTag'
             referenceNodePath: '/sites/sfi/tegi/personalii'
             enabled: true
             placeholder: 'Название'
