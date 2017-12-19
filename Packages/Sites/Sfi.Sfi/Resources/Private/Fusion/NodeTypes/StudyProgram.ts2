@@ -159,6 +159,9 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	assetsPlanO = ContentCollection {
 		nodePath = 'assetsPlanO'
 	}
+	isOZ = ${q(node).children('assetsPlanOZ').children().count() > 0 || documentNode.context.inBackend}
+	isZ = ${q(node).children('assetsPlanZ').children().count() > 0 || documentNode.context.inBackend}
+	rowCount = ${1 + (this.isOZ ? 1 : 0) + (this.isZ ? 1 : 0)}
 	assetsPlanOZ = ContentCollection {
 		nodePath = 'assetsPlanOZ'
 	}

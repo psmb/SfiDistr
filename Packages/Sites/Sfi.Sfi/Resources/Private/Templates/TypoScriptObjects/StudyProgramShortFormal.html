@@ -1,15 +1,15 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 <tr>
 	<neos:contentElement.wrap>
-		<td itemprop="eduCode" rowspan="3">
+		<td itemprop="eduCode" rowspan="{rowCount}">
 			{specialityId -> f:format.raw()}
 		</td>
-		<td rowspan="3" itemprop="eduName">{specialityName -> f:format.raw()}</td>
-		<td itemprop="eduLevel" rowspan="3">
+		<td rowspan="{rowCount}" itemprop="eduName">{specialityName -> f:format.raw()}</td>
+		<td itemprop="eduLevel" rowspan="{rowCount}">
 			 высшее образование – {level -> f:format.raw()}
 		</td>
 		<td itemprop="eduForm">Очная</td>
-		<td rowspan="3">
+		<td rowspan="{rowCount}">
 			<div itemprop="opMain">
 				{assetDescription -> f:format.raw()}
 			</div>
@@ -21,7 +21,7 @@
 			</div>
 			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
-		<td rowspan="3">
+		<td rowspan="{rowCount}">
 			<div itemprop="educationAnnotation">
 				{assetsSubjectAnnotations -> f:format.raw()}
 			</div>
@@ -33,19 +33,19 @@
 			</div>
 			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
-		<td rowspan="3">
+		<td rowspan="{rowCount}">
 			<div itemprop="methodology">
 				{assetsMethodical -> f:format.raw()}
 			</div>
 			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
-		<td rowspan="3">
+		<td rowspan="{rowCount}">
 			<div itemprop="eduPr">
 				{practice -> f:format.raw()}
 			</div>
 			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
-		<td rowspan="3">
+		<td rowspan="{rowCount}">
 			<div itemprop="eduEl">
 				{distantEdu -> f:format.raw()}
 			</div>
@@ -53,7 +53,7 @@
 		</td>
 	</neos:contentElement.wrap>
 </tr>
-<f:if condition="{node.context.workspace.name} != 'live' || {assetsPlanOZ}">
+<f:if condition="{isOZ}">
 	<tr>
 		<td itemprop="eduForm">Очно-заочная</td>
 		<td itemprop="educationPlan">
@@ -64,7 +64,7 @@
 		</td>
 	</tr>
 </f:if>
-<f:if condition="{node.context.workspace.name} != 'live' || {assetsPlanZ}">
+<f:if condition="{isZ}">
 	<tr>
 		<td itemprop="eduForm">Заочная</td>
 		<td itemprop="educationPlan">
