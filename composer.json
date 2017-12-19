@@ -17,7 +17,8 @@
     ],
     "require": {
         "neos/neos-development-collection": "3.2.x-dev",
-        "neos/flow-development-collection": "4.2.x-dev",
+        "neos/flow-development-collection": "@dev",
+        "neos/kickstarter": "@dev",
         "neos/party": "@dev",
         "neos/imagine": "@dev",
         "neos/form": "@dev",
