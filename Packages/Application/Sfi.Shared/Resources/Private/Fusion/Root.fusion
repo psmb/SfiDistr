@@ -20,6 +20,7 @@ prototype(Sfi.Shared:Asset) {
 	attributes.class = ${node.properties.variant == 'Asset-Button' ? 'Button AssetButton' : 'ButtonInline AssetInline'}
 	attributes.href = ${'asset://' + node.properties.asset.identifier}
 	attributes.href.@process.convertUris = Neos.Neos:ConvertUris
+	attributes.href.@if.notInBackend = ${!node.context.inBackend}
 }
 
 prototype(Sfi.Shared:Link) {
