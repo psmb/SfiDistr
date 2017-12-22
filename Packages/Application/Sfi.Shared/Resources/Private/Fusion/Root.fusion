@@ -29,6 +29,7 @@ prototype(Sfi.Shared:Link) {
 	attributes.href.@process.convertUris = Neos.Neos:ConvertUris {
 		forceConversion = true
 	}
+	attributes.href.@if.notInBackend = ${!node.context.inBackend}
 }
 
 prototype(Sfi.Shared:ImageLink) {
@@ -40,6 +41,7 @@ prototype(Sfi.Shared:ImageLink) {
 	link.@process.convertUris = Neos.Neos:ConvertUris {
 		forceConversion = TRUE
 	}
+	link.@if.notInBackend = ${!node.context.inBackend}
 }
 
 prototype(Sfi.Shared:Group) {
