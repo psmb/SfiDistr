@@ -1,20 +1,12 @@
 {
     "changes": [
         {
-            "name": "PATCH: make aloha support microdata",
+            "name": "PATCH: fix redirects",
             "type": "github",
-            "repository": "dimaip/neos-development-collection",
-            "commit": "797c4a45bb699321c19c679250e4119d17bc7413",
-            "ref": "patch_microdata",
-            "path": "Packages/Neos"
-        },
-        {
-            "name": "PATCH: fix workspaces overview",
-            "type": "github",
-            "repository": "dimaip/neos-development-collection",
-            "commit": "eb4676920a25fd30080b1ba747a1ec70d82a406f",
-            "ref": "wp_overview",
-            "path": "Packages/Neos"
+            "repository": "neos/flow-development-collection",
+            "commit": "807cb33143a911a6c2ed870e0658e79a31527bc3",
+            "ref": "dimaip/fix-redirects",
+            "path": "Packages/Framework"
         }
     ]
 }
