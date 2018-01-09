@@ -71,6 +71,25 @@ Neos:
         backend: Yeebase\Graylog\Log\Backend\GraylogBackend
       i18nLogger:
         backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+
+    resource:
+      collections:
+        persistent:
+          storage: s3PersistentResourcesStorage
+          target: s3PersistentResourcesTarget
+      storages:
+        s3PersistentResourcesStorage:
+          storage: 'Flownative\Aws\S3\S3Storage'
+          storageOptions:
+            bucket: 'psmb-neos-resources'
+            keyPrefix: 'storage/sfi/'
+      targets:
+        s3PersistentResourcesTarget:
+          target: 'Flownative\Aws\S3\S3Target'
+          targetOptions:
+            bucket: 'psmb-neos-resources'
+            keyPrefix: 'target/sfi/'
+            baseUri: 'https://psmb-neos-resources.hb.bizmrg.com/target/sfi/'
   Neos:
     Ui:
       resources:
@@ -132,3 +151,12 @@ Yeebase:
     host: '172.17.42.1'
     port: 12201
     chunksize: 'wan'
+Flownative:
+  Aws:
+    S3:
+      profiles:
+        default:
+          credentials:
+            key: '%env:AWS_ACCESS_KEY_ID%'
+            secret: '%env:AWS_SECRET_ACCESS_KEY%'
+          endpoint: '%env:AWS_ENDPOINT%'
