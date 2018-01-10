@@ -5,7 +5,8 @@
     "require": {
         "neos/neos": "*",
         "neos/neos-nodetypes": "*",
-        "opsdev/cache-breaker": "*"
+        "opsdev/cache-breaker": "*",
+        "flownative/aws-s3": "*"
     },
     "autoload": {
         "psr-0": {
