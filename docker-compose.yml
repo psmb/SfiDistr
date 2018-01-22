@@ -20,6 +20,9 @@ services:
     secrets:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
+      - SFI_SES_PASSWORD
+      - GA_SECRET
+      - GA_DEVKEY
     deploy:
       labels:
         - "traefik.enable=true"
@@ -38,6 +41,12 @@ secrets:
   AWS_ACCESS_KEY_ID:
     external: true
   AWS_SECRET_ACCESS_KEY:
+    external: true
+  SFI_SES_PASSWORD:
+    external: true
+  GA_SECRET:
+    external: true
+  GA_DEVKEY:
     external: true
 networks:
   main:
