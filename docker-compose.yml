@@ -12,7 +12,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: pass
   web:
-    image: dimaip/ermdistr:latest
+    image: dimaip/sfidistr:latest
     hostname: 'sfiru'
     networks:
       - default
