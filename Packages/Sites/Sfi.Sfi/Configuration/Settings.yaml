@@ -146,6 +146,20 @@ Neos:
         dimensions: 'ga:source'
         sort: '-ga:uniquePageviews'
         max-results: 25
+    authentication:
+      applicationName: 'Neos GA'
+      clientId: '4730774009-h57rl51jmjbrljt2mii1ebn74a8hsrr3.apps.googleusercontent.com'
+      clientSecret: '%env:GA_SECRET%'
+      developerKey: '%env:GA_DEVKEY%'
+  SwiftMailer:
+    transport:
+      type: 'Swift_SmtpTransport'
+      options:
+        host: 'email-smtp.us-west-2.amazonaws.com'
+        port: '465'
+        encryption: 'ssl'
+        username: 'AKIAIV3MQACBKVT236RA'
+        password: '%SFI_SES_PASSWORD%'
 Yeebase:
   Graylog:
     host: '172.17.42.1'
