@@ -1,39 +1,46 @@
-redis:
-  image: redis:3.2
-  expose:
-    - 6379
-db:
-  image: mariadb:10.3
-  restart: always
-  volumes:
-    - /var/lib/mysql
-  environment:
-    MYSQL_ROOT_PASSWORD: pass
-    MYSQL_DATABASE: db
-    MYSQL_USER: admin
-    MYSQL_PASSWORD: pass
+version: "3.1"
+services:
+  redis:
+    image: redis:3.2
+  db:
+    image: mariadb:10.3
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: pass
+  web:
+    image: dimaip/ermdistr:latest
+    hostname: 'sfiru'
+    networks:
+      - default
+      - main
+    secrets:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=80"
+        - "traefik.default.protocol=http"
+        - "traefik.docker.network=main"
+        - "traefik.frontend.rule=Host:sfi.ru,www.sfi.ru,dev.sfi.ru"
+    ports:
+      - '80'
+    depends_on:
+      - db
+      - redis
+volumes:
+  db-data:
+secrets:
+  AWS_ACCESS_KEY_ID:
+    external: true
+  AWS_SECRET_ACCESS_KEY:
+    external: true
+networks:
+  main:
+    external:
+      name: main
 
-web:
-  image: dimaip/docker-neos-alpine:latest
-  hostname: 'sfiru'
-  ports:
-    - '80'
-    - '1122:22'
-  links:
-    - redis:redis
-    - db:db
-  volumes:
-    - /data
-    - ./Persistent:/data/shared/Data/Persistent
-    - ./Settings.yaml:/data/shared/Configuration/Settings.yaml
-  environment:
-    - VIRTUAL_HOST=sfi.ru,www.sfi.ru,dev.sfi.ru,next.sfi.ru
-    - REPOSITORY_URL=https://github.com/sfi-ru/SfiDistr
-    - LETSENCRYPT_HOST=sfi.ru,www.sfi.ru
-    - LETSENCRYPT_EMAIL=dimaip@gmail.com
-    - IMPORT_GITHUB_PUB_KEYS=dimaip
-    - PHP_TIMEZONE=Europe/Moscow
-    - AWS_ENDPOINT=https://hb.bizmrg.com
-    - AWS_BACKUP_ARN=s3://psmb-neos-resources/db/sfi/
-    - AWS_ACCESS_KEY_ID
-    - AWS_SECRET_ACCESS_KEY
