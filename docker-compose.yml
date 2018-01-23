@@ -12,6 +12,8 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: pass
   web:
+    volumes:
+      - /data/www/Web/_Resources
     image: dimaip/sfidistr:latest
     hostname: 'sfiru'
     networks:
