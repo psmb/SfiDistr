@@ -26,6 +26,8 @@ services:
       - GA_SECRET
       - GA_DEVKEY
     deploy:
+      update_config:
+        order: start-first
       labels:
         - "traefik.enable=true"
         - "traefik.port=80"
