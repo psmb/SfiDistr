@@ -1,0 +1,57 @@
+'Sfi.Sfi:FundraisingProject':
+  superTypes:
+    'Sfi.Sfi:AbstractPage': true
+  ui:
+    label: 'Страница: проект фандрайзинга'
+    inspector:
+      groups:
+        image:
+          label: Фото
+  childNodes:
+    header:
+      type: 'Neos.Neos:ContentCollection'
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  properties:
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото обложки'
+        reloadIfChanged: true
+        inspector:
+          group: image
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Название проекта'
+    description:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Описание проекта'
+    moto:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Мото текст'
+          format:
+            b: TRUE
+            i: TRUE
+            u: FALSE
+            sub: TRUE
+            sup: TRUE
+            p: FALSE
+            h1: FALSE
+            h2: FALSE
+            h3: FALSE
+            pre: FALSE
+            removeFormat: FALSE
+          table: {  }
+          list: {  }
+          link:
+            a: TRUE
+          alignment: {  }
