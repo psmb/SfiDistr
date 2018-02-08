@@ -10,6 +10,8 @@ prototype(Sfi.Sfi:FundraisingProject) {
 		asset = ${node.properties.image}
 	}
 
+	projectId = ${node.properties.uriPathSegment}
+
 	moto = ${node.properties.moto}
 
 	@process.contentElementWrapping = ContentElementWrapping
