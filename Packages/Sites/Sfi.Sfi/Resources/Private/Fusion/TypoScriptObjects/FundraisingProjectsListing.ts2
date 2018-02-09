@@ -1,0 +1,71 @@
+prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection) {
+    @process.style = ${'<style>
+    .FundraisingProjectsListing {
+    }
+    .FundraisingProjectSmall {
+        border: 1px solid #ccc;
+        position: relative;
+    }
+    .FundraisingProjectSmall:hover {
+        border: 1px solid #ff7800;
+    }
+    .FundraisingProjectSmall:hover .H2, .FundraisingProjectSmall:hover .FundraisingProjectSmall-arrow {
+        color: #ff7800 !important;
+    }
+    .FundraisingProjectSmall-inner1 {
+        padding-top: 150%;
+    }
+    .FundraisingProjectSmall-inner2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .FundraisingProjectSmall-body {
+        padding: 24px;
+    }
+    .FundraisingProjectSmall-arrow {
+        font-size: 48px;
+    }
+
+    .digits {
+		font-size: 14px;
+		font-style: normal;
+	}
+    .color-brown {
+		color: #6e584f !important;
+	}
+    </style>' + value}
+    @process.wrap = ${'<ul class="medium-block-grid-2 large-block-grid-3 FundraisingProjectsListing">' + value + '</ul>'}
+    collection = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject]').get()}
+    itemName = 'node'
+    itemRenderer = Neos.Fusion:Array {
+        @process.wrap = ${'<li><a href="' + this.nodeUri + '"><div class="FundraisingProjectSmall"><div class="FundraisingProjectSmall-inner1"><div class="FundraisingProjectSmall-inner2">' + value + '</div></div></div></li>'}
+        @ignoreProperties = ${['thumbUri', 'nodeUri']}
+        nodeUri = NodeUri {
+            node = ${node}
+        }
+        thumbUri = ImageUri {
+            asset = ${node.properties.thumb}
+        }
+        image = ${'<img src="' + this.thumbUri + '">'}
+        body = Neos.Fusion:Array {
+        @process.wrap = ${'<div class="FundraisingProjectSmall-body">' + value + '</div>'}
+            title = ${'<h3 class="H2 color-brown">' + node.properties.title + '</h3>'}
+            bar = Sfi.Sfi:FundraisingBar {
+                projectId = ${node.properties.uriPathSegment}
+                target = '7 000 000'
+                @process.wrap = ${'<div style="position: absolute; bottom: 12px; left: 24px; right: 24px;">' + value + '<div class="FundraisingProjectSmall-arrow color-brown textAlign-center">→</div></div>'}
+            }
+        }
+    }
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier.node = ${documentNode}
+        entryTags {
+            1 = 'NodeType_Sfi.Sfi:FundraisingProject'
+        }
+    }
+}

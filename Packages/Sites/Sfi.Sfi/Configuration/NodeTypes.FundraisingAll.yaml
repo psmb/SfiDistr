@@ -1,0 +1,21 @@
+'Sfi.Sfi:FundraisingAll':
+  superTypes:
+    'Sfi.Sfi:AbstractPage': true
+  ui:
+    label: 'Страница: весь фандрайзинг'
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Поддержите проекты СФИ'
+    description:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Описание раздела'

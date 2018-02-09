@@ -13,6 +13,13 @@
     main:
       type: 'Neos.Neos:ContentCollection'
   properties:
+    thumb:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Иллюстрация-миниатюрка'
+        reloadIfChanged: true
+        inspector:
+          group: image
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
@@ -32,6 +39,12 @@
         inlineEditable: true
         aloha:
           placeholder: 'Описание проекта'
+    target:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: '1 000 000'
     moto:
       type: string
       ui:

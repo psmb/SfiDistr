@@ -1,18 +1,32 @@
 prototype(Sfi.Sfi:FundraisingProject) {
-	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
-	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
-	node = ${node}
+	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/FundraisingProject.html'
 
+	bar = Sfi.Sfi:FundraisingBar {
+		projectId = ${node.properties.uriPathSegment}
+		target = '7 000 000'
+		inverse = ${true}
+	}
+
+	header = Neos.Neos:ContentCollection {
+		nodePath = 'header'
+	}
 	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
+
 	imageUri = ImageUri {
 		asset = ${node.properties.image}
 	}
 
-	projectId = ${node.properties.uriPathSegment}
-
 	moto = ${node.properties.moto}
+
+	form = Sfi.Sfi:FundraisingPaymentForm {
+		projectId = ${node.properties.uriPathSegment}
+	}
+
+	otherProjects = Sfi.Sfi:FundraisingProjectsListing {
+		collection.@process.filterOutSelf = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
+	}
 
 	@process.contentElementWrapping = ContentElementWrapping
 }

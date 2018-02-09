@@ -1,0 +1,165 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<style>
+	.stickyHeader {
+		color: white;
+		padding: 16px;
+		background-color: #745a4e;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000000;
+		font-family: Georgia, serif;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+	}
+
+	.stickyHeader-grid {
+		flex-direction: column;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0 20px
+	}
+
+	.stickyHeader-grid2 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.digits {
+		font-size: 24px;
+		font-style: normal;
+	}
+
+	.stickyHeader-wording {
+		font-size: 14px;
+		font-style: italic
+	}
+
+
+	@media(max-width: 639px) {
+		.stickyHeader-item {
+			margin-top: 20px;
+		}
+	}
+
+	@media(min-width: 640px) {
+		.scrolling .stickyHeader {
+			position: fixed;
+		}
+		.stickyHeader-item {
+			margin-left: 20px;
+		}
+		.stickyHeader-wording {
+			white-space: nowrap !important;
+		}
+		.stickyHeader-grid2 {
+			flex-direction: row;
+			margin-top: 20px;
+		}
+	}
+
+	@media(min-width: 950px) {
+		.stickyHeader-grid {
+			flex-direction: row;
+		}
+		.stickyHeader-grid2 {
+			margin-top: 0;
+		}
+	}
+
+	.FundraisingProject-header .YouTube {
+		margin: 0 !important;
+	}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+	.color-brown {
+		color: #6e584f !important;
+	}
+	.color-orange {
+		color: #ff7800;
+	}
+	.Button--warn {
+		background-color: #ff7800;
+	}
+	.display-flex {
+		display: flex;
+	}
+</style>
+
+<div class="backgroundColor-gray" style="margin-top: -40px; background-image: url({imageUri}); min-height: 300px; background-size: cover;  background-position: center 92%;">
+	<div class="row display-flex">
+		<div class="columns medium-5 display-flex">
+			<div class="backgroundColor-white marginVertical-triple padding-double">
+				<div class="H1 color-brown lineHeight-single" >{neos:contentElement.editable(property: 'title')}</div>
+				<div class="Paragraph marginVertical-double">{neos:contentElement.editable(property: 'description')}</div>
+				<a class="Button LinkButton Button--warn" href="#donate">Хочу помочь</a>
+			</div>
+		</div>
+		<div class="columns medium-7 FundraisingProject-header">
+			{header -> f:format.raw()}
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="stickyHeader-spacer">
+</div>
+<div class="stickyHeader">
+	<div class="row">
+		<div class="stickyHeader-grid columns">
+			<div style="flex-grow: 1">
+				<div class="ServiceLight color-white">{title -> f:format.raw()}</div>
+			</div>
+			<div class="stickyHeader-grid2">
+				<div class="stickyHeader-item">
+					{bar -> f:format.raw()}
+				</div>
+				<div class="stickyHeader-item">
+					<a href="#donate" class="Button LinkButton Button--warn">Хочу помочь</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script><![CDATA[
+	window.addEventListener('scroll', function (event) {
+		if (window.pageYOffset > 500) {
+			document.body.classList.add('scrolling');
+		} else {
+			document.body.classList.remove('scrolling');
+		}
+	});
+]]></script>
+
+
+
+<div style="margin-top: 48px">
+	{main -> f:format.raw()}
+</div>
+
+{form -> f:format.raw()}
+
+
+<div class="row">
+	<div class="columns">
+		<h2 class="H2 marginTop-triple marginBottom-triple textAlign-center">Другие проекты СФИ</h2>
+		{otherProjects -> f:format.raw()}
+	</div>
+</div>
+

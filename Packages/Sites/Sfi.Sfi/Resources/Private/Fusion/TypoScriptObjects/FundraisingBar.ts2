@@ -1,0 +1,9 @@
+prototype(Sfi.Sfi:FundraisingBar) < prototype(Neos.Fusion:Template) {
+    @if.isRus = ${Array.first(node.context.dimensions.language) == 'ru'}
+    templatePath = 'resource://Sfi.Sfi/Private/Fusion/TypoScriptObjects/FundraisingBar.html'
+
+    projectId = ''
+    target = '7 000 000'
+    inverse = ${false}
+    backgroundColor = ${this.inverse ? 'color-white' : 'color-brown'}
+}
