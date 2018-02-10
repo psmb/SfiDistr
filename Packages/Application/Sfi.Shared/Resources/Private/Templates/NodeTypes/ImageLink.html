@@ -2,7 +2,7 @@
 {namespace media=Neos\Media\ViewHelpers}
 <f:if condition="{image}">
 	<f:then>
-		<a {attributes -> f:format.raw()} href="{link}" style="background-image:url({media:uri.image(asset: image, maximumWidth: maximumWidth, maximumHeight: maximumHeight, allowCropping: allowCropping, allowUpScaling: allowUpScaling)})">{neos:contentElement.editable(property: 'title', tag: 'span')}</a>
+		<a {attributes -> f:format.raw()} href="{link}" style="background-image:url({media:uri.image(image: image, maximumWidth: maximumWidth, maximumHeight: maximumHeight, allowCropping: allowCropping, allowUpScaling: allowUpScaling)})">{neos:contentElement.editable(property: 'title', tag: 'span')}</a>
 	</f:then>
 	<f:else>
 		<f:if condition="{neos:rendering.inEditMode()}">
