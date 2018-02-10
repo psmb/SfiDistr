@@ -6,9 +6,26 @@
     label: Группа
     group: structure
     inlineEditable: true
+    inspector:
+      groups:
+        container:
+          label: 'Свойства контэйнера'
   constraints:
     nodeTypes:
       '*': true
+  properties:
+    style:
+      type: string
+      ui:
+        label: 'Custom HTML style'
+        inspector:
+          group: container
+    class:
+      type: string
+      ui:
+        label: 'Custom HTML classes'
+        inspector:
+          group: container
 'Sfi.Shared:Well':
   superTypes:
     'Sfi.Shared:Group': true

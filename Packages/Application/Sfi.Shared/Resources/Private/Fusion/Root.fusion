@@ -47,6 +47,8 @@ prototype(Sfi.Shared:ImageLink) {
 prototype(Sfi.Shared:Group) {
 	@class = 'Neos\\Fusion\\FusionObjects\\TagImplementation'
 	iterator = ${iterator}
+	attributes.style = ${node.properties.style}
+	attributes.class = ${'Container ' + node.properties.class}
 	content = Neos.Neos:ContentCollectionRenderer
 	@cache {
 		mode = 'cached'
