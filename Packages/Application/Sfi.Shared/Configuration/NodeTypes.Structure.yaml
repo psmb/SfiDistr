@@ -17,12 +17,14 @@
     style:
       type: string
       ui:
+        reloadIfChanged: true
         label: 'Custom HTML style'
         inspector:
           group: container
     class:
       type: string
       ui:
+        reloadIfChanged: true
         label: 'Custom HTML classes'
         inspector:
           group: container
