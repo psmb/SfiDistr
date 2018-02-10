@@ -6,6 +6,6 @@ Sfi.ru Distribution
 CircleCI integration status:
 [![Circle CI](https://circleci.com/gh/psmb/SfiDistr/tree/master.svg?style=svg)](https://circleci.com/gh/psmb/SfiDistr/tree/master)
 
-##Installation
+## Installation
 
 Check out [our contributor page](https://psmb.github.io) for guides how to install this project and more.
