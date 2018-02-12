@@ -18,10 +18,9 @@ prototype(Sfi.Sfi:FundraisingProject) {
 		asset = ${node.properties.image}
 	}
 
-	moto = ${node.properties.moto}
-
 	form = Sfi.Sfi:FundraisingPaymentForm {
 		projectId = ${node.properties.uriPathSegment}
+		moto = ${node.properties.moto}
 	}
 
 	otherProjects = Sfi.Sfi:FundraisingProjectsListing {

@@ -42,6 +42,15 @@
         background-color: #ff7800;
         color: white !important;
     }
+    .js-switcher-item {
+        cursor: pointer;
+    }
+    .amountPicker .isActive .input {
+        color: white;
+    }
+    .amountPicker .isActive .input::placeholder {
+        color: white;
+    }
 </style>
 <div class="paddingVertical-triple marginVertical-triple">
     <div class="row">
@@ -49,27 +58,27 @@
             <h2 style="margin-top: 12px; margin-bottom: 48px" class="H2 textAlign-center">{moto -> f:format.raw()}</h2>
 
             <form data-referer="{projectId}" class="donateForm" id="donate" method="post" name="donate" role="form">
-                <div style="margin: 0" class="row PaymentSelector">
-                    <div class="textAlign-center column small-6 ParagraphAlt--Large color-grayAlt PaymentSelector-item isActive">Ежемесячное пожертвование</div>
-                    <div class="textAlign-center column small-6 ParagraphAlt--Large color-grayAlt PaymentSelector-item">Разовое пожертвование</div>
+                <div style="margin: 0" class="row PaymentSelector js-switcher">
+                    <div data-value="monthly" class="textAlign-center column small-6 ParagraphAlt--Large color-grayAlt js-switcher-item PaymentSelector-item isActive">Ежемесячное пожертвование</div>
+                    <div data-value="once" class="textAlign-center column small-6 ParagraphAlt--Large color-grayAlt js-switcher-item PaymentSelector-item">Разовое пожертвование</div>
                 </div>
 
                 <div class="ParagraphAlt--Small color-grayAlt marginBottom-half marginTop-double">Сумма</div>
 
-                <table class="amountPicker marginBottom-double">
+                <table class="amountPicker marginBottom-double js-switcher">
                     <tr class="amountPicker-row">
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell">100&nbsp;руб.</td>
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell">200&nbsp;руб.</td>
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell">500&nbsp;руб.</td>
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell isActive">1000&nbsp;руб.</td>
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell">1500&nbsp;руб.</td>
+                        <td data-value="100" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">100&nbsp;руб.</td>
+                        <td data-value="200" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">200&nbsp;руб.</td>
+                        <td data-value="500" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">500&nbsp;руб.</td>
+                        <td data-value="1000" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell isActive">1000&nbsp;руб.</td>
+                        <td data-value="1500" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">1500&nbsp;руб.</td>
                     </tr>
                     <tr class="amountPicker-row">
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell">2000&nbsp;руб.</td>
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell">5000&nbsp;руб.</td>
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell">10&nbsp;000&nbsp;руб.</td>
-                        <td class="textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell" style="padding: 0" colspan="2">
-                            <input class="input" min="0" style="margin-bottom: 0 !important; width: 100%; border: 0; text-align: center; font-size: 1.125rem;"
+                        <td data-value="2000" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">2000&nbsp;руб.</td>
+                        <td data-value="5000" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">5000&nbsp;руб.</td>
+                        <td data-value="10000" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">10&nbsp;000&nbsp;руб.</td>
+                        <td class="js-switcher-item textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell" style="padding: 0" colspan="2">
+                            <input class="input" min="0" style="background-color: transparent; margin-bottom: 0 !important; width: 100%; border: 0; text-align: center; font-size: 1.125rem;"
                                 name="amount-other" placeholder="Другая сумма" type="number">
                         </td>
                     </tr>
@@ -120,30 +129,43 @@
 
 <script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
 <script type="text/javascript"><![CDATA[
-	var amountPickerOtherOption = document.querySelector('.amountPicker-otherOption');
-    var amountPickerOtherInput = document.querySelector('.amountPicker-otherInput');
-    var amountPickerInputs = document.querySelectorAll('.amountPicker input');
-    Array.prototype.forEach.call(amountPickerInputs, function (item) {
-        item.addEventListener('change', function (event) {
-            amountPickerOtherInput.style.display = event.target.value === 'other' ? 'block' : 'none';
+
+(function() {
+    Array.prototype.forEach.call(document.querySelectorAll('.js-switcher'), function (root) {
+        root.addEventListener('click', function (event) {
+            if (event.target.classList.contains('js-switcher-item') || event.target.parentElement.classList.contains('js-switcher-item')) {
+                Array.prototype.forEach.call(root.querySelectorAll('.js-switcher-item'), function (element) {
+                    element.classList.remove('isActive');
+                    if (element.querySelector('.input') && element.querySelector('.input').value) {
+                        element.querySelector('.input').value = '';
+                    }
+                });
+                if (event.target.classList.contains('js-switcher-item')) {
+                    event.target.classList.add('isActive');
+                }
+                if (event.target.parentElement.classList.contains('js-switcher-item')) {
+                    event.target.parentElement.classList.add('isActive');
+                }
+            }
         });
     });
+
 
     var form = document.getElementById('donate');
     var pay = function (event) {
         event.preventDefault();
 
         function getAmount() {
-            if (amountPickerOtherOption.checked === true) {
-                var otherAmount = Number(form.querySelector('[name=amount-other]').value);
-                if (otherAmount > 0) {
-                    return otherAmount;
-                } else {
-                    alert('Кажется вы не указали размер платежа! :-(');
-                }
-
+            var activeElement = form.querySelector('.amountPicker .isActive');
+            if (activeElement.dataset.value) {
+                return Number(activeElement.dataset.value);
             } else {
-                return Number(form.querySelector('[name=amount]:checked').value);
+                var input = activeElement.querySelector('.input');
+                if (input && input.value) {
+                    return Number(input.value);
+                } else if (input && !input.value) {
+                    alert('Вы не указали сумму пожертвования!');
+                }
             }
         }
 
@@ -154,7 +176,7 @@
                 lastName: form.querySelector('[name=lastName]').value,
                 referer: form.dataset.referer
             };
-            var isRecurrent = form.querySelector('[name=type]').value === 'monthly';
+            var isRecurrent = form.querySelector('.PaymentSelector .isActive').dataset.value === 'monthly';
             if (isRecurrent) {
                 data.cloudPayments = {
                     recurrent: {
@@ -180,4 +202,6 @@
         }
     };
     form.addEventListener('submit', pay);
+})();
+    
 ]]></script>
