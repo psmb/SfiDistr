@@ -41,7 +41,8 @@
         "yeebase/graylog": "@dev",
         "flowpack/nodetemplates": "@dev",
         "psmb/createnodebutton": "@dev",
-        "flownative/aws-s3": "2.*"
+        "flownative/aws-s3": "2.*",
+        "psmb/registry": "^2.0"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

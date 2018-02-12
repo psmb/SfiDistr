@@ -1,11 +1,11 @@
-<div id="project-{projectId}">
+<div class="project-{projectId}">
     <div class="backgroundColor-gray" style="background-color: #ccc; height: 8px; width:100%; margin-top: 10px">
-        <div class="progressBar" style="background-color: #ff7800; height: 8px; width:10%"></div>
+        <div class="progressBar" style="background-color: #ff7800; height: 8px; width:0%"></div>
     </div>
     <div class="stickyHeader-wording marginTop-single {backgroundColor}" style="font-family: Georgia, serif; font-size: 14px; font-style: italic">
         <span style="white-space:nowrap">Собрано
             <span style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 14px')}">
-                <span class="ajaxAmount">0</span>
+                <span class="ajaxAmount">...</span>
             </span>руб.
             <span style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 14px')}"> — </span>
         </span>
@@ -13,54 +13,3 @@
             <span style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 14px')}"> {target} </span>руб.</span>
     </div>
 </div>
-
-<script><![CDATA[
-    (function () {
-        // function formatAmount(amount) {
-        //     var a = String(amount);
-        //     var res = "";
-        //     for (var i = a.length; i > 0; i--) {
-        //         var revI = a.length - i;
-
-        //         if (revI % 3 === 0 && revI !== 0) {
-        //             res = " " + res;
-        //         }
-        //         res = a[i - 1] + res;
-        //     }
-        //     return res;
-        // }
-
-
-        // var amount = 0;
-
-        // function updatePlaceholders(amount) {
-        //     Array.prototype.forEach.call(document.querySelectorAll('.ajaxAmount'), function (placeholder) {
-        //         placeholder.textContent = formatAmount(amount);
-        //     });
-        //     Array.prototype.forEach.call(document.querySelectorAll('.progressBar'), function (progressBar) {
-        //         progressBar.style.width = String(100 * (amount / 7000000)) + '%';
-        //     });
-        // }
-
-
-        // var request = new XMLHttpRequest();
-        // var form = document.getElementById('donate');
-        // request.open('GET', 'http://payments.sfi.ru:8585/getAmountDonate?referer=' + document.getElementById('donate').dataset.referer, true);
-
-        // request.onload = function () {
-        //     if (this.status >= 200 && this.status < 400) {
-        //         var responseData = JSON.parse(this.response);
-        //         amount = Number(responseData.amount) + 1500000 + 20500;
-        //         updatePlaceholders(amount);
-        //     } else {
-        //     }
-        // };
-
-        // request.onerror = function () {
-        //     // There was a connection error of some sort
-        // };
-
-        // request.send();
-
-    })();
-]]></script>
