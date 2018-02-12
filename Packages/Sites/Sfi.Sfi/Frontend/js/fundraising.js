@@ -23,7 +23,7 @@
 
     var request = new XMLHttpRequest();
     var form = document.getElementById('donate');
-    request.open('GET', 'http://payments.sfi.ru:8585/getAmountDonate', true);
+    request.open('GET', 'https://payments.sfi.ru/getAmountDonate', true);
 
     request.onload = function () {
         if (this.status >= 200 && this.status < 400) {
