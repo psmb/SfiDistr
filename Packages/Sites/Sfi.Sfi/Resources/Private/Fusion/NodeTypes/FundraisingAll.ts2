@@ -3,7 +3,7 @@ prototype(Sfi.Sfi:FundraisingAll) < prototype(Neos.Fusion:Array) {
 	@process.wrapAll = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
 	title = ${'<div class="H1 textAlign-center marginVertical-triple paddingBottom-single">' + node.properties.title + '</div>'}
 
-	description = Neos.Neos:Editable {
+	description = Editable {
 		@process.wrap = ${'<div class="row marginBottom-triple paddingBottom-single"><div class="columns medium-10 medium-offset-1 large-8 large-offset-2"><div class="Paragraph">' + value + '</div></div></div>'}
         property = 'description'
 	}

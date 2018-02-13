@@ -1,5 +1,28 @@
 prototype(Sfi.Sfi:FundraisingPaymentForm) < prototype(Neos.Fusion:Template) {
     templatePath = 'resource://Sfi.Sfi/Private/Fusion/TypoScriptObjects/FundraisingPaymentForm.html'
     projectId = ''
+    @context.isAll = ${this.projectId == 'all' ? true : false}
     moto = ${node.properties.title}
+    projectSelectBox = Sfi.Sfi:FundraisingPaymentFormProjectSelectBox {
+        @if.all = ${isAll}
+    }
+}
+
+prototype(Sfi.Sfi:FundraisingPaymentFormProjectSelectBox) < prototype(Neos.Fusion:Collection) {
+    @process.wrap = ${'<select class="input color-grayAlt backgroundColor-white" name="projectSelector">' + value + '</select>'}
+    @process.label = ${'<div class="ParagraphAlt--Small color-grayAlt marginBottom-half"><label>Пожертвовать на проект:</label></div>' + value}
+    collection = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject]').get()}
+    itemName = 'node'
+    itemRenderer = Neos.Fusion:Value {
+        value = ${node.properties.navTitle || node.properties.title}
+        value.@process.wrap = ${'<option value="' + node.properties.uriPathSegment + '">' + value + '</option>'}
+    }
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier.node = ${documentNode}
+        entryTags {
+            1 = 'NodeType_Sfi.Sfi:FundraisingProject'
+        }
+    }
 }

@@ -15,6 +15,56 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
     .FundraisingProjectSmall-inner1 {
         padding-top: 150%;
     }
+    @media(min-width: 400px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 130%;
+        }
+    }
+    @media(min-width: 450px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 115%;
+        }
+    }
+    @media(min-width: 560px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 105%;
+        }
+    }
+    @media(min-width: 640px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 182%;
+        }
+    }
+    @media(min-width: 722px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 166%;
+        }
+    }
+    @media(min-width: 800px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 145%;
+        }
+    }
+    @media(min-width: 900px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 135%;
+        }
+    }
+    @media(min-width: 1024px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 174%;
+        }
+    }
+    @media(min-width: 1120px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 160%;
+        }
+    }
+    @media(min-width: 1200px) {
+        .FundraisingProjectSmall-inner1 {
+            padding-top: 150%;
+        }
+    }
     .FundraisingProjectSmall-inner2 {
         position: absolute;
         top: 0;
@@ -37,7 +87,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
 		color: #6e584f !important;
 	}
     </style>' + value}
-    @process.wrap = ${'<ul class="medium-block-grid-2 large-block-grid-3 FundraisingProjectsListing">' + value + '</ul>'}
+    @process.wrap = ${'<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 FundraisingProjectsListing">' + value + '</ul>'}
     collection = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject]').get()}
     itemName = 'node'
     itemRenderer = Neos.Fusion:Array {
@@ -55,7 +105,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
             title = ${'<h3 class="H2 color-brown">' + node.properties.title + '</h3>'}
             bar = Sfi.Sfi:FundraisingBar {
                 projectId = ${node.properties.uriPathSegment}
-                target = '7 000 000'
+                target = ${node.properties.target}
                 @process.wrap = ${'<div style="position: absolute; bottom: 12px; left: 24px; right: 24px;">' + value + '<div class="FundraisingProjectSmall-arrow color-brown textAlign-center">→</div></div>'}
             }
         }

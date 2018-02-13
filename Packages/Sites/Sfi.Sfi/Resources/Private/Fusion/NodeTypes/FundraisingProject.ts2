@@ -3,7 +3,10 @@ prototype(Sfi.Sfi:FundraisingProject) {
 
 	bar = Sfi.Sfi:FundraisingBar {
 		projectId = ${node.properties.uriPathSegment}
-		target = '7 000 000'
+		target = Editable {
+			property = 'target'
+			block = false
+		}
 		inverse = ${true}
 	}
 
