@@ -159,7 +159,7 @@ Neos:
         port: '465'
         encryption: 'ssl'
         username: 'AKIAIV3MQACBKVT236RA'
-        password: '%SFI_SES_PASSWORD%'
+        password: '%env:SFI_SES_PASSWORD%'
 Yeebase:
   Graylog:
     host: '172.17.42.1'
