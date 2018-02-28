@@ -1,4 +1,7 @@
 privilegeTargets:
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'Sfi.Sfi:Subscription':
+      matcher: 'method(Sfi\Sfi\Controller\SubscriptionController->(.*)Action())'
   'Neos\Neos\Security\Authorization\Privilege\NodeTreePrivilege':
     'Sfi.Sfi:SystemPages':
       matcher: >-
@@ -14,4 +17,9 @@ roles:
     privileges:
       -
         privilegeTarget: 'Sfi.Sfi:SystemPages'
+        permission: GRANT
+  'Neos.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'Sfi.Sfi:Subscription'
         permission: GRANT

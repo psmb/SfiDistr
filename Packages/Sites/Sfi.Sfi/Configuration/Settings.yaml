@@ -54,24 +54,42 @@ Psmb:
         dimensions:
           language:
             - en
+      -
+        identifier: fundraising-chapel-active
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://eventstore:2113/projection/fundraising-chapel-active/result'
+        label: 'Активные жертвователи на часовню за 3 месяца'
+        interval: manual
+        senderName: 'СФИ'
+        dimensions:
+          language:
+            - ru
+      -
+        identifier: fundraising_timed
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        interval: manual
+        senderName: 'СФИ'
+      -
+        identifier: fundraising_manual
+        renderer: 'Sfi.Sfi:Newsletter'
+        sendFromUiNodeType: 'Sfi.Sfi:Newsletter'
+        interval: manual
+        senderName: 'СФИ'
 Neos:
   Flow:
+    mvc:
+      routes:
+        'Sfi.Sfi':
+          position: 'before Neos.Neos'
     session:
       inactivityTimeout: 604800
     i18n:
       defaultLocale: ru
     http:
       baseUri: 'https://sfi.ru/'
-    log:
-      systemLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      securityLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      sqlLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      i18nLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-
     resource:
       collections:
         persistent:
@@ -155,11 +173,11 @@ Neos:
     transport:
       type: 'Swift_SmtpTransport'
       options:
-        host: 'email-smtp.us-west-2.amazonaws.com'
-        port: '465'
-        encryption: 'ssl'
+        host: 'mailhog'
+        port: '1025'
+        #encryption: 'ssl'
         username: 'AKIAIV3MQACBKVT236RA'
-        password: '%SFI_SES_PASSWORD%'
+        password: 'SFI_SES_PASSWORD'
 Yeebase:
   Graylog:
     host: '172.17.42.1'

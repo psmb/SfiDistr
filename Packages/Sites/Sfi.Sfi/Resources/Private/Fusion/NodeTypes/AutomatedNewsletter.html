@@ -1,0 +1,38 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body class="newsletter">
+	<div style="max-width: 800px; margin: 0 auto; overflow: hidden;">
+		<div class="row">
+			<div class="columns">
+				<div class="paddingVertical-triple" style="overflow: hidden">
+					<div class="row marginBottom-double">
+						<div class="medium-8 columns">
+							<h1 class="H3 marginTop-triple">{node.properties.title}</h1>
+							{main -> f:format.raw()}
+						</div>
+					</div>
+				</div>
+				<div>
+					<img style="image-rendering:crisp-edges; image-rendering:-moz-crisp-edges; image-rendering: -webkit-optimize-contrast; max-height: 190px !important"
+						src="{logoUri}" alt="{f:translate(id: 'global.fulltitle', package: 'Sfi.Sfi')}" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="marginTop-triple padding-double backgroundColor-gray">
+		<div class="Paragraph--Small color-grayAlt " style="max-width: 800px; margin: 0 auto; overflow: auto">
+			<div class="row">
+				<div class="columns">
+					СФИ {unsubscribeLink}
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

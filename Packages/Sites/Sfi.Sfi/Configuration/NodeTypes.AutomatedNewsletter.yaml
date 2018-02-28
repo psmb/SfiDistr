@@ -1,0 +1,28 @@
+'Sfi.Sfi:AutomatedNewsletter':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Psmb.Newsletter:NewsletterMixin': true
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  ui:
+    label: Автоматизированная рассылка
+    icon: icon-file-text
+    group: news
+    inspector:
+      groups:
+        mailer:
+          label: 'Рассылка'
+          position: 1
+  properties:
+    inter:
+      type: string
+      ui:
+        label: 'Задержка рассылки'
+        inspector:
+          group: 'mailer'
+    title:
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Заголовок рассылки'

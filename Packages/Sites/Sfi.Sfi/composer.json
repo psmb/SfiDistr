@@ -6,7 +6,8 @@
         "neos/neos": "*",
         "neos/neos-nodetypes": "*",
         "opsdev/cache-breaker": "*",
-        "flownative/aws-s3": "*"
+        "flownative/aws-s3": "*",
+        "psmb/newsletter": "*"
     },
     "autoload": {
         "psr-0": {

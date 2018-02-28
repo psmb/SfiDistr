@@ -1,0 +1,11 @@
+<f:form
+        method="post"
+        action="unsubscribeConfirm"
+        controller="Subscription"
+        package="Sfi.Sfi"
+>
+    <f:form.hidden name="hash" value="{hash}" />
+    <f:form.hidden name="email" value="{email}" />
+    <div><f:form.submit value="Unsubscribe!"/></div>
+</f:form>
+<f:flashMessages />

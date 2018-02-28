@@ -1,1 +1,27 @@
-
+-
+  name: 'Unsubscribe route'
+  uriPattern: 'fundraising-unsubscribe'
+  defaults:
+    '@package':    'Sfi.Sfi'
+    '@controller': 'Subscription'
+    '@format':     'html'
+    '@action':     'unsubscribe'
+  appendExceedingArguments: true
+-
+  name: 'Unsubscribe confirm route'
+  uriPattern: 'fundraising-unsubscribe-confirm'
+  defaults:
+    '@package':    'Sfi.Sfi'
+    '@controller': 'Subscription'
+    '@format':     'html'
+    '@action':     'unsubscribeConfirm'
+  httpMethods: ['POST']
+  appendExceedingArguments: true
+-
+  name: 'Unsubscribe feedback route'
+  uriPattern: 'fundraising-unsubscribe-feedback'
+  defaults:
+    '@package':    'Sfi.Sfi'
+    '@controller': 'Subscription'
+    '@format':     'html'
+    '@action':     'feedback'

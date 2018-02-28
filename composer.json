@@ -13,6 +13,10 @@
         {
             "type": "git",
             "url": "https://github.com/Flowpack/Flowpack.Listable"
+        },
+	{
+            "type": "git",
+            "url": "https://github.com/Flowpack/mustache"
         }
     ],
     "require": {
@@ -42,7 +46,8 @@
         "flowpack/nodetemplates": "@dev",
         "psmb/createnodebutton": "@dev",
         "flownative/aws-s3": "2.*",
-        "psmb/registry": "^2.0"
+        "psmb/registry": "^2.0",
+        "flowpack/mustache": "dev-master"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
