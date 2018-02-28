@@ -20,25 +20,26 @@
         });
     }
 
+    // Make request if at least one bar is present
+    if (document.querySelector('.progressBar')) {
+        var request = new XMLHttpRequest();
+        var form = document.getElementById('donate');
+        request.open('GET', 'https://payments.sfi.ru/getAmountDonate', true);
 
-    var request = new XMLHttpRequest();
-    var form = document.getElementById('donate');
-    request.open('GET', 'https://payments.sfi.ru/getAmountDonate', true);
+        request.onload = function () {
+            if (this.status >= 200 && this.status < 400) {
+                var responseData = JSON.parse(this.response);
+                Object.keys(responseData.byReferer).forEach(function (referer) {
+                    updatePlaceholders(referer, Number(responseData.byReferer[referer]));
+                });
+            } else {
+            }
+        };
 
-    request.onload = function () {
-        if (this.status >= 200 && this.status < 400) {
-            var responseData = JSON.parse(this.response);
-            Object.keys(responseData.byReferer).forEach(function (referer) {
-                updatePlaceholders(referer, Number(responseData.byReferer[referer]));
-            });
-        } else {
-        }
-    };
+        request.onerror = function () {
+            // There was a connection error of some sort
+        };
 
-    request.onerror = function () {
-        // There was a connection error of some sort
-    };
-
-    request.send();
-
+        request.send();
+    }
 })();

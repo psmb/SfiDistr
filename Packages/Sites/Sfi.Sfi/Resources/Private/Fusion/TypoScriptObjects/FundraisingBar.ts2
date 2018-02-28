@@ -25,7 +25,7 @@ prototype(Sfi.Sfi:Page).body.javascripts.fundraising = Neos.Fusion:Tag {
     attributes.src = Neos.Fusion:ResourceUri {
         path = 'resource://Sfi.Sfi/Public/js/fundraising.js'
     }
-    @if.loadFundraising = ${Registry.get('loadFundraising') ? true : false}
+    # @if.loadFundraising = ${Registry.get('loadFundraising') ? true : false}
     @cache {
         mode = 'uncached'
         context {

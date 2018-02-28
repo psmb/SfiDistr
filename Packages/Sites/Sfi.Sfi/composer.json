@@ -1,6 +1,6 @@
 {
     "name": "sfi/sfi",
-    "type": "typo3-flow-site",
+    "type": "neos-site",
     "description": "SFI site files",
     "require": {
         "neos/neos": "*",

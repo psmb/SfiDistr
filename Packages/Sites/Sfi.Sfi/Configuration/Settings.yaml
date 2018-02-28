@@ -173,14 +173,14 @@ Neos:
     transport:
       type: 'Swift_SmtpTransport'
       options:
-        host: 'mailhog'
-        port: '1025'
-        #encryption: 'ssl'
+        host: 'email-smtp.us-west-2.amazonaws.com'
+        port: '465'
+        encryption: 'ssl'
         username: 'AKIAIV3MQACBKVT236RA'
-        password: 'SFI_SES_PASSWORD'
+        password: '%env:SFI_SES_PASSWORD%'
 Yeebase:
   Graylog:
-    host: '172.17.42.1'
+    host: 'graylog'
     port: 12201
     chunksize: 'wan'
 Flownative:

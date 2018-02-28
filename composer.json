@@ -34,7 +34,7 @@
         "neos/redirecthandler-databasestorage": "@dev",
         "neos/redirecthandler-neosadapter": "@dev",
         "neos/googleanalytics": "~2.0.0",
-        "flowpack/jobqueue-common": "@dev",
+        "flowpack/jobqueue-common": "~2.0.0",
         "psmb/term": "^3.0",
         "psmb/newsletter": "~2.3",
         "opsdev/cache-breaker": "^3.0",
