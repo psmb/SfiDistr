@@ -13,6 +13,7 @@ Psmb:
         identifier: instant_ru
         renderer: 'Sfi.Sfi:InstantMail'
         sendFromUiNodeType: 'Sfi.News:News'
+        showInSubscribe: true
         label: 'Мгновенное уведомление'
         description: 'Получать полные версии статей как только они опубликованы'
         interval: manual
@@ -24,6 +25,7 @@ Psmb:
         identifier: digest_ru
         renderer: 'Sfi.Sfi:NewsletterMail'
         sendFromUiNodeType: 'Sfi.Sfi:Newsletter'
+        showInSubscribe: true
         label: 'Авторский дайджест'
         description: 'Получать раз в две недели авторский обзор лучших публикаций'
         footerInfo: 'Вы получили это письмо, поскольку подписаны на Авторский обзор лучших публикаций сайта Свято-Филаретовского института. Дайджест приходит раз в две недели.'
@@ -36,6 +38,7 @@ Psmb:
         identifier: instant_en
         renderer: 'Sfi.Sfi:InstantMail'
         sendFromUiNodeType: 'Sfi.News:News'
+        showInSubscribe: true
         label: 'Instant Notification'
         description: 'Recevie full versions of articles as they are published'
         interval: manual
@@ -47,6 +50,7 @@ Psmb:
         identifier: digest_en
         renderer: 'Sfi.Sfi:DigestMail'
         sendFromUiNodeType: 'Sfi.Sfi:Newsletter'
+        showInSubscribe: true
         label: 'Monthly Digest'
         description: 'Receive newsletter by Sofia Androsenko to your inbox'
         interval: manual
@@ -67,18 +71,10 @@ Psmb:
         dimensions:
           language:
             - ru
-      -
-        identifier: fundraising_timed
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        interval: manual
-        senderName: 'СФИ'
-      -
-        identifier: fundraising_manual
-        renderer: 'Sfi.Sfi:Newsletter'
-        sendFromUiNodeType: 'Sfi.Sfi:Newsletter'
-        interval: manual
-        senderName: 'СФИ'
 Neos:
+  Fusion:
+    defaultContext:
+      Hash: Sfi\Sfi\Helper\HashHelper
   Flow:
     mvc:
       routes:
@@ -169,7 +165,7 @@ Neos:
       clientId: '4730774009-h57rl51jmjbrljt2mii1ebn74a8hsrr3.apps.googleusercontent.com'
       clientSecret: '%env:GA_SECRET%'
       developerKey: '%env:GA_DEVKEY%'
-  SwiftMailer:
+  SwiftMailer1:
     transport:
       type: 'Swift_SmtpTransport'
       options:
@@ -178,6 +174,14 @@ Neos:
         encryption: 'ssl'
         username: 'AKIAIV3MQACBKVT236RA'
         password: '%env:SFI_SES_PASSWORD%'
+  SwiftMailer:
+    transport:
+      type: 'Swift_SmtpTransport'
+      options:
+        host: 'mailhog'
+        port: '1025'
+        username: 'AKIAIV3MQACBKVT236RA'
+        password: 'asdf'
 Yeebase:
   Graylog:
     host: 'graylog'

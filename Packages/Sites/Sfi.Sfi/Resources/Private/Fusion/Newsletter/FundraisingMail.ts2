@@ -2,7 +2,7 @@ prototype(Sfi.Sfi:FundraisingMail) < prototype(Psmb.Newsletter:MailRenderer) {
 	subject = ${String.stripTags(node.properties.title)}
 	body = Neos.Fusion:Value {
 		value = Sfi.Sfi:AutomatedNewsletter
-		@process.params = ${Mustache.render(value, {test: 'howdy'})}
+		@process.params = ${Mustache.render(value, {subscriber: subscriber, subscription: subscription})}
 		@process.styles = Psmb.Newsletter:CssToInline {
 			cssPath = 'resource://Sfi.Sfi/Public/Built/app-prefixed.css'
 		}

@@ -25,6 +25,12 @@ class SubscriptionController extends ActionController
     protected $eventStoreApi;
 
     /**
+     * @Flow\Inject
+     * @var \Neos\Flow\Security\Cryptography\HashService
+     */
+    protected $hashService;
+
+    /**
      * Render a confirmation form
      *
      * @param string $hash
@@ -45,7 +51,7 @@ class SubscriptionController extends ActionController
      */
     public function unsubscribeConfirmAction($hash, $email)
     {
-        if (md5($email . "asdf") === $hash) {
+        if ($this->hashService->validateHmac($email, $hash)) {
             $this->eventStoreApi->registerUnsubscribe($email);
             $this->addFlashMessage('Sad to see you leave...');
         } else {
