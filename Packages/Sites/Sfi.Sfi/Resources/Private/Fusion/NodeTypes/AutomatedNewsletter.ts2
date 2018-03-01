@@ -18,13 +18,6 @@ prototype(Sfi.Sfi:UnsubscribeLink) < prototype(Neos.Fusion:UriBuilder) {
 		hash = ${Hash.generateHmac(Registry.get('subscriber').email || "")}
 	}
 	absolute = ${true}
-	@cache {
-		mode = 'uncached'
-		context {
-			1 = 'site'
-			2 = 'documentNode'
-		}
-	}
 }
 
 root.automatedNewsletter {
