@@ -65,22 +65,10 @@ Psmb:
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
           uri: 'http://eventstore:2113/projection/datasource-chapel/result'
-        label: 'Жертвователи на часовню за 3 месяца'
+        label: 'Жертвователи на часовню с начала года'
         interval: manual
-        senderName: 'СФИ'
-        dimensions:
-          language:
-            - ru
-      -
-        identifier: datasource-projects
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
-        dataSourceIdentifier: 'Json'
-        dataSourceOptions:
-          uri: 'http://eventstore:2113/projection/datasource-projects/result'
-        label: 'Жертвователи на проекты за 3 месяца'
-        interval: manual
-        senderName: 'СФИ'
+        senderName: 'Поддержать СФИ'
+        replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
             - ru
