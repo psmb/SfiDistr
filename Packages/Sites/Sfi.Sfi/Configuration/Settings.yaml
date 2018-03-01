@@ -59,13 +59,26 @@ Psmb:
           language:
             - en
       -
-        identifier: fundraising-chapel-active
+        identifier: datasource-chapel
         renderer: 'Sfi.Sfi:FundraisingMail'
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
-          uri: 'http://eventstore:2113/projection/fundraising-chapel-active/result'
-        label: 'Активные жертвователи на часовню за 3 месяца'
+          uri: 'http://eventstore:2113/projection/datasource-chapel/result'
+        label: 'Жертвователи на часовню за 3 месяца'
+        interval: manual
+        senderName: 'СФИ'
+        dimensions:
+          language:
+            - ru
+      -
+        identifier: datasource-projects
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://eventstore:2113/projection/datasource-projects/result'
+        label: 'Жертвователи на проекты за 3 месяца'
         interval: manual
         senderName: 'СФИ'
         dimensions:
@@ -160,28 +173,14 @@ Neos:
         dimensions: 'ga:source'
         sort: '-ga:uniquePageviews'
         max-results: 25
-    authentication:
-      applicationName: 'Neos GA'
-      clientId: '4730774009-h57rl51jmjbrljt2mii1ebn74a8hsrr3.apps.googleusercontent.com'
-      clientSecret: '%env:GA_SECRET%'
-      developerKey: '%env:GA_DEVKEY%'
-  SwiftMailer1:
-    transport:
-      type: 'Swift_SmtpTransport'
-      options:
-        host: 'email-smtp.us-west-2.amazonaws.com'
-        port: '465'
-        encryption: 'ssl'
-        username: 'AKIAIV3MQACBKVT236RA'
-        password: '%env:SFI_SES_PASSWORD%'
   SwiftMailer:
     transport:
       type: 'Swift_SmtpTransport'
       options:
         host: 'mailhog'
         port: '1025'
-        username: 'AKIAIV3MQACBKVT236RA'
-        password: 'asdf'
+        username: 'test'
+        password: 'pass'
 Yeebase:
   Graylog:
     host: 'graylog'
