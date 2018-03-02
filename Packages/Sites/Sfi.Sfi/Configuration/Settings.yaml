@@ -64,7 +64,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
-          uri: 'http://eventstore:2113/projection/datasource-chapel/result'
+          uri: 'http://paymentssfi_eventstore:2113/projection/datasource-chapel/result'
         label: 'Жертвователи на часовню с начала года'
         interval: manual
         senderName: 'Поддержать СФИ'
