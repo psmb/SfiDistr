@@ -163,12 +163,7 @@ Neos:
         max-results: 25
   SwiftMailer:
     transport:
-      type: 'Swift_SmtpTransport'
-      options:
-        host: 'mailhog'
-        port: '1025'
-        username: 'test'
-        password: 'pass'
+      type: 'Neos\SwiftMailer\Transport\LoggingTransport'
 Yeebase:
   Graylog:
     host: 'graylog'
