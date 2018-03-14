@@ -11,7 +11,7 @@ prototype(Sfi.Sfi:NewsletterMail) < prototype(Psmb.Newsletter:MailRenderer) {
 			}
 		}
 		@process.styles = Psmb.Newsletter:CssToInline {
-			cssPath = 'resource://Sfi.Sfi/Public/Built/app-prefixed.css'
+			cssPath = 'resource://Sfi.Sfi/Public/Built/app.css'
 		}
 	}
 }
