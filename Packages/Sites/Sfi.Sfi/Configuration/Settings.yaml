@@ -64,8 +64,18 @@ Psmb:
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
-          uri: 'http://paymentssfi_eventstore:2113/projection/datasource-chapel/result'
+          uri: 'http://eventstore:2113/projection/datasource-chapel/result'
         label: 'Жертвователи на часовню с начала года'
+        interval: manual
+        senderName: 'Поддержать СФИ'
+        replyToAddress: 'donate@sfi.ru'
+        dimensions:
+          language:
+            - ru
+      -
+        identifier: fundraising_timed
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         interval: manual
         senderName: 'Поддержать СФИ'
         replyToAddress: 'donate@sfi.ru'
@@ -110,7 +120,7 @@ Neos:
       resources:
         javascript:
           'Sfi.Sfi:Itemprop':
-            resource: '${"resource://Sfi.Sfi/Public/js/Itemprop/Plugin.js"}'
+            resource: '${"resource://Sfi.Sfi/Public/JavaScript/Itemprop/Plugin.js"}'
 
     userInterface:
       loadMinifiedJavascript: false
@@ -163,7 +173,12 @@ Neos:
         max-results: 25
   SwiftMailer:
     transport:
-      type: 'Neos\SwiftMailer\Transport\LoggingTransport'
+      type: 'Swift_SmtpTransport'
+      options:
+        host: 'mailhog'
+        port: '1025'
+        username: 'test'
+        password: 'pass'
 Yeebase:
   Graylog:
     host: 'graylog'

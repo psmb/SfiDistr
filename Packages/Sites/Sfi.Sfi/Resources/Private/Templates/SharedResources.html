@@ -6,8 +6,7 @@
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/backend.css', package: 'Sfi.Sfi')}" />
 	</f:section>
 	<f:section name="stylesheets">
-		<link rel="stylesheet" href="{opsdev:resource(path: 'Built/_bower.css', package: 'Sfi.Sfi')}" />
-		<link rel="stylesheet" href="{opsdev:resource(path: 'Built/app-prefixed.css', package: 'Sfi.Sfi')}" />
+		<link rel="stylesheet" href="{opsdev:resource(path: 'Built/app.css', package: 'Sfi.Sfi')}" />
 		<link rel="alternate stylesheet" title="accessible-stylesheet" href="{opsdev:resource(path: 'Built/accessible.css', package: 'Sfi.Sfi')}" />
 	</f:section>
 	<f:section name="headScripts">
@@ -20,14 +19,10 @@
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ba3925">
 		<meta name="theme-color" content="#ffffff">
 	</f:section>
-	<f:section name="backendScripts">
-		<script src="{opsdev:resource(path: 'js/backend.js', package: 'Sfi.Sfi')}"></script>
-	</f:section>
 </head>
 <body>
 	<f:section name="bodyScripts">
-		<script src="{opsdev:resource(path: 'Built/_bower.js', package: 'Sfi.Sfi')}"></script>
-		<script src="{opsdev:resource(path: 'js/plugins.js', package: 'Sfi.Sfi')}"></script>
+		<script src="{opsdev:resource(path: 'Built/index.js', package: 'Sfi.Sfi')}"></script>
 	</f:section>
 	<f:section name="analytics">
 		<f:render partial="Analytics" />

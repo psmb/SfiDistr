@@ -19,17 +19,3 @@ prototype(Sfi.Sfi:FundraisingBar) < prototype(Neos.Fusion:Template) {
         }
     }
 }
-
-prototype(Sfi.Sfi:Page).body.javascripts.fundraising = Neos.Fusion:Tag {
-    tagName = 'script'
-    attributes.src = Neos.Fusion:ResourceUri {
-        path = 'resource://Sfi.Sfi/Public/js/fundraising.js'
-    }
-    # @if.loadFundraising = ${Registry.get('loadFundraising') ? true : false}
-    @cache {
-        mode = 'uncached'
-        context {
-            1 = 'site'
-        }
-    }
-}

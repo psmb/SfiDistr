@@ -1,12 +1,12 @@
 @import "../bower_components/slick.js/slick/slick.css";
 
 @import "reset";
-@import
-	"Vendor/**/*.scss",
-	"Quarks/**/*.scss",
-	"Atoms/**/*.scss",
-	"Molecules/**/*.scss",
-	"Organisms/**/*.scss";
+@import "Vendor/**/*.scss";
+@import "Quarks/**/*.scss";
+@import "Atoms/**/*.scss";
+@import "Molecules/**/*.scss";
+@import "Organisms/**/*.scss";
+@import "./../../Resources/Private/Fusion/**/*.scss";
 @import "vendorOverride";
 
 * {

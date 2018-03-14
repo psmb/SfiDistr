@@ -15,7 +15,7 @@
           label: 'Рассылка'
           position: 1
   properties:
-    inter:
+    interval:
       type: string
       ui:
         label: 'Задержка рассылки'

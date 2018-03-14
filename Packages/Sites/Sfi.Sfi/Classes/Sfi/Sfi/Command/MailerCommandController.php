@@ -25,6 +25,12 @@ class MailerCommandController extends CommandController
     protected $fusionMailService;
 
     /**
+     * @Flow\Inject
+     * @var \Neos\Flow\Log\SystemLoggerInterface
+     */
+    protected $systemLogger;
+
+    /**
      * @Flow\InjectConfiguration(package="Psmb.Newsletter", path="subscriptions")
      * @var array
      */
@@ -44,7 +50,6 @@ class MailerCommandController extends CommandController
      */
     public function sendStuffCommand($dryRun = false)
     {
-        $pending = json_decode($this->eventStoreApi->getPending(), true);
         $subscriptionName = 'fundraising_timed';
         $subscriptions = array_filter($this->subscriptions, function ($item) use ($subscriptionName) {
             return $item['identifier'] == $subscriptionName;
@@ -58,20 +63,46 @@ class MailerCommandController extends CommandController
             'inaccessibleContentShown' => false
         );
         $context = $this->contextFactory->create($contextProperties);
-        $rootNode = $context->getNode('/sites/sfi');
-        $flowQuery = new FlowQuery(array($rootNode));
+        $subscriptionsNode = $context->getNode('/sites/sfi/node-1c105gjw2hofa/node-rn1lgq8vsmb11');
+        $flowQuery = new FlowQuery(array($subscriptionsNode));
         $nodes = $flowQuery->find('[instanceof Sfi.Sfi:AutomatedNewsletter]')->get();
+
+        $projectsNode = $context->getNode('/sites/sfi/node-yjlauzt0q408f');
+        $flowQuery = new FlowQuery(array($projectsNode));
+        $projectNodes = $flowQuery->find('[instanceof Sfi.Sfi:FundraisingProject]')->get();
+        $projects = [];
+        foreach ($projectNodes as $node) {
+            $projects[$node->getProperty('uriPathSegment')] = $node;
+        }
+
         foreach ($nodes as $node) {
-            $interval = $node->getProperty('interval');
+            $interval = new \DateInterval($node->getProperty('interval'));
+$interval = new \DateInterval('P30D');
             $subscripionId = $node->getProperty('uriPathSegment');
-            $pendingLetters = $pending[$subscripionId];
+            $this->outputLine('Type: %s', [$subscripionId]);
+            $pendingLetters = $this->eventStoreApi->getPending($subscripionId);
             foreach($pendingLetters as $reason => $subscriber) {
                 if (!(array_key_exists('email', $subscriber) && strpos($subscriber['email'], '@') !== false)) {
                     $this->outputLine('<error>Subscriber must have an "email" field</error>');
                     continue;
                 }
-                $this->outputLine('Sending a letter for %s', [$subscriber['email']]);
-                $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
+                $now = new \DateTime();
+                $date = new \DateTime($subscriber['date']);
+                if ($date->add($interval) < $now) {
+                    $this->outputLine('Sending a letter for %s', [$subscriber['email']]);
+                    $project = $projects[$subscriber['referer']];
+                    $subscriber['projectTitle'] = $project->getProperty('title');
+                    $subscriber['projectTarget'] = $project->getProperty('target');
+                    try {
+                        $originalNode = clone $node;
+                        $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
+                        //$this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
+                    } catch (\Exception $e) {
+                        $this->systemLogger->log($e->getMessage(), \LOG_ERR);
+                    }
+                } else {
+                    $this->outputLine('Not yet time for %s %s', [$subscriber['email'], $subscriber['date']]);
+                }
             }
         }
     }

@@ -98,11 +98,6 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			sectionName = 'analytics'
 		}
-		javascripts.backend = Neos.Fusion:Template {
-			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
-			sectionName = 'backendScripts'
-			@process.1 = ${node.context.workspaceName != 'live' ? value:''}
-		}
 		javascripts.@cache {
 			mode = 'cached'
 			entryIdentifier.a = 'a'

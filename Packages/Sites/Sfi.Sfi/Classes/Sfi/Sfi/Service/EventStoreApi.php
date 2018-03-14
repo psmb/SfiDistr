@@ -2,8 +2,8 @@
 namespace Sfi\Sfi\Service;
 
 class EventStoreApi {
-    public function getPending() {
-        return $this->callAPI('GET', 'http://eventstore:2113/projection/pendingEmails/result');
+    public function getPending($type) {
+        return json_decode($this->callAPI('GET', 'http://eventstore:2113/projection/pendingEmails-' . $type . '/result'), true) ?? [];
     }
 
     public function registerEmailSent($reason, $type, $email) {
@@ -16,7 +16,7 @@ class EventStoreApi {
                 'email' => $email
             ]
         ]];
-        return $this->callAPI('POST', 'http://eventstore:2113/streams/mailing', $data);
+        return $this->callAPI('POST', 'http://eventstore:2113/streams/data', $data);
     }
 
     public function registerUnsubscribe($hash) {
@@ -27,7 +27,7 @@ class EventStoreApi {
                 'hash' => $hash
             ]
         ]];
-        return $this->callAPI('POST', 'http://eventstore:2113/streams/mailing', $data);
+        return $this->callAPI('POST', 'http://eventstore:2113/streams/data', $data);
     }
 
     protected function createGUID()
