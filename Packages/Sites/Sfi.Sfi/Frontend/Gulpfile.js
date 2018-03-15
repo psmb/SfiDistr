@@ -18,7 +18,7 @@ var inputJs = [
 var inputVendorCss = [
     './vendor_css/**/*.css'
 ];
-var inputSass = ['./scss/**/*.scss'];
+var inputSass = ['./scss/**/*.scss', './../Resources/Private/Fusion/**/*.scss']; 
 
 var allTasks = ['sass', 'js', 'vendorCss', 'assets'];
 var output = './built';

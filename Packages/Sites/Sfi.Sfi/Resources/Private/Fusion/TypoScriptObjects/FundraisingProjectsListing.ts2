@@ -16,7 +16,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
         image = ${'<img src="' + this.thumbUri + '">'}
         body = Neos.Fusion:Array {
             @process.wrap = ${'<div class="FundraisingProjectSmall-body">' + value + '</div>'}
-            title = ${'<h3 class="H2 color-brown">' + node.properties.title + '</h3>'}
+            title = ${'<h3 class="FundraisingProjectSmall-title H2 color-brown">' + node.properties.title + '</h3>'}
             bar = Sfi.Sfi:FundraisingBar {
                 projectId = ${node.properties.uriPathSegment}
                 target = ${node.properties.target}

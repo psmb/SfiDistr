@@ -1,0 +1,60 @@
+
+.FundraisingProjectSmall {
+    border: 1px solid $gray-line;
+    position: relative;
+    margin-bottom: 2 * $u;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.FundraisingProjectSmall:hover {
+    border: 1px solid $orange;
+}
+.FundraisingProjectSmall:hover .H2, .FundraisingProjectSmall:hover .FundraisingProjectSmall-arrow {
+    color: $orange !important;
+}
+
+@media(min-width: 640px) {
+    .FundraisingProjectSmall-title {
+        font-size: rem-calc(18);
+    }
+}
+@media(min-width: 800px) {
+    .FundraisingProjectSmall-title {
+        font-size: rem-calc(22);
+    }
+}
+@media(min-width: 1024px) {
+    .FundraisingProjectSmall-title {
+        font-size: rem-calc(36);
+    }
+}
+
+.FundraisingProjectSmall-body {
+    padding: 24px;
+}
+.FundraisingProjectSmall-arrow {
+    font-size: rem-calc(48);
+}
+
+.FundraisingProjectsListing {
+    flex-direction: column;
+}
+@media(min-width: 640px) {
+    .FundraisingProjectsListing {
+        flex-direction: row;
+    }
+    .FundraisingProjectSmall {
+        padding-bottom: 120px;
+    }
+    .FundraisingProjectSmall-bottom {
+        position: absolute;
+        bottom: 12px;
+        left: 24px;
+        right: 24px;
+    }
+}
+
+.digits {
+    font-size: rem-calc(14);
+    font-style: normal;
+}
