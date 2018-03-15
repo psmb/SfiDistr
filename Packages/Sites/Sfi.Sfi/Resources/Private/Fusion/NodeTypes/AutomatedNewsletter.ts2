@@ -15,7 +15,7 @@ prototype(Sfi.Sfi:UnsubscribeLink) < prototype(Neos.Fusion:UriBuilder) {
 	action = 'unsubscribe'
 	arguments {
 		email = ${Registry.get('subscriber').email}
-		hash = ${Hash.generateHmac(Registry.get('subscriber').email || "")}
+		hash = ${Sfi.generateHmac(Registry.get('subscriber').email || "")}
 	}
 	absolute = ${true}
 }

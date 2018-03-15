@@ -1,10 +1,11 @@
 prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection) {
-    @process.wrap = ${'<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 FundraisingProjectsListing">' + value + '</ul>'}
+    @context.amounts = ${Sfi.fetch('https://payments.sfi.ru/getAmountDonate')}
+    @process.wrap = ${'<ul style="display:flex" class="FundraisingProjectsListing">' + value + '</ul>'}
     collection = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject]').get()} 
     collection.@process.filterOutCurrent = ${subscriber.referer ? q(value).filter('[uriPathSegment != ' + subscriber.referer + ']') : value}
     itemName = 'node'
     itemRenderer = Neos.Fusion:Array {
-        @process.wrap = ${'<li><a href="' + this.nodeUri + '"><div class="FundraisingProjectSmall"><div class="FundraisingProjectSmall-inner1"><div class="FundraisingProjectSmall-inner2">' + value + '</div></div></div></li>'}
+        @process.wrap = ${'<li class="FundraisingProjectSmall marginHorizontal-single"><a href="' + this.nodeUri + '"><div><div class="FundraisingProjectSmall-inner1"><div class="FundraisingProjectSmall-inner2">' + value + '</div></div></div></li>'}
         @ignoreProperties = ${['thumbUri', 'nodeUri']}
         nodeUri = NodeUri {
             node = ${node}
@@ -14,12 +15,12 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
         }
         image = ${'<img src="' + this.thumbUri + '">'}
         body = Neos.Fusion:Array {
-        @process.wrap = ${'<div class="FundraisingProjectSmall-body">' + value + '</div>'}
+            @process.wrap = ${'<div class="FundraisingProjectSmall-body">' + value + '</div>'}
             title = ${'<h3 class="H2 color-brown">' + node.properties.title + '</h3>'}
             bar = Sfi.Sfi:FundraisingBar {
                 projectId = ${node.properties.uriPathSegment}
                 target = ${node.properties.target}
-                @process.wrap = ${'<div style="position: absolute; bottom: 12px; left: 24px; right: 24px;">' + value + '<div class="FundraisingProjectSmall-arrow color-brown textAlign-center">→</div></div>'}
+                @process.wrap = ${'<div class="FundraisingProjectSmall-bottom">' + value + '<div class="FundraisingProjectSmall-arrow color-brown textAlign-center">→</div></div>'}
             }
         }
     }

@@ -3,19 +3,11 @@ prototype(Sfi.Sfi:FundraisingBar) < prototype(Neos.Fusion:Template) {
     templatePath = 'resource://Sfi.Sfi/Private/Fusion/TypoScriptObjects/FundraisingBar.html'
 
     projectId = ''
-    target = '7 000 000'
+    target = 0
+    gathered = ${amounts.byReferer[this.projectId] || 0}
+    targetFormated = ${Sfi.number_format(String.toInteger(String.replace(this.target, " ", "")), 0, "", " ")}
+    gatheredFormated = ${Sfi.number_format(String.toInteger(this.gathered), 0, "", " ")}
+    percentage = ${String.toInteger(100 * (String.toInteger(this.gathered) / String.toInteger(String.replace(this.target, " ", ""))))}
     inverse = ${false}
     backgroundColor = ${this.inverse ? 'color-white' : 'color-brown'}
-
-    # Hackish way to include JS assets
-    @process.load = Neos.Fusion:Value {
-        @context.blah = ${Registry.set('loadFundraising', true)}
-        value = ${value}
-        @cache {
-            mode = 'uncached'
-            context {
-                1 = 'value'
-            }
-        }
-    }
 }

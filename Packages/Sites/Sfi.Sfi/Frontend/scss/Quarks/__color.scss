@@ -5,6 +5,7 @@ $gray-bg--light: #f7f7f7;
 $gray-line: #ccc;
 
 $brown: #6e584f;
+$orange: #ff7800;
 
 $red: #ba3925;
 $blue: #2455c3;
@@ -15,7 +16,9 @@ $color-primary: $acid-blue;
 $color-primaryAlt: $acid-blue;
 
 
-
+.color-brown {
+    color: $brown !important;
+}
 .color-white {
 	color: white !important;
 }
