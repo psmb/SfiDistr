@@ -85,7 +85,7 @@ Psmb:
 Neos:
   Fusion:
     defaultContext:
-      Hash: Sfi\Sfi\Helper\HashHelper
+      Sfi: Sfi\Sfi\Helper\SfiHelper
   Flow:
     mvc:
       routes:

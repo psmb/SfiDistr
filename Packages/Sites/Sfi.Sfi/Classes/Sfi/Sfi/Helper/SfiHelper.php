@@ -5,7 +5,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
 use Mustache_Engine as Mustache;
 
-class HashHelper implements ProtectedContextAwareInterface
+class SfiHelper implements ProtectedContextAwareInterface
 {
     /**
      * @Flow\Inject
@@ -21,6 +21,21 @@ class HashHelper implements ProtectedContextAwareInterface
     public function generateHmac($content)
     {
         return $this->hashService->generateHmac($content);
+    }
+
+    /**
+     * @param string $url
+     * @return array
+     */
+    public function fetch($url)
+    {
+        $raw = file_get_contents($url);
+        return json_decode($raw, true);
+    }
+
+    public function number_format($number , $decimals = 0, $dec_point = ".", $thousands_sep = ",")
+    {
+        return number_format($number, $decimals, $dec_point, $thousands_sep);
     }
 
     /**
