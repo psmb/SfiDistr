@@ -77,7 +77,6 @@ class MailerCommandController extends CommandController
 
         foreach ($nodes as $node) {
             $interval = new \DateInterval($node->getProperty('interval'));
-$interval = new \DateInterval('P30D');
             $subscripionId = $node->getProperty('uriPathSegment');
             $this->outputLine('Type: %s', [$subscripionId]);
             $pendingLetters = $this->eventStoreApi->getPending($subscripionId);
@@ -92,11 +91,12 @@ $interval = new \DateInterval('P30D');
                     $this->outputLine('Sending a letter for %s', [$subscriber['email']]);
                     $project = $projects[$subscriber['referer']];
                     $subscriber['projectTitle'] = $project->getProperty('title');
+                    $subscriber[$subscriber['referer']] = true;
                     $subscriber['projectTarget'] = $project->getProperty('target');
                     try {
                         $originalNode = clone $node;
                         $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
-                        //$this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
+                        $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
                     } catch (\Exception $e) {
                         $this->systemLogger->log($e->getMessage(), \LOG_ERR);
                     }
