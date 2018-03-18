@@ -1,14 +1,15 @@
 
 .FundraisingProjectSmall {
-    border: 1px solid $gray-line;
-    position: relative;
-    margin-bottom: 2 * $u;
     flex-grow: 1;
     flex-basis: 0;
 }
-.FundraisingProjectSmall:hover {
+.FundraisingProjectSmall-inner {
+    position: relative;
+    margin-bottom: 2 * $u;
     border: 1px solid $orange;
+    height: 100%;
 }
+
 .FundraisingProjectSmall:hover .H2, .FundraisingProjectSmall:hover .FundraisingProjectSmall-arrow {
     color: $orange !important;
 }
@@ -38,12 +39,16 @@
 
 .FundraisingProjectsListing {
     flex-direction: column;
+    flex-wrap: wrap;
 }
 @media(min-width: 640px) {
     .FundraisingProjectsListing {
         flex-direction: row;
     }
     .FundraisingProjectSmall {
+        flex-basis: 50%;
+    }
+    .FundraisingProjectSmall-inner {
         padding-bottom: 120px;
     }
     .FundraisingProjectSmall-bottom {
@@ -51,6 +56,11 @@
         bottom: 12px;
         left: 24px;
         right: 24px;
+    }
+}
+@media(min-width: 800px) {
+    .FundraisingProjectSmall {
+        flex-basis: 33%;
     }
 }
 
