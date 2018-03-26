@@ -80,7 +80,7 @@
                 >
                     <div class="row marginVertical-single">
                         <f:for each="{subscriptions}" as="subscription">
-                            <f:if condition="{subscription.dimensions.language.0} == {currentLocale.language} && {subscription.subscription.showInSubscribe}">
+                            <f:if condition="{subscription.dimensions.language.0} == {currentLocale.language} && {subscription.showInSubscribe}">
                                 <div class="medium-4 columns">
                                     <label>
                                         <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" checked="true" multiple="true" property="subscriptions" value="{subscription.identifier}" />
@@ -100,7 +100,7 @@
                                 <summary style="outline: 0" class="Link">{f:if(condition: "{currentLocale.language} == 'ru'", then: 'In English', else: 'По-русски')}</summary>
                                 <div class="row marginVertical-single">
                                     <f:for each="{subscriptions}" as="subscription">
-                                        <f:if condition="{subscription.dimensions.language.0} != {currentLocale.language} && {subscription.subscription.showInSubscribe}">
+                                        <f:if condition="{subscription.dimensions.language.0} != {currentLocale.language} && {subscription.showInSubscribe}">
                                             <div class="medium-4 columns">
                                                 <label>
                                                     <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" multiple="true" property="subscriptions" value="{subscription.identifier}" />
