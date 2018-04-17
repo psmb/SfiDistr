@@ -5,10 +5,17 @@
 	h2, h3, h4 {
 		margin: 0 !important;
 	}
+	p {
+		margin-bottom: 0 !important;
+	}
 	overflow: auto;
 	display: block;
 	max-height: 90vh;
 	border-collapse: collapse;
+	td {
+		border: 1px solid $gray-line;
+	}
+	border: 0;
 }
 
 .Table * {

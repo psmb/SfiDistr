@@ -1,5 +1,5 @@
 .RteText {
-	h1,h2,h3,h4,h5,h6{
+	h1, h2, h3, h4, h5, h6 {
 		margin-top: 3*$u;
 		margin-bottom: $u;
 	}
@@ -37,10 +37,7 @@
 		@extend .Paragraph;
 	}
 	table {
-		@include table;
-		font-family: $fontFamily-alt;
-		p {margin-bottom: 0;}
-		* {font-size: rem-calc(14) !important;}
+		@extend .Table;
 	}
 }
 
