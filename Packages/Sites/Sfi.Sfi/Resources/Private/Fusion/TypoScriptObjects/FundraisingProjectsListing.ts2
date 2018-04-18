@@ -5,7 +5,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
     collection.@process.filterOutCurrent = ${subscriber.referer ? q(value).filter('[uriPathSegment != ' + subscriber.referer + ']') : value}
     itemName = 'node'
     itemRenderer = Neos.Fusion:Array {
-        @process.wrap = ${'<li class="FundraisingProjectSmall marginBottom-double"><div class="FundraisingProjectSmall-inner marginHorizontal-single"><a href="' + this.nodeUri + '"><div>' + value + '</div></div></li>'}
+        @process.wrap = ${'<li class="FundraisingProjectSmall marginBottom-double"><div class="FundraisingProjectSmall-inner marginHorizontal-single"><a href="' + this.nodeUri + '"><div>' + value + '</div></a></div></li>'}
         @ignoreProperties = ${['thumbUri', 'nodeUri']}
         nodeUri = NodeUri {
             node = ${node}
