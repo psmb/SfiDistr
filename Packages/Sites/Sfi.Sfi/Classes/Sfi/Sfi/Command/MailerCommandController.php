@@ -63,7 +63,7 @@ class MailerCommandController extends CommandController
             'inaccessibleContentShown' => false
         );
         $context = $this->contextFactory->create($contextProperties);
-        $subscriptionsNode = $context->getNode('/sites/sfi/node-1c105gjw2hofa/node-rn1lgq8vsmb11');
+        $subscriptionsNode = $context->getNode('/sites/sfi/node-kmbu98co4ps75/node-0tsk22onh4qso');
         $flowQuery = new FlowQuery(array($subscriptionsNode));
         $nodes = $flowQuery->find('[instanceof Sfi.Sfi:AutomatedNewsletter]')->get();
 
