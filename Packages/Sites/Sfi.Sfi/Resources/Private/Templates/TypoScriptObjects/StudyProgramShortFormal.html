@@ -56,22 +56,26 @@
 <f:if condition="{isOZ}">
 	<tr>
 		<td itemprop="eduForm">Очно-заочная</td>
-		<td itemprop="educationPlan">
-			{assetsPlanOZ -> f:format.raw()}
+		<td>
+			<div itemprop="educationPlan">{assetsPlanOZ -> f:format.raw()}</div>
+			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
-		<td itemprop="educationShedule">
-			{scheduleOZ -> f:format.raw()}
+		<td>
+			<div itemprop="educationShedule">{scheduleOZ -> f:format.raw()}</div>
+			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
 	</tr>
 </f:if>
 <f:if condition="{isZ}">
 	<tr>
 		<td itemprop="eduForm">Заочная</td>
-		<td itemprop="educationPlan">
-			{assetsPlanZ -> f:format.raw()}
+		<td>
+			<div itemprop="educationPlan">{assetsPlanZ -> f:format.raw()}</div>
+			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
-		<td itemprop="educationShedule">
-			{scheduleZ -> f:format.raw()}
+		<td>
+			<div itemprop="educationShedule">{scheduleZ -> f:format.raw()}</div>
+			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
 	</tr>
 </f:if>
