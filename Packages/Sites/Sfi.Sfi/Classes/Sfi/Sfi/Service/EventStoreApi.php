@@ -20,13 +20,13 @@ class EventStoreApi {
         return $this->callAPI('POST', 'http://eventstore:2113/streams/data', $data);
     }
 
-    public function registerUnsubscribe($hash)
+    public function registerUnsubscribe($email)
     {
         $data = [[
             'eventId' => $this->createGUID(),
             'eventType' => 'SubscriberUnsubscribed',
             'data' => [
-                'hash' => $hash
+                'email' => $email
             ]
         ]];
         return $this->callAPI('POST', 'http://eventstore:2113/streams/data', $data);
