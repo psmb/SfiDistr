@@ -80,7 +80,8 @@ class MailerCommandController extends CommandController
             $subscripionId = $node->getProperty('uriPathSegment');
             $this->outputLine('Type: %s', [$subscripionId]);
             $pendingLetters = $this->eventStoreApi->getPending($subscripionId);
-            foreach($pendingLetters as $reason => $subscriber) {
+            foreach($pendingLetters as $subscriber) {
+                $reason = $subscriber['reason'];
                 if (!(array_key_exists('email', $subscriber) && strpos($subscriber['email'], '@') !== false)) {
                     $this->outputLine('<error>Subscriber must have an "email" field</error>');
                     continue;

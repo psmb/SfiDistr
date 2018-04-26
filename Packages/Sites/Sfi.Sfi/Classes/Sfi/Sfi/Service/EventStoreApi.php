@@ -6,7 +6,8 @@ class EventStoreApi {
         return json_decode($this->callAPI('GET', 'http://eventstore:2113/projection/pendingEmails-' . $type . '/result'), true) ?? [];
     }
 
-    public function registerEmailSent($reason, $type, $email) {
+    public function registerEmailSent($reason, $type, $email)
+    {
         $data = [[
             'eventId' => $this->createGUID(),
             'eventType' => 'EmailSent',
@@ -19,7 +20,8 @@ class EventStoreApi {
         return $this->callAPI('POST', 'http://eventstore:2113/streams/data', $data);
     }
 
-    public function registerUnsubscribe($hash) {
+    public function registerUnsubscribe($hash)
+    {
         $data = [[
             'eventId' => $this->createGUID(),
             'eventType' => 'SubscriberUnsubscribed',
