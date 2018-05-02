@@ -30,6 +30,9 @@
           position: 100
           icon: plus-circle
       groups:
+        default:
+          label: 'Прочее'
+          tab: default
         createNode:
           label: 'Создание элементов'
           tab: createNode

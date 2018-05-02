@@ -42,9 +42,9 @@
     target:
       type: string
       ui:
-        inlineEditable: true
-        aloha:
-          placeholder: '1 000 000'
+        label: 'Цель сбора'
+        inspector:
+          group: default
     moto:
       type: string
       ui:
