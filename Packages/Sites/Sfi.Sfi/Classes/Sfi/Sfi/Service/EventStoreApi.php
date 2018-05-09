@@ -3,7 +3,7 @@ namespace Sfi\Sfi\Service;
 
 class EventStoreApi {
     public function getPending($type) {
-        return json_decode($this->callAPI('GET', 'http://eventstore:2113/projection/pendingEmails-' . $type), true) ?? [];
+        return json_decode($this->callAPI('GET', 'http://node/projection/' . $type), true) ?? [];
     }
 
     public function registerEmailSent($reason, $type, $email)
