@@ -14,17 +14,17 @@
     color: $orange !important;
 }
 
-@media(min-width: 640px) {
+@media (min-width: 640px) {
     .FundraisingProjectSmall-title {
         font-size: rem-calc(18);
     }
 }
-@media(min-width: 800px) {
+@media (min-width: 800px) {
     .FundraisingProjectSmall-title {
         font-size: rem-calc(22);
     }
 }
-@media(min-width: 1024px) {
+@media (min-width: 1024px) {
     .FundraisingProjectSmall-title {
         font-size: rem-calc(36);
     }
@@ -41,7 +41,7 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
-@media(min-width: 640px) {
+@media (min-width: 640px) {
     .FundraisingProjectsListing {
         flex-direction: row;
     }
@@ -58,7 +58,7 @@
         right: 24px;
     }
 }
-@media(min-width: 800px) {
+@media (min-width: 800px) {
     .FundraisingProjectSmall {
         flex-basis: 33%;
     }
