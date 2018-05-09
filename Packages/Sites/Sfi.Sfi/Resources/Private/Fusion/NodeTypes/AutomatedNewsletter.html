@@ -4,18 +4,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<style>
-	@media(min-width: 640px) {
+	@media (min-width: 640px) {
+		.FundraisingProjectSmall-title {
+			font-size: rem-calc(18) !important;
+		}
+	}
+	@media (min-width: 800px) {
+		.FundraisingProjectSmall-title {
+			font-size: rem-calc(22) !important;
+		}
+	}
+	@media (min-width: 1024px) {
+		.FundraisingProjectSmall-title {
+			font-size: rem-calc(36) !important;
+		}
+	}
+	@media (min-width: 640px) {
 		.FundraisingProjectsListing {
 			flex-direction: row !important;
 		}
 		.FundraisingProjectSmall {
+			flex-basis: 50% !important;
+		}
+		.FundraisingProjectSmall-inner {
 			padding-bottom: 120px !important;
 		}
 		.FundraisingProjectSmall-bottom {
-			position: absolute;
-			bottom: 12px;
-			left: 24px;
-			right: 24px;
+			position: absolute !important;
+			bottom: 12px !important;
+			left: 24px !important;
+			right: 24px !important;
 		}
 	}
 	</style>
