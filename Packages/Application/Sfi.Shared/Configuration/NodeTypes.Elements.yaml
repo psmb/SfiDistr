@@ -48,6 +48,8 @@
             values:
               Link-Button:
                 label: Ссылка-кнопка
+              Link-Button-Alt:
+                label: 'Ссылка-кнопка рыжая'
               Link-Inline:
                 label: Строчкая ссылка
     target:

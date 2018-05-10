@@ -24,7 +24,20 @@ prototype(Sfi.Shared:Asset) {
 }
 
 prototype(Sfi.Shared:Link) {
-	attributes.class = ${node.properties.variant == 'Link-Button' ? 'Button LinkButton' : 'ButtonInline LinkInline'}
+	attributes.class = Neos.Fusion:Case {
+		linkButton {
+			condition = ${node.properties.variant == 'Link-Button'}
+			renderer = 'Button LinkButton'
+		}
+		linkButtonAlt {
+			condition = ${node.properties.variant == 'Link-Button-Alt'}
+			renderer = 'ButtonAlt LinkButton'
+		}
+		linkInline {
+			condition = ${node.properties.variant == 'Link-Inline'}
+			renderer = 'ButtonInline LinkInline'
+		}
+	}
 	attributes.href = ${node.properties.target}
 	attributes.href.@process.convertUris = Neos.Neos:ConvertUris {
 		forceConversion = true
