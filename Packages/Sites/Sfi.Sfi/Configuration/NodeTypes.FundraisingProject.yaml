@@ -12,6 +12,8 @@
       type: 'Neos.Neos:ContentCollection'
     main:
       type: 'Neos.Neos:ContentCollection'
+    bottom:
+      type: 'Neos.Neos:ContentCollection'
   properties:
     thumb:
       type: Neos\Media\Domain\Model\ImageInterface

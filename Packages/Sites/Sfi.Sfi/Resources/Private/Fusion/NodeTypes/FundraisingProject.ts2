@@ -16,6 +16,9 @@ prototype(Sfi.Sfi:FundraisingProject) {
 	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
+	bottom = Neos.Neos:ContentCollection {
+		nodePath = 'bottom'
+	}
 
 	imageUri = ImageUri {
 		asset = ${node.properties.image}
