@@ -12,7 +12,7 @@
       type: 'Neos.Neos:ContentCollection'
     main:
       type: 'Neos.Neos:ContentCollection'
-    bottom:
+    report:
       type: 'Neos.Neos:ContentCollection'
   properties:
     thumb:
