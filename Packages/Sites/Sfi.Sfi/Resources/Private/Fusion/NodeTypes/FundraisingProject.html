@@ -91,9 +91,6 @@
 	.color-orange {
 		color: #ff7800;
 	}
-	.Button--warn {
-		background-color: #ff7800;
-	}
 	.display-flex {
 		display: flex;
 	}
@@ -106,6 +103,7 @@
 				<div class="H1 color-brown lineHeight-single" >{neos:contentElement.editable(property: 'title')}</div>
 				<div class="Paragraph marginVertical-double">{neos:contentElement.editable(property: 'description')}</div>
 				<a class="Button LinkButton Button--warn" href="#donate">Хочу помочь</a>
+				<a class="Button LinkButton Button--pale" href="#report">Отчет</a>
 			</div>
 		</div>
 		<div class="columns medium-7 marginVertical-triple FundraisingProject-header">
@@ -155,7 +153,11 @@
 
 {form -> f:format.raw()}
 
-{bottom -> f:format.raw()}
+<div class="row">
+	<div class="columns" id="report">
+		{report -> f:format.raw()}
+	</div>
+</div>
 
 <div class="row">
 	<div class="columns">
@@ -163,4 +165,3 @@
 		{otherProjects -> f:format.raw()}
 	</div>
 </div>
-

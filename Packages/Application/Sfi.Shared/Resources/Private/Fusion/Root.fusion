@@ -31,7 +31,7 @@ prototype(Sfi.Shared:Link) {
 		}
 		linkButtonAlt {
 			condition = ${node.properties.variant == 'Link-Button-Alt'}
-			renderer = 'ButtonAlt LinkButton'
+			renderer = 'Button LinkButton Button--warn'
 		}
 		linkInline {
 			condition = ${node.properties.variant == 'Link-Inline'}

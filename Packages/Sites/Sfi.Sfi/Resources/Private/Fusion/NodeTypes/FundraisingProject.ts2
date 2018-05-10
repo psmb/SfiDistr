@@ -3,10 +3,7 @@ prototype(Sfi.Sfi:FundraisingProject) {
 
 	bar = Sfi.Sfi:FundraisingBar {
 		projectId = ${node.properties.uriPathSegment}
-		target = Editable {
-			property = 'target'
-			block = false
-		}
+		target = ${node.properties.target}
 		inverse = ${true}
 	}
 
@@ -16,8 +13,8 @@ prototype(Sfi.Sfi:FundraisingProject) {
 	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
-	bottom = Neos.Neos:ContentCollection {
-		nodePath = 'bottom'
+	report = Neos.Neos:ContentCollection {
+		nodePath = 'report'
 	}
 
 	imageUri = ImageUri {

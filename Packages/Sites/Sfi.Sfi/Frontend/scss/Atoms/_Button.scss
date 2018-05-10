@@ -13,9 +13,14 @@
 		opacity: 0.7;
 	}
 }
-.ButtonAlt {
+.Button--warn {
 	@extend .Button;
 	background-color: $orange;
+}
+.Button--pale {
+	@extend .Button;
+	background-color: $gray-bg;
+	color: $gray--dark;
 }
 
 .ButtonInline {
