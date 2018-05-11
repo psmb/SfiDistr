@@ -339,7 +339,6 @@ blah: &alohaRich
           placeholder: 'Место анонса'
     dateStart:
       type: DateTime
-      defaultValue: ''
       ui:
         label: 'Дата начала анонса'
         reloadIfChanged: true
