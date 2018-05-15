@@ -7,7 +7,7 @@
 	border: none;
 	margin: 0;
 	margin-right: $u;
-	padding: $u;
+	padding: $u 2*$u;
 	cursor: pointer;
 	&:hover{
 		opacity: 0.7;
