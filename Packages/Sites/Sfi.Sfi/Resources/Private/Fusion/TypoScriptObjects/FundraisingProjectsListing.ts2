@@ -27,9 +27,13 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
 
     @cache {
         mode = 'cached'
-        entryIdentifier.node = ${documentNode}
+        entryIdentifier {
+            node = ${documentNode}
+            referer = ${subscriber.referer}
+        }
         entryTags {
             1 = 'NodeType_Sfi.Sfi:FundraisingProject'
         }
+        maximumLifetime = '600'
     }
 }
