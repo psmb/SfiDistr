@@ -1,8 +1,9 @@
 prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection) {
+    @context.subscriber = ${Registry.get('subscriber') || subscriber}
     @context.amounts = ${Sfi.fetch('https://payments.sfi.ru/getAmountDonate')}
     @process.wrap = ${'<ul style="display:flex" class="FundraisingProjectsListing">' + value + '</ul>'}
     collection = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject]').get()} 
-    collection.@process.filterOutCurrent = ${subscriber.referer ? q(value).filter('[uriPathSegment != ' + subscriber.referer + ']') : value}
+    collection.@process.filterOutCurrent = ${referer ? q(value).filter('[uriPathSegment != ' + referer + ']') : value}
     itemName = 'node'
     itemRenderer = Neos.Fusion:Array {
         @process.wrap = ${'<li class="FundraisingProjectSmall marginBottom-double"><div class="FundraisingProjectSmall-inner marginHorizontal-single"><a href="' + this.nodeUri + '"><div>' + value + '</div></a></div></li>'}
@@ -32,7 +33,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
         mode = 'cached'
         entryIdentifier {
             node = ${documentNode}
-            referer = ${subscriber.referer}
+            referer = ${referer}
         }
         entryTags {
             1 = 'NodeType_Sfi.Sfi:FundraisingProject'
