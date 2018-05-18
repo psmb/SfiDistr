@@ -22,15 +22,15 @@
         reloadIfChanged: true
         inspector:
           group: image
-      editorOptions:
-        features:
-          crop: true
-        crop:
-          aspectRatio:
-            forceCrop: true
-            locked:
-              width: 640
-              height: 457
+          editorOptions:
+            features:
+              crop: true
+            crop:
+              aspectRatio:
+                forceCrop: true
+                locked:
+                  width: 640
+                  height: 457
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
@@ -38,15 +38,15 @@
         reloadIfChanged: true
         inspector:
           group: image
-      editorOptions:
-        features:
-          crop: true
-        crop:
-          aspectRatio:
-            forceCrop: true
-            locked:
-              width: 1600
-              height: 483
+          editorOptions:
+            features:
+              crop: true
+            crop:
+              aspectRatio:
+                forceCrop: true
+                locked:
+                  width: 1600
+                  height: 483
     title:
       type: string
       ui:
