@@ -12,6 +12,9 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
         }
         thumbUri = ImageUri {
             asset = ${node.properties.thumb}
+            width = 640
+            height = 457
+            allowCropping = true
         }
         image = ${'<img src="' + this.thumbUri + '">'}
         body = Neos.Fusion:Array {
