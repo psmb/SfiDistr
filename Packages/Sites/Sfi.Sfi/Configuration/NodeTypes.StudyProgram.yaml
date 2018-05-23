@@ -70,7 +70,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -93,7 +93,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -116,7 +116,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -139,7 +139,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -162,7 +162,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -185,7 +185,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -208,7 +208,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -231,7 +231,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -254,7 +254,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
@@ -277,7 +277,7 @@
         inlineEditable: true
         aloha:
           format:
-            b: FALSE
+            b: TRUE
             i: FALSE
             u: FALSE
             sub: FALSE
