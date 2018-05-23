@@ -88,6 +88,7 @@ prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Collection) {
 		entryIdentifier {
 			site = ${site}
 		}
+		maximumLifetime = ${3600}
 		entryTags {
 			1 = ${'Node_' + site.identifier}
 			1 = ${'NodeType_Sfi.News:ImportantMixin'}
