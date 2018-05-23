@@ -70,8 +70,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -93,8 +93,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -116,8 +116,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -139,8 +139,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -162,8 +162,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -185,8 +185,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -208,8 +208,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -231,8 +231,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -254,8 +254,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE
@@ -277,8 +277,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: FALSE
+            strong: TRUE
+            em: FALSE
             u: FALSE
             sub: FALSE
             sup: FALSE

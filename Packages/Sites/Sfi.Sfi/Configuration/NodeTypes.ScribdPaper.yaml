@@ -1,8 +1,8 @@
 blah: &alohaPlain
   placeholder: 'Текст тут'
   format:
-    b: FALSE
-    i: FALSE
+    strong: FALSE
+    em: FALSE
     u: FALSE
     sub: FALSE
     sup: FALSE
@@ -21,8 +21,8 @@ blah: &alohaPlain
 blah: &alohaRich
   placeholder: 'Текст тут'
   format:
-    b: TRUE
-    i: TRUE
+    strong: TRUE
+    em: TRUE
     u: FALSE
     sub: TRUE
     sup: TRUE

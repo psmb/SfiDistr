@@ -57,8 +57,8 @@
         inlineEditable: true
         aloha:
           format:
-            b: TRUE
-            i: TRUE
+            strong: TRUE
+            em: TRUE
             u: FALSE
             sub: TRUE
             sup: TRUE
@@ -81,8 +81,8 @@
         aloha:
           placeholder: 'Описание проекта'
           format:
-            b: TRUE
-            i: TRUE
+            strong: TRUE
+            em: TRUE
             u: FALSE
             sub: TRUE
             sup: TRUE
