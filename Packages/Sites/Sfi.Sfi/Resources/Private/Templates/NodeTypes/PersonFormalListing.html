@@ -18,17 +18,17 @@
 		</tr>
 		<f:for each="{collection}" as="item">
 			<tr itemprop="teachingStaff">
-				<td itemprop="fio"><neos:link.node node="{item}" class="Link">{item.properties.title -> f:format.stripTags()}</neos:link.node></td>
-				<td itemprop="post">{item.properties.position -> f:format.stripTags()}</td>
-				<td itemprop="teachingDiscipline">{item.properties.subject -> f:format.stripTags()}</td>
-				<td itemprop="teachingLevel">{item.properties.teachingLevel -> f:format.stripTags()}</td>
-				<td itemprop="teachingQual">{item.properties.teachingQual -> f:format.stripTags()}</td>
-				<td itemprop="degree">{item.properties.degree -> f:format.stripTags()}</td>
-				<td itemprop="academStat">{item.properties.degreeTitle -> f:format.stripTags()}</td>
-				<td itemprop="employeeQualification">{item.properties.education -> f:format.stripTags()}</td>
-				<td itemprop="profDevelopment">{item.properties.educationUpgrade -> f:format.stripTags()}</td>
-				<td itemprop="genExperience">{item.properties.experience -> f:format.stripTags()}</td>
-				<td itemprop="specExperience">{item.properties.experienceSpeciality -> f:format.stripTags()}</td>
+				<td itemprop="fio"><neos:link.node node="{item}" class="Link">{item.properties.title -> f:format.stripTags() -> f:format.raw()}</neos:link.node></td>
+				<td itemprop="post">{item.properties.position -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="teachingDiscipline">{item.properties.subject -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="teachingLevel">{item.properties.teachingLevel -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="teachingQual">{item.properties.teachingQual -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="degree">{item.properties.degree -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="academStat">{item.properties.degreeTitle -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="employeeQualification">{item.properties.education -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="profDevelopment">{item.properties.educationUpgrade -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="genExperience">{item.properties.experience -> f:format.stripTags() -> f:format.raw()}</td>
+				<td itemprop="specExperience">{item.properties.experienceSpeciality -> f:format.stripTags() -> f:format.raw()}</td>
 			</tr>
 		</f:for>
 	</table>

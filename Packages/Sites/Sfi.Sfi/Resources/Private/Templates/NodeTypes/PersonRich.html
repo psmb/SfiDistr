@@ -34,9 +34,14 @@
 			</f:if>
 		</div>
 	</div>
+	<style>
+		.neos-backend .no-float-admin {
+			float: none !important;
+		}
+	</style>
 	<div class="row">
 		<div class="columns">
-			<div class="medium-6 large-5 float-right paddingHorizontal-double paddingBottom-double">
+			<div class="medium-6 large-5 float-right no-float-admin paddingHorizontal-double paddingBottom-double">
 				<f:if condition="{node.context.workspace.name} != 'live' || {education}">
 					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'education')}</div>
 				</f:if>
