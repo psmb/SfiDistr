@@ -1,6 +1,7 @@
 
 Sfi:
   Sfi:
+    apiAuth: '%env:SFI_API_AUTH%'
     viewHelpers:
       partialRootPath: 'resource://Sfi.Sfi/Private/Partials/'
 Psmb:
