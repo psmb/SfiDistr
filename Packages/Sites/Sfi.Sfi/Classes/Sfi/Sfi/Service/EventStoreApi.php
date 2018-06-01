@@ -1,6 +1,8 @@
 <?php
 namespace Sfi\Sfi\Service;
 
+use Neos\Flow\Annotations as Flow;
+
 class EventStoreApi {
     /**
      * @Flow\InjectConfiguration(package="Sfi.Sfi", path="apiAuth")
