@@ -27,6 +27,7 @@ services:
       - SFI_SES_PASSWORD
       - GA_SECRET
       - GA_DEVKEY
+      - SFI_API_AUTH
     deploy:
       update_config:
         order: start-first
@@ -54,8 +55,9 @@ secrets:
     external: true
   GA_DEVKEY:
     external: true
+  SFI_API_AUTH:
+    external: true
 networks:
   main:
     external:
       name: main
-
