@@ -16,51 +16,35 @@ class EventStoreApi {
 
     public function registerEmailSent($reason, $type, $email)
     {
-        $data = [[
-            'eventId' => $this->createGUID(),
-            'eventType' => 'EmailSent',
-            'data' => [
-                'reason' => $reason,
-                'type' => $type,
-                'email' => $email
-            ]
-        ]];
-        return $this->callAPI('POST', 'http://eventstore:2113/streams/data', $data);
+        $data = [
+            'reason' => $reason,
+            'type' => $type,
+            'email' => $email
+        ];
+        return $this->callAPI('POST', 'http://node/publish-event/EmailSent', $data, true);
     }
 
     public function registerUnsubscribe($email)
     {
-        $data = [[
-            'eventId' => $this->createGUID(),
-            'eventType' => 'SubscriberUnsubscribed',
-            'data' => [
-                'email' => $email
-            ]
-        ]];
-        return $this->callAPI('POST', 'http://eventstore:2113/streams/data', $data);
-    }
-
-    protected function createGUID()
-    {
-        return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+        $data = [
+            'email' => $email
+        ];
+        return $this->callAPI('POST', 'http://node/publish-event/SubscriberUnsubscribed', $data, true);
     }
 
     protected function callAPI($method, $url, $data = false, $auth = false)
     {
         $curl = curl_init();
 
-
         switch ($method)
         {
             case "POST":
                 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-                
                 if ($data) {
                     $dataString = json_encode($data);
                     curl_setopt($curl, CURLOPT_POSTFIELDS, $dataString);
-                    curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
-                        'Content-Type: application/vnd.eventstore.events+json',                                                                                
-                        'Content-Length: ' . strlen($dataString))                                                                       
+                    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                        'Content-Length: ' . strlen($dataString))
                     );
                 }
                 break;
