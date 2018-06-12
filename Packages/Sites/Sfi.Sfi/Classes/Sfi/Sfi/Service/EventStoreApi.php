@@ -11,7 +11,7 @@ class EventStoreApi {
     protected $apiAuth;
 
     public function getPending($type) {
-        return json_decode($this->callAPI('GET', 'http://node/projection/' . $type), true, true) ?? [];
+        return json_decode($this->callAPI('GET', 'http://node/projection/' . $type, null, true), true) ?? [];
     }
 
     public function registerEmailSent($reason, $type, $email)
