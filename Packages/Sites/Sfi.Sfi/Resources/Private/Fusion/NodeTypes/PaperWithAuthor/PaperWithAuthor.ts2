@@ -5,7 +5,7 @@ prototype(Sfi.Sfi:PaperWithAuthor.AuthorDegree) < prototype(Neos.Fusion:Value) {
 			4 = ${String.stripTags(node.properties.author.properties.position)}
 		}
 		itemName = 'item'
-		itemRenderer = ${item && item + '. '}
+		itemRenderer = ${item && item + (iterator.isLast ? '' : '. ')}
 	}
 }
 
