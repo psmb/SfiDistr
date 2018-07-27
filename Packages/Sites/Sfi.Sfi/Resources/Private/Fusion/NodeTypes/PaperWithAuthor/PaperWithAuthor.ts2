@@ -18,16 +18,20 @@ prototype(Sfi.Sfi:PaperWithAuthor) {
 			node = ${node.properties.author}
 		}
 		content = ${String.stripTags(node.properties.author.properties.title)}
+		@if.setAuthor = ${node.properties.author}
 	}
 
 	authorDegree = Sfi.Sfi:PaperWithAuthor.AuthorDegree
 
-	authorInfo = Sfi.Sfi:PaperWithAuthor.AuthorInfo
+	authorInfo = Sfi.Sfi:PaperWithAuthor.AuthorInfo {
+		@if.setAuthor = ${node.properties.author}
+	}
 
 
 	main = ContentCollection {
 		nodePath = 'main'
 	}
+	@process.setAuthor = ${node.properties.author ? value : '<h1 class="H3 color-primary">Выбирите автора</h1>'}
 	@process.contentElementWrapping = ContentElementWrapping
 }
 
