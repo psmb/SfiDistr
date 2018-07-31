@@ -137,18 +137,23 @@ prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
 		listClass = 'medium-block-grid-2 small-block-grid-1'
 		collection = ${collection}
 	}
-
 	@cache {
-		mode = 'cached'
+		mode = 'dynamic'
 		entryIdentifier {
 			node = ${node}
-			editPreviewMode = ${editPreviewMode}
+		}
+		entryDiscriminator = ${request.arguments.currentPage}
+		context {
+			1 = 'node'
+			2 = 'documentNode'
+			3 = 'site'
 		}
 		entryTags {
 			1 = ${'NodeType_Sfi.News:AbstractNews'}
 			2 = ${'Node_' + node.identifier}
 		}
 	}
+
 	@if.notEmpty = ${q(collection).count() > 0}
 	@process.contentElementWrapping = ContentElementWrapping
 }

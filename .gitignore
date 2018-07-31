@@ -11,6 +11,8 @@ bower_components
 node_modules
 *.DS_Store
 stylesheets
+uploads
+ogk
 
 /Web/.htaccess
 /Web/_Resources
