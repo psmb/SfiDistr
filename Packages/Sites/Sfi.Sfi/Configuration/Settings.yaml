@@ -1,4 +1,13 @@
-
+Flowpack:
+  ElasticSearch:
+    ContentRepositoryAdaptor:
+      driver:
+        version: 2.x
+    clients:
+      default:
+        -
+          host: es
+          port: 9200
 Sfi:
   Sfi:
     apiAuth: '%env:SFI_API_AUTH%'
@@ -98,24 +107,6 @@ Neos:
       defaultLocale: ru
     http:
       baseUri: 'https://dev.sfi.ru/'
-    resource:
-      collections:
-        persistent:
-          storage: s3PersistentResourcesStorage
-          target: s3PersistentResourcesTarget
-      storages:
-        s3PersistentResourcesStorage:
-          storage: 'Flownative\Aws\S3\S3Storage'
-          storageOptions:
-            bucket: 'psmb-neos-resources'
-            keyPrefix: 'storage/sfi/'
-      targets:
-        s3PersistentResourcesTarget:
-          target: 'Flownative\Aws\S3\S3Target'
-          targetOptions:
-            bucket: 'psmb-neos-resources'
-            keyPrefix: 'target/sfi/'
-            baseUri: 'https://psmb-neos-resources.hb.bizmrg.com/target/sfi/'
   Neos:
     Ui:
       resources:
@@ -138,15 +129,12 @@ Neos:
           loadingDepth: 1
           presets:
             default:
-              baseNodeType: 'Neos.Neos:Document,!Sfi.News:News'
+              baseNodeType: 'Neos.Neos:Document'
     nodeTypes:
       groups:
         contentBlocks:
           position: 110
           label: 'Content Blocks'
-    fusion:
-      autoInclude:
-        Sfi.Sfi: true
   ContentRepository:
     contentDimensions:
       language:

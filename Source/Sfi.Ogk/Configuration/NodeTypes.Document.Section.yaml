@@ -1,0 +1,10 @@
+'Sfi.Ogk:Section':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Sfi.Ogk:MenuMixin': true
+  ui:
+    label: 'ОГК: раздел'
+    icon: 'file-o'
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'

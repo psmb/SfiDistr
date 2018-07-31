@@ -1,0 +1,27 @@
+'Sfi.Ogk:HomePage':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    label: 'ОГК: главная'
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  properties:
+    topMenu:
+      type: references
+      ui:
+        label: 'Верхнее меню'
+        inspector:
+          group: document
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Ogk:MenuMixin'
+    sectionMenu:
+      type: references
+      ui:
+        label: 'Меню разделов'
+        inspector:
+          group: document
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Ogk:MenuMixin'

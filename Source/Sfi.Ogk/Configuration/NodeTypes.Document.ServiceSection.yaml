@@ -1,0 +1,10 @@
+'Sfi.Ogk:ServiceSection':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Sfi.Ogk:MenuMixin': true
+  ui:
+    label: 'ОГК: технический раздел'
+    icon: 'file-alt'
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'

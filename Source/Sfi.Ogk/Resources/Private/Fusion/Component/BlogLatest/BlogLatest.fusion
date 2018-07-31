@@ -1,0 +1,8 @@
+prototype(Sfi.Ogk:BlogLatest) < prototype(Neos.Fusion:Collection) {
+    @process.template = afx`<div id="blog">{value}</div>`
+    collection = ${Search.query(site).nodeType('Sfi.News:News').sortDesc('date')}
+    collection.@process.filterByCategory = ${value.queryFilter('terms', {tags: [Configuration.setting('Sfi.Ogk.nodes.blogCategory')]})}
+    collection.@process.execute = ${value.limit(3).execute()}
+    itemName = 'node'
+    itemRenderer = Sfi.Ogk:BlogSmall
+}

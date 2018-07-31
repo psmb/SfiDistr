@@ -17,6 +17,9 @@
           editorOptions:
             nodeTypes:
               - 'Sfi.Sfi:Person'
+      search:
+        elasticSearchMapping: ''
+        indexing: ''
     isImportant:
       type: boolean
       ui:

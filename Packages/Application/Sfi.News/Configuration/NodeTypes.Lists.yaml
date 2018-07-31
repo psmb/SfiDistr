@@ -111,6 +111,9 @@
         reloadIfChanged: true
         inspector:
           group: list
+      search:
+        elasticSearchMapping: ''
+        indexing: ''
 'Sfi.News:Rss':
   superTypes:
     'Neos.Neos:Document': true

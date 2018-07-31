@@ -1,0 +1,25 @@
+{
+    "description": "ogkochetkov.ru Neos website",
+    "type": "neos-site",
+    "require": {
+        "neos/neos": "*",
+        "neos/nodetypes": "*",
+        "opsdev/cache-breaker": "^3.0",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "^4.0",
+        "psmb/mapreduce": "^2.0"
+    },
+    "name": "sfi/ogk",
+    "autoload": {
+        "psr-4": {
+            "Sfi\\Ogk\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Sfi.Ogk"
+        },
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

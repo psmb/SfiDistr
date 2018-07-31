@@ -71,6 +71,12 @@ blah: &alohaRich
                 label: Жесткая
               Soft:
                 label: Мягкая
+    originalIdentifier:
+      type: string
+      ui:
+        label: 'Original identifier'
+        inspector:
+          group: news
   constraints:
     nodeTypes:
       '*': false
@@ -170,6 +176,12 @@ blah: &alohaRich
             format: 'd-m-Y H:i'
       validation:
         Neos.Neos/Validation/DateTimeValidator: {  }
+      search:
+        elasticSearchMapping:
+          type: date
+          include_in_all: false
+          format: date_time_no_millis
+        indexing: '${(value ? Date.format(value, "Y-m-d\TH:i:sP") : null)}'
     hasVideo:
       type: boolean
       ui:
@@ -347,6 +359,12 @@ blah: &alohaRich
           position: 1
           editorOptions:
             format: 'd-m-Y H:i'
+      search:
+        elasticSearchMapping:
+          type: date
+          include_in_all: false
+          format: date_time_no_millis
+        indexing: '${(value ? Date.format(value, "Y-m-d\TH:i:sP") : null)}'
     date:
       ui:
         label: 'Дата (0:00 если без времени)'

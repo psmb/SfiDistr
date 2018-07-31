@@ -14,9 +14,13 @@
             "type": "git",
             "url": "https://github.com/Flowpack/Flowpack.Listable"
         },
-	{
+        {
             "type": "git",
             "url": "https://github.com/Flowpack/mustache"
+        },
+        {
+            "type": "path",
+            "url": "Source/Sfi.Ogk"
         }
     ],
     "require": {
@@ -47,7 +51,10 @@
         "psmb/createnodebutton": "@dev",
         "flownative/aws-s3": "2.*",
         "psmb/registry": "^2.0",
-        "flowpack/mustache": "dev-master"
+        "flowpack/mustache": "dev-master",
+        "neos/fusion-afx": "^1.0",
+        "sfi/youtube": "^2.1",
+        "sfi/ogk": "1.0.x-dev"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
