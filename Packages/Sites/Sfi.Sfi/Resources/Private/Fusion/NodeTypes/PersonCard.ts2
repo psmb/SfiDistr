@@ -1,0 +1,33 @@
+prototype(Sfi.Sfi:PersonCard) < prototype(Neos.Fusion:Component) {
+    name = Neos.Neos:Editable {
+        property = 'name'
+    }
+    description = Neos.Neos:Editable {
+        property = 'description'
+    }
+    link = NodeUri {
+        node = ${q(node).property('target')}
+    }
+    imageUri = ImageUri {
+        asset = ${q(node).property('image')}
+        maximumWidth = 100
+        maximumHeight = 100
+        allowCropping = true
+    }
+    renderer = afx`
+        <div class="marginVertical-triple" style="display: flex">
+            <div class="marginRight-double" style="flex-shrink: 0">
+                <img class="borderColor-gray" style="border-radius: 50%; border: 5px solid" src="{props.imageUri}"/>
+            </div>
+            <div>
+                <p>
+                    <span class="H4">{props.name}</span>
+                    <span class="ServiceEm margin-none">{props.description}</span>
+                </p>
+            </div>
+        </div>
+    `
+    renderer.@process.link = afx`<a href={props.link}>{value}</a>`
+    renderer.@process.link.@if.notInBE = ${!node.context.inBackend && props.link} 
+    @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}

@@ -1,0 +1,42 @@
+'Sfi.Sfi:PersonCard':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Карточка персоны'
+    icon: address-card
+    group: contentBlocks
+    inspector:
+      groups:
+        image:
+          label: Картинка
+  properties:
+    name:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Имя персоны
+    description:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Описание (должность, регалии, что угодно)
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Картинка персона
+        reloadIfChanged: true
+        inspector:
+          group: image
+          position: 50
+    target:
+      type: reference
+      ui:
+        label: 'Ссылка на страницу персоны'
+        reloadIfChanged: true
+        inspector:
+          group: image
+          editorOptions:
+            nodeTypes:
+              - 'Neos.Neos:Document'
