@@ -4,6 +4,7 @@
     "description": "SFI site files",
     "require": {
         "neos/neos": "*",
+        "neos/neos-ui": "*",
         "neos/neos-nodetypes": "*",
         "opsdev/cache-breaker": "*",
         "flownative/aws-s3": "*",

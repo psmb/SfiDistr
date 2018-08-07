@@ -122,7 +122,8 @@ Neos:
         javascript:
           'Sfi.Sfi:Itemprop':
             resource: '${"resource://Sfi.Sfi/Public/JavaScript/Itemprop/Plugin.js"}'
-
+      frontendConfiguration:
+        defaultInlineEditor: 'ckeditor5'
     userInterface:
       loadMinifiedJavascript: false
       editPreviewModes:

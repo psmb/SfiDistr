@@ -1,34 +1,23 @@
-import React from 'react';
 import manifest from '@neos-project/neos-ui-extensibility';
-import omit from 'lodash.omit';
-import itemprop from './itemprop';
-import {IconButton} from '@neos-project/react-ui-components';
+import ItempropPlugin from './itempropPlugin';
+import ItempropButton from './ItempropButton';
+import {$add, $get} from 'plow-js'
 
-const IconButtonComponent = props => {
-    const finalProps = omit(props, ['formattingRule']);
-    return (<IconButton {...finalProps}/>);
+const addPlugin = (Plugin, isEnabled) => (ckEditorConfiguration, options) => {
+    if (!isEnabled || isEnabled(options.editorOptions, options)) {
+        ckEditorConfiguration.plugins = ckEditorConfiguration.plugins || [];
+        return $add('plugins', Plugin, ckEditorConfiguration);
+    }
+    return ckEditorConfiguration;
 };
 
-manifest('Sfi.Site:Itemprop', {}, globalRegistry => {
-    const plugins = globalRegistry.get('ckEditor').get('plugins');
-    const formattingRules = globalRegistry.get('ckEditor').get('formattingRules');
-    const richtextToolbar = globalRegistry.get('ckEditor').get('richtextToolbar');
-
-    plugins.set('itemprop', {
-        initFn: itemprop
-    });
-
-    formattingRules.set('itemprop', {
-        command: 'itemprop',
-        config: formattingRules.config.addToExtraAllowedContent('*[itemprop]')
-    });
-
+manifest('Psmb.Itemprop:Itemprop', {}, globalRegistry => {
+    const richtextToolbar = globalRegistry.get('ckEditor5').get('richtextToolbar');
     richtextToolbar.set('itemprop', {
-        formattingRule: 'itemprop',
-        component: IconButtonComponent,
-        callbackPropName: 'onClick',
-
-        icon: 'bug',
-        hoverStyle: 'brand'
+        component: ItempropButton,
+        isVisible: $get('formatting.itemprop')
     });
+
+    const config = globalRegistry.get('ckEditor5').get('config');
+    config.set('itemprop', addPlugin(ItempropPlugin));
 });
