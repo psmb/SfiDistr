@@ -17,7 +17,7 @@ prototype(Sfi.Sfi:PersonCard) < prototype(Neos.Fusion:Component) {
     renderer = afx`
         <div class="marginVertical-triple" style="display: flex">
             <div class="marginRight-double" style="flex-shrink: 0">
-                <img class="borderColor-gray" style="border-radius: 50%; border: 5px solid" src="{props.imageUri}"/>
+                <img class="borderColor-gray" style="border-radius: 50%; border: 5px solid" src={props.imageUri}/>
             </div>
             <div>
                 <p>
