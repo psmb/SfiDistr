@@ -147,11 +147,15 @@ var addPlugin = function addPlugin(Plugin, isEnabled) {
     var richtextToolbar = globalRegistry.get('ckEditor5').get('richtextToolbar');
     richtextToolbar.set('itemprop', {
         component: _ItempropButton2.default,
-        isVisible: (0, _plowJs.$get)('formatting.itemprop')
+        isVisible: function isVisible(a) {
+            return (0, _plowJs.$get)('formatting.itemprop', a) && (0, _plowJs.$get)('formatting.table', a);
+        }
     });
 
     var config = globalRegistry.get('ckEditor5').get('config');
-    config.set('itemprop', addPlugin(_itempropPlugin2.default));
+    config.set('itemprop', addPlugin(_itempropPlugin2.default, function (a) {
+        return (0, _plowJs.$get)('formatting.itemprop', a) && (0, _plowJs.$get)('formatting.table', a);
+    }), 'after table');
 });
 
 /***/ }),
@@ -271,14 +275,18 @@ var _ckeditor5Exports = __webpack_require__(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var downcastAttributeToElement = _ckeditor5Exports.DowncastConverters.downcastAttributeToElement;
-var upcastElementToAttribute = _ckeditor5Exports.UpcastConverters.upcastElementToAttribute;
+var downcastAttributeToElement = _ckeditor5Exports.DowncastConverters.downcastAttributeToElement,
+    downcastAttributeToAttribute = _ckeditor5Exports.DowncastConverters.downcastAttributeToAttribute;
+var upcastElementToAttribute = _ckeditor5Exports.UpcastConverters.upcastElementToAttribute,
+    upcastAttributeToAttribute = _ckeditor5Exports.UpcastConverters.upcastAttributeToAttribute;
 
 
 var ITEMPROP = 'itemprop';
@@ -303,13 +311,10 @@ function _findBound(position, value, lookBack) {
 var ItempropCommand = function (_Command) {
     _inherits(ItempropCommand, _Command);
 
-    function ItempropCommand(editor, attributeKey) {
+    function ItempropCommand() {
         _classCallCheck(this, ItempropCommand);
 
-        var _this = _possibleConstructorReturn(this, (ItempropCommand.__proto__ || Object.getPrototypeOf(ItempropCommand)).call(this, editor));
-
-        _this.attributeKey = attributeKey;
-        return _this;
+        return _possibleConstructorReturn(this, (ItempropCommand.__proto__ || Object.getPrototypeOf(ItempropCommand)).apply(this, arguments));
     }
 
     _createClass(ItempropCommand, [{
@@ -318,14 +323,17 @@ var ItempropCommand = function (_Command) {
             var model = this.editor.model;
             var doc = model.document;
 
-            this.value = doc.selection.getAttribute(this.attributeKey);
-            this.isEnabled = model.schema.checkAttributeInSelection(doc.selection, this.attributeKey);
+            this.isEnabled = model.schema.checkAttributeInSelection(doc.selection, ITEMPROP);
+            if (doc.selection.hasAttribute(ITEMPROP)) {
+                this.value = doc.selection.getAttribute(ITEMPROP);
+            } else {
+                var parent = doc.selection.getFirstPosition().parent;
+                this.value = parent.getAttribute(ITEMPROP);
+            }
         }
     }, {
         key: 'execute',
         value: function execute(value) {
-            var _this2 = this;
-
             var model = this.editor.model;
             var doc = model.document;
             var selection = doc.selection;
@@ -343,7 +351,7 @@ var ItempropCommand = function (_Command) {
                         for (var _iterator = rangesToUnset[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                             var range = _step.value;
 
-                            writer.removeAttribute(_this2.attributeKey, range);
+                            writer.removeAttribute(ITEMPROP, range);
                         }
                     } catch (err) {
                         _didIteratorError = true;
@@ -360,25 +368,23 @@ var ItempropCommand = function (_Command) {
                         }
                     }
                 } else if (selection.isCollapsed) {
-                    var position = selection.getFirstPosition();
+                    var position = selection.getFirstPosition().parent;
 
                     if (selection.hasAttribute(ITEMPROP)) {
                         var itempropRange = findItemprop(selection.getFirstPosition(), selection.getAttribute(ITEMPROP));
                         if (value === false) {
-                            writer.removeAttribute(_this2.attributeKey, itempropRange);
+                            writer.removeAttribute(ITEMPROP, itempropRange);
                         } else {
-                            writer.setAttribute(_this2.attributeKey, value, itempropRange);
+                            writer.setAttribute(ITEMPROP, value, itempropRange);
                             writer.setSelection(itempropRange);
                         }
                     } else if (value !== '') {
                         var attributes = (0, _tomap2.default)(selection.getAttributes());
-                        attributes.set(_this2.attributeKey, value);
-                        var node = writer.createText(value, attributes);
-                        writer.insert(node, position);
-                        writer.setSelection(_ckeditor5Exports.ModelRange.createOn(node));
+                        attributes.set(ITEMPROP, value);
+                        writer.setAttribute(ITEMPROP, value, position);
                     }
                 } else {
-                    var ranges = model.schema.getValidRanges(selection.getRanges(), _this2.attributeKey);
+                    var ranges = model.schema.getValidRanges(selection.getRanges(), ITEMPROP);
 
                     var _iteratorNormalCompletion2 = true;
                     var _didIteratorError2 = false;
@@ -389,9 +395,9 @@ var ItempropCommand = function (_Command) {
                             var _range = _step2.value;
 
                             if (value === false) {
-                                writer.removeAttribute(_this2.attributeKey, _range);
+                                writer.removeAttribute(ITEMPROP, _range);
                             } else {
-                                writer.setAttribute(_this2.attributeKey, value, _range);
+                                writer.setAttribute(ITEMPROP, value, _range);
                             }
                         }
                     } catch (err) {
@@ -429,28 +435,41 @@ var Itemprop = function (_Plugin) {
         key: 'init',
         value: function init() {
             var editor = this.editor;
+            editor.model.schema.extend('$block', { allowAttributes: ITEMPROP });
             editor.model.schema.extend('$text', { allowAttributes: ITEMPROP });
-            editor.conversion.for('downcast').add(downcastAttributeToElement({
-                model: ITEMPROP,
-                view: function view(itemprop, writer) {
-                    return writer.createAttributeElement('span', { 'itemprop': itemprop });
-                }
-            }));
-            editor.conversion.for('upcast').add(upcastElementToAttribute({
+            editor.model.schema.extend('tableCell', { allowContentOf: '$root', allowAttributes: ITEMPROP });
+
+            var schema = this.editor.model.schema;
+
+            this.editor.conversion.for('upcast').add(upcastElementToAttribute({
                 view: {
                     name: 'span',
-                    attributes: {
-                        'itemprop': true
-                    }
+                    key: ITEMPROP
                 },
+                model: ITEMPROP
+            }));
+
+            this.editor.conversion.for('upcast').add(upcastAttributeToAttribute({
+                view: ITEMPROP,
+                model: ITEMPROP
+            }));
+
+            this.editor.conversion.for('downcast').add(downcastAttributeToElement({
                 model: {
                     key: ITEMPROP,
-                    value: function value(viewElement) {
-                        return viewElement.getAttribute('itemprop');
-                    }
+                    name: '$text'
+                },
+                view: function view(value, writer) {
+                    return writer.createAttributeElement('span', _defineProperty({}, ITEMPROP, value));
                 }
             }));
-            editor.commands.add(ITEMPROP, new ItempropCommand(this.editor, ITEMPROP));
+
+            this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
+                model: ITEMPROP,
+                view: ITEMPROP
+            }));
+
+            editor.commands.add(ITEMPROP, new ItempropCommand(this.editor));
         }
     }], [{
         key: 'pluginName',

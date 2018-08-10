@@ -15,9 +15,9 @@ manifest('Psmb.Itemprop:Itemprop', {}, globalRegistry => {
     const richtextToolbar = globalRegistry.get('ckEditor5').get('richtextToolbar');
     richtextToolbar.set('itemprop', {
         component: ItempropButton,
-        isVisible: $get('formatting.itemprop')
+        isVisible: a => $get('formatting.itemprop', a) && $get('formatting.table', a)
     });
 
     const config = globalRegistry.get('ckEditor5').get('config');
-    config.set('itemprop', addPlugin(ItempropPlugin));
+    config.set('itemprop', addPlugin(ItempropPlugin, a => $get('formatting.itemprop', a) && $get('formatting.table', a)), 'after table');
 });
