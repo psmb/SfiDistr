@@ -5,6 +5,8 @@
         microformats:
           label: 'Тэги для Рособрнадзора'
           position: 1
+        meta:
+          label: 'Всякая всячина'
   properties:
     itemprop:
       type: string
@@ -20,6 +22,13 @@
         reloadIfChanged: FALSE
         inspector:
           group: 'microformats'
+    descriptor:
+      type: string
+      ui:
+        label: 'Просто поле, используй как хочешь'
+        reloadIfChanged: FALSE
+        inspector:
+          group: 'meta'
 
 'Neos.Neos:Node':
   ui:
