@@ -66,6 +66,15 @@ class EventStoreApi {
 
         $result = curl_exec($curl);
 
+        if ($result === false) {
+            throw new \Exception("CURL Error: " . curl_error($curl));
+        }
+
+        $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($responseCode >= 400) {
+            throw new \Exception("HTTP Error: " . $responseCode . " Body: " . $result);
+        }
+
         curl_close($curl);
 
         return $result;
