@@ -1,3 +1,6 @@
-[itemtype], [itemprop] {
-    border: 1px dashed rgba(0,255,0,0.5);
+[itemtype] {
+    border: 1px dashed rgba(0, 255, 200, 0.5) !important;
+}
+[itemprop] {
+    border: 1px dashed rgba(0,255,0,0.5) !important;
 }
