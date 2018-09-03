@@ -26,7 +26,7 @@ $.fn.switchstylesheet = function(options) {
 		//goes thru the links to find out the ones having the selector
 		$(this).click(function(e) {
 				// e.preventDefault();
-				var title = $(this).attr('title'); //gets the title=?
+				var title = $(this).attr('data-css');
 				switchss(title);
 		});
 
@@ -37,13 +37,13 @@ $.fn.switchstylesheet = function(options) {
 		function switchss(title) {
 				//goes thru all the styles having seperator - alt
 				$('link[rel*=style][title*='+options.seperator+']').each(function(i) {
-						this.disabled = true;
-						if ($(this).attr('title') == title) {
-								this.disabled = false;
-						}
+					this.disabled = true;
+					if ($(this).attr('title') == title) {
+							this.disabled = false;
+					}
 				});
-				$('a[title*='+options.seperator+']').css('display', 'block');
-				$('a[title='+title+']').hide();
+				$('a[data-css*='+options.seperator+']').css('display', 'block');
+				$('a[data-css='+title+']').hide();
 				//create a cookie to store the style
 				cookie.createCookie(options.seperator, title, 365);
 		}
