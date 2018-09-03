@@ -99,10 +99,10 @@ class MailerCommandController extends CommandController
                         $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
                         $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
                         $this->systemLogger->log("Email sent: " . $subscriber['email'] . "; " . $reason . "; " . $subscripionId, \LOG_INFO);
-                    } catch (\Swift_RfcComplianceException $e) {
-                        $this->systemLogger->log($e->getMessage(), \LOG_NOTICE);
                     } catch (\Exception $e) {
-                        $this->systemLogger->log($e->getMessage(), \LOG_ERR);
+                        $message = $e->getMessage();
+                        $level = strpos($message, 'Swift_RfcComplianceException') !== false ? \LOG_NOTICE : \LOG_ERROR;
+                        $this->systemLogger->log($message, $level);
                     }
                 } else {
                     $this->outputLine('Not yet time for %s %s', [$subscriber['email'], $subscriber['date']]);
