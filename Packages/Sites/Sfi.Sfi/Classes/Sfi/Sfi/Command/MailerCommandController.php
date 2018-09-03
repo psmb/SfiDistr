@@ -99,6 +99,8 @@ class MailerCommandController extends CommandController
                         $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
                         $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
                         $this->systemLogger->log($e->getMessage(), \LOG_INFO);
+                    } catch (\Swift_RfcComplianceException $e) {
+                        $this->systemLogger->log($e->getMessage(), \LOG_NOTICE);
                     } catch (\Exception $e) {
                         $this->systemLogger->log($e->getMessage(), \LOG_ERR);
                     }
