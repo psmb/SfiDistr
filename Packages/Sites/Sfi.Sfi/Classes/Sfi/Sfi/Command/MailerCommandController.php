@@ -101,7 +101,7 @@ class MailerCommandController extends CommandController
                         $this->systemLogger->log("Email sent: " . $subscriber['email'] . "; " . $reason . "; " . $subscripionId, \LOG_INFO);
                     } catch (\Exception $e) {
                         $message = $e->getMessage();
-                        $level = strpos($message, 'does not comply with RFC 2822') !== false ? \LOG_NOTICE : \LOG_ERROR;
+                        $level = strpos($message, 'does not comply with RFC 2822') !== false ? \LOG_NOTICE : \LOG_ERR;
                         $this->systemLogger->log($message, $level);
                     }
                 } else {
