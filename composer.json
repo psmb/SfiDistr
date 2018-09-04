@@ -37,6 +37,7 @@
         "flowpack/jobqueue-common": "~2.0.0",
         "psmb/term": "^3.0",
         "psmb/newsletter": "dev-master",
+		"psmb/bookmarklet": "^0.1",
         "opsdev/cache-breaker": "^3.0",
         "neos/neos-ui": "dev-master",
         "neos/neos-ui-compiled": "dev-master",
