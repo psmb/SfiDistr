@@ -26,3 +26,6 @@ Neos:
         backend: Yeebase\Graylog\Log\Backend\GraylogBackend
       i18nLogger:
         backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+    error:
+      exceptionHandler:
+        className: 'Yeebase\Graylog\Error\GraylogExceptionHandler'
