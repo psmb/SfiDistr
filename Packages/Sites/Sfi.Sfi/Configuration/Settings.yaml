@@ -116,6 +116,13 @@ Neos:
             bucket: 'psmb-neos-resources'
             keyPrefix: 'target/sfi/'
             baseUri: 'https://psmb-neos-resources.hb.bizmrg.com/target/sfi/'
+    error:
+      exceptionHandler:
+        renderingGroups:
+          notFoundExceptions:
+            matchingStatusCodes:
+              - 404
+              - 410
   Neos:
     Ui:
       resources:
