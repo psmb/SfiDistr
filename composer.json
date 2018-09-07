@@ -41,6 +41,7 @@
         "opsdev/cache-breaker": "^3.0",
         "neos/neos-ui": "dev-master",
         "neos/neos-ui-compiled": "dev-master",
+		"sandstorm/optimizedrediscachebackend": "@dev",
         "packagefactory/atomicfusion": "^2.0",
         "flowpack/listable": "dev-sfi-legacy",
         "yeebase/graylog": "@dev",
