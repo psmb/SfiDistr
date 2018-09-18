@@ -144,10 +144,6 @@
         reloadIfChanged: true
         inspector:
           group: document
-      validation:
-        Neos.Neos/Validation/StringLengthValidator:
-          minimum: 1
-          maximum: 255
 'Neos.Neos:Node':
   properties:
     searchid:
