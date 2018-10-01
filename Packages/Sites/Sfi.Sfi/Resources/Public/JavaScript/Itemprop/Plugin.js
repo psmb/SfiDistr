@@ -337,21 +337,43 @@ var ItempropCommand = function (_Command) {
             var model = this.editor.model;
             var doc = model.document;
             var selection = doc.selection;
-            var toggleMode = value === undefined;
-            value = toggleMode ? !this.value : value;
+            value = value === undefined ? false : value;
 
             model.change(function (writer) {
-                if (toggleMode && !value) {
-                    var rangesToUnset = selection.isCollapsed ? [findItemprop(selection.getFirstPosition(), selection.getAttribute(ITEMPROP))] : selection.getRanges();
+                if (selection.isCollapsed) {
+                    var position = selection.getFirstPosition().parent;
+
+                    if (selection.hasAttribute(ITEMPROP)) {
+                        var itempropRange = findItemprop(selection.getFirstPosition(), selection.getAttribute(ITEMPROP));
+                        if (value === false) {
+                            writer.removeAttribute(ITEMPROP, itempropRange);
+                        } else {
+                            writer.setAttribute(ITEMPROP, value, itempropRange);
+                            writer.setSelection(itempropRange);
+                        }
+                    } else {
+                        if (value === false) {
+                            writer.removeAttribute(ITEMPROP, position);
+                        } else {
+                            writer.setAttribute(ITEMPROP, value, position);
+                        }
+                    }
+                } else {
+                    var ranges = model.schema.getValidRanges(selection.getRanges(), ITEMPROP);
+
                     var _iteratorNormalCompletion = true;
                     var _didIteratorError = false;
                     var _iteratorError = undefined;
 
                     try {
-                        for (var _iterator = rangesToUnset[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        for (var _iterator = ranges[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                             var range = _step.value;
 
-                            writer.removeAttribute(ITEMPROP, range);
+                            if (value === false) {
+                                writer.removeAttribute(ITEMPROP, range);
+                            } else {
+                                writer.setAttribute(ITEMPROP, value, range);
+                            }
                         }
                     } catch (err) {
                         _didIteratorError = true;
@@ -364,53 +386,6 @@ var ItempropCommand = function (_Command) {
                         } finally {
                             if (_didIteratorError) {
                                 throw _iteratorError;
-                            }
-                        }
-                    }
-                } else if (selection.isCollapsed) {
-                    var position = selection.getFirstPosition().parent;
-
-                    if (selection.hasAttribute(ITEMPROP)) {
-                        var itempropRange = findItemprop(selection.getFirstPosition(), selection.getAttribute(ITEMPROP));
-                        if (value === false) {
-                            writer.removeAttribute(ITEMPROP, itempropRange);
-                        } else {
-                            writer.setAttribute(ITEMPROP, value, itempropRange);
-                            writer.setSelection(itempropRange);
-                        }
-                    } else if (value !== '') {
-                        var attributes = (0, _tomap2.default)(selection.getAttributes());
-                        attributes.set(ITEMPROP, value);
-                        writer.setAttribute(ITEMPROP, value, position);
-                    }
-                } else {
-                    var ranges = model.schema.getValidRanges(selection.getRanges(), ITEMPROP);
-
-                    var _iteratorNormalCompletion2 = true;
-                    var _didIteratorError2 = false;
-                    var _iteratorError2 = undefined;
-
-                    try {
-                        for (var _iterator2 = ranges[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                            var _range = _step2.value;
-
-                            if (value === false) {
-                                writer.removeAttribute(ITEMPROP, _range);
-                            } else {
-                                writer.setAttribute(ITEMPROP, value, _range);
-                            }
-                        }
-                    } catch (err) {
-                        _didIteratorError2 = true;
-                        _iteratorError2 = err;
-                    } finally {
-                        try {
-                            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                                _iterator2.return();
-                            }
-                        } finally {
-                            if (_didIteratorError2) {
-                                throw _iteratorError2;
                             }
                         }
                     }
@@ -439,6 +414,12 @@ var Itemprop = function (_Plugin) {
             editor.model.schema.extend('$text', { allowAttributes: ITEMPROP });
             editor.model.schema.extend('tableCell', { allowContentOf: '$root', allowAttributes: ITEMPROP });
 
+            editor.model.schema.addChildCheck(function (context, childDefinition) {
+                if (childDefinition.name == 'paragraph' && Array.from(context.getNames()).includes('tableCell')) {
+                    return false;
+                }
+            });
+
             var schema = this.editor.model.schema;
 
             this.editor.conversion.for('upcast').add(upcastElementToAttribute({
@@ -465,7 +446,18 @@ var Itemprop = function (_Plugin) {
             }));
 
             this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
-                model: ITEMPROP,
+                model: {
+                    key: ITEMPROP,
+                    name: 'tableCell'
+                },
+                view: ITEMPROP
+            }));
+
+            this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
+                model: {
+                    key: ITEMPROP,
+                    name: 'paragraph'
+                },
                 view: ITEMPROP
             }));
 

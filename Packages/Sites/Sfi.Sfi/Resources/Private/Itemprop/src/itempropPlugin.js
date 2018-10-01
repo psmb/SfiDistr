@@ -40,17 +40,10 @@ class ItempropCommand extends Command {
         const model = this.editor.model;
         const doc = model.document;
         const selection = doc.selection;
-        const toggleMode = value === undefined;
-        value = toggleMode ? !this.value : value;
+        value = value === undefined ? false : value;
 
         model.change(writer => {
-            if (toggleMode && !value) {
-                const rangesToUnset = selection.isCollapsed ?
-                    [findItemprop(selection.getFirstPosition(), selection.getAttribute(ITEMPROP))] : selection.getRanges();
-                for (const range of rangesToUnset) {
-                    writer.removeAttribute(ITEMPROP, range);
-                }
-            } else if (selection.isCollapsed) {
+            if (selection.isCollapsed) {
                 const position = selection.getFirstPosition().parent;
 
                 if (selection.hasAttribute(ITEMPROP)) {
@@ -61,10 +54,12 @@ class ItempropCommand extends Command {
                         writer.setAttribute(ITEMPROP, value, itempropRange);
                         writer.setSelection(itempropRange);
                     }
-                } else if (value !== '') {
-                    const attributes = toMap(selection.getAttributes());
-                    attributes.set(ITEMPROP, value);
-                    writer.setAttribute(ITEMPROP, value, position);
+                } else {
+                    if (value === false) {
+                        writer.removeAttribute(ITEMPROP, position);
+                    } else {
+                        writer.setAttribute(ITEMPROP, value, position);
+                    }
                 }
             } else {
                 const ranges = model.schema.getValidRanges(selection.getRanges(), ITEMPROP);
@@ -90,6 +85,12 @@ export default class Itemprop extends Plugin {
         editor.model.schema.extend('$block', {allowAttributes: ITEMPROP});
         editor.model.schema.extend('$text', {allowAttributes: ITEMPROP});
         editor.model.schema.extend('tableCell', {allowContentOf: '$root', allowAttributes: ITEMPROP});
+
+        editor.model.schema.addChildCheck( ( context, childDefinition ) => {
+            if (childDefinition.name == 'paragraph' && Array.from( context.getNames() ).includes( 'tableCell' ) ) {
+				return false;
+			}
+		} );
         
         const schema = this.editor.model.schema;
 
@@ -115,7 +116,18 @@ export default class Itemprop extends Plugin {
         }));
 
         this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
-            model: ITEMPROP,
+            model: {
+                key: ITEMPROP,
+                name: 'tableCell'
+            },
+            view: ITEMPROP
+        }));
+
+        this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
+            model: {
+                key: ITEMPROP,
+                name: 'paragraph'
+            },
             view: ITEMPROP
         }));
 
