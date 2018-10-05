@@ -8,13 +8,13 @@
 			</div>
 		</f:if>
 		<div class="MediaPerson-Body">
-			<h3 class="MediaPerson-Title">{title}</h3>
+			<h3 class="MediaPerson-Title">{title -> f:format.raw()}</h3>
 			<f:if condition="{showPosition}">
-				<div class="ServiceEm">{position}</div>
+				<div class="ServiceEm">{position-> f:format.raw()}</div>
 			</f:if>
-			<div class="ServiceEm">{degree}</div>
+			<div class="ServiceEm">{degree-> f:format.raw()}</div>
 			<f:if condition="{subject}">
-				<div class="MediaPerson-Teaser ParagraphAlt"><span class="color-primaryAlt"><f:translate package="Sfi.Sfi" id="staff.subjects"/>:</span><br>{subject}</div>
+				<div class="MediaPerson-Teaser ParagraphAlt"><span class="color-primaryAlt"><f:translate package="Sfi.Sfi" id="staff.subjects"/>:</span><br>{subject -> f:format.raw()}</div>
 			</f:if>
 		</div>
 	</div>
