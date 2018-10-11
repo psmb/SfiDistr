@@ -130,7 +130,7 @@ blah: &alohaRich
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
+          <<: *alohaRich
           placeholder: 'Преподаваемая дисциплина (teachingDiscipline)'
     experience:
       type: string

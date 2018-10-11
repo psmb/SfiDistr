@@ -34,18 +34,77 @@ prototype(Sfi.Sfi:PersonShort) < prototype(Neos.Neos:Content) {
 	image = ${q(node).find('[instanceof Neos.NodeTypes:Image]').first().property('image')}
 }
 
-prototype(Sfi.Sfi:PersonFormalListing) {
-	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('[isProfessor = TRUE]').get()}
+prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
+	renderer = Neos.Fusion:Array {
+		1 = Sfi.Sfi:PersonFormalListingByLevel {
+			title = 'Состав педагогических (научно-педагогических) работников образовательной организации по образовательной программе 48.03.01 Теология (бакалавриат)'
+			level = 'Теология (бакалавриат)'
+		}
+		2 = Sfi.Sfi:PersonFormalListingByLevel {
+			title = 'Состав педагогических (научно-педагогических) работников образовательной организации по образовательной программе 48.04.01 Теология (магистратура)'
+			level = 'Теология (магистратура)'
+		}
+	}
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
 			node = ${node}
-			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
 			1 = ${'NodeType_Sfi.Sfi:Person'}
 		}
 	}
+}
+
+prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection) {
+	title = 'to-be-set'
+	level = 'to-be-set'
+	@context.level = ${String.replace(String.replace(this.level, '(', '\('), ')', '\)')}
+	@context.title = ${this.title}
+	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('[isProfessor = TRUE][subject *= "' + this.level + '"]').get()}
+	itemName = 'node'
+	itemRenderer = Neos.Fusion:Component {
+		nodeUri = Neos.Neos:NodeUri {
+			node = ${node}
+		}
+		subject = ${String.pregMatch(node.properties.subject, '/<strong>' + level + ':<\/strong>([^<]*)/u')[1]}
+		renderer = afx`
+			<tr itemprop="teachingStaff">
+				<td itemprop="fio"><a href={props.nodeUri} class="Link">{node.properties.title}</a></td>
+				<td itemprop="post">{node.properties.position}</td>
+				<td itemprop="teachingDiscipline">{props.subject}</td>
+				<td itemprop="teachingLevel">{node.properties.teachingLevel}</td>
+				<td itemprop="teachingQual">{node.properties.teachingQual}</td>
+				<td itemprop="degree">{node.properties.degree}</td>
+				<td itemprop="academStat">{node.properties.degreeTitle}</td>
+				<td itemprop="employeeQualification">{node.properties.education}</td>
+				<td itemprop="profDevelopment">{node.properties.educationUpgrade}</td>
+				<td itemprop="genExperience">{node.properties.experience}</td>
+				<td itemprop="specExperience">{node.properties.experienceSpeciality}</td>
+			</tr>
+		`
+	}
+	@process.wrap = afx`
+		<h3 class="H3">{title}</h3>
+		<div style="overflow-x: scroll; overflow-y: scroll; max-height: 600px">
+			<table class="Table" itemprop="teachingStaff">
+				<tr>
+					<th>Фамилия Имя Отчество</th>
+					<th>Должность</th>
+					<th>Преподаваемые дисциплины</th>
+					<th>Уровень образования</th>
+					<th>Квалификация</th>
+					<th>Ученая степень</th>
+					<th>Ученое звание</th>
+					<th>Направление подготовки и/или специальность</th>
+					<th>Повышение квалификации и профессиональная переподготовка</th>
+					<th>Общий стаж работы</th>
+					<th>Стаж работы по специальности</th>
+				</tr>
+				{value}
+			</table>
+		</div>
+	`
 }
 
 
