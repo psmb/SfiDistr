@@ -85,7 +85,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 		`
 	}
 	@process.wrap = afx`
-		<h3 class="H3">{title}</h3>
+		<h3 class="H3 marginTop-double marginBottom-single">{title}</h3>
 		<div style="overflow-x: scroll; overflow-y: scroll; max-height: 600px">
 			<table class="Table" itemprop="teachingStaff">
 				<tr>
