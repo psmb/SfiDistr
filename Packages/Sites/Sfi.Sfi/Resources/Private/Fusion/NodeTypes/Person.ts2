@@ -86,8 +86,8 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 	}
 	@process.wrap = afx`
 		<h3 class="H3 marginTop-double marginBottom-single">{title}</h3>
-		<div style="overflow-x: scroll; overflow-y: scroll; max-height: 600px">
-			<table class="Table" itemprop="teachingStaff">
+		<table class="Table" itemprop="teachingStaff" style="max-height: 600px">
+			<thead>
 				<tr>
 					<th>Фамилия Имя Отчество</th>
 					<th>Должность</th>
@@ -101,9 +101,11 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 					<th>Общий стаж работы</th>
 					<th>Стаж работы по специальности</th>
 				</tr>
+			</thead>
+			<tbody>
 				{value}
-			</table>
-		</div>
+			</tbody>
+		</table>
 	`
 }
 
