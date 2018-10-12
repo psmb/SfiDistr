@@ -5,3 +5,7 @@ html {
 a {
 	text-decoration: underline !important;
 }
+
+*, .color-primary, .Article-Lead a, .ButtonInline, .InlineLink, .Link, .PaleLink, .RteText a, .RteTextLinkable a {
+	color: black !important;
+}
