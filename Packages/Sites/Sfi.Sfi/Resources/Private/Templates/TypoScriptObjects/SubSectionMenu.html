@@ -3,7 +3,7 @@
 <ul class="SubSectionMenu" id="SubSectionMenu">
     <f:for each="{items}" as="item">
         <li class="{ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()} SubSectionMenu-Item">
-            <neos:link.node class="" node="{item.node}" section="SubSectionMenu" />
+            <neos:link.node class="" node="{item.node}" section="SubSectionMenu" title="{item.node.properties.title}" />
         </li>
     </f:for>
 </ul>

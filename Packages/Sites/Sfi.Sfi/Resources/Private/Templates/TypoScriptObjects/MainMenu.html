@@ -5,13 +5,13 @@
 	<f:for each="{items}" as="item" iteration="iterator">
 		<li class="MainMenu-Column {f:if(condition:iterator.isLast,then:'end')} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}" >
 			<div class="MainMenu-Item Paragraph--Large lineHeight-single marginVertical-half {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}">
-				<neos:link.node node="{item.node}"/>
+				<neos:link.node node="{item.node}" title="{item.node.properties.title}"/>
 			</div>
 			<f:if condition="{item.subItems}">
 				<div class="MainMenu-SubItems">
 					<f:for each="{item.subItems}" as="subItem">
 						<div class="MainMenu-SubItem ParagraphAlt marginVertical-single {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
-							<neos:link.node node="{subItem.node}" />
+							<neos:link.node node="{subItem.node}" title="{subItem.node.properties.title}" />
 						</div>
 					</f:for>
 				</div>

@@ -2,7 +2,7 @@
 <ul class="">
     <f:for each="{items}" as="item">
         <li class="hack-HeaderPetit lineHeight-tight paddingVertical-half Link">
-            <neos:link.node node="{item.node}" target="_blank"/>
+            <neos:link.node node="{item.node}" target="_blank" title="{item.node.properties.title}"/>
         </li>
     </f:for>
 </ul>

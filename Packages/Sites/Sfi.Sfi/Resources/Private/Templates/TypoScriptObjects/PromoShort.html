@@ -2,7 +2,7 @@
 {namespace ts=Neos\Fusion\ViewHelpers}
 {namespace m=Neos\Media\ViewHelpers}
 
-<neos:link.node node="{node}">
+<neos:link.node node="{node}" title="{node.properties.title}">
 	<div class="MediaPromo PromoShort">
 			<div class="MediaPromo-Image">
 				<f:if condition="{thumbnailImage}">
