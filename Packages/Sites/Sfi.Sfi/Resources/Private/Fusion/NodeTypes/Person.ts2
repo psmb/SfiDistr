@@ -67,7 +67,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 		nodeUri = Neos.Neos:NodeUri {
 			node = ${node}
 		}
-		subject = ${String.pregMatch(node.properties.subject, '/<strong>' + level + ':<\/strong>([^<]*)/u')[1]}
+		subject = ${String.pregMatch(node.properties.subject, '/<strong>' + level + ':<\/strong>((.*)(?:<strong>)|(.*))/u')[2]}
 		renderer = afx`
 			<tr itemprop="teachingStaff">
 				<td itemprop="fio"><a href={props.nodeUri} class="Link">{node.properties.title}</a></td>
