@@ -35,54 +35,56 @@
 	</style>
 	<div class="row">
 		<div class="columns">
+			<div class="medium-6 float-right no-float-admin paddingHorizontal-double paddingBottom-double">
+				<f:if condition="{node.context.workspace.name} != 'live' || {subject}">
+					<div class="marginVertical-single">
+						<div class="ParagraphAlt--Large color-primaryAlt">
+							<f:translate package="Sfi.Sfi" id="staff.subjects" />
+						</div>
+						<div class="ParagraphAlt">{neos:contentElement.editable(property: 'subject')}</div>
+					</div>
+				</f:if>
+				<div class="ParagraphAlt--Large color-primaryAlt">Образование</div>
+				<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevel}">
+					<div class="ParagraphAlt marginBottom-single"><strong>Уровень образования:</strong>
+						{neos:contentElement.editable(property: 'teachingLevel', tag: 'span')}</div>
+				</f:if>
+				<f:if condition="{node.context.workspace.name} != 'live' || {education}">
+					<div class="ParagraphAlt marginBottom-single"><strong>Направление подготовки и/или специальность:</strong>
+						{neos:contentElement.editable(property: 'education', tag: 'span')}</div>
+				</f:if>
+				<f:if condition="{node.context.workspace.name} != 'live'">
+					<div class="ParagraphAlt marginBottom-single"><strong>Квалификация:</strong> {neos:contentElement.editable(property:
+						'teachingQual')}</div>
+				</f:if>
+				<f:if condition="{node.context.workspace.name} != 'live' || {educationUpgrade}">
+					<div class="ParagraphAlt marginBottom-single"><strong>Повышение квалификации и профессиональная переподготовка:</strong>
+						{neos:contentElement.editable(property: 'educationUpgrade', tag: 'span')}</div>
+				</f:if>
+				
+				
+				<f:if condition="{node.context.workspace.name} != 'live'">
+					<div class="ParagraphAlt marginVertical-single"><strong>Общий стаж работы:</strong> {experienceSum -> f:format.raw()}</div>
+					{experience -> f:format.raw()}
+				</f:if>
+				<f:if condition="{node.context.workspace.name} != 'live'">
+					<div class="ParagraphAlt marginVertical-single"><strong>Стаж работы по специальности:</strong>
+						{experienceSpecialitySum}</div>
+					{experienceSpeciality -> f:format.raw()}
+				</f:if>
+				<f:if condition="{node.context.workspace.name} != 'live'">
+					<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experienceSfi')}</div>
+				</f:if>
+				
+				<f:if condition="{node.context.workspace.name} != 'live' || {email}">
+					<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'email')}</div>
+				</f:if>
+				<f:if condition="{node.context.workspace.name} != 'live' || {telephone}">
+					<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'telephone')}</div>
+				</f:if>
+			</div>
 
 			{main -> f:format.raw()}
-
-			<f:if condition="{node.context.workspace.name} != 'live' || {subject}">
-				<div class="marginVertical-single">
-					<div class="ParagraphAlt--Large color-primaryAlt">
-						<f:translate package="Sfi.Sfi" id="staff.subjects" />
-					</div>
-					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'subject')}</div>
-				</div>
-			</f:if>
-			<div class="ParagraphAlt--Large color-primaryAlt">Образование</div>
-			<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevel}">
-				<div class="ParagraphAlt marginBottom-single"><strong>Уровень образования:</strong>
-					{neos:contentElement.editable(property: 'teachingLevel', tag: 'span')}</div>
-			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live' || {education}">
-				<div class="ParagraphAlt marginBottom-single"><strong>Направление подготовки и/или специальность:</strong>
-					{neos:contentElement.editable(property: 'education', tag: 'span')}</div>
-			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live'">
-				<div class="ParagraphAlt marginBottom-single"><strong>Квалификация:</strong> {neos:contentElement.editable(property:
-					'teachingQual')}</div>
-			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live' || {educationUpgrade}">
-				<div class="ParagraphAlt marginBottom-single"><strong>Повышение квалификации и профессиональная переподготовка:</strong>
-					{neos:contentElement.editable(property: 'educationUpgrade', tag: 'span')}</div>
-			</f:if>
-			
-			
-			<f:if condition="{node.context.workspace.name} != 'live'">
-				<div class="ParagraphAlt marginVertical-single"><strong>Общий стаж работы:</strong> {experienceSum -> f:format.raw()}</div>
-				{experience -> f:format.raw()}
-			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live'">
-				<div class="ParagraphAlt marginVertical-single"><strong>Стаж работы по специальности:</strong> {experienceSpecialitySum}</div>
-				{experienceSpeciality -> f:format.raw()}
-			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live'">
-				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experienceSfi')}</div>
-			</f:if>
-			
-			<f:if condition="{node.context.workspace.name} != 'live' || {email}">
-				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'email')}</div>
-			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live' || {telephone}">
-				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'telephone')}</div>
-			</f:if>
 
 			{listByTag -> f:format.raw()}
 		</div>
