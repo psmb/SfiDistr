@@ -17,10 +17,6 @@
         {
             "type": "git",
             "url": "https://github.com/Flowpack/mustache"
-        },
-        {
-            "url": "https://github.com/dimaip/OptimizedRedisCacheBackend",
-            "type": "git"
         }
     ],
     "require": {
@@ -45,7 +41,7 @@
         "opsdev/cache-breaker": "^3.0",
         "neos/neos-ui": "dev-master",
         "neos/neos-ui-compiled": "dev-master",
-		"sandstorm/optimizedrediscachebackend": "dev-patch-1@dev",
+		"sandstorm/optimizedrediscachebackend": "^0.0.3",
         "packagefactory/atomicfusion": "^2.0",
         "flowpack/listable": "dev-sfi-legacy",
         "yeebase/graylog": "@dev",
