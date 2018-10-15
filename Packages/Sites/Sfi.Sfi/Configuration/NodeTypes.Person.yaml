@@ -59,6 +59,18 @@ blah: &alohaRich
       type: 'Neos.Neos:ContentCollection'
     coverCollection:
       type: 'Neos.Neos:ContentCollection'
+    experience:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Sfi.Sfi:PersonEmployment': true
+    experienceSpeciality:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Sfi.Sfi:PersonEmployment': true
   properties:
     isRector:
       type: boolean

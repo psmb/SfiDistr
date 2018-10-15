@@ -11,6 +11,19 @@ prototype(Sfi.Sfi:Person) {
 
 	listByTag = Sfi.News:ListByTag
 
+	experience = Neos.Neos:ContentCollection {
+		nodePath = 'experience'
+	}
+	experienceSum = Sfi.Sfi:TimeIntervalSum {
+		path = 'experience'
+	}
+	experienceSpeciality = Neos.Neos:ContentCollection {
+		nodePath = 'experienceSpeciality'
+	}
+	experienceSpecialitySum = Sfi.Sfi:TimeIntervalSum {
+		path = 'experienceSpeciality'
+	}
+
 	coverCollection = Neos.Neos:ContentCollection {
 		nodePath = 'coverCollection'
 		prototype(Neos.NodeTypes:Image) {
@@ -68,6 +81,12 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 			node = ${node}
 		}
 		subject = ${String.pregMatch(node.properties.subject, '/<strong>' + level + ':<\/strong>((.*)(?:<strong>)|(.*))/u')[2]}
+		experienceSum = Sfi.Sfi:TimeIntervalSum {
+			path = 'experience'
+		}
+		experienceSpecialitySum = Sfi.Sfi:TimeIntervalSum {
+			path = 'experienceSpeciality'
+		}
 		renderer = afx`
 			<tr itemprop="teachingStaff">
 				<td itemprop="fio"><a href={props.nodeUri} class="Link">{node.properties.title}</a></td>
@@ -79,8 +98,8 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 				<td itemprop="academStat">{node.properties.degreeTitle}</td>
 				<td itemprop="employeeQualification">{node.properties.education}</td>
 				<td itemprop="profDevelopment">{node.properties.educationUpgrade}</td>
-				<td itemprop="genExperience">{node.properties.experience}</td>
-				<td itemprop="specExperience">{node.properties.experienceSpeciality}</td>
+				<td itemprop="genExperience">{props.experienceSum}</td>
+				<td itemprop="specExperience">{props.experienceSpecialitySum}</td>
 			</tr>
 		`
 	}

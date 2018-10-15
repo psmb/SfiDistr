@@ -1,0 +1,39 @@
+'Sfi.Sfi:PersonEmployment':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Интервал трудоустройства'
+    icon: business-time
+    group: contentBlocks
+    inspector:
+      groups:
+        interval:
+          label: 'Интервал трудоустройства'
+  properties:
+    dateStart:
+      type: DateTime
+      ui:
+        label: Дата начала работы
+        reloadIfChanged: true
+        inspector:
+          group: interval
+          editorOptions:
+            format: 'Y-m'
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
+    dateEnd:
+      type: DateTime
+      ui:
+        label: Дата конца работы (пусто если по сей день)
+        reloadIfChanged: true
+        inspector:
+          group: interval
+          editorOptions:
+            format: 'Y-m'
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
+
+'Neos.Neos:ContentCollection':
+  constraints:
+    nodeTypes:
+      'Sfi.Sfi:PersonEmployment': false

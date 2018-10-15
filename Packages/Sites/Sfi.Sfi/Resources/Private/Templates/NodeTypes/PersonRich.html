@@ -70,12 +70,12 @@
 				
 				
 				<f:if condition="{node.context.workspace.name} != 'live'">
-					<div class="ParagraphAlt marginVertical-single"><strong>Общий стаж работы:</strong>
-						{neos:contentElement.editable(property: 'experience', tag: 'span')}</div>
+					<div class="ParagraphAlt marginVertical-single"><strong>Общий стаж работы:</strong> {experienceSum -> f:format.raw()}</div>
+					{experience -> f:format.raw()}
 				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live'">
-					<div class="ParagraphAlt marginVertical-single"><strong>Стаж работы по специальности:</strong>
-						{neos:contentElement.editable(property: 'experienceSpeciality', tag: 'span')}</div>
+					<div class="ParagraphAlt marginVertical-single"><strong>Стаж работы по специальности:</strong> {experienceSpecialitySum}</div>
+					{experienceSpeciality -> f:format.raw()}
 				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live'">
 					<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experienceSfi')}</div>

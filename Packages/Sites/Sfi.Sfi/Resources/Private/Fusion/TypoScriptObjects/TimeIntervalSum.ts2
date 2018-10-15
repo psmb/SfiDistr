@@ -1,0 +1,21 @@
+prototype(Sfi.Sfi:TimeIntervalSum) < prototype(Sfi.Sfi:Reduce) {
+	path = 'to-be-set'
+	@context.path = ${this.path}
+	@context.initDate = ${Date.parse('00:00', 'H:i')}
+	items = Neos.Fusion:RawCollection {
+		collection = ${q(node).children(path).children('[instanceof Sfi.Sfi:PersonEmployment]').get()}
+		itemName = 'node'
+		itemRenderer = Neos.Fusion:Value {
+			dateStart = ${node.properties.dateStart ? node.properties.dateStart : Date.now()}
+			dateEnd = ${node.properties.dateEnd ? node.properties.dateEnd : Date.now()}
+			value = ${Date.diff(this.dateEnd, this.dateStart)}
+		}
+	}
+	itemKey = 'key'
+	itemName = 'item'
+	carryName = 'carry'
+	initialValue = ${initDate}
+	itemRenderer = ${Date.add(carry, item)}
+	@process.subtract = ${Date.diff(value, initDate)}
+	@process.format = ${Translation.translate('year', null, [value.y], null, 'Sfi.Sfi', value.y) + ' и ' + Translation.translate('month', null, [value.m], null, 'Sfi.Sfi', value.m)}
+}

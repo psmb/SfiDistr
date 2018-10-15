@@ -209,6 +209,28 @@
             <trans-unit id="otherArticlesByAuthor">
                 <source>Другие материалы этого автора</source>
             </trans-unit>
+            <group id="month" restype="x-gettext-plurals">
+                <trans-unit id="month[0]">
+                    <source>{0} месяц</source>
+                </trans-unit>
+                <trans-unit id="month[1]">
+                    <source>{0} месяца</source>
+                </trans-unit>
+                <trans-unit id="month[2]">
+                    <source>{0} месяцев</source>
+                </trans-unit>
+            </group>
+            <group id="year" restype="x-gettext-plurals">
+                <trans-unit id="year[0]">
+                    <source>{0} год</source>
+                </trans-unit>
+                <trans-unit id="year[1]">
+                    <source>{0} года</source>
+                </trans-unit>
+                <trans-unit id="year[2]">
+                    <source>{0} лет</source>
+                </trans-unit>
+            </group>
         </body>
     </file>
 </xliff>
