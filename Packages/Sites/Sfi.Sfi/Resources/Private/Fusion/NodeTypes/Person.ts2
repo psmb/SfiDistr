@@ -80,7 +80,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 		nodeUri = Neos.Neos:NodeUri {
 			node = ${node}
 		}
-		subject = ${String.pregMatch(node.properties.subject, '/<strong>' + level + ':<\/strong>((.*)(?:<strong>)|(.*))/u')[2]}
+		subject = ${String.pregMatch(node.properties.subject, '/<strong>' + level + ':<\/strong>([^<]*)/u')[2]}
 		experienceSum = Sfi.Sfi:TimeIntervalSum {
 			path = 'experience'
 		}
