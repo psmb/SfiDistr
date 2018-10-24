@@ -78,8 +78,6 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			@if.isNotNews = ${q(node).is('[instanceof Sfi.News:AbstractNews]') ? false : true}
 		}
 
-		footerGallery = Sfi.Sfi:FooterGallery
-
 		main = PrimaryContent {
 			renderByType {
 				condition = TRUE

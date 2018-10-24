@@ -275,51 +275,6 @@ if (typeof document.addEventListener === 'function') {
 }
 
 
-// FooterGallery
-(function () {
-	'use strict';
-
-	Array.prototype.forEach.call(document.getElementsByClassName('js-FooterGallery'), function (item) {
-		FooterGallery(item);
-	});
-
-	function FooterGallery(node) {
-		var nextPage = 1;
-		var content = node.querySelector('.js-FooterGallery-content');
-		var loadMore = node.querySelector('.js-FooterGallery-loadMore');
-		if (loadMore && content) {
-			loadMore.addEventListener('click', function (evt) {
-				evt.preventDefault();
-				var request = new XMLHttpRequest();
-				var baseUri = loadMore.attributes['data-baseUri'].value;
-				request.open('GET', baseUri + '/?galleryPage=' + nextPage, true);
-				loadMore.innerHTML = loadMore.attributes['data-loading'].value;
-				loadMore.disabled = true;
-				request.onload = function () {
-					if (this.status >= 200 && this.status < 400) {
-						var resp = JSON.parse(this.response);
-						loadMore.innerHTML = loadMore.attributes['data-loadMore'].value;
-						content.innerHTML += resp.content;
-						loadMore.disabled = false;
-						nextPage++;
-						// If nothing left to load
-						if (!resp.loadMore) {
-							loadMore.innerHTML = loadMore.attributes['data-done'].value;
-							loadMore.disabled = true;
-						}
-						// Do you know how to do it better?
-						setTimeout(function() {
-							window.scrollBy(0, window.innerHeight);
-						}, 100);
-					}
-				};
-				request.send();
-			});
-		}
-	}
-}());
-
-
 
 
 
