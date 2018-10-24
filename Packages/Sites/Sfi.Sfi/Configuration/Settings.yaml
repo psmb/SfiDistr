@@ -155,6 +155,8 @@ Neos:
     fusion:
       autoInclude:
         Sfi.Sfi: true
+    eventLog:
+      enabled: TRUE
   ContentRepository:
     contentDimensions:
       language:
