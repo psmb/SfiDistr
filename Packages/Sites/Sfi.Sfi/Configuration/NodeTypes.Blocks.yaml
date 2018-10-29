@@ -300,6 +300,12 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           placeholder: 'Номера страниц в печатной версии'
+    DOI:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'DOI'
     annotation:
       type: string
       ui:
