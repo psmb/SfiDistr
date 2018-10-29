@@ -14,7 +14,7 @@
 			<f:if condition="{item.subItems}">
 				<div class="MainMenu-SubItems">
 					<f:for each="{item.subItems}" as="subItem">
-						<div class="MainMenu-SubItem ParagraphAlt marginVertical-single {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
+						<div class="LinkState MainMenu-SubItem ParagraphAlt marginVertical-single {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
 							<neos:link.node node="{subItem.node}" title="{subItem.node.properties.title}" />
 						</div>
 					</f:for>
