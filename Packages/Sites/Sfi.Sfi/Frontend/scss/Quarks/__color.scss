@@ -1,4 +1,4 @@
-$gray--dark: #222;
+$gray--dark: #262626;
 $gray--light: #828282;
 $gray-bg: #dadada;
 $gray-bg--light: #f7f7f7;
@@ -14,6 +14,17 @@ $acid-blue: #00b0f0;
 $color-sfi: $brown;
 $color-primary: $acid-blue;
 $color-primaryAlt: $acid-blue;
+
+:root {
+	--color-grayDark: #262626;
+	--color-grayLight: #828282;
+	--color-grayBg: #dadada;
+	--color-grayBgLight: #f7f7f7;
+	--color-brown: #6e584f;
+	--color-orange: #ff7800;
+	--color-primary: #00b0f0;
+	--color-primaryAlt: #00b0f0;
+}
 
 
 .color-brown {

@@ -1,6 +1,5 @@
 .SubMenu-item {
 	@extend .ParagraphAlt;
-	@include link-state();
 	line-height: $lineHeight-tight !important;
 	font-size: rem-calc(13);
 	@include breakpoint(710px) {

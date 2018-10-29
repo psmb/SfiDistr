@@ -1,7 +1,7 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 <ul class="">
     <f:for each="{items}" as="item">
-        <li class="hack-HeaderPetit lineHeight-tight paddingVertical-half Link">
+        <li class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
             <neos:link.node node="{item.node}" target="_blank" title="{item.node.properties.title}"/>
         </li>
     </f:for>

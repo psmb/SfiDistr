@@ -10,5 +10,5 @@ prototype(Sfi.Sfi:LanguageMenu) < prototype(Neos.Fusion:Tag) {
     }
     content = ${altLang == 'en' ? 'EN' : 'RU'}
     @process.lang = ${altLang != 'en' ? value + '<span style="padding: 0 1px;">|</span>EN' : 'RU<span style="padding: 0 1px;">|</span>' + value}
-    @process.tmpl = ${'<div class="ParagraphAlt--Small color-grayAlt">' + value + '</div>'}
+    @process.tmpl = ${'<div class="ParagraphAlt--Small color-grayAlt H5">' + value + '</div>'}
 }

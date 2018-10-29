@@ -1,13 +1,6 @@
 // Adjust gaps for blockgrid in menus
 
 @include breakpoint('medium') {
-	.MainMenu {
-		margin-top: $u;
-		display: flex;
-		justify-content: center;
-		border-bottom: 1px solid $gray-line;
-	}
-
 	.MainMenu-Column {
 		position: relative;
 		border: 1px solid white;
@@ -24,41 +17,23 @@
 	.MainMenu-Column:hover {
 		border: 1px solid $gray-line;
 		border-bottom: 1px;
+		position: relative;
 		.MainMenu-SubItems {
+			min-width: 240px;
 			display: block;
 			background: white;
 			border: 1px solid $gray-line;
-			border-top: 0;
 		}
-	}
-
-	.MainMenu-Column {
-		padding: 0 $u;
-		@include breakpoint('large') {
-			padding: 0 1.5*$u;
+		.MainMenu-Item {
+			bottom: -1px;
+			position: relative;
+			background: white;
+			z-index: 2;
 		}
-	}
-	.MainMenu-Column:nth-child(3) {
-		min-width: 11*$u;
-	}
-	.MainMenu-Item {
-		text-align: center;
-		@include breakpoint('medium') {
-			font-size: rem-calc(19);
+		.MainMenu-ItemInner {
+			position: relative;
+			top: -1px;
 		}
-		@include breakpoint(660px) {
-			font-size: rem-calc(21);
-		}
-		@include breakpoint(710px) {
-			font-size: rem-calc(24);
-		}
-		@include breakpoint('large') {
-			font-size: rem-calc(32);
-		}
-	}
-	.MainMenu-Item, .MainMenu-SubItem {
-		@include link-state();
-		a {display: inline-block;}
 	}
 
 	.js-MainMenu.isActive {

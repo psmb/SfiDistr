@@ -25,13 +25,3 @@
 .HeaderSmall-Bar {
 	border-bottom: 1px solid $gray-line;
 }
-
-.hack-HeaderPetit {
-	@extend .ParagraphAlt;
-	@include link-state();
-	line-height: $lineHeight-tight !important;
-	font-size: rem-calc(13);
-	@include breakpoint(710px) {
-		font-size: rem-calc(14);
-	}
-}

@@ -48,6 +48,7 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			entryLevel = 1
 			maximumLevels = 2
+			itemClass = 'LinkState H4 lineHeight-single paddingHorizontal-sesquialteral paddingVertical-single'
 			@if.notProjects = ${!(q(documentNode).is('[instanceof Sfi.Sfi:FundraisingProject]') || q(documentNode).is('[instanceof Sfi.Sfi:FundraisingAll]'))}
 		}
 
@@ -55,8 +56,14 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 		@context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
 
 		languageMenu = Sfi.Sfi:LanguageMenu
-		subMenu = Sfi.Sfi:SubMenu {
+		subMenu = Menu {
 			@if.isMain = ${q(node).is('[instanceof Sfi.Sfi:PageMain]') ? true : false}
+			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/MainMenu.html'
+			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+			itemClass = 'LinkState ParagraphAlt lineHeight-single paddingHorizontal-sesquialteral paddingVertical-single'
+			startingPoint = ${q(site).find('#c030240e-7c32-40d8-aa84-586f1019966d').get(0)}
+			maximumLevels = 2
+			@if.notProjects = ${!(q(documentNode).is('[instanceof Sfi.Sfi:FundraisingProject]') || q(documentNode).is('[instanceof Sfi.Sfi:FundraisingAll]'))}
 		}
 		secondaryMenu = Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SecondaryMenu.html'

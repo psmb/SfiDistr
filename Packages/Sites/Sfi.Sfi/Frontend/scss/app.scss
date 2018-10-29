@@ -10,3 +10,9 @@
 * {
 	box-sizing: border-box;
 }
+
+body {
+	font-size: rem-calc(16);
+	font-family: $fontFamily-main;
+	color: $gray--dark;
+}

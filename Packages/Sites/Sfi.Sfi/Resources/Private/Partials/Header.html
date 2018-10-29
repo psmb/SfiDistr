@@ -2,7 +2,8 @@
 <header class="Header js-MainMenu">
 
 
-	<div class="show-for-small-only marginBottom-single textAlign-center">
+	<div class="show-for-medium-down marginBottom-single textAlign-center">
+		<div class="backgroundColor-primary" style="height: 8px; width: 100%"></div>
 
 		<div class="HeaderSmall-Bar marginBottom-single">
 			<div class="row">
@@ -38,58 +39,103 @@
 		</p>
 
 		<f:if condition="{lang} == 'ru'">
-			<a class="Button hack-HeaderPetit lineHeight-tight paddingVertical-half marginTop-single" target="_blank" style="margin-bottom: 10px; background-color: #ff8e18; color: white !important"
-			 href="https://sfi.ru/projects.html">Поддержать СФИ</a>
+			<a
+				class="Button lineHeight-single paddingVertical-half marginTop-single"
+				target="_blank"
+				style="
+					margin-left: 12px;
+					margin-right: 0;
+					padding: 6px 12px;
+					background-color: #ff8e18;
+					color: white !important;
+					vertical-align: top;
+				"
+				href="https://sfi.ru/projects.html">
+				<span class="H5">Поддержать СФИ</span>
+			</a>
 		</f:if>
 
 	</div>
 
 
-	<div class="show-for-medium-up">
+	<div class="show-for-large-up">
+		<div class="backgroundColor-primary" style="height: 8px; width: 100%" ></div>
+		<div class="row">
+			<div class="columns">
+				<div style="
+					display:flex;
+					justify-content: space-between;
+					align-items: center;
+					border-bottom: 1px solid #ccc;
+					">
+					<div>
+						{mainMenu -> f:format.raw()}
+					</div>
+					<div style="display: flex; align-items: center">
+						<f:render partial="Search" />
+						<f:render partial="EnglishLink" arguments="{_all}" />
+						<div class="paddingHorizontal-single">
+							<f:render partial="AccessibleLink" />
+						</div>
+						<f:if condition="{lang} == 'ru'">
+							<div>
+								<a class="icon-user-1 color-primary" href="http://lk.sfi.ru" target="_blank" title="Личный кабинет"></a>
+							</div>
+						</f:if>
+						<f:if condition="{lang} == 'ru'">
+							<a
+								class="Button lineHeight-single"
+								target="_blank"
+								style="
+									margin-left: 12px;
+									margin-right: 0;
+									padding: 6px 12px;
+									background-color: #ff8e18;
+									color: white !important;
+									vertical-align: top;
+								"
+								href="https://sfi.ru/projects.html">
+									<span class="H5">Поддержать СФИ</span>
+							</a>
+						</f:if>
+					</div>
+
+				</div>
+				{subMenu -> f:format.raw()}
+			</div>
+		</div>
+
+
+
 		<div style="position: relative" class="paddingTop-single">
 			<div class="row">
 
 				<div class="columns large-7 medium-5">
 					<neos:link.node node="~" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
-						<img alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
+						<img style="width: 330px; padding: 36px 48px;" alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
 					</neos:link.node>
 				</div>
 
 				<div class="columns large-4 medium-6 medium-offset-1 end">
-					<div class="row">
+					<div class="row marginTop-double">
 
 						<div class="columns medium-6">
-							<f:if condition="{lang} == 'ru'">
-								<a class="Button hack-HeaderPetit lineHeight-tight paddingVertical-half" target="_blank" style="margin-bottom: 10px; background-color: #ff8e18; color: white !important" href="https://sfi.ru/projects.html">Поддержать СФИ</a>
-							</f:if>
 							{secondaryMenu -> f:format.raw()}
 							<f:if condition="{lang} == 'ru'">
-								<div class="hack-HeaderPetit color-grayAlt paddingVertical-half"><a href="/sveden/common">Сведения об образовательной организации</a></div>
+								<div class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"><a href="/sveden/common">Сведения об образовательной организации</a></div>
 							</f:if>
 						</div>
 
 						<div class="columns medium-6">
-							<div class="lineHeight-tight" style="padding-top: 6px; padding-bottom: 3px; display:flex">
-								<f:render partial="EnglishLink" arguments="{_all}"/>
-								<div class="paddingHorizontal-single">
-									<f:render partial="AccessibleLink"/>
-								</div>
-								<f:if condition="{lang} == 'ru'">
-									<div>
-										<a class="icon-user-1 color-primary" href="http://lk.sfi.ru" target="_blank" title="Личный кабинет"></a>
-									</div>
-								</f:if>
-							</div>
-							<p class="color-grayAlt hack-HeaderPetit paddingVertical-half">
+							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
 								<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
 							</p>
-							<p class="color-grayAlt hack-HeaderPetit paddingVertical-half">
+							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
 								<a href="tel:+74956230380">+7 |495| 623 03 80</a>
 							</p>
-							<p class="color-grayAlt hack-HeaderPetit paddingVertical-half">
+							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
 								<a href="mailto:info@sfi.ru">info@sfi.ru</a>
 							</p>
-							<f:render partial="Search" />
 						</div>
 
 					</div>
@@ -97,64 +143,55 @@
 
 			</div>
 		</div>
+	</div>
 
-		<div class="">
+
+
+
+	<div class="hide">
+		<div class="show-for-medium-only">
+			<div class="Header-TopBar row">
+				<div class="columns medium-7 paddingRight-none">
+					{secondaryMenu -> f:format.raw()}
+				</div>
+				<div class="columns medium-3">
+					<f:render partial="Search" />
+				</div>
+				<div class="columns medium-2 paddingLeft-none">
+					<f:render partial="EnglishLink"/>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columns medium-8 large-6 MainMenu-TopLeft marginVertical-half">
+				<div class="Header-Logo">
+
+				</div>
+			</div>
+			<div class="columns medium-4 large-2 show-for-medium-up paddingRight-none">
+				<f:render partial="Contacts" />
+			</div>
+			<f:if condition="{secondaryMenu}">
+				<div class="columns large-2 show-for-large-up">
+					{secondaryMenu -> f:format.raw()}
+				</div>
+			</f:if>
+			<div class="columns large-2 show-for-large-up">
+				<div class="marginTop-single">
+					<f:render partial="EnglishLink" arguments="{_all}"/>
+					<f:render partial="AccessibleLink"/>
+				</div>
+			</div>
+
+		</div>
+		<div>
 			<div class="row">
-				<div class="columns">
+				<div class="columns show-for-medium-up">
 					{mainMenu -> f:format.raw()}
-					{subMenu -> f:format.raw()}
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-
-<div class="hide">
-	<div class="show-for-medium-only">
-		<div class="Header-TopBar row">
-			<div class="columns medium-7 paddingRight-none">
-				{secondaryMenu -> f:format.raw()}
-			</div>
-			<div class="columns medium-3">
-				<f:render partial="Search" />
-			</div>
-			<div class="columns medium-2 paddingLeft-none">
-				<f:render partial="EnglishLink"/>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="columns medium-8 large-6 MainMenu-TopLeft marginVertical-half">
-			<div class="Header-Logo">
-
-			</div>
-		</div>
-		<div class="columns medium-4 large-2 show-for-medium-up paddingRight-none">
-			<f:render partial="Contacts" />
-		</div>
-		<f:if condition="{secondaryMenu}">
-			<div class="columns large-2 show-for-large-up">
-				{secondaryMenu -> f:format.raw()}
-			</div>
-		</f:if>
-		<div class="columns large-2 show-for-large-up">
-			<div class="marginTop-single">
-				<f:render partial="EnglishLink" arguments="{_all}"/>
-				<f:render partial="AccessibleLink"/>
-			</div>
-		</div>
-
-	</div>
-	<div>
-		<div class="row">
-			<div class="columns show-for-medium-up">
-				{mainMenu -> f:format.raw()}
-			</div>
-		</div>
-	</div>
-</div>
 
 	<f:if condition="{breadcrumbMenu}">
 		<div class="row">

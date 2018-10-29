@@ -1,11 +1,15 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace ts=Neos\Fusion\ViewHelpers}
 
-<ul class="MainMenu">
+<ul style="display: flex">
 	<f:for each="{items}" as="item" iteration="iterator">
 		<li class="MainMenu-Column {f:if(condition:iterator.isLast,then:'end')} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}" >
-			<div class="MainMenu-Item Paragraph--Large lineHeight-single marginVertical-half {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}">
-				<neos:link.node node="{item.node}" title="{item.node.properties.title}"/>
+			<div
+				class="MainMenu-Item {itemClass} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}"
+				>
+				<div class="MainMenu-ItemInner">
+					<neos:link.node node="{item.node}" title="{item.node.properties.title}"/>
+				</div>
 			</div>
 			<f:if condition="{item.subItems}">
 				<div class="MainMenu-SubItems">
