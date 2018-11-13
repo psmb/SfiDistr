@@ -10,3 +10,7 @@ $border-thick: 5px solid $gray-line;
 .border-thick {
 	border: $border-thick;
 }
+
+.border-bottom {
+	border-bottom: $border-thin;
+}

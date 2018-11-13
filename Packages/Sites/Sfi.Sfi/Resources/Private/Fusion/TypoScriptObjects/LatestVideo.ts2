@@ -1,0 +1,33 @@
+prototype(Sfi.Sfi:LatestVideo) < prototype(Neos.Fusion:Component) {
+    @context.rootNode = ${q(site).children('[uriPathSegment = "lektsii-diskussii-interviu"]').get(0)}
+    listTitle = ${rootNode.properties.title}
+    list = Neos.Fusion:Collection {
+        collection = ${q(rootNode).find('[instanceof Sfi.News:AbstractNews]').sort('date', 'DESC').slice(0, 1).get()}
+        itemName = 'node'
+        itemRenderer = Flowpack.Listable:ContentCaseShort
+        @cache {
+            mode = 'cached'
+            entryIdentifier {
+                node = ${node}
+            }
+            entryTags {
+                1 = ${'NodeType_Sfi.News:AbstractNews'}
+            }
+        }
+    }
+    archiveLinkTitle = ${Translation.translate('allVideos', null, [], null, 'Sfi.Sfi')}
+    archiveLinkUri = Neos.Neos:NodeUri {
+        node = ${rootNode}
+    }
+
+    renderer = afx`
+        <div class="row">
+            <div class="columns">
+                <h2 class="H4 color-grayAlt paddingVertical-single marginBottom-sesquialteral border-bottom">
+                    {props.listTitle} <span style="text-transform: lowercase; font-weight: normal;" class="ParagraphAlt color-primary">| <a href={props.archiveLinkUri}>{props.archiveLinkTitle}</a></span>
+                </h2>
+                {props.list}
+            </div>
+        </div>
+    `
+}

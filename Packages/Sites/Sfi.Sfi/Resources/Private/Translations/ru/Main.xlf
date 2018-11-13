@@ -14,6 +14,9 @@
             <trans-unit id="allPapers">
                 <source>Все доклады</source>
             </trans-unit>
+            <trans-unit id="allVideos">
+                <source>Все лекции</source>
+            </trans-unit>
             <trans-unit id="keywords">
                 <source>Ключевые слова</source>
             </trans-unit>

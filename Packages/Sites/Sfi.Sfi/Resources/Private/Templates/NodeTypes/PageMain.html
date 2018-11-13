@@ -11,25 +11,21 @@
 </div>
 
 <div class="row">
-	<div class="columns medium-8">
+	<div class="columns medium-6 large-9">
 		{newsLatest -> f:format.raw()}
 	</div>
-	<div class="columns medium-4">
+	<div class="columns medium-6 large-3">
 		<f:if condition="{showAnnouncements}">
 			{newsAnnouncements -> f:format.raw()}
 		</f:if>
-		{promo -> f:format.raw()}
-		<div class="marginTop-triple">
-			{donate -> f:format.raw()}
-		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="columns medium-8">
-		{papers -> f:format.raw()}
+	<div class="columns medium-6">
+		{video -> f:format.raw()}
 	</div>
-	<div class="columns medium-4">
-
+	<div class="columns medium-6">
+		{papers -> f:format.raw()}
 	</div>
 </div>
 

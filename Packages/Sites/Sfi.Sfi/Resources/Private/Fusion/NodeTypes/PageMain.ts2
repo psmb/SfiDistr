@@ -6,6 +6,7 @@ prototype(Sfi.Sfi:PageMain) {
 	# TODO: hackish
 	showAnnouncements = ${String.length(this.newsAnnouncements) > 150}
 	promo = Sfi.Sfi:PromoList
+	video = Sfi.Sfi:LatestVideo
 	papers = Sfi.Sfi:PaperWithAuthor.TopList
 	donate = Sfi.Sfi:DonateBanner
 	breadcrumbMenu>

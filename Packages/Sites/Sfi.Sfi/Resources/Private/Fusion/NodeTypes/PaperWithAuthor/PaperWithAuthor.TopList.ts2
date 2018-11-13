@@ -1,8 +1,8 @@
-prototype(Sfi.Sfi:PaperWithAuthor.TopList) < prototype(Neos.Fusion:Array) {
+prototype(Sfi.Sfi:PaperWithAuthor.TopList) < prototype(Neos.Fusion:Component) {
     @context.collection = ${q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor]').filter('[isImportant = true]').sort('date', 'DESC').slice(0, 3).get()}
     @if.notEmpty = ${q(collection).count() > 0}
     @process.tmpl = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
-    title = ${'<h2 class="SectionDivider--Service">' + q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor.Store]').first().property('title') + '</h2>'}
+    listTitle = ${q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor.Store]').first().property('title')}
     list = Neos.Fusion:Collection {
         collection = ${collection}
         itemName = 'node'
@@ -17,8 +17,15 @@ prototype(Sfi.Sfi:PaperWithAuthor.TopList) < prototype(Neos.Fusion:Array) {
             }
         }
     }
-    link = NodeUri {
-        @process.tmpl = ${'<a class="ButtonInline News-MoreButton paddingLeft-none" href="' + value + '">' + Translation.translate('allPapers', null, [], null, 'Sfi.Sfi') + '</a>'}
+    archiveLinkTitle = ${Translation.translate('allPapers', null, [], null, 'Sfi.Sfi')}
+    archiveLinkUri = Neos.Neos:NodeUri {
         node = ${q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor.Store]').get(0)}
     }
+
+    renderer = afx`
+        <h2 class="H4 color-grayAlt paddingVertical-single marginBottom-sesquialteral border-bottom">
+            {props.listTitle} <span style="text-transform: lowercase; font-weight: normal;" class="ParagraphAlt color-primary">| <a href={props.archiveLinkUri}>{props.archiveLinkTitle}</a></span>
+        </h2>
+        {props.list}
+    `
 }

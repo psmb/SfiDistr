@@ -14,21 +14,26 @@ prototype(Sfi.News:List) < prototype(Flowpack.Listable:ListNode) {
 }
 
 # Show latest news
-prototype(Sfi.News:Latest) < prototype(Flowpack.Listable:List) {
-	wrapClass = 'NewsLatest'
+prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 	listTitle = ${Translation.translate('newsLatest.listTitle', null, [], null, 'Sfi.Sfi')}
-	listTitleClass = 'SectionDivider--Service'
-	archiveLink = '~/sfi-today'
 	archiveLinkTitle =  ${Translation.translate('newsLatest.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
-	archiveLinkClass = 'ButtonInline News-MoreButton paddingLeft-none'
-
-	prototype(Flowpack.Listable:Listable) {
+	archiveLinkUri = Neos.Neos:NodeUri {
+		node = ${q(site).children('sfi-today').get(0)}
+	}
+	list = Flowpack.Listable:Listable {
 		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
-		listClass = 'NewsLatest-Grid medium-block-grid-2 small-block-grid-1'
-		limit = 6
+		listClass = 'NewsLatest-Grid large-block-grid-3 medium-block-grid-1 small-block-grid-1'
+		limit = 3
 		paginationEnabled = false
 		collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
 	}
+
+	renderer = afx`
+		<h2 class="H4 color-grayAlt paddingVertical-single marginBottom-sesquialteral border-bottom">
+			{props.listTitle} <span style="text-transform: lowercase; font-weight: normal;" class="ParagraphAlt color-primary">| <a href={props.archiveLinkUri}>{props.archiveLinkTitle}</a></span>
+		</h2>
+		{props.list}
+	`
 
 	@cache {
 		mode = 'cached'
