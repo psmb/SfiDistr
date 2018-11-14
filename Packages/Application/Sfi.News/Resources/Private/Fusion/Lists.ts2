@@ -33,6 +33,9 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 		limit = 3
 		paginationEnabled = false
 		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][highlighted != TRUE]').get()}
+		prototype(Sfi.News:NewsShort) {
+			highlighted = ${false}
+		}
 	}
 
 	renderer = afx`

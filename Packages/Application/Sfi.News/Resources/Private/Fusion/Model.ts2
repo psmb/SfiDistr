@@ -111,7 +111,7 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 	date = ${q(node).property('date')}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
 	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
-	highlighted = ${site == documentNode ? node.properties.highlighted : true}
+	highlighted = ${true}
 	thumbnailImage = Neos.Fusion:Tag {
 		tagName = 'img'
 		attributes.src = Sfi.News:ThumbnailImageUri {
