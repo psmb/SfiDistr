@@ -25,15 +25,14 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 		listClass = 'NewsLatest-Grid large-block-grid-3 medium-block-grid-1 small-block-grid-1'
 		limit = 3
 		paginationEnabled = false
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isImportant = TRUE]').get()}
+		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][highlighted = TRUE]').get()}
 	}
 	listUnimportant = Flowpack.Listable:Listable {
 		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
 		listClass = 'NewsLatest-Grid large-block-grid-3 medium-block-grid-1 small-block-grid-1'
 		limit = 3
 		paginationEnabled = false
-		itemRenderer = 'Sfi.News:NewsShortSimple'
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isImportant != TRUE]').get()}
+		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][highlighted != TRUE]').get()}
 	}
 
 	renderer = afx`

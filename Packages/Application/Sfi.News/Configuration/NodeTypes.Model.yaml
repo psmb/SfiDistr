@@ -298,10 +298,10 @@ blah: &alohaRich
     'Sfi.News:AuthorMixin': true
     'Psmb.Newsletter:NewsletterMixin': true
   properties:
-    isImportant:
+    highlighted:
       type: boolean
       ui:
-        label: 'Важный материал'
+        label: 'Выделенный материал (с картинкой)'
         inspector:
           group: news
     variant:

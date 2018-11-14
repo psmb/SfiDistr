@@ -111,6 +111,7 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 	date = ${q(node).property('date')}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
 	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
+	highlighted = ${site == documentNode ? node.properties.highlighted : true}
 	thumbnailImage = Neos.Fusion:Tag {
 		tagName = 'img'
 		attributes.src = Sfi.News:ThumbnailImageUri {
@@ -143,30 +144,6 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 		}
 	}
 }
-
-prototype(Sfi.News:NewsShortSimple) < prototype(Neos.Fusion:Component) {
-	title = ${String.stripTags(q(node).property('title'))}
-	date = ${Date.formatCldr(q(node).property('date'), 'MMMM yyyy')}
-	nodeUri = Neos.Neos:NodeUri {
-		node = ${node}
-	}
-	renderer = afx`
-		<a href={props.nodeUri}>
-			<h3 class="ParagraphAlt">{props.title}</h3>
-			<div class="ParagraphAlt color-grayAlt">{props.date}</div>
-		</a>
-	`
-	@cache {
-		mode = 'cached'
-		entryIdentifier {
-			node = ${node}
-		}
-		entryTags {
-			1 = ${'Node_' + node.identifer}
-		}
-	}
-}
-
 
 prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 	templatePath = 'resource://Sfi.News/Private/Templates/TopShort.html'
