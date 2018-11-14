@@ -13,6 +13,14 @@
 <div class="row">
 	<div class="columns medium-6 large-9">
 		{newsLatest -> f:format.raw()}
+		<div class="row">
+			<div class="columns medium-6">
+				{video -> f:format.raw()}
+			</div>
+			<div class="columns medium-6">
+				{papers -> f:format.raw()}
+			</div>
+		</div>
 	</div>
 	<div class="columns medium-6 large-3">
 		<f:if condition="{showAnnouncements}">
@@ -20,14 +28,7 @@
 		</f:if>
 	</div>
 </div>
-<div class="row">
-	<div class="columns medium-6">
-		{video -> f:format.raw()}
-	</div>
-	<div class="columns medium-6">
-		{papers -> f:format.raw()}
-	</div>
-</div>
+
 
 <div class="FooterMain marginTop-triple" style="overflow:hidden">
 	<div class="row">
