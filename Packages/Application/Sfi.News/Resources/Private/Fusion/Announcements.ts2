@@ -39,6 +39,7 @@ prototype(Sfi.News:AnnouncementsList) < prototype(Flowpack.Listable:List) {
 		collection = ${collection}
 		collection.@process.sort>
 		itemRenderer = 'Sfi.News:AnnouncementShort'
+		listClass = 'MediaAnnouncementList'
 	}
 	@cache {
 		mode = 'cached'

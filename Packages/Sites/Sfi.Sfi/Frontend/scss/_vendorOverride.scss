@@ -38,6 +38,7 @@ body {
 		}
 	}
 	.NewsTop {
+		overflow: hidden;
 		@include breakpoint(small only) {
 			.slick-prev, .slick-next{
 				top: 28%;

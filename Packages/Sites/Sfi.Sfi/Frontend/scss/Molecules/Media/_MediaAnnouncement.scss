@@ -1,3 +1,31 @@
+.MediaAnnouncementList {
+	max-height: 350px;
+	overflow-y: auto;
+	padding-right: $u;
+	padding-top: $u;
+	position: absolute;
+	top: 45px;
+	bottom: 0;
+
+	&::-webkit-scrollbar {
+		width: 4px;
+	}
+	
+	&::-webkit-scrollbar-track {
+		background: #ccc;
+	}
+	
+	&::-webkit-scrollbar-thumb {
+		background: #00b0f0; 
+	}
+}
+
+.ScrollableRow {
+	@media #{$medium-up} {
+		display: flex;
+	}
+}
+
 .MediaAnnouncement {
 	clear: both;
 	overflow: auto;
