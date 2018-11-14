@@ -298,12 +298,6 @@ blah: &alohaRich
     'Sfi.News:AuthorMixin': true
     'Psmb.Newsletter:NewsletterMixin': true
   properties:
-    isImportant:
-      type: boolean
-      ui:
-        label: 'Важный материал'
-        inspector:
-          group: news
     variant:
       type: string
       defaultValue: Inherit

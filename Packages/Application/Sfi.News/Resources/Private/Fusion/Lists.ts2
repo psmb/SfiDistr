@@ -20,28 +20,19 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 	archiveLinkUri = Neos.Neos:NodeUri {
 		node = ${q(site).children('sfi-today').get(0)}
 	}
-	listImportant = Flowpack.Listable:Listable {
+	list = Flowpack.Listable:Listable {
 		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
 		listClass = 'NewsLatest-Grid large-block-grid-3 medium-block-grid-1 small-block-grid-1'
 		limit = 3
 		paginationEnabled = false
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isImportant = TRUE]').get()}
-	}
-	listUnimportant = Flowpack.Listable:Listable {
-		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
-		listClass = 'NewsLatest-Grid large-block-grid-3 medium-block-grid-1 small-block-grid-1'
-		limit = 3
-		paginationEnabled = false
-		itemRenderer = 'Sfi.News:NewsShortSimple'
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isImportant != TRUE]').get()}
+		collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
 	}
 
 	renderer = afx`
 		<h2 class="H4 color-grayAlt paddingVertical-single marginBottom-sesquialteral border-bottom">
 			{props.listTitle} <span style="text-transform: lowercase; font-weight: normal;" class="ParagraphAlt color-primary">| <a href={props.archiveLinkUri}>{props.archiveLinkTitle}</a></span>
 		</h2>
-		{props.listImportant}
-		{props.listUnimportant}
+		{props.list}
 	`
 
 	@cache {
@@ -62,7 +53,7 @@ prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
 	prototype(Flowpack.Listable:Listable) {
 		limit = 4
 		paginationEnabled = ${false}
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews]').get()}
+		collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
 		collection.@process.filterOutSelf {
 			expression = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
 			@position = 'start'
@@ -144,7 +135,7 @@ prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
 	listTitle = ${Translation.translate('listByTag.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
 	listTitleClass = 'SectionDivider--Service'
 
-	@context.collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews]').get()}
+	@context.collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
 	@context.collection.@process.filterByReference = ${q(node).property('tag') ? q(value).filterByReference('tags', q(node).property('tag')).get() : q(value).filterByReference('tags', documentNode).get()}
 	prototype(Flowpack.Listable:Listable) {
 		paginationEnabled = true
