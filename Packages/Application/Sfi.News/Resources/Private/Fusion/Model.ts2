@@ -1,6 +1,6 @@
 #Display full view of article
 prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
-	@context.variant = ${q(node).property('variant') != 'Inherit' ? q(node).property('variant') : q(node).parent().property('variant')}
+	@context.variant = ${node.properties.isHard ? 'Hard' : 'Soft'}
 	templatePath = ${'resource://Sfi.News/Private/Templates/News' + q(node).parent().property('variant') + '.html'}
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	@context.configuration = ${Configuration.setting('Sfi.News.newsDetail')}
@@ -146,15 +146,19 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 
 prototype(Sfi.News:NewsShortSimple) < prototype(Neos.Fusion:Component) {
 	title = ${String.stripTags(q(node).property('title'))}
-	date = ${Date.formatCldr(q(node).property('date'), 'MMMM yyyy')}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	date = ${Date.formatCldr(q(node).property('date'), 'dd MMMM yyyy')}
 	nodeUri = Neos.Neos:NodeUri {
 		node = ${node}
 	}
 	renderer = afx`
-		<a href={props.nodeUri}>
-			<h3 class="ParagraphAlt">{props.title}</h3>
-			<div class="ParagraphAlt color-grayAlt">{props.date}</div>
-		</a>
+		<div class="marginBottom-double">
+			<a href={props.nodeUri}>
+				<h3 class="H5 lineHeight-normal">{props.title}</h3>
+				<div class="ParagraphAlt">{props.teaser}</div>
+				<div class="ParagraphAlt color-grayAlt">{props.date}</div>
+			</a>
+		</div>
 	`
 	@cache {
 		mode = 'cached'

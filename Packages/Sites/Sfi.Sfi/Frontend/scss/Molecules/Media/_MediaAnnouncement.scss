@@ -1,36 +1,7 @@
-.MediaAnnouncementList {
-	@media #{$medium-up} {
-		overflow-y: auto;
-		margin-right: $u;
-		padding-right: $u;
-		position: absolute;
-		top: 60px;
-		bottom: 0;
-
-		&::-webkit-scrollbar {
-			width: 3px;
-		}
-
-		&::-webkit-scrollbar-track {
-			background: var(--color-grayBgLight);
-		}
-
-		&::-webkit-scrollbar-thumb {
-			background: var(--color-grayLight); 
-		}
-	}
-}
-
-.ScrollableRow {
-	@media #{$medium-up} {
-		display: flex;
-	}
-}
-
 .MediaAnnouncement {
 	clear: both;
 	overflow: auto;
-	margin-bottom: 2*$u;
+	margin-right: 2*$u;
 }
 .MediaAnnouncement:hover .MediaAnnouncement-Title {
 	color: $color-primary;
@@ -52,7 +23,6 @@
 }
 .MediaAnnouncement-Title {
 	@extend .H3;
-	border-bottom: 1px solid $gray-line;
 	padding-bottom: $u/4;
 	margin-bottom: $u/4;
 }
@@ -69,4 +39,29 @@
 	@extend .ParagraphAlt--Large;
 	color: $gray--light;
 	line-height: $lineHeight-tight;
+}
+
+
+.MediaAnnouncements {
+	.slick-prev {
+		left: 0;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+		width: 270px;
+		text-align: left;
+		background: linear-gradient(270deg,rgba(255 ,255 ,255 , 0), rgba(255, 255, 255, 0.8));
+	}
+	.slick-next {
+		right: 0;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+		width: 270px;
+		text-align: right;
+		background: linear-gradient(90deg,rgba(255 ,255 ,255 , 0), rgba(255, 255, 255, 0.8));
+	}
+	.slick-disabled {
+		display: none !important;
+	}
 }

@@ -298,29 +298,12 @@ blah: &alohaRich
     'Sfi.News:AuthorMixin': true
     'Psmb.Newsletter:NewsletterMixin': true
   properties:
-    highlighted:
+    isHard:
       type: boolean
       ui:
-        label: 'Выделенный материал (с картинкой)'
+        label: 'Жесткий материал'
         inspector:
           group: news
-    variant:
-      type: string
-      defaultValue: Inherit
-      ui:
-        label: 'Вариант новости'
-        reloadIfChanged: false
-        inspector:
-          group: news
-          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
-          editorOptions:
-            values:
-              Inherit:
-                label: 'Наследовать у категории'
-              Hard:
-                label: Жесткая
-              Soft:
-                label: Мягкая
     authorPhoto:
       type: string
       ui:

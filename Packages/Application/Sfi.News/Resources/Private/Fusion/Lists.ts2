@@ -25,14 +25,14 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 		listClass = 'NewsLatest-Grid large-block-grid-3 medium-block-grid-1 small-block-grid-1'
 		limit = 3
 		paginationEnabled = false
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][highlighted = TRUE]').get()}
+		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isHard != TRUE]').get()}
 	}
 	listUnimportant = Flowpack.Listable:Listable {
 		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
-		listClass = 'NewsLatest-Grid large-block-grid-3 medium-block-grid-1 small-block-grid-1'
+		listClass = 'marginBottom-double'
 		limit = 3
 		paginationEnabled = false
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][highlighted != TRUE]').get()}
+		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isHard = TRUE]').get()}
 		itemRenderer = 'Sfi.News:NewsShortSimple'
 	}
 
@@ -41,11 +41,13 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 			{props.listTitle} <span style="text-transform: lowercase; font-weight: normal;" class="ParagraphAlt color-primary">| <a href={props.archiveLinkUri}>{props.archiveLinkTitle}</a></span>
 		</h2>
 
-		<div style="margin-bottom: -36px">
-			{props.listImportant}
-		</div>
-		<div style="border-top: 1px solid #ccc; padding-top: 12px;">
-			{props.listUnimportant}
+		<div class="row">
+			<div class="medium-6 large-9 columns">
+				{props.listImportant}
+			</div>
+			<div class="medium-6 large-3 columns">
+				{props.listUnimportant}
+			</div>
 		</div>
 	`
 

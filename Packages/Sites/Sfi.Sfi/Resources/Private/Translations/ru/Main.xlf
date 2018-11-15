@@ -120,7 +120,7 @@
                 <source>Анонсы</source>
             </trans-unit>
             <trans-unit id="newsLatest.listTitle">
-                <source>СФИ сегодня</source>
+                <source>Новости</source>
             </trans-unit>
             <trans-unit id="newsLatest.archiveLinkTitle">
                 <source>Все новости</source>

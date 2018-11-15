@@ -260,6 +260,33 @@ var onReadyPlugins = function() {
 				]
 		});
 
+		$('.js-carousel-4x').slick({
+				dots: false,
+				slide: '*',
+				infinite: false,
+				speed: 300,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				prevArrow: '<button type="button" class="slick-prev icon-left-open">Назад</button>',
+				nextArrow: '<button type="button" class="slick-next icon-right-open">Вперед</button>',
+				responsive: [
+						{
+								breakpoint: 1024,
+								settings: {
+										slidesToShow: 2,
+										slidesToScroll: 2
+								}
+						},
+						{
+								breakpoint: 560,
+								settings: {
+										slidesToShow: 1,
+										slidesToScroll: 1
+								}
+						}
+				]
+		});
+
 		//$(".js-stickInParent").stick_in_parent();
 }
 

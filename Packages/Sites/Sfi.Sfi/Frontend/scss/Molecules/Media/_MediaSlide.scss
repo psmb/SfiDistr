@@ -14,11 +14,12 @@
 	}
 }
 .MediaSlideMedium-Wrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	@include breakpoint('medium') {
-		position: absolute;
-		left: 50%;
-		bottom: 10%;
 		max-width: 960px;
+		height: 400px;
 		padding: 0 !important;
 		z-index: 1;
 	}
@@ -45,7 +46,6 @@
 .MediaSlideMedium-Body {
 	position: relative;
 	text-align: center;
-	left: -50%;
 	margin: 1.5*$u 2*$u;
 }
 
