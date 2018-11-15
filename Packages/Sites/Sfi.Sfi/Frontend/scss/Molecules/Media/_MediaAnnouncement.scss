@@ -1,7 +1,11 @@
 .MediaAnnouncement {
 	clear: both;
 	overflow: auto;
+	margin-bottom: 2*$u;
+}
+.MediaAnnouncements--enableSlider .MediaAnnouncement {
 	margin-right: 2*$u;
+	margin-bottom: 0;
 }
 .MediaAnnouncement:hover .MediaAnnouncement-Title {
 	color: $color-primary;

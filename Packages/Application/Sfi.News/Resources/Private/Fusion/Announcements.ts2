@@ -12,6 +12,7 @@ prototype(Sfi.News:Announcement) < prototype(Sfi.News:News) {
 			@position = 'start'
 		}
 		content.archiveLink >
+		@context.enableSlider = ${false}
 	}
 }
 
@@ -25,6 +26,7 @@ prototype(Sfi.News:AnnouncementShort) < prototype(Sfi.News:NewsShort) {
 }
 
 prototype(Sfi.News:AnnouncementsList) < prototype(Flowpack.Listable:List) {
+	@context.enableSlider = ${true}
 	listTitle = ${Translation.translate('news.announcements', null, [], null, 'Sfi.Sfi')}
 	listTitleClass = 'H4 color-grayAlt paddingVertical-single marginBottom-sesquialteral border-bottom'
 	# Get announcements collection here and push it to context vars, to be used both in Listable and in @cache
@@ -39,7 +41,7 @@ prototype(Sfi.News:AnnouncementsList) < prototype(Flowpack.Listable:List) {
 		collection = ${collection}
 		collection.@process.sort>
 		itemRenderer = 'Sfi.News:AnnouncementShort'
-		listClass = 'MediaAnnouncements js-carousel-4x'
+		listClass = ${enableSlider ? 'MediaAnnouncements MediaAnnouncements--enableSlider js-carousel-4x' : 'MediaAnnouncements'}
 	}
 	@cache {
 		mode = 'cached'
