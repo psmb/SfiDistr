@@ -33,7 +33,7 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 		limit = 3
 		paginationEnabled = false
 		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isHard = TRUE]').get()}
-		itemRenderer = 'Sfi.News:NewsShortSimple'
+		itemRenderer = 'Sfi.News:NewsShortSmall'
 	}
 
 	renderer = afx`
@@ -74,13 +74,7 @@ prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
 			expression = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
 			@position = 'start'
 		}
-	}
-	prototype(Sfi.News:NewsShort) {
-		templatePath = 'resource://Sfi.News/Private/Templates/NewsShortSmall.html'
-		prototype(Sfi.News:ThumbnailImageUri).prototype(ImageUri) {
-			maximumWidth = 100
-			maximumHeight = 100
-		}
+		itemRenderer = 'Sfi.News:NewsShortSmall'
 	}
 
 	@cache {

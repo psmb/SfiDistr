@@ -1,37 +1,20 @@
 .MediaSmall {
 	margin-bottom: 2*$u;
-	overflow: auto;
 }
 
-.MediaSmall-Title{
-	@extend .H4;
-	margin-top: 0;
-	margin-bottom: $u/2;
-}
-.MediaSmall-Teaser{
-	@extend .Paragraph--Small;
-	margin-top: $u/2;
-	margin-bottom: $u/2;
-}
-.MediaSmall-Date{
-	@extend .Paragraph--Small;
-	text-transform: lowercase;
-	color: $gray--light;
-	margin-top: $u/2;
-	margin-bottom: $u/2;
-}
-.MediaSmall-Category{
+.MediaSmall-Title {
 	@extend .H5;
-	display: none;
+	line-height: $lineHeight-normal;
 }
-.MediaSmall-Image {
-	float: left;
-	margin-right: 30px;
-	img{
-		width: 90px;
-	}
+.MediaSmall-Teaser {
+	@extend .ParagraphAlt;
+}
+.MediaSmall-Date {
+	@extend .ParagraphAlt;
+	color: $gray--light;
 }
 
-.MediaSmall-Body {
-	overflow: hidden;
+.MediaSmall:hover .MediaSmall-Title {
+	color: $color-primary;
+	text-decoration: underline;
 }

@@ -144,7 +144,7 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 	}
 }
 
-prototype(Sfi.News:NewsShortSimple) < prototype(Neos.Fusion:Component) {
+prototype(Sfi.News:NewsShortSmall) < prototype(Neos.Fusion:Component) {
 	title = ${String.stripTags(q(node).property('title'))}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
 	date = ${Date.formatCldr(q(node).property('date'), 'dd MMMM yyyy')}
@@ -152,11 +152,11 @@ prototype(Sfi.News:NewsShortSimple) < prototype(Neos.Fusion:Component) {
 		node = ${node}
 	}
 	renderer = afx`
-		<div class="marginBottom-double">
+		<div class="MediaSmall">
 			<a href={props.nodeUri}>
-				<h3 class="H5 lineHeight-normal">{props.title}</h3>
-				<div class="ParagraphAlt">{props.teaser}</div>
-				<div class="ParagraphAlt color-grayAlt">{props.date}</div>
+				<h3 class="MediaSmall-Title">{props.title}</h3>
+				<div class="MediaSmall-Teaser">{props.teaser}</div>
+				<div class="MediaSmall-Date">{props.date}</div>
 			</a>
 		</div>
 	`
