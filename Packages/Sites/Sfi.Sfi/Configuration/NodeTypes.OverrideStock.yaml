@@ -126,3 +126,13 @@
             referenceNodePath: '/sites/sfi/tegi/personalii'
             enabled: true
             placeholder: 'Название'
+        videos:
+          label: 'Лекции, дискуссии, интервью'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/node-qij9kguwatvdn'
+            enabled: true
+            placeholder: 'Название'
