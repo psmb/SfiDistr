@@ -21,6 +21,9 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('sfi.abbrev', null, [], null, 'Sfi.Sfi')}
 
+		norobots = afx`<meta name="robots" content="noindex, nofollow"/>`
+		norobots.@if.notLive = ${node.context.workspaceName != 'live'}
+
 		opengraph = Sfi.News:Opengraph
 		opengraph.@if.isNews = ${q(node).is('[instanceof Sfi.News:AbstractArticle]')}
 
