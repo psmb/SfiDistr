@@ -13,4 +13,7 @@ prototype(Sfi.Sfi:PageMain) {
 	main = ContentCollection {
 		nodePath = 'main'
 	}
+	middle = ContentCollection {
+		nodePath = 'middle'
+	}
 }

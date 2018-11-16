@@ -4,6 +4,12 @@
 <f:section name="content">
 	<main id="maincontent">
 		{main -> f:format.raw()}
-		{subscriptionPlugin -> f:format.raw()}
+		<div class="color-grayAlt" style="background-color: var(--color-grayBgLight)">
+			<div class="row">
+				<div class="columns large-6">
+					{subscriptionPlugin -> f:format.raw()}
+				</div>
+			</div>
+		</div>
 	</main>
 </f:section>

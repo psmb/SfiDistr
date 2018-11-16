@@ -23,6 +23,11 @@
 	</div>
 </f:if>
 <div class="row">
+	<div class="columns">
+		{middle -> f:format.raw()}
+	</div>
+</div>
+<div class="row">
 	<div class="columns medium-6">
 		{video -> f:format.raw()}
 	</div>
@@ -30,11 +35,8 @@
 		{papers -> f:format.raw()}
 	</div>
 </div>
-
-<div class="FooterMain marginTop-triple" style="overflow:hidden">
-	<div class="row">
-		<div class="columns">
-			{main -> f:format.raw()}
-		</div>
+<div class="row">
+	<div class="columns">
+		{main -> f:format.raw()}
 	</div>
 </div>

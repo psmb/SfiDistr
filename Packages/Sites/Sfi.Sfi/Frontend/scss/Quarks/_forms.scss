@@ -2,7 +2,7 @@
 	@extend .ParagraphAlt;
 	font-family: $fontFamily-alt;
 	border: 1px solid $gray-line;
-	padding: $u;
-	margin: 0 0 2*$u 0 !important;
+	padding: 8px;
+	margin: 0 0 $u 0 !important;
 	width: 100%;
 }

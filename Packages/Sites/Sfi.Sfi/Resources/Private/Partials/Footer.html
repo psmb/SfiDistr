@@ -1,5 +1,5 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-<footer class="Footer">
+<footer class="Footer paddingVertical-double">
 	<div class="row">
 		<div class="columns medium-6 columns">
 			<p class="Footer-Description Footer-Paragraph"><strong><f:translate package="Sfi.Sfi" id="footer.about.sfi"/></strong> <f:translate package="Sfi.Sfi" id="footer.about.text"/></p>
@@ -14,26 +14,50 @@
 		<div class="columns medium-3 columns">
 			<div class="Service"><f:translate package="Sfi.Sfi" id="footer.contacts.title"/></div>
 			<div class="Footer-Contacts">
-				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.phone"/>: <a class="Link" href="tel:+74956230380">+7 495 623 0380</a></p>
-				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.email"/>: <a class="Link" href="mailto:info@sfi.ru">info@sfi.ru</a></p>
+				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.phone"/>: <a style="text-decoration: underline" href="tel:+74956230380">+7 495 623 0380</a></p>
+				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.email"/>: <a style="text-decoration: underline" href="mailto:info@sfi.ru">info@sfi.ru</a></p>
 				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.address"/></p>
 				<p class="Footer-Paragraph">
-					<neos:link.node node="~/about/node-557966c3b906d" class="ButtonInline"><f:translate package="Sfi.Sfi" id="footer.contacts.map"/></neos:link.node>
+					<neos:link.node node="~/about/node-557966c3b906d" style="text-decoration: underline; color: white" class="ButtonInline"><f:translate package="Sfi.Sfi" id="footer.contacts.map"/></neos:link.node>
 				</p>
 			</div>
 		</div>
 	</div>
 	<f:if condition="{lang} == 'ru'">
+		<div class="row marginVertical-double">
+			<div class="medium-6 columns">
+				<div class="Service">Лицензии</div>
+				<p class="ParagraphAlt--Small">
+			
+					Свидетельство о государственной аккредитации № 2015 от 16 июня 2016 года
+					<br>Лицензия № 2051 Федеральной службы по надзору в сфере образования и науки от 01.04.2016
+					<br>Представление Отдела религиозного образования и катехизации Московской Патриархии № 09-5635-5 от 21.01.2009
+				</p>
+				<!-- TODO: proper link -->
+				<a class="ButtonInline color-white" href="http://sfi.ru/about/sveden/document.html">Все документы</a>
+			</div>
+			<div class="medium-5 medium-offset-1 columns">
+				<div class="Service">Реквизиты СФИ</div>
+				<p class="ParagraphAlt--Small">
+					ИНН: 7701165500, КПП: 770101001
+					<br>Код ОКТМО 45375000
+					<br>ПАО «Сбербанк России»
+					<br>P/сч: 40703810838120100621
+					<br>К/сч: 30101810400000000225
+					<br>БИК: 044525225
+				</p>
+			</div>
+		</div>
 		<div class="row">
 			<div class="columns">
 				<div class="marginTop-single">
-					<a itemprop="copy" href="#eye" class="ButtonInline icon-eye js-switchStylesheet" data-css="accessible-stylesheet" title="Версия сайта для слабовидящих">
+					<a itemprop="copy" href="#eye" style="text-decoration: underline; color: white" class="ButtonInline icon-eye js-switchStylesheet" data-css="accessible-stylesheet" title="Версия сайта для слабовидящих">
 						Версия сайта для слабовидящих
 					</a>
 				</div>
 				<div class="Footer-Copyright">
 					<div class="Plus12 float-left">12+</div>
-					<p class="ServiceTiny">
+					<p class="ParagraphAlt--Small">
 						© Свято-Филаретовский православно-христианский институт. Использование в любой форме материалов этого сайта допустимо только при наличии активной ссылки на <a href="https://sfi.ru/">https://sfi.ru/</a>
 					</p>
 				</div>

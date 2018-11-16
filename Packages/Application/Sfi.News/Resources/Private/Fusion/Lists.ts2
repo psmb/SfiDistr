@@ -57,7 +57,7 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.News:AbstractNews'}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
 		}
 	}
 }

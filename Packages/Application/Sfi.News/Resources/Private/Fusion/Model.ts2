@@ -1,7 +1,7 @@
 #Display full view of article
 prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 	@context.variant = ${node.properties.isHard ? 'Hard' : 'Soft'}
-	templatePath = ${'resource://Sfi.News/Private/Templates/News' + q(node).parent().property('variant') + '.html'}
+	templatePath = ${'resource://Sfi.News/Private/Templates/News' + variant + '.html'}
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	@context.configuration = ${Configuration.setting('Sfi.News.newsDetail')}
 	configuration = ${configuration}
@@ -84,12 +84,12 @@ prototype(Sfi.News:ThumbnailImageSrc) < prototype(Neos.Fusion:Case) {
 		renderer = ${node.properties.coverImage}
 	}
 	hasYouTubeVideo {
-		@context.youtubeVideo = ${q(node).children('coverCollection').children('[instanceof Sfi.Shared:YouTube]').get(0)}        
-		condition = ${youtubeVideo}                                                                                              
-		renderer = ${q(youtubeVideo).property('videoUrl')}                                                                       
-		renderer.@process.1 = ${value && String.pregMatch(value, '#\?v=([a-z0-9-_]+)#i')}                                        
-		renderer.@process.2 = ${value && Array.slice(value, 1)}                                                                  
-		renderer.@process.3 = ${value && Array.first(value)}                                                                     
+		@context.youtubeVideo = ${q(node).children('coverCollection').children('[instanceof Sfi.Shared:YouTube]').get(0)}
+		condition = ${youtubeVideo}
+		renderer = ${q(youtubeVideo).property('videoUrl')}
+		renderer.@process.1 = ${value && String.pregMatch(value, '#\?v=([a-z0-9-_]+)#i')}
+		renderer.@process.2 = ${value && Array.slice(value, 1)}
+		renderer.@process.3 = ${value && Array.first(value)}
 		renderer.@process.4 = ${value ? 'https://img.youtube.com/vi/' + value + '/maxresdefault.jpg' : ''}
 	}
 	hasCoverCollectionImage {

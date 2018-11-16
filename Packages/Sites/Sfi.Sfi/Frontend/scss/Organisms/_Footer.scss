@@ -1,23 +1,17 @@
 .Footer {
-	margin-top: $u;
 	padding: $u 0;
-	background: $gray-bg--light;
+	background: $gray--dark;
+	color: white;
 }
 
 .Footer-Paragraph {
 	@extend .ParagraphAlt--Small;
 	margin: 0;
 	line-height: $lineHeight-loose;
-	color: $gray--light;
-}
-
-.Footer-Description {
-	strong {
-		color: $gray--dark;
-	}
+	color: white;
 }
 
 .Footer-Copyright {
 	margin-top: 3*$u;
-	color: $gray--light;
+	color: white;
 }
