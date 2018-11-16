@@ -73,6 +73,8 @@ blah: &alohaRich
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
+    middle:
+      type: 'Neos.Neos:ContentCollection'
 'Sfi.Sfi:PagePresentation':
   superTypes:
     'Sfi.Sfi:AbstractPage': true
