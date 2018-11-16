@@ -51,7 +51,6 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			entryLevel = 1
 			maximumLevels = 2
-			itemClass = 'LinkState H4 lineHeight-single paddingHorizontal-sesquialteral'
 			@if.notProjects = ${!(q(documentNode).is('[instanceof Sfi.Sfi:FundraisingProject]') || q(documentNode).is('[instanceof Sfi.Sfi:FundraisingAll]'))}
 		}
 

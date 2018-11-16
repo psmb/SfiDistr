@@ -1,6 +1,17 @@
 // Adjust gaps for blockgrid in menus
 
-@include breakpoint('medium') {
+.MainMenu-Item {
+	padding: 12px 0 6px 0;
+}
+
+.MainMenu-SubItem {
+	padding-bottom: 6px;
+}
+
+@include breakpoint('large') {
+	.MainMenu {
+		display: flex;
+	}
 	.MainMenu-Column {
 		position: relative;
 		border: 1px solid white;
@@ -13,6 +24,12 @@
 		padding: $u 1.5*$u;
 
 		display: none;
+	}
+	.MainMenu-Item {
+		padding: 8px 12px;
+	}
+	.MainMenu-SubItem {
+		padding: 8px 12px;
 	}
 	.MainMenu-Column:hover {
 		border: 1px solid $gray-line;

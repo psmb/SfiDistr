@@ -52,18 +52,28 @@
 		top: 0;
 		bottom: 0;
 		height: 100%;
-		width: 270px;
 		text-align: left;
 		background: linear-gradient(270deg,rgba(255 ,255 ,255 , 0), rgba(255, 255, 255, 0.8));
+		@media #{$medium-up} {
+			width: 60px;
+		}
+		@media #{$large-up} {
+			width: 130px;
+		}
 	}
 	.slick-next {
 		right: 0;
 		top: 0;
 		bottom: 0;
 		height: 100%;
-		width: 270px;
 		text-align: right;
 		background: linear-gradient(90deg,rgba(255 ,255 ,255 , 0), rgba(255, 255, 255, 0.8));
+		@media #{$medium-up} {
+			width: 60px;
+		}
+		@media #{$large-up} {
+			width: 130px;
+		}
 	}
 	.slick-disabled {
 		display: none !important;

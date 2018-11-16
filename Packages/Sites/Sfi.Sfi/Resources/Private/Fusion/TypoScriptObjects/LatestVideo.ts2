@@ -1,5 +1,5 @@
 prototype(Sfi.Sfi:LatestVideo) < prototype(Neos.Fusion:Component) {
-    @context.rootNode = ${q(site).children('[uriPathSegment = "lektsii-diskussii-interviu"]').get(0)}
+    @context.rootNode = ${q(site).children('node-qij9kguwatvdn').get(0)}
     listTitle = ${rootNode.properties.title}
     list = Neos.Fusion:Collection {
         collection = ${q(rootNode).find('[instanceof Sfi.News:AbstractNews]').sort('date', 'DESC').slice(0, 1).get()}

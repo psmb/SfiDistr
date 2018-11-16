@@ -1,11 +1,10 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace ts=Neos\Fusion\ViewHelpers}
 
-<ul style="display: flex">
+<ul class="MainMenu">
 	<f:for each="{items}" as="item" iteration="iterator">
 		<li class="MainMenu-Column {f:if(condition:iterator.isLast,then:'end')} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}" >
-			<div
-				style="padding: 8px 12px" class="MainMenu-Item {itemClass} {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}"
+			<div class="MainMenu-Item LinkState H4 lineHeight-single {ts:render(path:'{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}"
 				>
 				<div class="MainMenu-ItemInner">
 					<neos:link.node node="{item.node}" title="{item.node.properties.title}"/>
@@ -14,7 +13,7 @@
 			<f:if condition="{item.subItems}">
 				<div class="MainMenu-SubItems">
 					<f:for each="{item.subItems}" as="subItem">
-						<div style="padding: 8px 12px" class="LinkState MainMenu-SubItem ParagraphAlt {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
+						<div class="LinkState MainMenu-SubItem ParagraphAlt {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
 							<neos:link.node node="{subItem.node}" title="{subItem.node.properties.title}" />
 						</div>
 					</f:for>
