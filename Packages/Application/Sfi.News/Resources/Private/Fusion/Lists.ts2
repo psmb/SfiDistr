@@ -145,7 +145,7 @@ prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
 	listTitle = ${Translation.translate('listByTag.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
 	listTitleClass = 'SectionDivider--Service'
 
-	@context.collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews]').get()}
+	@context.collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
 	@context.collection.@process.filterByReference = ${q(node).property('tag') ? q(value).filterByReference('tags', q(node).property('tag')).get() : q(value).filterByReference('tags', documentNode).get()}
 	prototype(Flowpack.Listable:Listable) {
 		paginationEnabled = true
