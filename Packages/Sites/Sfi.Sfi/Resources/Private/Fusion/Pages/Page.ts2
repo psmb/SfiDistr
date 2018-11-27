@@ -52,7 +52,6 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			itemClass = 'LinkState H4 lineHeight-single'
 			entryLevel = 1
 			maximumLevels = 2
-			@if.notProjects = ${!(q(documentNode).is('[instanceof Sfi.Sfi:FundraisingProject]') || q(documentNode).is('[instanceof Sfi.Sfi:FundraisingAll]'))}
 		}
 
 		lang = ${Array.first(node.context.dimensions.language)}
@@ -67,7 +66,6 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			itemClass = 'ParagraphAlt lineHeight-single'
 			startingPoint = ${subMenuNode}
 			maximumLevels = 2
-			@if.notProjects = ${!(q(documentNode).is('[instanceof Sfi.Sfi:FundraisingProject]') || q(documentNode).is('[instanceof Sfi.Sfi:FundraisingAll]'))}
 		}
 		secondaryMenu = Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SecondaryMenu.html'
