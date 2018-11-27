@@ -1,17 +1,17 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 <footer class="Footer paddingVertical-double">
 	<div class="row">
-		<div class="columns medium-6 columns">
+		<div class="marginBottom-single columns medium-6 columns">
 			<p class="Footer-Description Footer-Paragraph"><strong><f:translate package="Sfi.Sfi" id="footer.about.sfi"/></strong> <f:translate package="Sfi.Sfi" id="footer.about.text"/></p>
 		</div>
-		<div class="columns medium-offset-1 medium-2 columns">
+		<div class="marginBottom-single columns medium-offset-1 medium-2 columns">
 			<div class="Service"><f:translate package="Sfi.Sfi" id="footer.social.title"/></div>
 			<div class="Footer-Social">
 				<p class="Footer-Paragraph Link"><a href="https://www.facebook.com/sfi.ru"><f:translate package="Sfi.Sfi" id="footer.social.fb"/></a></p>
 				<p class="Footer-Paragraph Link"><a href="https://vk.com/sfiru"><f:translate package="Sfi.Sfi" id="footer.social.vk"/></a></p>
 			</div>
 		</div>
-		<div class="columns medium-3 columns">
+		<div class="marginBottom-single columns medium-3 columns">
 			<div class="Service"><f:translate package="Sfi.Sfi" id="footer.contacts.title"/></div>
 			<div class="Footer-Contacts">
 				<p class="Footer-Paragraph"><f:translate package="Sfi.Sfi" id="footer.contacts.phone"/>: <a style="text-decoration: underline" href="tel:+74956230380">+7 495 623 0380</a></p>
@@ -24,8 +24,8 @@
 		</div>
 	</div>
 	<f:if condition="{lang} == 'ru'">
-		<div class="row marginVertical-double">
-			<div class="medium-6 columns">
+		<div class="row marginVertical-single">
+			<div class="marginBottom-single medium-6 columns">
 				<div class="Service">Лицензии</div>
 				<p class="ParagraphAlt--Small">
 			
@@ -36,7 +36,7 @@
 				<!-- TODO: proper link -->
 				<a class="ButtonInline color-white" href="http://sfi.ru/about/sveden/document.html">Все документы</a>
 			</div>
-			<div class="medium-5 medium-offset-1 columns">
+			<div class="marginBottom-single medium-5 medium-offset-1 columns">
 				<div class="Service">Реквизиты СФИ</div>
 				<p class="ParagraphAlt--Small">
 					ИНН: 7701165500, КПП: 770101001
