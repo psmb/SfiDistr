@@ -68,7 +68,7 @@ Psmb:
           uri: 'http://eventstore:2113/projection/datasource-chapel/result'
         label: 'Жертвователи на часовню с начала года'
         interval: manual
-        senderName: 'Поддержать СФИ'
+        senderName: 'Поддержите СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
@@ -78,7 +78,7 @@ Psmb:
         renderer: 'Sfi.Sfi:FundraisingMail'
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         interval: manual
-        senderName: 'Поддержать СФИ'
+        senderName: 'Поддержите СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
