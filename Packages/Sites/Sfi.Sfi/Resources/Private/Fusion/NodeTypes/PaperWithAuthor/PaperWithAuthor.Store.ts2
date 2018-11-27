@@ -1,6 +1,6 @@
 prototype(Sfi.Sfi:PaperWithAuthor.Store)>
 prototype(Sfi.Sfi:PaperWithAuthor.Store) < prototype(Neos.Fusion:Array) {
-    @process.tmpl = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
+    @process.tmpl = ${'<div class="row"><div class="columns large-8 medium-10">' + value + '</div></div>'}
     title = ${'<h1 class="PageTitle">' + node.properties.title + '</h1>'}
     list = Flowpack.Listable:Listable {
         collection = ${q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor]').sort('date', 'DESC').get()}
