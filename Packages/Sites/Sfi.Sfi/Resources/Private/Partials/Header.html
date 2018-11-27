@@ -196,7 +196,9 @@
 	<f:if condition="{breadcrumbMenu}">
 		<div class="row">
 			<div class="columns breadcrumbsWrapper">
-				{breadcrumbMenu -> f:format.raw()}
+				<div style="border-top: 1px solid #ccc; padding-left: 18px">
+					{breadcrumbMenu -> f:format.raw()}
+				</div>
 			</div>
 		</div>
 	</f:if>
