@@ -15,7 +15,7 @@
                 <target>All papers</target>
             </trans-unit>
             <trans-unit id="allVideos">
-                <target>All lectures</target>
+                <target>All publications</target>
             </trans-unit>
             <trans-unit id="keywords">
                 <target>Keywords</target>
