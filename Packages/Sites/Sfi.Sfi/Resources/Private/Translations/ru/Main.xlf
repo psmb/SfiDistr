@@ -15,7 +15,7 @@
                 <source>Все доклады</source>
             </trans-unit>
             <trans-unit id="allVideos">
-                <source>Все лекции</source>
+                <source>Все публикации</source>
             </trans-unit>
             <trans-unit id="keywords">
                 <source>Ключевые слова</source>
