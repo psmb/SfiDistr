@@ -12,14 +12,42 @@ prototype(Sfi.Sfi:AlmanacTeaser) < prototype(Neos.Neos:ContentComponent) {
         property = 'issue'
     }
     nodeUri = ${node.properties.target}
+
     imageSmall = Neos.Neos:ImageUri {
         asset = ${node.properties.imageSmall}
+        width = 640
+        height = 854
+        allowCropping = TRUE
+    }
+    imageSmall2x = Neos.Neos:ImageUri {
+        asset = ${node.properties.imageSmall}
+        width = 1280
+        height = 1708
+        allowCropping = TRUE
     }
     imageMedium = Neos.Neos:ImageUri {
         asset = ${node.properties.imageMedium}
+        width = 1024
+        height = 344
+        allowCropping = TRUE
+    }
+    imageMedium2x = Neos.Neos:ImageUri {
+        asset = ${node.properties.imageMedium}
+        width = 2048
+        height = 688
+        allowCropping = TRUE
     }
     imageLarge = Neos.Neos:ImageUri {
         asset = ${node.properties.imageLarge}
+        width = 1170
+        height = 215
+        allowCropping = TRUE
+    }
+    imageLarge2x = Neos.Neos:ImageUri {
+        asset = ${node.properties.imageLarge}
+        width = 2340
+        height = 430
+        allowCropping = TRUE
     }
     @process.style = ${'<style>
         .AlmanacTeaser {
@@ -27,9 +55,20 @@ prototype(Sfi.Sfi:AlmanacTeaser) < prototype(Neos.Neos:ContentComponent) {
             background-size: cover;
             background-repeat: no-repeat;
             background-position: bottom center;
-            height: 119vw;
+            height: 133vw;
             padding: 24px;
             position: relative;
+        }
+        @media
+        only screen and (-webkit-min-device-pixel-ratio: 2)      and (max-width: 639px),
+        only screen and (   min--moz-device-pixel-ratio: 2)      and (max-width: 639px),
+        only screen and (     -o-min-device-pixel-ratio: 2/1)    and (max-width: 639px),
+        only screen and (        min-device-pixel-ratio: 2)      and (max-width: 639px),
+        only screen and (                min-resolution: 192dpi) and (max-width: 639px),
+        only screen and (                min-resolution: 2dppx)  and (max-width: 639px) { 
+            .AlmanacTeaser {
+                background-image: url("' + this.imageSmall2x + '");
+            }
         }
         .AlmanacTeaser-title {
             font-size: 9vw;
@@ -58,6 +97,40 @@ prototype(Sfi.Sfi:AlmanacTeaser) < prototype(Neos.Neos:ContentComponent) {
         @media (min-width: 640px) {
             .AlmanacTeaser {
                 background-image: url("' + this.imageMedium + '");
+                height: 33vw;
+            }
+            .AlmanacTeaser-title {
+                font-size: 5vw;
+            }
+            .AlmanacTeaser-subTitle {
+                font-size: 2.5vw;
+                max-width: 48vw;
+            }
+            .AlmanacTeaser-issue {
+                font-size: 2.5vw;
+                position: absolute;
+                right: 24px;
+                top: 24px;
+            }
+            .AlmanacTeaser-button {
+                font-size: 3vw;
+                width: 14vw;
+            }
+        }
+        @media
+        only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 640px),
+        only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 640px),
+        only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 640px),
+        only screen and (        min-device-pixel-ratio: 2)      and (min-width: 640px),
+        only screen and (                min-resolution: 192dpi) and (min-width: 640px),
+        only screen and (                min-resolution: 2dppx)  and (min-width: 640px) { 
+            .AlmanacTeaser {
+                background-image: url("' + this.imageMedium2x + '");
+            }
+        }
+        @media (min-width: 1024px) {
+            .AlmanacTeaser {
+                background-image: url("' + this.imageLarge + '");
                 height: 18vw;
             }
             .AlmanacTeaser-title {
@@ -78,33 +151,20 @@ prototype(Sfi.Sfi:AlmanacTeaser) < prototype(Neos.Neos:ContentComponent) {
                 width: 9vw;
             }
         }
-        @media (min-width: 640px) and (max-width: 940px) {
-            .AlmanacTeaser-button {
-                display: none;
-            }
-        }
-        @media (min-width: 1024px) {
+        @media
+        only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 1024px),
+        only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 1024px),
+        only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 1024px),
+        only screen and (        min-device-pixel-ratio: 2)      and (min-width: 1024px),
+        only screen and (                min-resolution: 192dpi) and (min-width: 1024px),
+        only screen and (                min-resolution: 2dppx)  and (min-width: 1024px) { 
             .AlmanacTeaser {
-                background-image: url("' + this.imageLarge + '");
-                height: 20vw;
-            }
-            .AlmanacTeaser-title {
-                font-size: 3.5vw;
-            }
-            .AlmanacTeaser-subTitle {
-                font-size: 1.5vw;
-                max-width: 42vw;
-            }
-            .AlmanacTeaser-issue {
-                font-size: 1.5vw;
-                position: absolute;
-                right: 24px;
-                top: 24px;
+                background-image: url("' + this.imageLarge2x + '");
             }
         }
         @media (min-width: 1200px) {
             .AlmanacTeaser {
-                height: 240px;
+                height: 215px;
             }
             .AlmanacTeaser-title {
                 font-size: 36px;
