@@ -1,0 +1,61 @@
+'Sfi.Sfi:AlmanacTeaser':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Банер Научного Журнала'
+    icon: address-card
+    group: contentBlocks
+    inspector:
+      groups:
+        image:
+          label: Картинка
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Заголовок
+    subTitle:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Подзаголовок
+    issue:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: '№00 лето 2099'
+    imageSmall:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Фоновая картинка (small)
+        reloadIfChanged: true
+        inspector:
+          group: image
+    imageMedium:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Фоновая картинка (medium)
+        reloadIfChanged: true
+        inspector:
+          group: image
+    imageLarge:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Фоновая картинка (large)
+        reloadIfChanged: true
+        inspector:
+          group: image
+    target:
+      type: reference
+      ui:
+        label: 'Ссылка на страницу последнего номера Альманаха'
+        reloadIfChanged: true
+        inspector:
+          group: image
+          editorOptions:
+            nodeTypes:
+              - 'Neos.Neos:Document'

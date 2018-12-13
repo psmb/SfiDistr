@@ -1,0 +1,135 @@
+prototype(Sfi.Sfi:AlmanacTeaser) < prototype(Neos.Neos:ContentComponent) {
+    title = Neos.Neos:Editable {
+        block = false
+        property = 'title'
+    }
+    subTitle = Neos.Neos:Editable {
+        block = false
+        property = 'subTitle'
+    }
+    issue = Neos.Neos:Editable {
+        block = false
+        property = 'issue'
+    }
+    nodeUri = ${node.properties.target}
+    imageSmall = Neos.Neos:ImageUri {
+        asset = ${node.properties.imageSmall}
+    }
+    imageMedium = Neos.Neos:ImageUri {
+        asset = ${node.properties.imageMedium}
+    }
+    imageLarge = Neos.Neos:ImageUri {
+        asset = ${node.properties.imageLarge}
+    }
+    @process.style = ${'<style>
+        .AlmanacTeaser {
+            background-image: url("' + this.imageSmall + '");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            height: 119vw;
+            padding: 24px;
+            position: relative;
+        }
+        .AlmanacTeaser-title {
+            font-size: 9vw;
+            color: var(--color-grayLight);
+            margin-bottom: 12px;
+        }
+        .AlmanacTeaser-subTitle {
+            font-size: 4.5vw;
+            line-height: 1.2;
+            color: var(--color-grayLight);
+            margin-bottom: 12px;
+        }
+        .AlmanacTeaser-issue {
+            font-size: 4.5vw;
+            color: var(--color-grayLight);
+        }
+        .AlmanacTeaser-button {
+            border: 2px solid var(--color-grayLight);
+            color: var(--color-grayLight);
+            font-size: 4vw;
+            width: 18vw;
+            text-align: center;
+            position: absolute;
+            bottom: 24px;
+        }
+        @media (min-width: 640px) {
+            .AlmanacTeaser {
+                background-image: url("' + this.imageMedium + '");
+                height: 18vw;
+            }
+            .AlmanacTeaser-title {
+                font-size: 3.5vw;
+            }
+            .AlmanacTeaser-subTitle {
+                font-size: 1.5vw;
+                max-width: 42vw;
+            }
+            .AlmanacTeaser-issue {
+                font-size: 1.5vw;
+                position: absolute;
+                right: 24px;
+                top: 24px;
+            }
+            .AlmanacTeaser-button {
+                font-size: 2vw;
+                width: 9vw;
+            }
+        }
+        @media (min-width: 640px) and (max-width: 940px) {
+            .AlmanacTeaser-button {
+                display: none;
+            }
+        }
+        @media (min-width: 1024px) {
+            .AlmanacTeaser {
+                background-image: url("' + this.imageLarge + '");
+                height: 20vw;
+            }
+            .AlmanacTeaser-title {
+                font-size: 3.5vw;
+            }
+            .AlmanacTeaser-subTitle {
+                font-size: 1.5vw;
+                max-width: 42vw;
+            }
+            .AlmanacTeaser-issue {
+                font-size: 1.5vw;
+                position: absolute;
+                right: 24px;
+                top: 24px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .AlmanacTeaser {
+                height: 240px;
+            }
+            .AlmanacTeaser-title {
+                font-size: 36px;
+            }
+            .AlmanacTeaser-subTitle {
+                font-size: 18px;
+                max-width: 500px;
+            }
+            .AlmanacTeaser-issue {
+                font-size: 18px;
+            }
+            .AlmanacTeaser-button {
+                width: 107px;
+                font-size: 24px;
+            }
+        }
+    </style>' + value}
+    renderer = afx`
+        <a href={props.nodeUri}>
+            <div class="AlmanacTeaser">
+                <h3 class="H1 AlmanacTeaser-title">{props.title}</h3>
+                <h4 class="ServiceEm--Large AlmanacTeaser-subTitle">{props.subTitle}</h4>
+                <div class="H4 AlmanacTeaser-issue">{props.issue}</div>
+                <div class="AlmanacTeaser-button">⟶</div>
+            </div>
+        </a>
+    `
+}
