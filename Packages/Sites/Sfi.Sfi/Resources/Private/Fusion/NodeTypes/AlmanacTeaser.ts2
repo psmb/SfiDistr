@@ -11,7 +11,9 @@ prototype(Sfi.Sfi:AlmanacTeaser) < prototype(Neos.Neos:ContentComponent) {
         block = false
         property = 'issue'
     }
-    nodeUri = ${node.properties.target}
+    nodeUri = Neos.Neos:NodeUri {
+        node = ${node.properties.target}
+    }
 
     imageSmall = Neos.Neos:ImageUri {
         asset = ${node.properties.imageSmall}
