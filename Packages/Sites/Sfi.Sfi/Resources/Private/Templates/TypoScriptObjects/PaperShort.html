@@ -3,14 +3,14 @@
 <neos:link.node absolute="true" node="{node}" title="{node.properties.title}">
 	<div class="marginVertical-double">
 		<p>
-			<span class="H4">{authorName}</span>
-			<span class="ServiceEm">{authorDegree}</span>
+			<span class="H4">{authorName -> f:format.raw()}</span>
+			<span class="ServiceEm">{authorDegree -> f:format.raw()}</span>
 		</p>
 		<p class="ServiceEm margin-none">
-			{authorFrom}
+			{authorFrom -> f:format.raw()}
 		</p>
 		<h3 class="Paragraph Link margin-none">
-			{title}
+			{title -> f:format.raw()}
 		</h3>
 	</div>
 </neos:link.node>
