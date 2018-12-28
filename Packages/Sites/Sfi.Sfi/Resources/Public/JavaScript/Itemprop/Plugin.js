@@ -328,7 +328,16 @@ var ItempropCommand = function (_Command) {
                 this.value = doc.selection.getAttribute(ITEMPROP);
             } else {
                 var parent = doc.selection.getFirstPosition().parent;
-                this.value = parent.getAttribute(ITEMPROP);
+                if (parent && parent.hasAttribute(ITEMPROP)) {
+                    this.value = parent.getAttribute(ITEMPROP);
+                } else {
+                    var grandParent = parent.parent;
+                    if (grandParent && grandParent.hasAttribute(ITEMPROP)) {
+                        this.value = grandParent.getAttribute(ITEMPROP);
+                    } else {
+                        this.value = undefined;
+                    }
+                }
             }
         }
     }, {
@@ -412,22 +421,22 @@ var Itemprop = function (_Plugin) {
             var editor = this.editor;
             editor.model.schema.extend('$block', { allowAttributes: ITEMPROP });
             editor.model.schema.extend('$text', { allowAttributes: ITEMPROP });
-            editor.model.schema.extend('tableCell', { allowContentOf: '$root', allowAttributes: ITEMPROP });
-
-            editor.model.schema.addChildCheck(function (context, childDefinition) {
-                if (childDefinition.name == 'paragraph' && Array.from(context.getNames()).includes('tableCell')) {
-                    return false;
-                }
-            });
+            editor.model.schema.extend('tableCell', { allowAttributes: ITEMPROP });
 
             var schema = this.editor.model.schema;
 
             this.editor.conversion.for('upcast').add(upcastElementToAttribute({
                 view: {
                     name: 'span',
-                    key: ITEMPROP
+                    key: ITEMPROP,
+                    attributes: _defineProperty({}, ITEMPROP, true)
                 },
-                model: ITEMPROP
+                model: {
+                    key: ITEMPROP,
+                    value: function value(viewElement) {
+                        return viewElement.getAttribute('itemprop');
+                    }
+                }
             }));
 
             this.editor.conversion.for('upcast').add(upcastAttributeToAttribute({
