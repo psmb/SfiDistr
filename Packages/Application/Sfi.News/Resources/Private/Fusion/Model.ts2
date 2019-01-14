@@ -12,10 +12,15 @@ prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 
 	title = ${q(node).property('title')}
 	teaser = ${q(node).property('teaser')}
+	teaser.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
 	lead = ${q(node).property('lead')}
+	lead.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
 	author = ${String.stripTags(q(node).property('author'))}
+	author.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
 	authorPhoto = ${String.stripTags(q(node).property('authorPhoto'))}
+	authorPhoto.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
 	translator = ${String.stripTags(q(node).property('translator'))}
+	translator.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
 	date = ${q(node).property('date')}
 
 	coverCollection = Neos.Neos:ContentCollection {
