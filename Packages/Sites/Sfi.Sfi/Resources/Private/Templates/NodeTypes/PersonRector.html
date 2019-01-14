@@ -44,7 +44,9 @@
 						<div class="ParagraphAlt">{neos:contentElement.editable(property: 'subject')}</div>
 					</div>
 				</f:if>
-				<div class="ParagraphAlt--Large color-primaryAlt">Образование</div>
+				<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevel} || {education} || {educationUpgrade}">
+					<div class="ParagraphAlt--Large color-primaryAlt">Образование</div>
+				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevel}">
 					<div class="ParagraphAlt marginBottom-single"><strong>Уровень образования:</strong>
 						{neos:contentElement.editable(property: 'teachingLevel', tag: 'span')}</div>
