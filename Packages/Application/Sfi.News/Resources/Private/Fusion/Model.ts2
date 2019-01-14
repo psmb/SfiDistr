@@ -12,15 +12,15 @@ prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 
 	title = ${q(node).property('title')}
 	teaser = ${q(node).property('teaser')}
-	teaser.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
+	teaser.@process.removeNbsp = ${value = '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
 	lead = ${q(node).property('lead')}
-	lead.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
+	lead.@process.removeNbsp = ${value = '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
 	author = ${String.stripTags(q(node).property('author'))}
-	author.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
+	author.@process.removeNbsp = ${value = '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
 	authorPhoto = ${String.stripTags(q(node).property('authorPhoto'))}
-	authorPhoto.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
+	authorPhoto.@process.removeNbsp = ${value = '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
 	translator = ${String.stripTags(q(node).property('translator'))}
-	translator.@process.removeNbsp = ${String.length(value) == 1 ? '' : value}
+	translator.@process.removeNbsp = ${value = '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
 	date = ${q(node).property('date')}
 
 	coverCollection = Neos.Neos:ContentCollection {
