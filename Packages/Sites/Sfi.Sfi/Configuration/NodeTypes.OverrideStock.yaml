@@ -136,3 +136,24 @@
             referenceNodePath: '/sites/sfi/node-qij9kguwatvdn'
             enabled: true
             placeholder: 'Название'
+
+'Sfi.Sfi:AutomatedNewsletter':
+  abstract: true
+  ui:
+    inspector:
+      views:
+        newsletter:
+          viewOptions:
+            dataSourceAdditionalArguments:
+              startDate: 'ClientEval:node.properties.startDate || ""'
+  properties:
+    startDate:
+      type: DateTime
+      ui:
+        label: 'Жертвователи начиная с (либо все)'
+        reloadIfChanged: true
+        inspector:
+          group: newsletter
+          position: 1
+          editorOptions:
+            format: 'Y-m-d'

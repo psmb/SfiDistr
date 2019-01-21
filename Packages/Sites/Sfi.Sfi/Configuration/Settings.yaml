@@ -60,13 +60,55 @@ Psmb:
           language:
             - en
       -
+        identifier: datasource-all
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://node/subscribers'
+        label: 'Все Жертвователи'
+        interval: manual
+        senderName: 'Поддержите СФИ'
+        replyToAddress: 'donate@sfi.ru'
+        dimensions:
+          language:
+            - ru
+      -
         identifier: datasource-chapel
         renderer: 'Sfi.Sfi:FundraisingMail'
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
-          uri: 'http://eventstore:2113/projection/datasource-chapel/result'
-        label: 'Жертвователи на часовню с начала года'
+          uri: 'http://node/subscribers?referer=chapel'
+        label: 'Жертвователи на часовню'
+        interval: manual
+        senderName: 'Поддержите СФИ'
+        replyToAddress: 'donate@sfi.ru'
+        dimensions:
+          language:
+            - ru
+      -
+        identifier: datasource-projects
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://node/subscribers?referer=projects'
+        label: 'Жертвователи на проекты'
+        interval: manual
+        senderName: 'Поддержите СФИ'
+        replyToAddress: 'donate@sfi.ru'
+        dimensions:
+          language:
+            - ru
+      -
+        identifier: datasource-social
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://node/subscribers?referer=social'
+        label: 'Жертвователи на соцфакультет'
         interval: manual
         senderName: 'Поддержите СФИ'
         replyToAddress: 'donate@sfi.ru'
