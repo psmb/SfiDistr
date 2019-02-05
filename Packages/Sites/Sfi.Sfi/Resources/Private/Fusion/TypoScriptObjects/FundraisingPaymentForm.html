@@ -114,7 +114,7 @@
                     <div data-value="5000" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">5&nbsp;000&nbsp;руб.</div>
                     <div data-value="10000" class="textAlign-center ParagraphAlt--Large color-grayAlt js-switcher-item amountPicker-cell">10&nbsp;000&nbsp;руб.</div>
                     <div class="js-switcher-item textAlign-center ParagraphAlt--Large color-grayAlt amountPicker-cell amountPicker-cell--input" style="padding: 0" colspan="2">
-                        <input class="input" min="0" style="background-color: transparent; margin-bottom: 0 !important; width: 100%; border: 0; text-align: center; font-size: 1.125rem;"
+                        <input class="input" min="0" style="background-color: transparent; padding: 12px 24px; margin-bottom: 0 !important; width: 100%; border: 0; text-align: center; font-size: 1.125rem;"
                             name="amount-other" placeholder="Другая сумма" type="number">
                     </div>
                 </div>
@@ -212,6 +212,22 @@
                 lastName: form.querySelector('[name=lastName]').value,
                 referer: referer
             };
+
+            var settings = {
+                chapel: {
+                    publicId: 'pk_8fd1b6e8b169f07624ddbfbf549af',
+                    description: 'Устроение часовни СФИ'
+                },
+                projects: {
+                    publicId: 'pk_2675596d4fd86dca074a6d2e52b57',
+                    description: 'Научные и просветительские проекты СФИ'
+                },
+                social: {
+                    publicId: 'pk_5a67aca52c2df82f83c774ed93c5c',
+                    description: 'Новая профессия: «Социальный координатор»'
+                }
+            };
+
             var isRecurrent = form.querySelector('.PaymentSelector .isActive').dataset.value === 'monthly';
             if (isRecurrent) {
                 data.cloudPayments = {
@@ -221,18 +237,20 @@
                     }
                 };
             }
-            widget.charge({
-                publicId: 'pk_6bca8ae9eeae557548776757180c3',
-                description: 'Пожертвование на Свято-Филаретовский православно-христианский институт' + (isRecurrent ? ' (регулярное)' : ''),
-                amount: getAmount(),
-                currency: 'RUB',
-                accountId: form.querySelector('[name=email]').value,
-                data: data
-            },
+            widget.charge(
+                {
+                    publicId: settings[referer].publicId,
+                    description: settings[referer].description + (isRecurrent ? ' (регулярное)' : ''),
+                    amount: getAmount(),
+                    currency: 'RUB',
+                    accountId: form.querySelector('[name=email]').value,
+                    data: data
+                },
                 'http://sfi.ru/support/thanks.html',
                 function (reason, options) {
                     alert('Ошибка' + reason);
-                });
+                }
+            );
         } else {
             alert('Ошибка');
         }
