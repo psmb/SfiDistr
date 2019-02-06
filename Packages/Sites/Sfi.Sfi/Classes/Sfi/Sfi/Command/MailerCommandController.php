@@ -96,9 +96,11 @@ class MailerCommandController extends CommandController
                     $subscriber['projectTarget'] = $project->getProperty('target');
                     try {
                         $originalNode = clone $node;
-                        $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
+                        if (!$dryRun) {
+                            $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
+                        }
                         $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
-                        $this->systemLogger->log("Email sent: " . $subscriber['email'] . "; " . $reason . "; " . $subscripionId, \LOG_INFO);
+                        $this->systemLogger->log("Email sent: " . ($dryRun ? "(Dry-run)" : "") . $subscriber['email'] . "; " . $reason . "; " . $subscripionId, \LOG_INFO);
                     } catch (\Exception $e) {
                         $message = $e->getMessage();
                         $level = strpos($message, 'does not comply with RFC 2822') !== false ? \LOG_NOTICE : \LOG_ERR;
