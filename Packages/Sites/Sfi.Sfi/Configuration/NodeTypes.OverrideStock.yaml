@@ -138,7 +138,6 @@
             placeholder: 'Название'
 
 'Sfi.Sfi:AutomatedNewsletter':
-  abstract: true
   ui:
     inspector:
       views:
