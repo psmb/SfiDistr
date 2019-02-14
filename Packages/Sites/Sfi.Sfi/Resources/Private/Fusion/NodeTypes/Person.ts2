@@ -117,14 +117,15 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 					<th>Ученое звание</th>
 					<th>Направление подготовки и/или специальность</th>
 					<th>Повышение квалификации и профессиональная переподготовка</th>
-					<th>Общий стаж работы</th>
-					<th>Стаж работы по специальности</th>
+					<th>Общий стаж работы*</th>
+					<th>Стаж работы по специальности*</th>
 				</tr>
 			</thead>
 			<tbody>
 				{value}
 			</tbody>
 		</table>
+		<p class="ParagraphAlt">*Данные указаны на текущую дату</p>
 	`
 }
 
