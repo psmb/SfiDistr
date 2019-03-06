@@ -1,0 +1,27 @@
+prototype(Sfi.Sfi:AlmanacRestMenu) < prototype(Neos.Fusion:Collection) {
+	@process.wrap = afx`<ul class="marginTop-double">{value}</ul>`
+	collection = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacCategoryPage]').get()}
+	itemName = 'node'
+	itemRenderer = Neos.Fusion:Case {
+		@process.wrap = afx`<li class="lineHeight-single ParagraphAlt marginBottom-single">{value}</li>`
+		active {
+			condition = ${node == documentNode}
+			renderer = Neos.Fusion:Tag {
+				attributes.class = 'color-grayAlt'
+				content = ${node.properties.title}
+			}
+		}
+		default {
+			condition = ${true}
+			renderer = Neos.Fusion:Tag {
+				@process.wrap = afx`<li class="lineHeight-single ParagraphAlt marginBottom-single">{value}</li>`
+				tagName = 'a'
+				attributes.href = Neos.Neos:NodeUri {
+					node = ${node}
+				}
+				attributes.class = 'Link'
+				content = ${node.properties.title + ' »'}
+			}
+		}
+	}
+}

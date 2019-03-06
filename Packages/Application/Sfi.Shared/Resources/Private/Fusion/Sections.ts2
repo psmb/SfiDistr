@@ -67,17 +67,17 @@ prototype(Sfi.Shared:SectionWithImage) {
 	templatePath = ${'resource://Sfi.Shared/Private/Templates/NodeTypes/' + q(node).property('sectionVariant') + '.html'}
 
 	sectionName = ${section}
-    node = ${q(node).get(0)}
-    @override.theNode = ${this.node}
+	node = ${q(node).get(0)}
+	@override.theNode = ${this.node}
 
-    imageMaximumWidth = ${q(node).property('sectionVariant') == 'SectionWithImageVariant2' ? 200 : 120}
-    imageMaximumHeight = ${q(node).property('sectionVariant') == 'SectionWithImageVariant2' ? 200 : 120}
+	imageMaximumWidth = ${q(node).property('sectionVariant') == 'SectionWithImageVariant2' ? 200 : 120}
+	imageMaximumHeight = ${q(node).property('sectionVariant') == 'SectionWithImageVariant2' ? 200 : 120}
 
-    accordionImageMaximumWidth = 150
-    accordionImageMaximumHeight = 150
+	accordionImageMaximumWidth = 150
+	accordionImageMaximumHeight = 150
 
-    title = ${String.stripTags(q(theNode).children('headline').property('title'))}
-    subTitle = ${q(theNode).children('headline').property('subTitle')}
+	title = ${String.stripTags(q(theNode).children('headline').property('title'))}
+	subTitle = ${q(theNode).children('headline').property('subTitle')}
 
 	content = Sfi.Shared:TextWithImage {
 		@override.node = ${q(theNode).get(0)}

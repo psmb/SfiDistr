@@ -1,0 +1,13 @@
+'Sfi.Sfi:AlmanacAbstractPage':
+ abstract: true
+
+'Sfi.Sfi:AlmanacPage':
+  superTypes:
+    'Sfi.Sfi:AbstractPage': true
+    'Sfi.Sfi:AlmanacAbstractPage': true
+  ui:
+    label: 'Альманах - главная'
+    icon: autoprefixer
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'

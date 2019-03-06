@@ -49,6 +49,9 @@ $color-primaryAlt: $acid-blue;
 .backgroundColor-primaryAlt {
 	background-color: $color-primaryAlt !important;
 }
+.borderColor-primary {
+	border-color: $color-primaryAlt !important;
+}
 
 .backgroundColor-white {
 	background-color: white !important;

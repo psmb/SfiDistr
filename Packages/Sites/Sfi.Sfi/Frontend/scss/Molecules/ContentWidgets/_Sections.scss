@@ -19,7 +19,7 @@
 }
 
 .Sections-Tabs {
-	display: none;
+    display: none;
 }
 
 .Sections-Panel.isActive {
@@ -55,13 +55,14 @@
     @extend .ParagraphAlt--Large;
     display: block;
     color: $color-primaryAlt;
-    border: $border-thin--dark;
-    background-color: $gray-bg--light;
-    padding: $u 2*$u;
+    padding: $u 0;
     margin: 0;
     &.isActive {
         background-color: $color-primaryAlt;
         color: white;
+    }
+    & > div {
+        display: inline;
     }
 }
 .Sections-Tabs .Sections-Anchor {
@@ -83,8 +84,7 @@
 }
 
 .Sections-Panel {
-    padding: 3*$u 2*$u;
-    border: $border-thin--dark;
+    padding: 3*$u 0;
 }
 
 
@@ -95,23 +95,23 @@
 
 
 .Sections--Pills{
-	.Sections-Anchor{
-		@extend .Service;
-		&:after{
-			content: ' »';
+    .Sections-Anchor{
+        @extend .Service;
+        &:after{
+            content: ' »';
             color: $color-primary;
-		}
-	}
+        }
+    }
     .Sections-Anchor.isActive, .Sections-Anchor:hover{
         color: $color-primary;
     }
     .Sections-Tabs{
         margin-bottom: 3*$u;
     }
-	.Sections-Tab{
-		padding: 0;
-		padding-right: 2*$u; 
-	}
+    .Sections-Tab{
+        padding: 0;
+        padding-right: 2*$u; 
+    }
 }
 
 

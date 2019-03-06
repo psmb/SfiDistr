@@ -1,0 +1,46 @@
+prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
+	@context.almanacRoot = ${q(site).find('[instanceof Sfi.Sfi:AlmanacPage]').get(0)}
+
+	title='to-be-set'
+	content = 'to-be-set'
+
+	rootLink = Neos.Neos:NodeUri {
+		node = ${almanacRoot}
+	}
+
+	issuesNav = Sfi.Sfi:AlmanacIssuesMenu
+
+	nav = afx`
+		<Sfi.Sfi:AlmanacResearchMenu/>
+		<Sfi.Sfi:AlmanacRestMenu/>
+	`
+	renderer = afx`
+		<div class="row" style="margin-bottom: 48px">
+			<div class="columns">
+				<a href={props.rootLink}>
+					<h1 class="H0 textAlign-center">Вестник СФИ</h1>
+				</a>
+			</div>
+		</div>
+		<div class="row js-stickInParent-parent">
+			<div class="large-6 large-push-3 columns">
+				<h2 class="H2 marginBottom-double">{props.title}</h2>
+				{props.content}
+			</div>
+			<div class="large-3 large-pull-6 columns">
+				<div class="js-stickInParent">
+					<div class="marginTop-single marginBottom-double">
+						{props.issuesNav}
+					</div>
+				</div>
+			</div>
+			<div class="large-3 columns">
+				<div class="js-stickInParent">
+					<div class="marginTop-single">
+						{props.nav}
+					</div>
+				</div>
+			</div>
+		</div>
+	`
+}

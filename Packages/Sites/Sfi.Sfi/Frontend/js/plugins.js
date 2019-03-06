@@ -317,16 +317,14 @@ if (typeof document.addEventListener === 'function') {
 
 // Init the stickInParent plugin
 (function () {
-  var node = document.querySelector('.js-stickInParent');
-  if (node) {
-    stickInParent(node);
-  }
+	document.querySelectorAll('.js-stickInParent').forEach(function (node) {
+		stickInParent(node);
+	});
 }());
 (function () {
-  var node = document.querySelector('.js-stickInParent--large');
-  if (node) {
-    stickInParent(node, {minWidth: 1024});
-  }
+	document.querySelectorAll('.js-stickInParent--large').forEach(function (node) {
+		stickInParent(node, {minWidth: 1024});
+	});
 }());
 
 function stickInParent (element, options) {

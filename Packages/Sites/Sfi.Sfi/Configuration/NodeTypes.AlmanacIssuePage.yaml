@@ -1,0 +1,22 @@
+'Sfi.Sfi:AlmanacIssuePage':
+  superTypes:
+    'Sfi.Sfi:AbstractPage': true
+    'Sfi.Sfi:AlmanacAbstractPage': true
+  ui:
+    label: 'Альманах - выпуск'
+    icon: sort-numeric-down
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  properties:
+    issueNumber:
+      type: string
+      ui:
+        label: 'Номер выпуска'
+        reloadIfChanged: false
+        inspector:
+          group: document
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': []
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^[0-9]+$/i'
