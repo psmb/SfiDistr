@@ -1,5 +1,6 @@
 prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
 	@process.wrap = afx`
+		<div id="almanac-issues" style="position: relative; top: -50px"></div>
 		<h3 class="color-grayAlt H4">Все номера</h3>
 		<ul style="display: flex; flex-wrap: wrap" class="marginTop-single">{value}</ul>
 	`

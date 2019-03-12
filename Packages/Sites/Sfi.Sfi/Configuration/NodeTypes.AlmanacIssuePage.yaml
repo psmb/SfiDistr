@@ -8,7 +8,23 @@
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
+    buyBook:
+      type: 'Sfi.Sfi:BuyBook'
   properties:
+    description:
+      type: string
+      ui:
+        inline:
+          editorOptions:
+            placeholder: 'Описание выпуска'
+            autoparagraph: true
+            formatting:
+              p: true
+              h3: true
+              h4: true
+              a: true
+              strong: true
+              em: true
     issueNumber:
       type: string
       ui:

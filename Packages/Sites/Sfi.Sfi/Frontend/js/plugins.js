@@ -87,36 +87,37 @@ $(document).ready(function(){
 
 //TODO: move to plugin
 (function($) {
-		$.fn.responsiveTabs = function() {
+	$.fn.responsiveTabs = function() {
 
-				this.each(function() {
-						var _this = $(this)
+		this.each(function() {
+			var _this = $(this)
 
-						_this.find('.Sections-Anchor').click(function(e){
-								var parent = $(this).parents('.js-sections').eq(0);
-								e.preventDefault();
-								var panelId = $(this).attr('href');
+			_this.find('.Sections-Anchor').click(function(e){
+				var parent = $(this).parents('.js-sections').eq(0);
+				e.preventDefault();
+				var panelId = $(this).attr('href');
 
-								//TODO: this is a very bad code, as it couples normal CSS classes with JS!
-								if ($(this).hasClass('isActive') && !parent.children('.Sections-Tabs').is(":visible")) {
-										$(this).removeClass('isActive');
-										$(panelId).removeClass('isActive');
-								} else {
-										parent.children('.Sections-Tabs').find('.Sections-Anchor').removeClass('isActive');
-										parent.children('.Sections-Anchor').removeClass('isActive');
-										$(this).addClass('isActive');
+				// TODO: this is a very bad code, as it couples normal CSS classes with JS!
+				if ($(this).hasClass('isActive') && !parent.children('.Sections-Tabs').is(":visible")) {
+					$(this).removeClass('isActive');
+					$(panelId).removeClass('isActive');
+				} else {
+					parent.children('.Sections-Tabs').find('.Sections-Anchor').removeClass('isActive');
+					parent.children('.Sections-Anchor').removeClass('isActive');
+					$(this).addClass('isActive');
 
-										parent.children('.Sections-Panel').removeClass('isActive');
-										$(panelId).addClass('isActive');
-								}
-						});
+					parent.children('.Sections-Panel').removeClass('isActive');
+					$(panelId).addClass('isActive');
+				}
+			});
 
-						// Activate first tab
-						_this.find('.Sections-Anchor').eq(0).click();
-				});
+			// Activate first tab
+			document.getElementById(document.location.hash.substring(1));
+			// _this.find('.Sections-Anchor').eq(0).click();
+		});
 
-				return this;
-		};
+		return this;
+	};
 }( jQuery ));
 
 
@@ -304,7 +305,18 @@ if (typeof document.addEventListener === 'function') {
 
 
 
-
+document.querySelectorAll('.js-ReadMore').forEach(function (node) {
+	var readMore = document.createElement('div');
+	readMore.classList.add('ReadMore-overlay');
+	var button = document.createElement('span');
+	button.innerText = 'Читать далее';
+	button.className = 'ReadMore-button';
+	readMore.appendChild(button);
+	readMore.addEventListener('click', function (event) {
+		node.classList.add('ReadMore--isExpanded');
+	});
+	node.appendChild(readMore);
+});
 
 
 
@@ -324,6 +336,11 @@ if (typeof document.addEventListener === 'function') {
 (function () {
 	document.querySelectorAll('.js-stickInParent--large').forEach(function (node) {
 		stickInParent(node, {minWidth: 1024});
+	});
+}());
+(function () {
+	document.querySelectorAll('.js-stickInParent--small').forEach(function (node) {
+		stickInParent(node, {minWidth: 0});
 	});
 }());
 

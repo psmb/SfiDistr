@@ -6,8 +6,26 @@ prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Neos.Neos:ContentComponent) {
 			property = 'title'
 			block = false
 		}
-		content = Neos.Neos:ContentCollection {
-			nodePath = 'main'
+		content = Neos.Fusion:Component {
+			description = Neos.Neos:Editable {
+				property = 'description'
+				block = true
+			}
+			buyBook = Sfi.Sfi:BuyBook {
+				@context.node = ${q(node).children('buyBook').get(0)}
+			}
+			main = Neos.Neos:ContentCollection {
+				nodePath = 'main'
+			}
+			renderer = afx`
+				<div class="RteText RteText--Paragraph ReadMore js-ReadMore">
+					<div>
+						{props.description}
+					</div>
+				</div>
+				{props.buyBook}
+				{props.main}
+			`
 		}
 	}
 }

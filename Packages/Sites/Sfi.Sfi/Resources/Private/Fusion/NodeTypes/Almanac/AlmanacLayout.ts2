@@ -10,37 +10,53 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 
 	issuesNav = Sfi.Sfi:AlmanacIssuesMenu
 
+	aboutMenu = Sfi.Sfi:AlmanacAboutMenu {
+		@if.notRoot = ${documentNode != almanacRoot}
+	}
+
+	topMenu = Sfi.Sfi:AlmanacTopMenu
+
 	nav = afx`
-		<Sfi.Sfi:AlmanacResearchMenu/>
-		<Sfi.Sfi:AlmanacRestMenu/>
+		<div id="almanac-rubrics" style="position: relative; top: -50px"></div>
+		<div>
+			<Sfi.Sfi:AlmanacResearchMenu/>
+			<Sfi.Sfi:AlmanacRestMenu/>
+		</div>
 	`
 	renderer = afx`
+	<div class="js-stickInParent-parent">
 		<div class="row" style="margin-bottom: 48px">
 			<div class="columns">
 				<a href={props.rootLink}>
 					<h1 class="H0 textAlign-center">Вестник СФИ</h1>
 				</a>
+				{props.topMenu}
 			</div>
 		</div>
 		<div class="row js-stickInParent-parent">
 			<div class="large-6 large-push-3 columns">
+				<div id="almanac-about" style="position: relative; top: -50px"></div>
 				<h2 class="H2 marginBottom-double">{props.title}</h2>
 				{props.content}
 			</div>
 			<div class="large-3 large-pull-6 columns">
-				<div class="js-stickInParent">
+				<div class="js-stickInParent--large">
 					<div class="marginTop-single marginBottom-double">
 						{props.issuesNav}
+					</div>
+					<div class="show-for-large-up">
+						{props.aboutMenu}
 					</div>
 				</div>
 			</div>
 			<div class="large-3 columns">
-				<div class="js-stickInParent">
+				<div class="js-stickInParent--large">
 					<div class="marginTop-single">
 						{props.nav}
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	`
 }

@@ -1,4 +1,4 @@
-.Sections{
+.Sections {
     margin: $spacingBetweenContentBlocks 0;
 }
 
@@ -15,7 +15,9 @@
 }
 
 .Sections-Panel {
-    display: none;
+    transition: all 0.4s ease-in;
+    max-height: 0;
+    overflow: hidden;
 }
 
 .Sections-Tabs {
@@ -23,7 +25,8 @@
 }
 
 .Sections-Panel.isActive {
-    display: block;
+    border-bottom: 1px solid #ccc;
+    max-height: 10000px;
 }
 
 /* Accordion responsive breakpoint */
@@ -57,10 +60,6 @@
     color: $color-primaryAlt;
     padding: $u 0;
     margin: 0;
-    &.isActive {
-        background-color: $color-primaryAlt;
-        color: white;
-    }
     & > div {
         display: inline;
     }
@@ -73,19 +72,22 @@
     border-right-width: 1px;
 }
 .Sections-AccordionTitle {
-    margin-top: $u;
-    @extend .icon-right-dir;
+    @extend .H4;
+    @extend .icon-right-open;
     &:before {
         @include icon();
+        color: $color-primaryAlt;
+        display: block;
+        float: left;
+        margin-top: 7px;
+        font-size: 12px;
+        transition: all 0.2s ease-in-out;
     }
-    &.isActive {
-        @extend .icon-down-dir;
+    &.isActive:before {
+        transform: rotate(90deg);
     }
 }
 
-.Sections-Panel {
-    padding: 3*$u 0;
-}
 
 
 
@@ -95,7 +97,7 @@
 
 
 .Sections--Pills{
-    .Sections-Anchor{
+    .Sections-Anchor {
         @extend .Service;
         &:after{
             content: ' »';
