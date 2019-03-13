@@ -105,45 +105,42 @@
 			</div>
 		</div>
 
+		<div style="position: relative">
+			<div class="row">
 
-		<f:if condition="{compactHeader} != TRUE">
-			<div style="position: relative">
-				<div class="row">
-
-					<div class="columns large-7 medium-5">
-						<a href="/" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
-							<img style="width: 330px; padding: 24px 48px;" alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
-						</a>
-					</div>
-
-					<div class="columns large-4 medium-6 medium-offset-1 end">
-						<div class="row marginTop-double">
-
-							<div class="columns medium-6">
-								{secondaryMenu -> f:format.raw()}
-								<f:if condition="{lang} == 'ru'">
-									<div class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"><a href="/sveden/common">Сведения об образовательной организации</a></div>
-								</f:if>
-							</div>
-
-							<div class="columns medium-6">
-								<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
-									<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
-								</p>
-								<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
-									<a href="tel:+74956230380">+7 |495| 623 03 80</a>
-								</p>
-								<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
-									<a href="mailto:info@sfi.ru">info@sfi.ru</a>
-								</p>
-							</div>
-
-						</div>
-					</div>
-
+				<div class="columns large-7 medium-5">
+					<a href="/" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
+						<img style="width: 330px; padding: 24px 48px;" alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
+					</a>
 				</div>
+
+				<div class="columns large-4 medium-6 medium-offset-1 end">
+					<div class="row marginTop-double">
+
+						<div class="columns medium-6">
+							{secondaryMenu -> f:format.raw()}
+							<f:if condition="{lang} == 'ru'">
+								<div class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"><a href="/sveden/common">Сведения об образовательной организации</a></div>
+							</f:if>
+						</div>
+
+						<div class="columns medium-6">
+							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
+								<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
+							</p>
+							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
+								<a href="tel:+74956230380">+7 |495| 623 03 80</a>
+							</p>
+							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
+								<a href="mailto:info@sfi.ru">info@sfi.ru</a>
+							</p>
+						</div>
+
+					</div>
+				</div>
+
 			</div>
-		</f:if>
+		</div>
 	</div>
 
 	<f:if condition="{breadcrumbMenu}">

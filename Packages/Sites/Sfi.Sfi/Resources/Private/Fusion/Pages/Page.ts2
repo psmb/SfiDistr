@@ -54,8 +54,6 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			maximumLevels = 2
 		}
 
-		compactHeader = ${q(node).is('[instanceof Sfi.Sfi:AlmanacAbstractPage]')}
-
 		lang = ${Array.first(node.context.dimensions.language)}
 		@context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
 

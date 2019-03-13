@@ -8,8 +8,6 @@
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
-    buyBook:
-      type: 'Sfi.Sfi:BuyBook'
   properties:
     description:
       type: string

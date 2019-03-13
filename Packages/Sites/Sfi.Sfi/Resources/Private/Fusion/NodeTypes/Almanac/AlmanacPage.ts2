@@ -1,14 +1,19 @@
-prototype(Sfi.Sfi:AlmanacPage) < prototype(Neos.Neos:ContentComponent) {
-	compactHeader = TRUE
-	@context.almanacRoot = ${q(site).find('[instanceof Sfi.Sfi:AlmanacPage]').get(0)}
-
-	renderer = Sfi.Sfi:AlmanacLayout {
-		title = Neos.Neos:Editable {
-			property = 'title'
-			block = false
-		}
-		content = Neos.Neos:ContentCollection {
-			nodePath = 'main'
+prototype(Sfi.Sfi:AlmanacPage)>
+prototype(Sfi.Sfi:AlmanacPage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
+	body {
+		renderer = Sfi.Sfi:AlmanacLayout {
+			title = Neos.Neos:Editable {
+				property = 'title'
+				block = false
+			}
+			content = Neos.Neos:ContentCollection {
+				nodePath = 'main'
+			}
 		}
 	}
+}
+
+root.almanacPage {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:AlmanacPage]')}
+	type = 'Sfi.Sfi:AlmanacPage'
 }

@@ -1,31 +1,33 @@
-prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Neos.Neos:ContentComponent) {
-	@context.almanacRoot = ${q(site).find('[instanceof Sfi.Sfi:AlmanacPage]').get(0)}
-
-	renderer = Sfi.Sfi:AlmanacLayout {
-		title = Neos.Neos:Editable {
-			property = 'title'
-			block = false
-		}
-		content = Neos.Fusion:Component {
-			description = Neos.Neos:Editable {
-				property = 'description'
-				block = true
+prototype(Sfi.Sfi:AlmanacIssuePage)>
+prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
+	body {
+		renderer = Sfi.Sfi:AlmanacLayout {
+			title = Neos.Neos:Editable {
+				property = 'title'
+				block = false
 			}
-			buyBook = Sfi.Sfi:BuyBook {
-				@context.node = ${q(node).children('buyBook').get(0)}
-			}
-			main = Neos.Neos:ContentCollection {
-				nodePath = 'main'
-			}
-			renderer = afx`
-				<div class="RteText RteText--Paragraph ReadMore js-ReadMore">
-					<div>
-						{props.description}
+			content = Neos.Fusion:Component {
+				description = Neos.Neos:Editable {
+					property = 'description'
+					block = true
+				}
+				main = Neos.Neos:ContentCollection {
+					nodePath = 'main'
+				}
+				renderer = afx`
+					<div class="RteText RteText--Paragraph ReadMore js-ReadMore">
+						<div>
+							{props.description}
+						</div>
 					</div>
-				</div>
-				{props.buyBook}
-				{props.main}
-			`
+					{props.main}
+				`
+			}
 		}
 	}
+}
+
+root.almanacIssuePage {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:AlmanacIssuePage]')}
+	type = 'Sfi.Sfi:AlmanacIssuePage'
 }
