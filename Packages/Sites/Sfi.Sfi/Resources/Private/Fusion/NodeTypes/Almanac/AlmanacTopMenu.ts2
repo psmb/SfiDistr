@@ -1,0 +1,16 @@
+prototype(Sfi.Sfi:AlmanacTopMenu) < prototype(Neos.Fusion:Component) {
+
+	rootUri = Neos.Neos:NodeUri {
+		node = ${almanacRoot}
+	}
+
+	renderer = afx`
+		<div class="hide-for-large-up js-stickInParent--small" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 0)); z-index: 1">
+			<ul class="paddingVertical-single" style="display: flex">
+				<a style="flex: 1; border-right: 1px solid #ccc" class="textAlign-center Link lineHeight-single ParagraphAlt--Large paddingHorizontal-single" href={props.rootUri + '#almanac-about'}>О журнале</a>
+				<a style="flex: 1; border-right: 1px solid #ccc" class="textAlign-center Link lineHeight-single ParagraphAlt--Large paddingHorizontal-single" href="#almanac-issues">Номера</a>
+				<a style="flex: 1" class="textAlign-center Link lineHeight-single ParagraphAlt--Large paddingHorizontal-single" href="#almanac-rubrics">Рубрики</a>
+			</ul>
+		</div>
+	`
+}

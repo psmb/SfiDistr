@@ -1,7 +1,16 @@
 .MeidaBuyBook-Image {
 	width: 115px;
-	border: $border-thick;
 	margin-right: 2*$u;
+	position: relative;
+}
+.MeidaBuyBook-Image svg {
+	position: absolute;
+	transform: scaleY(0.93);
+	top: -7px;
+	fill: #ccc;
+}
+.MeidaBuyBook-Image {
+	padding-right: 10px;
 }
 .MeidaBuyBook-Body {
 	margin-left: 115px + 2*$u;

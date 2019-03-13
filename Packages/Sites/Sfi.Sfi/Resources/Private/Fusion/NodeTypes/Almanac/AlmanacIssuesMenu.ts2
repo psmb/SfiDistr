@@ -1,0 +1,22 @@
+prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
+	@process.wrap = afx`
+		<div id="almanac-issues" style="position: relative; top: -50px"></div>
+		<h3 class="color-grayAlt H4">Все номера</h3>
+		<ul style="display: flex; flex-wrap: wrap" class="marginTop-single">{value}</ul>
+	`
+	collection = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacIssuePage]').get()}
+	itemName = 'node'
+	itemRenderer = Neos.Fusion:Tag {
+		@process.wrap = afx`<li style="
+width: 32px;
+height: 32px;
+border: 2px solid;
+line-height: 29px !important;
+	" class={(node == documentNode ? 'color-primary borderColor-primary' : 'color-grayAlt borderColor-gray') + ' textAlign-center marginRight-single lineHeight-single H4 marginBottom-single'}>{value}</li>`
+		tagName = 'a'
+		attributes.href = Neos.Neos:NodeUri {
+			node = ${node}
+		}
+		content = ${node.properties.issueNumber}
+	}
+}

@@ -276,6 +276,17 @@ blah: &alohaRich
         asset:
           label: Asset
   properties:
+    category:
+      type: reference
+      ui:
+        label: Рубрика
+        reloadIfChanged: false
+        inspector:
+          group: asset
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Sfi:AlmanacCategoryPage'
+            threshold: 1
     author:
       type: string
       ui:

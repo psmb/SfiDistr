@@ -1,9 +1,13 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace media=Neos\Media\ViewHelpers}
 
-<div class="Well overflow-hidden">
+<div class="Well overflow-hidden" style="border: 0">
 	<f:if condition="{image}">
 		<div class="MeidaBuyBook-Image float-left">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 113.34 160.34">
+				<path
+					d="M109.5 7.84V4h-4V0H0v152.5h.01l-.01.01 8.59 7.82h104.75V7.84h-3.84zM1.5 1.5H104V151H1.5V1.5zm104 151V5.5h2.5V155H4.95l-2.74-2.5H105.5zm6.34 6.34H9.16L6.6 156.5h102.9V9.34h2.34v149.5z" />
+			</svg>
 			<media:image image="{image}" alt="{title}" maximumWidth="115" />
 		</div>
 	</f:if>

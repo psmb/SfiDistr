@@ -9,7 +9,6 @@ prototype(Sfi.Sfi:PageMain) {
 	video = Sfi.Sfi:LatestVideo
 	papers = Sfi.Sfi:PaperWithAuthor.TopList
 	donate = Sfi.Sfi:DonateBanner
-	breadcrumbMenu>
 	main = ContentCollection {
 		nodePath = 'main'
 	}
