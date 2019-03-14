@@ -1,0 +1,4 @@
+prototype(Sfi.Sfi:Footer) < prototype(Neos.Fusion:Template) {
+    partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+    templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/Footer.html'
+}

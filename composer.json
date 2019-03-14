@@ -51,7 +51,8 @@
         "psmb/registry": "^2.0",
         "flowpack/mustache": "dev-master",
         "neos/fusion-afx": "^1.0",
-        "aertmann/history": "^2.0"
+        "aertmann/history": "^2.0",
+        "ttree/dimensionkeeper": "^1.0"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

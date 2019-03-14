@@ -34,3 +34,28 @@
         'Neos.Neos/Validation/NotEmptyValidator': []
         'Neos.Neos/Validation/RegularExpressionValidator':
           regularExpression: '/^[0-9]+$/i'
+  options:
+    template:
+      childNodes:
+        mainContentCollection:
+          name: 'main'
+          childNodes:
+            description:
+              type: 'Neos.NodeTypes:Text'
+              properties:
+                text: '<p>Краткое описание выпуска</p>'
+            buyBook:
+              type: 'Sfi.Sfi:BuyBook'
+            contents:
+              type: 'Sfi.Shared:ReadMore'
+              childNodes:
+                contents:
+                  type: 'Neos.NodeTypes:Text'
+                  properties:
+                    text: '<h2>Содержание выпуска</h2><p>Тут длинное описание выпуска, которое сворачивается</p>'
+            sampleHeadline:
+              type: 'Neos.NodeTypes:Headline'
+              properties:
+                title: '<h3>Какая-то рубрика</h3>'
+            sampleEntry:
+              type: 'Sfi.Sfi:AlmanacEntry'

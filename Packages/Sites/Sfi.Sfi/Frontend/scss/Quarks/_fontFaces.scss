@@ -42,3 +42,8 @@ font-weight:400;font-style:bold;
 
 $fontFamily-main: SchoolBook,Georgia,serif;
 $fontFamily-alt: Franklin,sans-serif;
+
+:root {
+	--fontFamily-main: #{$fontFamily-main};
+	--fontFamily-alt: #{$fontFamily-alt};
+}

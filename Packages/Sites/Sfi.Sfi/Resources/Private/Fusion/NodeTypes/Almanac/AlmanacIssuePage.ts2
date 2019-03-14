@@ -15,11 +15,6 @@ prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
 					nodePath = 'main'
 				}
 				renderer = afx`
-					<div class="RteText RteText--Paragraph ReadMore js-ReadMore">
-						<div>
-							{props.description}
-						</div>
-					</div>
 					{props.main}
 				`
 			}

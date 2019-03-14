@@ -25,29 +25,30 @@
       defaultValue: '<p>Введите текст</p>'
       ui:
         inlineEditable: true
-        aloha:
-          format:
-            strong: true
-            em: true
-            u: false
-            sub: true
-            sup: true
-            p: true
-            h1: false
-            h2: true
-            h3: true
-            h4: true
-            pre: true
-            removeFormat: true
-            itemprop: true
-          table:
-            table: true
-          list:
-            ol: true
-            ul: true
-          link:
-            a: true
-        alignment: {  }
+        inline:
+          editorOptions:
+            autoparagraph: true
+            linking:
+              anchor: true
+              title: true
+              targetBlank: true
+            formatting:
+              strong: true
+              em: true
+              underline: false
+              sub: true
+              sup: true
+              p: true
+              h1: false
+              h2: true
+              h3: true
+              h4: true
+              pre: true
+              itemprop: true
+              table: true
+              ol: true
+              ul: true
+              a: true
 'Neos.NodeTypes:TitleMixin':
   abstract: true
   properties:

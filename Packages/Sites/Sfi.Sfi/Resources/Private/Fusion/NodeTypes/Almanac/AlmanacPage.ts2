@@ -6,8 +6,13 @@ prototype(Sfi.Sfi:AlmanacPage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
 				property = 'title'
 				block = false
 			}
-			content = Neos.Neos:ContentCollection {
-				nodePath = 'main'
+			content = Neos.Fusion:Array {
+				aboutMenu = Sfi.Sfi:AlmanacAboutMenu {
+					@process.wrap1 = ${'<div class="marginTop-double">' + value + '</div>'}
+				}
+				content = Neos.Neos:ContentCollection {
+					nodePath = 'main'
+				}
 			}
 		}
 	}

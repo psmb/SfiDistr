@@ -19,3 +19,8 @@
 	</div>
 </f:section>
 
+<div id="tab-{node.identifier}" style="position: relative; top: -50px"></div>
+<div class="H3 marginTop-double marginBottom-single">
+	<neos:contentElement.editable property="title" tag="span" />
+</div>
+{content -> f:format.raw()}

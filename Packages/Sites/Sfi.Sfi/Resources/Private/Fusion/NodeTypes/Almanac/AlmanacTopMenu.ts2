@@ -4,12 +4,24 @@ prototype(Sfi.Sfi:AlmanacTopMenu) < prototype(Neos.Fusion:Component) {
 		node = ${almanacRoot}
 	}
 
+	renderer.@process.style = ${'<style>
+		.AlmanacTopMenu.isFixed {
+			background-color: var(--color-primary);
+			left: 0;
+			right: 0;
+			width: 100% !important;
+		}
+		.AlmanacTopMenu.isFixed ul {
+			margin-left: 12px !important;
+		}
+	</style>' +  value}
+
 	renderer = afx`
-		<div class="hide-for-large-up js-stickInParent--small" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 0)); z-index: 1">
-			<ul class="paddingVertical-single" style="display: flex">
-				<a style="flex: 1; border-right: 1px solid #ccc" class="textAlign-center Link lineHeight-single ParagraphAlt--Large paddingHorizontal-single" href={props.rootUri + '#almanac-about'}>О журнале</a>
-				<a style="flex: 1; border-right: 1px solid #ccc" class="textAlign-center Link lineHeight-single ParagraphAlt--Large paddingHorizontal-single" href="#almanac-issues">Номера</a>
-				<a style="flex: 1" class="textAlign-center Link lineHeight-single ParagraphAlt--Large paddingHorizontal-single" href="#almanac-rubrics">Рубрики</a>
+		<div class="AlmanacTopMenu hide-for-large-up js-stickInParent--small" style="z-index: 1">
+			<ul class="paddingVertical-single" style="margin-left: -24px">
+				<a style="flex: 1; border-right: 1px solid white" class="color-white lineHeight-single H5 paddingHorizontal-double" href={props.rootUri + '#almanac-about'}>О журнале</a>
+				<a style="flex: 1; border-right: 1px solid white" class="color-white lineHeight-single H5 paddingHorizontal-double" href="#almanac-issues">Номера</a>
+				<a style="flex: 1"                                class="color-white lineHeight-single H5 paddingHorizontal-double" href="#almanac-rubrics">Рубрики</a>
 			</ul>
 		</div>
 	`
