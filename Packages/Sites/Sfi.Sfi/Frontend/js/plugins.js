@@ -340,7 +340,7 @@ document.querySelectorAll('.js-ReadMore').forEach(function (node) {
 }());
 (function () {
 	document.querySelectorAll('.js-stickInParent--small').forEach(function (node) {
-		stickInParent(node, {minWidth: 0});
+		stickInParent(node, {minWidth: 1});
 	});
 }());
 
@@ -382,13 +382,16 @@ function stickInParent (element, options) {
 	}
 	function setFixed() {
 		element.style = 'position: fixed; top: 0;' + originalStyles;
+		element.classList.add('isFixed');
 		fixer.style = 'display: block; height: ' + element.offsetHeight + 'px';
 	}
 	function setAbsolute() {
+		element.classList.remove('isFixed');
 		element.style = 'position: absolute; top: auto; bottom: 0;' + originalStyles;
 		fixer.style = 'display: block; height: ' + element.offsetHeight + 'px';
 	}
 	function setStatic() {
+		element.classList.remove('isFixed');
 		element.style = 'position: static;' + originalStyles;
 		fixer.style = 'display: none;';
 	}

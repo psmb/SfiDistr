@@ -66,6 +66,8 @@
                 label: Пилюльки
               Sections--Accordion:
                 label: Аккордион
+              Sections--Headings:
+                label: Просто Заголовки
   constraints:
     nodeTypes:
       'Sfi.Shared:Section': true

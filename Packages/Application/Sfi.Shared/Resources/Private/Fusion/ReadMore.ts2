@@ -1,0 +1,6 @@
+prototype(Sfi.Shared:ReadMore) < prototype(Neos.Fusion:Tag) {
+	attributes.class = 'ReadMore js-ReadMore'
+	content = Neos.Neos:ContentCollectionRenderer {
+		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+	}
+}

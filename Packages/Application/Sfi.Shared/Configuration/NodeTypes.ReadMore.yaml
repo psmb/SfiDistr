@@ -1,0 +1,17 @@
+'Sfi.Shared:ReadMore':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: Читать далее
+    icon: arrows-alt-v
+    group: contentWidgets
+    inlineEditable: true
+    inspector:
+      groups:
+        title:
+          label: 'Свойства вкладки'
+          position: 100
+  constraints:
+    nodeTypes:
+      '*': true

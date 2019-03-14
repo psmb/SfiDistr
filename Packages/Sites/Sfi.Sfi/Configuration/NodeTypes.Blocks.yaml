@@ -182,6 +182,15 @@ blah: &alohaRich
         inspector:
           group: image
           position: 50
+          editorOptions:
+            crop:
+              aspectRatio:
+                forceCrop: TRUE
+                enableOriginal: FALSE
+                allowCustom: TRUE
+                locked:
+                  width: 105
+                  height: 154
 'Sfi.Sfi:PersonFormalListing':
   superTypes:
     'Neos.Neos:Content': true
@@ -263,82 +272,3 @@ blah: &alohaRich
           editorOptions:
             nodeTypes:
               - 'Sfi.Sfi:StudyProgram'
-'Sfi.Sfi:AlmanacEntry':
-  superTypes:
-    'Neos.Neos:Content': true
-  ui:
-    label: 'Элемент альманаха'
-    help:
-      messages: 'Элемент для каждой статьи альманаха, состоит из информации о статье, авторе и самом файле статьи'
-    group: contentBlocks
-    inspector:
-      groups:
-        asset:
-          label: Asset
-  properties:
-    category:
-      type: reference
-      ui:
-        label: Рубрика
-        reloadIfChanged: false
-        inspector:
-          group: asset
-          editorOptions:
-            nodeTypes:
-              - 'Sfi.Sfi:AlmanacCategoryPage'
-            threshold: 1
-    author:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Имя автора статьи'
-    authorInfo:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Дополнительная информация об авторе'
-    title:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Название статьи'
-    source:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Номера страниц в печатной версии'
-    DOI:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'DOI'
-    annotation:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Аннотация'
-    keywords:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Ключевые слова'
-    source:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Номера страниц в печатной версии'
-    asset:
-      type: Neos\Media\Domain\Model\Asset
-      ui:
-        inspector:
-          group: asset
-        label: Файл статьи (желательно pdf)
-        reloadIfChanged: true
