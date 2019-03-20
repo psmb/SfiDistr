@@ -14,20 +14,11 @@
     list-style: none;
 }
 
-.Sections-Panel {
-    transition: all 0.4s ease-in;
-    max-height: 0;
-    overflow: hidden;
-}
 
 .Sections-Tabs {
     display: none;
 }
 
-.Sections-Panel.isActive {
-    border-bottom: 1px solid #ccc;
-    max-height: 10000px;
-}
 
 /* Accordion responsive breakpoint */
 @include breakpoint('medium') {
@@ -47,6 +38,17 @@
 
     .Sections-AccordionTitle {
         display: block !important;
+    }
+
+    .Sections-Panel {
+        transition: all 0.4s ease-in;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .Sections-Panel.isActive {
+        border-bottom: 1px solid #ccc;
+        max-height: 10000px;
     }
 }
 
@@ -90,7 +92,25 @@
 
 
 
-
+.Sections--Tabs {
+    .Sections-Anchor {
+        padding: $u;
+    }
+    .Sections-Anchor.isActive {
+        background-color: $color-primary;
+        color: white;
+    }
+    .Sections-Panel {
+        padding: 3*$u 2*$u;
+        border: $border-thin--dark;
+        display: none;
+    }
+    .Sections-Panel.isActive {
+        display: block;
+        border: $border-thin--dark;
+        padding: $u 2*$u;
+    }
+}
 
 
 

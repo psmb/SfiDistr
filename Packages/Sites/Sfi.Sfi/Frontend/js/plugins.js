@@ -112,8 +112,7 @@ $(document).ready(function(){
 			});
 
 			// Activate first tab
-			document.getElementById(document.location.hash.substring(1));
-			// _this.find('.Sections-Anchor').eq(0).click();
+			_this.find('.Sections-Anchor').eq(0).click();
 		});
 
 		return this;
