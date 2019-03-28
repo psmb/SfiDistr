@@ -15,8 +15,7 @@ prototype(Sfi.Sfi:AlmanacMainMenu) < prototype(Neos.Fusion:Collection) {
 		@process.mobileWrap = afx`<li style="display: block" class="color-white lineHeight-single H5 paddingTop-single">{value}</li>`
 		tagName = 'a'
 		attributes.href = Neos.Neos:NodeUri {
-			node = ${almanacRoot}
-			@process.hash = ${value + '#tab-' + node.identifier}
+			node = ${node}
 		}
 		attributes.class = 'Link'
 		content = ${node.properties.title}
