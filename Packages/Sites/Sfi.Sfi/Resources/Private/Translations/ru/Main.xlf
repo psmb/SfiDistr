@@ -234,6 +234,19 @@
                     <source>{0} лет</source>
                 </trans-unit>
             </group>
+
+            <trans-unit id="almanac.allIssues">
+                <source>Все номера</source>
+            </trans-unit>
+            <trans-unit id="almanac.research">
+                <source>Исследования</source>
+            </trans-unit>
+            <trans-unit id="almanac.title">
+                <source>Вестник СФИ</source>
+            </trans-unit>
+            <trans-unit id="almanac.slogan">
+                <source>Свет Христов просвещает всех</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

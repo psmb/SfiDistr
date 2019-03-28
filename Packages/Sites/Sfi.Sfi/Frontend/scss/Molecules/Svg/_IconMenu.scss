@@ -6,7 +6,8 @@
 		opacity: 0.7;
 	}
 }
-.isActive .IconMenu img {
+.isActive .IconMenu img,
+.isActive .IconMenu svg {
 	transform: rotate(90deg);
 }
 

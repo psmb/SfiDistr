@@ -34,6 +34,13 @@
         'Neos.Neos/Validation/NotEmptyValidator': []
         'Neos.Neos/Validation/RegularExpressionValidator':
           regularExpression: '/^[0-9]+$/i'
+    latestIssueImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Банер последнего выпуска
+        reloadIfChanged: true
+        inspector:
+          group: document
   options:
     template:
       childNodes:

@@ -1,15 +1,24 @@
-prototype(Sfi.Sfi:AlmanacAboutMenu) < prototype(Neos.Fusion:Collection) {
+prototype(Sfi.Sfi:AlmanacMainMenu) < prototype(Neos.Fusion:Collection) {
+	mobileNav = false
+	@context.mobileMenu = ${this.mobileNav}
+
 	@process.wrap = afx`<ul class="paddingBottom-single">{value}</ul>`
-	collection = ${q(almanacRoot).children('main').find('[instanceof Sfi.Shared:Section]').get()}
+	@process.wrap.@if.notMobile = ${mobileMenu ? false : true}
+	@process.mobileWrap = afx`<ul class="paddingTop-single">{value}</ul>`
+	@process.mobileWrap.@if.mobile = ${mobileMenu ? true : false}
+	collection = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacPage]').get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Tag {
-		@process.wrap = afx`<li class="lineHeight-single ParagraphAlt--Large marginBottom-single">{value}</li>`
+		@process.wrap.@if.notMobile = ${mobileMenu ? false : true}
+		@process.wrap = afx`<li style={(iterator.isLast ? '' : 'border-right: 1px solid var(--color-primary);') + ' display: inline-block'} class="color-white lineHeight-single H5 paddingHorizontal-double">{value}</li>`
+		@process.mobileWrap.@if.mobile = ${mobileMenu ? true : false}
+		@process.mobileWrap = afx`<li style="display: block" class="color-white lineHeight-single H5 paddingTop-single">{value}</li>`
 		tagName = 'a'
 		attributes.href = Neos.Neos:NodeUri {
 			node = ${almanacRoot}
 			@process.hash = ${value + '#tab-' + node.identifier}
 		}
 		attributes.class = 'Link'
-		content = ${node.properties.title + ' »'}
+		content = ${node.properties.title}
 	}
 }

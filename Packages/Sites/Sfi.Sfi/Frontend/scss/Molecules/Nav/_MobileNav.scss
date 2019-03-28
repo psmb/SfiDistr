@@ -5,7 +5,7 @@
 	right: -20*$u;
 	width: 20*$u;
 	height: 100%;
-	overflow: scroll;
+	overflow: auto;
 	box-shadow: $gray-line -2px 0 2px;
 	transition: ease-in-out 0.3s;
 }

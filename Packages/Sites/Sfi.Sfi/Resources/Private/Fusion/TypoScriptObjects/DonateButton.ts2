@@ -1,0 +1,17 @@
+prototype(Sfi.Sfi:Component.DonateButton) < prototype(Neos.Fusion:Component) {
+	renderer = afx`
+		<div @if.altLang={altLang == "en" ? false : true}><a
+			class="Button lineHeight-single H5"
+			target="_blank"
+			style="
+				font-size: 14px;
+				margin-right: 0;
+				padding: 5px 12px;
+				background-color: #ff8e18;
+				color: white !important;
+				vertical-align: top;
+			"
+			href="https://sfi.ru/projects.html">Поддержите СФИ</a>
+		</div>
+	`
+}

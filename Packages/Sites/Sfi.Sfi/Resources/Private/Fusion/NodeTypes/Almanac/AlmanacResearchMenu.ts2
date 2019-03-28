@@ -1,5 +1,5 @@
 prototype(Sfi.Sfi:AlmanacResearchMenu) < prototype(Neos.Fusion:Collection) {
-	@process.wrap = afx`<ul class="paddingBottom-single" style="border-bottom: 1px solid #ccc"><h4 class="ServiceLight marginBottom-single">Исследования</h4>{value}</ul>`
+	@process.wrap = afx`<ul class="paddingBottom-single" style="border-bottom: 1px solid #ccc"><h4 class="ServiceLight marginBottom-single">{Translation.translate('almanac.research', null, [], null, 'Sfi.Sfi')}</h4>{value}</ul>`
 	collection = ${q(almanacRoot).children('[uriPathSegment = "research"]').find('[instanceof Sfi.Sfi:AlmanacCategoryPage]').get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Case {
