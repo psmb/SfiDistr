@@ -30,12 +30,12 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 				<div class="js-stickInParent-parent">
 					{props.header}
 					<div class="row js-stickInParent-parent">
-						<div class="large-6 large-push-3 columns">
+						<div class="small-12 large-6 large-push-3 columns">
 							<div id="almanac-about" style="position: relative; top: -50px"></div>
 							<h2 class="H2 marginBottom-double">{props.title}</h2>
 							{props.content}
 						</div>
-						<div class="large-3 large-pull-6 columns">
+						<div class="medium-6 large-3 large-pull-6 columns">
 							<div class="js-stickInParent--large">
 								{props.almanacBanner}
 								<div class="marginTop-single marginBottom-double">
@@ -52,7 +52,7 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 								</a>
 							</div>
 						</div>
-						<div class="large-3 columns">
+						<div class="medium-6 large-3 columns">
 							<div class="js-stickInParent--large">
 								<div class="marginTop-single">
 									{props.nav}
