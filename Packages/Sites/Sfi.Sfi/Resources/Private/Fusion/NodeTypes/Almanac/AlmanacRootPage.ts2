@@ -1,0 +1,21 @@
+prototype(Sfi.Sfi:AlmanacRootPage)>
+prototype(Sfi.Sfi:AlmanacRootPage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
+	body {
+		renderer = Sfi.Sfi:AlmanacLayout {
+			title = Neos.Neos:Editable {
+				property = 'title'
+				block = false
+			}
+			content = Neos.Fusion:Array {
+				content = Neos.Neos:ContentCollection {
+					nodePath = 'main'
+				}
+			}
+		}
+	}
+}
+
+root.almanacRootPage {
+	condition = ${q(node).is('[instanceof Sfi.Sfi:AlmanacRootPage]')}
+	type = 'Sfi.Sfi:AlmanacRootPage'
+}

@@ -1,5 +1,5 @@
 prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
-	@context.almanacRoot = ${q(site).find('[instanceof Sfi.Sfi:AlmanacPage]').get(0)}
+	@context.almanacRoot = ${q(site).find('[instanceof Sfi.Sfi:AlmanacRootPage]').get(0)}
 
 	title = 'to-be-set'
 	content = 'to-be-set'

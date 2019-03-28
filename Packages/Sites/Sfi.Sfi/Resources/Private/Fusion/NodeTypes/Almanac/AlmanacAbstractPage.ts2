@@ -20,7 +20,7 @@ prototype(Sfi.Sfi:AlmanacAbstractPage) < prototype(Neos.Neos:Page) {
 	bodyTag.attributes.class = 'Page'
 	bodyTag.attributes.id = ${'page-' + q(node).property('_name')}
 	body = Neos.Neos:ContentComponent {
-		@context.almanacRoot = ${q(site).find('[instanceof Sfi.Sfi:AlmanacPage]').get(0)}
+		@context.almanacRoot = ${q(site).find('[instanceof Sfi.Sfi:AlmanacRootPage]').get(0)}
 		javascripts.bodyScripts = Neos.Fusion:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 			sectionName = 'bodyScripts'
