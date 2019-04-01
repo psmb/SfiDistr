@@ -212,10 +212,10 @@
 
 
             <trans-unit id="almanac.allIssues">
-                <target>All issues</target>
+                <target>All Issues</target>
             </trans-unit>
             <trans-unit id="almanac.lastIssue">
-                <target>Last issues</target>
+                <target>Last Issue</target>
             </trans-unit>
             <trans-unit id="almanac.research">
                 <target>Research</target>
