@@ -12,7 +12,7 @@ prototype(Sfi.Site:AlmanacBanner) < prototype(Neos.Neos:ContentComponent) {
 			<svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 255 340">
 				<image width="510" height="680" transform="scale(.5)" xlink:href={props.imageUri} />
 				<text transform="translate(18.53 43.16)" fill="#7c7c7b" font-weight="bold" font-family="Franklin,sans-serif" font-size="25.2">
-				Последний номер
+				{Translation.translate('almanac.lastIssue', null, [], null, 'Sfi.Sfi')}
 				</text>
 				<text transform="translate(18.53 69.94)" font-size="18" fill="#7c7c7b" font-family="Franklin,sans-serif">
 					{props.title}

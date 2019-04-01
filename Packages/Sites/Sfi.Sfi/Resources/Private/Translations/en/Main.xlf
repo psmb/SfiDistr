@@ -208,6 +208,24 @@
             <trans-unit id="otherArticlesByAuthor">
                 <target>Other articles by this author</target>
             </trans-unit>
+
+
+
+            <trans-unit id="almanac.allIssues">
+                <target>All issues</target>
+            </trans-unit>
+            <trans-unit id="almanac.lastIssue">
+                <target>Last issues</target>
+            </trans-unit>
+            <trans-unit id="almanac.research">
+                <target>Research</target>
+            </trans-unit>
+            <trans-unit id="almanac.title">
+                <target>Academic Periodical</target>
+            </trans-unit>
+            <trans-unit id="almanac.slogan">
+                <target>The Light of Christ Enlightens All</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

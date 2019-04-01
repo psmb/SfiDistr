@@ -238,6 +238,9 @@
             <trans-unit id="almanac.allIssues">
                 <source>Все номера</source>
             </trans-unit>
+            <trans-unit id="almanac.lastIssue">
+                <target>Последний номер</target>
+            </trans-unit>
             <trans-unit id="almanac.research">
                 <source>Исследования</source>
             </trans-unit>
