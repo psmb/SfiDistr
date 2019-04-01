@@ -6,7 +6,7 @@ prototype(Sfi.Sfi:AlmanacMainMenu) < prototype(Neos.Fusion:Collection) {
 	@process.wrap.@if.notMobile = ${mobileMenu ? false : true}
 	@process.mobileWrap = afx`<ul class="paddingTop-single">{value}</ul>`
 	@process.mobileWrap.@if.mobile = ${mobileMenu ? true : false}
-	collection = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacPage]').get()}
+	collection = ${q(almanacRoot).add(q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacPage]')).get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Tag {
 		@process.wrap.@if.notMobile = ${mobileMenu ? false : true}
