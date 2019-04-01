@@ -94,8 +94,8 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 				<td itemprop="teachingDiscipline">{props.subject}</td>
 				<td itemprop="teachingLevel">{node.properties.teachingLevel}</td>
 				<td itemprop="teachingQual">{node.properties.teachingQual}</td>
-				<td itemprop="degree">{node.properties.degree}</td>
-				<td itemprop="academStat">{node.properties.degreeTitle}</td>
+				<td itemprop="degree">{node.properties.degree || 'Без ученой степени'}</td>
+				<td itemprop="academStat">{node.properties.degreeTitle || 'Без ученого звания'}</td>
 				<td itemprop="employeeQualification">{node.properties.education}</td>
 				<td itemprop="profDevelopment">{node.properties.educationUpgrade}</td>
 				<td itemprop="genExperience">{props.experienceSum}</td>
