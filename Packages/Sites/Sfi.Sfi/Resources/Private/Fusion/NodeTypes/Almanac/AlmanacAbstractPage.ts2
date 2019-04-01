@@ -1,4 +1,6 @@
 prototype(Sfi.Sfi:AlmanacAbstractPage) < prototype(Neos.Neos:Page) {
+	lang = ${Array.first(node.context.dimensions.language)}
+    @context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('sfi.abbrev', null, [], null, 'Sfi.Sfi')}
 

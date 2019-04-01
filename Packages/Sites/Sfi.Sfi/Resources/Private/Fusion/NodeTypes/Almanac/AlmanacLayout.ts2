@@ -43,7 +43,7 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 								</div>
 
 								<a
-									@if.altLang={altLang == "en" ? false : true}
+									@if.altLang={altLang == "en" ? true : false}
 									class="Button marginVertical-single"
 									target="_blank"
 									href="https://www.pressa-rf.ru/cat/1/edition/e40540/"

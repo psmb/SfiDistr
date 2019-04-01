@@ -1,6 +1,6 @@
 prototype(Sfi.Sfi:Component.DonateButton) < prototype(Neos.Fusion:Component) {
 	renderer = afx`
-		<div @if.altLang={altLang == "en" ? false : true}><a
+		<div @if.altLang={altLang == "en" ? true : false}><a
 			class="Button lineHeight-single H5"
 			target="_blank"
 			style="
