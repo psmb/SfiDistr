@@ -1,4 +1,4 @@
-.Sections {
+.Sections{
     margin: $spacingBetweenContentBlocks 0;
 }
 
@@ -14,11 +14,17 @@
     list-style: none;
 }
 
-
-.Sections-Tabs {
+.Sections-Panel {
     display: none;
 }
 
+.Sections-Tabs {
+	display: none;
+}
+
+.Sections-Panel.isActive {
+    display: block;
+}
 
 /* Accordion responsive breakpoint */
 @include breakpoint('medium') {
@@ -39,17 +45,6 @@
     .Sections-AccordionTitle {
         display: block !important;
     }
-
-    .Sections-Panel {
-        transition: all 0.4s ease-in;
-        max-height: 0;
-        overflow: hidden;
-    }
-
-    .Sections-Panel.isActive {
-        border-bottom: 1px solid #ccc;
-        max-height: 10000px;
-    }
 }
 
 
@@ -60,10 +55,13 @@
     @extend .ParagraphAlt--Large;
     display: block;
     color: $color-primaryAlt;
-    padding: $u 0;
+    border: $border-thin--dark;
+    background-color: $gray-bg--light;
+    padding: $u 2*$u;
     margin: 0;
-    & > div {
-        display: inline;
+    &.isActive {
+        background-color: $color-primaryAlt;
+        color: white;
     }
 }
 .Sections-Tabs .Sections-Anchor {
@@ -74,66 +72,46 @@
     border-right-width: 1px;
 }
 .Sections-AccordionTitle {
-    @extend .H4;
-    @extend .icon-right-open;
+    margin-top: $u;
+    @extend .icon-right-dir;
     &:before {
         @include icon();
-        color: $color-primaryAlt;
-        display: block;
-        float: left;
-        margin-top: 7px;
-        font-size: 12px;
-        transition: all 0.2s ease-in-out;
     }
-    &.isActive:before {
-        transform: rotate(90deg);
+    &.isActive {
+        @extend .icon-down-dir;
     }
+}
+
+.Sections-Panel {
+    padding: 3*$u 2*$u;
+    border: $border-thin--dark;
 }
 
 
 
-.Sections--Tabs {
-    .Sections-Anchor {
-        padding: $u;
-    }
-    .Sections-Anchor.isActive {
-        background-color: $color-primary;
-        color: white;
-    }
-    .Sections-Panel {
-        padding: 3*$u 2*$u;
-        border: $border-thin--dark;
-        display: none;
-    }
-    .Sections-Panel.isActive {
-        display: block;
-        border: $border-thin--dark;
-        padding: $u 2*$u;
-    }
-}
 
 
 
 
 
 .Sections--Pills{
-    .Sections-Anchor {
-        @extend .Service;
-        &:after{
-            content: ' »';
+	.Sections-Anchor{
+		@extend .Service;
+		&:after{
+			content: ' »';
             color: $color-primary;
-        }
-    }
+		}
+	}
     .Sections-Anchor.isActive, .Sections-Anchor:hover{
         color: $color-primary;
     }
     .Sections-Tabs{
         margin-bottom: 3*$u;
     }
-    .Sections-Tab{
-        padding: 0;
-        padding-right: 2*$u; 
-    }
+	.Sections-Tab{
+		padding: 0;
+		padding-right: 2*$u;
+	}
 }
 
 
