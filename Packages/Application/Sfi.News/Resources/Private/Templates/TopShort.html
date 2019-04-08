@@ -13,6 +13,9 @@
 						{title}
 					</h3>
 					<div class="MediaSlideSmall-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
+					<f:if condition="{node.nodeType.name} == 'Sfi.News:Announcement'">
+						<div class="MediaSlideSmall-Teaser">{place -> f:format.raw()}</div>
+					</f:if>
 					<f:if condition="{date}">
 						<div class="MediaSlideSmall-Date"><f:format.date forceLocale="{true}" cldrFormat="d.MM">{date}</f:format.date></div>
 					</f:if>
