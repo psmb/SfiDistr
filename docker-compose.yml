@@ -15,7 +15,7 @@ services:
     labels:
       - "neos"
     volumes:
-      - /data/www/Web/_Resources
+      - /data/www-provisioned/Web/_Resources
     image: dimaip/sfidistr:latest
     hostname: 'sfiru'
     networks:
