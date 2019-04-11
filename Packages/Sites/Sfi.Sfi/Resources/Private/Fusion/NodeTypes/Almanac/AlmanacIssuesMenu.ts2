@@ -2,22 +2,46 @@ prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
 	@process.wrap = afx`
 		<div id="almanac-issues" style="position: relative; top: -50px"></div>
 		<h3 class="ServiceLight marginBottom-single">{Translation.translate('almanac.allIssues', null, [], null, 'Sfi.Sfi')}</h3>
-		<ul style="display: flex; flex-wrap: wrap" class="marginTop-single">{value}</ul>
+		<div class="marginTop-single">{value}</div>
 	`
-	collection = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacIssuePage]').get()}
-	itemName = 'node'
-	itemRenderer = Neos.Fusion:Tag {
-		@process.wrap = afx`<li style="
-width: 32px;
-height: 32px;
-border: 2px solid;
-line-height: 29px !important;
-	" class={(node == documentNode ? 'color-primary borderColor-primary' : 'color-grayAlt borderColor-gray') + ' textAlign-center marginRight-single lineHeight-single H4 marginBottom-single'}>{value}</li>`
-		tagName = 'a'
-		attributes.href = Neos.Neos:NodeUri {
-			node = ${node}
+	collection = Neos.Fusion:RawCollection {
+		collection = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacIssuePage]').get()}
+		itemName = 'node'
+		itemRenderer = Neos.Fusion:RawArray {
+			title = ${node.properties.issueNumber}
+			year = ${String.pregMatch(node.properties.title, "/\(.*(\d\d\d\d)\)/i")[1]}
+			year.@process.cutoff = ${value < 2014 ? 'до 2014' : value }
+			link = Neos.Neos:NodeUri {
+				node = ${node}
+			}
+			isActive = ${node == documentNode}
 		}
-		attributes.title = ${node.properties.title}
-		content = ${node.properties.issueNumber}
+		@process.group = ${Neos.Array.groupBy(value, 'year')}
+	}
+	itemName = 'group'
+	itemKey = 'year'
+	itemRenderer = Neos.Fusion:Collection {
+		@process.wrap = afx`<ul style="display: flex; flex-wrap: wrap; max-width: 180px">{value}</ul>`
+		@process.year = afx`
+			<div style="display: flex; align-items: center;">
+				<div style="width: 50px" class="color-grayAlt marginRight-single lineHeight-single H4 marginBottom-single">{year}:</div>
+				{value}
+			</div>
+		`
+		collection = ${group}
+		itemName = 'item'
+		itemRenderer = Neos.Fusion:Tag {
+			@process.wrap = afx`<li style="
+				width: 32px;
+				height: 32px;
+				border: 2px solid;
+				line-height: 29px !important;
+				font-weight: normal;
+		" class={(item.isActive ? 'color-primary borderColor-primary' : 'color-grayAlt borderColor-gray') + ' textAlign-center marginRight-single lineHeight-single H4 marginBottom-single'}>{value}</li>`
+			tagName = 'a'
+			attributes.href = ${item.link}
+			attributes.title = ${item.title}
+			content = ${item.title}
+		}
 	}
 }
