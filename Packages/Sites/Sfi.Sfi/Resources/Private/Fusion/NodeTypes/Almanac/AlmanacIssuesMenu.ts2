@@ -24,7 +24,7 @@ prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
 		@process.wrap = afx`<ul style="display: flex; flex-wrap: wrap; max-width: 180px">{value}</ul>`
 		@process.year = afx`
 			<div style="display: flex; align-items: center;">
-				<div style="width: 50px" class="color-grayAlt marginRight-single lineHeight-single H4 marginBottom-single">{year}:</div>
+				<div style="width: 50px; font-weight: normal;" class="color-grayAlt marginRight-single lineHeight-single H4 marginBottom-single">{year}</div>
 				{value}
 			</div>
 		`
@@ -36,7 +36,6 @@ prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
 				height: 32px;
 				border: 2px solid;
 				line-height: 29px !important;
-				font-weight: normal;
 		" class={(item.isActive ? 'color-primary borderColor-primary' : 'color-grayAlt borderColor-gray') + ' textAlign-center marginRight-single lineHeight-single H4 marginBottom-single'}>{value}</li>`
 			tagName = 'a'
 			attributes.href = ${item.link}
