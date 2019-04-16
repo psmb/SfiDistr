@@ -29,3 +29,8 @@ Neos:
     error:
       exceptionHandler:
         className: 'Yeebase\Graylog\Error\GraylogExceptionHandler'
+Yeebase:
+  Graylog:
+    host: 'graylog'
+    port: 12201
+    chunksize: 'wan'

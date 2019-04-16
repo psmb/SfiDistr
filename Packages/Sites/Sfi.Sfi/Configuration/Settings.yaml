@@ -227,11 +227,6 @@ Neos:
   SwiftMailer:
     transport:
       type: 'Neos\SwiftMailer\Transport\LoggingTransport'
-Yeebase:
-  Graylog:
-    host: 'graylog'
-    port: 12201
-    chunksize: 'wan'
 Flownative:
   Aws:
     S3:
