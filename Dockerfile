@@ -12,3 +12,4 @@ RUN cd /data/www-provisioned && \
     cp /Settings.yaml /data/www-provisioned/Configuration/ && \
     /bin/bash -c "source /init-php-conf.sh"
 COPY --chown=80:80 ./ /data/www-provisioned/
+HEALTHCHECK --interval=30s --timeout=15s --start-period=30s --retries=3 CMD curl -f http://localhost/ | grep "This website is powered by Neos"
