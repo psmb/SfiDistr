@@ -11,6 +11,12 @@ privilegeTargets:
           || isDescendantNodeOf("04e33515-6dda-5065-08a2-7fb86632eb81")
           || isDescendantNodeOf("df35381d-2147-f0f5-dbef-915bd0073097")
           || isDescendantNodeOf("7a33cf3f-28a6-1ff2-2d8a-882dcedaa2a2")
+    'Sfi.Sfi:FundrisingNewsletterPages':
+      matcher: >-
+          isAncestorOrDescendantNodeOf("81c7b2f4-cbb1-4263-a181-52ddb4bb17f2")
+    'Sfi.Sfi:NotFundrisingNewsletterPages':
+      matcher: >-
+          !isAncestorOrDescendantNodeOf("81c7b2f4-cbb1-4263-a181-52ddb4bb17f2")
 
 roles:
   'Neos.Neos:Administrator':
@@ -22,4 +28,18 @@ roles:
     privileges:
       -
         privilegeTarget: 'Sfi.Sfi:Subscription'
+        permission: GRANT
+  'Neos.Neos:AbstractEditor':
+    privileges:
+      -
+        privilegeTarget: 'Sfi.Sfi:NotFundrisingNewsletterPages'
+        permission: GRANT
+  'Sfi.Sfi:Fundraiser':
+    parentRoles: ['Neos.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'Sfi.Sfi:NotFundrisingNewsletterPages'
+        permission: DENY
+      -
+        privilegeTarget: 'Sfi.Sfi:FundrisingNewsletterPages'
         permission: GRANT
