@@ -145,6 +145,7 @@
           viewOptions:
             dataSourceAdditionalArguments:
               startDate: 'ClientEval:node.properties.startDate || ""'
+              endDate: 'ClientEval:node.properties.endDate || ""'
   properties:
     startDate:
       type: DateTime
@@ -154,5 +155,15 @@
         inspector:
           group: newsletter
           position: 1
+          editorOptions:
+            format: 'Y-m-d'
+    endDate:
+      type: DateTime
+      ui:
+        label: 'Жертвователи до (либо все)'
+        reloadIfChanged: true
+        inspector:
+          group: newsletter
+          position: 2
           editorOptions:
             format: 'Y-m-d'
