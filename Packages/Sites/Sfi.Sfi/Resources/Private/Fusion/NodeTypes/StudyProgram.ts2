@@ -32,15 +32,15 @@ prototype(Sfi.Sfi:StudyProgram) {
 
 	assetsPlanO = ContentCollection {
 		nodePath = 'assetsPlanO'
-		@process.title = ${'<h3 class="H3 marginVertical-single">Учебный план</h3><h4 class="H4">Очное отделение</h4>' + value}
+		@process.title = ${'<h3 class="H3 marginVertical-single">Учебный план</h3><h4 class="H4">Очная форма обучения</h4>' + value}
 	}
 	assetsPlanOZ = ContentCollection {
 		nodePath = 'assetsPlanOZ'
-		@process.title = ${'<h4 class="H4">Очно-заочное отделение</h4>' + value}
+		@process.title = ${'<h4 class="H4">Очно-заочная форма обучения</h4>' + value}
 	}
 	assetsPlanZ = ContentCollection {
 		nodePath = 'assetsPlanZ'
-		@process.title = ${'<h4 class="H4">Заочное отделение</h4>' + value}
+		@process.title = ${'<h4 class="H4">Заочная форма обучения</h4>' + value}
 	}
 	assetsAdmissionRegulations = ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
@@ -69,15 +69,15 @@ prototype(Sfi.Sfi:StudyProgram) {
 	}
 	scheduleO = ContentCollection {
 		nodePath = 'scheduleO'
-		@process.title = ${'<h3 class="H3 marginVertical-single">Календарный учебный график</h3><h4 class="H4">Очное отделение</h4>' + value}
+		@process.title = ${'<h3 class="H3 marginVertical-single">Календарный учебный график</h3><h4 class="H4">Очная форма обучения</h4>' + value}
 	}
 	scheduleOZ = ContentCollection {
 		nodePath = 'scheduleOZ'
-		@process.title = ${'<h4 class="H4">Очно-заочное отделение</h4>' + value}
+		@process.title = ${'<h4 class="H4">Очно-заочная форма обучения</h4>' + value}
 	}
 	scheduleZ = ContentCollection {
 		nodePath = 'scheduleZ'
-		@process.title = ${'<h4 class="H4">Заочное отделение</h4>' + value}
+		@process.title = ${'<h4 class="H4">Заочная форма обучения</h4>' + value}
 	}
 	documentSubmission = ContentCollection {
 		nodePath = 'documentSubmission'
