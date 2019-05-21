@@ -11,10 +11,6 @@
 				<span class="Article-Date">
 					<f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
 				</span>
-				<f:if condition="{isNewsletter} != 1">
-					&bull;
-					<a class="Article-CommentCount" href="#disqus_thread"><f:translate package="Sfi.Sfi" id="common.comment"/></a>
-				</f:if>
 			</div>
 			<f:if condition="{node.context.workspace.name} != 'live' || {lead}">
 				<div class="Article-Lead RteTextLinkable marginTop-double">{neos:contentElement.editable(property: 'lead', tag: 'span')}</div>
@@ -54,12 +50,6 @@
 			<div class="Article-Assets">{assets -> f:format.raw()}</div>
 
 			<f:render partial="Tags" arguments="{tags: node.properties.tags}" />
-
-			<f:if condition="{isNewsletter} != 1">
-				<div class="marginTop-triple">
-					<f:render partial="Disqus" />
-				</div>
-			</f:if>
 		</div>
 
 	</div>
