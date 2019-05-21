@@ -168,6 +168,7 @@ blah: &alohaRich
           group: news
           editorOptions:
             format: 'd-m-Y H:i'
+            minuteStep: 1
       validation:
         Neos.Neos/Validation/DateTimeValidator: {  }
     hasVideo:
@@ -336,6 +337,7 @@ blah: &alohaRich
           position: 1
           editorOptions:
             format: 'd-m-Y H:i'
+            minuteStep: 1
     date:
       ui:
         label: 'Дата (0:00 если без времени)'

@@ -47,5 +47,6 @@
           group: book
           editorOptions:
             format: 'd-m-Y H:i'
+            minuteStep: 1
       validation:
         Neos.Neos/Validation/DateTimeValidator: {  }
