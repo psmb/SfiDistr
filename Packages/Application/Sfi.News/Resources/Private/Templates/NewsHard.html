@@ -47,9 +47,8 @@
 
 
 			<div class="Article-Gallery">{gallery -> f:format.raw()}</div>
-			<div class="Article-Assets">{assets -> f:format.raw()}</div>
-
 			<f:render partial="Tags" arguments="{tags: node.properties.tags}" />
+			<div class="Article-Assets">{assets -> f:format.raw()}</div>
 		</div>
 
 	</div>
