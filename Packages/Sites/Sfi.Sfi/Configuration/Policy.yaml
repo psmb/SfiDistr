@@ -27,6 +27,9 @@ roles:
       -
         privilegeTarget: 'Sfi.Sfi:SystemPages'
         permission: GRANT
+      -
+        privilegeTarget: 'Sfi.Sfi:FundrisingNewsletterPages'
+        permission: GRANT
   'Neos.Flow:Everybody':
     privileges:
       -
