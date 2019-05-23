@@ -49,6 +49,7 @@
               ol: true
               ul: true
               a: true
+              footnote: true
 'Neos.NodeTypes:TitleMixin':
   abstract: true
   properties:

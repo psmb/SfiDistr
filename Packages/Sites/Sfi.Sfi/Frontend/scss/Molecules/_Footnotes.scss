@@ -1,0 +1,15 @@
+.footnoteList {
+}
+.footnoteList:before {
+    content: '';
+    width: 250px;
+    display: block;
+    border-bottom: 1px solid black;
+    margin: $u 0;
+}
+.footnoteList-item {
+    @extend .ParagraphAlt;
+}
+.footnoteList-item a {
+    @extend .Link;
+}

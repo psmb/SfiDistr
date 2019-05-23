@@ -22,6 +22,10 @@ prototype(Neos.NodeTypes:AssetList) {
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/AssetList.html'
 }
 
+prototype(Neos.Neos:ContentCollection) {
+	@process.footnotes = Psmb.Footnote:FootnoteProcessor
+}
+
 prototype(Neos.Neos:Content) {
 	prototype(Neos.Neos:ContentCollection) {
 		# As we render CC inside content often, we should cache them as separae entries
