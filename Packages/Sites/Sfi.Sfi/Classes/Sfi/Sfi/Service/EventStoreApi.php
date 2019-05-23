@@ -11,7 +11,7 @@ class EventStoreApi {
     protected $apiAuth;
 
     public function getPending($type) {
-        return json_decode($this->callAPI('GET', 'http://node/projection/' . $type, null, true), true) ?? [];
+        return json_decode($this->callAPI('GET', 'http://paymentssfi_node/projection/' . $type, null, true), true) ?? [];
     }
 
     public function registerEmailSent($reason, $type, $email)
@@ -21,7 +21,7 @@ class EventStoreApi {
             'type' => $type,
             'email' => $email
         ];
-        return $this->callAPI('POST', 'http://node/publish-event/EmailSent', $data, true);
+        return $this->callAPI('POST', 'http://paymentssfi_node/publish-event/EmailSent', $data, true);
     }
 
     public function registerUnsubscribe($email)
@@ -29,7 +29,7 @@ class EventStoreApi {
         $data = [
             'email' => $email
         ];
-        return $this->callAPI('POST', 'http://node/publish-event/SubscriberUnsubscribed', $data, true);
+        return $this->callAPI('POST', 'http://paymentssfi_node/publish-event/SubscriberUnsubscribed', $data, true);
     }
 
     protected function callAPI($method, $url, $data = false, $auth = false)
@@ -80,6 +80,3 @@ class EventStoreApi {
         return $result;
     }
 }
-
-
-

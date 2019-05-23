@@ -65,7 +65,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
-          uri: 'http://node/subscribers'
+          uri: 'http://paymentssfi_node/subscribers'
         label: 'Все Жертвователи'
         interval: manual
         senderName: 'Поддержите СФИ'
@@ -79,7 +79,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
-          uri: 'http://node/subscribers?referer=chapel'
+          uri: 'http://paymentssfi_node/subscribers?referer=chapel'
         label: 'Жертвователи на часовню'
         interval: manual
         senderName: 'Поддержите СФИ'
@@ -93,7 +93,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
-          uri: 'http://node/subscribers?referer=projects'
+          uri: 'http://paymentssfi_node/subscribers?referer=projects'
         label: 'Жертвователи на проекты'
         interval: manual
         senderName: 'Поддержите СФИ'
@@ -107,7 +107,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
-          uri: 'http://node/subscribers?referer=social'
+          uri: 'http://paymentssfi_node/subscribers?referer=social'
         label: 'Жертвователи на соцфакультет'
         interval: manual
         senderName: 'Поддержите СФИ'
