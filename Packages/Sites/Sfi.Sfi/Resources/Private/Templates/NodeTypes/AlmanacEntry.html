@@ -1,11 +1,26 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 
 <div class="marginVertical-double AlmanacEntry">
-	<a href="{href}">
+	<f:if condition="{node.context.workspace.name} == 'live'">
+		<a href="{href}">
+	</f:if>
 		<div class="LinkState">
 			<div class="lineHeight-tight">
-				<span class="H4 AlmanacEntry-author">{neos:contentElement.editable(property: 'author', tag: 'span')}</span><f:if condition="{node.context.workspace.name} != 'live' || {authorInfo}"><span class="ServiceEm AlmanacEntry-authorInfo">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span></f:if>
+				<span class="H4 AlmanacEntry-author">{neos:contentElement.editable(property: 'author', tag: 'span')}</span>
+				<f:if condition="{node.context.workspace.name} != 'live' || {authorInfo}"><span class="ServiceEm AlmanacEntry-authorInfo">, {neos:contentElement.editable(property: 'authorInfo', tag: 'span')}</span></f:if>
 			</div>
+			<f:if condition="{node.context.workspace.name} != 'live' || {author2}">
+				<div class="lineHeight-tight">
+					<span class="H4 AlmanacEntry-author">{neos:contentElement.editable(property: 'author2', tag: 'span')}</span>
+					<f:if condition="{node.context.workspace.name} != 'live' || {authorInfo2}"><span class="ServiceEm AlmanacEntry-authorInfo">, {neos:contentElement.editable(property: 'authorInfo2', tag: 'span')}</span></f:if>
+				</div>
+			</f:if>
+			<f:if condition="{node.context.workspace.name} != 'live' || {author3}">
+				<div class="lineHeight-tight">
+					<span class="H4 AlmanacEntry-author">{neos:contentElement.editable(property: 'author3', tag: 'span')}</span>
+					<f:if condition="{node.context.workspace.name} != 'live' || {authorInfo3}"><span class="ServiceEm AlmanacEntry-authorInfo">, {neos:contentElement.editable(property: 'authorInfo3', tag: 'span')}</span></f:if>
+				</div>
+			</f:if>
 			<div class="Paragraph lineHeight-tight color-primary AlmanacEntry-title">{neos:contentElement.editable(property: 'title')}</div>
 		</div>
 		<div class="ParagraphAlt--Small AlmanacEntry-source">{neos:contentElement.editable(property: 'source', tag: 'span')}</div>
@@ -18,5 +33,7 @@
 				{keywordsStr}: {neos:contentElement.editable(property: 'keywords', tag: 'span')}
 			</div>
 		</f:if>
-	</a>
+	<f:if condition="{node.context.workspace.name} == 'live'">
+		</a>
+	</f:if>
 </div>

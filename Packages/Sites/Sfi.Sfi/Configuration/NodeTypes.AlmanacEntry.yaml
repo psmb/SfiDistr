@@ -34,6 +34,30 @@
         inlineEditable: true
         aloha:
           placeholder: 'Дополнительная информация об авторе'
+    author2:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Имя автора статьи 2'
+    authorInfo2:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Дополнительная информация об авторе 2'
+    author3:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Имя автора статьи 3'
+    authorInfo3:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Дополнительная информация об авторе 3'
     title:
       type: string
       ui:
