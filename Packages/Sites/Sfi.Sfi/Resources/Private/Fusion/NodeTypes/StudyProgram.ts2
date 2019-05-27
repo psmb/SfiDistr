@@ -112,8 +112,8 @@ prototype(Sfi.Sfi:StudyProgram) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = ${'DescendantOf_' + node.identifier}
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.descendantOfTag(node)}
 		}
 	}
 	@process.contentElementWrapping = ContentElementWrapping
@@ -223,9 +223,9 @@ prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListing
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = ${'Node_' + rootNode.identifier}
-			3 = ${'DescendantOf_' + rootNode.identifier}
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.nodeTag(rootNode)}
+			3 = ${Neos.Caching.descendantOfTag(rootNode)}
 		}
 	}
 }
@@ -243,8 +243,8 @@ prototype(Sfi.Sfi:StudyProgramsListingFormal) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			3 = ${'DescendantOf_' + site.identifier}
+			1 = ${Neos.Caching.nodeTag(node)}
+			3 = ${Neos.Caching.descendantOfTag(site)}
 		}
 	}
 }
@@ -260,8 +260,8 @@ prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProg
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.Sfi:StudyProgram'}
-			2 = ${'Node_' + node.identifier}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:StudyProgram')}
+			2 = ${Neos.Caching.nodeTag(node)}
 		}
 	}
 }

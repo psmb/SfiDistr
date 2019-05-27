@@ -37,7 +37,7 @@ prototype(Sfi.Sfi:PromoList) < prototype(Neos.Fusion:Tag) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.Sfi:Promo'}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Promo')}
 		}
 	}
 }

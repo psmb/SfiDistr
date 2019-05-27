@@ -22,7 +22,7 @@ prototype(Sfi.Sfi:FundraisingPaymentFormProjectSelectBox) < prototype(Neos.Fusio
         mode = 'cached'
         entryIdentifier.node = ${documentNode}
         entryTags {
-            1 = 'NodeType_Sfi.Sfi:FundraisingProject'
+            1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:FundraisingProject')}
         }
     }
 }

@@ -70,8 +70,8 @@ prototype(Sfi.Shared:Group) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = ${'DescendantOf_' + node.identifier}
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.descendantOfTag(node)}
 		}
 	}
 }
@@ -102,8 +102,8 @@ prototype(Sfi.Shared:ListByReferences) < prototype(Neos.Fusion:Tag) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'NodeType_Flowpack.Listable:ListableMixin'}
-			2 = ${'Node_' + node.identifier}
+			1 = ${Neos.Caching.nodeTypeTag('Flowpack.Listable:ListableMixin')}
+			2 = ${Neos.Caching.nodeTag(node)}
 		}
 	}
 	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping

@@ -84,7 +84,7 @@ prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.News:AbstractNews'}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
 		}
 	}
 }
@@ -106,8 +106,8 @@ prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Collection) {
 		}
 		maximumLifetime = ${3600}
 		entryTags {
-			1 = ${'Node_' + site.identifier}
-			2 = ${'NodeType_Sfi.News:ImportantMixin'}
+			1 = ${Neos.Caching.nodeTag(site)}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.News:ImportantMixin')}
 		}
 	}
 }
@@ -135,7 +135,7 @@ prototype(Sfi.News:CategorizedList) < prototype(Neos.Fusion:Tag) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'DescendantOf_' + documentNode.identifier}
+			1 = ${Neos.Caching.descendantOfTag(documentNode)}
 		}
 	}
 	@process.contentElementWrapping = ContentElementWrapping
@@ -164,8 +164,8 @@ prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
 			3 = 'site'
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.News:AbstractNews'}
-			2 = ${'Node_' + node.identifier}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
+			2 = ${Neos.Caching.nodeTag(node)}
 		}
 	}
 
@@ -217,8 +217,8 @@ prototype(Sfi.News:Archive) < prototype(Flowpack.Listable:List) {
 				3 = 'site'
 			}
 			entryTags {
-				1 = ${'Node_' + documentNode.identifier}
-				2 = ${'DescendantOf_' + documentNode.identifier}
+				1 = ${Neos.Caching.nodeTag(documentNode)}
+				2 = ${Neos.Caching.descendantOfTag(documentNode)}
 			}
 		}
 	}

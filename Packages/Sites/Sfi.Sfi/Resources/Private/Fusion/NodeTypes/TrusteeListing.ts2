@@ -20,8 +20,8 @@ prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Collection) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = 'NodeType_Sfi.Sfi:PageTag'
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:PageTag')}
 		}
 	}
 }

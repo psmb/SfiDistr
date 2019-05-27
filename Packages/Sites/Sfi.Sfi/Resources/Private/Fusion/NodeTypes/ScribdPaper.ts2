@@ -19,7 +19,7 @@ prototype(Sfi.Sfi:ScribdList) < prototype(Neos.Fusion:Collection) {
 	@cache {
 		mode = 'cached'
 		entryTags {
-			1 = ${'DescendantOf_' + documentNode.identifier}
+			1 = ${Neos.Caching.descendantOfTag(documentNode)}
 		}
 		entryIdentifier {
 			node = ${node}

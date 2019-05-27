@@ -19,7 +19,7 @@ prototype(Sfi.News:RssList) < prototype(Neos.Fusion:Template) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.News:AbstractNews'}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
 		}
 	}
 }

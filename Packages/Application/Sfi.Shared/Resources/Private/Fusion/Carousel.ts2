@@ -15,8 +15,8 @@ prototype(Sfi.Shared:Carousel) < prototype(Neos.Fusion:Tag) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = ${'DescendantOf_' + node.identifier}
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.descendantOfTag(node)}
 		}
 	}
 	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping

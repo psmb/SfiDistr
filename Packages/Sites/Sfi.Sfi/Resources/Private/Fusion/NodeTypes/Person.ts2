@@ -64,7 +64,7 @@ prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.Sfi:Person'}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Person')}
 		}
 	}
 }

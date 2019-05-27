@@ -17,8 +17,8 @@ prototype(Sfi.Sfi:PaperWithAuthor.Store) < prototype(Neos.Fusion:Array) {
                 3 = 'site'
             }
             entryTags {
-                1 = ${'NodeType_Sfi.Sfi:PaperWithAuthor'}
-                2 = ${'NodeType_Sfi.Sfi:Person'}
+                1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:PaperWithAuthor')}
+                2 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Person')}
             }
         }
     }
