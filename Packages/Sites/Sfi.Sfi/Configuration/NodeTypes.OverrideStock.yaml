@@ -136,6 +136,16 @@
             referenceNodePath: '/sites/sfi/node-qij9kguwatvdn'
             enabled: true
             placeholder: 'Название'
+        publications:
+          label: 'Публикации в СМИ'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.News:News'
+            referenceNodePath: '/sites/sfi/node-satwdls7d6rti'
+            enabled: true
+            placeholder: 'Название'
 
 'Sfi.Sfi:AutomatedNewsletter':
   ui:
