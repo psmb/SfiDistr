@@ -1,42 +1,42 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 
 <div>
-	<div class="row">
-		<div class="columns">
-			<div class="NewsTop marginBottom-single">
-				{newsTop -> f:format.raw()}
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="columns">
+            <div class="NewsTop marginBottom-single">
+                {newsTop -> f:format.raw()}
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="row">
-	<div class="columns">
-		{newsLatest -> f:format.raw()}
-	</div>
-</div>
 <f:if condition="{showAnnouncements}">
-	<div class="row">
-		<div class="columns">
-			{newsAnnouncements -> f:format.raw()}
-		</div>
-	</div>
+    <div class="row">
+        <div class="columns">
+            {newsAnnouncements -> f:format.raw()}
+        </div>
+    </div>
 </f:if>
+<div class="row">
+    <div class="columns">
+        {newsLatest -> f:format.raw()}
+    </div>
+</div>
 <div class="row marginBottom-single">
-	<div class="columns">
-		{middle -> f:format.raw()}
-	</div>
+    <div class="columns">
+        {middle -> f:format.raw()}
+    </div>
+</div>
+<div class="row marginBottom-double">
+    <div class="columns medium-6">
+        {video -> f:format.raw()}
+    </div>
+    <div class="columns medium-6">
+        {publications -> f:format.raw()}
+    </div>
 </div>
 <div class="row">
-	<div class="columns medium-6">
-		{video -> f:format.raw()}
-	</div>
-	<div class="columns medium-6">
-		{papers -> f:format.raw()}
-	</div>
-</div>
-<div class="row">
-	<div class="columns">
-		{main -> f:format.raw()}
-	</div>
+    <div class="columns">
+        {main -> f:format.raw()}
+    </div>
 </div>

@@ -32,13 +32,8 @@
 							<h3 class="MediaSlideMedium-Title">
 								<f:if condition="{node.nodeType.name} == 'Sfi.News:Announcement'">
 									<div class="MediaSlideMedium-Date">
-										<f:if condition="{node.properties.dateStart}">
-											<f:if condition="{f:format.date(date: node.properties.dateStart format: 'Y-m-d')} < {f:format.date(date: date, format: 'Y-m-d')}">
-												<span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{node.properties.dateStart}</f:format.date></span>
-												<span>–</span>
-											</f:if>
-										</f:if>
-										<span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{date}</f:format.date></span>
+										<f:if condition="{node.properties.dateStart}"><f:if condition="{f:format.date(date: node.properties.dateStart format: 'Y-m-d')} < {f:format.date(date: date, format: 'Y-m-d')}">
+											<span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{node.properties.dateStart}</f:format.date></span><span>–</span></f:if></f:if><span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{date}</f:format.date></span>
 									</div>
 								</f:if>
 								{title}

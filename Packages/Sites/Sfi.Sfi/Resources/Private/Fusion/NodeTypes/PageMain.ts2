@@ -7,6 +7,7 @@ prototype(Sfi.Sfi:PageMain) {
 	showAnnouncements = ${String.length(this.newsAnnouncements) > 150}
 	promo = Sfi.Sfi:PromoList
 	video = Sfi.Sfi:LatestVideo
+	publications = Sfi.Sfi:LatestPublications
 	papers = Sfi.Sfi:PaperWithAuthor.TopList
 	donate = Sfi.Sfi:DonateBanner
 	main = ContentCollection {

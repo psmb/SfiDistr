@@ -1,0 +1,4 @@
+prototype(Sfi.Sfi:LatestPublications) < prototype(Sfi.Sfi:LatestVideo) {
+    @context.rootNode = ${q(site).children('node-satwdls7d6rti').get(0)}
+    value.archiveLinkTitle = ${Translation.translate('allPublications', null, [], null, 'Sfi.Sfi')}
+}
