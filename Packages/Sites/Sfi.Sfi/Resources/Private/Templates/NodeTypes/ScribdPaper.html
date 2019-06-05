@@ -13,6 +13,9 @@
 	</div>
 	<div class="row marginTop-triple">
 		<div class="columns">
+			<f:if condition="{link}">
+				<a class="Button" href="{link}" target="_blank">Скачать</a>
+			</f:if>
 			{scribd -> f:format.raw()}
 		</div>
 	</div>

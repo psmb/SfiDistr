@@ -90,3 +90,10 @@ blah: &alohaRich
         label: 'Код из Scribd'
         inspector:
           group: scribd
+    link:
+      type: string
+      ui:
+        reloadIfChanged: true
+        label: 'Внешняя ссылка (с http...)'
+        inspector:
+          group: scribd
