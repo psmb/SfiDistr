@@ -71,6 +71,9 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SecondaryMenu.html'
 			itemCollection = ${q(site).children('links').children().get()}
 		}
+		linkToMain = Neos.Neos:NodeUri {
+			node = ${site}
+		}
 		@override.sectionMenu = Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
 			entryLevel = 2
