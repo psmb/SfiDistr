@@ -73,6 +73,7 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 		}
 		linkToMain = Neos.Neos:NodeUri {
 			node = ${site}
+			@process.fix = ${String.replace(value, '/.html', '/')}
 		}
 		@override.sectionMenu = Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
