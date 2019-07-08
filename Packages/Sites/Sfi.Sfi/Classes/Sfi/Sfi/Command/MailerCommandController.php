@@ -96,10 +96,12 @@ class MailerCommandController extends CommandController
                     $subscriber['projectTarget'] = $project->getProperty('target');
                     try {
                         $originalNode = clone $node;
+                        // We register sent event before actually sending to prevent double delivery
+                        // TODO: make actual delivery more robust
+                        $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
                         if (!$dryRun) {
                             $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
                         }
-                        $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
                         $this->systemLogger->log("Email sent: " . ($dryRun ? "(Dry-run)" : "") . $subscriber['email'] . "; " . $reason . "; " . $subscripionId, \LOG_INFO);
                     } catch (\Exception $e) {
                         $message = $e->getMessage();
