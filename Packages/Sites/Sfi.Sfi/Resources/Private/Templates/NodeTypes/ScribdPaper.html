@@ -2,21 +2,28 @@
 <f:layout name="ContentWithSidebar" />
 
 <f:section name="content">
-	<div class="row">
-		<div class="columns">
-			<div class="textAlign-center">
-				<div class="Service--Large">{neos:contentElement.editable(property: 'title')}</div>
-				<div class="ParagraphAlt--Large">Руководитель ВКР: {neos:contentElement.editable(property: 'mentor')}</div>
-				<h1 class="H1">{neos:contentElement.editable(property: 'paperName')}</h1>
-			</div>
-		</div>
-	</div>
-	<div class="row marginTop-triple">
-		<div class="columns">
-			<f:if condition="{link}">
-				<a class="Button" href="{link}" target="_blank">Скачать</a>
-			</f:if>
-			{scribd -> f:format.raw()}
-		</div>
-	</div>
+    <div class="row">
+        <div class="columns">
+            <div class="textAlign-center">
+                <div class="Service--Large"
+                    >{neos:contentElement.editable(property: 'title')}</div
+                >
+                <div class="ParagraphAlt--Large"
+                    >Руководитель ВКР: {neos:contentElement.editable(property:
+                    'mentor')}</div
+                >
+                <h1 class="H1"
+                    >{neos:contentElement.editable(property: 'paperName')}</h1
+                >
+            </div>
+        </div>
+    </div>
+    <div class="row marginTop-triple">
+        <div class="columns">
+            <f:if condition="{link}">
+                <a class="Button" href="{link}" target="_blank">Читать</a>
+            </f:if>
+            {scribd -> f:format.raw()}
+        </div>
+    </div>
 </f:section>
