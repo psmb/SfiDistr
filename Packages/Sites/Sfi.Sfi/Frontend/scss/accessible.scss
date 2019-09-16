@@ -1,11 +1,27 @@
 html {
-	font-size: 22px;
+    font-size: 22px;
 }
 
 a {
-	text-decoration: underline !important;
+    text-decoration: underline !important;
 }
 
-*, .color-primary, .Article-Lead a, .ButtonInline, .InlineLink, .Link, .PaleLink, .RteText a, .RteTextLinkable a {
-	color: black !important;
+*,
+.color-primary,
+.Article-Lead a,
+.ButtonInline,
+.InlineLink,
+.Link,
+.PaleLink,
+.RteText a,
+.RteTextLinkable a {
+    color: black !important;
+}
+
+.Footer *,
+.MediaSlideMedium *,
+.white,
+.white *,
+.MediaSlideSmall * {
+    color: white !important;
 }
