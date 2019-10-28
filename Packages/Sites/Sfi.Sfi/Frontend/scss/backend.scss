@@ -2,14 +2,18 @@
     border: 2px dashed rgba(0, 255, 200, 0.5) !important;
 }
 [itemprop] {
-    border: 2px dashed rgba(0,255,0,0.5) !important;
+    border: 2px dashed rgba(0, 255, 0, 0.5) !important;
 }
 
 span[data-footnote] {
     border-bottom: orange solid 1px;
 }
 span[data-footnote]:after {
-  content: '*';
-  color: orange;
-  border-bottom: orange solid 1px;
+    content: "*";
+    color: orange;
+    border-bottom: orange solid 1px;
+}
+
+.ck-content .table {
+    display: initial;
 }
