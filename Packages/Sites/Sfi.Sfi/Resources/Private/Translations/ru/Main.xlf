@@ -48,7 +48,7 @@
                 <source>E-mail</source>
             </trans-unit>
             <trans-unit id="footer.contacts.address">
-                <source>105062 Москва, Покровка, 29</source>
+                <source>105062 Москва, ул. Покровка, д. 29, нежилое помещение 2</source>
             </trans-unit>
             <trans-unit id="footer.contacts.map">
                 <source>Карта проезда</source>
