@@ -1,48 +1,72 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 <header class="Header js-MainMenu">
+    <div class="show-for-medium-down marginBottom-single textAlign-center">
+        <div
+            class="backgroundColor-primary"
+            style="height: 6px; width: 100%"
+        ></div>
 
+        <div class="HeaderSmall-Bar marginBottom-single">
+            <div class="row">
+                <div class="columns" style="display:flex">
+                    <f:render partial="Search" />
+                    <div style="flex-grow: 1"></div>
+                    <div style="margin-top: 9px">
+                        <f:render partial="EnglishLink" arguments="{_all}" />
+                    </div>
+                    <f:if condition="{lang} == 'ru'">
+                        <div style="margin-top: 9px" class="marginLeft-single">
+                            <a
+                                class="icon-user-1 color-primary"
+                                href="http://kabinet.sfi.ru"
+                                target="_blank"
+                                title="Личный кабинет"
+                            ></a>
+                        </div>
+                    </f:if>
+                    <div
+                        href="#menu"
+                        class="marginLeft-single MobileNav-Toggle js-MobileNav-Toggle"
+                    >
+                        <div class="IconMenu">
+                            <img
+                                alt="{f:translate(package:'Sfi.Sfi', id:'header.menu')}"
+                                src="/_Resources/Static/Packages/Sfi.Sfi/Images/IconMenu.svg"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<div class="show-for-medium-down marginBottom-single textAlign-center">
-		<div class="backgroundColor-primary" style="height: 6px; width: 100%"></div>
+        <a
+            href="{linkToMain}"
+            title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}"
+        >
+            <img
+                alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}"
+                src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2"
+            />
+        </a>
 
-		<div class="HeaderSmall-Bar marginBottom-single">
-			<div class="row">
-				<div class="columns" style="display:flex">
-					<f:render partial="Search" />
-					<div style="flex-grow: 1"></div>
-					<div style="margin-top: 9px">
-						<f:render partial="EnglishLink" arguments="{_all}"/>
-					</div>
-					<f:if condition="{lang} == 'ru'">
-						<div style="margin-top: 9px" class="marginLeft-single">
-							<a class="icon-user-1 color-primary" href="http://kabinet.sfi.ru" target="_blank" title="Личный кабинет"></a>
-						</div>
-					</f:if>
-					<div href="#menu" class="marginLeft-single MobileNav-Toggle js-MobileNav-Toggle">
-						<div class="IconMenu">
-							<img alt="{f:translate(package:'Sfi.Sfi', id:'header.menu')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/IconMenu.svg">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <p
+            class="color-grayAlt ParagraphAlt lineHeight-normal marginTop-single"
+        >
+            <a class="LinkState" href="tel:+74956230380">+7 |495| 623 03 80</a>
+            &bull;
+            <a class="LinkState" href="mailto:info@sfi.ru">info@sfi.ru</a>
+        </p>
+        <p class="color-grayAlt ParagraphAlt lineHeight-normal LinkState">
+            <neos:link.node node="~/about/node-557966c3b906d"
+                ><f:translate package="Sfi.Sfi" id="header.contacts.address"
+            /></neos:link.node>
+        </p>
 
-		<a href="{linkToMain}" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" >
-			<img alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
-		</a>
-
-		<p class="color-grayAlt ParagraphAlt lineHeight-normal marginTop-single">
-			<a class="LinkState" href="tel:+74956230380">+7 |495| 623 03 80</a> &bull; <a class="LinkState" href="mailto:info@sfi.ru">info@sfi.ru</a>
-		</p>
-		<p class="color-grayAlt ParagraphAlt lineHeight-normal LinkState">
-			<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
-		</p>
-
-		<f:if condition="{lang} == 'ru'">
-			<a
-				class="Button lineHeight-single paddingVertical-half marginTop-single"
-				target="_blank"
-				style="
+        <f:if condition="{lang} == 'ru'">
+            <a
+                class="Button lineHeight-single paddingVertical-half marginTop-single"
+                target="_blank"
+                style="
 					margin-left: 12px;
 					margin-right: 0;
 					padding: 3px 12px;
@@ -50,43 +74,54 @@
 					color: white !important;
 					vertical-align: top;
 				"
-				href="https://sfi.ru/projects.html">
-				<span class="H5" style="vertical-align: top">Поддержите СФИ</span>
-			</a>
-		</f:if>
+                href="https://sfi.ru/projects.html"
+            >
+                <span class="H5" style="vertical-align: top"
+                    >Поддержите СФИ</span
+                >
+            </a>
+        </f:if>
+    </div>
 
-	</div>
-
-
-	<div class="show-for-large-up">
-		<div class="row">
-			<div class="columns">
-				<div class="backgroundColor-primary" style="height: 6px; width: 100%"></div>
-				<div style="
+    <div class="show-for-large-up">
+        <div class="row">
+            <div class="columns">
+                <div
+                    class="backgroundColor-primary"
+                    style="height: 6px; width: 100%"
+                ></div>
+                <div
+                    style="
 					display:flex;
 					justify-content: space-between;
 					align-items: center;
 					border-bottom: 1px solid #ccc;
-					">
-					<div>
-						{mainMenu -> f:format.raw()}
-					</div>
-					<div style="display: flex; align-items: center">
-						<f:render partial="Search" />
-						<f:render partial="EnglishLink" arguments="{_all}" />
-						<div class="paddingHorizontal-single">
-							<f:render partial="AccessibleLink" />
-						</div>
-						<f:if condition="{lang} == 'ru'">
-							<div>
-								<a class="icon-user-1 color-primary" href="http://kabinet.sfi.ru" target="_blank" title="Личный кабинет"></a>
-							</div>
-						</f:if>
-						<f:if condition="{lang} == 'ru'">
-							<a
-								class="Button lineHeight-single"
-								target="_blank"
-								style="
+					"
+                >
+                    <div>
+                        {mainMenu -> f:format.raw()}
+                    </div>
+                    <div style="display: flex; align-items: center">
+                        <f:render partial="Search" />
+                        <f:render partial="EnglishLink" arguments="{_all}" />
+                        <div class="paddingHorizontal-single">
+                            <f:render partial="AccessibleLink" />
+                        </div>
+                        <f:if condition="{lang} == 'ru'">
+                            <div>
+                                <a
+                                    class="icon-user-1 color-primary"
+                                    href="http://kabinet.sfi.ru"
+                                    target="_blank"
+                                    title="Личный кабинет"
+                                ></a>
+                            </div>
+                        </f:if>
+                        <f:if condition="{lang} == 'ru'">
+                            <a
+                                class="Button lineHeight-single"
+                                target="_blank"
+                                style="
 									margin-left: 12px;
 									margin-right: 0;
 									padding: 3px 12px;
@@ -94,62 +129,101 @@
 									color: white !important;
 									vertical-align: top;
 								"
-								href="https://sfi.ru/projects.html">
-									<span class="H5" style="vertical-align: top">Поддержите СФИ</span>
-							</a>
-						</f:if>
-					</div>
+                                href="https://sfi.ru/projects.html"
+                            >
+                                <span class="H5" style="vertical-align: top"
+                                    >Поддержите СФИ</span
+                                >
+                            </a>
+                        </f:if>
+                    </div>
+                </div>
+                {subMenu -> f:format.raw()}
+            </div>
+        </div>
 
-				</div>
-				{subMenu -> f:format.raw()}
-			</div>
-		</div>
+        <div style="position: relative">
+            <div class="row">
+                <div class="columns large-7 medium-5">
+                    <a
+                        href="{linkToMain}"
+                        title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}"
+                        class="SiteLogo"
+                    >
+                        <img
+                            style="width: 330px; padding: 24px 48px;"
+                            alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}"
+                            src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2"
+                        />
+                    </a>
+                </div>
 
-		<div style="position: relative">
-			<div class="row">
+                <div class="columns large-4 medium-6 medium-offset-1 end">
+                    <div class="row marginTop-double">
+                        <div class="columns medium-6">
+                            {secondaryMenu -> f:format.raw()}
+                            <f:if condition="{lang} == 'ru'">
+                                <div
+                                    class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
+                                    ><a href="/sveden/common"
+                                        >Сведения об образовательной
+                                        организации</a
+                                    ></div
+                                >
+                            </f:if>
+                        </div>
 
-				<div class="columns large-7 medium-5">
-					<a href="{linkToMain}" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}" class="SiteLogo" >
-						<img style="width: 330px; padding: 24px 48px;" alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}" src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2">
-					</a>
-				</div>
+                        <div class="columns medium-6">
+                            <p
+                                class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
+                            >
+                                <neos:link.node
+                                    node="~/about/node-557966c3b906d"
+                                    ><f:translate
+                                        package="Sfi.Sfi"
+                                        id="header.contacts.address"
+                                /></neos:link.node>
+                            </p>
+                            <p
+                                class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
+                            >
+                                <a href="tel:+74956230380"
+                                    >+7 |495| 623 03 80</a
+                                >
+                            </p>
+                            <p
+                                class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
+                            >
+                                <a href="mailto:info@sfi.ru">info@sfi.ru</a>
+                            </p>
+                            <f:if condition="{lang} == 'ru'">
+                                <br />
+                                <p
+                                    class="Link LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
+                                >
+                                    <a
+                                        title="Интернет-магазин, в котором вы сможете приобрести электронные и бумажные издания нашего издательства"
+                                        href="https://books.sfi.ru"
+                                        target="_blank"
+                                    >
+                                        Книжный<br />магазин СФИ
+                                    </a>
+                                </p>
+                            </f:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-				<div class="columns large-4 medium-6 medium-offset-1 end">
-					<div class="row marginTop-double">
-
-						<div class="columns medium-6">
-							{secondaryMenu -> f:format.raw()}
-							<f:if condition="{lang} == 'ru'">
-								<div class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"><a href="/sveden/common">Сведения об образовательной организации</a></div>
-							</f:if>
-						</div>
-
-						<div class="columns medium-6">
-							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
-								<neos:link.node node="~/about/node-557966c3b906d"><f:translate package="Sfi.Sfi" id="header.contacts.address"/></neos:link.node>
-							</p>
-							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
-								<a href="tel:+74956230380">+7 |495| 623 03 80</a>
-							</p>
-							<p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
-								<a href="mailto:info@sfi.ru">info@sfi.ru</a>
-							</p>
-						</div>
-
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<f:if condition="{breadcrumbMenu}">
-		<div class="row">
-			<div class="columns breadcrumbsWrapper">
-				<div style="border-top: 1px solid #ccc; padding-left: 18px">
-					{breadcrumbMenu -> f:format.raw()}
-				</div>
-			</div>
-		</div>
-	</f:if>
+    <f:if condition="{breadcrumbMenu}">
+        <div class="row">
+            <div class="columns breadcrumbsWrapper">
+                <div style="border-top: 1px solid #ccc; padding-left: 18px">
+                    {breadcrumbMenu -> f:format.raw()}
+                </div>
+            </div>
+        </div>
+    </f:if>
 </header>

@@ -1,12 +1,24 @@
 <a class="SkipToContent" href="#maincontent">Перейти к основному содержимому</a>
 <div class="js-MobileNav">
-	<div class="MobileNav-Content">
-		<f:render partial="Header" arguments="{_all}"/>
-		<f:render section="content" />
-		<f:render partial="Footer" arguments="{_all}"/>
-	</div>
-	<div class="MobileNav-Menu show-for-medium-down">
-		{secondaryMenu -> f:format.raw()}
-		{mainMenu -> f:format.raw()}
-	</div>
+    <div class="MobileNav-Content">
+        <f:render partial="Header" arguments="{_all}" />
+        <f:render section="content" />
+        <f:render partial="Footer" arguments="{_all}" />
+    </div>
+    <div class="MobileNav-Menu show-for-medium-down">
+        <f:if condition="{lang} == 'ru'">
+            <p
+                class="Link LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
+            >
+                <a
+                    title="Интернет-магазин, в котором вы сможете приобрести электронные и бумажные издания нашего издательства"
+                    href="https://books.sfi.ru"
+                    target="_blank"
+                >
+                    Книжный<br />магазин СФИ
+                </a>
+            </p>
+        </f:if>
+        {secondaryMenu -> f:format.raw()} {mainMenu -> f:format.raw()}
+    </div>
 </div>
