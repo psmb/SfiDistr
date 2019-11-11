@@ -24,7 +24,10 @@ prototype(Sfi.Sfi:FundraisingProject) {
 	form = Sfi.Sfi:FundraisingPaymentForm {
 		projectId = ${node.properties.uriPathSegment}
 		moto = ${node.properties.moto}
+		@if.isRunning = ${node.properties.complete ? false : true}
 	}
+
+	complete = ${node.properties.complete}
 
 	otherProjects = Sfi.Sfi:FundraisingProjectsListing {
 		collection.@process.filterOutSelf = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}

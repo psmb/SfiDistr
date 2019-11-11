@@ -102,7 +102,9 @@
 			<div class="backgroundColor-white marginVertical-triple padding-double">
 				<div class="H1 color-brown lineHeight-single" >{neos:contentElement.editable(property: 'title')}</div>
 				<div class="Paragraph marginVertical-double">{neos:contentElement.editable(property: 'description')}</div>
-				<a class="Button LinkButton Button--warn" href="#donate">Хочу помочь</a>
+				<f:if condition="{complete} != true">
+					<a class="Button LinkButton Button--warn" href="#donate">Хочу помочь</a>
+				</f:if>
 				<a class="Button LinkButton Button--pale" href="#report">Отчет</a>
 			</div>
 		</div>
@@ -127,9 +129,11 @@
 				<div class="stickyHeader-item">
 					{bar -> f:format.raw()}
 				</div>
-				<div class="stickyHeader-item">
-					<a href="#donate" class="Button LinkButton Button--warn">Хочу помочь</a>
-				</div>
+				<f:if condition="{complete} != true">
+					<div class="stickyHeader-item">
+						<a href="#donate" class="Button LinkButton Button--warn">Хочу помочь</a>
+					</div>
+				</f:if>
 			</div>
 		</div>
 

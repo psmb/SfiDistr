@@ -1,24 +1,31 @@
-'Sfi.Sfi:FundraisingProject':
+"Sfi.Sfi:FundraisingProject":
   superTypes:
-    'Sfi.Sfi:AbstractPage': true
+    "Sfi.Sfi:AbstractPage": true
   ui:
-    label: 'Страница: проект фандрайзинга'
+    label: "Страница: проект фандрайзинга"
     inspector:
       groups:
         image:
-          label: Фото
+          label: Проект
   childNodes:
     header:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     main:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     report:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
   properties:
+    complete:
+      type: boolean
+      ui:
+        label: "Сбор завершен?"
+        reloadIfChanged: true
+        inspector:
+          group: default
     thumb:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Иллюстрация-миниатюрка'
+        label: "Иллюстрация-миниатюрка"
         reloadIfChanged: true
         inspector:
           group: image
@@ -34,7 +41,7 @@
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Фото обложки'
+        label: "Фото обложки"
         reloadIfChanged: true
         inspector:
           group: image
@@ -52,17 +59,17 @@
       ui:
         inlineEditable: true
         aloha:
-          placeholder: 'Название проекта'
+          placeholder: "Название проекта"
     description:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          placeholder: 'Описание проекта'
+          placeholder: "Описание проекта"
     target:
       type: string
       ui:
-        label: 'Цель сбора'
+        label: "Цель сбора"
         inspector:
           group: default
     moto:
@@ -70,7 +77,7 @@
       ui:
         inlineEditable: true
         aloha:
-          placeholder: 'Мото текст'
+          placeholder: "Мото текст"
           format:
             strong: TRUE
             em: TRUE
@@ -83,8 +90,8 @@
             h3: FALSE
             pre: FALSE
             removeFormat: FALSE
-          table: {  }
-          list: {  }
+          table: {}
+          list: {}
           link:
             a: TRUE
-          alignment: {  }
+          alignment: {}

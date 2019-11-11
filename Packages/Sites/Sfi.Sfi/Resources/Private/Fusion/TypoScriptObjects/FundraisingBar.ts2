@@ -1,6 +1,7 @@
 prototype(Sfi.Sfi:FundraisingBar) < prototype(Neos.Fusion:Template) {
     @if.isRus = ${Array.first(node.context.dimensions.language) == 'ru'}
     templatePath = 'resource://Sfi.Sfi/Private/Fusion/TypoScriptObjects/FundraisingBar.html'
+    complete = ${node.properties.complete}
 
     projectId = ''
     target = 0
