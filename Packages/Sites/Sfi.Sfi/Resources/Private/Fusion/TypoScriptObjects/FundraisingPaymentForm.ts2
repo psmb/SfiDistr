@@ -11,7 +11,7 @@ prototype(Sfi.Sfi:FundraisingPaymentForm) < prototype(Neos.Fusion:Template) {
 prototype(Sfi.Sfi:FundraisingPaymentFormProjectSelectBox) < prototype(Neos.Fusion:Collection) {
     @process.wrap = ${'<select class="input color-grayAlt backgroundColor-white" name="projectSelector">' + value + '</select>'}
     @process.label = ${'<div class="ParagraphAlt--Small color-grayAlt marginBottom-half"><label>Пожертвовать на проект:</label></div>' + value}
-    collection = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject]').get()}
+    collection = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject][complete != true]').get()}
     itemName = 'node'
     itemRenderer = Neos.Fusion:Value {
         value = ${node.properties.navTitle || node.properties.title}
