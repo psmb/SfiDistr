@@ -184,7 +184,7 @@ prototype(Sfi.News:Archive) < prototype(Flowpack.Listable:List) {
 	}
 
 	listTitle = ${q(node).property('title')}
-	listTitleClass = 'SectionDivider--Service'
+	listTitleClass = 'H2'
 	archiveLink = ''
 
 	prototype(Sfi.News:NewsShort) {
