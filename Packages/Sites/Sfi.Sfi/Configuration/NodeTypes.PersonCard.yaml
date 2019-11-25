@@ -40,3 +40,10 @@
           editorOptions:
             nodeTypes:
               - 'Neos.Neos:Document'
+    targetSource:
+      type: boolean
+      ui:
+        label: 'Брать информацию из страницы персоны'
+        reloadIfChanged: targetSource
+        inspector:
+          group: image

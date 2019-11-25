@@ -1,6 +1,5 @@
 prototype(Sfi.Sfi:Person) {
-	@override.variant = ${q(node).property('isRector') ? 'Rector' : (q(node).property('isProRector') || q(node).property('isSenior') || q(node).property('isChairperson')) ? 'Rich' : 'Simple'}
-	templatePath = ${'resource://Sfi.Sfi/Private/Templates/NodeTypes/Person' + variant + '.html'}
+	templatePath = 'resource://Sfi.Sfi/Private/Templates/NodeTypes/PersonSimple.html'
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 	sectionMenu = ${siblingsMenu}
@@ -24,14 +23,25 @@ prototype(Sfi.Sfi:Person) {
 		path = 'experienceSpeciality'
 	}
 
-	coverCollection = Neos.Neos:ContentCollection {
+	@context.fallbackImage = Neos.Neos:ImageUri {
+		asset = ${node.properties.image}
+		maximumWidth = 400
+		maximumHeight = 600
+		allowCropping = TRUE
+		@process.markup = afx`<img src={value} alt={node.properties.title} />`
+	}
+
+	@context.coverCollection = Neos.Neos:ContentCollection {
 		nodePath = 'coverCollection'
 		prototype(Neos.NodeTypes:Image) {
-			maximumWidth = ${variant == 'Rector' ? 770 : variant == 'Rich' ? 480 : 400}
-			maximumHeight = ${variant == 'Rector' ? 513 : variant == 'Rich' ? 720 : 600}
+			maximumWidth = 400
+			maximumHeight = 600
 			allowCropping = TRUE
 		}
 	}
+
+	coverImage = ${q(node).children('coverCollection').children().count() > 0 ? coverCollection : fallbackImage}
+
 	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 

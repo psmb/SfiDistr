@@ -134,35 +134,11 @@ blah: &alohaRich
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Обложка тэга'
+        label: 'Обложка тэга (можно оставить пустой)'
         reloadIfChanged: true
         inspector:
           group: tag
           position: 50
-    freeText:
-      type: string
-      ui:
-        inlineEditable: true
-        label: 'Свободный текст'
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Свободный текст'
-    coverText:
-      type: string
-      ui:
-        inlineEditable: true
-        label: 'Текст обложки тэга'
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Текст обложки тэга'
-    coverCaption:
-      type: string
-      ui:
-        inlineEditable: true
-        label: 'Подпись к обложке тэга'
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Подпись к обложке тэга'
 'Sfi.Sfi:PageSimple':
   superTypes:
     'Sfi.Sfi:AbstractPage': true

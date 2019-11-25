@@ -1,15 +1,17 @@
 prototype(Sfi.Sfi:PersonCard) < prototype(Neos.Fusion:Component) {
     name = Neos.Neos:Editable {
         property = 'name'
+        @process.isTarget = ${node.properties.targetSource ? node.properties.target.properties.title : value}
     }
     description = Neos.Neos:Editable {
         property = 'description'
+        @process.isTarget = ${node.properties.targetSource ? node.properties.target.properties.freeText : value}
     }
     link = NodeUri {
         node = ${q(node).property('target')}
     }
     imageUri = ImageUri {
-        asset = ${q(node).property('image')}
+        asset = ${node.properties.targetSource ? node.properties.target.properties.squareImage : node.properties.image}
         maximumWidth = 100
         maximumHeight = 100
         allowCropping = true
@@ -17,7 +19,7 @@ prototype(Sfi.Sfi:PersonCard) < prototype(Neos.Fusion:Component) {
     renderer = afx`
         <div class="marginVertical-triple" style="display: flex">
             <div class="marginRight-double" style="flex-shrink: 0">
-                <img class="borderColor-gray" style="border-radius: 50%; border: 5px solid" src={props.imageUri}/>
+                <img class="borderColor-gray" style="border-radius: 50%; border: 5px solid" src="{props.imageUri}"/>
             </div>
             <div>
                 <p class="H4">{props.name}</p>
@@ -26,6 +28,6 @@ prototype(Sfi.Sfi:PersonCard) < prototype(Neos.Fusion:Component) {
         </div>
     `
     renderer.@process.link = afx`<a href={props.link}>{value}</a>`
-    renderer.@process.link.@if.notInBE = ${!node.context.inBackend && props.link} 
+    renderer.@process.link.@if.notInBE = ${!node.context.inBackend && props.link}
     @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

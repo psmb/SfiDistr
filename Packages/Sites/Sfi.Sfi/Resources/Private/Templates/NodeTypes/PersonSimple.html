@@ -8,12 +8,15 @@
 			<h1 class="PageTitle">{neos:contentElement.editable(property: 'title')}</h1>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row marginBottom-single">
 		<div class="medium-6 columns">
-			{coverCollection -> f:format.raw()}
+			{coverImage -> f:format.raw()}
 		</div>
 		<div class="medium-6 columns">
 			<div>
+				<f:if condition="{node.context.workspace.name} != 'live' || {freeText}">
+					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'freeText')}</div>
+				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {degree}">
 					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree')}</div>
 				</f:if>
@@ -58,7 +61,7 @@
 			<f:if condition="{node.context.workspace.name} != 'live'">
 				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'experienceSfi')}</div>
 			</f:if>
-			
+
 			<f:if condition="{node.context.workspace.name} != 'live' || {email}">
 				<div class="ParagraphAlt marginVertical-single">{neos:contentElement.editable(property: 'email')}</div>
 			</f:if>

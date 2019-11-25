@@ -8,10 +8,12 @@ prototype(Sfi.Sfi:TrusteeShort) < prototype(Neos.Fusion:Template) {
 }
 
 prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Collection) {
-	@process.tmpl = ${'<div>' + value + '</div>'}
+	@process.tmpl = ${'<ul class="medium-block-grid-2 large-block-grid-3">' + value + '</ul>'}
 	collection = ${node.properties.trustees}
 	itemName = 'node'
-	itemRenderer = Sfi.Sfi:TrusteeShort
+	itemRenderer = Sfi.Sfi:TrusteeShort {
+		@process.li = ${'<li>' + value + '</li>'}
+	}
 
 	@process.contentElementWrapping = ContentElementWrapping
 	@cache {

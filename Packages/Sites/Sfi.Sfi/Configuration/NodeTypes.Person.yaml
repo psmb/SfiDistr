@@ -49,7 +49,7 @@ blah: &alohaRich
     inspector:
       groups:
         personType:
-          label: 'Тип сотрудника'
+          label: 'Тип персоны'
           position: 1
         image:
           label: Фото
@@ -75,36 +75,42 @@ blah: &alohaRich
     isRector:
       type: boolean
       ui:
+        reloadIfChanged: true
         label: Ректор
         inspector:
           group: personType
     isProRector:
       type: boolean
       ui:
+        reloadIfChanged: true
         label: Проректор
         inspector:
           group: personType
     isProfessor:
       type: boolean
       ui:
+        reloadIfChanged: true
         label: Преподаватель
         inspector:
           group: personType
     isSenior:
       type: boolean
       ui:
+        reloadIfChanged: true
         label: Руководитель
         inspector:
           group: personType
     isChairperson:
       type: boolean
       ui:
+        reloadIfChanged: true
         label: 'Заведующий кафедры'
         inspector:
           group: personType
     isStaff:
       type: boolean
       ui:
+        reloadIfChanged: true
         label: Сотрудник
         inspector:
           group: personType
@@ -114,7 +120,7 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           <<: *alohaPlain
-          placeholder: 'Свободное поле (отображается только в карточке)'
+          placeholder: 'Свободное поле (отображается в карточке и в разных списках)'
 
     degree:
       type: string
@@ -219,14 +225,14 @@ blah: &alohaRich
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Фото на общей странице'
+        label: 'Основное фото'
         reloadIfChanged: true
         inspector:
           group: image
     squareImage:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Фото квадратное (для всяких там докладов)'
+        label: 'Фото квадратное (для всяких там докладов и карточек)'
         inspector:
           group: image
           editorOptions:

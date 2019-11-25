@@ -5,17 +5,13 @@
 	<div class="columns">
 		<h1 class="PageTitle">{neos:contentElement.editable(property: 'title')}</h1>
 
-		<div class="row marginVertical-double">
-			<div class="medium-4 columns paddingLeft-none">
-				<f:if condition="{image}">
+		<f:if condition="{image}">
+			<div class="row marginVertical-double">
+				<div class="medium-4 columns paddingLeft-none">
 					<m:image image="{image}" maximumWidth="400" maximumHeight="300" allowCropping="TRUE" alt="{title}" />
-				</f:if>
+				</div>
 			</div>
-			<div class="medium-8 columns paddingVertical-double paddingHorizontal-double">
-				<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'coverText')}</div>
-				<div class="Service--Small marginTop-single">— {neos:contentElement.editable(property: 'coverCaption', tag: 'span')} {neos:contentElement.editable(property: 'freeText', tag: 'span')}</div>
-			</div>
-		</div>
+		</f:if>
 	</div>
 </div>
 <div class="row js-stickInParent-parent">

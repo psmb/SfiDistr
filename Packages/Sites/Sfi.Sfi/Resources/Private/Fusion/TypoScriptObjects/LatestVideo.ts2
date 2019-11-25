@@ -9,7 +9,7 @@ prototype(Sfi.Sfi:LatestVideo) < prototype(Neos.Fusion:Value) {
             itemName = 'node'
             itemRenderer = Flowpack.Listable:ContentCaseShort
         }
-        archiveLinkTitle = ${Translation.translate('allVideos', null, [], null, 'Sfi.Sfi')}
+        archiveLinkTitle = ${Translation.translate('allPublications', null, [], null, 'Sfi.Sfi')}
         archiveLinkUri = Neos.Neos:NodeUri {
             node = ${rootNode}
         }
