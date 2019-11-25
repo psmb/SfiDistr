@@ -54,7 +54,7 @@ prototype(Sfi.Sfi:PersonShort) < prototype(Neos.Neos:Content) {
 	quote = ${q(node).property('quote')}
 	showPosition = ${true}
 	freeText = ${q(node).property('freeText')}
-	image = ${q(node).find('[instanceof Neos.NodeTypes:Image]').first().property('image')}
+	image = ${node.properties.image ? node.properties.image : q(node).find('[instanceof Neos.NodeTypes:Image]').first().property('image')}
 }
 
 prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {

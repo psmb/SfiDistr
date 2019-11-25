@@ -1,8 +1,3 @@
 # Reuse Rector template for full view. Temporarily?
 prototype(Sfi.Sfi:ProRector) < prototype(Sfi.Sfi:Person) {
-	coverCollection.prototype(Neos.NodeTypes:Image) {
-		maximumWidth = 480
-		maximumHeight = 720
-		allowCropping = FALSE
-	}
 }
