@@ -229,6 +229,16 @@ blah: &alohaRich
         reloadIfChanged: true
         inspector:
           group: image
+          editorOptions:
+            features:
+              resize: TRUE
+            crop:
+              aspectRatio:
+                enableOriginal: FALSE
+                allowCustom: TRUE
+                locked:
+                  width: 400
+                  height: 600
     squareImage:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
