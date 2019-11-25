@@ -139,34 +139,21 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 	`
 }
 
-
-
-prototype(Sfi.Sfi:SeniorShort) < prototype(Sfi.Sfi:PersonShort) {
-	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SeniorShort.html'
-	image = ${q(node).property('image')}
-}
-
-prototype(Sfi.Sfi:ChairpersonShort) < prototype(Sfi.Sfi:PersonShort) {
-	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/ChairpersonShort.html'
-	image = ${q(node).property('image')}
-}
-
-
 prototype(Sfi.Shared:ContentCaseShort) < prototype(Neos.Neos:ContentCase) {
 	isRector {
 		condition = ${q(node).property('isRector')}
-		type = 'Sfi.Sfi:RectorShort'
+		type = 'Sfi.Sfi:PersonShort'
 	}
 	isProRector {
 		condition = ${q(node).property('isProRector')}
-		type = 'Sfi.Sfi:ProRectorShort'
+		type = 'Sfi.Sfi:PersonShort'
 	}
 	isSenior {
 		condition = ${q(node).property('isSenior')}
-		type = 'Sfi.Sfi:SeniorShort'
+		type = 'Sfi.Sfi:PersonShort'
 	}
 	isChairperson {
 		condition = ${q(node).property('isChairperson')}
-		type = 'Sfi.Sfi:ChairpersonShort'
+		type = 'Sfi.Sfi:PersonShort'
 	}
 }
