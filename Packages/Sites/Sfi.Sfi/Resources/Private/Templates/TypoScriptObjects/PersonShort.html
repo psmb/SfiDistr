@@ -4,7 +4,7 @@
 	<div class="MediaPerson">
 		<f:if condition="{image}">
 			<div class="MediaPerson-Image">
-				<m:image image="{image}" alt="{title}" maximumWidth="370" maximumHeight="555" allowCropping="TRUE"/>
+				<m:image image="{image}" alt="{title}" maximumWidth="370" maximumHeight="555" allowCropping="TRUE" />
 			</div>
 		</f:if>
 		<div class="MediaPerson-Body">
@@ -13,6 +13,9 @@
 				<div class="ServiceEm">{position-> f:format.raw()}</div>
 			</f:if>
 			<div class="ServiceEm">{degree-> f:format.raw()}</div>
+			<f:if condition="{freeText}">
+				<div class="ServiceEm">{freeText-> f:format.raw()}</div>
+			</f:if>
 		</div>
 	</div>
 </neos:link.node>
