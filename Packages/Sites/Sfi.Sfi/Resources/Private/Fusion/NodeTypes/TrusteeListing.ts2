@@ -1,10 +1,4 @@
-prototype(Sfi.Sfi:TrusteeShort) < prototype(Neos.Fusion:Template) {
-	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/TrusteeShort.html'
-	title = ${node.properties.title}
-	freeText = ${node.properties.freeText}
-	image = ${node.properties.image}
-	coverText = ${node.properties.coverText}
-	node = ${node}
+prototype(Sfi.Sfi:TrusteeShort) < prototype(Sfi.Sfi:PersonShort) {
 }
 
 prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Collection) {
