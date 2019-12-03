@@ -70,6 +70,7 @@ prototype(Sfi.Sfi:TagsOverview) < prototype(Neos.Fusion:Component) {
         display: none;
       }
       .TagsList-showAll {
+        color: #828282;
         transition: all 0.3s ease-out;
         cursor: pointer;
       }
