@@ -1,0 +1,120 @@
+prototype(Sfi.Sfi:TagsListItem) < prototype(Neos.Fusion:Component) {
+  nodeUri = Neos.Neos:NodeUri {
+    node = ${node}
+    baseNodeName = 'site'
+  }
+  title = ${node.properties.title}
+  renderer = afx`
+    <a
+      href={props.nodeUri}
+      class="color-primary"
+      style="
+        font-size: 14px;
+        font-family: var(--fontFamily-alt);
+        margin-right: 18px;
+      "
+      >
+      #{String.stripTags(props.title)}
+    </a>
+  `
+}
+
+
+
+
+prototype(Sfi.Sfi:TagsList) < prototype(Neos.Fusion:Collection) {
+  collection = ''
+  itemName = 'node'
+  itemRenderer = Sfi.Sfi:TagsListItem
+  @process.tmpl = afx`
+  <div class="js-TagsListWrap marginBottom-double">
+    <div class="Service--Small" style="text-tranform: uppercase; margin-right: 12px; display: initial; display:inline-flex;">
+      <a class="TagsList-showAll js-TagsList-showAll">{title}
+        <div class="TagsList-icon" style="vertical-align: -17%; height: 14px; width: 14px; color: #00b0f0; border-radius: 50%; display: inline-block; margin-left:4px">
+          <svg aria-hidden="true" data-prefix="fas" data-icon="chevron-circle-right" class="svg-inline--fa fa-chevron-circle-right fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"></path></svg>
+        </div>
+      </a>
+    </div>
+    <div class="TagsList js-TagsList">{value}</div>
+  </div>
+  `
+}
+
+prototype(Sfi.Sfi:TagsOverview) < prototype(Neos.Fusion:Component) {
+  people = Sfi.Sfi:TagsList {
+    collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').get()}
+    @context.title = 'все персоналии'
+  }
+  tags = Sfi.Sfi:TagsList {
+    collection = ${q(site).find('[instanceof Sfi.Sfi:PageTag]').get()}
+    @context.title = 'все теги'
+  }
+  style = "
+    <style>
+      .TagsList {
+        position: relative;
+        height: 42px;
+        overflow: hidden;
+      }
+      .TagsList:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 100px;
+        height: 21px;
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 130%);
+      }
+      .expanded .TagsList:after {
+        display: none;
+      }
+      .TagsList-showAll {
+        transition: all 0.3s ease-out;
+        cursor: pointer;
+      }
+      .TagsList-showAll:hover {
+        opacity: 0.8;
+      }
+      .expanded .TagsList {
+        height: auto;
+      }
+      .TagsList-icon {
+        transition: all 0.3s ease-out;
+      }
+      .expanded .TagsList-icon {
+        transform: rotate(90deg);
+      }
+    </style>
+  "
+  script = "
+  <script>
+    var tagsListWraps = document.querySelectorAll('.js-TagsListWrap');
+    tagsListWraps.forEach(tagsListWrap => {
+        var tagsList = tagsListWrap.querySelector('.js-TagsList');
+        var showAll = tagsListWrap.querySelector('.js-TagsList-showAll');
+        showAll.addEventListener('click', () => {
+          tagsListWrap.classList.toggle('expanded');
+        });
+        for (var i = tagsList.children.length; i >= 0; i--) {
+            tagsList.appendChild(tagsList.children[Math.random() * i | 0]);
+        }
+    });
+  </script>
+  "
+  renderer = afx`
+    <div class="paddingBottom-double">
+      {props.style}
+      <div>{props.people}</div>
+      <div>{props.tags}</div>
+      {props.script}
+    </div>
+
+  `
+  @cached {
+    mode = 'cached'
+    entryIdentifier {
+      site = ${site}
+    }
+  }
+}

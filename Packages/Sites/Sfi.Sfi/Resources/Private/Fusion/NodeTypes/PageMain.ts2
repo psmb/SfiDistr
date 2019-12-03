@@ -10,6 +10,7 @@ prototype(Sfi.Sfi:PageMain) {
 	publications = Sfi.Sfi:LatestPublications
 	papers = Sfi.Sfi:PaperWithAuthor.TopList
 	donate = Sfi.Sfi:DonateBanner
+	tagsOverview = Sfi.Sfi:TagsOverview
 	main = ContentCollection {
 		nodePath = 'main'
 	}
