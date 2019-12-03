@@ -7,11 +7,11 @@ prototype(Sfi.Sfi:PersonCard) < prototype(Neos.Fusion:Component) {
         property = 'description'
         @process.isTarget = ${node.properties.targetSource ? node.properties.target.properties.freeText : value}
     }
-    link = NodeUri {
+    link = Neos.Neos:NodeUri {
         node = ${q(node).property('target')}
     }
-    imageUri = ImageUri {
-        asset = ${node.properties.targetSource ? node.properties.target.properties.squareImage : node.properties.image}
+    imageUri = Neos.Neos:ImageUri {
+        asset = ${node.properties.targetSource ? (node.properties.target.properties.squareImage || node.properties.target.properties.image) : node.properties.image}
         maximumWidth = 100
         maximumHeight = 100
         allowCropping = true
