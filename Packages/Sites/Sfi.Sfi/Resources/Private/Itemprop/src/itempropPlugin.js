@@ -1,7 +1,5 @@
 import toMap from '@ckeditor/ckeditor5-utils/src/tomap';
-import {Command, Plugin, UpcastConverters, DowncastConverters, ModelRange as Range, ModelPosition as Position} from 'ckeditor5-exports';
-const {downcastAttributeToElement, downcastAttributeToAttribute} = DowncastConverters;
-const {upcastElementToAttribute, upcastAttributeToAttribute} = UpcastConverters;
+import {Command, Plugin, ModelRange as Range, ModelPosition as Position} from 'ckeditor5-exports';
 
 const ITEMPROP = 'itemprop';
 
@@ -94,10 +92,10 @@ export default class Itemprop extends Plugin {
         editor.model.schema.extend('$block', {allowAttributes: ITEMPROP});
         editor.model.schema.extend('$text', {allowAttributes: ITEMPROP});
         editor.model.schema.extend('tableCell', {allowAttributes: ITEMPROP});
-        
+
         const schema = this.editor.model.schema;
 
-        this.editor.conversion.for('upcast').add(upcastElementToAttribute({
+        this.editor.conversion.for('upcast').elementToAttribute({
             view: {
                 name: 'span',
                 key: ITEMPROP,
@@ -109,36 +107,36 @@ export default class Itemprop extends Plugin {
                 key: ITEMPROP,
                 value: viewElement => viewElement.getAttribute('itemprop')
             }
-        }));
+        });
 
-        this.editor.conversion.for('upcast').add(upcastAttributeToAttribute({
+        this.editor.conversion.for('upcast').attributeToAttribute({
             view: ITEMPROP,
             model: ITEMPROP
-        }));
+        });
 
-        this.editor.conversion.for('downcast').add(downcastAttributeToElement({
+        this.editor.conversion.for('downcast').attributeToElement({
             model: {
                 key: ITEMPROP,
                 name: '$text'
             },
-            view: (value, writer) => writer.createAttributeElement('span', { [ITEMPROP]: value })
-        }));
+            view: (value, writer) => writer.createAttributeElement('span', {[ITEMPROP]: value})
+        });
 
-        this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
+        this.editor.conversion.for('downcast').attributeToAttribute({
             model: {
                 key: ITEMPROP,
                 name: 'tableCell'
             },
             view: ITEMPROP
-        }));
+        });
 
-        this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
+        this.editor.conversion.for('downcast').attributeToAttribute({
             model: {
                 key: ITEMPROP,
                 name: 'paragraph'
             },
             view: ITEMPROP
-        }));
+        });
 
         editor.commands.add(ITEMPROP, new ItempropCommand(this.editor));
     }

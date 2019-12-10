@@ -283,12 +283,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var downcastAttributeToElement = _ckeditor5Exports.DowncastConverters.downcastAttributeToElement,
-    downcastAttributeToAttribute = _ckeditor5Exports.DowncastConverters.downcastAttributeToAttribute;
-var upcastElementToAttribute = _ckeditor5Exports.UpcastConverters.upcastElementToAttribute,
-    upcastAttributeToAttribute = _ckeditor5Exports.UpcastConverters.upcastAttributeToAttribute;
-
-
 var ITEMPROP = 'itemprop';
 
 function findItemprop(position, value) {
@@ -425,7 +419,7 @@ var Itemprop = function (_Plugin) {
 
             var schema = this.editor.model.schema;
 
-            this.editor.conversion.for('upcast').add(upcastElementToAttribute({
+            this.editor.conversion.for('upcast').elementToAttribute({
                 view: {
                     name: 'span',
                     key: ITEMPROP,
@@ -437,14 +431,14 @@ var Itemprop = function (_Plugin) {
                         return viewElement.getAttribute('itemprop');
                     }
                 }
-            }));
+            });
 
-            this.editor.conversion.for('upcast').add(upcastAttributeToAttribute({
+            this.editor.conversion.for('upcast').attributeToAttribute({
                 view: ITEMPROP,
                 model: ITEMPROP
-            }));
+            });
 
-            this.editor.conversion.for('downcast').add(downcastAttributeToElement({
+            this.editor.conversion.for('downcast').attributeToElement({
                 model: {
                     key: ITEMPROP,
                     name: '$text'
@@ -452,23 +446,23 @@ var Itemprop = function (_Plugin) {
                 view: function view(value, writer) {
                     return writer.createAttributeElement('span', _defineProperty({}, ITEMPROP, value));
                 }
-            }));
+            });
 
-            this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
+            this.editor.conversion.for('downcast').attributeToAttribute({
                 model: {
                     key: ITEMPROP,
                     name: 'tableCell'
                 },
                 view: ITEMPROP
-            }));
+            });
 
-            this.editor.conversion.for('downcast').add(downcastAttributeToAttribute({
+            this.editor.conversion.for('downcast').attributeToAttribute({
                 model: {
                     key: ITEMPROP,
                     name: 'paragraph'
                 },
                 view: ITEMPROP
-            }));
+            });
 
             editor.commands.add(ITEMPROP, new ItempropCommand(this.editor));
         }
