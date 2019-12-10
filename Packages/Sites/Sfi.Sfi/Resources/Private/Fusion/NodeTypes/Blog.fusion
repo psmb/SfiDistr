@@ -1,0 +1,91 @@
+prototype(Sfi.Sfi:Blog) < prototype(Neos.Neos:ContentComponent) {
+	authorName = ${node.properties.author.properties.title}
+	authorFreeText = ${node.properties.author.properties.freeText}
+	title = Neos.Neos:Editable {
+		property = 'title'
+		block = false
+	}
+	teaser = Neos.Neos:Editable {
+		property = 'teaser'
+	}
+	lead = Neos.Neos:Editable {
+		property = 'lead'
+	}
+	date = ${Date.formatCldr(q(node).property('date'), 'dd MMMM yyyy')}
+
+	main = Neos.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	authorInfo = Sfi.Sfi:PaperWithAuthor.AuthorInfo {
+		@if.setAuthor = ${node.properties.author}
+	}
+
+	renderer = afx`
+		<div class="Paper-Article">
+			<div class="Article Article--Soft">
+				<div class="row">
+					<div class="large-10 large-offset-1 columns">
+						<div class="textAlign-center">
+							<div>
+								<span class="Service--Large">{props.authorName}</span>
+							</div>
+							<span class="ParagraphAlt--Large">{props.authorFreeText}</span>
+							<h1 class="Article-Title">{props.title}</h1>
+							<div class="ServiceEm">{props.teaser}</div>
+							<span class="Article-Date">
+								{props.date}
+							</span>
+						</div>
+						<div class="Article-Lead RteTextLinkable">{props.lead}</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-8 medium-10 large-offset-2 medium-offset-1 columns">
+							<div class="Article-Content">{props.main}</div>
+							{props.authorInfo}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	`
+	renderer.@process.authorSet = ${node.properties.author ? value : 'Автор не задан'}
+}
+
+prototype(Sfi.Sfi:BlogShort) < prototype(Neos.Neos:ContentComponent) {
+	title = ${String.stripTags(q(node).property('title'))}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	authorName = ${String.stripTags(node.properties.author.properties.title)}
+	authorFreeText = ${String.stripTags(node.properties.author.properties.freeText || node.properties.author.properties.position)}
+	imageUri = Neos.Neos:ImageUri {
+		asset = ${node.properties.author.properties.squareImage || node.properties.author.properties.image}
+		allowCropping = true
+		maximumWidth = 200
+		maximumHeight = 200
+	}
+	nodeUri = Neos.Neos:NodeUri {
+		node = ${node}
+	}
+
+	renderer = afx`
+		<a href={props.nodeUri} title={props.title}>
+			<div class="MediaPerson textAlign-center">
+				<div class="MediaPerson-Image">
+					<img class="borderColor-gray" style="width: 100px; border-radius: 50%; border: 5px solid" src={props.imageUri} alt={props.authorName} />
+				</div>
+				<div class="MediaPerson-Body">
+					<div class="ServiceEm marginTop-single">{props.authorName}</div>
+					<h3 class="MediaSmall-Title">{props.title}</h3>
+				</div>
+			</div>
+		</a>
+	`
+}
+
+prototype(Neos.Neos:PrimaryContent) {
+	Blog {
+		@position = 'before default'
+		condition = ${q(node).is('[instanceof Sfi.Sfi:Blog]')}
+		type = 'Sfi.Sfi:Blog'
+	}
+}

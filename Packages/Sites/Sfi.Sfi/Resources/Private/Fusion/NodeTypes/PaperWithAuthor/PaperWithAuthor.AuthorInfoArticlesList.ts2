@@ -1,8 +1,11 @@
 prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList) < prototype(Neos.Fusion:Collection) {
-    @process.tmpl = ${'<div><h2 class="Service">' + Translation.translate('otherArticlesByAuthor', null, [], null, 'Sfi.Sfi') + '</h2>' + value + '</div>'}
-    collection = ${q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor]').get()}
+    @context.author = ${author || node.properties.author}
+    @context.nodeType = 'Sfi.Sfi:PaperWithAuthor'
+    @context.listTitle = ${Translation.translate('otherArticlesByAuthor', null, [], null, 'Sfi.Sfi')}
+    @process.tmpl = ${'<div class="paddingBottom-single"><h2 class="Service">' + listTitle + '</h2>' + value + '</div>'}
+    collection = ${q(site).find('[instanceof ' + nodeType + ']').get()}
     collection.@process.filterOutSelf = ${q(value).filter('[_identifier != "' + node.identifier + '"]').get()}
-    collection.@process.filterByAuthor = ${q(value).filterByReference('author', node.properties.author).get()}
+    collection.@process.filterByAuthor = ${q(value).filterByReference('author', author).get()}
     itemName = 'node'
     itemRenderer = Sfi.Sfi:PaperWithAuthor.TeaserForAuthorInfo
     @if.notEmpty = ${q(this.collection).count() > 0}

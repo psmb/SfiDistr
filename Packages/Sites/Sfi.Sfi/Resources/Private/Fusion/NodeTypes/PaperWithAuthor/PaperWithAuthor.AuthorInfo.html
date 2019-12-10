@@ -8,7 +8,8 @@
             <h4 class="H3">{authorName}</h4>
             <p class="Paragraph marginTop-half">{authorDegree}</p>
         </a>
-        <div class="marginTop-triple paddingTop-double">
+        <div class="marginTop-double paddingTop-double">
+            {authorBlogs -> f:format.raw()}
             {authorArticles -> f:format.raw()}
         </div>
     </div>

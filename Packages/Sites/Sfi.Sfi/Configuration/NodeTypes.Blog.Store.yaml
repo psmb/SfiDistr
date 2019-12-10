@@ -1,0 +1,5 @@
+'Sfi.Sfi:Blog.Store':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    label: 'Архив блогов'

@@ -1,0 +1,4 @@
+prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfoBlogsList) < prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList) {
+    @context.listTitle = ${Translation.translate('otherBlogsByAuthor', null, [], null, 'Sfi.Sfi')}
+    @context.nodeType = 'Sfi.Sfi:Blog'
+}

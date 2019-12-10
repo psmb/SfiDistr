@@ -8,6 +8,11 @@ prototype(Sfi.Sfi:Person) {
 		nodePath = 'main'
 	}
 
+	@context.author = ${node}
+	authorBlogs = Sfi.Sfi:PaperWithAuthor.AuthorInfoBlogsList {
+		@process.spacing = afx`<div class="marginTop-double">{value}</div>`
+	}
+	authorArticles = Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList
 	listByTag = Sfi.News:ListByTag
 
 	experience = Neos.Neos:ContentCollection {

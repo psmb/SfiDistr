@@ -1,0 +1,26 @@
+prototype(Sfi.Sfi:Blog.Store)>
+prototype(Sfi.Sfi:Blog.Store) < prototype(Neos.Fusion:Array) {
+    @process.tmpl = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
+    title = ${'<h1 class="PageTitle">' + node.properties.title + '</h1>'}
+    list = Flowpack.Listable:Listable {
+        listClass = "large-block-grid-4 medium-block-grid-2 small-block-grid-1"
+        collection = ${q(site).find('[instanceof Sfi.Sfi:Blog]').sort('date', 'DESC').get()}
+        itemsPerPage = 50
+        @cache {
+            mode = 'dynamic'
+            entryIdentifier {
+                node = ${node}
+            }
+            entryDiscriminator = ${request.arguments.currentPage}
+            context {
+                1 = 'node'
+                2 = 'documentNode'
+                3 = 'site'
+            }
+            entryTags {
+                1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Blog')}
+                2 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Person')}
+            }
+        }
+    }
+}

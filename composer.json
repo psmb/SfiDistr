@@ -27,7 +27,6 @@
         "neos/imagine": "@dev",
         "neos/form": "@dev",
         "neos/setup": "@dev",
-
         "sfi/styleguide": "@dev",
         "sfi/grid": "@dev",
         "neos/redirecthandler": "@dev",
@@ -47,7 +46,7 @@
         "flowpack/nodetemplates": "@dev",
         "psmb/createnodebutton": "@dev",
         "flownative/aws-s3": "2.*",
-        "psmb/registry": "^2.0",
+        "psmb/registry": "^2.1.1",
         "flowpack/mustache": "dev-master",
         "neos/fusion-afx": "^1.0",
         "aertmann/history": "^2.0",

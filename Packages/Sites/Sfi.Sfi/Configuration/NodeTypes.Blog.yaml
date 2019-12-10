@@ -1,0 +1,19 @@
+'Sfi.Sfi:Blog':
+  superTypes:
+    'Sfi.News:AbstractArticle': true
+  ui:
+    label: 'Блог'
+    icon: blog
+    help:
+      message: 'Блоговая запись'
+  properties:
+    author:
+      type: reference
+      ui:
+        label: 'Автор'
+        reloadIfChanged: true
+        inspector:
+          group: news
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Sfi:Person'

@@ -17,6 +17,7 @@ prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfo) < prototype(Neos.Fusion:Template) 
     }
 
     authorArticles = Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList
+    authorBlogs = Sfi.Sfi:PaperWithAuthor.AuthorInfoBlogsList
 
     aboutAuthorStr = ${Translation.translate('aboutAuthor', null, [], null, 'Sfi.Sfi')}
 }
