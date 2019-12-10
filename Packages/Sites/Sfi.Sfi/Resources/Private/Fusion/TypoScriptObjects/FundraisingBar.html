@@ -1,41 +1,22 @@
 <div class="project-{projectId}">
-    <div
-        class="backgroundColor-gray"
-        style="background-color: #ccc; height: 8px; width:100%; margin-top: 10px"
-    >
-        <div
-            class="progressBar"
-            style="background-color: #ff7800; height: 8px; width:{percentage}%"
-        ></div>
+    <div class="backgroundColor-gray" style="background-color: #ccc; height: 8px; width:100%; margin-top: 10px">
+        <div class="progressBar" style="background-color: #ff7800; height: 8px; width:{percentage}%"></div>
     </div>
-    <div
-        class="stickyHeader-wording marginTop-single {backgroundColor}"
-        style="font-family: Georgia, serif; font-size: 14px; font-style: italic"
-    >
-        <span style="white-space:nowrap"
-            >Собрано
-            <span
-                style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 13px')}"
-            >
-                <span class="ajaxAmount">{gatheredFormated}</span> </span
-            >руб.
-            <span
-                style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 13px')}"
-            >
+    <div class="stickyHeader-wording marginTop-single {backgroundColor}"
+        style="font-family: Georgia, serif; font-size: 14px; font-style: italic">
+        <span style="white-space:nowrap">Собрано
+            <span style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 13px')}">
+                <span class="ajaxAmount" data-offset="{offset}">{gatheredFormated}</span> </span>руб.
+            <span style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 13px')}">
                 —
             </span>
         </span>
         <f:if condition="{complete}">
             <f:then>Сбор завершен!</f:then>
             <f:else>
-                <span style="white-space:nowrap"
-                    >Нужно
-                    <span
-                        style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 13px')}"
-                    >
-                        {targetFormated -> f:format.raw()} </span
-                    >руб.</span
-                >
+                <span style="white-space:nowrap">Нужно
+                    <span style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 13px')}">
+                        {targetFormated -> f:format.raw()} </span>руб.</span>
             </f:else>
         </f:if>
     </div>

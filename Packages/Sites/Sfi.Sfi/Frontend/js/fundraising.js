@@ -15,8 +15,10 @@
 
     function updatePlaceholders(referer, amount) {
         Array.prototype.forEach.call(document.querySelectorAll('.project-' + referer), function (root) {
-            root.querySelector('.ajaxAmount').textContent = formatAmount(amount);
-            root.querySelector('.progressBar').style.width = String(100 * (amount / 7000000)) + '%';
+            var offset = parseInt(root.querySelector('.ajaxAmount').dataset.offset);
+            var finalAmount = offset + amount;
+            root.querySelector('.ajaxAmount').textContent = formatAmount(finalAmount);
+            root.querySelector('.progressBar').style.width = String(100 * (finalAmount / 7000000)) + '%';
         });
     }
 

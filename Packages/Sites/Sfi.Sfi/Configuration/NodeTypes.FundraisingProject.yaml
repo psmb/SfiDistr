@@ -72,6 +72,12 @@
         label: "Цель сбора"
         inspector:
           group: default
+    offset:
+      type: string
+      ui:
+        label: "Сдвиг сбора (например '-1234')"
+        inspector:
+          group: default
     moto:
       type: string
       ui:

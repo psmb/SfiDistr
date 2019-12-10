@@ -4,6 +4,7 @@ prototype(Sfi.Sfi:FundraisingProject) {
 	bar = Sfi.Sfi:FundraisingBar {
 		projectId = ${node.properties.uriPathSegment}
 		target = ${node.properties.target}
+		offset = ${node.properties.offset}
 		inverse = ${true}
 	}
 

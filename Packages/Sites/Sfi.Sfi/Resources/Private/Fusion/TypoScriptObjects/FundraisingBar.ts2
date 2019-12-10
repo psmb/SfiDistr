@@ -5,7 +5,10 @@ prototype(Sfi.Sfi:FundraisingBar) < prototype(Neos.Fusion:Template) {
 
     projectId = ''
     target = 0
-    gathered = ${amounts.byReferer[this.projectId] || 0}
+    offset = 0
+    offset.@process.spaces = ${String.toInteger(String.replace(value, " ", ""))}
+    gathered = ${amounts.byReferer[this.projectId] + this.offset || 0}
+    gathered.@process.notNegative = ${value > 0 ? value : 0}
     targetFormated = ${Sfi.number_format(String.toInteger(String.replace(this.target, " ", "")), 0, "", " ")}
     gatheredFormated = ${Sfi.number_format(String.toInteger(this.gathered), 0, "", " ")}
     percentage = ${this.target && String.toInteger(100 * (String.toInteger(this.gathered) / String.toInteger(String.replace(this.target, " ", ""))))}

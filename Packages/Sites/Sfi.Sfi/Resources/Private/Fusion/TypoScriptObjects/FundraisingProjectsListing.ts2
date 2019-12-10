@@ -24,6 +24,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
             bar = Sfi.Sfi:FundraisingBar {
                 projectId = ${node.properties.uriPathSegment}
                 target = ${node.properties.target}
+                offset = ${node.properties.offset}
                 @process.wrap = ${'<div class="FundraisingProjectSmall-bottom">' + value + '<div class="FundraisingProjectSmall-arrow color-brown textAlign-center">→</div></div>'}
             }
         }
