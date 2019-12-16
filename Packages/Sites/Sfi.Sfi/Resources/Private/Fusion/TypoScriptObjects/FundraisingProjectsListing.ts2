@@ -25,6 +25,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
                 projectId = ${node.properties.uriPathSegment}
                 target = ${node.properties.target}
                 offset = ${node.properties.offset}
+                gatheredOverride = ${node.properties.gatheredOverride}
                 @process.wrap = ${'<div class="FundraisingProjectSmall-bottom">' + value + '<div class="FundraisingProjectSmall-arrow color-brown textAlign-center">→</div></div>'}
             }
         }
