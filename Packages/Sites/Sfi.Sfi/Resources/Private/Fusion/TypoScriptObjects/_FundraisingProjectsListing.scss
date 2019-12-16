@@ -1,6 +1,5 @@
 
 .FundraisingProjectSmall {
-    flex-grow: 1;
     flex-basis: 0;
 }
 .FundraisingProjectSmall-inner {
@@ -60,7 +59,7 @@
 }
 @media (min-width: 800px) {
     .FundraisingProjectSmall {
-        flex-basis: 33%;
+        flex-basis: 33.33333%;
     }
 }
 
