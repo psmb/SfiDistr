@@ -6,7 +6,7 @@
         style="font-family: Georgia, serif; font-size: 14px; font-style: italic">
         <span style="white-space:nowrap">Собрано
             <span style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 13px')}">
-                <span class="ajaxAmount" data-offset="{offset}">{gatheredFormated}</span> </span>руб.
+                <span class="{f:if(condition: gatheredOverride, then: '', else: 'ajaxAmount')}" data-offset="{offset}">{gatheredFormated}</span> </span>руб.
             <span style="{f:if(condition: inverse, then: 'font-size: 24px', else: 'font-size: 13px')}">
                 —
             </span>

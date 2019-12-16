@@ -72,6 +72,13 @@
         label: "Цель сбора"
         inspector:
           group: default
+    gatheredOverride:
+      type: string
+      ui:
+        label: "Итог сбора (ручное значение)"
+        inspector:
+          group: default
+          hidden: 'ClientEval:node.properties.complete ? true : false'
     offset:
       type: string
       ui:
