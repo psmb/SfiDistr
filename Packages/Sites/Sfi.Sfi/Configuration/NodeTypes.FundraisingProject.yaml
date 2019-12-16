@@ -78,7 +78,7 @@
         label: "Итог сбора (ручное значение)"
         inspector:
           group: default
-          hidden: 'ClientEval:node.properties.complete ? true : false'
+          hidden: 'ClientEval:node.properties.complete ? false : true'
     offset:
       type: string
       ui:
