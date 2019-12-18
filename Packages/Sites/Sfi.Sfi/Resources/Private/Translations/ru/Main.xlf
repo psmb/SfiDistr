@@ -216,7 +216,7 @@
                 <source>Об авторе</source>
             </trans-unit>
             <trans-unit id="otherArticlesByAuthor">
-                <source>публикации автора</source>
+                <source>Выступления на конференциях</source>
             </trans-unit>
             <trans-unit id="otherBlogsByAuthor">
                 <source>из блога автора</source>
