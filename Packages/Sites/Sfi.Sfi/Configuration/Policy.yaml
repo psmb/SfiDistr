@@ -14,12 +14,15 @@ privilegeTargets:
     'Sfi.Sfi:FundrisingNewsletterPages':
       matcher: >-
           isDescendantNodeOf("81c7b2f4-cbb1-4263-a181-52ddb4bb17f2")
+          || isDescendantNodeOf("0c35e2ff-db04-4ada-a1c6-ea93d8d1f0ea")
     'Sfi.Sfi:FundrisingNewsletterPagesParents':
       matcher: >-
           isAncestorNodeOf("81c7b2f4-cbb1-4263-a181-52ddb4bb17f2")
+          || isAncestorNodeOf("0c35e2ff-db04-4ada-a1c6-ea93d8d1f0ea")
     'Sfi.Sfi:NotFundrisingNewsletterPages':
       matcher: >-
           !isAncestorOrDescendantNodeOf("81c7b2f4-cbb1-4263-a181-52ddb4bb17f2")
+          && !isAncestorOrDescendantNodeOf("0c35e2ff-db04-4ada-a1c6-ea93d8d1f0ea")
 
 roles:
   'Neos.Neos:Administrator':
