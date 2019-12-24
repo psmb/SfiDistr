@@ -74,6 +74,20 @@ Psmb:
           language:
             - ru
       -
+        identifier: datasource-chapel
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://paymentssfi_node/subscribers?referer=chapel'
+        label: 'Жертвователи на часовню/помещения'
+        interval: manual
+        senderName: 'Поддержите СФИ'
+        replyToAddress: 'donate@sfi.ru'
+        dimensions:
+          language:
+            - ru
+      -
         identifier: datasource-projects
         renderer: 'Sfi.Sfi:FundraisingMail'
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
