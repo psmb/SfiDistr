@@ -30,9 +30,6 @@ roles:
       -
         privilegeTarget: 'Sfi.Sfi:SystemPages'
         permission: GRANT
-      -
-        privilegeTarget: 'Sfi.Sfi:FundrisingNewsletterPages'
-        permission: GRANT
   'Neos.Flow:Everybody':
     privileges:
       -
@@ -46,12 +43,12 @@ roles:
       -
         privilegeTarget: 'Sfi.Sfi:FundrisingNewsletterPagesParents'
         permission: GRANT
+      -
+        privilegeTarget: 'Sfi.Sfi:FundrisingNewsletterPages'
+        permission: GRANT
   'Sfi.Sfi:Fundraiser':
     parentRoles: ['Neos.Neos:Editor']
     privileges:
       -
         privilegeTarget: 'Sfi.Sfi:NotFundrisingNewsletterPages'
         permission: DENY
-      -
-        privilegeTarget: 'Sfi.Sfi:FundrisingNewsletterPages'
-        permission: GRANT
