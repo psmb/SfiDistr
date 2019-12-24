@@ -3,7 +3,6 @@ prototype(Sfi.Sfi:Component.AlmanacHeader) < prototype(Neos.Fusion:Component) {
 	sloganLabel = ${Translation.translate('almanac.slogan', null, [], null, 'Sfi.Sfi')}
 
 	mainMenu = Sfi.Sfi:AlmanacMainMenu
-	topMenu = Sfi.Sfi:AlmanacTopMenu
 
 	languageMenu = Sfi.Sfi:LanguageMenu {
 		@process.lang>
@@ -112,7 +111,6 @@ prototype(Sfi.Sfi:Component.AlmanacHeader) < prototype(Neos.Fusion:Component) {
 					<h1 class="AlmanacHeader-title">{props.titleLabel}</h1>
 					<h2 class="AlmanacHeader-slogan ServiceEm--Large">{props.sloganLabel}</h2>
 				</a>
-				{props.topMenu}
 			</div>
 		</div>
 		<div class="row marginTop-single marginBottom-double">

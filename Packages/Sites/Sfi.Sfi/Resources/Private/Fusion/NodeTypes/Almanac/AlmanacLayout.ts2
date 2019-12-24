@@ -23,6 +23,13 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 		</div>
 	`
 
+	languageMenu = Sfi.Sfi:LanguageMenu {
+		@process.lang>
+		attributes.class = 'H5'
+		attributes.style = 'color: var(--color-primary); border: 2px solid var(--color-primary); padding: 2px 12px; display: inline-block;'
+		content = ${altLang == 'en' ? 'In English' : 'По-русски'}
+	}
+
 	renderer = afx`
 		<a class="SkipToContent" href="#maincontent">Перейти к основному содержимому</a>
 		<div class="js-MobileNav">
@@ -71,6 +78,7 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 				<div class="marginTop-double">
 					<Sfi.Sfi:Component.DonateButton/>
 				</div>
+				{props.languageMenu}
 			</div>
 		</div>
 	`
