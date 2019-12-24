@@ -25,7 +25,7 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 
 	languageMenu = Sfi.Sfi:LanguageMenu {
 		@process.lang>
-		attributes.class = 'H5'
+		attributes.class = 'H5 marginTop-double'
 		attributes.style = 'color: var(--color-primary); border: 2px solid var(--color-primary); padding: 2px 12px; display: inline-block;'
 		content = ${altLang == 'en' ? 'In English' : 'По-русски'}
 	}
@@ -75,10 +75,10 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 			<div class="MobileNav-Menu show-for-medium-down">
 				<Sfi.Sfi:Component.SearchBox/>
 				<Sfi.Sfi:AlmanacMainMenu mobileNav={true}/>
-				<div class="marginTop-double">
+				{props.languageMenu}
+				<div class="marginTop-single">
 					<Sfi.Sfi:Component.DonateButton/>
 				</div>
-				{props.languageMenu}
 			</div>
 		</div>
 	`
