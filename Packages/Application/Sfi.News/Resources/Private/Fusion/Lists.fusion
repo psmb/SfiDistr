@@ -132,7 +132,7 @@ prototype(Sfi.News:CategorizedList) < prototype(Neos.Fusion:Tag) {
 			1 = ${Neos.Caching.descendantOfTag(documentNode)}
 		}
 	}
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
@@ -164,7 +164,7 @@ prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
 	}
 
 	@if.notEmpty = ${q(collection).count() > 0}
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 

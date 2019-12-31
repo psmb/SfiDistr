@@ -6,7 +6,7 @@ prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 	@context.configuration = ${Configuration.setting('Sfi.News.newsDetail')}
 	configuration = ${configuration}
 
-	selfUri = NodeUri {
+	selfUri = Neos.Neos:NodeUri {
 		node = ${node}
 	}
 
