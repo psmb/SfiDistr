@@ -4,10 +4,10 @@
 
 # Explicitly include Sfi.Shared, because autoInclude may messup inclussion order
 include: resource://Sfi.Shared/Private/Fusion/Root.fusion
-include: NodeTypes/**/*.ts2
-include: Pages/**/*.ts2
-include: TypoScriptObjects/**/*.ts2
-include: Newsletter/**/*.ts2
-include: OverrideStock.ts2
+include: NodeTypes/**/*.fusion
+include: Pages/**/*.fusion
+include: TypoScriptObjects/**/*.fusion
+include: Newsletter/**/*.fusion
+include: OverrideStock.fusion
 
 print < Sfi.Sfi:Page

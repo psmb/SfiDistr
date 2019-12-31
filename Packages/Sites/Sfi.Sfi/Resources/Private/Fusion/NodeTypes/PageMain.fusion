@@ -1,4 +1,4 @@
-prototype(Sfi.Sfi:PageMain) {
+prototype(Sfi.Sfi:PageMain) < prototype(Neos.Neos:Content) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	newsTop = Sfi.News:TopList
 	newsLatest = Sfi.News:Latest

@@ -46,7 +46,7 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 		partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 		layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
 
-		mainMenu = Menu {
+		mainMenu = Neos.Neos:Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/MainMenu.html'
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			itemClass = 'LinkState H4 lineHeight-single'
@@ -58,7 +58,7 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 		@context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
 
 		languageMenu = Sfi.Sfi:LanguageMenu
-		subMenu = Menu {
+		subMenu = Neos.Neos:Menu {
 			@context.subMenuNode = ${q(site).find('#c030240e-7c32-40d8-aa84-586f1019966d').get(0)}
 			@if.isMain = ${q(node).is('[instanceof Sfi.Sfi:PageMain]') && subMenuNode ? true : false}
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/MainMenu.html'
@@ -67,7 +67,7 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			startingPoint = ${subMenuNode}
 			maximumLevels = 2
 		}
-		secondaryMenu = Menu {
+		secondaryMenu = Neos.Neos:Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SecondaryMenu.html'
 			itemCollection = ${q(site).children('links').children().get()}
 		}
@@ -75,23 +75,23 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			node = ${site}
 			@process.fix = ${String.replace(value, '/.html', '/')}
 		}
-		@override.sectionMenu = Menu {
+		@override.sectionMenu = Neos.Neos:Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
 			entryLevel = 2
 			maximumLevels = 0
 		}
-		@override.siblingsMenu = Menu {
+		@override.siblingsMenu = Neos.Neos:Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
 			itemCollection = ${q(documentNode).parent().children('[instanceof Neos.Neos:Document]').get()}
 		}
 
-		breadcrumbMenu = BreadcrumbMenu {
+		breadcrumbMenu = Neos.Neos:BreadcrumbMenu {
 			attributes.class = 'BreadcrumbMenu hide-for-small-only'
 			@if.isNotMain = ${q(node).is('[instanceof Sfi.Sfi:PageMain]') ? false : true}
 			@if.isNotNews = ${q(node).is('[instanceof Sfi.News:AbstractNews]') ? false : true}
 		}
 
-		main = PrimaryContent {
+		main = Neos.Neos:PrimaryContent {
 			renderByType {
 				condition = TRUE
 				type = ${q(node).property('_nodeType.name')}

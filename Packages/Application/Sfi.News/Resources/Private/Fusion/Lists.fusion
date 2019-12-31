@@ -168,7 +168,7 @@ prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
 }
 
 
-prototype(Sfi.News:CategoryMenu) < prototype(Menu) {
+prototype(Sfi.News:CategoryMenu) < prototype(Neos.Neos:Menu) {
 	templatePath = 'resource://Sfi.News/Private/Templates/CategoryMenu.html'
 
 	rootNode = ${rootNode}
