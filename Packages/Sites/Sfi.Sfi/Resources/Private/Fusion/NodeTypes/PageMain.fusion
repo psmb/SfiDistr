@@ -11,10 +11,10 @@ prototype(Sfi.Sfi:PageMain) {
 	blogs = Sfi.Sfi:Blog.TopList
 	donate = Sfi.Sfi:DonateBanner
 	tagsOverview = Sfi.Sfi:TagsOverview
-	main = ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
-	middle = ContentCollection {
+	middle = Neos.Neos:ContentCollection {
 		nodePath = 'middle'
 	}
 }

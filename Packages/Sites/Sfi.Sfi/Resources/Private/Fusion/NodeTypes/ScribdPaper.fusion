@@ -29,7 +29,7 @@ prototype(Sfi.Sfi:ScribdList) < prototype(Neos.Fusion:Collection) {
 
 prototype(Sfi.Sfi:ScribdPaperShort) < prototype(Neos.Fusion:Tag) {
 	tagName = 'a'
-	attributes.href = NodeUri {
+	attributes.href = Neos.Neos:NodeUri {
 		node = ${node}
 	}
 	content = Neos.Fusion:Tag {

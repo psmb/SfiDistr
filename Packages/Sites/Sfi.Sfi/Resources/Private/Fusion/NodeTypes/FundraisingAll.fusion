@@ -14,5 +14,5 @@ prototype(Sfi.Sfi:FundraisingAll) < prototype(Neos.Fusion:Array) {
 		projectId = 'all'
 	}
 
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

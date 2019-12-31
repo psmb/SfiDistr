@@ -28,11 +28,11 @@ prototype(Sfi.Sfi:PaperWithAuthor) {
 	}
 
 
-	main = ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 	@process.setAuthor = ${node.properties.author ? value : '<h1 class="H3 color-primary">Выбирите автора</h1>'}
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 prototype(Neos.Neos:PrimaryContent) {

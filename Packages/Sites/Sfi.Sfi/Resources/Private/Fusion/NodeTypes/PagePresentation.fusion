@@ -8,7 +8,7 @@ prototype(Sfi.Sfi:PagePresentation) {
 	lead = ${q(node).property('lead')}
 
 	sectionMenu = ${sectionMenu}
-	main = ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 }

@@ -1,7 +1,7 @@
 prototype(Sfi.Sfi:StudyProgramAsset) <  prototype(Sfi.Shared:Asset) {
 	attributes.class = 'ButtonInline AssetInline'
 	attributes.href = ${'asset://' + node.properties.asset.identifier}
-	attributes.href.@process.convertUris = ConvertUris
+	attributes.href.@process.convertUris = Neos.Neos:ConvertUris
 	@if.assetNotEmptyOrInBackend = ${node.properties.asset.identifier != null || documentNode.context.inBackend}
 }
 
@@ -30,78 +30,78 @@ prototype(Sfi.Sfi:StudyProgram) {
 		@context.node = ${q(node).children('assetSampleContract').get(0)}
 	}
 
-	assetsPlanO = ContentCollection {
+	assetsPlanO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanO'
 		@process.title = ${'<h3 class="H3 marginVertical-single">Учебный план</h3><h4 class="H4">Очная форма обучения</h4>' + value}
 	}
-	assetsPlanOZ = ContentCollection {
+	assetsPlanOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanOZ'
 		@process.title = ${'<h4 class="H4">Очно-заочная форма обучения</h4>' + value}
 	}
-	assetsPlanZ = ContentCollection {
+	assetsPlanZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanZ'
 		@process.title = ${'<h4 class="H4">Заочная форма обучения</h4>' + value}
 	}
-	assetsAdmissionRegulations = ContentCollection {
+	assetsAdmissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
 	}
-	assetsSubjectAnnotations = ContentCollection {
+	assetsSubjectAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
 		@process.title = ${'<h3 class="H3">Аннотации к рабочим программам дисциплин</h3>' + value}
 	}
-	assetsPracticeAnnotations = ContentCollection {
+	assetsPracticeAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotations'
 		@process.title = ${'<h3 class="H3">Практики</h3>' + value}
 	}
-	assetsMethodical = ContentCollection {
+	assetsMethodical = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodical'
 		@process.title = ${'<h3 class="H3">Методические и иные документы</h3>' + value}
 	}
-	description = ContentCollection {
+	description = Neos.Neos:ContentCollection {
 		nodePath = 'description'
 	}
-	subjects = ContentCollection {
+	subjects = Neos.Neos:ContentCollection {
 		nodePath = 'subjects'
 		@process.title = ${'<h3 class="H3">Список изучаемых дисциплин</h3>' + value}
 	}
-	schedule = ContentCollection {
+	schedule = Neos.Neos:ContentCollection {
 		nodePath = 'schedule'
 	}
-	scheduleO = ContentCollection {
+	scheduleO = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleO'
 		@process.title = ${'<h3 class="H3 marginVertical-single">Календарный учебный график</h3><h4 class="H4">Очная форма обучения</h4>' + value}
 	}
-	scheduleOZ = ContentCollection {
+	scheduleOZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleOZ'
 		@process.title = ${'<h4 class="H4">Очно-заочная форма обучения</h4>' + value}
 	}
-	scheduleZ = ContentCollection {
+	scheduleZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleZ'
 		@process.title = ${'<h4 class="H4">Заочная форма обучения</h4>' + value}
 	}
-	documentSubmission = ContentCollection {
+	documentSubmission = Neos.Neos:ContentCollection {
 		nodePath = 'documentSubmission'
 		@process.title = ${'<h3 class="H3">Список необходимых документов</h3>' + value}
 	}
-	exams = ContentCollection {
+	exams = Neos.Neos:ContentCollection {
 		nodePath = 'exams'
 	}
-	payment = ContentCollection {
+	payment = Neos.Neos:ContentCollection {
 		nodePath = 'payment'
 	}
-	admission = ContentCollection {
+	admission = Neos.Neos:ContentCollection {
 		nodePath = 'admission'
 	}
-	admissionContacts = ContentCollection {
+	admissionContacts = Neos.Neos:ContentCollection {
 		nodePath = 'admissionContacts'
 	}
-	numberOfSeats = ContentCollection {
+	numberOfSeats = Neos.Neos:ContentCollection {
 		nodePath = 'numberOfSeats'
 	}
-	admissionRegulations = ContentCollection {
+	admissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'admissionRegulations'
 	}
-	feedback = ContentCollection {
+	feedback = Neos.Neos:ContentCollection {
 		nodePath = 'feedback'
 	}
 
@@ -116,7 +116,7 @@ prototype(Sfi.Sfi:StudyProgram) {
 			2 = ${Neos.Caching.descendantOfTag(node)}
 		}
 	}
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:StudyProgramShort) < prototype(Neos.Fusion:Template) {
@@ -144,10 +144,10 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	specialityId = ${q(node).property('specialityId')}
 	specialityName = Neos.Fusion:Tag {
 		content = ${q(node).property('specialityName')}
-		@process.editable = ContentElementEditable {
+		@process.editable = Neos.Neos:ContentElementEditable {
 			property = 'specialityName'
 		}
-		@process.contentElementWrapping = ContentElementWrapping
+		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 	}
 	accreditationDate = ${q(node).property('accreditationDate')}
 	noLink = ${q(node).property('noLink')}
@@ -156,47 +156,47 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 		title = ${String.stripTags(q(node).property('title'))}
 		@context.node = ${q(node).children('assetDescription').get(0)}
 	}
-	assetsPlanO = ContentCollection {
+	assetsPlanO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanO'
 	}
 	isOZ = ${q(node).children('assetsPlanOZ').children().count() > 0 || documentNode.context.inBackend}
 	isZ = ${q(node).children('assetsPlanZ').children().count() > 0 || documentNode.context.inBackend}
 	rowCount = ${1 + (this.isOZ ? 1 : 0) + (this.isZ ? 1 : 0)}
-	assetsPlanOZ = ContentCollection {
+	assetsPlanOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanOZ'
 	}
-	assetsPlanZ = ContentCollection {
+	assetsPlanZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanZ'
 	}
-	scheduleO = ContentCollection {
+	scheduleO = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleO'
 	}
-	scheduleOZ = ContentCollection {
+	scheduleOZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleOZ'
 	}
-	scheduleZ = ContentCollection {
+	scheduleZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleZ'
 	}
-	practice = ContentCollection {
+	practice = Neos.Neos:ContentCollection {
 		nodePath = 'practice'
 	}
-	distantEdu = ContentCollection {
+	distantEdu = Neos.Neos:ContentCollection {
 		nodePath = 'distantEdu'
 	}
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
 		title = 'Свидетельство о государственной аккредитации'
 		@context.node = ${q(node).children('assetAccreditation').get(0)}
 	}
-	assetsSubjectAnnotations = ContentCollection {
+	assetsSubjectAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
 	}
-	assetsPracticeAnnotations = ContentCollection {
+	assetsPracticeAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotations'
 	}
-	assetsMethodical = ContentCollection {
+	assetsMethodical = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodical'
 	}
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
 
 prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections) {

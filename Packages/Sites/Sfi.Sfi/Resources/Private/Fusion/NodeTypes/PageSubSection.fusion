@@ -5,7 +5,7 @@ prototype(Sfi.Sfi:PageSubSection) {
 
 	sectionMenu = ${sectionMenu}
 
-	subSectionMenu = Menu {
+	subSectionMenu = Neos.Neos:Menu {
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SubSectionMenu.html'
 		entryLevel = 0
 		maximumLevels = 0

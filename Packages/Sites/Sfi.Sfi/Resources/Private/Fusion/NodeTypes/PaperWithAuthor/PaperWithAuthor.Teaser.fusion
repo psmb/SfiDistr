@@ -1,4 +1,4 @@
-prototype(Sfi.Sfi:PaperWithAuthorShort) < prototype(Content) {
+prototype(Sfi.Sfi:PaperWithAuthorShort) < prototype(Neos.Neos:Content) {
 	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/PaperWithAuthor/PaperWithAuthor.Teaser.html'
 	title = ${String.stripTags(q(node).property('title'))}
 	teaser = ${String.stripTags(q(node).property('teaser'))}

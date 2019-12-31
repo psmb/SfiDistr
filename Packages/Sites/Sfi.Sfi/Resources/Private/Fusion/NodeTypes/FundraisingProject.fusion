@@ -35,5 +35,5 @@ prototype(Sfi.Sfi:FundraisingProject) {
 		collection.@process.filterOutSelf = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
 	}
 
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

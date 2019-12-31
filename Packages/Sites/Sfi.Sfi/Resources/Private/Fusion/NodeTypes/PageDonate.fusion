@@ -12,5 +12,5 @@ prototype(Sfi.Sfi:PageDonate) {
 
 	moto = ${node.properties.moto}
 
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

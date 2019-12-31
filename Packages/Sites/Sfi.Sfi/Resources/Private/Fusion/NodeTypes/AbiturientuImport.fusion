@@ -7,7 +7,7 @@ prototype(Sfi.Sfi:AbiturientuImport) < prototype(Neos.Fusion:Array) {
         @if.inBackend = ${node.context.inBackend}
         @context.node = ${q(documentNode).children('[instanceof Neos.Neos:Document]').get(0)}
         tagName = 'a'
-        attributes.href = NodeUri {
+        attributes.href = Neos.Neos:NodeUri {
             node = ${node}
         }
         attributes.class = 'Link'
@@ -17,7 +17,7 @@ prototype(Sfi.Sfi:AbiturientuImport) < prototype(Neos.Fusion:Array) {
     2 = Neos.Fusion:Collection {
         collection = ${q(rootNode).children().get()}
         itemName = 'node'
-        itemRenderer = ContentCase
+        itemRenderer = Neos.Neos:ContentCase
         @cache {
             mode = 'cached'
             entryIdentifier.node = ${node}
@@ -32,7 +32,7 @@ prototype(Sfi.Sfi:AbiturientuImport) < prototype(Neos.Fusion:Array) {
     #    @process.tmpl = ${'<div class="marginVertical-single">' + value + '</div>'}
     #    tagName = 'a'
     #    attributes.class = 'Button LinkButton'
-    #	attributes.href = NodeUri {
+    #	attributes.href = Neos.Neos:NodeUri {
     #        node = ${node}
     #    }
     #    content = ${node.properties.title}

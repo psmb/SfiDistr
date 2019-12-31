@@ -1,6 +1,6 @@
 prototype(Sfi.Sfi:AutomatedNewsletter) {
 	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/AutomatedNewsletter.html'
-	main = ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 	logoUri = Neos.Fusion:ResourceUri {
@@ -22,7 +22,7 @@ prototype(Sfi.Sfi:UnsubscribeLink) < prototype(Neos.Fusion:UriBuilder) {
 
 root.automatedNewsletter {
 	condition = ${q(node).is('[instanceof Sfi.Sfi:AutomatedNewsletter]')}
-	renderer = Page {
+	renderer = Neos.Neos:Page {
 		head.stylesheets = Sfi.Sfi:Stylesheets
 		body = Sfi.Sfi:AutomatedNewsletter
 	}

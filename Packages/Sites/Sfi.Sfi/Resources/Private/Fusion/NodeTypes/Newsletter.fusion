@@ -30,7 +30,7 @@ prototype(Sfi.Sfi:Newsletter) {
 
 root.newsletter {
 	condition = ${q(node).is('[instanceof Sfi.Sfi:Newsletter]')}
-	renderer = Page {
+	renderer = Neos.Neos:Page {
 		head.stylesheets = Sfi.Sfi:Stylesheets
 		body = Sfi.Sfi:Newsletter
 	}

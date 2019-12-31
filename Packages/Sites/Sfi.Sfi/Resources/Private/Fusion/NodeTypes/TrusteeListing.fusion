@@ -9,7 +9,7 @@ prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Collection) {
 		@process.li = ${'<li>' + value + '</li>'}
 	}
 
-	@process.contentElementWrapping = ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
