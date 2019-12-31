@@ -1,43 +1,23 @@
-blah: &alohaPlain
+
+blah:
   placeholder: 'Текст тут'
   format:
-    strong: FALSE
-    em: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    strong: true
+    em: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: true
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Текст тут'
-  format:
-    strong: TRUE
-    em: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.Sfi:QuoteBlock':
   superTypes:
     'Neos.Neos:Content': true
@@ -58,23 +38,50 @@ blah: &alohaRich
       ui:
         label: 'Имя автора'
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Имя автора'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Имя автора'
     authorDescription:
       type: string
       ui:
         label: 'Подробнее об авторе (степень и др)'
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Подробнее об авторе (степень и др)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Подробнее об авторе (степень и др)'
     text:
       type: string
       ui:
-        aloha:
-          placeholder: 'Текст цитаты'
         inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Текст цитаты'
 'Sfi.Sfi:Card':
   superTypes:
     'Neos.Neos:Content': true
@@ -89,14 +96,16 @@ blah: &alohaRich
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Заголовок карточки'
+        inline:
+          editorOptions:
+            placeholder: 'Заголовок карточки'
     text:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Тут текст карточки'
+        inline:
+          editorOptions:
+            placeholder: 'Тут текст карточки'
 'Sfi.Sfi:VCard':
   superTypes:
     'Neos.Neos:Content': true
@@ -113,26 +122,30 @@ blah: &alohaRich
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: Имя
+        inline:
+          editorOptions:
+            placeholder: Имя
     position:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: Должность
+        inline:
+          editorOptions:
+            placeholder: Должность
     degree:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Научная степень'
+        inline:
+          editorOptions:
+            placeholder: 'Научная степень'
     contact:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: Адрес
+        inline:
+          editorOptions:
+            placeholder: Адрес
     variant:
       defaultValue: true
       type: string
@@ -172,8 +185,9 @@ blah: &alohaRich
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Название книжки'
+        inline:
+          editorOptions:
+            placeholder: 'Название книжки'
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
@@ -185,9 +199,9 @@ blah: &alohaRich
           editorOptions:
             crop:
               aspectRatio:
-                forceCrop: TRUE
-                enableOriginal: FALSE
-                allowCustom: TRUE
+                forceCrop: true
+                enableOriginal: false
+                allowCustom: true
                 locked:
                   width: 105
                   height: 154

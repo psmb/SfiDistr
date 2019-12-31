@@ -6,9 +6,9 @@
 		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/backend.css', package: 'Sfi.Sfi')}" />
 	</f:section>
 	<f:section name="stylesheets">
-		<link rel="stylesheet" href="{opsdev:resource(path: 'Built/vendor.css', package: 'Sfi.Sfi')}" />
-		<link rel="stylesheet" href="{opsdev:resource(path: 'Built/app.css', package: 'Sfi.Sfi')}" />
-		<link rel="alternate stylesheet" title="accessible-stylesheet" href="{opsdev:resource(path: 'Built/accessible.css', package: 'Sfi.Sfi')}" />
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/vendor.css', package: 'Sfi.Sfi')}" />
+		<link rel="stylesheet" href="{f:uri.resource(path: 'Built/app.css', package: 'Sfi.Sfi')}" />
+		<link rel="alternate stylesheet" title="accessible-stylesheet" href="{f:uri.resource(path: 'Built/accessible.css', package: 'Sfi.Sfi')}" />
 	</f:section>
 	<f:section name="headScripts">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -23,7 +23,7 @@
 </head>
 <body>
 	<f:section name="bodyScripts">
-		<script src="{opsdev:resource(path: 'Built/index.js', package: 'Sfi.Sfi')}"></script>
+		<script src="{f:uri.resource(path: 'Built/index.js', package: 'Sfi.Sfi')}"></script>
 	</f:section>
 	<f:section name="analytics">
 		<f:render partial="Analytics" />

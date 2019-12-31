@@ -1,0 +1,20 @@
+prototype(Sfi.Sfi:PageMain) {
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	newsTop = Sfi.News:TopList
+	newsLatest = Sfi.News:Latest
+	newsAnnouncements = Sfi.News:AnnouncementsList
+	# TODO: hackish
+	showAnnouncements = ${String.length(this.newsAnnouncements) > 150}
+	promo = Sfi.Sfi:PromoList
+	video = Sfi.Sfi:LatestVideo
+	publications = Sfi.Sfi:LatestPublications
+	blogs = Sfi.Sfi:Blog.TopList
+	donate = Sfi.Sfi:DonateBanner
+	tagsOverview = Sfi.Sfi:TagsOverview
+	main = Neos.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	middle = Neos.Neos:ContentCollection {
+		nodePath = 'middle'
+	}
+}

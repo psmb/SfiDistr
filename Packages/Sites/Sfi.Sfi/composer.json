@@ -6,8 +6,8 @@
         "neos/neos": "*",
         "neos/neos-ui": "*",
         "neos/neos-nodetypes": "*",
-        "opsdev/cache-breaker": "*",
         "flownative/aws-s3": "*",
+        "flowpack/listable": "*",
         "psmb/newsletter": "*"
     },
     "autoload": {
@@ -88,7 +88,12 @@
             "Neos.Neos-20170115114620",
             "Neos.Fusion-20170120013047",
             "Neos.Flow-20170125103800",
-            "Neos.Flow-20170127183102"
+            "Neos.Flow-20170127183102",
+            "Neos.Fusion-20180211175500",
+            "Neos.Fusion-20180211184832",
+            "Neos.Flow-20180415105700",
+            "Neos.Neos-20180907103800",
+            "Neos.Neos.Ui-20190319094900"
         ]
     }
 }

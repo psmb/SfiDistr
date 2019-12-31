@@ -1,0 +1,14 @@
+prototype(Sfi.Sfi:PagePresentation) {
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
+
+	node = ${node}
+
+	title = ${q(node).property('title')}
+	lead = ${q(node).property('lead')}
+
+	sectionMenu = ${sectionMenu}
+	main = Neos.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+}

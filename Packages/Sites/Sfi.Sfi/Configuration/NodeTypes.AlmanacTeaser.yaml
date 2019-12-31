@@ -1,3 +1,4 @@
+
 'Sfi.Sfi:AlmanacTeaser':
   superTypes:
     'Neos.Neos:Content': true
@@ -14,38 +15,41 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: Заголовок
+        inline:
+          editorOptions:
+            placeholder: Заголовок
     subTitle:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: Подзаголовок
+        inline:
+          editorOptions:
+            placeholder: Подзаголовок
     issue:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: '№00 лето 2099'
+        inline:
+          editorOptions:
+            placeholder: '№00 лето 2099'
     imageSmall:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: Фоновая картинка (small)
+        label: 'Фоновая картинка (small)'
         reloadIfChanged: true
         inspector:
           group: image
     imageMedium:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: Фоновая картинка (medium)
+        label: 'Фоновая картинка (medium)'
         reloadIfChanged: true
         inspector:
           group: image
     imageLarge:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: Фоновая картинка (large)
+        label: 'Фоновая картинка (large)'
         reloadIfChanged: true
         inspector:
           group: image

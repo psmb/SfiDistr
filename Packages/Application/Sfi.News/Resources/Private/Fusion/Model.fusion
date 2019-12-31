@@ -1,0 +1,224 @@
+#Display full view of article
+prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
+	@context.variant = ${node.properties.isHard ? 'Hard' : 'Soft'}
+	templatePath = ${'resource://Sfi.News/Private/Templates/News' + variant + '.html'}
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	@context.configuration = ${Configuration.setting('Sfi.News.newsDetail')}
+	configuration = ${configuration}
+
+	selfUri = Neos.Neos:NodeUri {
+		node = ${node}
+	}
+
+	title = ${q(node).property('title')}
+	teaser = ${q(node).property('teaser')}
+	teaser.@process.removeNbsp = ${value == '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
+	lead = ${q(node).property('lead')}
+	lead.@process.removeNbsp = ${value == '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
+	author = ${String.stripTags(q(node).property('author'))}
+	author.@process.removeNbsp = ${value == '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
+	authorPhoto = ${String.stripTags(q(node).property('authorPhoto'))}
+	authorPhoto.@process.removeNbsp = ${value == '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
+	translator = ${String.stripTags(q(node).property('translator'))}
+	translator.@process.removeNbsp = ${value == '&nbsp;' || value == '<span>&nbsp;</span>' ? '' : value}
+	date = ${q(node).property('date')}
+
+	coverCollection = Neos.Neos:ContentCollection {
+		nodePath = 'coverCollection'
+		prototype(Neos.NodeTypes:Image) {
+			maximumWidth = 980
+			maximumHeight = 653
+			allowCropping = TRUE
+		}
+		@if.notVideoOrBackend = ${(q(node).property('hasVideo') != true) || (node.context.workspace.name != 'live')}
+	}
+	gallery = Sfi.Shared:Carousel {
+		content.collection = ${q(node).children('gallery').children()}
+		attributes.class = 'Carousel js-carousel-2x'
+		@if.hassGallery = ${q(node).children('gallery').children().count() > 0}
+	}
+
+	main = Neos.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	assets = Neos.Neos:ContentCollection {
+		nodePath = 'assets'
+	}
+
+	category = ${q(node).parent().get(0)}
+
+	languageMenu = Neos.Fusion:Tag {
+		lang = ${Array.first(node.context.dimensions.language)}
+		@context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
+		tagName = 'a'
+		attributes.class = 'Link Service--Small marginBottom-single'
+		attributes.style = 'display: block'
+		@context.altNode = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}})}
+		@if.nodeExists = ${altNode.count() > 0}
+		attributes.href = Neos.Neos:NodeUri {
+			node = ${altNode.get(0)}
+		}
+		content = ${altLang == 'en' ? 'Read this in English' : 'Читать по-русски'}
+	}
+
+
+	#####
+	moreItems = Sfi.News:NewsRelated {
+		newsCollection = ${q(site).find('[instanceof Sfi.News:News]').get()}
+	}
+}
+
+prototype(Sfi.News:ThumbnailImageUri) < prototype(Neos.Fusion:Case) {
+	@context.thumb = Sfi.News:ThumbnailImageSrc
+	isString {
+		condition = ${Type.isString(thumb)}
+		renderer = ${thumb}
+	}
+	default {
+		condition = ${true}
+		renderer = Neos.Neos:ImageUri {
+			asset = ${thumb}
+			allowCropping = true
+			allowUpScaling = true
+		}
+	}
+}
+prototype(Sfi.News:ThumbnailImageSrc) < prototype(Neos.Fusion:Case) {
+	hasCoverImage {
+		condition = ${node.properties.coverImage}
+		renderer = ${node.properties.coverImage}
+	}
+	hasYouTubeVideo {
+		@context.youtubeVideo = ${q(node).children('coverCollection').children('[instanceof Sfi.Shared:YouTube]').get(0)}
+		condition = ${youtubeVideo}
+		renderer = ${q(youtubeVideo).property('videoUrl')}
+		renderer.@process.1 = ${value && String.pregMatch(value, '#\?v=([a-z0-9-_]+)#i')}
+		renderer.@process.2 = ${value && Array.slice(value, 1)}
+		renderer.@process.3 = ${value && Array.first(value)}
+		renderer.@process.4 = ${value ? 'https://img.youtube.com/vi/' + value + '/maxresdefault.jpg' : ''}
+	}
+	hasCoverCollectionImage {
+		condition = ${q(node).children('coverCollection').children().count() > 0}
+		renderer = ${q(node).children('coverCollection').children().first().property('image')}
+	}
+	default {
+		condition = ${true}
+		renderer = ${null}
+	}
+}
+
+#Breif rendering of article, used in NewsList
+prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
+	templatePath = 'resource://Sfi.News/Private/Templates/NewsShort.html'
+
+	node = ${node}
+	title = ${String.stripTags(q(node).property('title'))}
+	date = ${q(node).property('date')}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	# first image found becomes the thumbnail image TODO: remove legacy support for coverPhoto
+	thumbnailImage = Neos.Fusion:Tag {
+		tagName = 'img'
+		attributes.src = Sfi.News:ThumbnailImageUri {
+			prototype(Neos.Neos:ImageUri) {
+				maximumWidth = 640
+				maximumHeight = 338
+			}
+		}
+		attributes.alt = ${node.properties.title}
+	}
+	thumbnailImageUri = Sfi.News:ThumbnailImageUri {
+		prototype(Neos.Neos:ImageUri) {
+			maximumWidth = 640
+			maximumHeight = 338
+		}
+	}
+	hasVideo = ${node.properties.hasVideo}
+
+	# parrent node is the category
+	category = ${q(node).parent().get(0)}
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.descendantOfTag(node)}
+		}
+	}
+}
+
+prototype(Sfi.News:NewsShortSmall) < prototype(Neos.Fusion:Component) {
+	title = ${String.stripTags(q(node).property('title'))}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	date = ${Date.formatCldr(q(node).property('date'), 'dd MMMM yyyy')}
+	nodeUri = Neos.Neos:NodeUri {
+		node = ${node}
+	}
+	renderer = afx`
+		<div class="MediaSmall">
+			<a href={props.nodeUri}>
+				<h3 class="MediaSmall-Title">{props.title}</h3>
+				<div class="MediaSmall-Teaser">{props.teaser}</div>
+				<div class="MediaSmall-Date">{props.date}</div>
+			</a>
+		</div>
+	`
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${Neos.Caching.nodeTag(node)}
+		}
+	}
+}
+
+prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
+	templatePath = 'resource://Sfi.News/Private/Templates/TopShort.html'
+	@context.configuration = ${Configuration.setting('Sfi.News.topShort')}
+	configuration = ${configuration}
+
+	place = ${String.stripTags(q(node).property('place'))}
+
+	thumbnailImageLargeUri = Sfi.News:ThumbnailImageUri {
+		prototype(Sfi.News:ThumbnailImageSrc) {
+			hasImportantCoverImage {
+				condition = ${node.properties.importantCoverImage}
+				renderer = ${node.properties.importantCoverImage}
+				@position = 'start'
+			}
+		}
+		prototype(Neos.Neos:ImageUri) {
+			maximumWidth = 1200
+			maximumHeight = 400
+		}
+	}
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.descendantOfTag(node)}
+		}
+	}
+}
+
+
+prototype(Sfi.News:Category) {
+	@context.rootNode = ${q(documentNode).parent().is('[instanceof Sfi.News:Category]') ? q(documentNode).parent().get(0) : documentNode}
+	@context.configuration = ${Configuration.setting('Sfi.News.' + q(q(documentNode).parent().is('[instanceof Sfi.News:Category]') ? q(documentNode).parent().get(0) : documentNode).property('preset'))}
+	templatePath = 'resource://Sfi.News/Private/Templates/NewsCategory.html'
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	layoutRootPath = 'resource://Sfi.Sfi/Private/Layouts'
+
+	layout = ${configuration.layout}
+
+	sectionMenu = ${sectionMenu}
+	newsList = Sfi.News:Archive
+}

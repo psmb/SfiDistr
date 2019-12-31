@@ -1,31 +1,32 @@
-"Sfi.Sfi:FundraisingProject":
+
+'Sfi.Sfi:FundraisingProject':
   superTypes:
-    "Sfi.Sfi:AbstractPage": true
+    'Sfi.Sfi:AbstractPage': true
   ui:
-    label: "Страница: проект фандрайзинга"
+    label: 'Страница: проект фандрайзинга'
     inspector:
       groups:
         image:
           label: Проект
   childNodes:
     header:
-      type: "Neos.Neos:ContentCollection"
+      type: 'Neos.Neos:ContentCollection'
     main:
-      type: "Neos.Neos:ContentCollection"
+      type: 'Neos.Neos:ContentCollection'
     report:
-      type: "Neos.Neos:ContentCollection"
+      type: 'Neos.Neos:ContentCollection'
   properties:
     complete:
       type: boolean
       ui:
-        label: "Сбор завершен?"
+        label: 'Сбор завершен?'
         reloadIfChanged: true
         inspector:
           group: default
     thumb:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: "Иллюстрация-миниатюрка"
+        label: Иллюстрация-миниатюрка
         reloadIfChanged: true
         inspector:
           group: image
@@ -41,7 +42,7 @@
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: "Фото обложки"
+        label: 'Фото обложки'
         reloadIfChanged: true
         inspector:
           group: image
@@ -58,53 +59,52 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: "Название проекта"
+        inline:
+          editorOptions:
+            placeholder: 'Название проекта'
     description:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: "Описание проекта"
+        inline:
+          editorOptions:
+            placeholder: 'Описание проекта'
     target:
       type: string
       ui:
-        label: "Цель сбора"
+        label: 'Цель сбора'
         inspector:
           group: default
     gatheredOverride:
       type: string
       ui:
-        label: "Итог сбора (ручное значение)"
+        label: 'Итог сбора (ручное значение)'
         inspector:
           group: default
           hidden: 'ClientEval:node.properties.complete ? false : true'
     offset:
       type: string
       ui:
-        label: "Сдвиг сбора (например '-1234')"
+        label: 'Сдвиг сбора (например ''-1234'')'
         inspector:
           group: default
     moto:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: "Мото текст"
-          format:
-            strong: TRUE
-            em: TRUE
-            u: FALSE
-            sub: TRUE
-            sup: TRUE
-            p: FALSE
-            h1: FALSE
-            h2: FALSE
-            h3: FALSE
-            pre: FALSE
-            removeFormat: FALSE
-          table: {}
-          list: {}
-          link:
-            a: TRUE
-          alignment: {}
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: true
+              sub: true
+              sup: true
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: true
+              underline: false
+            placeholder: 'Мото текст'

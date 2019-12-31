@@ -11,8 +11,9 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Текст к эпиграфу'
+        inline:
+          editorOptions:
+            placeholder: 'Текст к эпиграфу'
 'Sfi.Shared:Note':
   superTypes:
     'Neos.Neos:Content': true
@@ -25,14 +26,16 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Заголовок примечания'
+        inline:
+          editorOptions:
+            placeholder: 'Заголовок примечания'
     text:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Текст примечания'
+        inline:
+          editorOptions:
+            placeholder: 'Текст примечания'
 'Sfi.Shared:Blockquote':
   superTypes:
     'Neos.Neos:Content': true
@@ -43,6 +46,7 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: '<p>Текст цитаты</p>'
-          autoparagraph: true
+        inline:
+          editorOptions:
+            autoparagraph: true
+            placeholder: '<p>Текст цитаты</p>'

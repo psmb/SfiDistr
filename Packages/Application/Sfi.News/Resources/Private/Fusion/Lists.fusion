@@ -1,0 +1,219 @@
+prototype(Flowpack.Listable:Listable) {
+	sortProperty = 'date'
+	sortOrder = 'DESC'
+}
+
+prototype(Flowpack.Listable:ContentCaseShort) < prototype(Sfi.Shared:ContentCaseShort)
+
+# Needed for legacy
+prototype(Sfi.News:List) < prototype(Flowpack.Listable:ListNode) {
+	prototype(Flowpack.Listable:Listable) {
+		collection.@process.nodes = ${node.properties.nodes ? node.properties.nodes : value}
+		sortProperty = ''
+	}
+}
+
+# Show latest news
+prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
+	listTitle = ${Translation.translate('newsLatest.listTitle', null, [], null, 'Sfi.Sfi')}
+	archiveLinkTitle =  ${Translation.translate('newsLatest.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
+	archiveLinkUri = Neos.Neos:NodeUri {
+		node = ${q(site).children('sfi-today').get(0)}
+	}
+	listImportant = Flowpack.Listable:Listable {
+		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
+		listClass = 'NewsLatest-Grid large-block-grid-4 medium-block-grid-2 small-block-grid-1'
+		limit = 4
+		paginationEnabled = false
+		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isHard != TRUE]').get()}
+	}
+	listUnimportant = Flowpack.Listable:Listable {
+		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
+		listClass = 'NewsLatest-Grid large-block-grid-4 medium-block-grid-2 small-block-grid-1'
+		limit = 4
+		paginationEnabled = false
+		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isHard = TRUE]').get()}
+		itemRenderer = 'Sfi.News:NewsShortSmall'
+	}
+
+	renderer = afx`
+		<h2 class="H4 color-grayAlt paddingVertical-single marginBottom-sesquialteral border-bottom">
+			{props.listTitle} <span style="text-transform: lowercase; font-weight: normal;" class="ParagraphAlt color-primary">| <a href={props.archiveLinkUri}>{props.archiveLinkTitle}</a></span>
+		</h2>
+
+		{props.listImportant}
+		{props.listUnimportant}
+	`
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
+		}
+	}
+}
+
+prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
+	archiveLink = '~/sfi-today'
+	archiveLinkTitle = ${Translation.translate('newsLatest.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
+
+	prototype(Flowpack.Listable:Listable) {
+		limit = 4
+		paginationEnabled = ${false}
+		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews]').get()}
+		collection.@process.filterOutSelf {
+			expression = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
+			@position = 'start'
+		}
+		itemRenderer = 'Sfi.News:NewsShortSmall'
+	}
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+			editPreviewMode = ${editPreviewMode}
+		}
+		entryTags {
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
+		}
+	}
+}
+
+
+
+prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Collection) {
+	collection = ${site.properties.important}
+	# collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.Now()).get() : value}
+
+	@process.tmpl = ${'<div class="Carousel--Cover js-carousel-1x">' + value + '</div>'}
+	itemRenderer = Sfi.News:TopShort
+	itemName = 'node'
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			site = ${site}
+		}
+		maximumLifetime = ${3600}
+		entryTags {
+			1 = ${Neos.Caching.nodeTag(site)}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.News:ImportantMixin')}
+		}
+	}
+}
+
+
+
+
+prototype(Sfi.News:CategorizedList) < prototype(Neos.Fusion:Tag) {
+	content = Neos.Fusion:Collection {
+		collection = ${q(documentNode).find('[instanceof Sfi.News:Category]').get()}
+		itemName = 'categoryNode'
+		iterationName = 'iterator'
+		itemRenderer = Flowpack.Listable:List {
+			listTitle = ${categoryNode.properties.title}
+			listTitleClass = 'H3 textAlign-center'
+			prototype(Flowpack.Listable:Listable) {
+				paginationEnabled = ${false}
+				collection = ${q(categoryNode).find('[instanceof Flowpack.Listable:ListableMixin]').get()}
+			}
+		}
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${Neos.Caching.descendantOfTag(documentNode)}
+		}
+	}
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}
+
+prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
+	listTitle = ${Translation.translate('listByTag.archiveLinkTitle', null, [], null, 'Sfi.Sfi')}
+	listTitleClass = 'SectionDivider--Service'
+
+	@context.collection = ${q(site).find('[instanceof Sfi.News:AbstractNews]').get()}
+	@context.collection.@process.filterByReference = ${q(node).property('tag') ? q(value).filterByReference('tags', q(node).property('tag')).get() : q(value).filterByReference('tags', documentNode).get()}
+	prototype(Flowpack.Listable:Listable) {
+		paginationEnabled = true
+		listClass = 'medium-block-grid-2 small-block-grid-1'
+		collection = ${collection}
+	}
+	@cache {
+		mode = 'dynamic'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryDiscriminator = ${request.arguments.currentPage}
+		context {
+			1 = 'node'
+			2 = 'documentNode'
+			3 = 'site'
+		}
+		entryTags {
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
+			2 = ${Neos.Caching.nodeTag(node)}
+		}
+	}
+
+	@if.notEmpty = ${q(collection).count() > 0}
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}
+
+
+prototype(Sfi.News:CategoryMenu) < prototype(Neos.Neos:Menu) {
+	templatePath = 'resource://Sfi.News/Private/Templates/CategoryMenu.html'
+
+	rootNode = ${rootNode}
+	rootIsCurrent = ${rootNode == documentNode ? true : false}
+
+	itemCollection = ${q(rootNode).children('[instanceof Sfi.News:Category]').get()}
+}
+
+
+prototype(Sfi.News:Archive) < prototype(Flowpack.Listable:List) {
+	renderer.content.listMenu = Sfi.News:CategoryMenu {
+		@position = 'after listTitleTag'
+	}
+
+	listTitle = ${q(node).property('title')}
+	listTitleClass = 'H2'
+	archiveLink = ''
+
+	prototype(Sfi.News:NewsShort) {
+		@cache {
+			mode = 'embed'
+		}
+	}
+	prototype(Flowpack.Listable:Listable) {
+		listClass = 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'
+		limit = 10000
+		itemsPerPage = 24
+		paginationEnabled = true
+		collection = ${q(documentNode).find('[instanceof Flowpack.Listable:ListableMixin]').get()}
+
+		@cache {
+			mode = 'dynamic'
+			entryIdentifier {
+				node = ${node}
+			}
+			entryDiscriminator = ${request.arguments.currentPage}
+			context {
+				1 = 'node'
+				2 = 'documentNode'
+				3 = 'site'
+			}
+			entryTags {
+				1 = ${Neos.Caching.nodeTag(documentNode)}
+				2 = ${Neos.Caching.descendantOfTag(documentNode)}
+			}
+		}
+	}
+}

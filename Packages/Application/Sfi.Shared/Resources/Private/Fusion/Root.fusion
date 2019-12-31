@@ -1,4 +1,4 @@
-include: **/*.ts2
+include: **/*.fusion
 
 prototype(Sfi.Shared:TextWithImage) {
 	attributes.class = ${'TextWithImage ' + node.properties.variant}

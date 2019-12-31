@@ -1,43 +1,23 @@
-blah: &alohaPlain
+
+blah:
   placeholder: 'Текст тут'
   format:
-    strong: FALSE
-    em: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    strong: true
+    em: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: true
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Текст тут'
-  format:
-    strong: TRUE
-    em: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.Sfi:Promo':
   superTypes:
     'Sfi.News:AbstractArticle': true
@@ -69,30 +49,68 @@ blah: &alohaRich
       ui:
         label: 'Имя докладчика'
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Имя докладчика'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Имя докладчика'
     authorDegree:
       type: string
       ui:
         label: 'Научная степень докладчика'
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Научная степень докладчика'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Научная степень докладчика'
     authorFrom:
       type: string
       ui:
         label: 'Место откуда автор'
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Место откуда автор'
-
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Место откуда автор'
 'Sfi.Sfi:Poster':
   superTypes:
     'Sfi.News:AbstractArticle': true
     'Sfi.News:ImportantMixin': true
   ui:
-    label: Постер?
+    label: 'Постер?'
     icon: icon-file-text

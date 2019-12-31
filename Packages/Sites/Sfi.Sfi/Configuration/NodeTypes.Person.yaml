@@ -1,43 +1,23 @@
-blah: &alohaPlain
+
+blah:
   placeholder: 'Текст тут'
   format:
-    strong: FALSE
-    em: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    strong: true
+    em: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: true
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Текст тут'
-  format:
-    strong: TRUE
-    em: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.Sfi:Person':
   superTypes:
     'Neos.Neos:Document': true
@@ -118,110 +98,303 @@ blah: &alohaRich
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Свободное поле (отображается в карточке и в разных списках)'
-
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Свободное поле (отображается в карточке и в разных списках)'
     degree:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Ученая степень (degree)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Ученая степень (degree)'
     degreeTitle:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Ученое звание (academStat)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Ученое звание (academStat)'
     position:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: Должность (post)
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Должность (post)'
     subject:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaRich
-          placeholder: 'Преподаваемая дисциплина (teachingDiscipline)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: true
+              sub: true
+              sup: true
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: true
+              underline: false
+            placeholder: 'Преподаваемая дисциплина (teachingDiscipline)'
     experience:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Стаж работы общий (genExperience)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Стаж работы общий (genExperience)'
     experienceSpeciality:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Стаж работы по специальности (specExperience)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Стаж работы по специальности (specExperience)'
     experienceSfi:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Стаж работы в СФИ'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Стаж работы в СФИ'
     education:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Направление подготовки и/или специальности (employeeQualification)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Направление подготовки и/или специальности (employeeQualification)'
     educationUpgrade:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Повышение квалификации и/или профессиональная переподготовка (profDevelopment)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Повышение квалификации и/или профессиональная переподготовка (profDevelopment)'
     teachingLevel:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Уровень образования (teachingLevel)'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Уровень образования (teachingLevel)'
     teachingQual:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Квалификация (teachingQual)'
-
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Квалификация (teachingQual)'
     telephone:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: Телефон
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: Телефон
     email:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: E-mail
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: E-mail
     quote:
       type: string
       ui:
         label: Цитата
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: Цитата
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: Цитата
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
@@ -231,11 +404,11 @@ blah: &alohaRich
           group: image
           editorOptions:
             features:
-              resize: TRUE
+              resize: true
             crop:
               aspectRatio:
-                enableOriginal: FALSE
-                allowCustom: TRUE
+                enableOriginal: false
+                allowCustom: true
                 locked:
                   width: 400
                   height: 600
@@ -247,15 +420,14 @@ blah: &alohaRich
           group: image
           editorOptions:
             features:
-              resize: TRUE
+              resize: true
             crop:
               aspectRatio:
-                enableOriginal: FALSE
-                allowCustom: TRUE
+                enableOriginal: false
+                allowCustom: true
                 locked:
                   width: 100
                   height: 100
-
 'Sfi.Sfi:Rector':
   superTypes:
     'Sfi.Sfi:Person': true

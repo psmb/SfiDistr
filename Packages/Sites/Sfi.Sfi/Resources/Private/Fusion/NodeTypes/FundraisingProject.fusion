@@ -1,0 +1,39 @@
+prototype(Sfi.Sfi:FundraisingProject) {
+	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/FundraisingProject.html'
+
+	bar = Sfi.Sfi:FundraisingBar {
+		projectId = ${node.properties.uriPathSegment}
+		target = ${node.properties.target}
+		offset = ${node.properties.offset}
+		gatheredOverride = ${node.properties.gatheredOverride}
+		inverse = ${true}
+	}
+
+	header = Neos.Neos:ContentCollection {
+		nodePath = 'header'
+	}
+	main = Neos.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	report = Neos.Neos:ContentCollection {
+		nodePath = 'report'
+	}
+
+	imageUri = Neos.Neos:ImageUri {
+		asset = ${node.properties.image}
+	}
+
+	form = Sfi.Sfi:FundraisingPaymentForm {
+		projectId = ${node.properties.uriPathSegment}
+		moto = ${node.properties.moto}
+		@if.isRunning = ${node.properties.complete ? false : true}
+	}
+
+	complete = ${node.properties.complete}
+
+	otherProjects = Sfi.Sfi:FundraisingProjectsListing {
+		collection.@process.filterOutSelf = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
+	}
+
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}

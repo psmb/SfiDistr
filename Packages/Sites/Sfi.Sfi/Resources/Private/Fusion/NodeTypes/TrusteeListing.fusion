@@ -1,0 +1,23 @@
+prototype(Sfi.Sfi:TrusteeShort) < prototype(Sfi.Sfi:PersonShort) {
+}
+
+prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Collection) {
+	@process.tmpl = ${'<ul class="medium-block-grid-2 large-block-grid-3">' + value + '</ul>'}
+	collection = ${node.properties.trustees}
+	itemName = 'node'
+	itemRenderer = Sfi.Sfi:TrusteeShort {
+		@process.li = ${'<li>' + value + '</li>'}
+	}
+
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:PageTag')}
+		}
+	}
+}

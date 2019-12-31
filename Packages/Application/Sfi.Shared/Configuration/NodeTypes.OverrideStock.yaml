@@ -58,16 +58,16 @@
       defaultValue: '<h2>Заголовок</h2>'
       ui:
         inlineEditable: true
-        aloha:
-          format:
-            p: false
-            h1: false
-            h2: true
-            h3: true
-            h4: true
-          link:
-            a: true
         alignment: {  }
+        inline:
+          editorOptions:
+            formatting:
+              p: false
+              h1: false
+              h2: true
+              h3: true
+              h4: true
+              a: true
 'Neos.NodeTypes:TextWithImage':
   abstract: true
 'Neos.NodeTypes:Headline':
@@ -106,7 +106,7 @@
     isBlockquote:
       type: boolean
       ui:
-        label: Является цитатой
+        label: 'Является цитатой'
         reloadIfChanged: true
         inspector:
           group: variant
@@ -128,11 +128,11 @@
               Paragraph--Large:
                 label: Большой
               ParagraphAlt:
-                label: Альтернативный средний
+                label: 'Альтернативный средний'
               ParagraphAlt--Small:
-                label: Альтернативный маленький
+                label: 'Альтернативный маленький'
               ParagraphAlt--Large:
-                label: Альтернативный большой
+                label: 'Альтернативный большой'
 'Neos.NodeTypes:ContentReferences':
   ui:
     group: lists

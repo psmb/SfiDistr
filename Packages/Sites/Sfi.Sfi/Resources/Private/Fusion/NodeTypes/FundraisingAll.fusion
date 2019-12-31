@@ -1,0 +1,18 @@
+prototype(Sfi.Sfi:FundraisingAll)>
+prototype(Sfi.Sfi:FundraisingAll) < prototype(Neos.Fusion:Array) {
+	@process.cssHack = ${'<style>.breadcrumbsWrapper{border-bottom: 1px solid #ccc; margin-top: 18px}</style>' + value}
+	@process.wrapAll = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
+	title = ${'<div class="H1 textAlign-center marginVertical-triple paddingBottom-single">' + node.properties.title + '</div>'}
+
+	main = Neos.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+
+	allProjects = Sfi.Sfi:FundraisingProjectsListing
+
+	form = Sfi.Sfi:FundraisingPaymentForm {
+		projectId = 'all'
+	}
+
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}

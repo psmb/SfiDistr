@@ -1,3 +1,4 @@
+
 'Sfi.Sfi:AlmanacEntry':
   superTypes:
     'Neos.Neos:Content': true
@@ -26,78 +27,83 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Имя автора статьи'
+        inline:
+          editorOptions:
+            placeholder: 'Имя автора статьи'
     authorInfo:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Дополнительная информация об авторе'
+        inline:
+          editorOptions:
+            placeholder: 'Дополнительная информация об авторе'
     author2:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Имя автора статьи 2'
+        inline:
+          editorOptions:
+            placeholder: 'Имя автора статьи 2'
     authorInfo2:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Дополнительная информация об авторе 2'
+        inline:
+          editorOptions:
+            placeholder: 'Дополнительная информация об авторе 2'
     author3:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Имя автора статьи 3'
+        inline:
+          editorOptions:
+            placeholder: 'Имя автора статьи 3'
     authorInfo3:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Дополнительная информация об авторе 3'
+        inline:
+          editorOptions:
+            placeholder: 'Дополнительная информация об авторе 3'
     title:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Название статьи'
+        inline:
+          editorOptions:
+            placeholder: 'Название статьи'
     source:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Номера страниц в печатной версии'
+        inline:
+          editorOptions:
+            placeholder: 'Номера страниц в печатной версии'
     DOI:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'DOI'
+        inline:
+          editorOptions:
+            placeholder: DOI
     annotation:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Аннотация'
+        inline:
+          editorOptions:
+            placeholder: Аннотация
     keywords:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Ключевые слова'
-    source:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Номера страниц в печатной версии'
+        inline:
+          editorOptions:
+            placeholder: 'Ключевые слова'
     asset:
       type: Neos\Media\Domain\Model\Asset
       ui:
         inspector:
           group: asset
-        label: Файл статьи (желательно pdf)
+        label: 'Файл статьи (желательно pdf)'
         reloadIfChanged: true

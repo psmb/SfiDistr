@@ -1,0 +1,44 @@
+prototype(Sfi.Sfi:PaperWithAuthor.AuthorDegree) < prototype(Neos.Fusion:Value) {
+	value = Neos.Fusion:Collection {
+		collection = Neos.Fusion:RawArray {
+			1 = ${String.stripTags(node.properties.author.properties.degree)}
+			4 = ${String.stripTags(node.properties.author.properties.position)}
+		}
+		itemName = 'item'
+		itemRenderer = ${item && item + (iterator.isLast ? '' : '. ')}
+	}
+}
+
+prototype(Sfi.Sfi:PaperWithAuthor) {
+	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/PaperWithAuthor/PaperWithAuthor.html'
+	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
+	authorName = Neos.Fusion:Tag {
+		tagName = 'a'
+		attributes.href = Neos.Neos:NodeUri {
+			node = ${node.properties.author}
+		}
+		content = ${String.stripTags(node.properties.author.properties.title)}
+		@if.setAuthor = ${node.properties.author}
+	}
+
+	authorDegree = Sfi.Sfi:PaperWithAuthor.AuthorDegree
+
+	authorInfo = Sfi.Sfi:PaperWithAuthor.AuthorInfo {
+		@if.setAuthor = ${node.properties.author}
+	}
+
+
+	main = Neos.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	@process.setAuthor = ${node.properties.author ? value : '<h1 class="H3 color-primary">Выбирите автора</h1>'}
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}
+
+prototype(Neos.Neos:PrimaryContent) {
+	Paper {
+		@position = 'before default'
+		condition = ${q(node).is('[instanceof Sfi.Sfi:PaperWithAuthor]')}
+		type = 'Sfi.Sfi:PaperWithAuthor'
+	}
+}

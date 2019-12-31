@@ -1,39 +1,63 @@
 version: "3.4"
 services:
-    redis:
-        image: redis:3.2
-    db:
-        image: mariadb:10.3
-        volumes:
-            - db-data:/var/lib/mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: pass
-            MYSQL_DATABASE: db
-            MYSQL_USER: admin
-            MYSQL_PASSWORD: pass
-    web:
-        labels:
-            - "neos"
-        volumes:
-            - /data/www
-            - ./Packages/Application/Psmb.Footnote/:/data/www/Packages/Application/Psmb.Footnote/:ro,delegated
-            - ./Packages/Sites/:/data/www/Packages/Sites/:ro,delegated
-        image: dimaip/sfidistr:latest
-        hostname: "sfiru"
-        networks:
-            - default
-            - main
-        environment:
-            AWS_ACCESS_KEY_ID: qMep9nZSpYV4VRaf3A8huE
-            AWS_SECRET_ACCESS_KEY: dbQNApF2Z5qMoidPaVZLCj4vQs86Vbcmz96CtWk194yJ
-        ports:
-            - "1001:80"
-        depends_on:
-            - db
-            - redis
+  redis:
+    image: redis:3.2
+  db:
+    image: mariadb:10.3
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: pass
+  web:
+    labels:
+      - "neos"
+    volumes:
+      - /data/www-provisioned/Web/_Resources
+    image: dimaip/sfidistr:latest
+    hostname: 'sfiru'
+    networks:
+      - default
+      - main
+    secrets:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - SFI_SES_PASSWORD
+      - GA_SECRET
+      - GA_DEVKEY
+      - SFI_API_AUTH
+    deploy:
+      update_config:
+        order: start-first
+      labels:
+        - "traefik.enable=true"
+        - "traefik.port=80"
+        - "traefik.default.protocol=http"
+        - "traefik.docker.network=main"
+        - "traefik.frontend.rule=Host:sfi.ru,www.sfi.ru,dev.sfi.ru"
+    ports:
+      - '80'
+    depends_on:
+      - db
+      - redis
 volumes:
-    db-data:
+  db-data:
+secrets:
+  AWS_ACCESS_KEY_ID:
+    external: true
+  AWS_SECRET_ACCESS_KEY:
+    external: true
+  SFI_SES_PASSWORD:
+    external: true
+  GA_SECRET:
+    external: true
+  GA_DEVKEY:
+    external: true
+  SFI_API_AUTH:
+    external: true
 networks:
-    main:
-        external:
-            name: main
+  main:
+    external:
+      name: main

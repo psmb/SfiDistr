@@ -1,3 +1,4 @@
+
 'Sfi.Sfi:PageDonate':
   superTypes:
     'Sfi.Sfi:AbstractPage': true
@@ -22,22 +23,19 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Мото текст'
-          format:
-            strong: TRUE
-            em: TRUE
-            u: FALSE
-            sub: TRUE
-            sup: TRUE
-            p: FALSE
-            h1: FALSE
-            h2: FALSE
-            h3: FALSE
-            pre: FALSE
-            removeFormat: FALSE
-          table: {  }
-          list: {  }
-          link:
-            a: TRUE
-          alignment: {  }
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: true
+              sub: true
+              sup: true
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: true
+              underline: false
+            placeholder: 'Мото текст'

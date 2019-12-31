@@ -1,0 +1,6 @@
+prototype(Sfi.Site:Images) < prototype(Neos.Fusion:Tag) {
+	attributes.class = 'Images'
+	content = Neos.Neos:ContentCollectionRenderer {
+		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+	}
+}

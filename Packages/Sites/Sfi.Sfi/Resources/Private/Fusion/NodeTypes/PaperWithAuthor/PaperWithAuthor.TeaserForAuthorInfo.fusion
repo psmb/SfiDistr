@@ -1,0 +1,9 @@
+prototype(Sfi.Sfi:PaperWithAuthor.TeaserForAuthorInfo) < prototype(Neos.Fusion:Template) {
+	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/PaperWithAuthor/PaperWithAuthor.TeaserForAuthorInfo.html'
+	title = ${String.stripTags(q(node).property('title'))}
+	teaser = ${String.stripTags(q(node).property('teaser'))}
+	parent = ${q(node).parent().property('title')}
+	linkUri = Neos.Neos:NodeUri {
+		node = ${node}
+	}
+}

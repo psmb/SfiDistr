@@ -1,9 +1,0 @@
-prototype(Sfi.Sfi:NewsletterObject) < prototype(Neos.Fusion:Template) {
-	templatePath = 'resource://Sfi.Sfi/Private/Fusion/TypoScriptObjects/NewsletterObject.html'
-	main = ContentCollection {
-		nodePath = 'main'
-	}
-	@process.layout = Sfi.Sfi:MailLayout {
-		logoAfter = true
-	}
-}
