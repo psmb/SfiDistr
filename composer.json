@@ -20,8 +20,8 @@
         }
     ],
     "require": {
-        "neos/neos-development-collection": "3.3.x-dev",
-        "neos/flow-development-collection": "4.3.x-dev",
+        "neos/neos-development-collection": "4.3.x-dev",
+        "neos/flow-development-collection": "5.3.x-dev",
         "neos/kickstarter": "@dev",
         "neos/party": "@dev",
         "neos/imagine": "@dev",
@@ -38,7 +38,7 @@
         "psmb/newsletter": "dev-master",
         "psmb/bookmarklet": "^0.1",
         "opsdev/cache-breaker": "^3.0",
-        "neos/neos-ui": "^2",
+        "neos/neos-ui": "^4",
         "sandstorm/optimizedrediscachebackend": "^0.0.3",
         "packagefactory/atomicfusion": "^2.0",
         "flowpack/listable": "dev-sfi-legacy",
