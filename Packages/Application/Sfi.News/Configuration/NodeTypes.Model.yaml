@@ -1,45 +1,24 @@
 # Define Aloha presets to reuse throughout the document
 
-blah: &alohaPlain
+blah:
   placeholder: 'Текст тут'
   format:
-    strong: FALSE
-    em: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    strong: true
+    em: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: true
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Текст тут'
-  format:
-    strong: TRUE
-    em: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.News:Category':
   superTypes:
     'Neos.Neos:Document': true
@@ -96,12 +75,12 @@ blah: &alohaRich
     template:
       childNodes:
         cover:
-          name: 'coverCollection'
+          name: coverCollection
           childNodes:
             firstImageNode:
               type: 'Neos.NodeTypes:Image'
         main:
-          name: 'main'
+          name: main
           childNodes:
             firstTextNode:
               type: 'Neos.NodeTypes:Text'
@@ -117,47 +96,68 @@ blah: &alohaRich
     title:
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Заголовок новости'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              u: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+            placeholder: 'Заголовок новости'
     teaser:
       type: string
       ui:
-        label: 'Тизер'
+        label: Тизер
         inlineEditable: true
         inspector:
           group: null
-        aloha:
-          <<: *alohaPlain
-          placeholder: Тизер
-
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              u: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+            placeholder: Тизер
     lead:
       type: string
       ui:
-        label: 'Лид'
+        label: Лид
         inlineEditable: true
         inspector:
           group: null
-        aloha:
-          format:
-            strong: TRUE
-            em: TRUE
-            u: FALSE
-            sub: TRUE
-            sup: TRUE
-            p: FALSE
-            h1: FALSE
-            h2: FALSE
-            h3: FALSE
-            pre: FALSE
-            removeFormat: FALSE
-          table: {  }
-          list: {  }
-          link:
-            a: TRUE
-          alignment: {  }
-          placeholder: Лид
-
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: true
+              u: false
+              sub: true
+              sup: true
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: true
+            placeholder: Лид
     date:
       type: DateTime
       defaultValue: now
@@ -248,7 +248,7 @@ blah: &alohaRich
     important:
       type: boolean
       ui:
-        label: Важная (в карусель)
+        label: 'Важная (в карусель)'
         inspector:
           group: news
     importantSort:
@@ -257,7 +257,6 @@ blah: &alohaRich
         label: 'Сортировка в карусели (1-3)'
         inspector:
           group: news
-
 'Sfi.News:AuthorMixin':
   abstract: true
   properties:
@@ -266,16 +265,17 @@ blah: &alohaRich
       ui:
         label: 'Автор новости'
         inlineEditable: true
-        aloha:
-          placeholder: 'Автор новости'
+        inline:
+          editorOptions:
+            placeholder: 'Автор новости'
     translator:
       type: string
       ui:
-        label: 'Переводчик'
+        label: Переводчик
         inlineEditable: true
-        aloha:
-          placeholder: 'Переводчик'
-
+        inline:
+          editorOptions:
+            placeholder: Переводчик
 'Sfi.News:AbstractNews':
   abstract: true
   superTypes:
@@ -310,8 +310,9 @@ blah: &alohaRich
       ui:
         label: 'Автор фото'
         inlineEditable: true
-        aloha:
-          placeholder: 'Автор фото'
+        inline:
+          editorOptions:
+            placeholder: 'Автор фото'
     originalIdentifier:
       type: string
 'Sfi.News:Announcement':
@@ -324,9 +325,22 @@ blah: &alohaRich
     place:
       ui:
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Место анонса'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              u: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+            placeholder: 'Место анонса'
     dateStart:
       type: DateTime
       ui:
