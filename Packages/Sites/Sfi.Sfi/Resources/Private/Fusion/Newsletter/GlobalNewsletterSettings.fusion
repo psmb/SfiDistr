@@ -14,10 +14,10 @@ prototype(Psmb.Newsletter:MailRenderer) {
 	prototype(Psmb.Term:ReplaceTerms) {
 		absolute = ${true}
 	}
-	prototype(NodeUri) {
+	prototype(Neos.Neos:NodeUri) {
 		absolute = ${true}
 	}
-	prototype(ConvertUris) {
+	prototype(Neos.Neos:ConvertUris) {
 		absolute = ${true}
 	}
 }

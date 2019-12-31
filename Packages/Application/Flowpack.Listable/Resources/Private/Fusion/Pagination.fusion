@@ -5,7 +5,7 @@ prototype(Flowpack.Listable:PaginationArray) {
     count = ''
     itemsPerPage = ''
 }
-prototype(Flowpack.Listable:Pagination) < prototype(PackageFactory.AtomicFusion:Component) {
+prototype(Flowpack.Listable:Pagination) < prototype(Neos.Fusion:Component) {
     collection = 'to-be-set'
     maximumNumberOfLinks = 15
     itemsPerPage = 24

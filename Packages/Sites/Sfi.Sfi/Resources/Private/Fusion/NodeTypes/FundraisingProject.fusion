@@ -19,7 +19,7 @@ prototype(Sfi.Sfi:FundraisingProject) {
 		nodePath = 'report'
 	}
 
-	imageUri = ImageUri {
+	imageUri = Neos.Neos:ImageUri {
 		asset = ${node.properties.image}
 	}
 

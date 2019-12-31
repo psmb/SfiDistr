@@ -14,7 +14,7 @@ prototype(Sfi.Sfi:PaperWithAuthor) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 	authorName = Neos.Fusion:Tag {
 		tagName = 'a'
-		attributes.href = NodeUri {
+		attributes.href = Neos.Neos:NodeUri {
 			node = ${node.properties.author}
 		}
 		content = ${String.stripTags(node.properties.author.properties.title)}
@@ -35,7 +35,7 @@ prototype(Sfi.Sfi:PaperWithAuthor) {
 	@process.contentElementWrapping = ContentElementWrapping
 }
 
-prototype(PrimaryContent) {
+prototype(Neos.Neos:PrimaryContent) {
 	Paper {
 		@position = 'before default'
 		condition = ${q(node).is('[instanceof Sfi.Sfi:PaperWithAuthor]')}

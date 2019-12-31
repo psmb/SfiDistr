@@ -3,7 +3,7 @@ prototype(Sfi.Sfi:PaperWithAuthor.TeaserForAuthorInfo) < prototype(Neos.Fusion:T
 	title = ${String.stripTags(q(node).property('title'))}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
 	parent = ${q(node).parent().property('title')}
-	linkUri = NodeUri {
+	linkUri = Neos.Neos:NodeUri {
 		node = ${node}
 	}
 }

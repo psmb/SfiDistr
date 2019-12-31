@@ -15,7 +15,7 @@ prototype(Sfi.Sfi:Newsletter) {
 			@process.tmpl = ${'<li>' + value + '</li>'}
 			tagName = 'a'
 			attributes.class = 'Link'
-			attributes.href = NodeUri {
+			attributes.href = Neos.Neos:NodeUri {
 				node = ${node}
 			}
 			content = ${node.properties.title}

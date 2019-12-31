@@ -31,6 +31,9 @@
           group: 'meta'
 
 'Neos.Neos:Node':
+  options:
+    fusion:
+      prototypeGenerator: Neos\Neos\Domain\Service\DefaultPrototypeGenerator
   ui:
     inspector:
       tabs:
@@ -177,3 +180,8 @@
           position: 2
           editorOptions:
             format: 'Y-m-d'
+
+Neos.Neos:Document:
+  options:
+    fusion:
+      prototypeGenerator: Sfi\Sfi\LegacyDocumentPrototypeGenerator

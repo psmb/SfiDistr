@@ -6,8 +6,8 @@
         "neos/neos": "*",
         "neos/neos-ui": "*",
         "neos/neos-nodetypes": "*",
-        "opsdev/cache-breaker": "*",
         "flownative/aws-s3": "*",
+        "flowpack/listable": "*",
         "psmb/newsletter": "*"
     },
     "autoload": {

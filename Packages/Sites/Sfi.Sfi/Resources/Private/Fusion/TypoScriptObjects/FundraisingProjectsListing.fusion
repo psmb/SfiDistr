@@ -8,10 +8,10 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
     itemRenderer = Neos.Fusion:Array {
         @process.wrap = ${'<li style="' + (node.properties.complete ? 'opacity: 0.5' : '') + '" class="FundraisingProjectSmall marginBottom-double"><div class="FundraisingProjectSmall-inner marginHorizontal-single"><a href="' + this.nodeUri + '"><div>' + value + '</div></a></div></li>'}
         @ignoreProperties = ${['thumbUri', 'nodeUri']}
-        nodeUri = NodeUri {
+        nodeUri = Neos.Neos:NodeUri {
             node = ${node}
         }
-        thumbUri = ImageUri {
+        thumbUri = Neos.Neos:ImageUri {
             asset = ${node.properties.thumb}
             width = 640
             height = 457

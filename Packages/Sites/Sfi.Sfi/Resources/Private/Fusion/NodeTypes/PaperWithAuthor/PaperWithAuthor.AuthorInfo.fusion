@@ -5,14 +5,14 @@ prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfo) < prototype(Neos.Fusion:Template) 
     teaser = ${String.stripTags(q(node).property('teaser'))}
     authorName = ${String.stripTags(node.properties.author.properties.title)}
     authorDegree = Sfi.Sfi:PaperWithAuthor.AuthorDegree
-    imageUri = ImageUri {
+    imageUri = Neos.Neos:ImageUri {
         asset = ${node.properties.author.properties.squareImage}
         maximumWidth = 100
         maximumHeight = 100
         allowCropping = true
     }
 
-    authorLink = NodeUri {
+    authorLink = Neos.Neos:NodeUri {
         node = ${node.properties.author}
     }
 

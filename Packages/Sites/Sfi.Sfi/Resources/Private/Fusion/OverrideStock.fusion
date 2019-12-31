@@ -8,7 +8,7 @@ prototype(Neos.Neos:Content) {
 prototype(Neos.NodeTypes:ContentReferences) {
 	referenceNodes.itemRenderer = Neos.Fusion:Value {
 		value = Neos.Neos:ContentCase
-		link = NodeUri {
+		link = Neos.Neos:NodeUri {
 			@context.target = ${q(node).parents('[instanceof Neos.Neos:Document]').get(0)}
 			node = ${target}
 			@process.link = ${'<a style="color: red; font-size: 11px; z-index: 10; position: absolute; right: 0" href="' + value + '">Источник</a>'}

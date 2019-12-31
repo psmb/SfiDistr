@@ -76,7 +76,7 @@ prototype(Sfi.News:ThumbnailImageUri) < prototype(Neos.Fusion:Case) {
 	}
 	default {
 		condition = ${true}
-		renderer = ImageUri {
+		renderer = Neos.Neos:ImageUri {
 			asset = ${thumb}
 			allowCropping = true
 			allowUpScaling = true
@@ -119,7 +119,7 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 	thumbnailImage = Neos.Fusion:Tag {
 		tagName = 'img'
 		attributes.src = Sfi.News:ThumbnailImageUri {
-			prototype(ImageUri) {
+			prototype(Neos.Neos:ImageUri) {
 				maximumWidth = 640
 				maximumHeight = 338
 			}
@@ -127,7 +127,7 @@ prototype(Sfi.News:NewsShort) < prototype(Neos.Fusion:Template) {
 		attributes.alt = ${node.properties.title}
 	}
 	thumbnailImageUri = Sfi.News:ThumbnailImageUri {
-		prototype(ImageUri) {
+		prototype(Neos.Neos:ImageUri) {
 			maximumWidth = 640
 			maximumHeight = 338
 		}
@@ -191,7 +191,7 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 				@position = 'start'
 			}
 		}
-		prototype(ImageUri) {
+		prototype(Neos.Neos:ImageUri) {
 			maximumWidth = 1200
 			maximumHeight = 400
 		}

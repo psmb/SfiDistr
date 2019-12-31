@@ -266,7 +266,7 @@ prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProg
 	}
 }
 
-prototype(PrimaryContent) {
+prototype(Neos.Neos:PrimaryContent) {
 	StudyProgram {
 		@position = 'before default'
 		condition = ${q(node).is('[instanceof Sfi.Sfi:StudyProgram]')}

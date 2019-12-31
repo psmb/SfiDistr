@@ -1,4 +1,4 @@
-prototype(Flowpack.Listable:Listable) < prototype(PackageFactory.AtomicFusion:Component) {
+prototype(Flowpack.Listable:Listable) < prototype(Neos.Fusion:Component) {
     currentPage = ${request.arguments.currentPage || 1}
     # These settings are public API:
     listClass = 'Listable'

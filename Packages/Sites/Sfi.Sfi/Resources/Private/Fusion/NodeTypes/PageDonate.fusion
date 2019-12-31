@@ -6,7 +6,7 @@ prototype(Sfi.Sfi:PageDonate) {
 	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
-	imageUri = ImageUri {
+	imageUri = Neos.Neos:ImageUri {
 		asset = ${node.properties.image}
 	}
 

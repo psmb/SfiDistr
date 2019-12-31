@@ -7,7 +7,7 @@ prototype(Sfi.News:Opengraph) < prototype(Neos.Fusion:Template) {
 		absolute = TRUE
 	}
 	image = Sfi.News:ThumbnailImageUri {
-		prototype(ImageUri) {
+		prototype(Neos.Neos:ImageUri) {
 			maximumWidth = 1200
 			maximumHeight = 630
 		}
