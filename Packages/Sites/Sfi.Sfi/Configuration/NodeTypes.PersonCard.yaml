@@ -1,3 +1,4 @@
+
 'Sfi.Sfi:PersonCard':
   superTypes:
     'Neos.Neos:Content': true
@@ -14,18 +15,20 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: Имя персоны
+        inline:
+          editorOptions:
+            placeholder: 'Имя персоны'
     description:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: Описание (должность, регалии, что угодно)
+        inline:
+          editorOptions:
+            placeholder: 'Описание (должность, регалии, что угодно)'
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: Картинка персона
+        label: 'Картинка персона'
         reloadIfChanged: true
         inspector:
           group: image

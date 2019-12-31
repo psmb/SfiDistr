@@ -1,43 +1,23 @@
-blah: &alohaPlain
+
+blah:
   placeholder: 'Текст тут'
   format:
-    strong: FALSE
-    em: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    strong: true
+    em: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: true
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Текст тут'
-  format:
-    strong: TRUE
-    em: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.Sfi:Redirect':
   ui:
     label: 'Redirect from old news'
@@ -56,18 +36,19 @@ blah: &alohaRich
     inspector:
       groups:
         important:
-          label: 'Карусель'
+          label: Карусель
           position: '0'
   superTypes:
     'Sfi.Sfi:AbstractPage': true
   properties:
     important:
-      type: 'references'
+      type: references
       ui:
         inspector:
-          group: 'important'
+          group: important
           editorOptions:
-            nodeTypes: ['Sfi.News:ImportantMixin']
+            nodeTypes:
+              - 'Sfi.News:ImportantMixin'
         label: 'Новости в карусель'
         reloadIfChanged: true
   childNodes:
@@ -90,10 +71,23 @@ blah: &alohaRich
       type: string
       ui:
         inlineEditable: true
-        label: 'Лид'
-        aloha:
-          <<: *alohaRich
-          placeholder: Лид
+        label: Лид
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: true
+              u: false
+              sub: true
+              sup: true
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: true
+            placeholder: Лид
 'Sfi.Sfi:PageSection':
   superTypes:
     'Sfi.Sfi:AbstractPage': true
@@ -126,7 +120,7 @@ blah: &alohaRich
     inspector:
       groups:
         tag:
-          label: 'Тег'
+          label: Тег
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'

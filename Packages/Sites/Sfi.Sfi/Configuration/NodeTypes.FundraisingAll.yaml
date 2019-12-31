@@ -1,3 +1,4 @@
+
 'Sfi.Sfi:FundraisingAll':
   superTypes:
     'Sfi.Sfi:AbstractPage': true
@@ -11,11 +12,13 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Поддержите проекты СФИ'
+        inline:
+          editorOptions:
+            placeholder: 'Поддержите проекты СФИ'
     description:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Описание раздела'
+        inline:
+          editorOptions:
+            placeholder: 'Описание раздела'

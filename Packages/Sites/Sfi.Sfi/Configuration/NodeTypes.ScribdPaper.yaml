@@ -1,43 +1,23 @@
-blah: &alohaPlain
+
+blah:
   placeholder: 'Текст тут'
   format:
-    strong: FALSE
-    em: FALSE
-    u: FALSE
-    sub: FALSE
-    sup: FALSE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
+    strong: true
+    em: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
   table: {  }
   list: {  }
   link:
-    a: FALSE
+    a: true
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Текст тут'
-  format:
-    strong: TRUE
-    em: TRUE
-    u: FALSE
-    sub: TRUE
-    sup: TRUE
-    p: FALSE
-    h1: FALSE
-    h2: FALSE
-    h3: FALSE
-    pre: FALSE
-    removeFormat: FALSE
-  table: {  }
-  list: {  }
-  link:
-    a: TRUE
-  alignment: {  }
-
 'Sfi.Sfi:ScribdList':
   superTypes:
     'Neos.Neos:Content': true
@@ -46,44 +26,82 @@ blah: &alohaRich
     help:
       message: 'Выбираютс все дочерние работы у данного элемента'
     group: contentBlocks
-
 'Sfi.Sfi:ScribdPaper':
   superTypes:
     'Neos.Neos:Document': true
   ui:
-    label: Бакалаврская (Scribd)
+    label: 'Бакалаврская (Scribd)'
     icon: icon-file-text
     help:
       message: 'Размещается на scribd и вставляется сюда через iframe'
     inspector:
       groups:
         scribd:
-          lable: 'Бакалаврская'
+          lable: Бакалаврская
   properties:
     title:
       type: string
       ui:
         label: 'Имя докладчика'
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Имя докладчика'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              u: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+            placeholder: 'Имя докладчика'
     paperName:
       type: string
       ui:
         label: 'Название работы'
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Название работы'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              u: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+            placeholder: 'Название работы'
     mentor:
       type: string
       ui:
         label: 'Научный руководитель'
         inlineEditable: true
-        aloha:
-          <<: *alohaPlain
-          placeholder: 'Научный руководитель, ФИО и степень'
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              u: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+            placeholder: 'Научный руководитель, ФИО и степень'
     scribd:
       type: string
       ui:

@@ -1,3 +1,4 @@
+
 'Sfi.Sfi:DonateProject':
   superTypes:
     'Neos.Neos:Content': true
@@ -17,11 +18,11 @@
         inspector:
           editorOptions:
             features:
-              resize: TRUE
+              resize: true
             crop:
               aspectRatio:
-                enableOriginal: FALSE
-                allowCustom: TRUE
+                enableOriginal: false
+                allowCustom: true
                 locked:
                   width: 400
                   height: 300
@@ -30,11 +31,11 @@
         inspector:
           editorOptions:
             features:
-              resize: TRUE
+              resize: true
             crop:
               aspectRatio:
-                enableOriginal: FALSE
-                allowCustom: TRUE
+                enableOriginal: false
+                allowCustom: true
                 locked:
                   width: 768
                   height: 300
@@ -43,11 +44,11 @@
         inspector:
           editorOptions:
             features:
-              resize: TRUE
+              resize: true
             crop:
               aspectRatio:
-                enableOriginal: FALSE
-                allowCustom: TRUE
+                enableOriginal: false
+                allowCustom: true
                 locked:
                   width: 1280
                   height: 300
@@ -55,45 +56,39 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          format:
-            strong: TRUE
-            em: TRUE
-            u: FALSE
-            sub: TRUE
-            sup: TRUE
-            p: FALSE
-            h1: FALSE
-            h2: FALSE
-            h3: FALSE
-            pre: FALSE
-            removeFormat: FALSE
-          table: {  }
-          list: {  }
-          link:
-            a: TRUE
-          alignment: {  }
-          placeholder: 'Название проекта'
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: true
+              u: false
+              sub: true
+              sup: true
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: true
+            placeholder: 'Название проекта'
     description:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Описание проекта'
-          format:
-            strong: TRUE
-            em: TRUE
-            u: FALSE
-            sub: TRUE
-            sup: TRUE
-            p: FALSE
-            h1: FALSE
-            h2: FALSE
-            h3: FALSE
-            pre: FALSE
-            removeFormat: FALSE
-          table: {  }
-          list: {  }
-          link:
-            a: TRUE
-          alignment: {  }
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: true
+              u: false
+              sub: true
+              sup: true
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: true
+            placeholder: 'Описание проекта'

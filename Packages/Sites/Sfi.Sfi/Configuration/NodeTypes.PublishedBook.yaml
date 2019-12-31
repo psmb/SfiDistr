@@ -22,14 +22,16 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Название книги'
+        inline:
+          editorOptions:
+            placeholder: 'Название книги'
     imprint:
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Выходные данные'
+        inline:
+          editorOptions:
+            placeholder: 'Выходные данные'
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:

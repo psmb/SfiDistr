@@ -1,3 +1,4 @@
+
 'Sfi.Sfi:AutomatedNewsletter':
   superTypes:
     'Neos.Neos:Document': true
@@ -6,13 +7,13 @@
     main:
       type: 'Neos.Neos:ContentCollection'
   ui:
-    label: Автоматизированная рассылка
+    label: 'Автоматизированная рассылка'
     icon: icon-file-text
     group: news
     inspector:
       groups:
         mailer:
-          label: 'Рассылка'
+          label: Рассылка
           position: 1
   properties:
     interval:
@@ -20,9 +21,10 @@
       ui:
         label: 'Задержка рассылки'
         inspector:
-          group: 'mailer'
+          group: mailer
     title:
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: 'Заголовок рассылки'
+        inline:
+          editorOptions:
+            placeholder: 'Заголовок рассылки'
