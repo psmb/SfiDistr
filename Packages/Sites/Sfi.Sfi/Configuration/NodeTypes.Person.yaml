@@ -103,7 +103,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -113,6 +112,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Свободное поле (отображается в карточке и в разных списках)'
     degree:
       type: string
@@ -123,7 +123,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -133,6 +132,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Ученая степень (degree)'
     degreeTitle:
       type: string
@@ -143,7 +143,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -153,6 +152,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Ученое звание (academStat)'
     position:
       type: string
@@ -163,7 +163,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -173,6 +172,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Должность (post)'
     subject:
       type: string
@@ -183,7 +183,6 @@ blah:
             formatting:
               strong: true
               em: true
-              u: false
               sub: true
               sup: true
               p: false
@@ -193,6 +192,7 @@ blah:
               pre: false
               removeFormat: false
               a: true
+              underline: false
             placeholder: 'Преподаваемая дисциплина (teachingDiscipline)'
     experience:
       type: string
@@ -203,7 +203,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -213,6 +212,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Стаж работы общий (genExperience)'
     experienceSpeciality:
       type: string
@@ -223,7 +223,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -233,6 +232,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Стаж работы по специальности (specExperience)'
     experienceSfi:
       type: string
@@ -243,7 +243,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -253,6 +252,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Стаж работы в СФИ'
     education:
       type: string
@@ -263,7 +263,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -273,6 +272,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Направление подготовки и/или специальности (employeeQualification)'
     educationUpgrade:
       type: string
@@ -283,7 +283,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -293,6 +292,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Повышение квалификации и/или профессиональная переподготовка (profDevelopment)'
     teachingLevel:
       type: string
@@ -303,7 +303,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -313,6 +312,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Уровень образования (teachingLevel)'
     teachingQual:
       type: string
@@ -323,7 +323,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -333,6 +332,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Квалификация (teachingQual)'
     telephone:
       type: string
@@ -343,7 +343,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -353,6 +352,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: Телефон
     email:
       type: string
@@ -363,7 +363,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -373,6 +372,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: E-mail
     quote:
       type: string
@@ -384,7 +384,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -394,6 +393,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: Цитата
     image:
       type: Neos\Media\Domain\Model\ImageInterface

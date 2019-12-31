@@ -77,7 +77,6 @@ blah:
             formatting:
               strong: true
               em: true
-              u: false
               sub: true
               sup: true
               p: false
@@ -87,6 +86,7 @@ blah:
               pre: false
               removeFormat: false
               a: true
+              underline: false
             placeholder: Лид
 'Sfi.Sfi:PageSection':
   superTypes:

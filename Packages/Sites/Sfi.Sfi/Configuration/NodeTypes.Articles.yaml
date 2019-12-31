@@ -54,7 +54,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -64,6 +63,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Имя докладчика'
     authorDegree:
       type: string
@@ -75,7 +75,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -85,6 +84,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Научная степень докладчика'
     authorFrom:
       type: string
@@ -96,7 +96,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -106,6 +105,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Место откуда автор'
 'Sfi.Sfi:Poster':
   superTypes:

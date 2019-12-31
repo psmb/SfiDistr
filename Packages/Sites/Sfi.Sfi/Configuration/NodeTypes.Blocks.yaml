@@ -43,7 +43,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -53,6 +52,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Имя автора'
     authorDescription:
       type: string
@@ -64,7 +64,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -74,6 +73,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Подробнее об авторе (степень и др)'
     text:
       type: string

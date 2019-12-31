@@ -28,7 +28,6 @@
             formatting:
               strong: true
               em: true
-              u: false
               sub: true
               sup: true
               p: false
@@ -38,4 +37,5 @@
               pre: false
               removeFormat: false
               a: true
+              underline: false
             placeholder: 'Мото текст'

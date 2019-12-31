@@ -74,7 +74,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -84,6 +83,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Тут должен быть лид к программе'
     level:
       type: string
@@ -94,7 +94,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -104,6 +103,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Уровень программы?'
     specialityId:
       type: string
@@ -114,7 +114,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -124,6 +123,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Код специальности'
     specialityName:
       type: string
@@ -134,7 +134,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -144,6 +143,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Наименование специальности, направления подготовки'
     accreditationDate:
       type: string
@@ -154,7 +154,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -164,6 +163,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Срок действия государственной аккредитации'
     duration:
       type: string
@@ -174,7 +174,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -184,6 +183,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Нормативный срок обучения по всем формам обучения'
     price:
       type: string
@@ -194,7 +194,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -204,6 +203,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: Стоимость
     certificate:
       type: string
@@ -214,7 +214,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -224,6 +223,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Документ по завершении'
     nextDate:
       type: string
@@ -234,7 +234,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -244,6 +243,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Ближайший набор'
     studyBeginDate:
       type: string
@@ -254,7 +254,6 @@
             formatting:
               strong: true
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -264,6 +263,7 @@
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Срок начала занятий'
     noLink:
       type: boolean
