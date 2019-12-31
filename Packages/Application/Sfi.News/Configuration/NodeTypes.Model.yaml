@@ -101,7 +101,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -111,6 +110,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Заголовок новости'
     teaser:
       type: string
@@ -124,7 +124,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -134,6 +133,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: Тизер
     lead:
       type: string
@@ -147,7 +147,6 @@ blah:
             formatting:
               strong: true
               em: true
-              u: false
               sub: true
               sup: true
               p: false
@@ -157,6 +156,7 @@ blah:
               pre: false
               removeFormat: false
               a: true
+              underline: false
             placeholder: Лид
     date:
       type: DateTime
@@ -330,7 +330,6 @@ blah:
             formatting:
               strong: false
               em: false
-              u: false
               sub: false
               sup: false
               p: false
@@ -340,6 +339,7 @@ blah:
               pre: false
               removeFormat: false
               a: false
+              underline: false
             placeholder: 'Место анонса'
     dateStart:
       type: DateTime
