@@ -16,3 +16,5 @@ prototype(Neos.NodeTypes:ContentReferences) {
 		@process.addLink = ${node.context.inBackend ? this.link + value : value}
 	}
 }
+
+root.documentType>

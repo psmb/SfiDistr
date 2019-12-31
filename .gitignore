@@ -33,6 +33,7 @@ Configuration/Development/Settings.yaml
 /Build/Resources
 /Data/
 /Packages/Application/*
+!/Packages/Application/Flowpack.Listable/
 !/Packages/Application/Sfi.News/
 !/Packages/Application/Sfi.Shared/
 !/Packages/Application/Sfi.Sber/

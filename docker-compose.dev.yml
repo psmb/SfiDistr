@@ -1,0 +1,36 @@
+version: "3.4"
+services:
+    redis:
+        image: redis:3.2
+    db:
+        image: mariadb:10.3
+        volumes:
+            - db-data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: pass
+            MYSQL_DATABASE: db
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: pass
+    web:
+        labels:
+            - "neos"
+        volumes:
+            - /data/www
+            - ./composer.json:/data/www/composer.json:ro,delegated
+            - ./Packages/Sites/:/data/www/Packages/Sites/:ro,delegated
+        image: dimaip/sfidistr:latest
+        hostname: "sfiru"
+        networks:
+            - default
+            - main
+        ports:
+            - "1001:80"
+        depends_on:
+            - db
+            - redis
+volumes:
+    db-data:
+networks:
+    main:
+        external:
+            name: main

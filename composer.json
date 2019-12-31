@@ -12,11 +12,11 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/Flowpack/Flowpack.Listable"
+            "url": "https://github.com/Flowpack/mustache"
         },
         {
             "type": "git",
-            "url": "https://github.com/Flowpack/mustache"
+            "url": "https://github.com/dimaip/Yeebase.Graylog"
         }
     ],
     "require": {
@@ -37,24 +37,18 @@
         "psmb/term": "^3.0",
         "psmb/newsletter": "dev-master",
         "psmb/bookmarklet": "^0.1",
-        "opsdev/cache-breaker": "^3.0",
+        "flowpack/cachebuster": "^1.0",
         "neos/neos-ui": "^4",
-        "sandstorm/optimizedrediscachebackend": "^0.0.3",
-        "packagefactory/atomicfusion": "^2.0",
-        "flowpack/listable": "dev-sfi-legacy",
-        "yeebase/graylog": "^2.4",
+        "sandstorm/optimizedrediscachebackend": "^1.1.0",
+        "yeebase/graylog": "dev-patch-2",
         "flowpack/nodetemplates": "@dev",
         "psmb/createnodebutton": "@dev",
         "flownative/aws-s3": "2.*",
         "psmb/registry": "^2.1.1",
-        "flowpack/mustache": "dev-master",
-        "neos/fusion-afx": "^1.0",
+        "neos/fusion-afx": "^1.4",
         "aertmann/history": "^2.0",
         "ttree/dimensionkeeper": "^1.0",
         "psmb/footnote": "^0.3.0"
-    },
-    "suggest": {
-        "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },
     "scripts": {
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
