@@ -39,7 +39,7 @@ prototype(Flowpack.Listable:Pagination) < prototype(Neos.Fusion:Component) {
                 renderer = Neos.Fusion:Tag {
                     @process.tmpl = ${'<li class="' + props.itemClass + '">' + value + '</li>'}
                     tagName = 'a'
-                    attributes.href = NodeUri {
+                    attributes.href = Neos.Neos:NodeUri {
                         node = ${documentNode}
                         additionalParams = Neos.Fusion:RawArray {
                             currentPage = ${i}
