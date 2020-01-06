@@ -1,4 +1,5 @@
 <?php
+
 namespace Flowpack\Listable\Fusion;
 
 use Neos\Flow\Annotations as Flow;
@@ -11,10 +12,10 @@ class PaginationArrayImplementation extends AbstractFusionObject
 	 */
 	public function evaluate()
 	{
-		$maximumNumberOfLinks = $this->tsValue('maximumNumberOfLinks') - 2;
-		$itemsPerPage = $this->tsValue('itemsPerPage');
-		$count = $this->tsValue('count');
-		$currentPage = $this->tsValue('currentPage');
+		$maximumNumberOfLinks = $this->fusionValue('maximumNumberOfLinks') - 2;
+		$itemsPerPage = $this->fusionValue('itemsPerPage');
+		$count = $this->fusionValue('count');
+		$currentPage = $this->fusionValue('currentPage');
 		if ($count > 0 !== true) {
 			return [];
 		}
@@ -31,8 +32,8 @@ class PaginationArrayImplementation extends AbstractFusionObject
 		if ($displayRangeEnd > $numberOfPages) {
 			$displayRangeStart -= ($displayRangeEnd - $numberOfPages);
 		}
-		$displayRangeStart = (integer)max($displayRangeStart, 1);
-		$displayRangeEnd = (integer)min($displayRangeEnd, $numberOfPages);
+		$displayRangeStart = (int) max($displayRangeStart, 1);
+		$displayRangeEnd = (int) min($displayRangeEnd, $numberOfPages);
 		$links = \range($displayRangeStart, $displayRangeEnd);
 		if ($displayRangeStart > 2) {
 			array_unshift($links, "...");
