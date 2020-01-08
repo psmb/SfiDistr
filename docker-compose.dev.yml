@@ -15,13 +15,8 @@ services:
         labels:
             - "neos"
         volumes:
-            - /data/www
-            - ./composer.json:/data/www/composer.json:ro,delegated
-            - ./Packages/Application/Sfi.News:/data/www/Packages/Application/Sfi.News/:ro,delegated
-            - ./Packages/Application/Sfi.Shared:/data/www/Packages/Application/Sfi.Shared/:ro,delegated
-            - ./Packages/Application/Sfi.Sber:/data/www/Packages/Application/Sfi.Sber/:ro,delegated
-            - ./Packages/Application/Flowpack.Listable:/data/www/Packages/Application/Flowpack.Listable/:ro,delegated
-            - ./Packages/Sites/:/data/www/Packages/Sites/:ro,delegated
+            - ./:/data/www:rw,delegated
+            - /data/www/Data
         image: dimaip/sfidistr:latest
         hostname: "sfiru"
         networks:
