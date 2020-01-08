@@ -137,7 +137,7 @@
   ui:
     group: lists
 'Neos.Neos:Document':
-  label: '${node.properties.navTitle ? node.properties.navTitle : node.properties.title}'
+  label: '${(node.properties.navTitle ? node.properties.navTitle : node.properties.title) || ""}'
   properties:
     navTitle:
       type: string
