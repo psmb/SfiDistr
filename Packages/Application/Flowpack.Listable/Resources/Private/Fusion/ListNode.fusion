@@ -33,10 +33,10 @@ prototype(Flowpack.Listable:ListNode) < prototype(Flowpack.Listable:List) {
             3 = 'site'
         }
         entryTags {
-            1 = ${Neos.Caching.nodeTag(node.identifier)}
-            2 = ${Neos.Caching.nodeTag(documentNode.identifier)}
-            3 = ${Neos.Caching.nodeTag(rootNode.identifier)}
-            4 = ${Neos.Caching.descendantOfTag(rootNode.identifier)}
+            1 = ${Neos.Caching.nodeTag(node)}
+            2 = ${Neos.Caching.nodeTag(documentNode)}
+            3 = ${Neos.Caching.nodeTag(rootNode)}
+            4 = ${Neos.Caching.descendantOfTag(rootNode)}
         }
     }
     @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
