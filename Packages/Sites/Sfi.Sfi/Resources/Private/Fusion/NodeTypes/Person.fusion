@@ -107,7 +107,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 	level = 'to-be-set'
 	@context.level = ${String.replace(String.replace(this.level, '(', '\('), ')', '\)')}
 	@context.title = ${this.title}
-	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('([isProfessor = TRUE][isGph = TRUE])[subject *= "' + this.level + '"]').get()}
+	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('[isProfessor = TRUE][subject *= "' + this.level + '"]').get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Component {
 		nodeUri = Neos.Neos:NodeUri {
