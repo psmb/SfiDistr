@@ -62,6 +62,24 @@ prototype(Sfi.Sfi:PersonShort) < prototype(Neos.Neos:Content) {
 	image = ${node.properties.image ? node.properties.image : q(node).find('[instanceof Neos.NodeTypes:Image]').first().property('image')}
 }
 
+prototype(Sfi.Sfi:PersonGphShort) < prototype(Neos.Neos:ContentComponent) {
+	title = ${String.stripTags(q(node).property('title'))}
+	degree = ${String.stripTags(q(node).property('degree'))}
+	position = ${String.stripTags(q(node).property('position'))}
+	freeText = ${q(node).property('freeText')}
+
+	renderer = afx`
+	<div class="MediaPerson">
+		<div class="MediaPerson-Body">
+			<h3 class="MediaPerson-Title">{title}</h3>
+			<div class="ServiceEm">{position}</div>
+			<div class="ServiceEm">{degree}</div>
+			<div class="ServiceEm">{freeText}</div>
+		</div>
+	</div>
+	`
+}
+
 prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
 	renderer = Neos.Fusion:Array {
 		1 = Sfi.Sfi:PersonFormalListingByLevel {
@@ -89,7 +107,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 	level = 'to-be-set'
 	@context.level = ${String.replace(String.replace(this.level, '(', '\('), ')', '\)')}
 	@context.title = ${this.title}
-	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('[isProfessor = TRUE][subject *= "' + this.level + '"]').get()}
+	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('([isProfessor = TRUE][isGph = TRUE])[subject *= "' + this.level + '"]').get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Component {
 		nodeUri = Neos.Neos:NodeUri {
