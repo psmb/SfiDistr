@@ -71,10 +71,10 @@ prototype(Sfi.Sfi:PersonGphShort) < prototype(Neos.Neos:ContentComponent) {
 	renderer = afx`
 	<div class="MediaPerson">
 		<div class="MediaPerson-Body">
-			<h3 class="MediaPerson-Title">{title}</h3>
-			<div class="ServiceEm">{position}</div>
-			<div class="ServiceEm">{degree}</div>
-			<div class="ServiceEm">{freeText}</div>
+			<h3 class="MediaPerson-Title">{props.title}</h3>
+			<div class="ServiceEm">{props.position}</div>
+			<div class="ServiceEm">{props.degree}</div>
+			<div class="ServiceEm">{props.freeText}</div>
 		</div>
 	</div>
 	`
