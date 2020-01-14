@@ -64,19 +64,9 @@ prototype(Sfi.Sfi:PersonShort) < prototype(Neos.Neos:Content) {
 
 prototype(Sfi.Sfi:PersonGphShort) < prototype(Neos.Neos:ContentComponent) {
 	title = ${String.stripTags(q(node).property('title'))}
-	degree = ${String.stripTags(q(node).property('degree'))}
-	position = ${String.stripTags(q(node).property('position'))}
-	freeText = ${q(node).property('freeText')}
 
 	renderer = afx`
-	<div class="MediaPerson">
-		<div class="MediaPerson-Body">
-			<h3 class="MediaPerson-Title">{props.title}</h3>
-			<div class="ServiceEm">{props.position}</div>
-			<div class="ServiceEm">{props.degree}</div>
-			<div class="ServiceEm">{props.freeText}</div>
-		</div>
-	</div>
+		<h3 class="Paragraph">{props.title}</h3>
 	`
 }
 
