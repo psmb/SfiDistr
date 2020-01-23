@@ -20,7 +20,9 @@
 			</f:if>
 			<div class="Paragraph lineHeight-tight color-primary AlmanacEntry-title">{neos:contentElement.editable(property: 'title')}</div>
 		</div>
-		<div class="ParagraphAlt--Small AlmanacEntry-source">{neos:contentElement.editable(property: 'source', tag: 'span')}</div>
+		<div class="ParagraphAlt--Small AlmanacEntry-source">
+			{issueNumber} {neos:contentElement.editable(property: 'source', tag: 'span')}
+		</div>
 		<f:if condition="{node.context.workspace.name} != 'live' || {DOI}">
 			<div class="ParagraphAlt--Small AlmanacEntry-annotation">DOI: {neos:contentElement.editable(property: 'DOI', tag: 'span')}</div>
 		</f:if>

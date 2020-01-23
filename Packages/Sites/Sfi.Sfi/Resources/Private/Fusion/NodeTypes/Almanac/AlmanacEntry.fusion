@@ -2,4 +2,6 @@ prototype(Sfi.Sfi:AlmanacEntry) {
 	href = ${'asset://' + node.properties.asset.identifier}
 	href.@process.convertUris = Neos.Neos:ConvertUris
 	keywordsStr = ${Translation.translate('keywords', null, [], null, 'Sfi.Sfi')}
+	issueNumber = ${'Выпуск №' + q(node).parent().parent().property('issueNumber') + ','}
+	issueNumber.@if.notIssuePage = ${!q(documentNode).is('[instanceof Sfi.Sfi:AlmanacIssuePage]')}
 }
