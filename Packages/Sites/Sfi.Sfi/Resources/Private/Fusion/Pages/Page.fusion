@@ -75,12 +75,12 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			node = ${site}
 			@process.fix = ${String.replace(value, '/.html', '/')}
 		}
-		@override.sectionMenu = Neos.Neos:Menu {
+		@context.sectionMenu = Neos.Neos:Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
 			entryLevel = 2
 			maximumLevels = 0
 		}
-		@override.siblingsMenu = Neos.Neos:Menu {
+		@context.siblingsMenu = Neos.Neos:Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SectionMenu.html'
 			itemCollection = ${q(documentNode).parent().children('[instanceof Neos.Neos:Document]').get()}
 		}

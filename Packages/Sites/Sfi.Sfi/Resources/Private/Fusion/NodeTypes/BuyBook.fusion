@@ -5,6 +5,6 @@ prototype(Sfi.Sfi:BuyBook) {
 		nodePath = 'details'
 	}
 	button = Sfi.Shared:Link {
-		@override.node = ${q(node).children('button').get(0)}
+		@context.node = ${q(node).children('button').get(0)}
 	}
 }

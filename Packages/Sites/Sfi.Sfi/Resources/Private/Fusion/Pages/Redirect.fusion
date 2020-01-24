@@ -4,7 +4,7 @@ prototype(Sfi.Sfi:CooluriDecode) {
 }
 prototype(Sfi.Sfi:Redirect) {
 	@class = 'Sfi\\Sfi\\TypoScript\\RedirectImplementation'
-	@override.newsuid = Sfi.Sfi:CooluriDecode {
+	@context.newsuid = Sfi.Sfi:CooluriDecode {
 		url = ${request.arguments.url}
 	}
 	url = Neos.Neos:NodeUri {
