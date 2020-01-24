@@ -58,8 +58,8 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 		@context.altLang = ${this.lang == 'ru' ? 'en' : 'ru'}
 
 		languageMenu = Sfi.Sfi:LanguageMenu
+		@context.subMenuNode = ${q(site).find('#c030240e-7c32-40d8-aa84-586f1019966d').get(0)}
 		subMenu = Neos.Neos:Menu {
-			@context.subMenuNode = ${q(site).find('#c030240e-7c32-40d8-aa84-586f1019966d').get(0)}
 			@if.isMain = ${q(node).is('[instanceof Sfi.Sfi:PageMain]') && subMenuNode ? true : false}
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/MainMenu.html'
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
