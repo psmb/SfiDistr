@@ -57,12 +57,12 @@ prototype(Sfi.Shared:ImageLink) {
 	link.@if.notInBackend = ${!node.context.inBackend}
 }
 
-prototype(Sfi.Shared:Group) {
-	@class = 'Neos\\Fusion\\FusionObjects\\TagImplementation'
-	iterator = ${iterator}
+prototype(Sfi.Shared:Group) < prototype(Neos.Fusion:Tag) {
 	attributes.style = ${node.properties.style}
 	attributes.class = ${'Container ' + node.properties.class}
-	content = Neos.Neos:ContentCollectionRenderer
+	content = Neos.Neos:ContentCollectionRenderer {
+		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+	}
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
