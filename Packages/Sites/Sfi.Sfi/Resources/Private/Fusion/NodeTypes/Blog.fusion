@@ -1,6 +1,6 @@
 prototype(Sfi.Sfi:Blog) < prototype(Neos.Neos:ContentComponent) {
 	authorName = ${node.properties.author.properties.title}
-	authorFreeText = ${node.properties.author.properties.freeText}
+	authorFreeText = ${String.stripTags(node.properties.author.properties.freeText || node.properties.author.properties.position)}
 	title = Neos.Neos:Editable {
 		property = 'title'
 		block = false

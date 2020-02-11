@@ -5,7 +5,7 @@ prototype(Sfi.Sfi:PersonCard) < prototype(Neos.Fusion:Component) {
     }
     description = Neos.Neos:Editable {
         property = 'description'
-        @process.isTarget = ${node.properties.targetSource ? node.properties.target.properties.freeText : value}
+        @process.isTarget = ${node.properties.targetSource ? (node.properties.target.properties.freeText || node.properties.target.properties.position) : value}
     }
     link = Neos.Neos:NodeUri {
         node = ${q(node).property('target')}
