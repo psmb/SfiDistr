@@ -27,7 +27,7 @@
                 <target>St Philaret`s Christian Orthodox Institute (SFI)</target>
             </trans-unit>
             <trans-unit id="footer.about.text">
-                <target>is a non-government theology school. Founder: 'Sretenie', regional non-government organisation for the promotion of personal spiritual development. Rector: Fr Georgy Kochetkov. The Institute comprises the School of Theology and the School of Religious Studies. The Institute also offers a two-year pre-Bachelor programme in theology (Theology College). SFI offers a Bachelor’s degree in theology along with foundation and advanced professional training programmes in Theology, Religious Studies and the Foundations of Orthodox Culture.</target>
+                <target>is a non-government theology school. Founder: ‘Sretenie’, regional non-government organisation for the promotion of personal spiritual development. The Institute offers Bachelor’s and Master’s degrees in theology along with foundation and advanced professional training programmes in Theology, History, Religious Studies, and Social Work.</target>
             </trans-unit>
             <trans-unit id="footer.social.title">
                 <target>Social</target>
@@ -227,7 +227,7 @@
                 <target>Academic Periodical</target>
             </trans-unit>
             <trans-unit id="almanac.slogan">
-                <target>The Light of Christ Enlightens All</target>
+                <target>The Quarterly Journal of St. Philaret’s Institute</target>
             </trans-unit>
         </body>
     </file>
