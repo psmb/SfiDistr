@@ -1,4 +1,5 @@
 <?php
+
 namespace Flowpack\Listable\Fusion\Eel\FlowQueryOperations;
 
 /*                                                                        *
@@ -42,7 +43,8 @@ class FilterByDateOperation extends AbstractOperation
      * @param array $arguments The arguments for this operation.
      *                         First argument is property to filter by, must be DateTime.
      *                         Second is Date operand, must be DateTime object.
-     *                         And third is a compare operator: '<' or '>', '>' by default
+     *                         Third is a compare operator: '<' or '>', '>' by default
+     *                         Fourth argument is an optional nodetype, which would only apply filtering to that nodetype
      *
      * @return void
      * @throws FlowQueryException
@@ -55,7 +57,6 @@ class FilterByDateOperation extends AbstractOperation
         if (empty($arguments[1])) {
             throw new FlowQueryException('filterByDate() needs date value by which nodes should be filtered', 1332493263);
         }
-
         /** @var \DateTime $date */
         list($filterByPropertyPath, $date) = $arguments;
         $compareOperator = '>';
@@ -63,12 +64,22 @@ class FilterByDateOperation extends AbstractOperation
             $compareOperator = $arguments[2];
         }
 
+        $nodeType = null;
+        if (!empty($arguments[3])) {
+            $nodeType = $arguments[3];
+        }
+
         $filteredNodes = [];
         foreach ($flowQuery->getContext() as $node) {
             /** @var NodeInterface $node */
+
             $propertyValue = $node->getProperty($filterByPropertyPath);
             if (($compareOperator === '>' && $propertyValue > $date) || ($compareOperator === '<' && $propertyValue < $date)) {
                 $filteredNodes[] = $node;
+            } else if ($nodeType) {
+                if (!$node->getNodeType()->isOfType($nodeType)) {
+                    $filteredNodes[] = $node;
+                }
             }
         }
 
