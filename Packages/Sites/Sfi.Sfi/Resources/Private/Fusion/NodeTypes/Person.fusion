@@ -58,7 +58,6 @@ prototype(Sfi.Sfi:PersonShort) < prototype(Neos.Neos:Content) {
 	position = ${String.stripTags(q(node).property('position'))}
 	quote = ${q(node).property('quote')}
 	showPosition = ${true}
-	freeText = ${String.stripTags(node.properties.freeText || node.properties.position)}
 	image = ${node.properties.image ? node.properties.image : q(node).find('[instanceof Neos.NodeTypes:Image]').first().property('image')}
 }
 
