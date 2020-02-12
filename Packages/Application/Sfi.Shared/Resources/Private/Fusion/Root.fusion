@@ -60,6 +60,7 @@ prototype(Sfi.Shared:ImageLink) {
 prototype(Sfi.Shared:Group) < prototype(Neos.Fusion:Tag) {
 	attributes.style = ${node.properties.style}
 	attributes.class = ${'Container ' + node.properties.class}
+	attributes.itemprop = ${node.properties.itemprop ? node.properties.itemprop : null}
 	content = Neos.Neos:ContentCollectionRenderer {
 		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 	}
