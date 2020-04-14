@@ -2,7 +2,7 @@ prototype(Sfi.Sfi:PaperWithAuthor.AuthorDegree) < prototype(Neos.Fusion:Value) {
 	Neos.Fusion:Collection {
 		collection = Neos.Fusion:RawArray {
 			1 = ${String.stripTags(node.properties.author.properties.degree)}
-			4 = ${String.stripTags(node.properties.freeText || node.properties.position)}
+			4 = ${String.stripTags(node.properties.author.properties.freeText || node.properties.author.properties.position)}
 		}
 		itemName = 'item'
 		itemRenderer = ${item && item + (iterator.isLast ? '' : '. ')}
