@@ -38,6 +38,7 @@ blah:
 'Sfi.Sfi:Paper':
   superTypes:
     'Sfi.News:AbstractArticle': true
+    'Sfi.News:ImportantMixin': true
   ui:
     label: Доклад
     icon: icon-file-text

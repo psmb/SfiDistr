@@ -1,6 +1,7 @@
 'Sfi.Sfi:PaperWithAuthor':
   superTypes:
     'Sfi.News:AbstractArticle': true
+    'Sfi.News:ImportantMixin': true
   ui:
     label: 'Доклад с автором'
     icon: icon-file-text
