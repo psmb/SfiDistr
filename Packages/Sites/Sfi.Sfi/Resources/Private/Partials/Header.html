@@ -1,10 +1,7 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 <header class="Header js-MainMenu">
     <div class="show-for-medium-down marginBottom-single textAlign-center">
-        <div
-            class="backgroundColor-primary"
-            style="height: 6px; width: 100%"
-        ></div>
+        <div class="backgroundColor-primary" style="height: 6px; width: 100%"></div>
 
         <div class="HeaderSmall-Bar marginBottom-single">
             <div class="row">
@@ -16,69 +13,46 @@
                     </div>
                     <f:if condition="{lang} == 'ru'">
                         <div style="margin-top: 9px" class="marginLeft-single">
-                            <a
-                                class="icon-user-1 color-primary"
-                                href="http://kabinet.sfi.ru"
-                                target="_blank"
-                                title="Личный кабинет"
-                            ></a>
+                            <a class="icon-user-1 color-primary" href="http://kabinet.sfi.ru" target="_blank"
+                                title="Личный кабинет"></a>
                         </div>
                     </f:if>
-                    <div
-                        href="#menu"
-                        class="marginLeft-single MobileNav-Toggle js-MobileNav-Toggle"
-                    >
+                    <div href="#menu" class="marginLeft-single MobileNav-Toggle js-MobileNav-Toggle">
                         <div class="IconMenu">
-                            <img
-                                alt="{f:translate(package:'Sfi.Sfi', id:'header.menu')}"
-                                src="/_Resources/Static/Packages/Sfi.Sfi/Images/IconMenu.svg"
-                            />
+                            <img alt="{f:translate(package:'Sfi.Sfi', id:'header.menu')}"
+                                src="/_Resources/Static/Packages/Sfi.Sfi/Images/IconMenu.svg" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <a
-            href="{linkToMain}"
-            title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}"
-        >
-            <img
-                alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}"
-                src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2"
-            />
+        <a href="{linkToMain}" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}">
+            <img alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}"
+                src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2" />
         </a>
 
-        <p
-            class="color-grayAlt ParagraphAlt lineHeight-normal marginTop-single"
-        >
-            <a class="LinkState" href="tel:+74956230380">+7 |495| 623 03 80</a>
-            &bull;
-            <a class="LinkState" href="mailto:info@sfi.ru">info@sfi.ru</a>
+        <p class="color-grayAlt ParagraphAlt lineHeight-normal marginTop-single">
+            <a class="LinkState" href="tel:+79652979207">+7 |965| 297 92 07</a><br /><a class="LinkState"
+                href="tel:+74956230380">+7 |495| 623 03 80</a> &bull; <a class="LinkState"
+                href="mailto:info@sfi.ru">info@sfi.ru</a>
         </p>
         <p class="color-grayAlt ParagraphAlt lineHeight-normal LinkState">
-            <neos:link.node node="~/about/node-557966c3b906d"
-                ><f:translate package="Sfi.Sfi" id="header.contacts.address"
-            /></neos:link.node>
+            <neos:link.node node="~/about/node-557966c3b906d">
+                <f:translate package="Sfi.Sfi" id="header.contacts.address" />
+            </neos:link.node>
         </p>
 
         <f:if condition="{lang} == 'ru'">
-            <a
-                class="Button lineHeight-single paddingVertical-half marginTop-single"
-                target="_blank"
-                style="
+            <a class="Button lineHeight-single paddingVertical-half marginTop-single" target="_blank" style="
 					margin-left: 12px;
 					margin-right: 0;
 					padding: 3px 12px;
 					background-color: #ff8e18;
 					color: white !important;
 					vertical-align: top;
-				"
-                href="https://sfi.ru/projects.html"
-            >
-                <span class="H5" style="vertical-align: top"
-                    >Поддержите СФИ</span
-                >
+				" href="https://sfi.ru/projects.html">
+                <span class="H5" style="vertical-align: top">Поддержите СФИ</span>
             </a>
         </f:if>
     </div>
@@ -86,18 +60,13 @@
     <div class="show-for-large-up">
         <div class="row">
             <div class="columns">
-                <div
-                    class="backgroundColor-primary"
-                    style="height: 6px; width: 100%"
-                ></div>
-                <div
-                    style="
+                <div class="backgroundColor-primary" style="height: 6px; width: 100%"></div>
+                <div style="
 					display:flex;
 					justify-content: space-between;
 					align-items: center;
 					border-bottom: 1px solid #ccc;
-					"
-                >
+					">
                     <div>
                         {mainMenu -> f:format.raw()}
                     </div>
@@ -109,31 +78,20 @@
                         </div>
                         <f:if condition="{lang} == 'ru'">
                             <div>
-                                <a
-                                    class="icon-user-1 color-primary"
-                                    href="http://kabinet.sfi.ru"
-                                    target="_blank"
-                                    title="Личный кабинет"
-                                ></a>
+                                <a class="icon-user-1 color-primary" href="http://kabinet.sfi.ru" target="_blank"
+                                    title="Личный кабинет"></a>
                             </div>
                         </f:if>
                         <f:if condition="{lang} == 'ru'">
-                            <a
-                                class="Button lineHeight-single"
-                                target="_blank"
-                                style="
+                            <a class="Button lineHeight-single" target="_blank" style="
 									margin-left: 12px;
 									margin-right: 0;
 									padding: 3px 12px;
 									background-color: #ff8e18;
 									color: white !important;
 									vertical-align: top;
-								"
-                                href="https://sfi.ru/projects.html"
-                            >
-                                <span class="H5" style="vertical-align: top"
-                                    >Поддержите СФИ</span
-                                >
+								" href="https://sfi.ru/projects.html">
+                                <span class="H5" style="vertical-align: top">Поддержите СФИ</span>
                             </a>
                         </f:if>
                     </div>
@@ -145,16 +103,11 @@
         <div style="position: relative">
             <div class="row">
                 <div class="columns large-7 medium-5">
-                    <a
-                        href="{linkToMain}"
-                        title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}"
-                        class="SiteLogo"
-                    >
-                        <img
-                            style="width: 330px; padding: 24px 48px;"
+                    <a href="{linkToMain}" title="{f:translate(package:'Sfi.Sfi', id:'header.tomain')}"
+                        class="SiteLogo">
+                        <img style="width: 330px; padding: 24px 48px;"
                             alt="{f:translate(package:'Sfi.Sfi', id:'sfi.fulltitle')}"
-                            src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2"
-                        />
+                            src="/_Resources/Static/Packages/Sfi.Sfi/Images/{f:translate(package:'Sfi.Sfi', id:'sfi.siteLogoFileName')}?2" />
                     </a>
                 </div>
 
@@ -163,49 +116,32 @@
                         <div class="columns medium-6">
                             {secondaryMenu -> f:format.raw()}
                             <f:if condition="{lang} == 'ru'">
-                                <div
-                                    class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
-                                    ><a href="/sveden/common"
-                                        >Сведения об образовательной
-                                        организации</a
-                                    ></div
-                                >
+                                <div class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"><a
+                                        href="/sveden/common">Сведения об образовательной
+                                        организации</a></div>
                             </f:if>
                         </div>
 
                         <div class="columns medium-6">
-                            <p
-                                class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
-                            >
-                                <neos:link.node
-                                    node="~/about/node-557966c3b906d"
-                                    ><f:translate
-                                        package="Sfi.Sfi"
-                                        id="header.contacts.address"
-                                /></neos:link.node>
+                            <p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
+                                <neos:link.node node="~/about/node-557966c3b906d">
+                                    <f:translate package="Sfi.Sfi" id="header.contacts.address" />
+                                </neos:link.node>
                             </p>
-                            <p
-                                class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
-                            >
-                                <a href="tel:+74956230380"
-                                    >+7 |495| 623 03 80</a
-                                >
+                            <p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
+                                <a href="tel:+79652979207">+7 |965| 297 92 07</a>
                             </p>
-                            <p
-                                class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
-                            >
+                            <p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
+                                <a href="tel:+74956230380">+7 |495| 623 03 80</a>
+                            </p>
+                            <p class="LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
                                 <a href="mailto:info@sfi.ru">info@sfi.ru</a>
                             </p>
                             <f:if condition="{lang} == 'ru'">
                                 <br />
-                                <p
-                                    class="Link LinkState ParagraphAlt lineHeight-tight paddingBottom-half"
-                                >
-                                    <a
-                                        title="Интернет-магазин, в котором вы сможете приобрести электронные и бумажные издания нашего издательства"
-                                        href="https://books.sfi.ru"
-                                        target="_blank"
-                                    >
+                                <p class="Link LinkState ParagraphAlt lineHeight-tight paddingBottom-half">
+                                    <a title="Интернет-магазин, в котором вы сможете приобрести электронные и бумажные издания нашего издательства"
+                                        href="https://books.sfi.ru" target="_blank">
                                         Книжный<br />интернет-магазин
                                     </a>
                                 </p>
