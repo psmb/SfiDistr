@@ -17,7 +17,7 @@ function _findBound(position, value, lookBack) {
         node = lookBack ? node.previousSibling : node.nextSibling;
     }
 
-    return lastNode ? Position.createAt(lastNode, lookBack ? 'before' : 'after') : position;
+    return lastNode ? Position._createAt(lastNode, lookBack ? 'before' : 'after') : position;
 }
 
 class ItempropCommand extends Command {

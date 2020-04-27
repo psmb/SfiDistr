@@ -4,4 +4,5 @@
     z-index: var(--zIndex-SecondaryToolbar-LinkIconButtonFlyout);
     width: 460px;
     border: var(--spacing-Half) solid var(--colors-ContrastDarker);
+    top: 100px;
 }

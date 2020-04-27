@@ -299,7 +299,7 @@ function _findBound(position, value, lookBack) {
         node = lookBack ? node.previousSibling : node.nextSibling;
     }
 
-    return lastNode ? _ckeditor5Exports.ModelPosition.createAt(lastNode, lookBack ? 'before' : 'after') : position;
+    return lastNode ? _ckeditor5Exports.ModelPosition._createAt(lastNode, lookBack ? 'before' : 'after') : position;
 }
 
 var ItempropCommand = function (_Command) {
@@ -1103,7 +1103,7 @@ exports = module.exports = __webpack_require__(26)(false);
 
 
 // module
-exports.push([module.i, ".style__flyout___1vdkJ {\n    background-color: #222;\n    position: fixed;\n    z-index: 1;\n    width: 460px;\n    border: 8px solid #222;\n}\n", ""]);
+exports.push([module.i, ".style__flyout___1vdkJ {\n    background-color: #222;\n    position: fixed;\n    z-index: 1;\n    width: 460px;\n    border: 8px solid #222;\n    top: 100px;\n}\n", ""]);
 
 // exports
 exports.locals = {
