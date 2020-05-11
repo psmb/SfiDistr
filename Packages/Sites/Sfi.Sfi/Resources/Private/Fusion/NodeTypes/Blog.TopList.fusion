@@ -11,8 +11,13 @@ prototype(Sfi.Sfi:Blog.TopList) < prototype(Neos.Fusion:Component) {
         collection = ${collection}
         itemName = 'node'
         itemRenderer = Flowpack.Listable:ContentCaseShort {
-            @context.lastAuthor = ${Registry.getset('lastAuthor', node.properties.author)}
-            @if.notDuplicate = ${lastAuthor.identifier != node.properties.author.identifier && iterator.index < 4}
+            # Array of all previously rendered authors
+            @context.prevAuthors = ${Registry.get('prevAuthors', node.properties.author) || []}
+            # Number of times already rendered
+            @context.count = ${Registry.get('count')}
+            @process.li.@context.updateCount = ${Registry.set('count', count + 1)}
+            @process.li.@context.updateAuthors = ${Registry.set('prevAuthors', Array.push(prevAuthors, node.properties.author.identifier))}
+            @if.notDuplicate = ${Array.indexOf(prevAuthors, node.properties.author.identifier) == -1 && count < 4}
             @process.li = afx`<li>{value}</li>`
         }
         @cache {
