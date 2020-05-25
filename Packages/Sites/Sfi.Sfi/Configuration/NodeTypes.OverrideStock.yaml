@@ -80,7 +80,7 @@
             enabled: true
             placeholder: 'Название'
         publication:
-          label: 'Публикация'
+          label: 'Приветствия'
           group: createNode
           view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
           viewOptions:
@@ -140,7 +140,7 @@
             enabled: true
             placeholder: 'Название'
         publications:
-          label: 'Приветствия'
+          label: 'Публикации в СМИ'
           group: createNode
           view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
           viewOptions:
