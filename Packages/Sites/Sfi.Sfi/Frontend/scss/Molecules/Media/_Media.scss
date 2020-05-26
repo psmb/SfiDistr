@@ -21,7 +21,6 @@
 }
 .Media-Date {
 	@extend .ParagraphAlt;
-	text-transform: lowercase;
 	color: $gray--light;
 	margin-bottom: $u/2;
 }
