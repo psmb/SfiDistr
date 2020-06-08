@@ -218,6 +218,9 @@
             <trans-unit id="otherArticlesByAuthor">
                 <source>Выступления на конференциях</source>
             </trans-unit>
+            <trans-unit id="articlesByTag">
+                <source>Доклады на тему</source>
+            </trans-unit>
             <trans-unit id="otherBlogsByAuthor">
                 <source>Колонки автора</source>
             </trans-unit>

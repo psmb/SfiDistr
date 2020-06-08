@@ -4,6 +4,7 @@ prototype(Sfi.Sfi:PageTag) {
 	node = ${node}
 
 	title = ${q(node).property('title')}
+	articlesByTag = Sfi.Sfi:PaperWithAuthor.ListByTag
 	listByTag = Sfi.News:ListByTag
 
 	main = Neos.Neos:ContentCollection {

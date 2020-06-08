@@ -13,6 +13,7 @@ prototype(Sfi.Sfi:Person) {
 		@process.spacing = afx`<div class="marginTop-double">{value}</div>`
 	}
 	authorArticles = Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList
+	articlesByTag = Sfi.Sfi:PaperWithAuthor.ListByTag
 	listByTag = Sfi.News:ListByTag
 
 	experience = Neos.Neos:ContentCollection {

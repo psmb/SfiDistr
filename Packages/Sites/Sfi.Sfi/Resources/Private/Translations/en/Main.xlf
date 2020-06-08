@@ -211,7 +211,9 @@
             <trans-unit id="otherArticlesByAuthor">
                 <target>Other articles by this author</target>
             </trans-unit>
-
+            <trans-unit id="articlesByTag">
+                <source>Articles on this subject</source>
+            </trans-unit>
 
 
             <trans-unit id="almanac.allIssues">

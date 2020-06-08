@@ -1,0 +1,5 @@
+prototype(Sfi.Sfi:PaperWithAuthor.ListByTag) < prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList) {
+  @context.listTitle = ${Translation.translate('articlesByTag', null, [], null, 'Sfi.Sfi')}
+  collection.@process.filterByAuthor>
+  collection.@process.filterByReference = ${q(value).filterByReference('tags', documentNode).get()}
+}

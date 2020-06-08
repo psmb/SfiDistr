@@ -29,7 +29,9 @@
 			</div>
 			<f:if condition="{node.context.workspace.name} != 'live' || {subject}">
 				<div class="marginVertical-single">
-					<div class="ParagraphAlt--Large color-primaryAlt"><f:translate package="Sfi.Sfi" id="staff.subjects"/></div>
+					<div class="ParagraphAlt--Large color-primaryAlt">
+						<f:translate package="Sfi.Sfi" id="staff.subjects" />
+					</div>
 					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'subject')}</div>
 				</div>
 			</f:if>
@@ -37,25 +39,31 @@
 				<div class="ParagraphAlt--Large color-primaryAlt">Образование</div>
 			</f:if>
 			<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevel}">
-				<div class="ParagraphAlt marginBottom-single"><strong>Уровень образования:</strong> {neos:contentElement.editable(property: 'teachingLevel', tag: 'span')}</div>
+				<div class="ParagraphAlt marginBottom-single"><strong>Уровень образования:</strong>
+					{neos:contentElement.editable(property: 'teachingLevel', tag: 'span')}</div>
 			</f:if>
 			<f:if condition="{node.context.workspace.name} != 'live' || {education}">
-				<div class="ParagraphAlt marginBottom-single"><strong>Направление подготовки и/или специальность:</strong> {neos:contentElement.editable(property: 'education', tag: 'span')}</div>
+				<div class="ParagraphAlt marginBottom-single"><strong>Направление подготовки и/или специальность:</strong>
+					{neos:contentElement.editable(property: 'education', tag: 'span')}</div>
 			</f:if>
 			<f:if condition="{node.context.workspace.name} != 'live'">
-				<div class="ParagraphAlt marginBottom-single"><strong>Квалификация:</strong> {neos:contentElement.editable(property: 'teachingQual')}</div>
+				<div class="ParagraphAlt marginBottom-single"><strong>Квалификация:</strong>
+					{neos:contentElement.editable(property: 'teachingQual')}</div>
 			</f:if>
 			<f:if condition="{node.context.workspace.name} != 'live' || {educationUpgrade}">
-				<div class="ParagraphAlt marginBottom-single"><strong>Повышение квалификации и профессиональная переподготовка:</strong> {neos:contentElement.editable(property: 'educationUpgrade', tag: 'span')}</div>
+				<div class="ParagraphAlt marginBottom-single"><strong>Повышение квалификации и профессиональная
+						переподготовка:</strong> {neos:contentElement.editable(property: 'educationUpgrade', tag: 'span')}</div>
 			</f:if>
 
 
 			<f:if condition="{node.context.workspace.name} != 'live'">
-				<div class="ParagraphAlt marginVertical-single"><strong>Общий стаж работы:</strong> {experienceSum -> f:format.raw()}</div>
+				<div class="ParagraphAlt marginVertical-single"><strong>Общий стаж работы:</strong> {experienceSum ->
+					f:format.raw()}</div>
 				{experience -> f:format.raw()}
 			</f:if>
 			<f:if condition="{node.context.workspace.name} != 'live'">
-				<div class="ParagraphAlt marginVertical-single"><strong>Стаж работы по специальности:</strong> {experienceSpecialitySum}</div>
+				<div class="ParagraphAlt marginVertical-single"><strong>Стаж работы по специальности:</strong>
+					{experienceSpecialitySum}</div>
 				{experienceSpeciality -> f:format.raw()}
 			</f:if>
 			<f:if condition="{node.context.workspace.name} != 'live'">
@@ -75,6 +83,7 @@
 			{main -> f:format.raw()}
 			{authorBlogs -> f:format.raw()}
 			{authorArticles -> f:format.raw()}
+			{articlesByTag -> f:format.raw()}
 			{listByTag -> f:format.raw()}
 		</div>
 	</div>
