@@ -224,6 +224,9 @@
             <trans-unit id="otherBlogsByAuthor">
                 <source>Колонки автора</source>
             </trans-unit>
+            <trans-unit id="blogs">
+                <source>Блоги на тему</source>
+            </trans-unit>
             <group id="month" restype="x-gettext-plurals">
                 <trans-unit id="month[0]">
                     <source>{0} месяц</source>

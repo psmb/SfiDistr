@@ -1,5 +1,13 @@
-prototype(Sfi.Sfi:PaperWithAuthor.ListByTag) < prototype(Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList) {
-  @context.listTitle = ${Translation.translate('articlesByTag', null, [], null, 'Sfi.Sfi')}
-  collection.@process.filterByAuthor>
-  collection.@process.filterByReference = ${q(value).filterByReference('tags', documentNode).get()}
+prototype(Sfi.Sfi:ListRelatedByTag) < prototype(Neos.Fusion:Array) {
+  1 = Sfi.Sfi:PaperWithAuthor.AuthorInfoArticlesList {
+    @context.listTitle = ${Translation.translate('articlesByTag', null, [], null, 'Sfi.Sfi')}
+    collection.@process.filterByAuthor>
+    collection.@process.filterByReference = ${q(value).filterByReference('tags', documentNode).get()}
+  }
+  2 = Sfi.Sfi:PaperWithAuthor.AuthorInfoBlogsList {
+    @context.listTitle = ${Translation.translate('blogs', null, [], null, 'Sfi.Sfi')}
+    @context.nodeType = 'Sfi.Sfi:Blog'
+    collection.@process.filterByAuthor>
+    collection.@process.filterByReference = ${q(value).filterByReference('tags', documentNode).get()}
+  }
 }
