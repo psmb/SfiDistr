@@ -3,7 +3,6 @@ namespace Sfi\Sfi\Helper;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
-use Mustache_Engine as Mustache;
 
 class SfiHelper implements ProtectedContextAwareInterface
 {
@@ -36,6 +35,20 @@ class SfiHelper implements ProtectedContextAwareInterface
     public function number_format($number , $decimals = 0, $dec_point = ".", $thousands_sep = ",")
     {
         return number_format($number, $decimals, $dec_point, $thousands_sep);
+    }
+
+    public function sortByLastName($nodes)
+    {
+        \usort($nodes, function ($a, $b) {
+            $authorAExploded = explode(' ', $a->getProperty('author'));
+            $authorBExploded = explode(' ', $b->getProperty('author'));
+            $lastNameA = end($authorAExploded);
+            $lastNameB = end($authorBExploded);
+            $lastNameA = $lastNameA ? $lastNameA : 'яяя';
+            $lastNameB = $lastNameB ? $lastNameB : 'яяя';
+            return strcasecmp($lastNameA, $lastNameB);
+        });
+        return $nodes;
     }
 
     /**
