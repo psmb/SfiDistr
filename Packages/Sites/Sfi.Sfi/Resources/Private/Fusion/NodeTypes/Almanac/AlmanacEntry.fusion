@@ -1,7 +1,82 @@
-prototype(Sfi.Sfi:AlmanacEntry) {
+prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
+	@context.lang = ${Array.first(node.context.dimensions.language)}
+	assetRu = ${node.properties.asset}
+	assetEn = ${node.properties.assetEn}
 	href = ${'asset://' + node.properties.asset.identifier}
 	href.@process.convertUris = Neos.Neos:ConvertUris
+	hrefEn = ${'asset://' + node.properties.assetEn.identifier}
+	hrefEn.@process.convertUris = Neos.Neos:ConvertUris
 	keywordsStr = ${Translation.translate('keywords', null, [], null, 'Sfi.Sfi')}
 	issueNumber = ${'Выпуск №' + q(node).parent().parent().property('issueNumber') + ','}
 	issueNumber.@if.notIssuePage = ${!q(documentNode).is('[instanceof Sfi.Sfi:AlmanacIssuePage]')}
+
+	author = Neos.Neos:Editable {
+		property = 'author'
+		block = false
+	}
+	author2 = Neos.Neos:Editable {
+		property = 'author2'
+		block = false
+	}
+	author3 = Neos.Neos:Editable {
+		property = 'author3'
+		block = false
+	}
+	authorInfo = Neos.Neos:Editable {
+		property = 'authorInfo'
+		block = false
+	}
+	authorInfo2 = Neos.Neos:Editable {
+		property = 'authorInfo2'
+		block = false
+	}
+	authorInfo3 = Neos.Neos:Editable {
+		property = 'authorInfo3'
+		block = false
+	}
+	source = Neos.Neos:Editable {
+		property = 'source'
+		block = false
+	}
+	title = afx`<div class="Paragraph lineHeight-tight AlmanacEntry-title"><Neos.Neos:Editable property="title" block={false}/></div>`
+	title.@process.link = afx`<a class="Link" href={lang == 'en' ? props.hrefEn : props.href}>{value}</a>`
+	title.@process.link.@if.live = ${node.context.workspace.name == 'live' && ((lang == 'ru' && node.properties.asset) || (lang == 'en' && node.properties.assetEn))}
+	linkAlt = afx`<div class="marginTop-half"><a class="Link" href={lang == 'en' ? props.href : props.hrefEn}>
+		<div @if.onlyRussian={lang == 'ru' && node.properties.assetEn && node.properties.asset}>Эта статья также доступна на английском</div>
+		<div @if.alsoRussian={lang == 'ru' && node.properties.assetEn && !node.properties.asset}>Эта статья доступна только на английском</div>
+		<div @if.alsoRussian={lang == 'en' && node.properties.asset && node.properties.assetEn}>This article is also available in Russian</div>
+		<div @if.onlyRussian={lang == 'en' && node.properties.asset && !node.properties.assetEn}>This article is only available in Russian</div>
+	</a></div>`
+	linkAlt.@if.live = ${((lang == 'ru' && node.properties.assetEn) || (lang == 'en' && node.properties.asset))}
+
+	renderer = afx`
+		<div class="marginVertical-double AlmanacEntry">
+			<div>
+				<div class="lineHeight-tight">
+					<span class="H4 AlmanacEntry-author">{props.author}</span>
+					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.context.workspace.name != 'live' || node.properties.authorInfo}>, {authorInfo}</span>
+				</div>
+				<div class="lineHeight-tight" @if.live={node.context.workspace.name != 'live' || node.properties.author2}>
+					<span class="H4 AlmanacEntry-author">{props.author2}</span>
+					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.context.workspace.name != 'live' || node.properties.authorInfo2}>, {authorInfo2}</span>
+				</div>
+				<div class="lineHeight-tight" @if.live={node.context.workspace.name != 'live' || node.properties.author3}>
+					<span class="H4 AlmanacEntry-author">{props.author3}</span>
+					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.context.workspace.name != 'live' || node.properties.authorInfo3}>, {authorInfo3}</span>
+				</div>
+				<div class="color-grayAlt">{props.title}</div>
+			</div>
+			<div class="ParagraphAlt--Small AlmanacEntry-source">
+				{props.issueNumber} {props.source}
+			</div>
+			<div @if.live={node.context.workspace.name != 'live' || node.properties.DOI} class="ParagraphAlt--Small AlmanacEntry-annotation">DOI: <Neos.Neos:Editable property="DOI" block={false}/></div>
+			<div class="ParagraphAlt marginVertical-half AlmanacEntry-annotation">
+				<Neos.Neos:Editable property="annotation" block={false}/>
+			</div>
+			<div @if.live={node.context.workspace.name != 'live' || node.properties.keywords} class="ParagraphAlt AlmanacEntry-keywords">
+				{props.keywordsStr}: <Neos.Neos:Editable property="keywords" block={false}/>
+			</div>
+			{props.linkAlt}
+		</div>
+	`
 }

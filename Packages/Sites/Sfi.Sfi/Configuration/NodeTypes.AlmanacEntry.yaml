@@ -105,5 +105,12 @@
       ui:
         inspector:
           group: asset
-        label: 'Файл статьи (желательно pdf)'
+        label: 'Файл статьи РУС (желательно pdf)'
+        reloadIfChanged: true
+    assetEn:
+      type: Neos\Media\Domain\Model\Asset
+      ui:
+        inspector:
+          group: asset
+        label: 'Файл статьи ENG (желательно pdf)'
         reloadIfChanged: true
