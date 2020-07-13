@@ -1,11 +1,9 @@
 prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 	@context.lang = ${Array.first(node.context.dimensions.language)}
-	assetRu = ${node.properties.asset}
-	assetEn = ${node.properties.assetEn}
-	href = ${'asset://' + node.properties.asset.identifier}
-	href.@process.convertUris = Neos.Neos:ConvertUris
-	hrefEn = ${'asset://' + node.properties.assetEn.identifier}
-	hrefEn.@process.convertUris = Neos.Neos:ConvertUris
+	@context.href = ${'asset://' + node.properties.asset.identifier}
+	@context.href.@process.convertUris = Neos.Neos:ConvertUris
+	@context.hrefEn = ${'asset://' + node.properties.assetEn.identifier}
+	@context.hrefEn.@process.convertUris = Neos.Neos:ConvertUris
 	keywordsStr = ${Translation.translate('keywords', null, [], null, 'Sfi.Sfi')}
 	issueNumber = ${'Выпуск №' + q(node).parent().parent().property('issueNumber') + ','}
 	issueNumber.@if.notIssuePage = ${!q(documentNode).is('[instanceof Sfi.Sfi:AlmanacIssuePage]')}
