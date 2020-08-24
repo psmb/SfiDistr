@@ -1,11 +1,11 @@
 prototype(Sfi.Sfi:OpenGraphImage) < prototype(Neos.Fusion:Component) {
 	@if.ogOverride = ${q(node).property('ogImage')}
 
-	imageUri = Sfi.News:ThumbnailImageUri {
-		prototype(Neos.Neos:ImageUri) {
-			maximumWidth = 1200
-			maximumHeight = 630
-		}
+	imageUri = Neos.Neos:ImageUri {
+		asset = ${q(node).property('ogImage')}
+		maximumWidth = 960
+		maximumWidth = 1200
+		maximumHeight = 630
 	}
 	render = afx`
 		<meta property="og:image" content={props.imageUri} />
