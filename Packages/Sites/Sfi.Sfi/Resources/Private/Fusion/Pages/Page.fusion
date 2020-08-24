@@ -27,6 +27,8 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 		opengraph = Sfi.News:Opengraph
 		opengraph.@if.isNews = ${q(node).is('[instanceof Sfi.News:AbstractArticle]')}
 
+		opengraphImage = Sfi.Sfi:OpenGraphImage
+
 		stylesheets = Sfi.Sfi:Stylesheets
 
 		javascripts.headScripts = Neos.Fusion:Template {

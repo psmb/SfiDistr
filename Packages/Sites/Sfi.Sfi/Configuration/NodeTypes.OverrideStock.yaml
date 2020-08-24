@@ -185,3 +185,25 @@ Neos.Neos:Document:
   options:
     fusion:
       prototypeGenerator: Sfi\Sfi\LegacyDocumentPrototypeGenerator
+  ui:
+    inspector:
+      groups:
+        opengraph:
+          label: Соцсети
+  properties:
+    ogImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Картинка для соцсетей (1200*630px)'
+        reloadIfChanged: true
+        inspector:
+          group: opengraph
+          editorOptions:
+            crop:
+              aspectRatio:
+                forceCrop: true
+                enableOriginal: false
+                allowCustom: true
+                locked:
+                  width: 1200
+                  height: 630
