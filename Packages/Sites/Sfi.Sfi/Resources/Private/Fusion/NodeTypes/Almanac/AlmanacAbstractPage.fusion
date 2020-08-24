@@ -16,6 +16,7 @@ prototype(Sfi.Sfi:AlmanacAbstractPage) < prototype(Neos.Neos:Page) {
 			mode = 'cached'
 			entryIdentifier.a = 'a'
 		}
+		opengraphImage = Sfi.Sfi:OpenGraphImage
 	}
 	htmlTag.attributes.lang = ${Array.first(node.context.dimensions.language)}
 	bodyTag.attributes.class = 'Page'

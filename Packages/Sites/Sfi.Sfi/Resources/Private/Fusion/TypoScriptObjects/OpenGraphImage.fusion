@@ -1,4 +1,4 @@
-prototype(Sfi.Sfi:OpenGraphImage) prototype(Neos.Fusion:Component) {
+prototype(Sfi.Sfi:OpenGraphImage) < prototype(Neos.Fusion:Component) {
 	@if.ogOverride = ${q(node).property('ogImage')}
 
 	imageUri = Sfi.News:ThumbnailImageUri {
