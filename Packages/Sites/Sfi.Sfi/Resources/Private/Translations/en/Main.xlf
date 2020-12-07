@@ -234,27 +234,27 @@
 
             <trans-unit id="studyProgram.programDescription">
                 <source>Описание программы</source>
-                <target>Program description</target>
+                <target>Programme Description</target>
             </trans-unit>
             <trans-unit id="studyProgram.disciplines">
                 <source>Изучаемые дисциплины</source>
-                <target>Subjects</target>
+                <target>Course Load</target>
             </trans-unit>
             <trans-unit id="studyProgram.schedule">
                 <source>Учебный график</source>
-                <target>Schedule</target>
+                <target>Class Schedule</target>
             </trans-unit>
             <trans-unit id="studyProgram.abiturient">
                 <source>Абитуриенту</source>
-                <target>Enrollment</target>
+                <target>For the Prospective Student</target>
             </trans-unit>
             <trans-unit id="studyProgram.admission">
                 <source>Поступление</source>
-                <target>Admission</target>
+                <target>Enrolment</target>
             </trans-unit>
             <trans-unit id="studyProgram.exams">
                 <source>Вступительные испытания</source>
-                <target>Admission exams</target>
+                <target>Entrance Exams/Interview</target>
             </trans-unit>
             <trans-unit id="studyProgram.payment">
                 <source>Оплата</source>
