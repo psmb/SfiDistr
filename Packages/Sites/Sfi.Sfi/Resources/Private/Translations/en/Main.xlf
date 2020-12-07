@@ -231,6 +231,39 @@
             <trans-unit id="almanac.slogan">
                 <target>The Quarterly Journal of St. Philaret’s Institute</target>
             </trans-unit>
+
+            <trans-unit id="studyProgram.programDescription">
+                <source>Описание программы</source>
+                <target>Program description</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.disciplines">
+                <source>Изучаемые дисциплины</source>
+                <target>Subjects</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.schedule">
+                <source>Учебный график</source>
+                <target>Schedule</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.abiturient">
+                <source>Абитуриенту</source>
+                <target>Enrollment</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.admission">
+                <source>Поступление</source>
+                <target>Admission</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.exams">
+                <source>Вступительные испытания</source>
+                <target>Admission exams</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.payment">
+                <source>Оплата</source>
+                <target>Payment</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.contacts">
+                <source>Контакты</source>
+                <target>Contacts</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

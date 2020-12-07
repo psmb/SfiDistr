@@ -34,16 +34,16 @@
 		<div class="Sections js-sections Sections--Tabs marginTop-triple">
 			<ul class="Sections-Tabs">
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-description">Описание программы</a>
+					<a class="Sections-Anchor" href="#tab-description"><f:translate id="studyProgram.programDescription" package="Sfi.Sfi"/></a>
 				</li>
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-subjects">Изучаемые дисциплины</a>
+					<a class="Sections-Anchor" href="#tab-subjects"><f:translate id="studyProgram.disciplines" package="Sfi.Sfi"/></a>
 				</li>
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-schedule">Учебный график</a>
+					<a class="Sections-Anchor" href="#tab-schedule"><f:translate id="studyProgram.schedule" package="Sfi.Sfi"/></a>
 				</li>
 			</ul>
-			<a href="#tab-description" class="Sections-Anchor Sections-AccordionTitle">Описание программы</a>
+			<a href="#tab-description" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.programDescription" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-description">
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Описание программы</div></f:if>
 				{description -> f:format.raw()}
@@ -55,14 +55,14 @@
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Образец договора об оказании платных образовательных услуг</div></f:if>
 				{assetSampleContract -> f:format.raw()}
 			</div>
-			<a href="#tab-subjects" class="Sections-Anchor Sections-AccordionTitle">Изучаемые дисциплины</a>
+			<a href="#tab-subjects" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.disciplines" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-subjects">
 				{subjects -> f:format.raw()}
 				{assetsSubjectAnnotations -> f:format.raw()}
 				{assetsPracticeAnnotations -> f:format.raw()}
 				{assetsMethodical -> f:format.raw()}
 			</div>
-			<a href="#tab-schedule" class="Sections-Anchor Sections-AccordionTitle">Учебный график</a>
+			<a href="#tab-schedule" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.schedule" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-schedule">
 				{schedule -> f:format.raw()}
 				{scheduleO -> f:format.raw()}
@@ -74,34 +74,34 @@
 			</div>
 		</div>
 
-		<h2 class="H2 marginTop-triple">Абитуриенту</h2>
+		<h2 class="H2 marginTop-triple"><f:translate id="studyProgram.abiturient" package="Sfi.Sfi"/></h2>
 		<div class="Sections js-sections Sections--Tabs">
 			<ul class="Sections-Tabs">
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-documentSubmission">Поступление</a>
+					<a class="Sections-Anchor" href="#tab-documentSubmission"><f:translate id="studyProgram.admission" package="Sfi.Sfi"/></a>
 				</li>
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-exams">Вступительные испытания</a>
+					<a class="Sections-Anchor" href="#tab-exams"><f:translate id="studyProgram.exams" package="Sfi.Sfi"/></a>
 				</li>
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-payment">Оплата</a>
+					<a class="Sections-Anchor" href="#tab-payment"><f:translate id="studyProgram.payment" package="Sfi.Sfi"/></a>
 				</li>
 				<li class="Sections-Tab">
-					<a class="Sections-Anchor" href="#tab-contacts">Контакты</a>
+					<a class="Sections-Anchor" href="#tab-contacts"><f:translate id="studyProgram.contacts" package="Sfi.Sfi"/></a>
 				</li>
 			</ul>
-			<a href="#tab-documentSubmission" class="Sections-Anchor Sections-AccordionTitle">Поступление</a>
+			<a href="#tab-documentSubmission" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.admission" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-documentSubmission">
 				<div class="Paragraph">{neos:contentElement.editable(property: 'nextDate')}</div>
 				<div class="Paragraph">{neos:contentElement.editable(property: 'studyBeginDate')}</div>
 				{documentSubmission -> f:format.raw()}
 			</div>
-			<a href="#tab-exams" class="Sections-Anchor Sections-AccordionTitle">Вступительные испытания</a>
+			<a href="#tab-exams" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.exams" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-exams">
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Вступительные испытания</div></f:if>
 				{exams -> f:format.raw()}
 			</div>
-			<a href="#tab-payment" class="Sections-Anchor Sections-AccordionTitle">Оплата</a>
+			<a href="#tab-payment" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.payment" package="Sfi.Sfi"/>Оплата</a>
 			<div class="Sections-Panel" id="tab-payment">
 				<div class="Paragraph">{neos:contentElement.editable(property: 'price')}</div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Оплата (описание)</div></f:if>

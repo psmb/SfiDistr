@@ -265,6 +265,31 @@
             <trans-unit id="almanac.slogan">
                 <source>Свет Христов просвещает всех</source>
             </trans-unit>
+
+            <trans-unit id="studyProgram.programDescription">
+                <source>Описание программы</source>
+            </trans-unit>
+            <trans-unit id="studyProgram.disciplines">
+                <source>Изучаемые дисциплины</source>
+            </trans-unit>
+            <trans-unit id="studyProgram.schedule">
+                <source>Учебный график</source>
+            </trans-unit>
+            <trans-unit id="studyProgram.abiturient">
+                <source>Абитуриенту</source>
+            </trans-unit>
+            <trans-unit id="studyProgram.admission">
+                <source>Поступление</source>
+            </trans-unit>
+            <trans-unit id="studyProgram.exams">
+                <source>Вступительные испытания</source>
+            </trans-unit>
+            <trans-unit id="studyProgram.payment">
+                <source>Оплата</source>
+            </trans-unit>
+            <trans-unit id="studyProgram.contacts">
+                <source>Контакты</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
