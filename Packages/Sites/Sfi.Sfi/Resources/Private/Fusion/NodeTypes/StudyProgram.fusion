@@ -14,74 +14,74 @@ prototype(Sfi.Sfi:StudyProgram) {
 
 	#TODO: translate
 	assetDescription = Sfi.Sfi:StudyProgramAsset {
-		title = 'Описание образовательной программы'
+		title = ${Translation.translate('studyProgram.assetDescription', null, [], null, 'Sfi.Sfi')}
 		@context.node = ${q(node).children('assetDescription').get(0)}
 	}
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
-		title = 'Свидетельство о государственной аккредитации'
+		title = ${Translation.translate('studyProgram.assetAccreditation', null, [], null, 'Sfi.Sfi')}
 		@context.node = ${q(node).children('assetAccreditation').get(0)}
 	}
 	assetInvoice = Sfi.Sfi:StudyProgramAsset {
-		title = 'Квитанция для оплаты обучения'
+		title = ${Translation.translate('studyProgram.assetInvoice', null, [], null, 'Sfi.Sfi')}
 		@context.node = ${q(node).children('assetInvoice').get(0)}
 	}
 	assetSampleContract = Sfi.Sfi:StudyProgramAsset {
-		title = 'Образец договора об оказании платных образовательных услуг'
+		title = ${Translation.translate('studyProgram.assetSampleContract', null, [], null, 'Sfi.Sfi')}
 		@context.node = ${q(node).children('assetSampleContract').get(0)}
 	}
 
 	assetsPlanO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanO'
-		@process.title = ${'<h3 class="H3 marginVertical-single">Учебный план</h3><h4 class="H4">Очная форма обучения</h4>' + value}
+		@process.title = ${'<h3 class="H3 marginVertical-single">' + Translation.translate('studyProgram.assetsPlan', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + 'Очная форма обучения</h4>' + value}
 	}
 	assetsPlanOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanOZ'
-		@process.title = ${'<h4 class="H4">Очно-заочная форма обучения</h4>' + value}
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi') + value}
 	}
 	assetsPlanZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanZ'
-		@process.title = ${'<h4 class="H4">Заочная форма обучения</h4>' + value}
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi') + value}
 	}
 	assetsAdmissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
 	}
 	assetsSubjectAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsSubjectAnnotations'
-		@process.title = ${'<h3 class="H3">Аннотации к рабочим программам дисциплин</h3>' + value}
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsSubjectAnnotations', null, [], null, 'Sfi.Sfi') + '</h3>' + value}
 	}
 	assetsPracticeAnnotations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotations'
-		@process.title = ${'<h3 class="H3">Практики</h3>' + value}
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsPracticeAnnotations', null, [], null, 'Sfi.Sfi') + '</h3>' + value}
 	}
 	assetsMethodical = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodical'
-		@process.title = ${'<h3 class="H3">Методические и иные документы</h3>' + value}
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsMethodical', null, [], null, 'Sfi.Sfi') + '</h3>' + value}
 	}
 	description = Neos.Neos:ContentCollection {
 		nodePath = 'description'
 	}
 	subjects = Neos.Neos:ContentCollection {
 		nodePath = 'subjects'
-		@process.title = ${'<h3 class="H3">Список изучаемых дисциплин</h3>' + value}
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.disciplines', null, [], null, 'Sfi.Sfi') + '</h3>' + value}
 	}
 	schedule = Neos.Neos:ContentCollection {
 		nodePath = 'schedule'
 	}
 	scheduleO = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleO'
-		@process.title = ${'<h3 class="H3 marginVertical-single">Календарный учебный график</h3><h4 class="H4">Очная форма обучения</h4>' + value}
+		@process.title = ${'<h3 class="H3 marginVertical-single">' + Translation.translate('studyProgram.grafik', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	scheduleOZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleOZ'
-		@process.title = ${'<h4 class="H4">Очно-заочная форма обучения</h4>' + value}
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	scheduleZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleZ'
-		@process.title = ${'<h4 class="H4">Заочная форма обучения</h4>' + value}
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	documentSubmission = Neos.Neos:ContentCollection {
 		nodePath = 'documentSubmission'
-		@process.title = ${'<h3 class="H3">Список необходимых документов</h3>' + value}
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.documentsList', null, [], null, 'Sfi.Sfi') + '</h3>' + value}
 	}
 	exams = Neos.Neos:ContentCollection {
 		nodePath = 'exams'

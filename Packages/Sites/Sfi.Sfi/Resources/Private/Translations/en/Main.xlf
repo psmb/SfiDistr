@@ -264,6 +264,63 @@
                 <source>Контакты</source>
                 <target>Contacts</target>
             </trans-unit>
+
+            <trans-unit id="studyProgram.about">
+                <source>О программе</source>
+                <target>About the Programme</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.documentsList">
+                <source>Список необходимых документов</source>
+                <target>List of Documents Necessary for Enrolment</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.zaochnaja">
+                <source>Заочная форма обучения</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.ochnoZaochnaja">
+                <source>Очно-заочная форма обучения</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.ochnaja">
+                <source>Очная форма обучения</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.grafik">
+                <source>Календарный учебный график</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.assetsMethodical">
+                <source>Методические и иные документы</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.assetsPracticeAnnotations">
+                <source>Практики</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.assetsSubjectAnnotations">
+                <source>Аннотации к рабочим программам дисциплин</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.assetsPlan">
+                <source>Учебный план</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.assetDescription">
+                <source>Описание образовательной программы</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.assetAccreditation">
+                <source>Свидетельство о государственной аккредитации</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.assetInvoice">
+                <source>Квитанция для оплаты обучения</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="studyProgram.assetSampleContract">
+                <source>Образец договора об оказании платных образовательных услуг</source>
+                <target></target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
