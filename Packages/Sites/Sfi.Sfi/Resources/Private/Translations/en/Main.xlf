@@ -321,6 +321,14 @@
                 <source>Образец договора об оказании платных образовательных услуг</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="studyProgram.level">
+                <source>Уровень программы</source>
+                <target>Programme Level</target>
+            </trans-unit>
+            <trans-unit id="studyProgram.place">
+                <source>Место реализации</source>
+                <target>Location</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

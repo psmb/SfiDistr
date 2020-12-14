@@ -1,8 +1,8 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace ts=Neos\Fusion\ViewHelpers}
 <div class="StudyProgramCard StudyProgramCard--Short">
-	<div class="StudyProgramCard-Line">Уровень программы: {level -> f:format.raw()}</div>
-	<div class="StudyProgramCard-Line">Место реализации: {division -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line"><f:translate id="studyProgram.level" package="Sfi.Sfi"/>: {level -> f:format.raw()}</div>
+	<div class="StudyProgramCard-Line"><f:translate id="studyProgram.place" package="Sfi.Sfi"/>: {division -> f:format.raw()}</div>
 	<div class="StudyProgramCard-Line">{duration -> f:format.raw()}</div>
 	<div class="StudyProgramCard-Line">{nextDate -> f:format.raw()}</div>
 	<div class="StudyProgramCard-Line">{educationForm -> f:format.raw()}</div>

@@ -333,11 +333,11 @@
             <trans-unit id="studyProgram.assetSampleContract">
                 <source>Образец договора об оказании платных образовательных услуг</source>
             </trans-unit>
-            <trans-unit id="studyProgram.about">
-                <source></source>
+            <trans-unit id="studyProgram.level">
+                <source>Уровень программы</source>
             </trans-unit>
-            <trans-unit id="studyProgram.about">
-                <source></source>
+            <trans-unit id="studyProgram.place">
+                <source>Место реализации</source>
             </trans-unit>
         </body>
     </file>
