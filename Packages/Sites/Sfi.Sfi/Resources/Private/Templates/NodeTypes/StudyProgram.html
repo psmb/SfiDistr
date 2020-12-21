@@ -109,7 +109,7 @@
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Квитанция для оплаты обучения</div></f:if>
 				{assetInvoice -> f:format.raw()}
 			</div>
-			<a href="#tab-contacts" class="Sections-Anchor Sections-AccordionTitle">Контакты</a>
+			<a href="#tab-contacts" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.contacts" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-contacts">
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Контакты</div></f:if>
 				{admissionContacts -> f:format.raw()}
