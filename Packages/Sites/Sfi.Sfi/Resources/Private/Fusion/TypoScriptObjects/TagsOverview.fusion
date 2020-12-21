@@ -43,11 +43,11 @@ prototype(Sfi.Sfi:TagsList) < prototype(Neos.Fusion:Collection) {
 prototype(Sfi.Sfi:TagsOverview) < prototype(Neos.Fusion:Component) {
   people = Sfi.Sfi:TagsList {
     collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').get()}
-    @context.title = 'все персоналии'
+    @context.title = ${Translation.translate('allPersons', null, [], null, 'Sfi.Sfi')}
   }
   tags = Sfi.Sfi:TagsList {
     collection = ${q(site).find('[instanceof Sfi.Sfi:PageTag]').get()}
-    @context.title = 'все теги'
+    @context.title = ${Translation.translate('allTags', null, [], null, 'Sfi.Sfi')}
   }
   style = "
     <style>

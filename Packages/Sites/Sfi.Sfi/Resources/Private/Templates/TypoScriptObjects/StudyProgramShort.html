@@ -9,6 +9,8 @@
 	<div class="StudyProgramCard-Line">{details -> f:format.raw()}</div>
 	<div class="StudyProgramCard-Line">{price -> f:format.raw()}</div>
 	<f:if condition="{noLink} != 'TRUE'">
-		<neos:link.node node="{node}" class="Button marginTop-single" title="{node.properties.title}">Подробнее</neos:link.node>
+		<neos:link.node node="{node}" class="Button marginTop-single" title="{node.properties.title}">
+			<f:translate id="studyProgram.details" package="Sfi.Sfi"/>
+		</neos:link.node>
 	</f:if>
 </div>

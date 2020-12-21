@@ -339,6 +339,15 @@
             <trans-unit id="studyProgram.place">
                 <source>Место реализации</source>
             </trans-unit>
+            <trans-unit id="studyProgram.details">
+                <source>Подробнее</source>
+            </trans-unit>
+            <trans-unit id="allTags">
+                <source>все теги</source>
+            </trans-unit>
+            <trans-unit id="allPersons">
+                <source>все персоналии</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
