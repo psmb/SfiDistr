@@ -12,10 +12,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/Flowpack/mustache"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/dimaip/Yeebase.Graylog"
         }
     ],
@@ -43,7 +39,9 @@
         "neos/fusion-afx": "^1.4",
         "aertmann/history": "^2.0",
         "ttree/dimensionkeeper": "^1.0",
-        "psmb/footnote": "^0.3.0"
+        "psmb/footnote": "^0.3.0",
+        "mustache/mustache": "^2.13",
+        "flowpack/mustache": "^0.0.1"
     },
     "scripts": {
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
