@@ -101,7 +101,7 @@
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Вступительные испытания</div></f:if>
 				{exams -> f:format.raw()}
 			</div>
-			<a href="#tab-payment" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.payment" package="Sfi.Sfi"/>Оплата</a>
+			<a href="#tab-payment" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.payment" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-payment">
 				<div class="Paragraph">{neos:contentElement.editable(property: 'price')}</div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Оплата (описание)</div></f:if>
