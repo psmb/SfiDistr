@@ -40,8 +40,8 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 	title.@process.link = afx`<a class="Link" href={lang == 'en' ? hrefEn : href}>{value}</a>`
 	title.@process.link.@if.live = ${node.context.workspace.name == 'live' && ((lang == 'ru' && node.properties.asset) || (lang == 'en' && node.properties.assetEn))}
 	linkAlt = afx`<div class="marginTop-half"><a class="Link" href={lang == 'en' ? href : hrefEn}>
-		<div @if.onlyRussian={lang == 'ru' && node.properties.assetEn && node.properties.asset}>Эта статья также доступна на английском</div>
-		<div @if.alsoRussian={lang == 'ru' && node.properties.assetEn && !node.properties.asset}>Эта статья доступна только на английском</div>
+		<div @if.onlyRussian={lang == 'ru' && node.properties.assetEn && node.properties.asset}>Эта статья также доступна на английском языке</div>
+		<div @if.alsoRussian={lang == 'ru' && node.properties.assetEn && !node.properties.asset}>Эта статья доступна только на английском языке</div>
 		<div @if.alsoRussian={lang == 'en' && node.properties.asset && node.properties.assetEn}>This article is also available in Russian</div>
 		<div @if.onlyRussian={lang == 'en' && node.properties.asset && !node.properties.assetEn}>This article is only available in Russian</div>
 	</a></div>`
