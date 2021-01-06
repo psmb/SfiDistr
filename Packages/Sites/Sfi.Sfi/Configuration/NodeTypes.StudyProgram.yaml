@@ -270,3 +270,23 @@
         reloadIfChanged: false
         inspector:
           group: studyProgram
+    studyProgramSpecial:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Образовательные программы (для спецраздела)'

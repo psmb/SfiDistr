@@ -151,6 +151,13 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	}
 	accreditationDate = ${q(node).property('accreditationDate')}
 	noLink = ${q(node).property('noLink')}
+	studyProgramSpecial = Neos.Fusion:Tag {
+		content = ${q(node).property('studyProgramSpecial')}
+		@process.editable = Neos.Neos:ContentElementEditable {
+			property = 'studyProgramSpecial'
+		}
+		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+	}
 
 	assetDescription = Sfi.Sfi:StudyProgramAsset {
 		title = ${String.stripTags(q(node).property('title'))}
