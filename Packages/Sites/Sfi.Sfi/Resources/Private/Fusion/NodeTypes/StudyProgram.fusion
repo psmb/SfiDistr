@@ -157,6 +157,7 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 			property = 'studyProgramSpecial'
 		}
 		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+		@process.convertUris = Neos.Neos:ConvertUris
 	}
 
 	assetDescription = Sfi.Sfi:StudyProgramAsset {
