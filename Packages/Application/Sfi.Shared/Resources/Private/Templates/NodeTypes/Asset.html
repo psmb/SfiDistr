@@ -1,4 +1,5 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 <a{attributes -> f:format.raw()}>
+	{tooltip -> f:format.raw()}
 	{neos:contentElement.editable(property: 'title', tag: 'span')}
 </a>

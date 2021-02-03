@@ -140,6 +140,37 @@
                 label: Кнопкой
               Asset-Inline:
                 label: Строчной
+              Asset-Signed:
+                label: С подписью
+    signee:
+      defaultValue: 'Мазуров Алексей Борисович'
+      type: string
+      ui:
+        label: 'ФИО подписавшего документ'
+        reloadIfChanged: true
+        inspector:
+          group: asset
+    signeePosition:
+      defaultValue: 'Должность подписавшего'
+      type: string
+      ui:
+        label: 'ФИО подписавшего документ'
+        reloadIfChanged: true
+        inspector:
+          group: asset
+    signDate:
+      type: DateTime
+      defaultValue: now
+      ui:
+        label: 'Дата подписания'
+        reloadIfChanged: true
+        inspector:
+          group: asset
+          editorOptions:
+            format: 'd-m-Y H:i'
+            minuteStep: 1
+      validation:
+        Neos.Neos/Validation/DateTimeValidator: {  }
 'Sfi.Shared:AudioAsset':
   superTypes:
     'Neos.Neos:Content': true
