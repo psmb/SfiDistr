@@ -69,7 +69,7 @@ var pay = function (event) {
 		var widget = new cp.CloudPayments();
 		var data = {
 			name: form.querySelector('[name=name]').value,
-			comment: urlParams.get('ref') || ''
+			nick: urlParams.get('ref') || ''
 		};
 		var urlParams = new URLSearchParams(window.location.search);
 		var isRecurrent = form.querySelector('[name=type]').value === 'monthly';
