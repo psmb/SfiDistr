@@ -68,8 +68,10 @@ var pay = function (event) {
 	if (form.querySelector('[name=agreeOffer]').value && form.querySelector('[name=agreeRf]').value) {
 		var widget = new cp.CloudPayments();
 		var data = {
-			name: form.querySelector('[name=name]').value
+			name: form.querySelector('[name=name]').value,
+			comment: urlParams.get('ref') || ''
 		};
+		var urlParams = new URLSearchParams(window.location.search);
 		var isRecurrent = form.querySelector('[name=type]').value === 'monthly';
 		if (isRecurrent) {
 			data.cloudPayments = {
