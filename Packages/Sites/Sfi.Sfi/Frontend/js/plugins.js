@@ -2,7 +2,7 @@
 // files and then concatened and minified by Grunt.
 
 // Move Header inside StickInParent on main page
-(function() {
+(function () {
     var header = document.getElementsByClassName("Header")[0];
     var stick = document.querySelector("#page-sfi .js-stickInParent");
     if (header && stick) {
@@ -10,7 +10,7 @@
     }
 })();
 
-$.fn.switchstylesheet = function(options) {
+$.fn.switchstylesheet = function (options) {
     //default vals
     var defaults = {
         seperator: "alt"
@@ -23,7 +23,7 @@ $.fn.switchstylesheet = function(options) {
     if (c) switchss(c);
 
     //goes thru the links to find out the ones having the selector
-    $(this).click(function(e) {
+    $(this).click(function (e) {
         // e.preventDefault();
         var title = $(this).attr("data-css");
         switchss(title);
@@ -35,7 +35,7 @@ $.fn.switchstylesheet = function(options) {
 
     function switchss(title) {
         //goes thru all the styles having seperator - alt
-        $("link[rel*=style][title*=" + options.seperator + "]").each(function(
+        $("link[rel*=style][title*=" + options.seperator + "]").each(function (
             i
         ) {
             this.disabled = true;
@@ -52,9 +52,9 @@ $.fn.switchstylesheet = function(options) {
 
 //cookie functions
 var cookie;
-(function($) {
+(function ($) {
     cookie = {
-        createCookie: function(name, value, days) {
+        createCookie: function (name, value, days) {
             if (days) {
                 var date = new Date();
                 date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -63,7 +63,7 @@ var cookie;
             document.cookie = name + "=" + value + expires + "; path=/";
         },
 
-        readCookie: function(name) {
+        readCookie: function (name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(";");
             for (var i = 0; i < ca.length; i++) {
@@ -77,17 +77,17 @@ var cookie;
     };
 })(jQuery);
 
-$(document).ready(function() {
-    $(".js-switchStylesheet").switchstylesheet({ seperator: "stylesheet" });
+$(document).ready(function () {
+    $(".js-switchStylesheet").switchstylesheet({seperator: "stylesheet"});
 });
 
 //TODO: move to plugin
-(function($) {
-    $.fn.responsiveTabs = function() {
-        this.each(function() {
+(function ($) {
+    $.fn.responsiveTabs = function () {
+        this.each(function () {
             var _this = $(this);
 
-            _this.find(".Sections-Anchor").click(function(e) {
+            _this.find(".Sections-Anchor").click(function (e) {
                 var parent = $(this)
                     .parents(".js-sections")
                     .eq(0);
@@ -125,18 +125,18 @@ $(document).ready(function() {
     };
 })(jQuery);
 
-$(document).on("page:fetch", function() {
+$(document).on("page:fetch", function () {
     NProgress.start();
 });
-$(document).on("page:change", function() {
+$(document).on("page:change", function () {
     NProgress.done();
 });
-$(document).on("page:restore", function() {
+$(document).on("page:restore", function () {
     NProgress.remove();
 });
 
-var headingAnchors = function() {
-    $(".js-anchor").each(function() {
+var headingAnchors = function () {
+    $(".js-anchor").each(function () {
         var anchor = $(
             '<a class="HeadingAnchor-Link"><i class="icon-link"></i></a>'
         ).attr("href", "#" + $(this).attr("id"));
@@ -146,24 +146,24 @@ var headingAnchors = function() {
     });
 };
 
-var onReadyPlugins = function() {
+var onReadyPlugins = function () {
     headingAnchors();
 
     var searchBoxInput = jQuery(".js-SearchBox-Field");
     var defaultValue = searchBoxInput.val();
     searchBoxInput
-        .focus(function() {
+        .focus(function () {
             if ($(this).val() == defaultValue) {
                 $(this).val("");
             }
         })
-        .blur(function() {
+        .blur(function () {
             if ($(this).val().length == 0) {
                 $(this).val(defaultValue);
             }
         });
 
-    audiojs.events.ready(function() {
+    audiojs.events.ready(function () {
         path = "/_Resources/Static/Packages/Sfi.Sfi/Built/";
         var as = audiojs.createAll({
             imageLocation: path + "player-graphics.gif",
@@ -173,11 +173,11 @@ var onReadyPlugins = function() {
     });
 
     // Open external urls in new window
-    $("a").each(function() {
+    $("a").each(function () {
         var a = new RegExp("/" + window.location.host + "/");
         // Starts with http and does not contain current domain
         if (!a.test(this.href) && this.href.indexOf("http") === 0) {
-            $(this).click(function(event) {
+            $(this).click(function (event) {
                 event.preventDefault();
                 event.stopPropagation();
                 window.open(this.href, "_blank");
@@ -186,24 +186,24 @@ var onReadyPlugins = function() {
     });
 
     // MainMenu toggle
-    $(".js-MainMenu-Toggle").click(function(e) {
+    $(".js-MainMenu-Toggle").click(function (e) {
         e.preventDefault();
         e.stopPropagation();
         $(".js-MainMenu").toggleClass("isActive");
     });
-    $("body").click(function(e) {
+    $("body").click(function (e) {
         $(".js-MainMenu").removeClass("isActive");
     });
-    $(".js-MainMenu-Wrap").click(function(e) {
+    $(".js-MainMenu-Wrap").click(function (e) {
         e.stopPropagation();
     });
 
-    $(".js-MobileNav-Toggle").click(function(e) {
+    $(".js-MobileNav-Toggle").click(function (e) {
         e.preventDefault();
         e.stopPropagation();
         $(".js-MobileNav").toggleClass("isActive");
     });
-    $("body").click(function(e) {
+    $("body").click(function (e) {
         $(".js-MobileNav").removeClass("isActive");
     });
 
@@ -313,51 +313,51 @@ var onReadyPlugins = function() {
     //$(".js-stickInParent").stick_in_parent();
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
     onReadyPlugins();
 });
 
 if (typeof document.addEventListener === "function") {
     document.addEventListener(
         "Neos.PageLoaded",
-        function(event) {
+        function (event) {
             onReadyPlugins();
         },
         false
     );
 }
 
-document.querySelectorAll(".js-ReadMore").forEach(function(node) {
+document.querySelectorAll(".js-ReadMore").forEach(function (node) {
     var readMore = document.createElement("div");
     readMore.classList.add("ReadMore-overlay");
     var button = document.createElement("span");
     button.innerText = "Читать далее";
     button.className = "ReadMore-button";
     readMore.appendChild(button);
-    readMore.addEventListener("click", function(event) {
+    readMore.addEventListener("click", function (event) {
         node.classList.add("ReadMore--isExpanded");
     });
     node.appendChild(readMore);
 });
 
 // Init the stickInParent plugin
-(function() {
-    document.querySelectorAll(".js-stickInParent").forEach(function(node) {
+(function () {
+    document.querySelectorAll(".js-stickInParent").forEach(function (node) {
         stickInParent(node);
     });
 })();
-(function() {
+(function () {
     document
         .querySelectorAll(".js-stickInParent--large")
-        .forEach(function(node) {
-            stickInParent(node, { minWidth: 1024 });
+        .forEach(function (node) {
+            stickInParent(node, {minWidth: 1024});
         });
 })();
-(function() {
+(function () {
     document
         .querySelectorAll(".js-stickInParent--small")
-        .forEach(function(node) {
-            stickInParent(node, { minWidth: 1 });
+        .forEach(function (node) {
+            stickInParent(node, {minWidth: 1});
         });
 })();
 
@@ -381,7 +381,7 @@ function stickInParent(element, options) {
     update(window.scrollY);
     debouncedScroll(update);
 
-    window.addEventListener("resize", function(e) {
+    window.addEventListener("resize", function (e) {
         element.style.width = "auto";
         originalStyles = "width:" + element.offsetWidth + "px;" + initStyles;
     });
@@ -391,18 +391,18 @@ function stickInParent(element, options) {
             if (
                 scrollPosition > parent.offsetTop &&
                 scrollPosition + window.innerHeight <
-                    parent.offsetTop +
-                        parent.offsetHeight +
-                        window.innerHeight -
-                        element.offsetHeight
+                parent.offsetTop +
+                parent.offsetHeight +
+                window.innerHeight -
+                element.offsetHeight
             ) {
                 setFixed();
             } else if (
                 scrollPosition + window.innerHeight >
                 parent.offsetTop +
-                    parent.offsetHeight +
-                    window.innerHeight -
-                    element.offsetHeight
+                parent.offsetHeight +
+                window.innerHeight -
+                element.offsetHeight
             ) {
                 setAbsolute();
             } else {
@@ -442,10 +442,10 @@ function debouncedScroll(callback) {
     var lastKnownScrollPosition = 0;
     var isTicking = false;
 
-    window.addEventListener("scroll", function(e) {
+    window.addEventListener("scroll", function (e) {
         lastKnownScrollPosition = window.scrollY;
         if (!isTicking) {
-            window.requestAnimationFrame(function() {
+            window.requestAnimationFrame(function () {
                 callback(lastKnownScrollPosition);
                 isTicking = false;
             });
@@ -453,3 +453,10 @@ function debouncedScroll(callback) {
         isTicking = true;
     });
 }
+
+document.querySelectorAll("a[data-signature]").forEach(function (node) {
+    var json = node.getAttribute('data-signature');
+    var signature = JSON.parse(json)
+    var title = 'Дата и время подписания: ' + signature.signDate + '\nФИО подписавшего документ: ' + signature.signee + '\nДолжность: ' + signature.signeePosition + '\nУникальный программный ключ: ' + signature.signKey
+    node.setAttribute('title', title)
+});

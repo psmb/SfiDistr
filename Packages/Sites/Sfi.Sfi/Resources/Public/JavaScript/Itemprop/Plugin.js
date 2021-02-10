@@ -125,9 +125,17 @@ var _itempropPlugin = __webpack_require__(8);
 
 var _itempropPlugin2 = _interopRequireDefault(_itempropPlugin);
 
+var _LinkSignaturePlugin = __webpack_require__(30);
+
+var _LinkSignaturePlugin2 = _interopRequireDefault(_LinkSignaturePlugin);
+
 var _ItempropButton = __webpack_require__(16);
 
 var _ItempropButton2 = _interopRequireDefault(_ItempropButton);
+
+var _LinkEditorOptions = __webpack_require__(29);
+
+var _LinkEditorOptions2 = _interopRequireDefault(_LinkEditorOptions);
 
 var _plowJs = __webpack_require__(1);
 
@@ -151,11 +159,23 @@ var addPlugin = function addPlugin(Plugin, isEnabled) {
             return (0, _plowJs.$get)('formatting.itemprop', a) && (0, _plowJs.$get)('formatting.table', a);
         }
     });
+    richtextToolbar.set('sign', {
+        component: _ItempropButton2.default,
+        isVisible: function isVisible(a) {
+            return true;
+        }
+    });
 
     var config = globalRegistry.get('ckEditor5').get('config');
     config.set('itemprop', addPlugin(_itempropPlugin2.default, function (a) {
         return (0, _plowJs.$get)('formatting.itemprop', a) && (0, _plowJs.$get)('formatting.table', a);
     }), 'after table');
+    config.set('signee', addPlugin(_LinkSignaturePlugin2.default, function (a) {
+        return (0, _plowJs.$get)('formatting.table', a);
+    }), 'after table');
+
+    var containerRegistry = globalRegistry.get("containers");
+    containerRegistry.set("LinkInput/OptionsPanel/LinkEditorOptions", _LinkEditorOptions2.default);
 });
 
 /***/ }),
@@ -1672,6 +1692,608 @@ module.exports = function (css) {
 	return fixedCss;
 };
 
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _class, _class2, _temp;
+
+var _react = __webpack_require__(17);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(18);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactRedux = __webpack_require__(19);
+
+var _plowJs = __webpack_require__(1);
+
+var _reactUiComponents = __webpack_require__(20);
+
+var _neosUiCkeditor5Bindings = __webpack_require__(22);
+
+var _neosUiReduxStore = __webpack_require__(23);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function makeid(length) {
+  var result = '';
+  var characters = 'abcdef0123456789';
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)({
+  formattingUnderCursor: _neosUiReduxStore.selectors.UI.ContentCanvas.formattingUnderCursor
+})), _dec(_class = (_temp = _class2 = function (_PureComponent) {
+  _inherits(LinkEditorOptions, _PureComponent);
+
+  function LinkEditorOptions() {
+    _classCallCheck(this, LinkEditorOptions);
+
+    return _possibleConstructorReturn(this, (LinkEditorOptions.__proto__ || Object.getPrototypeOf(LinkEditorOptions)).apply(this, arguments));
+  }
+
+  _createClass(LinkEditorOptions, [{
+    key: "render",
+    value: function render() {
+      var signature = null;
+      var signatureJson = (0, _plowJs.$get)('signature', this.props.formattingUnderCursor);
+      if (signatureJson) {
+        try {
+          signature = JSON.parse(signatureJson);
+        } catch (e) {}
+      }
+
+      if (!signature) {
+        return _react2.default.createElement(
+          "div",
+          { style: {
+              flexBasis: '50%',
+              padding: 8
+            } },
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+              _reactUiComponents.Button,
+              { onClick: function onClick() {
+                  (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify({
+                    signed: false,
+                    signee: 'Мазуров Алексей Борисович',
+                    signeePosition: 'Ректор',
+                    signDate: new Date(),
+                    signKey: makeid(40)
+                  }), false);
+                } },
+              "\u041F\u043E\u0434\u043F\u0438\u0441\u0430\u0442\u044C"
+            )
+          )
+        );
+      }
+
+      var updateSignature = function updateSignature(key) {
+        return function (value) {
+          signature[key] = value;
+          (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify(signature), false);
+        };
+      };
+      return _react2.default.createElement(
+        _react2.default.Fragment,
+        null,
+        _react2.default.createElement(
+          "div",
+          { style: {
+              flexBasis: '50%',
+              padding: 8
+            } },
+          _react2.default.createElement(
+            "label",
+            { className: { marginBottom: 4 }, htmlFor: "signee" },
+            "\u0424\u0418\u041E \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u0432\u0448\u0435\u0433\u043E \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442"
+          ),
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(_reactUiComponents.TextInput, {
+              id: "signee",
+              value: signature.signee,
+              placeholder: "ФИО подписавшего документ",
+              onChange: updateSignature('signee')
+            })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { style: {
+              flexBasis: '50%',
+              padding: 8
+            } },
+          _react2.default.createElement(
+            "label",
+            { className: { marginBottom: 4 }, htmlFor: "signeePosition" },
+            "\u0414\u043E\u043B\u0436\u043D\u043E\u0441\u0442\u044C \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u0432\u0448\u0435\u0433\u043E"
+          ),
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(_reactUiComponents.TextInput, {
+              id: "signeePosition",
+              value: signature.signeePosition,
+              placeholder: "ФИО подписавшего документ",
+              onChange: updateSignature('signeePosition')
+            })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { style: {
+              flexBasis: '50%',
+              padding: 8
+            } },
+          _react2.default.createElement(
+            "label",
+            { className: { marginBottom: 4 }, htmlFor: "signDate" },
+            "\u0414\u0430\u0442\u0430 \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u043D\u0438\u044F"
+          ),
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(_reactUiComponents.DateInput, {
+              id: "signDate",
+              value: signature.signDate,
+              onChange: updateSignature('signDate')
+            })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { style: {
+              flexBasis: '50%',
+              padding: 8,
+              marginTop: 20
+            } },
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+              _reactUiComponents.Button,
+              { onClick: function onClick() {
+                  (0, _neosUiCkeditor5Bindings.executeCommand)("removeSignature");
+                } },
+              "\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u043E\u0434\u043F\u0438\u0441\u044C"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return LinkEditorOptions;
+}(_react.PureComponent), _class2.propTypes = {
+  formattingUnderCursor: _propTypes2.default.object,
+  linkingOptions: _propTypes2.default.object
+}, _temp)) || _class);
+exports.default = LinkEditorOptions;
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _ckeditor5Exports = __webpack_require__(15);
+
+var _linkAttributeCommand = __webpack_require__(31);
+
+var _linkAttributeCommand2 = _interopRequireDefault(_linkAttributeCommand);
+
+var _removeAttributeCommand = __webpack_require__(34);
+
+var _removeAttributeCommand2 = _interopRequireDefault(_removeAttributeCommand);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var attributeName = 'signature';
+
+var SignaturePlugin = function (_Plugin) {
+  _inherits(SignaturePlugin, _Plugin);
+
+  function SignaturePlugin() {
+    _classCallCheck(this, SignaturePlugin);
+
+    return _possibleConstructorReturn(this, (SignaturePlugin.__proto__ || Object.getPrototypeOf(SignaturePlugin)).apply(this, arguments));
+  }
+
+  _createClass(SignaturePlugin, [{
+    key: "init",
+    value: function init() {
+      var editor = this.editor;
+      editor.model.schema.extend("$text", {
+        allowAttributes: [attributeName]
+      });
+
+      this.editor.commands.get("unlink").on("execute", function (evt, args) {
+        editor.execute("removeSignature");
+      });
+
+      editor.conversion.for("downcast").attributeToElement({
+        model: attributeName,
+        view: function view(attributeValue, writer) {
+          var linkElement = writer.createAttributeElement("a", attributeValue ? _defineProperty({}, "data-" + attributeName, attributeValue) : {}, { priority: 5 });
+          return linkElement;
+        }
+      });
+      editor.conversion.for("upcast").elementToAttribute({
+        view: {
+          name: "a",
+          attributes: _defineProperty({}, "data-" + attributeName, true)
+        },
+        model: {
+          key: attributeName,
+          value: function value(viewElement) {
+            return viewElement.getAttribute(["data-" + attributeName]);
+          }
+        }
+      });
+
+      editor.commands.add(attributeName, new _linkAttributeCommand2.default(this.editor, attributeName));
+      editor.commands.add("removeSignature", new _removeAttributeCommand2.default(this.editor, attributeName));
+    }
+  }], [{
+    key: "pluginName",
+    get: function get() {
+      return "Signature";
+    }
+  }]);
+
+  return SignaturePlugin;
+}(_ckeditor5Exports.Plugin);
+
+exports.default = SignaturePlugin;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _ckeditor5Exports = __webpack_require__(15);
+
+var _findLinkRange = __webpack_require__(32);
+
+var _findLinkRange2 = _interopRequireDefault(_findLinkRange);
+
+var _toMap = __webpack_require__(33);
+
+var _toMap2 = _interopRequireDefault(_toMap);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LinkAttributeCommand = function (_Command) {
+  _inherits(LinkAttributeCommand, _Command);
+
+  function LinkAttributeCommand(editor, attributeKey) {
+    _classCallCheck(this, LinkAttributeCommand);
+
+    var _this = _possibleConstructorReturn(this, (LinkAttributeCommand.__proto__ || Object.getPrototypeOf(LinkAttributeCommand)).call(this, editor));
+
+    _this.attributeKey = attributeKey;
+    return _this;
+  }
+
+  _createClass(LinkAttributeCommand, [{
+    key: "refresh",
+    value: function refresh() {
+      var model = this.editor.model;
+      var doc = model.document;
+
+      this.value = doc.selection.getAttribute(this.attributeKey);
+      this.isEnabled = model.schema.checkAttributeInSelection(doc.selection, this.attributeKey);
+    }
+  }, {
+    key: "execute",
+    value: function execute(value) {
+      var _this2 = this;
+
+      var model = this.editor.model;
+      var doc = model.document;
+      var selection = doc.selection;
+      var toggleMode = value === undefined;
+      value = toggleMode ? !this.value : value;
+
+      model.change(function (writer) {
+        if (toggleMode && !value) {
+          var rangesToUnset = selection.isCollapsed ? [(0, _findLinkRange2.default)(selection.getFirstPosition(), selection.getAttribute("linkHref"), model)] : selection.getRanges();
+          var _iteratorNormalCompletion = true;
+          var _didIteratorError = false;
+          var _iteratorError = undefined;
+
+          try {
+            for (var _iterator = rangesToUnset[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              var range = _step.value;
+
+              writer.removeAttribute(_this2.attributeKey, range);
+            }
+          } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+              }
+            } finally {
+              if (_didIteratorError) {
+                throw _iteratorError;
+              }
+            }
+          }
+        } else if (selection.isCollapsed) {
+          var position = selection.getFirstPosition();
+
+          if (selection.hasAttribute("linkHref")) {
+            var linkRange = (0, _findLinkRange2.default)(selection.getFirstPosition(), selection.getAttribute("linkHref"), model);
+            if (value === false) {
+              writer.removeAttribute(_this2.attributeKey, linkRange);
+            } else {
+              writer.setAttribute(_this2.attributeKey, value, linkRange);
+              writer.setSelection(linkRange);
+            }
+          } else if (value !== "") {
+            var attributes = (0, _toMap2.default)(selection.getAttributes());
+            attributes.set(_this2.attributeKey, value);
+            var node = writer.createText(value, attributes);
+            writer.insert(node, position);
+            writer.setSelection(Range.createOn(node));
+          }
+        } else {
+          var ranges = model.schema.getValidRanges(selection.getRanges(), _this2.attributeKey);
+
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
+
+          try {
+            for (var _iterator2 = ranges[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var _range = _step2.value;
+
+              if (value === false) {
+                writer.removeAttribute(_this2.attributeKey, _range);
+              } else {
+                writer.setAttribute(_this2.attributeKey, value, _range);
+              }
+            }
+          } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                _iterator2.return();
+              }
+            } finally {
+              if (_didIteratorError2) {
+                throw _iteratorError2;
+              }
+            }
+          }
+        }
+      });
+    }
+  }]);
+
+  return LinkAttributeCommand;
+}(_ckeditor5Exports.Command);
+
+exports.default = LinkAttributeCommand;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = findLinkRange;
+function findLinkRange(position, value, model) {
+  return model.createRange(_findBound(position, value, true, model), _findBound(position, value, false, model));
+}
+
+function _findBound(position, value, lookBack, model) {
+  var node = position.textNode || (lookBack ? position.nodeBefore : position.nodeAfter);
+
+  var lastNode = null;
+
+  while (node && node.getAttribute("linkHref") == value) {
+    lastNode = node;
+    node = lookBack ? node.previousSibling : node.nextSibling;
+  }
+
+  return lastNode ? model.createPositionAt(lastNode, lookBack ? "before" : "after") : position;
+}
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = objectToMap;
+function objectToMap(obj) {
+  var map = new Map();
+
+  for (var key in obj) {
+    map.set(key, obj[key]);
+  }
+
+  return map;
+}
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _ckeditor5Exports = __webpack_require__(15);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _findRange(position, value, model, attributeKey) {
+  return model.createRange(_findBound(position, value, true, model, attributeKey), _findBound(position, value, false, model, attributeKey));
+}
+
+function _findBound(position, value, lookBack, model, attributeKey) {
+  var node = position.textNode || (lookBack ? position.nodeBefore : position.nodeAfter);
+
+  var lastNode = null;
+
+  while (node && node.getAttribute(attributeKey) == value) {
+    lastNode = node;
+    node = lookBack ? node.previousSibling : node.nextSibling;
+  }
+
+  return lastNode ? model.createPositionAt(lastNode, lookBack ? "before" : "after") : position;
+}
+
+var RemoveAttributeCommand = function (_Command) {
+  _inherits(RemoveAttributeCommand, _Command);
+
+  function RemoveAttributeCommand(editor, attributeKey) {
+    _classCallCheck(this, RemoveAttributeCommand);
+
+    var _this = _possibleConstructorReturn(this, (RemoveAttributeCommand.__proto__ || Object.getPrototypeOf(RemoveAttributeCommand)).call(this, editor));
+
+    _this.attributeKey = attributeKey;
+    return _this;
+  }
+
+  _createClass(RemoveAttributeCommand, [{
+    key: "refresh",
+    value: function refresh() {
+      var model = this.editor.model;
+      var doc = model.document;
+
+      this.value = doc.selection.getAttribute(this.attributeKey);
+      this.isEnabled = model.schema.checkAttributeInSelection(doc.selection, this.attributeKey);
+    }
+  }, {
+    key: "execute",
+    value: function execute(value) {
+      var _this2 = this;
+
+      var model = this.editor.model;
+      var doc = model.document;
+      var selection = doc.selection;
+      var toggleMode = value === undefined;
+      value = toggleMode ? !this.value : value;
+
+      model.change(function (writer) {
+        var rangesToUnset = selection.isCollapsed ? [_findRange(selection.getFirstPosition(), selection.getAttribute(_this2.attributeKey), model, _this2.attributeKey)] : selection.getRanges();
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = rangesToUnset[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var range = _step.value;
+
+            writer.removeAttribute(_this2.attributeKey, range);
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      });
+    }
+  }]);
+
+  return RemoveAttributeCommand;
+}(_ckeditor5Exports.Command);
+
+exports.default = RemoveAttributeCommand;
 
 /***/ })
 /******/ ]);

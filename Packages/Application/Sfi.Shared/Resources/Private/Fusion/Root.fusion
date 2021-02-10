@@ -17,14 +17,8 @@ prototype(Sfi.Shared:TextWithImage) {
 }
 
 prototype(Sfi.Shared:Asset) {
-	tooltip = Neos.Fusion:Component {
-		renderer = afx`
-		<svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm2 0c0 5.523-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0s10 4.477 10 10zm-7-2a1 1 0 11-2 0 1 1 0 012 0zm2 0a3 3 0 01-4.293 2.708L9.414 12l.293.293a1 1 0 01-1.414 1.414L8 13.414l-.293.293a1 1 0 01-1.414-1.414l1-1 2-2A3 3 0 1115 8z" fill="#909EBB"/></svg>
-		`
-		renderer.@if.onlySigned = ${node.properties.variant == 'Asset-Signed'}
-	}
-	attributes.title = ${'Дата и время подписания: ' + Date.format(node.properties.signDate, 'Y.m.d H:i:s') +'&#013;ФИО подписавшего документ: ' + node.properties.signee + '&#013;Должность: ' + node.properties.signeePosition + '&#013;Уникальный программный ключ: ' + node.properties.asset.resource.sha1}
-	attributes.title.@if.onlySigned = ${node.properties.variant == 'Asset-Signed'}
+	attributes.data-signature = ${Json.stringify({signee: node.properties.signee, signeePosition: node.properties.signeePosition, signDate: Date.format(node.properties.signDate, 'Y.m.d H:i:s'), signKey: node.properties.asset.resource.sha1})}
+	attributes.data-signature.@if.onlySigned = ${node.properties.variant == 'Asset-Signed'}
 	attributes.class = ${node.properties.variant == 'Asset-Button' ? 'Button AssetButton' : 'ButtonInline AssetInline'}
 	attributes.href = ${'asset://' + node.properties.asset.identifier}
 	attributes.href.@process.convertUris = Neos.Neos:ConvertUris
