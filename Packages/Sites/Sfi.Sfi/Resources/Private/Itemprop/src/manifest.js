@@ -19,14 +19,10 @@ manifest('Psmb.Itemprop:Itemprop', {}, globalRegistry => {
         component: ItempropButton,
         isVisible: a => $get('formatting.itemprop', a) && $get('formatting.table', a)
     });
-    richtextToolbar.set('sign', {
-        component: ItempropButton,
-        isVisible: a => true
-    });
 
     const config = globalRegistry.get('ckEditor5').get('config');
     config.set('itemprop', addPlugin(ItempropPlugin, a => $get('formatting.itemprop', a) && $get('formatting.table', a)), 'after table');
-    config.set('signee', addPlugin(LinkSignaturePlugin, a => $get('formatting.table', a)), 'after table');
+    config.set('signature', addPlugin(LinkSignaturePlugin, a => $get('formatting.table', a)), 'after table');
 
     const containerRegistry = globalRegistry.get("containers");
     containerRegistry.set(

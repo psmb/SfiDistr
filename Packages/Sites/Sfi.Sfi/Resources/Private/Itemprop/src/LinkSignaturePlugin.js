@@ -2,7 +2,7 @@ import {Plugin} from "ckeditor5-exports";
 import LinkAttributeCommand from "./linkAttributeCommand";
 import RemoveAttributeCommand from "./removeAttributeCommand";
 
-const attributeName = 'signature'
+const attributeName = 'data-signature'
 
 export default class SignaturePlugin extends Plugin {
   static get pluginName() {
@@ -26,7 +26,7 @@ export default class SignaturePlugin extends Plugin {
           "a",
           attributeValue
             ? {
-              [`data-${attributeName}`]: attributeValue
+              [attributeName]: attributeValue
             }
             : {},
           {priority: 5}
@@ -38,17 +38,17 @@ export default class SignaturePlugin extends Plugin {
       view: {
         name: "a",
         attributes: {
-          [`data-${attributeName}`]: true
+          [attributeName]: true
         }
       },
       model: {
         key: attributeName,
-        value: viewElement => viewElement.getAttribute([`data-${attributeName}`])
+        value: viewElement => viewElement.getAttribute(attributeName)
       }
     });
 
     editor.commands.add(
-      attributeName,
+      'signature',
       new LinkAttributeCommand(this.editor, attributeName)
     );
     editor.commands.add(

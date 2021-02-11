@@ -279,7 +279,7 @@
             autoparagraph: true
             linking:
               anchor: true
-              title: true
+              title: false
               targetBlank: true
             formatting:
               strong: true
