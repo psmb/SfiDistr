@@ -74,6 +74,34 @@ Psmb:
           language:
             - ru
       -
+        identifier: datasource-noLink
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://paymentssfi_node/subscribers?linkReferer=-'
+        label: 'Без ссылки'
+        interval: manual
+        senderName: 'Поддержите СФИ'
+        replyToAddress: 'donate@sfi.ru'
+        dimensions:
+          language:
+            - ru
+      -
+        identifier: datasource-psmb
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://paymentssfi_node/subscribers?linkReferer=psmb'
+        label: 'По ссылке psmb'
+        interval: manual
+        senderName: 'Поддержите СФИ'
+        replyToAddress: 'donate@sfi.ru'
+        dimensions:
+          language:
+            - ru
+      -
         identifier: datasource-chapel
         renderer: 'Sfi.Sfi:FundraisingMail'
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
