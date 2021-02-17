@@ -2192,8 +2192,13 @@ var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)
         };
       };
       return _react2.default.createElement(
-        _react2.default.Fragment,
-        null,
+        "div",
+        { style: {
+            maxHeight: 450,
+            overflow: 'auto',
+            display: 'flex',
+            flexWrap: 'wrap'
+          } },
         _react2.default.createElement(
           "div",
           { style: {

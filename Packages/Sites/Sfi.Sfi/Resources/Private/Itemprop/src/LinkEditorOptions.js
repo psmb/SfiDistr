@@ -62,7 +62,12 @@ export default class LinkEditorOptions extends PureComponent {
       executeCommand("signature", JSON.stringify(signature), false);
     }
     return (
-      <React.Fragment>
+      <div style={{
+        maxHeight: 450,
+        overflow: 'auto',
+        display: 'flex',
+        flexWrap: 'wrap'
+      }}>
         <div style={{
           flexBasis: '50%',
           padding: 8
@@ -121,7 +126,7 @@ export default class LinkEditorOptions extends PureComponent {
             }}>Удалить подпись</Button>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }
