@@ -17,7 +17,10 @@
 						<div class="MediaSlideSmall-Teaser">{place -> f:format.raw()}</div>
 					</f:if>
 					<f:if condition="{date}">
-						<div class="MediaSlideSmall-Date"><f:format.date forceLocale="{true}" cldrFormat="d.MM">{date}</f:format.date></div>
+						<div class="MediaSlideSmall-Date">
+							<f:if condition="{node.properties.dateStart}"><f:if condition="{f:format.date(date: node.properties.dateStart format: 'Y-m-d')} < {f:format.date(date: date, format: 'Y-m-d')}">
+								<span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{node.properties.dateStart}</f:format.date></span><span>–</span></f:if></f:if><span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{date}</f:format.date></span>
+						</div>
 					</f:if>
 				</div>
 			</neos:link.node>
