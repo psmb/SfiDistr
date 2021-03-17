@@ -13,7 +13,7 @@ Neos:
         port: '465'
         encryption: 'ssl'
         username: '%env:SFI_SES_USER%'
-        password: '%env:SFI_SES_PASSWORD%'
+        password: '%env:SFI_SES_PASSWORD2%'
   Flow:
     http:
       baseUri: 'https://sfi.ru/'
