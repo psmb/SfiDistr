@@ -24,6 +24,7 @@ services:
     secrets:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
+      - SFI_SES_USER
       - SFI_SES_PASSWORD
       - GA_SECRET
       - GA_DEVKEY
@@ -48,6 +49,8 @@ secrets:
   AWS_ACCESS_KEY_ID:
     external: true
   AWS_SECRET_ACCESS_KEY:
+    external: true
+  SFI_SES_USER:
     external: true
   SFI_SES_PASSWORD:
     external: true
