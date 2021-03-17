@@ -12,7 +12,7 @@ Neos:
         host: 'email-smtp.us-west-2.amazonaws.com'
         port: '465'
         encryption: 'ssl'
-        username: 'AKIAIV3MQACBKVT236RA'
+        username: '%env:SFI_SES_USER%'
         password: '%env:SFI_SES_PASSWORD%'
   Flow:
     http:
