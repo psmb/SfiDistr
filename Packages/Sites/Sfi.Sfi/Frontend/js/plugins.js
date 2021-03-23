@@ -503,3 +503,9 @@ document.querySelectorAll("a[data-signature]").forEach(function (node) {
     var title = 'Дата и время подписания: ' + signature.signDate + '\nФИО подписавшего документ: ' + signature.signee + '\nДолжность: ' + signature.signeePosition + '\nУникальный программный ключ: ' + md5(signature.signee)
     node.setAttribute('title', title)
 });
+
+document.querySelectorAll(".js-Expand").forEach(function (node) {
+    node.querySelector(".js-Expand-title").addEventListener('click', function() {
+        node.classList.toggle('isExpanded')
+    })
+})
