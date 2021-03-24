@@ -306,7 +306,7 @@
                 <target></target>
             </trans-unit>
             <trans-unit id="studyProgram.assetDescriptions">
-                <source>Описание образовательной программы</source>
+                <source>Описание образовательной программы и рабочие программы дисциплин</source>
                 <target></target>
             </trans-unit>
             <trans-unit id="studyProgram.assetAccreditation">
