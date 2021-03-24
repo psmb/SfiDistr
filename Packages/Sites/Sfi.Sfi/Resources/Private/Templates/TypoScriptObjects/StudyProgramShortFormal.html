@@ -9,10 +9,9 @@
 			высшее образование – {level -> f:format.raw()}
 		</td>
 		<td itemprop="eduForm">Очная</td>
-		<td rowspan="{rowCount}">
-			<div itemprop="opMain" class="RteTextLinkable">
-				{assetDescription -> f:format.raw()}
-				{studyProgramSpecial -> f:format.raw()}
+		<td>
+			<div itemprop="opMain">
+				{assetDescriptionsO -> f:format.raw()}
 			</div>
 			<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
@@ -23,9 +22,9 @@
 			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
 			</div>
 		</td>
-		<td rowspan="{rowCount}">
+		<td>
 			<div itemprop="educationAnnotation">
-				{assetsSubjectAnnotations -> f:format.raw()}
+				{assetsSubjectAnnotationsO -> f:format.raw()}
 			</div>
 			<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
 				здоровья.</div>
@@ -37,21 +36,21 @@
 			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
 			</div>
 		</td>
-		<td rowspan="{rowCount}">
+		<td>
 			<div itemprop="methodology">
-				{assetsMethodical -> f:format.raw()}
+				{assetsMethodicalO -> f:format.raw()}
 			</div>
 			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
-		<td rowspan="{rowCount}">
+		<td>
 			<div itemprop="eduPr">
-				{assetsPracticeAnnotations -> f:format.raw()}
+				{assetsPracticeAnnotationsO -> f:format.raw()}
 			</div>
 			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
-		<td rowspan="{rowCount}">
+		<td>
 			<div itemprop="eduEl">
-				{distantEdu -> f:format.raw()}
+				{distantEduO -> f:format.raw()}
 			</div>
 			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
@@ -61,14 +60,45 @@
 	<tr>
 		<td itemprop="eduForm">Очно-заочная</td>
 		<td>
+			<div itemprop="opMain">
+				{assetDescriptionsOZ -> f:format.raw()}
+			</div>
+			<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+		</td>
+		<td>
 			<div itemprop="educationPlan">{assetsPlanOZ -> f:format.raw()}</div>
 			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
 			</div>
 		</td>
 		<td>
+			<div itemprop="educationAnnotation">
+				{assetsSubjectAnnotationsOZ -> f:format.raw()}
+			</div>
+			<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
+				здоровья.</div>
+		</td>
+		<td>
 			<div itemprop="educationShedule">{scheduleOZ -> f:format.raw()}</div>
 			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
 			</div>
+		</td>
+		<td>
+			<div itemprop="methodology">
+				{assetsMethodicalOZ -> f:format.raw()}
+			</div>
+			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+		</td>
+		<td>
+			<div itemprop="eduPr">
+				{assetsPracticeAnnotationsOZ -> f:format.raw()}
+			</div>
+			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+		</td>
+		<td>
+			<div itemprop="eduEl">
+				{distantEduOZ -> f:format.raw()}
+			</div>
+			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
 	</tr>
 </f:if>
@@ -76,14 +106,45 @@
 	<tr>
 		<td itemprop="eduForm">Заочная</td>
 		<td>
+			<div itemprop="opMain">
+				{assetDescriptionsZ -> f:format.raw()}
+			</div>
+			<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+		</td>
+		<td>
 			<div itemprop="educationPlan">{assetsPlanZ -> f:format.raw()}</div>
 			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
 			</div>
 		</td>
 		<td>
+			<div itemprop="educationAnnotation">
+				{assetsSubjectAnnotationsZ -> f:format.raw()}
+			</div>
+			<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
+				здоровья.</div>
+		</td>
+		<td>
 			<div itemprop="educationShedule">{scheduleZ -> f:format.raw()}</div>
 			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
 			</div>
+		</td>
+		<td>
+			<div itemprop="methodology">
+				{assetsMethodicalZ -> f:format.raw()}
+			</div>
+			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+		</td>
+		<td>
+			<div itemprop="eduPr">
+				{assetsPracticeAnnotationsZ -> f:format.raw()}
+			</div>
+			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+		</td>
+		<td>
+			<div itemprop="eduEl">
+				{distantEduZ -> f:format.raw()}
+			</div>
+			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
 		</td>
 	</tr>
 </f:if>

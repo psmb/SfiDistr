@@ -321,7 +321,7 @@
             <trans-unit id="studyProgram.assetsPlan">
                 <source>Учебный план</source>
             </trans-unit>
-            <trans-unit id="studyProgram.assetDescription">
+            <trans-unit id="studyProgram.assetDescriptions">
                 <source>Описание образовательной программы</source>
             </trans-unit>
             <trans-unit id="studyProgram.assetAccreditation">

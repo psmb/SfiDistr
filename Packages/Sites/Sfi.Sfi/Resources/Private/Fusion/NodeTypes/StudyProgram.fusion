@@ -12,10 +12,17 @@ prototype(Sfi.Sfi:StudyProgram) {
 	level = ${String.stripTags(q(node).parent().parent().property('title'))}
 	division = ${String.stripTags(q(node).parent().property('title'))}
 
-	#TODO: translate
-	assetDescription = Sfi.Sfi:StudyProgramAsset {
-		title = ${Translation.translate('studyProgram.assetDescription', null, [], null, 'Sfi.Sfi')}
-		@context.node = ${q(node).children('assetDescription').get(0)}
+	assetDescriptionsO = Neos.Neos:ContentCollection {
+		nodePath = 'assetDescriptionsO'
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetDescriptions', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
+	}
+	assetDescriptionsOZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetDescriptionsOZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+	}
+	assetDescriptionsZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetDescriptionsZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
 		title = ${Translation.translate('studyProgram.assetAccreditation', null, [], null, 'Sfi.Sfi')}
@@ -45,17 +52,41 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetsAdmissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
 	}
-	assetsSubjectAnnotations = Neos.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotations'
-		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsSubjectAnnotations', null, [], null, 'Sfi.Sfi') + '</h3>' + value}
+	assetsSubjectAnnotationsO = Neos.Neos:ContentCollection {
+		nodePath = 'assetsSubjectAnnotationsO'
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsSubjectAnnotations', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
-	assetsPracticeAnnotations = Neos.Neos:ContentCollection {
-		nodePath = 'assetsPracticeAnnotations'
-		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsPracticeAnnotations', null, [], null, 'Sfi.Sfi') + '</h3>' + value}
+	assetsSubjectAnnotationsOZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsSubjectAnnotationsOZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
-	assetsMethodical = Neos.Neos:ContentCollection {
-		nodePath = 'assetsMethodical'
-		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsMethodical', null, [], null, 'Sfi.Sfi') + '</h3>' + value}
+	assetsSubjectAnnotationsZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsSubjectAnnotationsZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+	}
+	assetsPracticeAnnotationsO = Neos.Neos:ContentCollection {
+		nodePath = 'assetsPracticeAnnotationsO'
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsPracticeAnnotations', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
+	}
+	assetsPracticeAnnotationsOZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsPracticeAnnotationsOZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+	}
+	assetsPracticeAnnotationsZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsPracticeAnnotationsZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+	}
+	assetsMethodicalO = Neos.Neos:ContentCollection {
+		nodePath = 'assetsMethodicalO'
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsMethodical', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
+	}
+	assetsMethodicalOZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsMethodicalOZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+	}
+	assetsMethodicalZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsMethodicalZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	description = Neos.Neos:ContentCollection {
 		nodePath = 'description'
@@ -160,9 +191,14 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 		@process.convertUris = Neos.Neos:ConvertUris
 	}
 
-	assetDescription = Sfi.Sfi:StudyProgramAsset {
-		title = ${String.stripTags(q(node).property('title'))}
-		@context.node = ${q(node).children('assetDescription').get(0)}
+	assetDescriptionsO = Neos.Neos:ContentCollection {
+		nodePath = 'assetDescriptionsO'
+	}
+	assetDescriptionsOZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetDescriptionsOZ'
+	}
+	assetDescriptionsZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetDescriptionsZ'
 	}
 	assetsPlanO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanO'
@@ -188,21 +224,45 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	practice = Neos.Neos:ContentCollection {
 		nodePath = 'practice'
 	}
-	distantEdu = Neos.Neos:ContentCollection {
-		nodePath = 'distantEdu'
+	distantEduO = Neos.Neos:ContentCollection {
+		nodePath = 'distantEduO'
+	}
+	distantEduOZ = Neos.Neos:ContentCollection {
+		nodePath = 'distantEduOZ'
+	}
+	distantEduZ = Neos.Neos:ContentCollection {
+		nodePath = 'distantEduZ'
 	}
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
 		title = 'Свидетельство о государственной аккредитации'
 		@context.node = ${q(node).children('assetAccreditation').get(0)}
 	}
-	assetsSubjectAnnotations = Neos.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotations'
+	assetsSubjectAnnotationsO = Neos.Neos:ContentCollection {
+		nodePath = 'assetsSubjectAnnotationsO'
 	}
-	assetsPracticeAnnotations = Neos.Neos:ContentCollection {
-		nodePath = 'assetsPracticeAnnotations'
+	assetsSubjectAnnotationsOZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsSubjectAnnotationsOZ'
 	}
-	assetsMethodical = Neos.Neos:ContentCollection {
-		nodePath = 'assetsMethodical'
+	assetsSubjectAnnotationsZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsSubjectAnnotationsZ'
+	}
+	assetsPracticeAnnotationsO = Neos.Neos:ContentCollection {
+		nodePath = 'assetsPracticeAnnotationsO'
+	}
+	assetsPracticeAnnotationsOZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsPracticeAnnotationsOZ'
+	}
+	assetsPracticeAnnotationsZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsPracticeAnnotationsZ'
+	}
+	assetsMethodicalO = Neos.Neos:ContentCollection {
+		nodePath = 'assetsMethodicalO'
+	}
+	assetsMethodicalOZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsMethodicalOZ'
+	}
+	assetsMethodicalZ = Neos.Neos:ContentCollection {
+		nodePath = 'assetsMethodicalZ'
 	}
 	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

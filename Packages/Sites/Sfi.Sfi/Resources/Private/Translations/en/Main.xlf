@@ -305,7 +305,7 @@
                 <source>Учебный план</source>
                 <target></target>
             </trans-unit>
-            <trans-unit id="studyProgram.assetDescription">
+            <trans-unit id="studyProgram.assetDescriptions">
                 <source>Описание образовательной программы</source>
                 <target></target>
             </trans-unit>

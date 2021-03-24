@@ -10,8 +10,12 @@
         studyProgram:
           label: 'Учебная программа'
   childNodes:
-    assetDescription:
-      type: 'Sfi.Shared:Asset'
+    assetDescriptionsO:
+      type: 'Neos.Neos:ContentCollection'
+    assetDescriptionsOZ:
+      type: 'Neos.Neos:ContentCollection'
+    assetDescriptionsZ:
+      type: 'Neos.Neos:ContentCollection'
     assetAccreditation:
       type: 'Sfi.Shared:Asset'
     assetInvoice:
@@ -20,11 +24,23 @@
       type: 'Sfi.Shared:Asset'
     assetsAdmissionRegulations:
       type: 'Neos.Neos:ContentCollection'
-    assetsPracticeAnnotations:
+    assetsPracticeAnnotationsO:
       type: 'Neos.Neos:ContentCollection'
-    assetsSubjectAnnotations:
+    assetsPracticeAnnotationsOZ:
       type: 'Neos.Neos:ContentCollection'
-    assetsMethodical:
+    assetsPracticeAnnotationsZ:
+      type: 'Neos.Neos:ContentCollection'
+    assetsSubjectAnnotationsO:
+      type: 'Neos.Neos:ContentCollection'
+    assetsSubjectAnnotationsOZ:
+      type: 'Neos.Neos:ContentCollection'
+    assetsSubjectAnnotationsZ:
+      type: 'Neos.Neos:ContentCollection'
+    assetsMethodicalO:
+      type: 'Neos.Neos:ContentCollection'
+    assetsMethodicalOZ:
+      type: 'Neos.Neos:ContentCollection'
+    assetsMethodicalZ:
       type: 'Neos.Neos:ContentCollection'
     description:
       type: 'Neos.Neos:ContentCollection'
@@ -46,7 +62,11 @@
       type: 'Neos.Neos:ContentCollection'
     admissionContacts:
       type: 'Neos.Neos:ContentCollection'
-    distantEdu:
+    distantEduO:
+      type: 'Neos.Neos:ContentCollection'
+    distantEduOZ:
+      type: 'Neos.Neos:ContentCollection'
+    distantEduZ:
       type: 'Neos.Neos:ContentCollection'
     payment:
       type: 'Neos.Neos:ContentCollection'
