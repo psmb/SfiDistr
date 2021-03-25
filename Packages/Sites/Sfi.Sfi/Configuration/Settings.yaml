@@ -122,7 +122,7 @@ Psmb:
         dataSourceIdentifier: 'Json'
         dataSourceOptions:
           uri: 'http://paymentssfi_node/subscribers?referer=projects'
-        label: 'Жертвователи на проекты'
+        label: 'Жертвователи на научную деятельность'
         interval: manual
         senderName: 'Поддержите СФИ'
         replyToAddress: 'donate@sfi.ru'
@@ -137,6 +137,20 @@ Psmb:
         dataSourceOptions:
           uri: 'http://paymentssfi_node/subscribers?referer=social'
         label: 'Жертвователи на соцфакультет'
+        interval: manual
+        senderName: 'Поддержите СФИ'
+        replyToAddress: 'donate@sfi.ru'
+        dimensions:
+          language:
+            - ru
+      -
+        identifier: datasource-publishing
+        renderer: 'Sfi.Sfi:FundraisingMail'
+        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+        dataSourceIdentifier: 'Json'
+        dataSourceOptions:
+          uri: 'http://paymentssfi_node/subscribers?referer=publishing'
+        label: 'Жертвователи на издательскую деятельность'
         interval: manual
         senderName: 'Поддержите СФИ'
         replyToAddress: 'donate@sfi.ru'
