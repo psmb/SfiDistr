@@ -1,6 +1,8 @@
 // TODO this whole file is really broke: needs to be split into separate
 // files and then concatened and minified by Grunt.
 
+var inBackend = Boolean(document.querySelector(".neos-backend"))
+
 // Move Header inside StickInParent on main page
 (function () {
     var header = document.getElementsByClassName("Header")[0];
@@ -172,18 +174,20 @@ var onReadyPlugins = function () {
         });
     });
 
-    // Open external urls in new window
-    $("a").each(function () {
-        var a = new RegExp("/" + window.location.host + "/");
-        // Starts with http and does not contain current domain
-        if (!a.test(this.href) && this.href.indexOf("http") === 0) {
-            $(this).click(function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-                window.open(this.href, "_blank");
-            });
-        }
-    });
+    if(!inBackend) {
+        // Open external urls in new window
+        $("a").each(function () {
+            var a = new RegExp("/" + window.location.host + "/");
+            // Starts with http and does not contain current domain
+            if (!a.test(this.href) && this.href.indexOf("http") === 0) {
+                $(this).click(function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    window.open(this.href, "_blank");
+                });
+            }
+        });
+    }
 
     // MainMenu toggle
     $(".js-MainMenu-Toggle").click(function (e) {
@@ -501,7 +505,7 @@ function md5(inputString) {
 function utoa(str) {
     return window.btoa(encodeURIComponent(str));
 }
-if(!document.querySelector(".neos-backend")) {
+if(!inBackend) {
     document.querySelectorAll("a[data-signature]").forEach(function (node) {
         var json = node.getAttribute('data-signature');
         var signature = JSON.parse(json)
