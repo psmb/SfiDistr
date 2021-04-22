@@ -1,7 +1,7 @@
 // TODO this whole file is really broke: needs to be split into separate
 // files and then concatened and minified by Grunt.
 
-var inBackend = Boolean(document.querySelector(".neos-backend"))
+var inBackend = !!document.querySelector(".neos-backend")
 
 // Move Header inside StickInParent on main page
 (function () {
