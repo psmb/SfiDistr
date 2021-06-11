@@ -39,7 +39,7 @@ prototype(Sfi.Sfi:StudyProgram) {
 
 	assetsPlanO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanO'
-		@process.title = ${'<h3 class="H3 marginVertical-single">' + Translation.translate('studyProgram.assetsPlan', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + 'Очная форма обучения</h4>' + value}
+		@process.title = ${'<h3 class="H3 marginVertical-single">' + Translation.translate('studyProgram.assetsPlan', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	assetsPlanOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanOZ'
