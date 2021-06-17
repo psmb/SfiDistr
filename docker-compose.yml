@@ -16,6 +16,7 @@ services:
       - "neos"
     volumes:
       - /data/www-provisioned/Web/_Resources
+      - /mnt/vol2/docker/sites/kabinet/www/moodledata/repository/ltso/accred:/data/www-provisioned/Web/docs
     image: dimaip/sfidistr:latest
     hostname: 'sfiru'
     networks:
