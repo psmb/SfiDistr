@@ -216,6 +216,9 @@
             </trans-unit>
 
 
+            <trans-unit id="almanac.issue">
+                <target>Issue</target>
+            </trans-unit>
             <trans-unit id="almanac.allIssues">
                 <target>All Issues</target>
             </trans-unit>

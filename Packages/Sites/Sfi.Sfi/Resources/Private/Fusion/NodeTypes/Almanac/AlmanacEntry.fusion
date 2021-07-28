@@ -5,7 +5,8 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 	@context.hrefEn = ${'asset://' + node.properties.assetEn.identifier}
 	@context.hrefEn.@process.convertUris = Neos.Neos:ConvertUris
 	keywordsStr = ${Translation.translate('keywords', null, [], null, 'Sfi.Sfi')}
-	issueNumber = ${'Выпуск №' + q(node).parent().parent().property('issueNumber') + ','}
+	issueStr = ${Translation.translate('almanac.issue', null, [], null, 'Sfi.Sfi')}
+	issueNumber = ${this.issueStr + ' №' + q(node).parent().parent().property('issueNumber') + ','}
 	issueNumber.@if.notIssuePage = ${!q(documentNode).is('[instanceof Sfi.Sfi:AlmanacIssuePage]')}
 
 	author = Neos.Neos:Editable {

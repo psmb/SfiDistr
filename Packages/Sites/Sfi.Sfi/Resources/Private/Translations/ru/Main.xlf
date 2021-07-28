@@ -250,6 +250,9 @@
                 </trans-unit>
             </group>
 
+            <trans-unit id="almanac.issue">
+                <source>Выпуск</source>
+            </trans-unit>
             <trans-unit id="almanac.allIssues">
                 <source>Все номера</source>
             </trans-unit>
