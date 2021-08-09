@@ -17,20 +17,4 @@ Neos:
   Flow:
     http:
       baseUri: 'https://sfi.ru/'
-    log:
-      systemLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      securityLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      sqlLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      i18nLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-    error:
-      exceptionHandler:
-        className: 'Yeebase\Graylog\Error\GraylogExceptionHandler'
-Yeebase:
-  Graylog:
-    host: 'graylog'
-    port: 12201
     chunksize: 'wan'
