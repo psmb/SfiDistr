@@ -9,11 +9,11 @@ Neos:
     transport:
       type: 'Swift_SmtpTransport'
       options:
-        host: 'email-smtp.us-west-2.amazonaws.com'
-        port: '465'
-        encryption: 'ssl'
-        username: '%env:SFI_SES_USER%'
-        password: '%env:SFI_SES_PASSWORD2%'
+        host: 'smtp-broadcasts.postmarkapp.com'
+        port: '587'
+        encryption: 'tls'
+        username: '%env:SFI_PM_USER%'
+        password: '%env:SFI_PM_PASSWORD%'
   Flow:
     http:
       baseUri: 'https://sfi.ru/'
