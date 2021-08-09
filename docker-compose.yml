@@ -51,9 +51,9 @@ secrets:
     external: true
   AWS_SECRET_ACCESS_KEY:
     external: true
-  SFI_SES_USER:
+  SFI_PM_USER:
     external: true
-  SFI_SES_PASSWORD2:
+  SFI_PM_PASSWORD:
     external: true
   GA_SECRET:
     external: true
