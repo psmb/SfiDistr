@@ -25,8 +25,8 @@ services:
     secrets:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
-      - SFI_SES_USER
-      - SFI_SES_PASSWORD2
+      - SFI_PM_USER
+      - SFI_PM_PASSWORD
       - GA_SECRET
       - GA_DEVKEY
       - SFI_API_AUTH
