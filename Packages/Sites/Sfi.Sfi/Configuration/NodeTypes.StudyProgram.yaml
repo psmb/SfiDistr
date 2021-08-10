@@ -142,7 +142,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Код специальности'
+            placeholder: 'Код'
     specialityName:
       type: string
       ui:
