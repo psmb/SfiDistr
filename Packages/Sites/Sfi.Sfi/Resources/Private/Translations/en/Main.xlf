@@ -48,7 +48,7 @@
                 <target>E-mail</target>
             </trans-unit>
             <trans-unit id="footer.contacts.address">
-                <target>105062 Moscow, Pokrovka st. 29</target>
+                <target>101000 Moscow, Pokrovka st. 29</target>
             </trans-unit>
             <trans-unit id="footer.contacts.map">
                 <target>Directions</target>
