@@ -392,30 +392,24 @@ function stickInParent(element, options) {
 
     function update(scrollPosition) {
         if (window.innerWidth > minWidth && window.innerHeight > minHeight) {
+            console.log(parent.offsetTop, parent.offsetHeight, element.offsetTop, element.offsetHeight);
             if (
                 scrollPosition > parent.offsetTop &&
-                scrollPosition + window.innerHeight <
-                parent.offsetTop +
-                parent.offsetHeight +
-                window.innerHeight -
-                element.offsetHeight
-            ) {
-                setFixed();
-            } else if (
                 scrollPosition + window.innerHeight >
                 parent.offsetTop +
-                parent.offsetHeight +
-                window.innerHeight -
+                element.offsetTop +
                 element.offsetHeight
+                &&
+                scrollPosition + window.innerHeight < parent.offsetTop + parent.offsetHeight
             ) {
-                setAbsolute();
+                setFixed();
             } else {
                 setStatic();
             }
         }
     }
     function setFixed() {
-        element.style = "position: fixed; top: 0;" + originalStyles;
+        element.style = "position: fixed; " + (element.offsetHeight < window.innerHeight ? "top" : "bottom") + ": 0;" + originalStyles;
         element.classList.add("isFixed");
         fixer.style = "display: block; height: " + element.offsetHeight + "px";
     }
