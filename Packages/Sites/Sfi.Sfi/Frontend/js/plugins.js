@@ -392,7 +392,6 @@ function stickInParent(element, options) {
 
     function update(scrollPosition) {
         if (window.innerWidth > minWidth && window.innerHeight > minHeight) {
-            console.log(parent.offsetTop, parent.offsetHeight, element.offsetTop, element.offsetHeight);
             if (
                 scrollPosition > parent.offsetTop &&
                 scrollPosition + window.innerHeight >
