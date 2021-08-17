@@ -8,6 +8,8 @@ prototype(Sfi.Sfi:StudyProgramAsset) <  prototype(Sfi.Shared:Asset) {
 prototype(Sfi.Sfi:StudyProgram) {
 	partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 
+	programId = ${node.properties.uriPathSegment}
+
 	sectionMenu = ${sectionMenu}
 	level = ${String.stripTags(q(node).parent().parent().property('title'))}
 	division = ${String.stripTags(q(node).parent().property('title'))}
