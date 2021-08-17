@@ -18,13 +18,13 @@
 					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'freeText')}</div>
 				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {degree}">
-					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'degree')}</div>
+					<div class="ServiceEm--Large">Ученая степень: {neos:contentElement.editable(property: 'degree', tag: 'span')}</div>
 				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {degreeTitle}">
-					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'degreeTitle')}</div>
+					<div class="ServiceEm--Large">Учёное звание: {neos:contentElement.editable(property: 'degreeTitle', tag: 'span')}</div>
 				</f:if>
 				<f:if condition="{node.context.workspace.name} != 'live' || {position}">
-					<div class="ServiceEm--Large">{neos:contentElement.editable(property: 'position')}</div>
+					<div class="ServiceEm--Large">Должность: {neos:contentElement.editable(property: 'position', tag: 'span')}</div>
 				</f:if>
 			</div>
 			<f:if condition="{node.context.workspace.name} != 'live' || {subject}">
