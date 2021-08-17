@@ -1,6 +1,6 @@
 prototype(Sfi.Sfi:PersonEmployment) < prototype(Neos.Neos:ContentComponent) {
     dateStart = ${node.properties.dateStart ? node.properties.dateStart : Date.now()}
-    dateEnd = ${node.properties.dateEnd ? node.properties.dateEnd : Date.create('2021-05-05')}
+    dateEnd = ${node.properties.dateEnd ? node.properties.dateEnd : Date.now()}
     dateInterval = ${Date.diff(this.dateEnd, this.dateStart)}
 
     dateStartFormated = ${Date.formatCldr(this.dateStart, 'MMMM yyyy')}
