@@ -75,7 +75,7 @@
                 <target>Our Contacts</target>
             </trans-unit>
             <trans-unit id="header.contacts.address">
-                <target>Moscow, Pokrovka st. 29</target>
+                <target>Moscow, Tokmakov ln. 11</target>
             </trans-unit>
             <trans-unit id="header.menu">
                 <target>Menu</target>
