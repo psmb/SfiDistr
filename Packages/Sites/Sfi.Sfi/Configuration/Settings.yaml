@@ -68,7 +68,7 @@ Psmb:
           uri: 'http://paymentssfi_node/subscribers'
         label: 'Все Жертвователи'
         interval: manual
-        senderName: 'Поддержите СФИ'
+        senderName: 'СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
@@ -82,7 +82,7 @@ Psmb:
           uri: 'http://paymentssfi_node/subscribers?linkReferer=-'
         label: 'Без ссылки'
         interval: manual
-        senderName: 'Поддержите СФИ'
+        senderName: 'СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
@@ -96,7 +96,7 @@ Psmb:
           uri: 'http://paymentssfi_node/subscribers?linkReferer=psmb'
         label: 'По ссылке psmb'
         interval: manual
-        senderName: 'Поддержите СФИ'
+        senderName: 'СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
@@ -110,7 +110,7 @@ Psmb:
           uri: 'http://paymentssfi_node/subscribers?referer=chapel'
         label: 'Жертвователи на часовню/помещения'
         interval: manual
-        senderName: 'Поддержите СФИ'
+        senderName: 'СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
@@ -124,7 +124,7 @@ Psmb:
           uri: 'http://paymentssfi_node/subscribers?referer=projects'
         label: 'Жертвователи на научную деятельность'
         interval: manual
-        senderName: 'Поддержите СФИ'
+        senderName: 'СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
@@ -138,7 +138,7 @@ Psmb:
           uri: 'http://paymentssfi_node/subscribers?referer=social'
         label: 'Жертвователи на соцфакультет'
         interval: manual
-        senderName: 'Поддержите СФИ'
+        senderName: 'СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
@@ -152,7 +152,7 @@ Psmb:
           uri: 'http://paymentssfi_node/subscribers?referer=publishing'
         label: 'Жертвователи на издательскую деятельность'
         interval: manual
-        senderName: 'Поддержите СФИ'
+        senderName: 'СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
@@ -162,7 +162,7 @@ Psmb:
         renderer: 'Sfi.Sfi:FundraisingMail'
         sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
         interval: manual
-        senderName: 'Поддержите СФИ'
+        senderName: 'СФИ'
         replyToAddress: 'donate@sfi.ru'
         dimensions:
           language:
