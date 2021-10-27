@@ -312,6 +312,10 @@
                 <source>Описание образовательной программы и рабочие программы дисциплин</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="studyProgram.assetRpd">
+                <source>Рабочие программы дисциплин</source>
+                <target></target>
+            </trans-unit>
             <trans-unit id="studyProgram.assetAccreditation">
                 <source>Свидетельство о государственной аккредитации</source>
                 <target></target>

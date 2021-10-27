@@ -16,6 +16,12 @@
       type: 'Neos.Neos:ContentCollection'
     assetDescriptionsZ:
       type: 'Neos.Neos:ContentCollection'
+    assetRpdO:
+      type: 'Neos.Neos:ContentCollection'
+    assetRpdOZ:
+      type: 'Neos.Neos:ContentCollection'
+    assetRpdZ:
+      type: 'Neos.Neos:ContentCollection'
     assetAccreditation:
       type: 'Sfi.Shared:Asset'
     assetInvoice:
