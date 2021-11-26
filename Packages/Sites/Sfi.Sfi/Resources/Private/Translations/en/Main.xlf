@@ -206,7 +206,7 @@
                 <target>Read on the website</target>
             </trans-unit>
             <trans-unit id="aboutAuthor">
-                <target>About author</target>
+                <target>About the author</target>
             </trans-unit>
             <trans-unit id="otherArticlesByAuthor">
                 <target>Other articles by this author</target>
