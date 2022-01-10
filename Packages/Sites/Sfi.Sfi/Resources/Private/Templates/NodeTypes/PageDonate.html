@@ -87,6 +87,7 @@ var pay = function (event) {
 			amount: Number(form.querySelector('[name=amount]').value),
 			currency: 'RUB',
 			accountId: form.querySelector('[name=email]').value,
+			email: form.querySelector('[name=email]').value,
 			data: data
 		},
 		'http://sfi.ru/support/thanks.html',
