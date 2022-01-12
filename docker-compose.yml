@@ -17,7 +17,7 @@ services:
     volumes:
       - /data/www-provisioned/Web/_Resources
       - /mnt/vol2/docker/sites/kabinet/www/moodledata/repository/ltso/accred:/data/www-provisioned/Web/docs
-    image: dimaip/sfidistr:latest
+    image: ghcr.io/psmb/sfidistr:master
     hostname: 'sfiru'
     networks:
       - default
