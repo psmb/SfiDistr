@@ -14,8 +14,6 @@ services:
       MYSQL_PASSWORD: pass
   web:
     restart: always
-    labels:
-      - "neos"
     volumes:
       - /data/www-provisioned/Web/_Resources
       - /mnt/vol2/docker/sites/kabinet/www/moodledata/repository/ltso/accred:/data/www-provisioned/Web/docs
@@ -32,15 +30,13 @@ services:
       - GA_SECRET
       - GA_DEVKEY
       - SFI_API_AUTH
-    deploy:
-      update_config:
-        order: start-first
-      labels:
-        - "traefik.enable=true"
-        - "traefik.port=80"
-        - "traefik.default.protocol=http"
-        - "traefik.docker.network=main"
-        - "traefik.frontend.rule=Host:sfi.ru,www.sfi.ru,dev.sfi.ru"
+    labels:
+      - "neos"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.default.protocol=http"
+      - "traefik.docker.network=main"
+      - "traefik.frontend.rule=Host:sfi.ru,www.sfi.ru,dev.sfi.ru"
     ports:
       - '80'
     depends_on:
