@@ -44,7 +44,7 @@ services:
       - db
       - redis
 volumes:
-  db-data:=
+  db-data:
 networks:
   main:
     external:
