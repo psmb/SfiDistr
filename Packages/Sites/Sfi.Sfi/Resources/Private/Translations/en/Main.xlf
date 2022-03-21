@@ -32,9 +32,6 @@
             <trans-unit id="footer.social.title">
                 <target>Social</target>
             </trans-unit>
-            <trans-unit id="footer.social.fb">
-                <target>Find us on Facebook</target>
-            </trans-unit>
             <trans-unit id="footer.social.vk">
                 <target>Find us on VK.com</target>
             </trans-unit>
