@@ -10,7 +10,6 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 	@context.href.@process.convertUris = Neos.Neos:ConvertUris
 	@context.hrefEn = ${'asset://' + node.properties.assetEn.identifier}
 	@context.hrefEn.@process.convertUris = Neos.Neos:ConvertUris
-	keywordsStr = ${Translation.translate('keywords', null, [], null, 'Sfi.Sfi')}
 	issueStr = ${Translation.translate('almanac.issue', null, [], null, 'Sfi.Sfi')}
 	issueNumber = ${this.issueStr + ' №' + q(node).parent().parent().property('issueNumber') + ','}
 	issueNumber.@if.notIssuePage = ${!q(documentNode).is('[instanceof Sfi.Sfi:AlmanacIssuePage]')}
@@ -66,13 +65,6 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 			</div>
 			<div class="ParagraphAlt--Small AlmanacEntry-source">
 				{props.issueNumber} {props.source}
-			</div>
-			<div @if.live={node.context.workspace.name != 'live' || node.properties.DOI} class="ParagraphAlt--Small AlmanacEntry-annotation">DOI: <Neos.Neos:Editable property="DOI" block={false}/></div>
-			<div class="ParagraphAlt marginVertical-half AlmanacEntry-annotation">
-				<Neos.Neos:Editable property="annotation" block={false}/>
-			</div>
-			<div @if.live={node.context.workspace.name != 'live' || node.properties.keywords} class="ParagraphAlt AlmanacEntry-keywords">
-				{props.keywordsStr}: <Neos.Neos:Editable property="keywords" block={false}/>
 			</div>
 		</div>
 	`
