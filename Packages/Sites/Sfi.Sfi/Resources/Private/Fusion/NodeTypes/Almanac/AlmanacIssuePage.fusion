@@ -1,22 +1,43 @@
 prototype(Sfi.Sfi:AlmanacIssuePage)>
 prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
 	body {
-		renderer = Sfi.Sfi:AlmanacLayout {
-			title = Neos.Neos:Editable {
-				property = 'title'
-				block = false
+		renderer = Neos.Fusion:Case {
+			single {
+				condition = ${request.arguments.article}
+				renderer = Neos.Fusion:Value {
+					@context.node = ${q(documentNode).children('main').children('node-pxameaewvba5m').get(0)}
+					value = Sfi.Sfi:AlmanacLayout {
+						title = ${node.properties.title}
+						content = Sfi.Sfi:AlmanacEntryFull
+						linkToIssue = Neos.Fusion:Component {
+							link = Neos.Neos:NodeUri {
+								node = ${documentNode}
+							}
+							renderer = afx`<div class="lineHeight-single ParagraphAlt marginBottom-single"><a href={props.link} class="Link">{documentNode.properties.title} »</a></div>`
+						}
+					}
+				}
 			}
-			content = Neos.Fusion:Component {
-				description = Neos.Neos:Editable {
-					property = 'description'
-					block = true
+			list {
+				condition = ${true}
+				renderer = Sfi.Sfi:AlmanacLayout {
+					title = Neos.Neos:Editable {
+						property = 'title'
+						block = false
+					}
+					content = Neos.Fusion:Component {
+						description = Neos.Neos:Editable {
+							property = 'description'
+							block = true
+						}
+						main = Neos.Neos:ContentCollection {
+							nodePath = 'main'
+						}
+						renderer = afx`
+							{props.main}
+						`
+					}
 				}
-				main = Neos.Neos:ContentCollection {
-					nodePath = 'main'
-				}
-				renderer = afx`
-					{props.main}
-				`
 			}
 		}
 	}

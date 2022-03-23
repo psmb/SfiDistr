@@ -38,6 +38,7 @@ prototype(Sfi.Sfi:AlmanacLayout) < prototype(Neos.Fusion:Component) {
 					{props.header}
 					<div class="row js-stickInParent-parent">
 						<div class="small-12 large-6 large-push-3 columns">
+							{props.linkToIssue}
 							<div id="almanac-about" style="position: relative; top: -50px"></div>
 							<h2 class="H2 marginBottom-double">{props.title}</h2>
 							{props.content}

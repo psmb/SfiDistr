@@ -1,7 +1,16 @@
-prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
+prototype(Sfi.Sfi:AlmanacEntryFull) < prototype(Neos.Neos:ContentComponent) {
 	@context.lang = ${Array.first(node.context.dimensions.language)}
+	@context.altLang = ${lang == 'ru' ? 'en' : 'ru'}
 	@context.link = Neos.Neos:NodeUri {
 		node = ${documentNode}
+		additionalParams {
+			article = ${node.name}
+		}
+	}
+	@context.altLink = Neos.Neos:NodeUri {
+		@context.altNode = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}})}
+		@if.nodeExists = ${altNode.count() > 0}
+		node = ${altNode.get(0)}
 		additionalParams {
 			article = ${node.name}
 		}
@@ -43,9 +52,15 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 		property = 'source'
 		block = false
 	}
-	title = afx`<div class="Paragraph lineHeight-tight AlmanacEntry-title"><Neos.Neos:Editable property="title" block={false}/></div>`
-	title.@process.link = afx`<a class="Link" href={link}>{value}</a>`
-	title.@process.link.@if.live = ${node.context.workspace.name == 'live'}
+	linkAlt = afx`<div class="marginTop-half"><a class="Link" href={altLink}>
+		<div @if.onlyRussian={lang == 'ru' && node.properties.assetEn && node.properties.asset}>Эта статья также доступна на английском языке</div>
+		<div @if.alsoRussian={lang == 'ru' && node.properties.assetEn && !node.properties.asset}>Эта статья доступна только на английском языке</div>
+		<div @if.alsoRussian={lang == 'en' && node.properties.asset && node.properties.assetEn}>This article is also available in Russian</div>
+		<div @if.onlyRussian={lang == 'en' && node.properties.asset && !node.properties.assetEn}>This article is only available in Russian</div>
+	</a></div>`
+	linkAlt.@if.live = ${((lang == 'ru' && node.properties.assetEn) || (lang == 'en' && node.properties.asset))}
+
+	download = afx`<div class="marginTop-half"><a class="Button" href={lang == 'en' ? hrefEn : href}>{lang == 'en' ? 'Download' : 'Скачать'}</a></div>`
 
 	renderer = afx`
 		<div class="marginVertical-double AlmanacEntry">
@@ -62,7 +77,6 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 					<span class="H4 AlmanacEntry-author">{props.author3}</span>
 					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.context.workspace.name != 'live' || node.properties.authorInfo3}>, {props.authorInfo3}</span>
 				</div>
-				<div class="color-grayAlt">{props.title}</div>
 			</div>
 			<div class="ParagraphAlt--Small AlmanacEntry-source">
 				{props.issueNumber} {props.source}
@@ -74,6 +88,9 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 			<div @if.live={node.context.workspace.name != 'live' || node.properties.keywords} class="ParagraphAlt AlmanacEntry-keywords">
 				{props.keywordsStr}: <Neos.Neos:Editable property="keywords" block={false}/>
 			</div>
+			{props.linkAlt}
+			<br/>
+			{props.download}
 		</div>
 	`
 }

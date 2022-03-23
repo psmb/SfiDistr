@@ -119,8 +119,10 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 }
 
 #Needed for listable-paginate widget to work
-prototype(Sfi.Sfi:Page).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
+prototype(Neos.Neos:Page).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
+prototype(Neos.Neos:Page).@cache.entryIdentifier.article = ${request.arguments.article}
 root.@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
+root.@cache.entryIdentifier.article = ${request.arguments.article}
 
 # Extend StyleguidePage with Sfi.Sfi:Page, to get correct CSS for Styleguide
 prototype(Sfi.Styleguide:StyleguidePage) < prototype(Sfi.Sfi:Page) {
