@@ -5,7 +5,7 @@ prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
 			single {
 				condition = ${request.arguments.article}
 				renderer = Neos.Fusion:Value {
-					@context.node = ${q(documentNode).children('main').children('node-pxameaewvba5m').get(0)}
+					@context.node = ${q(documentNode).children('main').children(request.arguments.article).get(0)}
 					value = Sfi.Sfi:AlmanacLayout {
 						title = ${node.properties.title}
 						content = Sfi.Sfi:AlmanacEntryFull
