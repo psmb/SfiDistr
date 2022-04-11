@@ -74,11 +74,11 @@ prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
 	renderer = Neos.Fusion:Array {
 		1 = Sfi.Sfi:PersonFormalListingByLevel {
 			title = 'Состав педагогических (научно-педагогических) работников образовательной организации по образовательной программе 48.03.01 Теология (бакалавриат)'
-			level = 'Теология (бакалавриат)'
+			level = '48.03.01 Теология (бакалавриат)'
 		}
 		2 = Sfi.Sfi:PersonFormalListingByLevel {
 			title = 'Состав педагогических (научно-педагогических) работников образовательной организации по образовательной программе 48.04.01 Теология (магистратура)'
-			level = 'Теология (магистратура)'
+			level = '48.04.01 Теология (магистратура)'
 		}
 	}
 	@cache {
