@@ -61,6 +61,7 @@ prototype(Sfi.Sfi:AlmanacEntryFull) < prototype(Neos.Neos:ContentComponent) {
 	linkAlt.@if.live = ${((lang == 'ru' && node.properties.assetEn) || (lang == 'en' && node.properties.asset))}
 
 	download = afx`<div class="marginTop-half"><a class="Button" href={lang == 'en' ? hrefEn : href}>{lang == 'en' ? 'Download' : 'Скачать'}</a></div>`
+	download.@if.assetAvailable = ${lang == 'en' ? node.properties.assetEn : node.properties.asset }
 
 	renderer = afx`
 		<div class="marginVertical-double AlmanacEntry">
