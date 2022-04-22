@@ -1,7 +1,7 @@
 prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 	@context.lang = ${Array.first(node.context.dimensions.language)}
 	@context.link = Neos.Neos:NodeUri {
-		node = ${documentNode}
+		node = ${q(node).parent().parent().get(0)}
 		additionalParams {
 			article = ${node.name}
 		}
