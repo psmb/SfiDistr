@@ -14,37 +14,15 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 	issueNumber = ${this.issueStr + ' №' + q(node).parent().parent().property('issueNumber') + ','}
 	issueNumber.@if.notIssuePage = ${!q(documentNode).is('[instanceof Sfi.Sfi:AlmanacIssuePage]')}
 
-	author = Neos.Neos:Editable {
-		property = 'author'
-		block = false
-	}
-	author2 = Neos.Neos:Editable {
-		property = 'author2'
-		block = false
-	}
-	author3 = Neos.Neos:Editable {
-		property = 'author3'
-		block = false
-	}
-	authorInfo = Neos.Neos:Editable {
-		property = 'authorInfo'
-		block = false
-	}
-	authorInfo2 = Neos.Neos:Editable {
-		property = 'authorInfo2'
-		block = false
-	}
-	authorInfo3 = Neos.Neos:Editable {
-		property = 'authorInfo3'
-		block = false
-	}
-	source = Neos.Neos:Editable {
-		property = 'source'
-		block = false
-	}
-	title = afx`<div class="Paragraph lineHeight-tight AlmanacEntry-title"><Neos.Neos:Editable property="title" block={false}/></div>`
+	author = ${node.properties.author}
+	author2 = ${node.properties.author2}
+	author3 = ${node.properties.author3}
+	authorInfo = ${node.properties.authorInfo}
+	authorInfo2 = ${node.properties.authorInfo2}
+	authorInfo3 = ${node.properties.authorInfo3}
+	source = ${node.properties.source}
+	title = afx`<div class="Paragraph lineHeight-tight AlmanacEntry-title">{node.properties.title}</div>`
 	title.@process.link = afx`<a class="Link" href={link}>{value}</a>`
-	title.@process.link.@if.live = ${node.context.workspace.name == 'live'}
 
 	renderer = afx`
 		<div class="marginVertical-double AlmanacEntry">
