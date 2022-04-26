@@ -1,169 +1,156 @@
-
 Sfi:
   Sfi:
-    apiAuth: '%env:SFI_API_AUTH%'
+    apiAuth: "%env:SFI_API_AUTH%"
     viewHelpers:
-      partialRootPath: 'resource://Sfi.Sfi/Private/Partials/'
+      partialRootPath: "resource://Sfi.Sfi/Private/Partials/"
 Psmb:
   Newsletter:
     globalSettings:
       senderAddress: no-reply@sfi.ru
       senderName: SFI.ru
     subscriptions:
-      -
-        identifier: instant_ru
-        renderer: 'Sfi.Sfi:InstantMail'
-        sendFromUiNodeType: 'Sfi.News:News'
+      - identifier: instant_ru
+        renderer: "Sfi.Sfi:InstantMail"
+        sendFromUiNodeType: "Sfi.News:News"
         showInSubscribe: true
-        label: 'Мгновенное уведомление'
-        description: 'Получать полные версии статей как только они опубликованы'
+        label: "Мгновенное уведомление"
+        description: "Получать полные версии статей как только они опубликованы"
         interval: manual
-        senderName: 'СФИ'
+        senderName: "СФИ"
         dimensions:
           language:
             - ru
-      -
-        identifier: digest_ru
-        renderer: 'Sfi.Sfi:NewsletterMail'
-        sendFromUiNodeType: 'Sfi.Sfi:Newsletter'
+      - identifier: digest_ru
+        renderer: "Sfi.Sfi:NewsletterMail"
+        sendFromUiNodeType: "Sfi.Sfi:Newsletter"
         showInSubscribe: true
-        label: 'Авторский дайджест'
-        description: 'Получать раз в месяц авторский обзор лучших публикаций'
-        footerInfo: 'Вы получили это письмо, поскольку подписаны на Авторский обзор лучших публикаций сайта Свято-Филаретовского института. Дайджест приходит раз в две недели.'
+        label: "Авторский дайджест"
+        description: "Получать раз в месяц авторский обзор лучших публикаций"
+        footerInfo: "Вы получили это письмо, поскольку подписаны на Авторский обзор лучших публикаций сайта Свято-Филаретовского института. Дайджест приходит раз в две недели."
         interval: manual
-        senderName: 'СФИ'
+        senderName: "СФИ"
         dimensions:
           language:
             - ru
-      -
-        identifier: instant_en
-        renderer: 'Sfi.Sfi:InstantMail'
-        sendFromUiNodeType: 'Sfi.News:News'
+      - identifier: instant_en
+        renderer: "Sfi.Sfi:InstantMail"
+        sendFromUiNodeType: "Sfi.News:News"
         showInSubscribe: true
-        label: 'Instant Notification'
-        description: 'Recevie full versions of articles as they are published'
+        label: "Instant Notification"
+        description: "Recevie full versions of articles as they are published"
         interval: manual
-        senderName: 'SFI'
+        senderName: "SFI"
         dimensions:
           language:
             - en
-      -
-        identifier: digest_en
-        renderer: 'Sfi.Sfi:DigestMail'
-        sendFromUiNodeType: 'Sfi.Sfi:Newsletter'
+      - identifier: digest_en
+        renderer: "Sfi.Sfi:DigestMail"
+        sendFromUiNodeType: "Sfi.Sfi:Newsletter"
         showInSubscribe: true
-        label: 'Monthly Digest'
-        description: 'Receive newsletter by Sofia Androsenko to your inbox'
+        label: "Monthly Digest"
+        description: "Receive newsletter by Sofia Androsenko to your inbox"
         interval: manual
-        senderName: 'SFI'
+        senderName: "SFI"
         dimensions:
           language:
             - en
-      -
-        identifier: datasource-all
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
-        dataSourceIdentifier: 'Json'
+      - identifier: datasource-all
+        renderer: "Sfi.Sfi:FundraisingMail"
+        sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
+        dataSourceIdentifier: "Json"
         dataSourceOptions:
-          uri: 'http://paymentssfi_node/subscribers'
-        label: 'Все Жертвователи'
+          uri: "http://paymentssfi-node-1/subscribers"
+        label: "Все Жертвователи"
         interval: manual
-        senderName: 'СФИ'
-        replyToAddress: 'donate@sfi.ru'
+        senderName: "СФИ"
+        replyToAddress: "donate@sfi.ru"
         dimensions:
           language:
             - ru
-      -
-        identifier: datasource-noLink
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
-        dataSourceIdentifier: 'Json'
+      - identifier: datasource-noLink
+        renderer: "Sfi.Sfi:FundraisingMail"
+        sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
+        dataSourceIdentifier: "Json"
         dataSourceOptions:
-          uri: 'http://paymentssfi_node/subscribers?linkReferer=-'
-        label: 'Без ссылки'
+          uri: "http://paymentssfi-node-1/subscribers?linkReferer=-"
+        label: "Без ссылки"
         interval: manual
-        senderName: 'СФИ'
-        replyToAddress: 'donate@sfi.ru'
+        senderName: "СФИ"
+        replyToAddress: "donate@sfi.ru"
         dimensions:
           language:
             - ru
-      -
-        identifier: datasource-psmb
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
-        dataSourceIdentifier: 'Json'
+      - identifier: datasource-psmb
+        renderer: "Sfi.Sfi:FundraisingMail"
+        sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
+        dataSourceIdentifier: "Json"
         dataSourceOptions:
-          uri: 'http://paymentssfi_node/subscribers?linkReferer=psmb'
-        label: 'По ссылке psmb'
+          uri: "http://paymentssfi-node-1/subscribers?linkReferer=psmb"
+        label: "По ссылке psmb"
         interval: manual
-        senderName: 'СФИ'
-        replyToAddress: 'donate@sfi.ru'
+        senderName: "СФИ"
+        replyToAddress: "donate@sfi.ru"
         dimensions:
           language:
             - ru
-      -
-        identifier: datasource-chapel
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
-        dataSourceIdentifier: 'Json'
+      - identifier: datasource-chapel
+        renderer: "Sfi.Sfi:FundraisingMail"
+        sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
+        dataSourceIdentifier: "Json"
         dataSourceOptions:
-          uri: 'http://paymentssfi_node/subscribers?referer=chapel'
-        label: 'Жертвователи на часовню/помещения'
+          uri: "http://paymentssfi-node-1/subscribers?referer=chapel"
+        label: "Жертвователи на часовню/помещения"
         interval: manual
-        senderName: 'СФИ'
-        replyToAddress: 'donate@sfi.ru'
+        senderName: "СФИ"
+        replyToAddress: "donate@sfi.ru"
         dimensions:
           language:
             - ru
-      -
-        identifier: datasource-projects
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
-        dataSourceIdentifier: 'Json'
+      - identifier: datasource-projects
+        renderer: "Sfi.Sfi:FundraisingMail"
+        sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
+        dataSourceIdentifier: "Json"
         dataSourceOptions:
-          uri: 'http://paymentssfi_node/subscribers?referer=projects'
-        label: 'Жертвователи на научную деятельность'
+          uri: "http://paymentssfi-node-1/subscribers?referer=projects"
+        label: "Жертвователи на научную деятельность"
         interval: manual
-        senderName: 'СФИ'
-        replyToAddress: 'donate@sfi.ru'
+        senderName: "СФИ"
+        replyToAddress: "donate@sfi.ru"
         dimensions:
           language:
             - ru
-      -
-        identifier: datasource-social
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
-        dataSourceIdentifier: 'Json'
+      - identifier: datasource-social
+        renderer: "Sfi.Sfi:FundraisingMail"
+        sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
+        dataSourceIdentifier: "Json"
         dataSourceOptions:
-          uri: 'http://paymentssfi_node/subscribers?referer=social'
-        label: 'Жертвователи на соцфакультет'
+          uri: "http://paymentssfi-node-1/subscribers?referer=social"
+        label: "Жертвователи на соцфакультет"
         interval: manual
-        senderName: 'СФИ'
-        replyToAddress: 'donate@sfi.ru'
+        senderName: "СФИ"
+        replyToAddress: "donate@sfi.ru"
         dimensions:
           language:
             - ru
-      -
-        identifier: datasource-publishing
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
-        dataSourceIdentifier: 'Json'
+      - identifier: datasource-publishing
+        renderer: "Sfi.Sfi:FundraisingMail"
+        sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
+        dataSourceIdentifier: "Json"
         dataSourceOptions:
-          uri: 'http://paymentssfi_node/subscribers?referer=publishing'
-        label: 'Жертвователи на издательскую деятельность'
+          uri: "http://paymentssfi-node-1/subscribers?referer=publishing"
+        label: "Жертвователи на издательскую деятельность"
         interval: manual
-        senderName: 'СФИ'
-        replyToAddress: 'donate@sfi.ru'
+        senderName: "СФИ"
+        replyToAddress: "donate@sfi.ru"
         dimensions:
           language:
             - ru
-      -
-        identifier: fundraising_timed
-        renderer: 'Sfi.Sfi:FundraisingMail'
-        sendFromUiNodeType: 'Sfi.Sfi:AutomatedNewsletter'
+      - identifier: fundraising_timed
+        renderer: "Sfi.Sfi:FundraisingMail"
+        sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
         interval: manual
-        senderName: 'СФИ'
-        replyToAddress: 'donate@sfi.ru'
+        senderName: "СФИ"
+        replyToAddress: "donate@sfi.ru"
         dimensions:
           language:
             - ru
@@ -174,14 +161,14 @@ Neos:
   Flow:
     mvc:
       routes:
-        'Sfi.Sfi':
-          position: 'before Neos.Neos'
+        "Sfi.Sfi":
+          position: "before Neos.Neos"
     session:
       inactivityTimeout: 604800
     i18n:
       defaultLocale: ru
     http:
-      baseUri: 'https://dev.sfi.ru/'
+      baseUri: "https://dev.sfi.ru/"
     resource:
       collections:
         persistent:
@@ -191,15 +178,15 @@ Neos:
         s3PersistentResourcesStorage:
           storage: 'Flownative\Aws\S3\S3Storage'
           storageOptions:
-            bucket: 'psmb-neos-resources'
-            keyPrefix: 'storage/sfi/'
+            bucket: "psmb-neos-resources"
+            keyPrefix: "storage/sfi/"
       targets:
         s3PersistentResourcesTarget:
           target: 'Flownative\Aws\S3\S3Target'
           targetOptions:
-            bucket: 'psmb-neos-resources'
-            keyPrefix: 'target/sfi/'
-            baseUri: 'https://psmb-neos-resources.hb.bizmrg.com/target/sfi/'
+            bucket: "psmb-neos-resources"
+            keyPrefix: "target/sfi/"
+            baseUri: "https://psmb-neos-resources.hb.bizmrg.com/target/sfi/"
     error:
       exceptionHandler:
         renderingGroups:
@@ -211,10 +198,10 @@ Neos:
     Ui:
       resources:
         javascript:
-          'Sfi.Sfi:Itemprop':
+          "Sfi.Sfi:Itemprop":
             resource: '${"resource://Sfi.Sfi/Public/JavaScript/Itemprop/Plugin.js"}'
       frontendConfiguration:
-        defaultInlineEditor: 'ckeditor5'
+        defaultInlineEditor: "ckeditor5"
     userInterface:
       loadMinifiedJavascript: false
       editPreviewModes:
@@ -230,12 +217,12 @@ Neos:
           loadingDepth: 1
           presets:
             default:
-              baseNodeType: 'Neos.Neos:Document,!Sfi.News:News'
+              baseNodeType: "Neos.Neos:Document,!Sfi.News:News"
     nodeTypes:
       groups:
         contentBlocks:
           position: 110
-          label: 'Content Blocks'
+          label: "Content Blocks"
     fusion:
       autoInclude:
         Sfi.Sfi: true
@@ -253,7 +240,7 @@ Neos:
             label: Russian
             values:
               - ru
-            uriSegment: ''
+            uriSegment: ""
           en:
             label: English
             values:
@@ -262,9 +249,9 @@ Neos:
   GoogleAnalytics:
     stats:
       uniquePageviewsBySource:
-        metrics: 'ga:uniquePageviews'
-        dimensions: 'ga:source'
-        sort: '-ga:uniquePageviews'
+        metrics: "ga:uniquePageviews"
+        dimensions: "ga:source"
+        sort: "-ga:uniquePageviews"
         max-results: 25
   SwiftMailer:
     transport:
@@ -275,6 +262,6 @@ Flownative:
       profiles:
         default:
           credentials:
-            key: '%env:AWS_ACCESS_KEY_ID%'
-            secret: '%env:AWS_SECRET_ACCESS_KEY%'
-          endpoint: 'https://hb.bizmrg.com'
+            key: "%env:AWS_ACCESS_KEY_ID%"
+            secret: "%env:AWS_SECRET_ACCESS_KEY%"
+          endpoint: "https://hb.bizmrg.com"
