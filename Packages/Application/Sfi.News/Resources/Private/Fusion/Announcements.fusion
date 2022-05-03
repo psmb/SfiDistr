@@ -31,7 +31,7 @@ prototype(Sfi.News:AnnouncementsList) < prototype(Flowpack.Listable:List) {
 	listTitleClass = 'H4 color-grayAlt paddingVertical-single marginBottom-sesquialteral border-bottom'
 	# Get announcements collection here and push it to context vars, to be used both in Listable and in @cache
 	@context.collection = ${q(site).children('announcements').find('[instanceof Sfi.News:Announcement]').get()}
-	@context.collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.Now()).get() : value}
+	@context.collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.subtract(Date.Now(), 'PT2H')).get() : value}
 	@context.collection.@process.sort = ${q(value).count() > 0 ? q(value).sort('date', 'ASC').get() : value}
 	prototype(Flowpack.Listable:Listable) {
 		sortProperty>

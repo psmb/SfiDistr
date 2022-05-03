@@ -87,7 +87,7 @@ prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
 
 prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Collection) {
 	collection = ${site.properties.important}
-	collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.Now(), '>', 'Sfi.News:Announcement').get() : value}
+	collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.subtract(Date.Now(), 'PT2H'), '>', 'Sfi.News:Announcement').get() : value}
 
 	@process.tmpl = ${'<div class="Carousel--Cover js-carousel-1x">' + value + '</div>'}
 	itemRenderer = Sfi.News:TopShort
