@@ -15,6 +15,15 @@ prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
 							}
 							renderer = afx`<div class="lineHeight-single ParagraphAlt marginBottom-single"><a href={props.link} class="Link">{documentNode.properties.title} »</a></div>`
 						}
+						@cache {
+							mode = 'cached'
+							entryIdentifier {
+								node = ${node}
+							}
+							entryTags {
+								1 = ${Neos.Caching.nodeTag(node)}
+							}
+						}
 					}
 				}
 			}
