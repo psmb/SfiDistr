@@ -1,6 +1,9 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 <tr>
 	<neos:contentElement.wrap>
+		<td rowspan="{rowCount}">
+			{title -> f:format.raw()}
+		</td>
 		<td itemprop="eduCode" rowspan="{rowCount}">
 			{specialityId -> f:format.raw()}
 		</td>
