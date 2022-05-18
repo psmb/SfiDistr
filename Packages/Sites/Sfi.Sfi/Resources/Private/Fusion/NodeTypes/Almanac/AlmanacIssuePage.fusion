@@ -7,7 +7,13 @@ prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
 				renderer = Neos.Fusion:Value {
 					@context.node = ${q(documentNode).children('main').children(request.arguments.article).get(0)}
 					value = Sfi.Sfi:AlmanacLayout {
-						title = ${node.properties.title}
+						title = Neos.Fusion:Value {
+							@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+							value = Neos.Neos:Editable {
+								property = 'title'
+								block = false
+							}
+						}
 						content = Sfi.Sfi:AlmanacEntryFull
 						linkToIssue = Neos.Fusion:Component {
 							link = Neos.Neos:NodeUri {
