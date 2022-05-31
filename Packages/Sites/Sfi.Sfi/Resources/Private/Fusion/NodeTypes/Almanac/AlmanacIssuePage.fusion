@@ -1,11 +1,15 @@
 prototype(Sfi.Sfi:AlmanacIssuePage)>
 prototype(Sfi.Sfi:AlmanacIssuePage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
+	@context.articleNode = ${q(documentNode).children('main').children(request.arguments.article).get(0)}
+	head {
+		titleTag.content = ${String.stripTags(q(request.arguments.article ? articleNode : node).property('title')) + ' | ' + Translation.translate('sfi.abbrev', null, [], null, 'Sfi.Sfi')}
+	}
 	body {
 		renderer = Neos.Fusion:Case {
 			single {
 				condition = ${request.arguments.article}
 				renderer = Neos.Fusion:Value {
-					@context.node = ${q(documentNode).children('main').children(request.arguments.article).get(0)}
+					@context.node = ${articleNode}
 					value = Sfi.Sfi:AlmanacLayout {
 						title = Neos.Fusion:Value {
 							@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
