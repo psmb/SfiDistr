@@ -188,6 +188,7 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	level = ${q(node).property('specialityId') ? ('высшее образование – ' + q(node).parent().parent().property('title')) : 'Дополнительное профессиональное образование. Данный вид образования не сопровождается повышением уровня образования (п. 14 ст. 2 Федерального закона от 29.12.2012 N 273-ФЗ «Об образовании в Российской Федерации»'}
 	division = ${q(node).parent().property('title')}
 	duration = ${q(node).property('duration')}
+	isMain = ${q(node).property('specialityId') ? true : false}
 	specialityId = ${q(node).property('specialityId') || 'Не предусмотрен'}
 	specialityName = Neos.Fusion:Tag {
 		content = ${q(node).property('specialityName') || 'Не предусмотрено'}
