@@ -16,53 +16,64 @@
 			<div itemprop="opMain">
 				{assetDescriptionsO -> f:format.raw()}
 			</div>
-			<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+				<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			</f:if>
 		</td>
 		<td>
 			<div itemprop="educationPlan">
 				{assetsPlanO -> f:format.raw()}
 			</div>
-			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
-			</div>
+			<f:if condition="{isMain}">
+				<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
+				</div>
+			</f:if>
 		</td>
 		<td>
 			<div itemprop="educationAnnotation">
 				{assetsSubjectAnnotationsO -> f:format.raw()}
 			</div>
-			<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
-				здоровья.</div>
+			<f:if condition="{isMain}">
+				<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
+					здоровья.</div>
+			</f:if>
 		</td>
 		<td>
 			<div itemprop="educationRpd">
 				{assetRpdO -> f:format.raw()}
 			</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationRpd">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
-				здоровья.</div>
+				здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationShedule">
 				{scheduleO -> f:format.raw()}
 			</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
-			</div>
+			</div></f:if>
 		</td>
 		<td>
 			<div itemprop="methodology">
 				{assetsMethodicalO -> f:format.raw()}
 			</div>
-			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="eduPr">
 				{assetsPracticeAnnotationsO -> f:format.raw()}
 			</div>
-			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="eduEl">
 				{distantEduO -> f:format.raw()}
 			</div>
-			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 	</neos:contentElement.wrap>
 </tr>
@@ -73,49 +84,57 @@
 			<div itemprop="opMain">
 				{assetDescriptionsOZ -> f:format.raw()}
 			</div>
-			<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationPlan">{assetsPlanOZ -> f:format.raw()}</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
-			</div>
+			</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationAnnotation">
 				{assetsSubjectAnnotationsOZ -> f:format.raw()}
 			</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
-				здоровья.</div>
+				здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationRpd">
 				{assetRpdOZ -> f:format.raw()}
 			</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationRpd">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
-				здоровья.</div>
+				здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationShedule">{scheduleOZ -> f:format.raw()}</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
-			</div>
+			</div></f:if>
 		</td>
 		<td>
 			<div itemprop="methodology">
 				{assetsMethodicalOZ -> f:format.raw()}
 			</div>
-			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="eduPr">
 				{assetsPracticeAnnotationsOZ -> f:format.raw()}
 			</div>
-			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="eduEl">
 				{distantEduOZ -> f:format.raw()}
 			</div>
-			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 	</tr>
 </f:if>
@@ -126,49 +145,57 @@
 			<div itemprop="opMain">
 				{assetDescriptionsZ -> f:format.raw()}
 			</div>
-			<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationPlan">{assetsPlanZ -> f:format.raw()}</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
-			</div>
+			</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationAnnotation">
 				{assetsSubjectAnnotationsZ -> f:format.raw()}
 			</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
-				здоровья.</div>
+				здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationRpd">
 				{assetRpdZ -> f:format.raw()}
 			</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationRpd">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
-				здоровья.</div>
+				здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="educationShedule">{scheduleZ -> f:format.raw()}</div>
+			<f:if condition="{isMain}">
 			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
-			</div>
+			</div></f:if>
 		</td>
 		<td>
 			<div itemprop="methodology">
 				{assetsMethodicalZ -> f:format.raw()}
 			</div>
-			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="eduPr">
 				{assetsPracticeAnnotationsZ -> f:format.raw()}
 			</div>
-			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
 			<div itemprop="eduEl">
 				{distantEduZ -> f:format.raw()}
 			</div>
-			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+			<f:if condition="{isMain}">
+			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 	</tr>
 </f:if>
