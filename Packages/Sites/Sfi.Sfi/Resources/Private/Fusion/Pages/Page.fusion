@@ -98,9 +98,9 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 				condition = TRUE
 				type = ${q(node).property('_nodeType.name')}
 			}
-			@if.notSubscription = ${request.pluginArguments['newsletter']['@package'] != 'Psmb.Newsletter'}
+			# @if.notSubscription = ${request.pluginArguments['newsletter']['@package'] != 'Psmb.Newsletter'}
 		}
-		subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
+		# subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
 
 		javascripts.bodyScripts = Neos.Fusion:Template {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
