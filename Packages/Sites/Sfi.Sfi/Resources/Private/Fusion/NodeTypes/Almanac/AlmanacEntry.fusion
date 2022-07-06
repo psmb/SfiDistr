@@ -21,7 +21,7 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 	authorInfo2 = ${node.properties.authorInfo2}
 	authorInfo3 = ${node.properties.authorInfo3}
 	source = ${node.properties.source}
-	title = afx`<div class="Paragraph lineHeight-tight AlmanacEntry-title">{node.properties.title}</div>`
+	title = afx`<div class="Paragraph lineHeight-tight AlmanacEntry-title">{node.properties.title || (node.context.workspace.name == 'live' ? '' : 'перейти к редактированию')}</div>`
 	title.@process.link = afx`<a class="Link" href={link}>{value}</a>`
 
 	renderer = afx`
