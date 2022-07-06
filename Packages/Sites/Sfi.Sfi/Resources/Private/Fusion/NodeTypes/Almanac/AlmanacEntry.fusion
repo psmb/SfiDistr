@@ -29,15 +29,15 @@ prototype(Sfi.Sfi:AlmanacEntry) < prototype(Neos.Neos:ContentComponent) {
 			<div>
 				<div class="lineHeight-tight">
 					<span class="H4 AlmanacEntry-author">{props.author}</span>
-					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.properties.authorInfo}>, {props.authorInfo}</span>
+					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.context.workspace.name != 'live' || node.properties.authorInfo}>, {props.authorInfo}</span>
 				</div>
-				<div class="lineHeight-tight" @if.live={node.properties.author2}>
+				<div class="lineHeight-tight" @if.live={node.context.workspace.name != 'live' || node.properties.author2}>
 					<span class="H4 AlmanacEntry-author">{props.author2}</span>
-					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.properties.authorInfo2}>, {props.authorInfo2}</span>
+					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.context.workspace.name != 'live' || node.properties.authorInfo2}>, {props.authorInfo2}</span>
 				</div>
-				<div class="lineHeight-tight" @if.live={node.properties.author3}>
+				<div class="lineHeight-tight" @if.live={node.context.workspace.name != 'live' || node.properties.author3}>
 					<span class="H4 AlmanacEntry-author">{props.author3}</span>
-					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.properties.authorInfo3}>, {props.authorInfo3}</span>
+					<span class="ServiceEm AlmanacEntry-authorInfo" @if.live={node.context.workspace.name != 'live' || node.properties.authorInfo3}>, {props.authorInfo3}</span>
 				</div>
 				<div class="color-grayAlt">{props.title}</div>
 			</div>
