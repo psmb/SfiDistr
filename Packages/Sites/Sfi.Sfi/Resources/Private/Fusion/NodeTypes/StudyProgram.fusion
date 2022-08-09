@@ -185,7 +185,7 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShortFormal.html'
 	node = ${node}
 	title = ${(q(node).property('specialityId') ? q(node).parent().parent().property('title') + ' – ' : '') + String.stripTags(q(node).property('title'))}
-	level = ${q(node).property('specialityId') ? ('высшее образование – ' + q(node).parent().parent().property('title')) : (String.stripTags(q(node).property('title')) == 'Основы языка изобразительного искусства' ? 'Дополнительная общеобразовательная общеразвивающая программа.' : 'Дополнительное профессиональное образование.' ) + ' Данный вид образования не сопровождается повышением уровня образования (п. 14 ст. 2 Федерального закона от 29.12.2012 N 273-ФЗ «Об образовании в Российской Федерации»'}
+	level = ${q(node).property('specialityId') ? ('высшее образование – ' + q(node).parent().parent().property('title')) : ((String.stripTags(q(node).property('title')) == 'Основы языка изобразительного искусства' ? 'Дополнительная общеобразовательная общеразвивающая программа.' : 'Дополнительное профессиональное образование.' ) + ' Данный вид образования не сопровождается повышением уровня образования (п. 14 ст. 2 Федерального закона от 29.12.2012 N 273-ФЗ «Об образовании в Российской Федерации»')}
 	division = ${q(node).parent().property('title')}
 	duration = ${q(node).property('duration')}
 	isMain = ${q(node).property('specialityId') ? true : false}
