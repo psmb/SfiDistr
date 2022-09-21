@@ -1,6 +1,6 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-<tr>
-	<f:if condition="{isOZ}">
+<f:if condition="{isO}">
+	<tr>
 		<neos:contentElement.wrap>
 			<td rowspan="{rowCount}">
 				{title -> f:format.raw()}
@@ -77,8 +77,8 @@
 				<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 			</td>
 		</neos:contentElement.wrap>
-	</f:if>
-</tr>
+	</tr>
+</f:if>
 <f:if condition="{isOZ}">
 	<tr>
 		<f:if condition="!{isO}">
