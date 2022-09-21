@@ -1,84 +1,100 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 <tr>
-	<neos:contentElement.wrap>
-		<td rowspan="{rowCount}">
-			{title -> f:format.raw()}
-		</td>
-		<td itemprop="eduCode" rowspan="{rowCount}">
-			{specialityId -> f:format.raw()}
-		</td>
-		<td rowspan="{rowCount}" itemprop="eduName">{specialityName -> f:format.raw()}</td>
-		<td itemprop="eduLevel" rowspan="{rowCount}">
-			{level -> f:format.raw()}
-		</td>
-		<td itemprop="eduForm">Очная</td>
-		<td>
-			<div itemprop="opMain">
-				{assetDescriptionsO -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-				<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
-			</f:if>
-		</td>
-		<td>
-			<div itemprop="educationPlan">
-				{assetsPlanO -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-				<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
+	<f:if condition="{isOZ}">
+		<neos:contentElement.wrap>
+			<td rowspan="{rowCount}">
+				{title -> f:format.raw()}
+			</td>
+			<td itemprop="eduCode" rowspan="{rowCount}">
+				{specialityId -> f:format.raw()}
+			</td>
+			<td rowspan="{rowCount}" itemprop="eduName">{specialityName -> f:format.raw()}</td>
+			<td itemprop="eduLevel" rowspan="{rowCount}">
+				{level -> f:format.raw()}
+			</td>
+			<td itemprop="eduForm">Очная</td>
+			<td>
+				<div itemprop="opMain">
+					{assetDescriptionsO -> f:format.raw()}
 				</div>
-			</f:if>
-		</td>
-		<td>
-			<div itemprop="educationAnnotation">
-				{assetsSubjectAnnotationsO -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-				<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
-					здоровья.</div>
-			</f:if>
-		</td>
-		<td>
-			<div itemprop="educationRpd">
-				{assetRpdO -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-			<div itemprop="adEducationRpd">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
-				здоровья.</div></f:if>
-		</td>
-		<td>
-			<div itemprop="educationShedule">
-				{scheduleO -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-			<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
-			</div></f:if>
-		</td>
-		<td>
-			<div itemprop="methodology">
-				{assetsMethodicalO -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
-		</td>
-		<td>
-			<div itemprop="eduPr">
-				{assetsPracticeAnnotationsO -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
-		</td>
-		<td>
-			<div itemprop="eduEl">
-				{distantEduO -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
-		</td>
-	</neos:contentElement.wrap>
+				<f:if condition="{isMain}">
+					<div itemprop="adOpMain">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div>
+				</f:if>
+			</td>
+			<td>
+				<div itemprop="educationPlan">
+					{assetsPlanO -> f:format.raw()}
+				</div>
+				<f:if condition="{isMain}">
+					<div itemprop="adEducationPlan">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
+					</div>
+				</f:if>
+			</td>
+			<td>
+				<div itemprop="educationAnnotation">
+					{assetsSubjectAnnotationsO -> f:format.raw()}
+				</div>
+				<f:if condition="{isMain}">
+					<div itemprop="adEducationAnnotation">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
+						здоровья.</div>
+				</f:if>
+			</td>
+			<td>
+				<div itemprop="educationRpd">
+					{assetRpdO -> f:format.raw()}
+				</div>
+				<f:if condition="{isMain}">
+				<div itemprop="adEducationRpd">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями
+					здоровья.</div></f:if>
+			</td>
+			<td>
+				<div itemprop="educationShedule">
+					{scheduleO -> f:format.raw()}
+				</div>
+				<f:if condition="{isMain}">
+				<div itemprop="adEducationShedule">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.
+				</div></f:if>
+			</td>
+			<td>
+				<div itemprop="methodology">
+					{assetsMethodicalO -> f:format.raw()}
+				</div>
+				<f:if condition="{isMain}">
+				<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
+			</td>
+			<td>
+				<div itemprop="eduPr">
+					{assetsPracticeAnnotationsO -> f:format.raw()}
+				</div>
+				<f:if condition="{isMain}">
+				<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
+			</td>
+			<td>
+				<div itemprop="eduEl">
+					{distantEduO -> f:format.raw()}
+				</div>
+				<f:if condition="{isMain}">
+				<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
+			</td>
+		</neos:contentElement.wrap>
+	</f:if>
 </tr>
 <f:if condition="{isOZ}">
 	<tr>
+		<f:if condition="!{isO}">
+			<td rowspan="{rowCount}">
+				{title -> f:format.raw()}
+			</td>
+			<td itemprop="eduCode" rowspan="{rowCount}">
+				{specialityId -> f:format.raw()}
+			</td>
+			<td rowspan="{rowCount}" itemprop="eduName">{specialityName -> f:format.raw()}</td>
+			<td itemprop="eduLevel" rowspan="{rowCount}">
+				{level -> f:format.raw()}
+			</td>
+		</f:if>
+
+
 		<td itemprop="eduForm">Очно-заочная</td>
 		<td>
 			<div itemprop="opMain">
@@ -140,6 +156,20 @@
 </f:if>
 <f:if condition="{isZ}">
 	<tr>
+
+		<f:if condition="!{isO} && !{isOZ}">
+			<td rowspan="{rowCount}">
+				{title -> f:format.raw()}
+			</td>
+			<td itemprop="eduCode" rowspan="{rowCount}">
+				{specialityId -> f:format.raw()}
+			</td>
+			<td rowspan="{rowCount}" itemprop="eduName">{specialityName -> f:format.raw()}</td>
+			<td itemprop="eduLevel" rowspan="{rowCount}">
+				{level -> f:format.raw()}
+			</td>
+		</f:if>
+
 		<td itemprop="eduForm">Заочная</td>
 		<td>
 			<div itemprop="opMain">

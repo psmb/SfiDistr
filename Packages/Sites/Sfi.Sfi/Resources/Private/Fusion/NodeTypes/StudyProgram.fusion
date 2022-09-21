@@ -231,9 +231,10 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	assetsPlanO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanO'
 	}
+	isO = ${q(node).children('assetsPlanO').children().count() > 0 || documentNode.context.inBackend}
 	isOZ = ${q(node).children('assetsPlanOZ').children().count() > 0 || documentNode.context.inBackend}
 	isZ = ${q(node).children('assetsPlanZ').children().count() > 0 || documentNode.context.inBackend}
-	rowCount = ${1 + (this.isOZ ? 1 : 0) + (this.isZ ? 1 : 0)}
+	rowCount = ${(this.isO ? 1 : 0) + (this.isOZ ? 1 : 0) + (this.isZ ? 1 : 0)}
 	assetsPlanOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanOZ'
 	}
