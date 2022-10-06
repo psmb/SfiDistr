@@ -75,10 +75,12 @@ prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
 		1 = Sfi.Sfi:PersonFormalListingByLevel {
 			title = 'Состав педагогических (научно-педагогических) работников образовательной организации по образовательной программе 48.03.01 Теология (бакалавриат)'
 			level = '48.03.01 Теология (бакалавриат)'
+			anchor = '480301'
 		}
 		2 = Sfi.Sfi:PersonFormalListingByLevel {
 			title = 'Состав педагогических (научно-педагогических) работников образовательной организации по образовательной программе 48.04.01 Теология (магистратура)'
 			level = '48.04.01 Теология (магистратура)'
+			anchor = '480401'
 		}
 	}
 	@cache {
@@ -95,8 +97,10 @@ prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
 prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection) {
 	title = 'to-be-set'
 	level = 'to-be-set'
+	anchor = 'to-be-set'
 	@context.level = ${String.replace(String.replace(this.level, '(', '\('), ')', '\)')}
 	@context.title = ${this.title}
+	@context.anchor = ${this.anchor}
 	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('[isProfessor = TRUE][subject *= "' + this.level + '"]').get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Component {
@@ -127,7 +131,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 		`
 	}
 	@process.wrap = afx`
-		<h3 class="H3 marginTop-double marginBottom-single">{title}</h3>
+		<h3 class="H3 marginTop-double marginBottom-single" id={anchor}>{title}</h3>
 		<table class="Table" itemprop="teachingStaff" style="max-height: 600px">
 			<thead>
 				<tr>
