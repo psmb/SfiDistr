@@ -169,6 +169,26 @@
               a: false
               underline: false
             placeholder: 'Наименование специальности, направления подготовки'
+    eduProf:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: 'Образовательная программа, направленность, профиль, шифр и наименование научной специальности'
     accreditationDate:
       type: string
       ui:

@@ -12,6 +12,9 @@
 			<td itemprop="eduLevel" rowspan="{rowCount}">
 				{level -> f:format.raw()}
 			</td>
+			<td itemprop="eduProf" rowspan="{rowCount}">
+				{eduProf -> f:format.raw()}
+			</td>
 			<td itemprop="eduForm">Очная</td>
 			<td>
 				<div itemprop="opMain">
@@ -56,13 +59,6 @@
 				</div></f:if>
 			</td>
 			<td>
-				<div itemprop="methodology">
-					{assetsMethodicalO -> f:format.raw()}
-				</div>
-				<f:if condition="{isMain}">
-				<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
-			</td>
-			<td>
 				<div itemprop="eduPr">
 					{assetsPracticeAnnotationsO -> f:format.raw()}
 				</div>
@@ -70,11 +66,11 @@
 				<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 			</td>
 			<td>
-				<div itemprop="eduEl">
-					{distantEduO -> f:format.raw()}
+				<div itemprop="methodology">
+					{assetsMethodicalO -> f:format.raw()}
 				</div>
 				<f:if condition="{isMain}">
-				<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
+				<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 			</td>
 		</neos:contentElement.wrap>
 	</tr>
@@ -91,6 +87,9 @@
 			<td rowspan="{rowCount}" itemprop="eduName">{specialityName -> f:format.raw()}</td>
 			<td itemprop="eduLevel" rowspan="{rowCount}">
 				{level -> f:format.raw()}
+			</td>
+			<td itemprop="eduProf" rowspan="{rowCount}">
+				{eduProf -> f:format.raw()}
 			</td>
 		</f:if>
 
@@ -132,13 +131,6 @@
 			</div></f:if>
 		</td>
 		<td>
-			<div itemprop="methodology">
-				{assetsMethodicalOZ -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
-		</td>
-		<td>
 			<div itemprop="eduPr">
 				{assetsPracticeAnnotationsOZ -> f:format.raw()}
 			</div>
@@ -146,11 +138,11 @@
 			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
-			<div itemprop="eduEl">
-				{distantEduOZ -> f:format.raw()}
+			<div itemprop="methodology">
+				{assetsMethodicalOZ -> f:format.raw()}
 			</div>
 			<f:if condition="{isMain}">
-			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
+			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 	</tr>
 </f:if>
@@ -167,6 +159,9 @@
 			<td rowspan="{rowCount}" itemprop="eduName">{specialityName -> f:format.raw()}</td>
 			<td itemprop="eduLevel" rowspan="{rowCount}">
 				{level -> f:format.raw()}
+			</td>
+			<td itemprop="eduProf" rowspan="{rowCount}">
+				{eduProf -> f:format.raw()}
 			</td>
 		</f:if>
 
@@ -207,13 +202,6 @@
 			</div></f:if>
 		</td>
 		<td>
-			<div itemprop="methodology">
-				{assetsMethodicalZ -> f:format.raw()}
-			</div>
-			<f:if condition="{isMain}">
-			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
-		</td>
-		<td>
 			<div itemprop="eduPr">
 				{assetsPracticeAnnotationsZ -> f:format.raw()}
 			</div>
@@ -221,11 +209,11 @@
 			<div itemprop="adEduPr">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 		<td>
-			<div itemprop="eduEl">
-				{distantEduZ -> f:format.raw()}
+			<div itemprop="methodology">
+				{assetsMethodicalZ -> f:format.raw()}
 			</div>
 			<f:if condition="{isMain}">
-			<div itemprop="adEduEl">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
+			<div itemprop="adMethodology">Среди обучающихся нет инвалидов и лиц с ограниченными возможностями здоровья.</div></f:if>
 		</td>
 	</tr>
 </f:if>

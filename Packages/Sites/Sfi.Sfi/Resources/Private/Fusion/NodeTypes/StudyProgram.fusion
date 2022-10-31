@@ -197,6 +197,13 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 		}
 		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 	}
+	eduProf = Neos.Fusion:Tag {
+		content = ${q(node).property('eduProf')}
+		@process.editable = Neos.Neos:ContentElementEditable {
+			property = 'eduProf'
+		}
+		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+	}
 	accreditationDate = ${q(node).property('accreditationDate')}
 	noLink = ${q(node).property('noLink')}
 	studyProgramSpecial = Neos.Fusion:Tag {
