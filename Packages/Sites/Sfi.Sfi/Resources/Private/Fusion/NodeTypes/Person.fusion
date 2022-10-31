@@ -108,6 +108,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 			node = ${node}
 		}
 		subject = ${String.pregMatch(node.properties.subject, '/<strong>' + level + ':<\/strong>([^<]*)/u')[1]}
+		teachingOp = ${Array.join(String.pregMatch(node.properties.subject, '/<strong>([^<]+):<\/strong>/u')[1], ', ')}
 		experienceSum = Sfi.Sfi:TimeIntervalSum {
 			path = 'experience'
 		}
@@ -121,12 +122,13 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 				<td itemprop="teachingDiscipline">{props.subject}</td>
 				<td itemprop="teachingLevel">{node.properties.teachingLevel}</td>
 				<td itemprop="teachingQual">{node.properties.teachingQual}</td>
+				<td itemprop="employeeQualification">{node.properties.education}</td>
 				<td itemprop="degree">{node.properties.degree || 'Без ученой степени'}</td>
 				<td itemprop="academStat">{node.properties.degreeTitle || 'Без ученого звания'}</td>
-				<td itemprop="employeeQualification">{node.properties.education}</td>
 				<td itemprop="profDevelopment">{node.properties.educationUpgrade || 'В сроки, установленные действующим законодательством'}</td>
 				<td itemprop="genExperience">{props.experienceSum}</td>
 				<td itemprop="specExperience">{props.experienceSpecialitySum}</td>
+				<td itemprop="teachingOp">{props.teachingOp}</td>
 			</tr>
 		`
 	}
@@ -135,17 +137,18 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 		<table class="Table" itemprop="teachingStaff" style="max-height: 600px">
 			<thead>
 				<tr>
-					<th>Ф.И.О. преподавателя, реализующего программу</th>
+					<th>Ф.И.О.</th>
 					<th>Должность преподавателя</th>
 					<th>Перечень преподаваемых дисциплин</th>
-					<th>Уровень образования</th>
+					<th>Уровень (уровни) профессионального образования</th>
 					<th>Квалификация</th>
-					<th>Ученая степень педагогического работника (при наличии)</th>
-					<th>Ученое звание  педагогического работника (при наличии)</th>
-					<th>Наименование направления подготовки и (или) специальности педагогического работника</th>
-					<th>Сведения о повышении квалификации и (или) профессиональной переподготовке педагогического работника (при наличии)</th>
+					<th>Наименование направления подготовки и (или) специальности, в том числе научной</th>
+					<th>Ученая степень (при наличии)</th>
+					<th>Ученое звание (при наличии)</th>
+					<th>Сведения о повышении квалификации (за последние 3 года) и сведения о профессиональной переподготовке (при наличии)</th>
 					<th>Общий стаж работы*</th>
-					<th>Стаж работы педагогического работника по специальности*</th>
+					<th>Стаж работы по специальности (сведения о продолжительности опыта (лет) работы в профессиональной сфере)*</th>
+					<th>Наименование образовательных программ, в реализации которых участвует педагогический работник</th>
 				</tr>
 			</thead>
 			<tbody>
