@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv /bin/bash
+
+curl -C - -o /data/www-provisioned/Web/sveden/education.html http://localhost/about/sveden/education.html
