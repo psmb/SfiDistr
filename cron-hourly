@@ -1,3 +1,4 @@
 #!/usr/bin/with-contenv /bin/bash
 
+mkdir -p /data/www-provisioned/Web/sveden
 curl -C - -o /data/www-provisioned/Web/sveden/education.html http://localhost/about/sveden/education.html
