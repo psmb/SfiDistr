@@ -105,7 +105,12 @@ class MailerCommandController extends CommandController
                         $this->systemLogger->log("Email sent: " . ($dryRun ? "(Dry-run)" : "") . $subscriber['email'] . "; " . $reason . "; " . $subscripionId, \LOG_INFO);
                     } catch (\Exception $e) {
                         $message = $e->getMessage();
-                        $level = strpos($message, 'does not comply with RFC 2822') !== false ? \LOG_NOTICE : \LOG_ERR;
+                        $invalidEmail = strpos($message, 'does not comply with RFC 2822') !== false;
+                        if ($invalidEmail) {
+                            // Register even for failed email, so we won't try to send it again
+                            $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
+                        }
+                        $level = $invalidEmail ? \LOG_NOTICE : \LOG_ERR;
                         $this->systemLogger->log($message, $level);
                     }
                 } else {
