@@ -44,4 +44,9 @@
 			{keywordsStr}: {neos:contentElement.editable(property: 'keywords', tag: 'span')}
 		</div>
 	</f:if>
+	<f:if condition="{node.context.workspace.name} != 'live' || {cite}">
+		<div class="ParagraphAlt AlmanacEntry-cite">
+			{citeStr}: {neos:contentElement.editable(property: 'cite', tag: 'span')}
+		</div>
+	</f:if>
 </div>

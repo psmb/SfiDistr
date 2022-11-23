@@ -20,6 +20,7 @@ prototype(Sfi.Sfi:AlmanacEntryFull) < prototype(Neos.Neos:ContentComponent) {
 	@context.hrefEn = ${'asset://' + node.properties.assetEn.identifier}
 	@context.hrefEn.@process.convertUris = Neos.Neos:ConvertUris
 	keywordsStr = ${Translation.translate('keywords', null, [], null, 'Sfi.Sfi')}
+	citeStr = ${Translation.translate('cite', null, [], null, 'Sfi.Sfi')}
 	issueStr = ${Translation.translate('almanac.issue', null, [], null, 'Sfi.Sfi')}
 	issueNumber = ${this.issueStr + ' №' + q(node).parent().parent().property('issueNumber') + ','}
 	issueNumber.@if.notIssuePage = ${!q(documentNode).is('[instanceof Sfi.Sfi:AlmanacIssuePage]')}
@@ -88,6 +89,9 @@ prototype(Sfi.Sfi:AlmanacEntryFull) < prototype(Neos.Neos:ContentComponent) {
 			</div>
 			<div @if.live={node.context.workspace.name != 'live' || node.properties.keywords} class="ParagraphAlt AlmanacEntry-keywords">
 				{props.keywordsStr}: <Neos.Neos:Editable property="keywords" block={false}/>
+			</div>
+			<div @if.live={node.context.workspace.name != 'live' || node.properties.cite} class="ParagraphAlt AlmanacEntry-cite">
+				{props.citeStr}: <Neos.Neos:Editable property="cite" block={false}/>
 			</div>
 			{props.linkAlt}
 			<br/>

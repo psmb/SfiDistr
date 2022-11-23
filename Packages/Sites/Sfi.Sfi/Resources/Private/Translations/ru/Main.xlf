@@ -26,6 +26,9 @@
             <trans-unit id="keywords">
                 <source>Ключевые слова</source>
             </trans-unit>
+            <trans-unit id="cite">
+                <source>Для цитирования</source>
+            </trans-unit>
             <trans-unit id="footer.about.sfi">
                 <source>Свято-Филаретовский институт (СФИ)</source>
             </trans-unit>

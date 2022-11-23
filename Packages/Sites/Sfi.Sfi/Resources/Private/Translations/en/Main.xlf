@@ -23,6 +23,9 @@
             <trans-unit id="keywords">
                 <target>Keywords</target>
             </trans-unit>
+            <trans-unit id="cite">
+                <target>For citation</target>
+            </trans-unit>
             <trans-unit id="footer.about.sfi">
                 <target>Private educational institution of higher education Saint Philaret’s Institute</target>
             </trans-unit>
