@@ -82,6 +82,11 @@ prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
 			level = '48.04.01 Теология (магистратура)'
 			anchor = '480401'
 		}
+		3 = Sfi.Sfi:PersonFormalListingByLevel {
+			title = 'Состав педагогических (научно-педагогических) работников образовательной организации по образовательной программе 46.04.01 История (магистратура)'
+			level = '46.04.01 История (магистратура)'
+			anchor = '460401'
+		}
 	}
 	@cache {
 		mode = 'cached'
