@@ -184,6 +184,7 @@ prototype(Sfi.Sfi:StudyProgramShort) < prototype(Neos.Fusion:Template) {
 prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/StudyProgramShortFormal.html'
 	node = ${node}
+	grandParentTitle = ${q(node).parent().parent().property('title')}
 	title = ${(q(node).property('specialityId') ? q(node).parent().parent().property('title') + ' – ' : '') + String.stripTags(q(node).property('title'))}
 	level = ${q(node).property('specialityId') ? ('высшее образование – ' + q(node).parent().parent().property('title')) : ((String.stripTags(q(node).property('title')) == 'Основы языка изобразительного искусства' ? 'Дополнительная общеобразовательная общеразвивающая программа.' : 'Дополнительное профессиональное образование.' ) + ' Данный вид образования не сопровождается повышением уровня образования (п. 14 ст. 2 Федерального закона от 29.12.2012 N 273-ФЗ «Об образовании в Российской Федерации»')}
 	division = ${q(node).parent().property('title')}
