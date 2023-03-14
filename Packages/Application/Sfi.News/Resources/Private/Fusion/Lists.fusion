@@ -23,7 +23,7 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 	list = Flowpack.Listable:Listable {
 		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
 		listClass = 'NewsLatest-Grid large-block-grid-4 medium-block-grid-2 small-block-grid-1'
-		limit = 4
+		limit = 8
 		paginationEnabled = false
 		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews]').get()}
 	}
