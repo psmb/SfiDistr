@@ -20,6 +20,9 @@
             <trans-unit id="allPublications">
                 <target>All publications</target>
             </trans-unit>
+            <trans-unit id="newsAnnouncements.archiveLinkTitle">
+                <source>past announcements</source>
+            </trans-unit>
             <trans-unit id="keywords">
                 <target>Keywords</target>
             </trans-unit>

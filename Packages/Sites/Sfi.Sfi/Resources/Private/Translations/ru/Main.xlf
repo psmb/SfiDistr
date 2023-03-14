@@ -131,6 +131,9 @@
             <trans-unit id="newsLatest.archiveLinkTitle">
                 <source>Все новости</source>
             </trans-unit>
+            <trans-unit id="newsAnnouncements.archiveLinkTitle">
+                <source>архив анонсов</source>
+            </trans-unit>
             <trans-unit id="listByTag.archiveLinkTitle">
                 <source>Материалы по теме</source>
             </trans-unit>

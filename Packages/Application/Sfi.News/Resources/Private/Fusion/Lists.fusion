@@ -20,20 +20,12 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 	archiveLinkUri = Neos.Neos:NodeUri {
 		node = ${q(site).children('sfi-today').get(0)}
 	}
-	listImportant = Flowpack.Listable:Listable {
+	list = Flowpack.Listable:Listable {
 		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
 		listClass = 'NewsLatest-Grid large-block-grid-4 medium-block-grid-2 small-block-grid-1'
 		limit = 4
 		paginationEnabled = false
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isHard != TRUE]').get()}
-	}
-	listUnimportant = Flowpack.Listable:Listable {
-		@process.tmpl = ${'<div class="NewsLatest">' + value + '</div>'}
-		listClass = 'NewsLatest-Grid large-block-grid-4 medium-block-grid-2 small-block-grid-1'
-		limit = 4
-		paginationEnabled = false
-		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews][isHard = TRUE]').get()}
-		itemRenderer = 'Sfi.News:NewsShortSmall'
+		collection = ${q(site).children('sfi-today').find('[instanceof Sfi.News:AbstractNews]').get()}
 	}
 
 	renderer = afx`
@@ -41,8 +33,7 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 			{props.listTitle} <span style="text-transform: lowercase; font-weight: normal;" class="ParagraphAlt color-primary">| <a href={props.archiveLinkUri}>{props.archiveLinkTitle}</a></span>
 		</h2>
 
-		{props.listImportant}
-		{props.listUnimportant}
+		{props.list}
 	`
 
 	@cache {
