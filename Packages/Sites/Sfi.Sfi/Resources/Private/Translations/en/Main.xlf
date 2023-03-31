@@ -30,10 +30,10 @@
                 <target>For citation</target>
             </trans-unit>
             <trans-unit id="footer.about.sfi">
-                <target>Private educational institution of higher education Saint Philaret’s Institute</target>
+                <target>St Philaret’s Institute (SFI)</target>
             </trans-unit>
             <trans-unit id="footer.about.text">
-                <target>is a non-government theology school. Founder: ‘Sretenie’, regional non-government organisation for the promotion of personal spiritual development. The Institute offers Bachelor’s and Master’s degrees in Theology along with foundation and advanced professional training programmes in Theology, History, Religious Studies, and Social Work.</target>
+                <target>, Autonomous Non-profit Educational Organization of Higher Education, offers Bachelor’s and Master’s programmes in Theology and History, along with advanced professional training programmes in Theology, History, Religious Studies, and Social Work. SFI Founder: ‘Sretenie’, Regional Non-government Organisation for the Promotion of Personal Spiritual Development.</target>
             </trans-unit>
             <trans-unit id="footer.social.title">
                 <target>Social</target>
@@ -63,7 +63,7 @@
                 <target>Load more</target>
             </trans-unit>
             <trans-unit id="stream.loading">
-                <target>Loading...</target>
+                <target>Loading…</target>
             </trans-unit>
             <trans-unit id="stream.done">
                 <target>Done!</target>
