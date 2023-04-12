@@ -112,8 +112,16 @@ prototype(Sfi.Sfi:Component.AlmanacHeader) < prototype(Neos.Fusion:Component) {
 			</div>
 			<div>
 				<a href={props.rootLink} style="border-top: 2px solid white; display: block; padding-top: 12px">
-					<h1 class="AlmanacHeader-title">{props.titleLabel}</h1>
-					<h2 class="AlmanacHeader-slogan ServiceEm--Large">{props.sloganLabel}</h2>
+					<div style="display: flex; justify-content: space-between; align-items: center">
+						<div>
+							<h1 class="AlmanacHeader-title">{props.titleLabel}</h1>
+							<h2 class="AlmanacHeader-slogan ServiceEm--Large">{props.sloganLabel}</h2>
+						</div>
+						<div class="lineHeight-normal ParagraphAlt color-white marginLeft-single" style="flex-grow: 0; flex-shrink: 0; text-align: right">
+							ISSN: 2658-7599 (print)<br/>
+							2713-3141 (online)
+						</div>
+					</div>
 				</a>
 			</div>
 		</div>
