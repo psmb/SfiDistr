@@ -1,0 +1,11 @@
+privilegeTargets:
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'Sfi.Umo:BackendModule':
+      matcher: 'method(Sfi\Umo\Controller\BackendController->.*Action())'
+
+roles:
+  'Neos.Neos:Editor':
+    privileges:
+      -
+        privilegeTarget: 'Sfi.Umo:BackendModule'
+        permission: GRANT

@@ -12,6 +12,7 @@ stylesheets
 Yeebase
 uploads
 ogk
+umo
 
 /Web/.htaccess
 /Web/_Resources
@@ -35,6 +36,7 @@ Configuration/Development/Settings.yaml
 !/Packages/Application/Sfi.News/
 !/Packages/Application/Sfi.Shared/
 !/Packages/Application/Sfi.Sber/
+!/Packages/Application/Sfi.Umo/
 /Packages/Framework/
 /Packages/Libraries/
 /Packages/Plugins/

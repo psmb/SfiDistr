@@ -1,0 +1,6 @@
+-
+  requestFilter: 'isPackage("Sfi.Umo") && isFormat("html") && isController("Backend")'
+  options:
+    partialRootPaths:
+      'Sfi.Umo': 'resource://Sfi.Umo/Private/Partials'
+      'Neos.Neos': 'resource://Neos.Neos/Private/Partials/'

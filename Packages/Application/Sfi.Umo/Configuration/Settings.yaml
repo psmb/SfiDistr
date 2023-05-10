@@ -1,0 +1,33 @@
+Neos:
+  Flow:
+    security:
+      authentication:
+        providers:
+          'Neos.Neos:Backend':
+            requestPatterns:
+              'Sfi.Umo:Backend':
+                pattern: ControllerObjectName
+                patternOptions:
+                  controllerObjectNamePattern: 'Sfi\Umo\Controller\.*'
+    mvc:
+      routes:
+        'Sfi.Umo':
+          position: 'before Neos.Neos'
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Sfi.Umo:
+            - Main
+            - 'NodeTypes/*'
+      requireJsPathMapping:
+        Sfi.Umo/Views: 'resource://Sfi.Umo/Public/JavaScript/Inspector/Views'
+    modules:
+      management:
+        submodules:
+          umo:
+            label: 'Шахты'
+            controller: 'Sfi\Umo\Controller\BackendController'
+            description: 'Загрузка данных из Шахт'
+            icon: 'fas fa-envelope'
+            privilegeTarget: 'Sfi.Umo:BackendModule'
