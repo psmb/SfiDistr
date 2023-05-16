@@ -31,6 +31,7 @@ services:
       - GA_SECRET
       - GA_DEVKEY
       - SFI_API_AUTH
+      - IMPORT_GITHUB_PUB_KEYS
     labels:
       - "neos"
       - "traefik.enable=true"
