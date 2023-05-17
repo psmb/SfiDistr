@@ -104,24 +104,34 @@ class BackendController extends AbstractModuleController
 
     protected $output = '';
 
-    function renderRows($rows)
+    function renderRows($maybeRows, $level)
     {
         $text = '';
-        $this->output .= "<ul>";
-        foreach ($rows as $subCategory => $maybeRows) {
-            if (arrayIsList($maybeRows)) {
-                $text .= "<strong><em>$subCategory</em></strong><br>";
-                $text .= $this->renderRows($maybeRows);
-            } else {
-                $fileUri = 'https://sfi.ru/umo/' . $maybeRows['filepath'];
-                $name = $maybeRows['название'];
-                $this->output .= "<li style='list-style-type: initial'>$name</li>";
-                $signDate = $maybeRows['дата_подписи'];
-                $key = sha1($fileUri);
-                $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;Мазуров Алексей Борисович&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
+        if (isset($maybeRows['filepath'])) {
+            $fileUri = 'https://sfi.ru/umo/' . $maybeRows['filepath'];
+            $name = $maybeRows['название'];
+            $this->output .= "<li style='list-style-type: initial'>$name</li>";
+            $signDate = $maybeRows['дата_подписи'];
+            $key = sha1($fileUri);
+            $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;Мазуров Алексей Борисович&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
+        } else if (arrayIsList($maybeRows)) {
+            foreach($maybeRows as $row) {
+                $text .= $this->renderRows($row, $level);
+            }
+        } else {
+            foreach($maybeRows as $subCategory => $rows) {
+                if ($level == 1) {
+                    $text .= "<strong>$subCategory</strong><br>";
+                } else if ($level == 2) {
+                    $text .= "<strong><em>$subCategory</em></strong><br>";
+                } else if ($level == 3) {
+                    $text .= "<em>$subCategory</em><br>";
+                } else {
+                    $text .= "<em style='color:red'>$subCategory</em><br>";
+                }
+                $text .= $this->renderRows($rows, $level + 1);
             }
         }
-        $this->output .= "</ul>";
         return $text;
     }
 
@@ -132,7 +142,7 @@ class BackendController extends AbstractModuleController
     public function importAction()
     {
 
-        $umoPath = '/data/www-provisioned/Web/umo/W/';
+        $umoPath = '/Users/dimaip/psmb/SfiDistr/umo/W/';
 
         $subFolders = array_diff(scandir($umoPath), array('..', '.'));
 
@@ -167,6 +177,7 @@ class BackendController extends AbstractModuleController
                 }
             }
         }
+        // var_dump($contentTree);
 
         $context = $this->contextFactory->create(array('workspaceName' => 'live'));
         $studyProgramsNode = $context->getNodeByIdentifier('1c3f1916-e48f-a31b-1026-5d0b376297a2');
@@ -201,14 +212,7 @@ class BackendController extends AbstractModuleController
 
                     $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
 
-                    $text = '<p>';
-                    foreach ($byCategory as $category => $rows) {
-
-                        $text .= "<strong>$category</strong><br>";
-                        $text .= $this->renderRows($rows);
-                        $text .= "<br>";
-                    }
-                    $text .= '</p>';
+                    $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
 
                     $textNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
                     $textNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Neos.NodeTypes:Text'));
