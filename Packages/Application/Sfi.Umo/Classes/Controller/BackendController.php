@@ -182,7 +182,7 @@ class BackendController extends AbstractModuleController
                     continue;
                 }
                 
-                $this->output .= "<h2>Импортирую программу " . $specialityId . "</h2>";
+                $this->output .= "<h2>Импортирую программу " . $specialityId . "=>" . $collectionName ."</h2>";
 
                 $flowQueryStudyProgram = new FlowQuery(array($studyProgram));
                 $oldNodes = $flowQueryStudyProgram->find('[instanceof Neos.Neos:Content]')->filter('[umoGenerated = true]')->get();
