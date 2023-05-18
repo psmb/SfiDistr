@@ -149,6 +149,13 @@
               a: false
               underline: false
             placeholder: 'Код'
+    specialityIdInternal:
+      type: string
+      ui:
+        label: 'Идентификатор программы для синхронизации'
+        reloadIfChanged: false
+        inspector:
+          group: studyProgram
     specialityName:
       type: string
       ui:

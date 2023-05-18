@@ -29,6 +29,8 @@
         reloadIfChanged: FALSE
         inspector:
           group: 'meta'
+    umoGenerated:
+      type: boolean
 
 'Neos.Neos:Node':
   options:
