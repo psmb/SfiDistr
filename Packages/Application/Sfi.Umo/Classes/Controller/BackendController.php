@@ -211,12 +211,6 @@ class BackendController extends AbstractModuleController
 
                     $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
 
-                    $children = $parentNode->getChildNodes();
-                    $firstChild = isset($children[0]) ? $children[0] : null;
-                    if ($firstChild) {
-                        $categoryNode->moveBefore($firstChild);
-                    }
-
                     $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
 
                     $textNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
@@ -226,6 +220,12 @@ class BackendController extends AbstractModuleController
                     $textNodeTemplate->setProperty('umoGenerated', true);
 
                     $categoryNode->createNodeFromTemplate($textNodeTemplate);
+
+                    $children = $parentNode->getChildNodes();
+                    $firstChild = isset($children[0]) ? $children[0] : null;
+                    if ($firstChild) {
+                        $categoryNode->moveBefore($firstChild);
+                    }
                 }
             }
         }
