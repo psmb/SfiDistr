@@ -178,7 +178,7 @@ class BackendController extends AbstractModuleController
             }
         }
 
-        $context = $this->contextFactory->create(array('workspaceName' => 'live'));
+        $context = $this->contextFactory->create(array('workspaceName' => 'live', 'invisibleContentShown' => true));
         $studyProgramsNode = $context->getNodeByIdentifier('1c3f1916-e48f-a31b-1026-5d0b376297a2');
 
 
