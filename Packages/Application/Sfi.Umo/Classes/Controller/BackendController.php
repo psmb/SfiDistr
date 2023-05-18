@@ -177,7 +177,6 @@ class BackendController extends AbstractModuleController
                 }
             }
         }
-        // var_dump($contentTree);
 
         $context = $this->contextFactory->create(array('workspaceName' => 'live'));
         $studyProgramsNode = $context->getNodeByIdentifier('1c3f1916-e48f-a31b-1026-5d0b376297a2');
@@ -211,6 +210,12 @@ class BackendController extends AbstractModuleController
                     $categoryNodeTemplate->setProperty('umoGenerated', true);
 
                     $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
+
+                    $children = $parentNode->getChildNodes();
+                    $firstChild = isset($children[0]) ? $children[0] : null;
+                    if ($firstChild) {
+                        $categoryNode->moveBefore($firstChild);
+                    }
 
                     $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
 
