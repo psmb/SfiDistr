@@ -31,11 +31,6 @@ function arrayDeepSet(&$array, $path, $value)
     }
     $current[] = $value;
 }
-// This is a hackish approximation suitable for our purposes
-function arrayIsList(&$arr)
-{
-    return isset($arr[0]);
-}
 
 class BackendController extends AbstractModuleController
 {
@@ -114,20 +109,19 @@ class BackendController extends AbstractModuleController
             $signDate = $maybeRows['дата_подписи'];
             $key = sha1($fileUri);
             $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;Мазуров Алексей Борисович&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
-        } else if (arrayIsList($maybeRows)) {
-            foreach($maybeRows as $row) {
-                $text .= $this->renderRows($row, $level);
-            }
         } else {
             foreach($maybeRows as $subCategory => $rows) {
-                if ($level == 1) {
-                    $text .= "<strong>$subCategory</strong><br>";
-                } else if ($level == 2) {
-                    $text .= "<strong><em>$subCategory</em></strong><br>";
-                } else if ($level == 3) {
-                    $text .= "<em>$subCategory</em><br>";
-                } else {
-                    $text .= "<em style='color:red'>$subCategory</em><br>";
+                if (!is_numeric($subCategory)) {
+                    if ($level == 1) {
+                        $text .= "<strong>$subCategory</strong><br>";
+                    } else if ($level == 2) {
+                        $text .= "<strong><em>$subCategory</em></strong><br>";
+                    } else if ($level == 3) {
+                        $text .= "<em>$subCategory</em><br>";
+                    } else {
+                        // This isn't supported. Will get rendered pink so we'll notice it quickly
+                        $text .= "<h1>$subCategory</h1><br>";
+                    }
                 }
                 $text .= $this->renderRows($rows, $level + 1);
             }
@@ -142,7 +136,7 @@ class BackendController extends AbstractModuleController
     public function importAction()
     {
 
-        $umoPath = '/data/www-provisioned/Web/umo/W/';
+        $umoPath = '/Users/dimaip/psmb/SfiDistr/umo/W/';
 
         $subFolders = array_diff(scandir($umoPath), array('..', '.'));
 
@@ -177,6 +171,8 @@ class BackendController extends AbstractModuleController
                 }
             }
         }
+
+        var_dump($contentTree);
 
         $context = $this->contextFactory->create(array('workspaceName' => 'live', 'invisibleContentShown' => true));
         $studyProgramsNode = $context->getNodeByIdentifier('1c3f1916-e48f-a31b-1026-5d0b376297a2');
@@ -224,7 +220,7 @@ class BackendController extends AbstractModuleController
                     $children = $parentNode->getChildNodes();
                     $firstChild = isset($children[0]) ? $children[0] : null;
                     if ($firstChild) {
-                        $categoryNode->moveBefore($firstChild);
+                        // $categoryNode->moveBefore($firstChild);
                     }
                 }
             }
