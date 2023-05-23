@@ -197,15 +197,17 @@ class BackendController extends AbstractModuleController
                     $row['type'] = $type;
                     
                     $collectionPrefix = $this->collectionByType[$type];
-                    // Don't even ask me what this is
-                    $collectionToName[$collectionPrefix] = $this->titleByType[$type];
+                    
                     if (in_array('о', $forms)) {
+                        $collectionToName[$collectionPrefix . 'O'] = $this->titleByType[$type];
                         arrayDeepSet($contentTree, array_merge([$specialityId, $collectionPrefix . 'O', $year], $categories), $row);
                     }
                     if (in_array('оз', $forms)) {
+                        $collectionToName[$collectionPrefix . 'OZ'] = $this->titleByType[$type];
                         arrayDeepSet($contentTree, array_merge([$specialityId, $collectionPrefix . 'OZ', $year], $categories), $row);
                     }
                     if (in_array('з', $forms)) {
+                        $collectionToName[$collectionPrefix . 'Z'] = $this->titleByType[$type];
                         arrayDeepSet($contentTree, array_merge([$specialityId, $collectionPrefix . 'Z', $year], $categories), $row);
                     }
                 }
