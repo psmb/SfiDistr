@@ -101,7 +101,7 @@ class BackendController extends AbstractModuleController
         'W' => 'assetRpd',
         'P' => 'assetsPracticeAnnotations',
         'F' => 'assetsMethodical',
-        // 'M' => 'assetsmethodical',
+        // 'M' => 'assetsMethodical',
         'O' => 'assetDescriptions',
         'T' => 'assetsPlan',
         'C' => 'schedule',
@@ -112,7 +112,7 @@ class BackendController extends AbstractModuleController
         'W' => 'Рабочие программы дисциплин',
         'P' => 'Практики',
         'F' => 'Фонды оценочных средств',
-        'M' => 'Методические и иные документы',
+        // 'M' => 'Методические и иные документы',
         'O' => 'Описание образовательной программы',
         'T' => 'Учебный план',
         'C' => 'Календарный учебный график',
@@ -158,12 +158,14 @@ class BackendController extends AbstractModuleController
     public function importAction()
     {
 
-        $umoPaths = '/data/www-provisioned/Web/umo/';
-        // $umoPaths = '/Users/dimaip/psmb/SfiDistr/umo/';
+        // $umoPaths = '/data/www-provisioned/Web/umo/';
+        $umoPaths = '/Users/dimaip/psmb/SfiDistr/umo/';
 
         $typeSubFolders = array_diff(scandir($umoPaths), array('..', '.'));
 
         $contentTree = [];
+
+        $collectionToName = [];
 
         $this->output = "";
 
@@ -192,8 +194,11 @@ class BackendController extends AbstractModuleController
                     $forms = explode('_', $row['формы_обучения']);
                     $categories = explode('_', $row['категории']);
                     $row['filepath'] = $subFolder . '/' . $row['файл'];
-
+                    $row['type'] = $type;
+                    
                     $collectionPrefix = $this->collectionByType[$type];
+                    // Don't even ask me what this is
+                    $collectionToName[$collectionPrefix] = $this->titleByType[$type];
                     if (in_array('о', $forms)) {
                         arrayDeepSet($contentTree, array_merge([$specialityId, $collectionPrefix . 'O', $year], $categories), $row);
                     }
@@ -205,61 +210,62 @@ class BackendController extends AbstractModuleController
                     }
                 }
             }
+        }
 
-            $context = $this->contextFactory->create(array('workspaceName' => 'live', 'invisibleContentShown' => true));
-            $studyProgramsNode = $context->getNodeByIdentifier('1c3f1916-e48f-a31b-1026-5d0b376297a2');
+        $context = $this->contextFactory->create(array('workspaceName' => 'live', 'invisibleContentShown' => true));
+        $studyProgramsNode = $context->getNodeByIdentifier('1c3f1916-e48f-a31b-1026-5d0b376297a2');
 
 
-            foreach ($contentTree as $specialityId => $filesByForm) {
-                foreach ($filesByForm as $collectionName => $byYear) {
-                    $flowQuery = new FlowQuery(array($studyProgramsNode));
-                    $studyProgram = $flowQuery->find('[instanceof Sfi.Sfi:StudyProgram]')->filter('[specialityId = "' . $specialityId . '"]')->get(0);
+        foreach ($contentTree as $specialityId => $filesByForm) {
+            foreach ($filesByForm as $collectionName => $byYear) {
+                $flowQuery = new FlowQuery(array($studyProgramsNode));
+                $studyProgram = $flowQuery->find('[instanceof Sfi.Sfi:StudyProgram]')->filter('[specialityId = "' . $specialityId . '"]')->get(0);
 
-                    if (!$studyProgram) {
-                        $this->output .= "<div style='color: red'>Программа не найдена: " . $specialityId . "</div>";
-                        continue;
-                    }
+                if (!$studyProgram) {
+                    $this->output .= "<div style='color: red'>Программа не найдена: " . $specialityId . "</div>";
+                    continue;
+                }
 
-                    $this->output .= "<h2>Импортирую программу " . $specialityId . "=>" . $collectionName . "</h2>";
+                $this->output .= "<h2>Импортирую программу " . $specialityId . "=>" . $collectionName . "</h2>";
 
-                    $flowQueryStudyProgram = new FlowQuery(array($studyProgram));
-                    $oldNodes = $flowQueryStudyProgram->find('[instanceof Neos.Neos:Content]')->filter('[umoGenerated = true]')->get();
-                    foreach ($oldNodes as $oldNode) {
-                        $this->output .= "Удаляю старый элемент " . $oldNode->getPath() . "<br>";
-                        $oldNode->remove();
-                    }
+                $flowQueryStudyProgram = new FlowQuery(array($studyProgram));
+                $oldNodes = $flowQueryStudyProgram->find('[instanceof Neos.Neos:Content]')->filter('[umoGenerated = true]')->get();
+                foreach ($oldNodes as $oldNode) {
+                    $this->output .= "Удаляю старый элемент " . $oldNode->getPath() . "<br>";
+                    $oldNode->remove();
+                }
 
-                    $parentNode = $studyProgram->getNode($collectionName);
+                $parentNode = $studyProgram->getNode($collectionName);
 
-                    foreach ($byYear as $year => $byCategory) {
-                        $categoryNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
-                        $categoryNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Sfi:Expand'));
-                        $title = $this->titleByType[$type];
-                        $categoryNodeTemplate->setProperty('title', "$title (прием на обучение $year г.)");
-                        $categoryNodeTemplate->setProperty('umoGenerated', true);
+                foreach ($byYear as $year => $byCategory) {
+                    $categoryNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
+                    $categoryNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Sfi:Expand'));
+                    $title = $collectionToName[$collectionName];
+                    $categoryNodeTemplate->setProperty('title', "$title (прием на обучение $year г.)");
+                    $categoryNodeTemplate->setProperty('umoGenerated', true);
 
-                        $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
+                    $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
 
-                        $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
+                    $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
 
-                        $textNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
-                        $textNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Neos.NodeTypes:Text'));
-                        $textNodeTemplate->setProperty('text', $text);
-                        $textNodeTemplate->setProperty('paragraphVariant', 'ParagraphAlt');
-                        $textNodeTemplate->setProperty('umoGenerated', true);
+                    $textNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
+                    $textNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Neos.NodeTypes:Text'));
+                    $textNodeTemplate->setProperty('text', $text);
+                    $textNodeTemplate->setProperty('paragraphVariant', 'ParagraphAlt');
+                    $textNodeTemplate->setProperty('umoGenerated', true);
 
-                        $categoryNode->createNodeFromTemplate($textNodeTemplate);
+                    $categoryNode->createNodeFromTemplate($textNodeTemplate);
 
-                        // $children = $parentNode->getChildNodes();
-                        // $firstChild = isset($children[0]) ? $children[0] : null;
-                        // if ($firstChild) {
-                        //     $categoryNode->moveBefore($firstChild);
-                        // }
-                    }
+                    // $children = $parentNode->getChildNodes();
+                    // $firstChild = isset($children[0]) ? $children[0] : null;
+                    // if ($firstChild) {
+                    //     $categoryNode->moveBefore($firstChild);
+                    // }
                 }
             }
-
         }
+
+        
         
 
         $this->output .= "Готово!";
