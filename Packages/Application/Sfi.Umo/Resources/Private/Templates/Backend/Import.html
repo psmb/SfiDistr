@@ -4,4 +4,13 @@
 
 <f:section name="Content">
     {output -> f:format.raw()}
+
+    <f:form
+        method="post"
+        action="import"
+        controller="Backend"
+        package="Sfi.Umo"
+    >
+        <div><f:form.submit class="button" value="Запустить импорт еще раз!"/></div>
+    </f:form>
 </f:section>
