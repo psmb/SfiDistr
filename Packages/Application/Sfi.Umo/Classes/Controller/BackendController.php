@@ -158,8 +158,8 @@ class BackendController extends AbstractModuleController
     public function importAction()
     {
 
-        // $umoPaths = '/data/www-provisioned/Web/umo/';
-        $umoPaths = '/Users/dimaip/psmb/SfiDistr/umo/';
+        $umoPaths = '/data/www-provisioned/Web/umo/';
+        // $umoPaths = '/Users/dimaip/psmb/SfiDistr/umo/';
 
         $typeSubFolders = array_diff(scandir($umoPaths), array('..', '.'));
 
