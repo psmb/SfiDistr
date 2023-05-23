@@ -164,11 +164,11 @@ class BackendController extends AbstractModuleController
         $typeSubFolders = array_diff(scandir($umoPaths), array('..', '.'));
 
         foreach ($typeSubFolders as $type) {
-            if (array_key_exists($type, $this->collectionByType)) {
+            if (!array_key_exists($type, $this->collectionByType)) {
                 $this->output .= "<div style='color: red'>Не поддерживаемый тип: " . $type . "</div>";
                 continue;
             }
-            $umoPath = '/data/www-provisioned/Web/umo/' . $type . '/';
+            $umoPath = $umoPaths . $type . '/';
 
             $subFolders = array_diff(scandir($umoPath), array('..', '.'));
 
