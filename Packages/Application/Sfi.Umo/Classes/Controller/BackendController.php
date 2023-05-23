@@ -97,6 +97,28 @@ class BackendController extends AbstractModuleController
 
     }
 
+    protected $collectionByType = [
+        'W' => 'assetRpd',
+        'P' => 'assetsPracticeAnnotations',
+        'F' => 'assetsMethodical',
+        // 'M' => 'assetsmethodical',
+        'O' => 'assetDescriptions',
+        'T' => 'assetsPlan',
+        'C' => 'schedule',
+        'A' => 'assetsSubjectAnnotations'
+    ];
+
+    protected $titleByType = [
+        'W' => 'Рабочие программы дисциплин',
+        'P' => 'Практики',
+        'F' => 'Фонды оценочных средств',
+        'M' => 'Методические и иные документы',
+        'O' => 'Описание образовательной программы',
+        'T' => 'Учебный план',
+        'C' => 'Календарный учебный график',
+        'A' => 'Аннотации к рабочим программам дисциплин'
+    ];
+
     protected $output = '';
 
     function renderRows($maybeRows, $level)
@@ -136,93 +158,109 @@ class BackendController extends AbstractModuleController
     public function importAction()
     {
 
-        $umoPath = '/data/www-provisioned/Web/umo/W/';
+        $umoPaths = '/data/www-provisioned/Web/umo/';
+        // $umoPaths = '/Users/dimaip/psmb/SfiDistr/umo/';
 
-        $subFolders = array_diff(scandir($umoPath), array('..', '.'));
+        $typeSubFolders = array_diff(scandir($umoPaths), array('..', '.'));
 
-        $contentTree = [];
-
-        $this->output = "";
-
-        foreach ($subFolders as $subFolder) {
-            $indexPath = $umoPath . $subFolder . '/index.csv';
-            if (!file_exists($indexPath)) {
-                $this->output .= "Файл не найден: " . $indexPath . "<br>";
+        foreach ($typeSubFolders as $type) {
+            if (array_key_exists($type, $this->collectionByType)) {
+                $this->output .= "<div style='color: red'>Не поддерживаемый тип: " . $type . "</div>";
                 continue;
             }
-            $handle = fopen($indexPath, 'r');
-            $head = fgetcsv($handle, 0, ';');
+            $umoPath = '/data/www-provisioned/Web/umo/' . $type . '/';
 
-            while (($data = fgetcsv($handle, 0, ';')) !== FALSE) {
-                $row = array_combine($head, $data);
-                $specialityId = $row['код'];
-                $year = $row['год'];
-                $forms = explode('_', $row['формы_обучения']);
-                $categories = explode('_', $row['категории']);
-                $row['filepath'] = $subFolder . '/' . $row['файл'];
-                if (in_array('о', $forms)) {
-                    arrayDeepSet($contentTree, array_merge([$specialityId, 'assetRpdO', $year], $categories), $row);
-                }
-                if (in_array('оз', $forms)) {
-                    arrayDeepSet($contentTree, array_merge([$specialityId, 'assetRpdOZ', $year], $categories), $row);
-                }
-                if (in_array('з', $forms)) {
-                    arrayDeepSet($contentTree, array_merge([$specialityId, 'assetRpdZ', $year], $categories), $row);
-                }
-            }
-        }
+            $subFolders = array_diff(scandir($umoPath), array('..', '.'));
 
-        $context = $this->contextFactory->create(array('workspaceName' => 'live', 'invisibleContentShown' => true));
-        $studyProgramsNode = $context->getNodeByIdentifier('1c3f1916-e48f-a31b-1026-5d0b376297a2');
+            $contentTree = [];
 
+            $this->output = "";
 
-        foreach ($contentTree as $specialityId => $filesByForm) {
-            foreach ($filesByForm as $collectionName => $byYear) {
-                $flowQuery = new FlowQuery(array($studyProgramsNode));
-                $studyProgram = $flowQuery->find('[instanceof Sfi.Sfi:StudyProgram]')->filter('[specialityId = "' . $specialityId . '"]')->get(0);
-
-                if (!$studyProgram) {
-                    $this->output .= "<div style='color: red'>Программа не найдена: " . $specialityId . "</div>";
+            foreach ($subFolders as $subFolder) {
+                $indexPath = $umoPath . $subFolder . '/index.csv';
+                if (!file_exists($indexPath)) {
+                    $this->output .= "Файл не найден: " . $indexPath . "<br>";
                     continue;
                 }
-                
-                $this->output .= "<h2>Импортирую программу " . $specialityId . "=>" . $collectionName ."</h2>";
+                $handle = fopen($indexPath, 'r');
+                $head = fgetcsv($handle, 0, ';');
 
-                $flowQueryStudyProgram = new FlowQuery(array($studyProgram));
-                $oldNodes = $flowQueryStudyProgram->find('[instanceof Neos.Neos:Content]')->filter('[umoGenerated = true]')->get();
-                foreach ($oldNodes as $oldNode) {
-                    $this->output .= "Удаляю старый элемент " . $oldNode->getPath() . "<br>";
-                    $oldNode->remove();
-                }
+                while (($data = fgetcsv($handle, 0, ';')) !== FALSE) {
+                    $row = array_combine($head, $data);
+                    $specialityId = $row['код'];
+                    $year = $row['год'];
+                    $forms = explode('_', $row['формы_обучения']);
+                    $categories = explode('_', $row['категории']);
+                    $row['filepath'] = $subFolder . '/' . $row['файл'];
 
-                $parentNode = $studyProgram->getNode($collectionName);
-
-                foreach ($byYear as $year => $byCategory) {
-                    $categoryNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
-                    $categoryNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Sfi:Expand'));
-                    $categoryNodeTemplate->setProperty('title', "Рабочие программы дисциплин (прием на обучение $year г.)");
-                    $categoryNodeTemplate->setProperty('umoGenerated', true);
-
-                    $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
-
-                    $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
-
-                    $textNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
-                    $textNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Neos.NodeTypes:Text'));
-                    $textNodeTemplate->setProperty('text', $text);
-                    $textNodeTemplate->setProperty('paragraphVariant', 'ParagraphAlt');
-                    $textNodeTemplate->setProperty('umoGenerated', true);
-
-                    $categoryNode->createNodeFromTemplate($textNodeTemplate);
-
-                    $children = $parentNode->getChildNodes();
-                    $firstChild = isset($children[0]) ? $children[0] : null;
-                    if ($firstChild) {
-                        // $categoryNode->moveBefore($firstChild);
+                    $collectionPrefix = $this->collectionByType[$type];
+                    if (in_array('о', $forms)) {
+                        arrayDeepSet($contentTree, array_merge([$specialityId, $collectionPrefix . 'O', $year], $categories), $row);
+                    }
+                    if (in_array('оз', $forms)) {
+                        arrayDeepSet($contentTree, array_merge([$specialityId, $collectionPrefix . 'OZ', $year], $categories), $row);
+                    }
+                    if (in_array('з', $forms)) {
+                        arrayDeepSet($contentTree, array_merge([$specialityId, $collectionPrefix . 'Z', $year], $categories), $row);
                     }
                 }
             }
+
+            $context = $this->contextFactory->create(array('workspaceName' => 'live', 'invisibleContentShown' => true));
+            $studyProgramsNode = $context->getNodeByIdentifier('1c3f1916-e48f-a31b-1026-5d0b376297a2');
+
+
+            foreach ($contentTree as $specialityId => $filesByForm) {
+                foreach ($filesByForm as $collectionName => $byYear) {
+                    $flowQuery = new FlowQuery(array($studyProgramsNode));
+                    $studyProgram = $flowQuery->find('[instanceof Sfi.Sfi:StudyProgram]')->filter('[specialityId = "' . $specialityId . '"]')->get(0);
+
+                    if (!$studyProgram) {
+                        $this->output .= "<div style='color: red'>Программа не найдена: " . $specialityId . "</div>";
+                        continue;
+                    }
+
+                    $this->output .= "<h2>Импортирую программу " . $specialityId . "=>" . $collectionName . "</h2>";
+
+                    $flowQueryStudyProgram = new FlowQuery(array($studyProgram));
+                    $oldNodes = $flowQueryStudyProgram->find('[instanceof Neos.Neos:Content]')->filter('[umoGenerated = true]')->get();
+                    foreach ($oldNodes as $oldNode) {
+                        $this->output .= "Удаляю старый элемент " . $oldNode->getPath() . "<br>";
+                        $oldNode->remove();
+                    }
+
+                    $parentNode = $studyProgram->getNode($collectionName);
+
+                    foreach ($byYear as $year => $byCategory) {
+                        $categoryNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
+                        $categoryNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Sfi:Expand'));
+                        $title = $this->titleByType[$type];
+                        $categoryNodeTemplate->setProperty('title', "$title (прием на обучение $year г.)");
+                        $categoryNodeTemplate->setProperty('umoGenerated', true);
+
+                        $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
+
+                        $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
+
+                        $textNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
+                        $textNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Neos.NodeTypes:Text'));
+                        $textNodeTemplate->setProperty('text', $text);
+                        $textNodeTemplate->setProperty('paragraphVariant', 'ParagraphAlt');
+                        $textNodeTemplate->setProperty('umoGenerated', true);
+
+                        $categoryNode->createNodeFromTemplate($textNodeTemplate);
+
+                        // $children = $parentNode->getChildNodes();
+                        // $firstChild = isset($children[0]) ? $children[0] : null;
+                        // if ($firstChild) {
+                        //     $categoryNode->moveBefore($firstChild);
+                        // }
+                    }
+                }
+            }
+
         }
+        
 
         $this->output .= "Готово!";
 
