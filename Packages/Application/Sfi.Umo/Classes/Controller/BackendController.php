@@ -193,7 +193,7 @@ class BackendController extends AbstractModuleController
                     $year = $row['год'];
                     $forms = explode('_', $row['формы_обучения']);
                     $categories = explode('_', $row['категории']);
-                    $row['filepath'] = $subFolder . '/' . $row['файл'];
+                    $row['filepath'] = $type . '/' . $subFolder . '/' . $row['файл'];
                     $row['type'] = $type;
                     
                     $collectionPrefix = $this->collectionByType[$type];
