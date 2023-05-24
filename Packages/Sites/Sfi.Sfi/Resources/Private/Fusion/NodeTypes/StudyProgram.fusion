@@ -106,15 +106,15 @@ prototype(Sfi.Sfi:StudyProgram) {
 	}
 	fosO = Neos.Neos:ContentCollection {
 		nodePath = 'fosO'
-		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.fos', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
+		# @process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.fos', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	fosOZ = Neos.Neos:ContentCollection {
 		nodePath = 'fosOZ'
-		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+		# @process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	fosZ = Neos.Neos:ContentCollection {
 		nodePath = 'fosZ'
-		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+		# @process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	description = Neos.Neos:ContentCollection {
 		nodePath = 'description'
