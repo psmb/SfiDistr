@@ -104,6 +104,18 @@ prototype(Sfi.Sfi:StudyProgram) {
 		nodePath = 'assetsMethodicalZ'
 		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
+	fosO = Neos.Neos:ContentCollection {
+		nodePath = 'fosO'
+		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.fos', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
+	}
+	fosOZ = Neos.Neos:ContentCollection {
+		nodePath = 'fosOZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+	}
+	fosZ = Neos.Neos:ContentCollection {
+		nodePath = 'fosZ'
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
+	}
 	description = Neos.Neos:ContentCollection {
 		nodePath = 'description'
 	}
@@ -299,6 +311,15 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	}
 	assetsMethodicalZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodicalZ'
+	}
+	fosO = Neos.Neos:ContentCollection {
+		nodePath = 'fosO'
+	}
+	fosOZ = Neos.Neos:ContentCollection {
+		nodePath = 'fosOZ'
+	}
+	fosZ = Neos.Neos:ContentCollection {
+		nodePath = 'fosZ'
 	}
 	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

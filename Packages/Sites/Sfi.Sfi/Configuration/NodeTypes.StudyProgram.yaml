@@ -48,6 +48,12 @@
       type: 'Neos.Neos:ContentCollection'
     assetsMethodicalZ:
       type: 'Neos.Neos:ContentCollection'
+    fosO:
+      type: 'Neos.Neos:ContentCollection'
+    fosOZ:
+      type: 'Neos.Neos:ContentCollection'
+    fosZ:
+      type: 'Neos.Neos:ContentCollection'
     description:
       type: 'Neos.Neos:ContentCollection'
     subjects:

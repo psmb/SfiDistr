@@ -299,6 +299,10 @@
                 <source>Методические и иные документы</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="studyProgram.fos">
+                <source>Фонды оценочных средств</source>
+                <target></target>
+            </trans-unit>
             <trans-unit id="studyProgram.assetsPracticeAnnotations">
                 <source>Практики</source>
                 <target></target>
