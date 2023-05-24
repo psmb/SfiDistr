@@ -18,7 +18,23 @@ use Neos\Media\Domain\Repository\AssetRepository;
 
 use Neos\Neos\Controller\Module\AbstractModuleController;
 
-
+function encodeURI($url)
+{
+    // http://php.net/manual/en/function.rawurlencode.php
+    // https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/encodeURI
+    $unescaped = array(
+        '%2D' => '-', '%5F' => '_', '%2E' => '.', '%21' => '!', '%7E' => '~',
+        '%2A' => '*', '%27' => "'", '%28' => '(', '%29' => ')'
+    );
+    $reserved = array(
+        '%3B' => ';', '%2C' => ',', '%2F' => '/', '%3F' => '?', '%3A' => ':',
+        '%40' => '@', '%26' => '&', '%3D' => '=', '%2B' => '+', '%24' => '$'
+    );
+    $score = array(
+        '%23' => '#'
+    );
+    return strtr(rawurlencode($url), array_merge($reserved, $unescaped, $score));
+}
 
 function arrayDeepSet(&$array, $path, $value)
 {
@@ -125,7 +141,7 @@ class BackendController extends AbstractModuleController
     {
         $text = '';
         if (isset($maybeRows['filepath'])) {
-            $fileUri = 'https://sfi.ru/umo/' . $maybeRows['filepath'];
+            $fileUri = encodeURI('https://sfi.ru/umo/' . $maybeRows['filepath']);
             $name = $maybeRows['название'];
             $this->output .= "<li style='list-style-type: initial'>$name</li>";
             $signDate = $maybeRows['дата_подписи'];
