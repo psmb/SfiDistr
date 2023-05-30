@@ -237,7 +237,7 @@ class BackendController extends AbstractModuleController
         foreach ($contentTree as $specialityId => $filesByForm) {
             foreach ($filesByForm as $collectionName => $byYear) {
                 $flowQuery = new FlowQuery(array($studyProgramsNode));
-                $studyProgram = $flowQuery->find('[instanceof Sfi.Sfi:StudyProgram]')->filter('[specialityId = "' . $specialityId . '"]')->get(0);
+                $studyProgram = $flowQuery->find('[instanceof Sfi.Sfi:StudyProgram]')->filter('[specialityIdInternal = "' . $specialityId . '"]')->get(0);
 
                 if (!$studyProgram) {
                     $this->output .= "<div style='color: red'>Программа не найдена: " . $specialityId . "</div>";
