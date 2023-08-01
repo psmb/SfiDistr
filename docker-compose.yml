@@ -39,7 +39,7 @@ services:
       - "traefik.port=80"
       - "traefik.default.protocol=http"
       - "traefik.docker.network=main"
-      - "traefik.frontend.rule=Host:sfi.ru,www.sfi.ru,dev.sfi.ru"
+      - "traefik.frontend.rule=Host:sfi.ru,www.sfi.ru"
     ports:
       - '80'
     depends_on:
