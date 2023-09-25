@@ -110,7 +110,6 @@ class BackendController extends AbstractModuleController
      */
     public function indexAction()
     {
-
     }
 
     protected $collectionByType = [
@@ -148,7 +147,7 @@ class BackendController extends AbstractModuleController
             $key = sha1($fileUri);
             $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;Мазуров Алексей Борисович&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
         } else {
-            foreach($maybeRows as $subCategory => $rows) {
+            foreach ($maybeRows as $subCategory => $rows) {
                 if (!is_numeric($subCategory)) {
                     if ($level == 1) {
                         $text .= "<strong>$subCategory</strong><br>";
@@ -211,9 +210,9 @@ class BackendController extends AbstractModuleController
                     $categories = explode('_', $row['категории']);
                     $row['filepath'] = $type . '/' . $subFolder . '/' . $row['файл'];
                     $row['type'] = $type;
-                    
+
                     $collectionPrefix = $this->collectionByType[$type];
-                    
+
                     if (in_array('о', $forms)) {
                         $collectionToName[$collectionPrefix . 'O'] = $this->titleByType[$type];
                         arrayDeepSet($contentTree, array_merge([$specialityId, $collectionPrefix . 'O', $year], $categories), $row);
@@ -282,12 +281,8 @@ class BackendController extends AbstractModuleController
             }
         }
 
-        
-        
-
         $this->output .= "Готово!";
 
         $this->view->assign('output', $this->output);
     }
-
 }
