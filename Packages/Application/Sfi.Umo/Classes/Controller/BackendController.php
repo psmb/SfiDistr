@@ -256,13 +256,6 @@ class BackendController extends AbstractModuleController
                 $parentNode = $studyProgram->getNode($collectionName);
 
                 foreach ($byYear as $year => $byCategory) {
-                    $categoryNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
-                    $categoryNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Sfi:Expand'));
-                    $title = $collectionToName[$collectionName];
-                    $categoryNodeTemplate->setProperty('title', "$title (прием на обучение $year г.)");
-                    $categoryNodeTemplate->setProperty('umoGenerated', true);
-
-                    $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
 
                     $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
 
@@ -272,13 +265,19 @@ class BackendController extends AbstractModuleController
                     $textNodeTemplate->setProperty('paragraphVariant', 'ParagraphAlt');
                     $textNodeTemplate->setProperty('umoGenerated', true);
 
-                    $categoryNode->createNodeFromTemplate($textNodeTemplate);
+                    // Don't create an Expand node if less than 3 items
+                    if (is_array($byCategory) && isset($byCategory[0]) && count($byCategory) < 3) {
+                        $parentNode->createNodeFromTemplate($textNodeTemplate);
+                    } else {
+                        $categoryNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
+                        $categoryNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Sfi:Expand'));
+                        $title = $collectionToName[$collectionName];
+                        $categoryNodeTemplate->setProperty('title', "$title (прием на обучение $year г.)");
+                        $categoryNodeTemplate->setProperty('umoGenerated', true);
 
-                    // $children = $parentNode->getChildNodes();
-                    // $firstChild = isset($children[0]) ? $children[0] : null;
-                    // if ($firstChild) {
-                    //     $categoryNode->moveBefore($firstChild);
-                    // }
+                        $categoryNode = $parentNode->createNodeFromTemplate($categoryNodeTemplate);
+                        $categoryNode->createNodeFromTemplate($textNodeTemplate);
+                    }
                 }
             }
         }
