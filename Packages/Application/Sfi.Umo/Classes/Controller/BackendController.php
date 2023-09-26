@@ -265,7 +265,12 @@ class BackendController extends AbstractModuleController
                     $textNodeTemplate->setProperty('umoGenerated', true);
 
                     // Don't create an Expand node if less than 3 items
-                    if (is_array($byCategory) && isset($byCategory[0]) && count($byCategory) < 3) {
+                    if (
+                        is_array($byCategory) && (
+                            (isset($byCategory[0]) && count($byCategory) < 3) || 
+                            (isset($byCategory[''][0]) && count($byCategory) === 1 && count($byCategory['']) < 3)
+                        )
+                    ) {
                         $parentNode->createNodeFromTemplate($textNodeTemplate);
                     } else {
                         $categoryNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
