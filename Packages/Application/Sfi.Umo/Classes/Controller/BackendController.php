@@ -256,7 +256,7 @@ class BackendController extends AbstractModuleController
 
                 foreach ($byYear as $year => $byCategory) {
 
-                    $text = "<div>" . $this->renderRows($byCategory, 1) . "</div>";
+                    $text = "<p style='margin-bottom: 0'>" . $this->renderRows($byCategory, 1) . "</p>";
 
                     $textNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
                     $textNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Neos.NodeTypes:Text'));
