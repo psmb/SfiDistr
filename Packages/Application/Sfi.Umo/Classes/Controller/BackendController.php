@@ -148,7 +148,7 @@ class BackendController extends AbstractModuleController
             $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;Мазуров Алексей Борисович&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
         } else {
             foreach ($maybeRows as $subCategory => $rows) {
-                if (!is_numeric($subCategory)) {
+                if (!is_numeric($subCategory) && $subCategory) {
                     if ($level == 1) {
                         $text .= "<strong>$subCategory</strong><br>";
                     } else if ($level == 2) {
@@ -256,7 +256,7 @@ class BackendController extends AbstractModuleController
 
                 foreach ($byYear as $year => $byCategory) {
 
-                    $text = "<p>" . $this->renderRows($byCategory, 1) . "</p>";
+                    $text = "<div>" . $this->renderRows($byCategory, 1) . "</div>";
 
                     $textNodeTemplate = new \Neos\ContentRepository\Domain\Model\NodeTemplate();
                     $textNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Neos.NodeTypes:Text'));
