@@ -1,11 +1,16 @@
 <div class="row marginBottom-double">
-	<div class="medium-8 columns">
-		{subscriptionPlugin -> f:format.raw()}
-		<h1 class="H3 marginTop-triple">{node.properties.title}</h1>
-		{main -> f:format.raw()}
-	</div>
-	<div class="medium-4 columns paddingTop-triple">
-		<h3 class="H3"><f:translate id="newsletter.previousSubscriptions" package="Sfi.Sfi"/></h3>
-		{menu -> f:format.raw()}
-	</div>
+    <div class="medium-8 columns">
+        {subscriptionPlugin -> f:format.raw()}
+        <h1 class="H3 marginTop-triple">{node.properties.title}</h1>
+        {main -> f:format.raw()}
+    </div>
+    <div style="display: none" class="medium-4 columns paddingTop-triple">
+        <h3 class="H3">
+            <f:translate
+                id="newsletter.previousSubscriptions"
+                package="Sfi.Sfi"
+            />
+        </h3>
+        {menu -> f:format.raw()}
+    </div>
 </div>

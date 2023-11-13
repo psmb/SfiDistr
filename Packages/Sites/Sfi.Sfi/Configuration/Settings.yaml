@@ -24,7 +24,7 @@ Psmb:
         renderer: "Sfi.Sfi:NewsletterMail"
         sendFromUiNodeType: "Sfi.Sfi:Newsletter"
         showInSubscribe: true
-        label: "Авторский дайджест"
+        label: "Новости и события СФИ"
         description: "Получать раз в месяц авторский обзор лучших публикаций"
         footerInfo: "Вы получили это письмо, поскольку подписаны на Авторский обзор лучших публикаций сайта Свято-Филаретовского института. Дайджест приходит раз в две недели."
         interval: manual

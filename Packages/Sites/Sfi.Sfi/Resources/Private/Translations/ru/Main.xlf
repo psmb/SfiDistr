@@ -210,7 +210,7 @@
                 <source>Другие варианты подписки</source>
             </trans-unit>
             <trans-unit id="newsletter.onlyDigestTitle">
-                <source>Подпишитесь на авторский дайджест</source>
+                <source>Получать регулярную рассылку</source>
             </trans-unit>
             <trans-unit id="newsletter.readOnWebsite">
                 <source>Читать на сайте</source>
