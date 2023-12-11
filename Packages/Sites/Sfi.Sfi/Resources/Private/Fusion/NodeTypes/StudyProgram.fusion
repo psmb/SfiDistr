@@ -93,6 +93,7 @@ prototype(Sfi.Sfi:StudyProgram) {
 		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetsMethodicalO = Neos.Neos:ContentCollection {
+		prototype(Neos.Neos:ContentCollection).@if.notEmptyOrInBackend = ${true}
 		nodePath = 'assetsMethodicalO'
 		@process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsMethodical', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
