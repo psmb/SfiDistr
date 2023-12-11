@@ -93,17 +93,18 @@ prototype(Sfi.Sfi:StudyProgram) {
 		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetsMethodicalTitle = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsMethodical', null, [], null, 'Sfi.Sfi') + '</h3>'}
+	assetsMethodicalOTitle = ${(q(node).children('assetsMethodicalO').children().count() + q(node).children('fosO').children().count()) > 0 ? '<h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' : ''}
+	assetsMethodicalOZTitle = ${(q(node).children('assetsMethodicalOZ').children().count() + q(node).children('fosOZ').children().count()) > 0 ? '<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' : ''}
+	assetsMethodicalZTitle = ${(q(node).children('assetsMethodicalZ').children().count() + q(node).children('fosZ').children().count()) > 0 ? '<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' : ''}
+
 	assetsMethodicalO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodicalO'
-		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	assetsMethodicalOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodicalOZ'
-		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetsMethodicalZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodicalZ'
-		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	fosO = Neos.Neos:ContentCollection {
 		nodePath = 'fosO'
