@@ -322,6 +322,10 @@
                 <source>Фонды оценочных средств</source>
                 <target></target>
             </trans-unit>
+            <trans-unit id="studyProgram.upbringing">
+                <source>Рабочая программа воспитания и календарный план воспитательной работы</source>
+                <target></target>
+            </trans-unit>
             <trans-unit id="studyProgram.assetsPracticeAnnotations">
                 <source>Практики</source>
             </trans-unit>

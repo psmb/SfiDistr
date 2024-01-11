@@ -106,6 +106,17 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetsMethodicalZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodicalZ'
 	}
+
+	upbringingO = Neos.Neos:ContentCollection {
+		nodePath = 'upbringingO'
+	}
+	upbringingOZ = Neos.Neos:ContentCollection {
+		nodePath = 'upbringingOZ'
+	}
+	upbringingZ = Neos.Neos:ContentCollection {
+		nodePath = 'upbringingZ'
+	}
+
 	fosO = Neos.Neos:ContentCollection {
 		nodePath = 'fosO'
 		# @process.title = ${'<h3 class="H3">' + Translation.translate('studyProgram.fos', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
@@ -322,6 +333,15 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	}
 	fosZ = Neos.Neos:ContentCollection {
 		nodePath = 'fosZ'
+	}
+	upbringingO = Neos.Neos:ContentCollection {
+		nodePath = 'upbringingO'
+	}
+	upbringingOZ = Neos.Neos:ContentCollection {
+		nodePath = 'upbringingOZ'
+	}
+	upbringingZ = Neos.Neos:ContentCollection {
+		nodePath = 'upbringingZ'
 	}
 	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

@@ -117,6 +117,7 @@ class BackendController extends AbstractModuleController
         'P' => 'assetsPracticeAnnotations',
         'F' => 'fos',
         'M' => 'assetsMethodical',
+        'E' => 'upbringing',
         'O' => 'assetDescriptions',
         'T' => 'assetsPlan',
         'C' => 'schedule',
@@ -127,6 +128,7 @@ class BackendController extends AbstractModuleController
         'W' => 'Рабочие программы дисциплин',
         'P' => 'Практики',
         'F' => 'Фонды оценочных средств',
+        'E' => 'Рабочая программа воспитания и календарный план воспитательной работы',
         'M' => 'Методические и иные документы',
         'O' => 'Описание образовательной программы',
         'T' => 'Учебный план',
@@ -267,7 +269,7 @@ class BackendController extends AbstractModuleController
                     // Don't create an Expand node if less than 3 items
                     if (
                         is_array($byCategory) && (
-                            (isset($byCategory[0]) && count($byCategory) < 3) || 
+                            (isset($byCategory[0]) && count($byCategory) < 3) ||
                             (isset($byCategory[''][0]) && count($byCategory) === 1 && count($byCategory['']) < 3)
                         )
                     ) {

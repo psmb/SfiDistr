@@ -1,99 +1,104 @@
-
-'Sfi.Sfi:StudyProgram':
+"Sfi.Sfi:StudyProgram":
   superTypes:
-    'Neos.Neos:Document': true
+    "Neos.Neos:Document": true
   ui:
-    label: 'Учебная программа'
+    label: "Учебная программа"
     icon: icon-file-text
     inspector:
       groups:
         studyProgram:
-          label: 'Учебная программа'
+          label: "Учебная программа"
   childNodes:
     assetDescriptionsO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetDescriptionsOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetDescriptionsZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetRpdO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetRpdOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetRpdZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetAccreditation:
-      type: 'Sfi.Shared:Asset'
+      type: "Sfi.Shared:Asset"
     assetInvoice:
-      type: 'Sfi.Shared:Asset'
+      type: "Sfi.Shared:Asset"
     assetSampleContract:
-      type: 'Sfi.Shared:Asset'
+      type: "Sfi.Shared:Asset"
     assetsAdmissionRegulations:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsPracticeAnnotationsO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsPracticeAnnotationsOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsPracticeAnnotationsZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsSubjectAnnotationsO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsSubjectAnnotationsOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsSubjectAnnotationsZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsMethodicalO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsMethodicalOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsMethodicalZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
+    upbringingO:
+      type: "Neos.Neos:ContentCollection"
+    upbringingOZ:
+      type: "Neos.Neos:ContentCollection"
+    upbringingZ:
+      type: "Neos.Neos:ContentCollection"
     fosO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     fosOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     fosZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     description:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     subjects:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     schedule:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     scheduleO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     scheduleOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     scheduleZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     documentSubmission:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     exams:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     admission:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     admissionContacts:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     distantEduO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     distantEduOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     distantEduZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     payment:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     numberOfSeats:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     admissionRegulations:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     feedback:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsPlanO:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsPlanOZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     assetsPlanZ:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
   properties:
     lead:
       type: string
@@ -114,7 +119,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Тут должен быть лид к программе'
+            placeholder: "Тут должен быть лид к программе"
     level:
       type: string
       ui:
@@ -134,7 +139,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Уровень программы?'
+            placeholder: "Уровень программы?"
     specialityId:
       type: string
       ui:
@@ -154,11 +159,11 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Код'
+            placeholder: "Код"
     specialityIdInternal:
       type: string
       ui:
-        label: 'Идентификатор программы для синхронизации'
+        label: "Идентификатор программы для синхронизации"
         reloadIfChanged: false
         inspector:
           group: studyProgram
@@ -181,7 +186,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Наименование специальности, направления подготовки'
+            placeholder: "Наименование специальности, направления подготовки"
     eduProf:
       type: string
       ui:
@@ -201,7 +206,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Образовательная программа, направленность, профиль, шифр и наименование научной специальности'
+            placeholder: "Образовательная программа, направленность, профиль, шифр и наименование научной специальности"
     accreditationDate:
       type: string
       ui:
@@ -221,7 +226,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Срок действия государственной аккредитации'
+            placeholder: "Срок действия государственной аккредитации"
     duration:
       type: string
       ui:
@@ -241,7 +246,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Нормативный срок обучения по всем формам обучения'
+            placeholder: "Нормативный срок обучения по всем формам обучения"
     price:
       type: string
       ui:
@@ -281,7 +286,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Документ по завершении'
+            placeholder: "Документ по завершении"
     nextDate:
       type: string
       ui:
@@ -301,7 +306,7 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Ближайший набор'
+            placeholder: "Ближайший набор"
     studyBeginDate:
       type: string
       ui:
@@ -321,11 +326,11 @@
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Срок начала занятий'
+            placeholder: "Срок начала занятий"
     noLink:
       type: boolean
       ui:
-        label: 'Не делать ссылку из карточек'
+        label: "Не делать ссылку из карточек"
         reloadIfChanged: false
         inspector:
           group: studyProgram
@@ -358,4 +363,4 @@
               ul: true
               a: true
               footnote: true
-            placeholder: 'Образовательные программы (для спецраздела)'
+            placeholder: "Образовательные программы (для спецраздела)"
