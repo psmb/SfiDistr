@@ -24,7 +24,7 @@ prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
 		itemName = 'node'
 		itemRenderer = Neos.Fusion:RawArray {
 			title = ${node.properties.issueNumber}
-			year = ${String.pregMatch(node.properties.title, "/\(.*(\d\d\d\d)\)/i")[1]}
+			year = ${String.pregMatch(node.properties.title, "/\b\d{4}\b/")[1]}
 			year.@process.cutoff = ${value < 2014 ? 'до 2014' : value }
 			link = Neos.Neos:NodeUri {
 				node = ${node}
