@@ -21,7 +21,7 @@
                 <target>All publications</target>
             </trans-unit>
             <trans-unit id="newsAnnouncements.archiveLinkTitle">
-                <source>past announcements</source>
+                <target>past announcements</target>
             </trans-unit>
             <trans-unit id="keywords">
                 <target>Keywords</target>
@@ -215,7 +215,7 @@
                 <target>Other articles by this author</target>
             </trans-unit>
             <trans-unit id="articlesByTag">
-                <source>Articles on this subject</source>
+                <target>Articles on this subject</target>
             </trans-unit>
 
 
