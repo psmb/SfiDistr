@@ -232,10 +232,10 @@
                 <target>Research</target>
             </trans-unit>
             <trans-unit id="almanac.title">
-                <target>Academic Periodical</target>
+                <target>The Quarterly Journal of St. Philaret’s Institute</target>
             </trans-unit>
             <trans-unit id="almanac.slogan">
-                <target>The Quarterly Journal of St. Philaret’s Institute</target>
+                <target></target>
             </trans-unit>
 
             <trans-unit id="studyProgram.programDescription">
