@@ -144,7 +144,11 @@
                         <div class="row ParagraphAlt--Small color-grayAlt">
                             <div class="small-6 columns">
                                 <input checked class="" name="agreeOffer" type="checkbox" disabled checked="checked"> Я ознакомился c
-                                <a href="https://psmb-neos-resources.hb.bizmrg.com/target/sfi/abec2e5c8bbf1618d044a0b08aa541f30886e9f9/donation-offerta.pdf">договором-офертой</a> и согласен с ней
+                                <a style="text-decoration: underline" href="https://psmb-neos-resources.hb.bizmrg.com/target/sfi/fec577867ad88cd297f059ffe90fc43c2b5a4d69/%D0%BE%D1%84%D0%B5%D1%80%D1%82%D0%B0.pdf">договором-офертой</a> и согласен с ней
+                            </div>
+                            <div class="small-6 columns">
+                                <input checked class="" name="agreePolicy" type="checkbox" disabled checked="checked"> Я ознакомился c
+                                <a style="text-decoration: underline" href="https://psmb-neos-resources.hb.bizmrg.com/target/sfi/fec577867ad88cd297f059ffe90fc43c2b5a4d69/%D0%BE%D1%84%D0%B5%D1%80%D1%82%D0%B0.pdf">политикой обработки персональных данных </a> и согласен с ней
                             </div>
                             <div class="small-6 columns">
                                 <input checked class="" name="agreeRf" type="checkbox" disabled checked="checked"> Я являюсь гражданином Российской Федерации
@@ -204,7 +208,7 @@
             }
         }
 
-        if (form.querySelector('[name=agreeOffer]').value && form.querySelector('[name=agreeRf]').value) {
+        if (form.querySelector('[name=agreeOffer]').value && form.querySelector('[name=agreeRf]').value && form.querySelector('[name=agreePolicy]').value) {
             var referer = form.querySelector('[name=projectSelector]') && form.querySelector('[name=projectSelector]').value || form.dataset.referer
             var widget = new cp.CloudPayments();
 
