@@ -50,6 +50,7 @@
 				<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'accreditationDate')}</div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Свидетельство о государственной аккредитации</div></f:if>
 				{assetAccreditation -> f:format.raw()}
+				{assetDescriptionsTitle -> f:format.raw()}
 				{assetDescriptionsO -> f:format.raw()}
 				{assetDescriptionsOZ -> f:format.raw()}
 				{assetDescriptionsZ -> f:format.raw()}
@@ -64,14 +65,17 @@
 			<a href="#tab-subjects" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.disciplines" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-subjects">
 				{subjects -> f:format.raw()}
+				{assetsSubjectAnnotationsTitle -> f:format.raw()}
 				{assetsSubjectAnnotationsO -> f:format.raw()}
 				{assetsSubjectAnnotationsOZ -> f:format.raw()}
 				{assetsSubjectAnnotationsZ -> f:format.raw()}
 
+				{assetRpdTitle -> f:format.raw()}
 				{assetRpdO -> f:format.raw()}
 				{assetRpdOZ -> f:format.raw()}
 				{assetRpdZ -> f:format.raw()}
 
+				{assetsPracticeAnnotationsTitle -> f:format.raw()}
 				{assetsPracticeAnnotationsO -> f:format.raw()}
 				{assetsPracticeAnnotationsOZ -> f:format.raw()}
 				{assetsPracticeAnnotationsZ -> f:format.raw()}
