@@ -143,9 +143,10 @@ prototype(Sfi.Sfi:StudyProgram) {
 	schedule = Neos.Neos:ContentCollection {
 		nodePath = 'schedule'
 	}
+	scheduleTitle = ${'<h3 class="H3 marginVertical-single">' + Translation.translate('studyProgram.grafik', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	scheduleO = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleO'
-		@process.title = ${'<h3 class="H3 marginVertical-single">' + Translation.translate('studyProgram.grafik', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
+		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	scheduleOZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleOZ'
