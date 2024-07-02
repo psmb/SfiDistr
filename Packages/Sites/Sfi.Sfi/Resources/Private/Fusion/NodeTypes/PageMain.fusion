@@ -8,7 +8,7 @@ prototype(Sfi.Sfi:PageMain) {
 	promo = Sfi.Sfi:PromoList
 	video = Sfi.Sfi:LatestVideo
 	publications = Sfi.Sfi:LatestPublications
-	blogs = Sfi.Sfi:Blog.TopList
+	# blogs = Sfi.Sfi:Blog.TopList
 	donate = Sfi.Sfi:DonateBanner
 	tagsOverview = Sfi.Sfi:TagsOverview
 	main = Neos.Neos:ContentCollection {
