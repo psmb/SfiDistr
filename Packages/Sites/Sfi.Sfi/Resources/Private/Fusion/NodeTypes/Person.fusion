@@ -130,6 +130,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 				<td itemprop="fio"><a href={props.nodeUri} class="Link">{node.properties.title}</a></td>
 				<td itemprop="post">{node.properties.position}</td>
 				<td itemprop="teachingDiscipline">{props.subject}</td>
+				<td itemprop="teachingLevel" @if.live={node.context.workspace.name != 'live'}>{node.properties.teachingLevelQual}</td>
 				<td itemprop="teachingLevel">{node.properties.teachingLevel}</td>
 				<td itemprop="teachingQual">{node.properties.teachingQual}</td>
 				<td itemprop="employeeQualification">{node.properties.education}</td>
@@ -150,6 +151,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 					<th>Ф.И.О.</th>
 					<th>Должность преподавателя</th>
 					<th>Перечень преподаваемых дисциплин</th>
+					<th @if.live={node.context.workspace.name != 'live'}>Уровень (уровни) профессионального образовани, квалификация</th>
 					<th>Уровень (уровни) профессионального образования</th>
 					<th>Квалификация</th>
 					<th>Наименование направления подготовки и (или) специальности, в том числе научной</th>
