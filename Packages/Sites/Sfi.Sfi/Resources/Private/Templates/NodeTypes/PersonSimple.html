@@ -35,14 +35,14 @@
 					<div class="ParagraphAlt">{neos:contentElement.editable(property: 'subject')}</div>
 				</div>
 			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevelQual}|| {teachingLevel} || {education} || {educationUpgrade}">
+			<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevelQual} || {education} || {educationUpgrade}">
 				<div class="ParagraphAlt--Large color-primaryAlt">Образование</div>
 			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live'">
+			<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevelQual}">
 				<div class="ParagraphAlt marginBottom-single"><strong>Уровень образования и квалификация:</strong>
 					{neos:contentElement.editable(property: 'teachingLevelQual', tag: 'span')}</div>
 			</f:if>
-			<f:if condition="{node.context.workspace.name} != 'live' || {teachingLevel}">
+			<f:if condition="{node.context.workspace.name} != 'live'">
 				<div class="ParagraphAlt marginBottom-single"><strong>Уровень образования:</strong>
 					{neos:contentElement.editable(property: 'teachingLevel', tag: 'span')}</div>
 			</f:if>

@@ -130,9 +130,9 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 				<td itemprop="fio"><a href={props.nodeUri} class="Link">{node.properties.title}</a></td>
 				<td itemprop="post">{node.properties.position}</td>
 				<td itemprop="teachingDiscipline">{props.subject}</td>
-				<td itemprop="teachingLevel" @if.live={node.context.workspace.name != 'live'}>{node.properties.teachingLevelQual}</td>
-				<td itemprop="teachingLevel">{node.properties.teachingLevel}</td>
-				<td itemprop="teachingQual">{node.properties.teachingQual}</td>
+				<td itemprop="teachingLevel">{node.properties.teachingLevelQual}</td>
+				<td itemprop="teachingLevel" @if.live={node.context.workspace.name != 'live'}>{node.properties.teachingLevel}</td>
+				<td itemprop="teachingQual" @if.live={node.context.workspace.name != 'live'}>{node.properties.teachingQual}</td>
 				<td itemprop="employeeQualification">{node.properties.education}</td>
 				<td itemprop="degree">{node.properties.degree || 'Без ученой степени'}</td>
 				<td itemprop="academStat">{node.properties.degreeTitle || 'Без ученого звания'}</td>
@@ -151,9 +151,9 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 					<th>Ф.И.О.</th>
 					<th>Должность преподавателя</th>
 					<th>Перечень преподаваемых дисциплин</th>
-					<th @if.live={node.context.workspace.name != 'live'}>Уровень (уровни) профессионального образовани, квалификация</th>
-					<th>Уровень (уровни) профессионального образования</th>
-					<th>Квалификация</th>
+					<th>Уровень (уровни) профессионального образовани, квалификация</th>
+					<th @if.live={node.context.workspace.name != 'live'}>Уровень (уровни) профессионального образования</th>
+					<th @if.live={node.context.workspace.name != 'live'}>Квалификация</th>
 					<th>Наименование направления подготовки и (или) специальности, в том числе научной</th>
 					<th>Ученая степень (при наличии)</th>
 					<th>Ученое звание (при наличии)</th>
