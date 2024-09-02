@@ -151,7 +151,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 					<th>Ф.И.О.</th>
 					<th>Должность преподавателя</th>
 					<th>Перечень преподаваемых дисциплин</th>
-					<th>Уровень (уровни) профессионального образовани, квалификация</th>
+					<th>Уровень (уровни) профессионального образования, квалификация</th>
 					<th @if.live={node.context.workspace.name != 'live'}>Уровень (уровни) профессионального образования</th>
 					<th @if.live={node.context.workspace.name != 'live'}>Квалификация</th>
 					<th>Наименование направления подготовки и (или) специальности, в том числе научной</th>
