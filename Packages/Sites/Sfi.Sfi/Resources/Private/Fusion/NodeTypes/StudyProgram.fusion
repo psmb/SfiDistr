@@ -71,19 +71,6 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetsAdmissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
 	}
-	assetsSubjectAnnotationsTitle = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsSubjectAnnotations', null, [], null, 'Sfi.Sfi') + '</h3>'}
-	assetsSubjectAnnotationsO = Neos.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotationsO'
-		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
-	}
-	assetsSubjectAnnotationsOZ = Neos.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotationsOZ'
-		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
-	}
-	assetsSubjectAnnotationsZ = Neos.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotationsZ'
-		@process.title = ${'<h4 class="H4">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
-	}
 	assetsPracticeAnnotationsTitle = ${'<h3 class="H3">' + Translation.translate('studyProgram.assetsPracticeAnnotations', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetsPracticeAnnotationsO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotationsO'
@@ -303,15 +290,6 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
 		title = 'Свидетельство о государственной аккредитации'
 		@context.node = ${q(node).children('assetAccreditation').get(0)}
-	}
-	assetsSubjectAnnotationsO = Neos.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotationsO'
-	}
-	assetsSubjectAnnotationsOZ = Neos.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotationsOZ'
-	}
-	assetsSubjectAnnotationsZ = Neos.Neos:ContentCollection {
-		nodePath = 'assetsSubjectAnnotationsZ'
 	}
 	assetsPracticeAnnotationsO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotationsO'

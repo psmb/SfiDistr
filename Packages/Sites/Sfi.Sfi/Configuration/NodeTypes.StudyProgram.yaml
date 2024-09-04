@@ -35,12 +35,6 @@
       type: "Neos.Neos:ContentCollection"
     assetsPracticeAnnotationsZ:
       type: "Neos.Neos:ContentCollection"
-    assetsSubjectAnnotationsO:
-      type: "Neos.Neos:ContentCollection"
-    assetsSubjectAnnotationsOZ:
-      type: "Neos.Neos:ContentCollection"
-    assetsSubjectAnnotationsZ:
-      type: "Neos.Neos:ContentCollection"
     assetsMethodicalO:
       type: "Neos.Neos:ContentCollection"
     assetsMethodicalOZ:

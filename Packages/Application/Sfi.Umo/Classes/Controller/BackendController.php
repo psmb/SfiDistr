@@ -23,12 +23,27 @@ function encodeURI($url)
     // http://php.net/manual/en/function.rawurlencode.php
     // https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/encodeURI
     $unescaped = array(
-        '%2D' => '-', '%5F' => '_', '%2E' => '.', '%21' => '!', '%7E' => '~',
-        '%2A' => '*', '%27' => "'", '%28' => '(', '%29' => ')'
+        '%2D' => '-',
+        '%5F' => '_',
+        '%2E' => '.',
+        '%21' => '!',
+        '%7E' => '~',
+        '%2A' => '*',
+        '%27' => "'",
+        '%28' => '(',
+        '%29' => ')'
     );
     $reserved = array(
-        '%3B' => ';', '%2C' => ',', '%2F' => '/', '%3F' => '?', '%3A' => ':',
-        '%40' => '@', '%26' => '&', '%3D' => '=', '%2B' => '+', '%24' => '$'
+        '%3B' => ';',
+        '%2C' => ',',
+        '%2F' => '/',
+        '%3F' => '?',
+        '%3A' => ':',
+        '%40' => '@',
+        '%26' => '&',
+        '%3D' => '=',
+        '%2B' => '+',
+        '%24' => '$'
     );
     $score = array(
         '%23' => '#'
@@ -108,9 +123,7 @@ class BackendController extends AbstractModuleController
     /**
      * @return void
      */
-    public function indexAction()
-    {
-    }
+    public function indexAction() {}
 
     protected $collectionByType = [
         'W' => 'assetRpd',
@@ -121,7 +134,7 @@ class BackendController extends AbstractModuleController
         'O' => 'assetDescriptions',
         'T' => 'assetsPlan',
         'C' => 'schedule',
-        'A' => 'assetsSubjectAnnotations'
+        // 'A' => 'assetsSubjectAnnotations'
     ];
 
     protected $titleByType = [

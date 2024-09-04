@@ -329,9 +329,6 @@
             <trans-unit id="studyProgram.assetsPracticeAnnotations">
                 <source>Практики</source>
             </trans-unit>
-            <trans-unit id="studyProgram.assetsSubjectAnnotations">
-                <source>Аннотации к рабочим программам дисциплин</source>
-            </trans-unit>
             <trans-unit id="studyProgram.assetsPlan">
                 <source>Учебный план</source>
             </trans-unit>
