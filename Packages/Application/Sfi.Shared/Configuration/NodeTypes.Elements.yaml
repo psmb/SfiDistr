@@ -22,6 +22,31 @@
         Neos.Neos/Validation/NotEmptyValidator: {  }
         regularExpression:
           regularExpression: '/\?v=[a-z0-9-]+/i'
+
+'Sfi.Shared:Video':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Видео РФ'
+    group: contentElements
+    icon: fa-youtube
+    inspector:
+      groups:
+        video:
+          label: Video
+  properties:
+    source:
+      type: string
+      defaultValue: '<p>Вставьте код плеера сюда</p>'
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: 'html'
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            buttonLabel: i18n
+
 'Sfi.Shared:Link':
   superTypes:
     'Neos.Neos:Content': true

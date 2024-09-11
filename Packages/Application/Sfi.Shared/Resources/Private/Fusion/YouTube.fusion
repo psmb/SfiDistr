@@ -15,3 +15,10 @@ prototype(Sfi.Shared:YouTube) < prototype(Neos.Fusion:Tag) {
     }
 	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }
+
+prototype(Sfi.Shared:Video) < prototype(Neos.Fusion:Tag) {
+    tagName = "div"
+    attributes.class = "VideoEmbed flex-video"
+    content = ${q(node).property('source')}
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}
