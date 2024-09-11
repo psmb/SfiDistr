@@ -42,7 +42,7 @@
         label: i18n
         reloadIfChanged: true
         inspector:
-          group: 'html'
+          group: 'video'
           editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
           editorOptions:
             buttonLabel: i18n
