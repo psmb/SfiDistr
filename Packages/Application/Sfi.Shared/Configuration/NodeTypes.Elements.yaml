@@ -39,7 +39,7 @@
       type: string
       defaultValue: '<p>Вставьте код плеера сюда</p>'
       ui:
-        label: i18n
+        label: Код плеера
         reloadIfChanged: true
         inspector:
           group: 'video'
