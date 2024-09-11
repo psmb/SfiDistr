@@ -45,7 +45,7 @@
           group: 'video'
           editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
           editorOptions:
-            buttonLabel: i18n
+            buttonLabel: Код плеера
 
 'Sfi.Shared:Link':
   superTypes:
