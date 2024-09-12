@@ -137,7 +137,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 				<td itemprop="degree">{node.properties.degree || 'Без ученой степени'}</td>
 				<td itemprop="academStat">{node.properties.degreeTitle || 'Без ученого звания'}</td>
 				<td itemprop="profDevelopment">{node.properties.educationUpgrade || 'В сроки, установленные действующим законодательством'}</td>
-				<td itemprop="genExperience">{props.experienceSum}</td>
+				<td itemprop="genExperience" @if.live={node.context.workspace.name != 'live'}>{props.experienceSum}</td>
 				<td itemprop="specExperience">{props.experienceSpecialitySum}</td>
 				<td itemprop="teachingOp">{props.teachingOp}</td>
 			</tr>
@@ -158,7 +158,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 					<th>Ученая степень (при наличии)</th>
 					<th>Ученое звание (при наличии)</th>
 					<th>Сведения о повышении квалификации (за последние 3 года) и сведения о профессиональной переподготовке (при наличии)</th>
-					<th>Общий стаж работы*</th>
+					<th @if.live={node.context.workspace.name != 'live'}>Общий стаж работы*</th>
 					<th>Стаж работы по специальности (сведения о продолжительности опыта (лет) работы в профессиональной сфере)*</th>
 					<th>Наименование образовательных программ, в реализации которых участвует педагогический работник</th>
 				</tr>
