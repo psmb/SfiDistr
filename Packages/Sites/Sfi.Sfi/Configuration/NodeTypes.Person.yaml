@@ -1,6 +1,5 @@
-
 blah:
-  placeholder: 'Текст тут'
+  placeholder: "Текст тут"
   format:
     strong: true
     em: true
@@ -13,44 +12,44 @@ blah:
     h3: false
     pre: false
     removeFormat: false
-  table: {  }
-  list: {  }
+  table: {}
+  list: {}
   link:
     a: true
-  alignment: {  }
-'Sfi.Sfi:Person':
+  alignment: {}
+"Sfi.Sfi:Person":
   superTypes:
-    'Neos.Neos:Document': true
-    'Flowpack.Listable:ListableMixin': true
-    'Psmb.Term:TermMixin': true
+    "Neos.Neos:Document": true
+    "Flowpack.Listable:ListableMixin": true
+    "Psmb.Term:TermMixin": true
   ui:
     label: Персона
     icon: icon-file-text
     inspector:
       groups:
         personType:
-          label: 'Тип персоны'
+          label: "Тип персоны"
           position: 1
         image:
           label: Фото
           position: 5
   childNodes:
     main:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     coverCollection:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
     experience:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
       constraints:
         nodeTypes:
-          '*': false
-          'Sfi.Sfi:PersonEmployment': true
+          "*": false
+          "Sfi.Sfi:PersonEmployment": true
     experienceSpeciality:
-      type: 'Neos.Neos:ContentCollection'
+      type: "Neos.Neos:ContentCollection"
       constraints:
         nodeTypes:
-          '*': false
-          'Sfi.Sfi:PersonEmployment': true
+          "*": false
+          "Sfi.Sfi:PersonEmployment": true
   properties:
     isRector:
       type: boolean
@@ -84,7 +83,7 @@ blah:
       type: boolean
       ui:
         reloadIfChanged: true
-        label: 'Заведующий кафедры'
+        label: "Заведующий кафедры"
         inspector:
           group: personType
     isStaff:
@@ -113,7 +112,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Свободное поле (отображается в карточке и в разных списках)'
+            placeholder: "Свободное поле (отображается в карточке и в разных списках)"
     degree:
       type: string
       ui:
@@ -133,7 +132,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Ученая степень (degree)'
+            placeholder: "Ученая степень (degree)"
     degreeTitle:
       type: string
       ui:
@@ -153,7 +152,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Ученое звание (academStat)'
+            placeholder: "Ученое звание (academStat)"
     position:
       type: string
       ui:
@@ -173,7 +172,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Должность (post)'
+            placeholder: "Должность (post)"
     subject:
       type: string
       ui:
@@ -193,7 +192,7 @@ blah:
               removeFormat: false
               a: true
               underline: false
-            placeholder: 'Преподаваемая дисциплина (teachingDiscipline)'
+            placeholder: "Преподаваемая дисциплина (teachingDiscipline)"
     experience:
       type: string
       ui:
@@ -213,7 +212,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Стаж работы общий (genExperience)'
+            placeholder: "Стаж работы общий (genExperience)"
     experienceSpeciality:
       type: string
       ui:
@@ -233,7 +232,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Стаж работы по специальности (specExperience)'
+            placeholder: "Стаж работы по специальности (specExperience)"
     experienceSfi:
       type: string
       ui:
@@ -253,7 +252,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Стаж работы в СФИ'
+            placeholder: "Стаж работы в СФИ"
     education:
       type: string
       ui:
@@ -273,7 +272,27 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Направление подготовки и/или специальности (employeeQualification)'
+            placeholder: "Направление подготовки и/или специальности (employeeQualification)"
+    qualification:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              strong: false
+              em: false
+              sub: false
+              sup: false
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              pre: false
+              removeFormat: false
+              a: false
+              underline: false
+            placeholder: "Сведения о повышении квалификации (qualification)"
     educationUpgrade:
       type: string
       ui:
@@ -293,7 +312,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Повышение квалификации и/или профессиональная переподготовка (profDevelopment)'
+            placeholder: "Сведения о профессиональной переподготовке (profDevelopment)"
     teachingLevelQual:
       type: string
       ui:
@@ -313,7 +332,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Уровень образования + квалификация (teachingLevel)'
+            placeholder: "Уровень образования + квалификация (teachingLevel)"
     teachingLevel:
       type: string
       ui:
@@ -333,7 +352,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Уровень образования (teachingLevel)'
+            placeholder: "Уровень образования (teachingLevel)"
     teachingQual:
       type: string
       ui:
@@ -353,7 +372,7 @@ blah:
               removeFormat: false
               a: false
               underline: false
-            placeholder: 'Квалификация (teachingQual)'
+            placeholder: "Квалификация (teachingQual)"
     telephone:
       type: string
       ui:
@@ -418,7 +437,7 @@ blah:
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Основное фото'
+        label: "Основное фото"
         reloadIfChanged: true
         inspector:
           group: image
@@ -435,7 +454,7 @@ blah:
     squareImage:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Фото квадратное (для всяких там докладов и карточек)'
+        label: "Фото квадратное (для всяких там докладов и карточек)"
         inspector:
           group: image
           editorOptions:
@@ -448,13 +467,13 @@ blah:
                 locked:
                   width: 100
                   height: 100
-'Sfi.Sfi:Rector':
+"Sfi.Sfi:Rector":
   superTypes:
-    'Sfi.Sfi:Person': true
+    "Sfi.Sfi:Person": true
   ui:
     label: Rector
-'Sfi.Sfi:ProRector':
+"Sfi.Sfi:ProRector":
   superTypes:
-    'Sfi.Sfi:Person': true
+    "Sfi.Sfi:Person": true
   ui:
     label: ProRector
