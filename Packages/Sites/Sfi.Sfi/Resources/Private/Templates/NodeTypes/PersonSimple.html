@@ -61,7 +61,7 @@
                 </div>
             </f:if>
             <f:if
-                condition="{node.context.workspace.name} != 'live' || {teachingLevelQual} || {educationUpgrade}"
+                condition="{node.context.workspace.name} != 'live' || {teachingLevelQual} || {educationUpgrade} || {qualification}"
             >
                 <div class="ParagraphAlt--Large color-primaryAlt">
                     Образование
@@ -97,12 +97,22 @@
                 </div>
             </f:if>
             <f:if
+                condition="{node.context.workspace.name} != 'live' || {qualification}"
+            >
+                <div class="ParagraphAlt marginBottom-single">
+                    <strong
+                        >Сведения о повышении квалификации (за последние 3 года):</strong
+                    >
+                    {neos:contentElement.editable(property: 'qualification',
+                    tag: 'span')}
+                </div>
+            </f:if>
+			<f:if
                 condition="{node.context.workspace.name} != 'live' || {educationUpgrade}"
             >
                 <div class="ParagraphAlt marginBottom-single">
                     <strong
-                        >Повышение квалификации и профессиональная
-                        переподготовка:</strong
+                        >Сведения о профессиональной переподготовке (при наличии):</strong
                     >
                     {neos:contentElement.editable(property: 'educationUpgrade',
                     tag: 'span')}

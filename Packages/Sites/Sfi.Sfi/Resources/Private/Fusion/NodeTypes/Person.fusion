@@ -136,8 +136,8 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 				<td itemprop="employeeQualification" @if.live={node.context.workspace.name != 'live'}>{node.properties.education}</td>
 				<td itemprop="degree">{node.properties.degree || 'Без ученой степени'}</td>
 				<td itemprop="academStat">{node.properties.degreeTitle || 'Без ученого звания'}</td>
-				<td itemprop="qualification">{node.properties.qualification || 'В сроки, установленные действующим законодательством'}</td>
-				<td itemprop="profDevelopment">{node.properties.educationUpgrade || 'В сроки, установленные действующим законодательством'}</td>
+				<td itemprop="qualification">{node.properties.qualification || ''}</td>
+				<td itemprop="profDevelopment">{node.properties.educationUpgrade || ''}</td>
 				<td itemprop="genExperience" @if.live={node.context.workspace.name != 'live'}>{props.experienceSum}</td>
 				<td itemprop="specExperience">{props.experienceSpecialitySum}</td>
 				<td itemprop="teachingOp">{props.teachingOp}</td>
