@@ -133,7 +133,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 				<td itemprop="teachingLevel">{node.properties.teachingLevelQual}</td>
 				<td itemprop="teachingLevel" @if.live={node.context.workspace.name != 'live'}>{node.properties.teachingLevel}</td>
 				<td itemprop="teachingQual" @if.live={node.context.workspace.name != 'live'}>{node.properties.teachingQual}</td>
-				<td itemprop="employeeQualification">{node.properties.education}</td>
+				<td itemprop="employeeQualification" @if.live={node.context.workspace.name != 'live'}>{node.properties.education}</td>
 				<td itemprop="degree">{node.properties.degree || 'Без ученой степени'}</td>
 				<td itemprop="academStat">{node.properties.degreeTitle || 'Без ученого звания'}</td>
 				<td itemprop="profDevelopment">{node.properties.educationUpgrade || 'В сроки, установленные действующим законодательством'}</td>
@@ -154,7 +154,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 					<th>Уровень (уровни) профессионального образования, квалификация</th>
 					<th @if.live={node.context.workspace.name != 'live'}>Уровень (уровни) профессионального образования</th>
 					<th @if.live={node.context.workspace.name != 'live'}>Квалификация</th>
-					<th>Наименование направления подготовки и (или) специальности, в том числе научной</th>
+					<th @if.live={node.context.workspace.name != 'live'}>Наименование направления подготовки и (или) специальности, в том числе научной</th>
 					<th>Ученая степень (при наличии)</th>
 					<th>Ученое звание (при наличии)</th>
 					<th>Сведения о повышении квалификации (за последние 3 года) и сведения о профессиональной переподготовке (при наличии)</th>
