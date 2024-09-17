@@ -6,6 +6,15 @@
 					<f:translate package="Sfi.Sfi" id="footer.about.sfi" /></strong>
 				<f:translate package="Sfi.Sfi" id="footer.about.text" />
 			</p>
+
+			<f:if condition="{lang} == 'ru'">
+				<p class="ParagraphAlt--Small">
+					Лицензия на осуществление образовательной деятельности от 29 декабря 2022 года
+					<br/>Свидетельство о государственной аккредитации от 26 января 2023 года
+					<br>Свидетельство о церковной аккредитации № 26 от 1 декабря 2022 года
+				</p>
+				<a class="ButtonInline color-white" href="http://sfi.ru/about/sveden/document.html">Все документы</a>
+			</f:if>
 		</div>
 
 		<div class="marginBottom-single columns medium-3 medium-offset-1  columns">
@@ -89,15 +98,31 @@
 	<f:if condition="{lang} == 'ru'">
 		<div class="row marginVertical-single">
 			<div class="marginBottom-single medium-6 columns">
-				<!-- <div class="Service">Лицензии</div> -->
-				<p class="ParagraphAlt--Small">
+				<div class="Service">Наши партнёры</div>
 
-					Лицензия на осуществление образовательной деятельности от 29 декабря 2022 года
-					<br/>Свидетельство о государственной аккредитации от 26 января 2023 года
-					<br>Свидетельство о церковной аккредитации № 26 от 1 декабря 2022 года
-				</p>
-				<!-- TODO: proper link -->
-				<a class="ButtonInline color-white" href="http://sfi.ru/about/sveden/document.html">Все документы</a>
+				<div style="display:flex; align-items: center;">
+					<div>
+						<img style="width: 73px"
+                            alt="Гродненский государственный университет имени Янки Купалы"
+                            src="/_Resources/Static/Packages/Sfi.Sfi/Images/grgu.png" />
+					</div>
+					<div>
+						<img style="width: 90px"
+                            alt="Московская высшая школа социальных и экономических наук"
+                            src="/_Resources/Static/Packages/Sfi.Sfi/Images/shan.png" />
+					</div>
+					<div>
+						<img style="width: 141px"
+                            alt="Русская христианская гуманитарная академия"
+                            src="/_Resources/Static/Packages/Sfi.Sfi/Images/rhga.png" />
+					</div>
+					<div>
+						<img style="width: 44px"
+                            alt="КоДС"
+                            src="/_Resources/Static/Packages/Sfi.Sfi/Images/kds.svg" />
+					</div>
+				</div>
+				
 			</div>
 			<div class="marginBottom-single medium-3 medium-offset-1 columns">
 				<div class="Service">Реквизиты СФИ</div>
