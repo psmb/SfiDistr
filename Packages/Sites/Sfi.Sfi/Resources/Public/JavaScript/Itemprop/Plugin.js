@@ -2173,7 +2173,7 @@ var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)
               { onClick: function onClick() {
                   (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify({
                     signed: false,
-                    signee: 'Мазуров Алексей Борисович',
+                    signee: 'Копировский Александр Михайлович',
                     signeePosition: 'Ректор',
                     signDate: new Date(),
                     signKey: makeid(40)

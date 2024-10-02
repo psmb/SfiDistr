@@ -47,7 +47,7 @@ export default class LinkEditorOptions extends PureComponent {
           <Button onClick={() => {
             executeCommand("signature", JSON.stringify({
               signed: false,
-              signee: 'Мазуров Алексей Борисович',
+              signee: 'Копировский Александр Михайлович',
               signeePosition: 'Ректор',
               signDate: new Date(),
               signKey: makeid(40)

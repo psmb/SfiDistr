@@ -160,7 +160,13 @@ class BackendController extends AbstractModuleController
             $this->output .= "<li style='list-style-type: initial'>$name</li>";
             $signDate = $maybeRows['дата_подписи'];
             $key = sha1($fileUri);
-            $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;Мазуров Алексей Борисович&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
+
+            $signee = 'Мазуров Алексей Борисович';
+            if (strtotime($signDate) > strtotime('2024-05-12')) {
+                $signee = 'Копировский Александр Михайлович';
+            }
+
+            $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;$signee&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
         } else {
             foreach ($maybeRows as $subCategory => $rows) {
                 if (!is_numeric($subCategory) && $subCategory) {
