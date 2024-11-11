@@ -328,6 +328,13 @@
         reloadIfChanged: false
         inspector:
           group: studyProgram
+    isLanding:
+      type: boolean
+      ui:
+        label: "Новый дизайн без вкладок"
+        reloadIfChanged: false
+        inspector:
+          group: studyProgram
     studyProgramSpecial:
       type: string
       ui:

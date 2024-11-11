@@ -29,6 +29,13 @@
 		font-size: rem-calc(36);
 	}
 }
+.H2Small {
+	@extend %mainHeadings;
+	font-size: rem-calc(24);
+	@include breakpoint('medium') {
+		font-size: rem-calc(30);
+	}
+}
 .H3 {
 	@extend %mainHeadings;
 	font-size: rem-calc(21);

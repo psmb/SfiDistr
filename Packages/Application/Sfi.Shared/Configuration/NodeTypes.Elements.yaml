@@ -168,7 +168,7 @@
               Asset-Signed:
                 label: С подписью
     signee:
-      defaultValue: 'Мазуров Алексей Борисович'
+      defaultValue: 'Копировский Александр Михайлович'
       type: string
       ui:
         label: 'ФИО подписавшего документ'
