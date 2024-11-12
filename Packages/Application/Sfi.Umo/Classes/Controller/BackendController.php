@@ -168,6 +168,11 @@ class BackendController extends AbstractModuleController
 
             $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;$signee&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
         } else {
+            if (isset($maybeRows[0]['сортировка'])) {
+                usort($maybeRows, function ($a, $b) {
+                    return strcmp($a['сортировка'], $b['сортировка']);
+                });
+            }
             foreach ($maybeRows as $subCategory => $rows) {
                 if (!is_numeric($subCategory) && $subCategory) {
                     if ($level == 1) {
