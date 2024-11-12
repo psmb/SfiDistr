@@ -162,7 +162,7 @@ class BackendController extends AbstractModuleController
             $key = sha1($fileUri);
 
             $signee = 'Мазуров Алексей Борисович';
-            if (strtotime($signDate) > strtotime('2024-05-12')) {
+            if (strtotime($signDate) > strtotime('2024-04-15')) {
                 $signee = 'Копировский Александр Михайлович';
             }
 
