@@ -2,41 +2,79 @@
 {namespace ts=Neos\Fusion\ViewHelpers}
 {namespace s=Sfi\Shared\ViewHelpers}
 <div class="row">
-	<div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
-		<div class="textAlign-center">
-			<div class="Service">{level}</div>
-			<h1 class="H2">
-				{neos:contentElement.editable(property: 'title')}
-				<f:if condition="{node.context.workspace.name} != 'live' || {specialityId}">
-					({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
-				</f:if>
-				</h1>
-			<div class="ServiceEm">{division}</div>
-		</div>
-		<div class="Paragraph RteTextLinkable marginVertical-triple">{neos:contentElement.editable(property: 'lead')}</div>
-		<div class="StudyProgramCard textAlign-center">
-			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration')}</div>
-			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate')}</div>
-			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'certificate')}</div>
-			<div class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price')}</div>
+	<div class="">
+		<div class="Cover" style="background-image:url('{converImageUri}'); background-position: 67%; background-size: cover;">
+			<div class="row">
+				<div class="MediaSlideMedium-Wrap columns">
+					<div class="MediaSlideMedium-Body">
+						<div class="Service color-white">{level}</div>
+						<h3 class="H2 color-white marginVertical-single">
+							{neos:contentElement.editable(property: 'title')}
+							<f:if condition="{node.context.workspace.name} != 'live' || {specialityId}">
+								({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
+							</f:if>
+						</h3>
+						<div class="ServiceEm color-white marginBottom-double">{division}</div>
+						<div class="show-for-medium-up Paragraph RteTextLinkable color-white">{neos:contentElement.editable(property: 'lead')}</div>
+						<div class="marginTop-double" style="margin-right: -40px">
+							<a class="Button--warn marginBottom-single" style="font-weight: 600; font-size: 12px; padding: 8px 12px; margin-right: 22px" href="#about">О программе</a>
+							<a class="Button color-white marginBottom-single" style="font-weight: 600; font-size: 12px; padding: 6px 12px; border: 2px solid white; background-color: transparent;" href="#abitur">Как поступить</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+
 </div>
 
-<div class="row">
-	<div class="columns">
-		<h2 class="H2 marginTop-triple"><f:translate id="studyProgram.about" package="Sfi.Sfi"/></h2>
-	</div>
-</div>
+<style>
+	@media screen and (max-width: 640px) {
+		.Cover .Service {
+			font-size: 12px;
+		}
+		.MediaSlideMedium-Body {
+			margin: 18px 18px;
+		}
+	}
+
+	.StudyProgramCard {
+		margin-left: -12px;
+		margin-right: -12px
+	}
+	@media screen and (min-width: 640px) {
+		.StudyProgramCard {
+			margin-left: -18px;
+		}
+	}
+	
+	.PresentationText .RteText h2 {
+		font-size: 30px;
+		color: #00b0f0;
+	}
+</style>
+
 <div class="row js-stickInParent-parent">
-	<div class="medium-8 columns">
+	<div class="medium-8 columns" style="overflow: hidden;">
+		<div class="StudyProgramCard marginTop-triple">
+			<ul class="medium-block-grid-2 small-block-grid-1">
+				<li class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'duration')}</li>
+				<li class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'nextDate')}</li>
+				<li class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'price')}</li>
+				<li class="StudyProgramCard-Line">{neos:contentElement.editable(property: 'certificate')}</li>
+				{extraPoints -> f:format.raw()}
+			</ul>
+		</div>
+
+		<h2 class="H2 marginTop-triple" id="about"><f:translate id="studyProgram.about" package="Sfi.Sfi"/></h2>
 
 		<div class="Sections js-sections Sections--Tabs marginTop-triple">
 			
-			<h3 class="H2Small color-primary"><f:translate id="studyProgram.programDescription" package="Sfi.Sfi"/></h3>
 			<div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Описание программы</div></f:if>
-				{description -> f:format.raw()}
+				<div class="PresentationText">
+					{description -> f:format.raw()}
+				</div>
 				<div class="ParagraphAlt--Large">{neos:contentElement.editable(property: 'accreditationDate')}</div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Свидетельство о государственной аккредитации</div></f:if>
 				{assetAccreditation -> f:format.raw()}
@@ -52,7 +90,7 @@
 				</f:if>
 
 			</div>
-			<h3 class="H2Small color-primary"><f:translate id="studyProgram.disciplines" package="Sfi.Sfi"/></h3>
+			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.disciplines" package="Sfi.Sfi"/></h3>
 			<div>
 				{subjects -> f:format.raw()}
 
@@ -79,7 +117,7 @@
 				{fosZ -> f:format.raw()}
 				{upbringingZ -> f:format.raw()}
 			</div>
-			<h3 class="H2Small color-primary"><f:translate id="studyProgram.schedule" package="Sfi.Sfi"/></h3>
+			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.schedule" package="Sfi.Sfi"/></h3>
 			<div>
 				{schedule -> f:format.raw()}
 				{scheduleTitle -> f:format.raw()}
@@ -93,20 +131,20 @@
 			</div>
 		</div>
 
-		<h2 class="H2 marginTop-triple"><f:translate id="studyProgram.abiturient" package="Sfi.Sfi"/></h2>
+		<h2 class="H2 marginTop-triple color-primary" id="abitur" style="font-size: 30px"><f:translate id="studyProgram.abiturient" package="Sfi.Sfi"/></h2>
 		<div class="Sections js-sections Sections--Tabs">
-			<h3 class="H2Small color-primary"><f:translate id="studyProgram.admission" package="Sfi.Sfi"/></h3>
+			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.admission" package="Sfi.Sfi"/></h3>
 			<div>
 				<div class="Paragraph">{neos:contentElement.editable(property: 'nextDate')}</div>
 				<div class="Paragraph">{neos:contentElement.editable(property: 'studyBeginDate')}</div>
 				{documentSubmission -> f:format.raw()}
 			</div>
-			<h3 class="H2Small color-primary"><f:translate id="studyProgram.exams" package="Sfi.Sfi"/></h3>
+			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.exams" package="Sfi.Sfi"/></h3>
 			<div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Вступительные испытания</div></f:if>
 				{exams -> f:format.raw()}
 			</div>
-			<h3 class="H2Small color-primary"><f:translate id="studyProgram.payment" package="Sfi.Sfi"/></h3>
+			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.payment" package="Sfi.Sfi"/></h3>
 			<div>
 				<div class="Paragraph">{neos:contentElement.editable(property: 'price')}</div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Оплата (описание)</div></f:if>
@@ -114,7 +152,7 @@
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Квитанция для оплаты обучения</div></f:if>
 				{assetInvoice -> f:format.raw()}
 			</div>
-			<h3 class="H2Small color-primary"><f:translate id="studyProgram.contacts" package="Sfi.Sfi"/></h3>
+			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.contacts" package="Sfi.Sfi"/></h3>
 			<div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Контакты</div></f:if>
 				{admissionContacts -> f:format.raw()}

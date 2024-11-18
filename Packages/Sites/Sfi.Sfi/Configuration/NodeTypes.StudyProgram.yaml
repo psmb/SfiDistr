@@ -94,6 +94,34 @@
     assetsPlanZ:
       type: "Neos.Neos:ContentCollection"
   properties:
+    coverImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Картинка для обложки (1170*400px)'
+        reloadIfChanged: true
+        inspector:
+          group: studyProgram
+          editorOptions:
+            crop:
+              aspectRatio:
+                forceCrop: true
+                enableOriginal: false
+                allowCustom: true
+                locked:
+                  width: 1170
+                  height: 400
+    extraPoints:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Особенности'
+        reloadIfChanged: true
+        inspector:
+          group: 'studyProgram'
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            buttonLabel: 'Редактировать HTML'
+
     lead:
       type: string
       ui:
