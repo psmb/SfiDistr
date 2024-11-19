@@ -170,6 +170,20 @@ class BackendController extends AbstractModuleController
         } else {
             if (isset($maybeRows[0]['сортировка'])) {
                 usort($maybeRows, function ($a, $b) {
+                    $aIsSet = isset($a['сортировка']);
+                    $bIsSet = isset($b['сортировка']);
+
+                    if (!$aIsSet && $bIsSet) {
+                        return 1;
+                    }
+                    if ($aIsSet && !$bIsSet) {
+                        return -1;
+                    }
+
+                    if (!$aIsSet && !$bIsSet) {
+                        return 0;
+                    }
+
                     return $a['сортировка'] <=> $b['сортировка'];
                 });
             }
