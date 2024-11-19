@@ -281,6 +281,7 @@ class BackendController extends AbstractModuleController
                 $parentNode = $studyProgram->getNode($collectionName);
 
                 foreach ($byYear as $year => $byCategory) {
+                    var_dump($byCategory);
 
                     $text = "<p style='margin-bottom: 0'>" . $this->renderRows($byCategory, 1) . "</p>";
 
