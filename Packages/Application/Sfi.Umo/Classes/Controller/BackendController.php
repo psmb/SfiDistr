@@ -170,7 +170,7 @@ class BackendController extends AbstractModuleController
         } else {
             if (isset($maybeRows[0]['сортировка'])) {
                 usort($maybeRows, function ($a, $b) {
-                    return strcmp($a['сортировка'], $b['сортировка']);
+                    return $a['сортировка'] <=> $b['сортировка'];
                 });
             }
             foreach ($maybeRows as $subCategory => $rows) {
