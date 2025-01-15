@@ -242,8 +242,32 @@ class BackendController extends AbstractModuleController
                 $handle = fopen($indexPath, 'r');
                 $head = fgetcsv($handle, 0, ';');
 
+                $rows = [];
+
                 while (($data = fgetcsv($handle, 0, ';')) !== FALSE) {
-                    $row = array_combine($head, $data);
+                    $rows[] = array_combine($head, $data);
+                }
+
+                usort($rows, function ($a, $b) {
+                    $aIsSet = isset($a['сортировка']);
+                    $bIsSet = isset($b['сортировка']);
+
+                    if (!$aIsSet && $bIsSet) {
+                        return 1;
+                    }
+                    if ($aIsSet && !$bIsSet) {
+                        return -1;
+                    }
+
+                    if (!$aIsSet && !$bIsSet) {
+                        return 0;
+                    }
+
+                    return $a['сортировка'] <=> $b['сортировка'];
+                });
+
+
+                foreach ($rows as $row) {
                     $specialityId = $row['код'];
                     $year = $row['год'];
                     $forms = explode('_', $row['формы_обучения']);
