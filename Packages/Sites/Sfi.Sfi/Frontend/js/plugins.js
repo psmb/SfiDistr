@@ -502,8 +502,8 @@ if(!inBackend) {
     document.querySelectorAll("a[data-signature]").forEach(function (node) {
         var json = node.getAttribute('data-signature');
         var signature = JSON.parse(json)
-        var title = 'Дата и время подписания: ' + signature.signDate + '\nФИО подписавшего документ: ' + signature.signee + '\nДолжность: ' + signature.signeePosition + '\nУникальный программный ключ: ' + md5(signature.signee || '')
         signature.url = node.getAttribute('href')
+        var title = 'Дата и время подписания: ' + signature.signDate + '\nФИО подписавшего документ: ' + signature.signee + '\nДолжность: ' + signature.signeePosition + '\nУникальный программный ключ: ' + md5(signature.signee || '')
         node.setAttribute('title', title)
         node.setAttribute('href', 'https://docs.sfi.ru/?data=' + utoa(JSON.stringify(signature)))
     });
