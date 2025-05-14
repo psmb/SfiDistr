@@ -1,18 +1,36 @@
 prototype(Sfi.Sfi:CookieBanner) < prototype(Neos.Fusion:Component) {
+    renderer.@process.style = ${'<style>
+        .cross {
+        position: absolute;
+        top: 12px;
+        right: 8px;
+        }
+        .CookieBanner {
+        border: none !important;
+        box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        padding: 24px;
+        max-width: 400px;
+        }
+    </style>' + value}
+    renderer.@process.script = ${value + '<script>
+        const dialog = document.querySelector(".js-cookieBanner");
+        const closeDialogBtns = document.querySelectorAll(".js-closeDialog");
+
+        const closeDialog = (e) => {
+            dialog.close();
+            localStorage.setItem("cookieBannerDismissed", "true");
+        };
+
+        closeDialogBtns.forEach(btn => {
+            btn.addEventListener("click", closeDialog);
+        });
+
+        if (!localStorage.getItem("cookieBannerDismissed")) {
+            dialog.show();
+        }
+    </script>'}
+    
     renderer = afx`
-        <style>
-            .cross {
-            position: absolute;
-            top: 12px;
-            right: 8px;
-            }
-            .CookieBanner {
-            border: none !important;
-            box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 24px;
-            max-width: 400px;
-            }
-        </style>
         <dialog class="CookieBanner js-cookieBanner" aria-labelledby="CookieBanner" aria-describedby="CookieBanner">
             <button сlass="cross js-closeDialog">
                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,23 +45,5 @@ prototype(Sfi.Sfi:CookieBanner) < prototype(Neos.Fusion:Component) {
                 <button type="button" class="js-closeDialog" class="Button" style="width: 100%; background-color: #ff8e18;">Понятно</button>
             </div>
         </dialog>
-
-        <script>
-            const dialog = document.querySelector(".js-cookieBanner");
-            const closeDialogBtns = document.querySelectorAll(".js-closeDialog");
-
-            const closeDialog = (e) => {
-                dialog.close();
-                localStorage.setItem("cookieBannerDismissed", "true");
-            };
-
-            closeDialogBtns.forEach(btn => {
-                btn.addEventListener("click", closeDialog);
-            });
-
-            if (!localStorage.getItem("cookieBannerDismissed")) {
-                dialog.show();
-            }
-        </script>
     `
 }
