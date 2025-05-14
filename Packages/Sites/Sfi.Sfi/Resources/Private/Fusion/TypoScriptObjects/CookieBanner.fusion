@@ -1,0 +1,49 @@
+prototype(Sfi.Sfi:CookieBanner) < prototype(Neos.Fusion:Component) {
+    renderer = afx`
+        <style>
+            .cross {
+            position: absolute;
+            top: 12px;
+            right: 8px;
+            }
+            .CookieBanner {
+            border: none !important;
+            box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 24px;
+            max-width: 400px;
+            }
+        </style>
+        <dialog class="CookieBanner js-cookieBanner" aria-labelledby="CookieBanner" aria-describedby="CookieBanner">
+            <button сlass="cross js-closeDialog">
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L16 16" stroke="black"/>
+                    <path d="M16 1L0.999999 16" stroke="black"/>
+                </svg>
+            </button>
+            <p class="ParagraphAlt textAlign-center paddingVertical-double">
+                Мы используем cookie-файлы для улучшения пользовательского опыта и сбора статистики. Вы можете ознакомиться с нашей <a href="https://psmb-neos-resources.hb.bizmrg.com/target/sfi/8a480d710e822b218bf799961082118574449eb8/%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0%20%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%20cookies.pdf" target="_blank">Политикой использования cookie-файлов</a>.
+            </p>
+            <div class="flex flex-space-between">
+                <button type="button" class="js-closeDialog" class="Button" style="width: 100%; background-color: #ff8e18;">Понятно</button>
+            </div>
+        </dialog>
+
+        <script>
+            const dialog = document.querySelector(".js-cookieBanner");
+            const closeDialogBtns = document.querySelectorAll(".js-closeDialog");
+
+            const closeDialog = (e) => {
+                dialog.close();
+                localStorage.setItem("cookieBannerDismissed", "true");
+            };
+
+            closeDialogBtns.forEach(btn => {
+                btn.addEventListener("click", closeDialog);
+            });
+
+            if (!localStorage.getItem("cookieBannerDismissed")) {
+                dialog.show();
+            }
+        </script>
+    `
+}
