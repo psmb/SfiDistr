@@ -99,6 +99,8 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 				type = ${q(node).property('_nodeType.name')}
 			}
 			# @if.notSubscription = ${request.pluginArguments['newsletter']['@package'] != 'Psmb.Newsletter'}
+			cookieBanner = Sfi.Sfi:CookieBanner
+			@process.cookieBanner = ${value + this.cookieBanner }
 		}
 		# subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
 
@@ -116,7 +118,6 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			entryIdentifier.a = 'a'
 		}
 
-		cookieBanner = Sfi.Sfi:CookieBanner
 	}
 }
 
