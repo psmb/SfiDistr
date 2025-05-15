@@ -31,6 +31,12 @@ prototype(Sfi.Sfi:CookieBanner) < prototype(Neos.Fusion:Component) {
             });
 
             dialog.addEventListener("cancel", closeDialog);
+            
+            dialog.addEventListener("click", (e) => {
+                if (e.target === dialog) {
+                    closeDialog();
+                }
+            });
 
             if (!localStorage.getItem("cookieBannerDismissed")) {
                 dialog.showModal();
