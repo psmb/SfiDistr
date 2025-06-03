@@ -53,10 +53,6 @@ prototype(Sfi.Sfi:StudyProgram) {
 		title = ${Translation.translate('studyProgram.assetAccreditation', null, [], null, 'Sfi.Sfi')}
 		@context.node = ${q(node).children('assetAccreditation').get(0)}
 	}
-	assetInvoice = Sfi.Sfi:StudyProgramAsset {
-		title = ${Translation.translate('studyProgram.assetInvoice', null, [], null, 'Sfi.Sfi')}
-		@context.node = ${q(node).children('assetInvoice').get(0)}
-	}
 
 	assetsPlanTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetsPlan', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetsPlanO = Neos.Neos:ContentCollection {

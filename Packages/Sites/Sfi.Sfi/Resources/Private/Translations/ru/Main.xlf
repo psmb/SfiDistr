@@ -341,9 +341,6 @@
             <trans-unit id="studyProgram.assetAccreditation">
                 <source>Свидетельство о государственной аккредитации</source>
             </trans-unit>
-            <trans-unit id="studyProgram.assetInvoice">
-                <source>Квитанция для оплаты обучения</source>
-            </trans-unit>
             <trans-unit id="studyProgram.level">
                 <source>Уровень программы</source>
             </trans-unit>

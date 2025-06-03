@@ -23,8 +23,6 @@
       type: "Neos.Neos:ContentCollection"
     assetAccreditation:
       type: "Sfi.Shared:Asset"
-    assetInvoice:
-      type: "Sfi.Shared:Asset"
     assetsAdmissionRegulations:
       type: "Neos.Neos:ContentCollection"
     assetsPracticeAnnotationsO:

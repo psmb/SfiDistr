@@ -135,7 +135,6 @@
 			</div>
 			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.exams" package="Sfi.Sfi"/></h3>
 			<div>
-				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Вступительные испытания</div></f:if>
 				{exams -> f:format.raw()}
 			</div>
 			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.payment" package="Sfi.Sfi"/></h3>
@@ -143,8 +142,6 @@
 				<div class="Paragraph">{neos:contentElement.editable(property: 'price')}</div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Оплата (описание)</div></f:if>
 				{payment -> f:format.raw()}
-				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Квитанция для оплаты обучения</div></f:if>
-				{assetInvoice -> f:format.raw()}
 			</div>
 			<h3 class="H3 marginTop-double marginBottom-single"><f:translate id="studyProgram.contacts" package="Sfi.Sfi"/></h3>
 			<div>

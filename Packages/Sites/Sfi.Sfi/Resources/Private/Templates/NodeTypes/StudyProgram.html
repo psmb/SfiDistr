@@ -121,7 +121,6 @@
 			</div>
 			<a href="#tab-exams" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.exams" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-exams">
-				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Вступительные испытания</div></f:if>
 				{exams -> f:format.raw()}
 			</div>
 			<a href="#tab-payment" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.payment" package="Sfi.Sfi"/></a>
@@ -129,8 +128,6 @@
 				<div class="Paragraph">{neos:contentElement.editable(property: 'price')}</div>
 				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Оплата (описание)</div></f:if>
 				{payment -> f:format.raw()}
-				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Квитанция для оплаты обучения</div></f:if>
-				{assetInvoice -> f:format.raw()}
 			</div>
 			<a href="#tab-contacts" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.contacts" package="Sfi.Sfi"/></a>
 			<div class="Sections-Panel" id="tab-contacts">
