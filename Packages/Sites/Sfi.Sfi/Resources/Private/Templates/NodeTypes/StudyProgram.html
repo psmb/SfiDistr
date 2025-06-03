@@ -54,12 +54,6 @@
 				{assetDescriptionsO -> f:format.raw()}
 				{assetDescriptionsOZ -> f:format.raw()}
 				{assetDescriptionsZ -> f:format.raw()}
-				<f:if condition="{node.context.workspace.name} != 'live'"><div class="HelpText">Образец договора об оказании платных образовательных услуг</div></f:if>
-				{assetSampleContract -> f:format.raw()}
-				<f:if condition="{node.context.workspace.name} != 'live'">
-					<div class="HelpText">Образовательные программы (для спецраздела) БУДЕТ УДАЛЕНО!!!</div>
-					{neos:contentElement.editable(property: 'studyProgramSpecial')}
-				</f:if>
 
 			</div>
 			<a href="#tab-subjects" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.disciplines" package="Sfi.Sfi"/></a>

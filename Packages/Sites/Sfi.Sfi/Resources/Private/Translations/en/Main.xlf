@@ -331,10 +331,6 @@
                 <source>Квитанция для оплаты обучения</source>
                 <target></target>
             </trans-unit>
-            <trans-unit id="studyProgram.assetSampleContract">
-                <source>Образец договора об оказании платных образовательных услуг</source>
-                <target></target>
-            </trans-unit>
             <trans-unit id="studyProgram.level">
                 <source>Уровень программы</source>
                 <target>Programme Level</target>

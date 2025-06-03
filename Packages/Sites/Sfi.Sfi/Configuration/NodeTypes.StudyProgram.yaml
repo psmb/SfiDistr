@@ -25,8 +25,6 @@
       type: "Sfi.Shared:Asset"
     assetInvoice:
       type: "Sfi.Shared:Asset"
-    assetSampleContract:
-      type: "Sfi.Shared:Asset"
     assetsAdmissionRegulations:
       type: "Neos.Neos:ContentCollection"
     assetsPracticeAnnotationsO:
@@ -363,33 +361,3 @@
         reloadIfChanged: false
         inspector:
           group: studyProgram
-    studyProgramSpecial:
-      type: string
-      ui:
-        inlineEditable: true
-        inline:
-          editorOptions:
-            autoparagraph: true
-            linking:
-              anchor: true
-              title: false
-              targetBlank: true
-            formatting:
-              strong: true
-              em: true
-              underline: false
-              sub: true
-              sup: true
-              p: true
-              h1: false
-              h2: true
-              h3: true
-              h4: true
-              pre: true
-              itemprop: true
-              table: true
-              ol: true
-              ul: true
-              a: true
-              footnote: true
-            placeholder: "Образовательные программы (для спецраздела)"

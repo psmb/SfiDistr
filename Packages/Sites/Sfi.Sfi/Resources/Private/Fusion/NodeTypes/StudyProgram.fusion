@@ -57,10 +57,6 @@ prototype(Sfi.Sfi:StudyProgram) {
 		title = ${Translation.translate('studyProgram.assetInvoice', null, [], null, 'Sfi.Sfi')}
 		@context.node = ${q(node).children('assetInvoice').get(0)}
 	}
-	assetSampleContract = Sfi.Sfi:StudyProgramAsset {
-		title = ${Translation.translate('studyProgram.assetSampleContract', null, [], null, 'Sfi.Sfi')}
-		@context.node = ${q(node).children('assetSampleContract').get(0)}
-	}
 
 	assetsPlanTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetsPlan', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetsPlanO = Neos.Neos:ContentCollection {
@@ -231,14 +227,6 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 	}
 	accreditationDate = ${q(node).property('accreditationDate')}
 	noLink = ${q(node).property('noLink')}
-	studyProgramSpecial = Neos.Fusion:Tag {
-		content = ${q(node).property('studyProgramSpecial')}
-		@process.editable = Neos.Neos:ContentElementEditable {
-			property = 'studyProgramSpecial'
-		}
-		@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
-		@process.convertUris = Neos.Neos:ConvertUris
-	}
 
 	assetDescriptionsO = Neos.Neos:ContentCollection {
 		nodePath = 'assetDescriptionsO'
