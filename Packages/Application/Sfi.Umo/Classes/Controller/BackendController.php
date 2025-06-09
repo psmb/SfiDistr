@@ -168,24 +168,28 @@ class BackendController extends AbstractModuleController
 
             $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;$signee&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
         } else {
-            if (isset($maybeRows[0]['сортировка'])) {
-                usort($maybeRows, function ($a, $b) {
-                    $aIsSet = isset($a['сортировка']);
-                    $bIsSet = isset($b['сортировка']);
+            $firstValue = reset($maybeRows);
+            if ($firstValue && isset($firstValue['сортировка'])) {
+                uasort(
+                    $maybeRows,
+                    function ($a, $b) {
+                        $aIsSet = isset($a['сортировка']);
+                        $bIsSet = isset($b['сортировка']);
 
-                    if (!$aIsSet && $bIsSet) {
-                        return 1;
-                    }
-                    if ($aIsSet && !$bIsSet) {
-                        return -1;
-                    }
+                        if (!$aIsSet && $bIsSet) {
+                            return 1;
+                        }
+                        if ($aIsSet && !$bIsSet) {
+                            return -1;
+                        }
 
-                    if (!$aIsSet && !$bIsSet) {
-                        return 0;
-                    }
+                        if (!$aIsSet && !$bIsSet) {
+                            return 0;
+                        }
 
-                    return $a['сортировка'] <=> $b['сортировка'];
-                });
+                        return $a['сортировка'] <=> $b['сортировка'];
+                    }
+                );
             }
             foreach ($maybeRows as $subCategory => $rows) {
                 if (!is_numeric($subCategory) && $subCategory) {
@@ -214,7 +218,6 @@ class BackendController extends AbstractModuleController
     {
 
         $umoPaths = '/data/www-provisioned/Web/umo/';
-        // $umoPaths = '/Users/dimaip/psmb/SfiDistr/umo/';
 
         $typeSubFolders = array_diff(scandir($umoPaths), array('..', '.'));
 
