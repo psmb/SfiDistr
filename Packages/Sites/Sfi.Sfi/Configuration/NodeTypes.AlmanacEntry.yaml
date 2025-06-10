@@ -23,6 +23,17 @@
             nodeTypes:
               - 'Sfi.Sfi:AlmanacCategoryPage'
             threshold: 1
+    categories:
+      type: references
+      ui:
+        label: Рубрики
+        reloadIfChanged: false
+        inspector:
+          group: asset
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Sfi:AlmanacCategoryPage'
+            threshold: 1
     author:
       type: string
       ui:

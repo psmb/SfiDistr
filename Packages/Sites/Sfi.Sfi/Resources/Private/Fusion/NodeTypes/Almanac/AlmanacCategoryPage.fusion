@@ -12,7 +12,7 @@ prototype(Sfi.Sfi:AlmanacCategoryPage) < prototype(Sfi.Sfi:AlmanacAbstractPage) 
 			content = Neos.Fusion:Array {
 				main = ${props.main}
 				listing = Neos.Fusion:Collection {
-					collection = ${Sfi.sortByLastName(q(almanacRoot).find('[instanceof Sfi.Sfi:AlmanacEntry]').filterByReference('category', node).get())}
+					collection = ${Sfi.sortByLastName(q(almanacRoot).find('[instanceof Sfi.Sfi:AlmanacEntry]').filterByReference('categories', node).get())}
 					itemName = 'node'
 					itemRenderer = Sfi.Sfi:AlmanacEntry
 				}
