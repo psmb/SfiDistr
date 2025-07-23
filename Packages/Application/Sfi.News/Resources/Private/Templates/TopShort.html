@@ -23,7 +23,7 @@
 						</div>
 					</f:if>
 					<f:if condition="{node.properties.buttonLabel}">
-						<a href="{nodeUri}" class="Button paddingTop-double">{node.properties.buttonLabel}</a>
+						<neos:link.node absolute="true" node="{node}" class="Button paddingTop-double">{node.properties.buttonLabel}</neos:link.node>
 					</f:if>
 				</div>
 			</neos:link.node>
@@ -50,7 +50,7 @@
 							</f:if>
 
 							<f:if condition="{node.properties.buttonLabel}">
-								<a href="{nodeUri}" class="Button marginTop-double">{node.properties.buttonLabel}</a>
+								<neos:link.node absolute="true" node="{node}" class="Button marginTop-double">{node.properties.buttonLabel}</neos:link.node>
 							</f:if>
 						</div>
 					</div>
