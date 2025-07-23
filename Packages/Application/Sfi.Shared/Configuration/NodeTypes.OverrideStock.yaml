@@ -155,8 +155,15 @@
         inspector:
           group: nodeInfo
 'Neos.Neos:Shortcut':
+  superTypes:
+    'Sfi.News:ImportantMixin': true
   ui:
     icon: icon-share-alt
+    inspector:
+      groups:
+        news:
+          label: Новость
+          position: 9999
   properties:
     targetMode:
       defaultValue: noShortcut
@@ -166,3 +173,21 @@
             values:
               noShortcut:
                 label: 'Нет ссылки'
+    importantCoverImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото на обложку карусели'
+        reloadIfChanged: false
+        inspector:
+          group: news
+          position: 50
+          editorOptions:
+            features:
+              resize: true
+            crop:
+              aspectRatio:
+                enableOriginal: false
+                allowCustom: false
+                locked:
+                  width: 1200
+                  height: 400

@@ -257,6 +257,12 @@ blah:
         label: 'Сортировка в карусели (1-3)'
         inspector:
           group: news
+    buttonLabel:
+      type: string
+      ui:
+        label: 'Текст кнопки в карусели'
+        inspector:
+          group: news
 'Sfi.News:AuthorMixin':
   abstract: true
   properties:

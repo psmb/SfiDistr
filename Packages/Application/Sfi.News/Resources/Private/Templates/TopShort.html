@@ -22,6 +22,9 @@
 								<span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{node.properties.dateStart}</f:format.date></span><span>–</span></f:if></f:if><span><f:format.date forceLocale="{true}" cldrFormat="d.MM">{date}</f:format.date></span>
 						</div>
 					</f:if>
+					<f:if condition="{node.properties.buttonLabel}">
+						<a href="{nodeUri}" class="Button paddingTop-double">{node.properties.buttonLabel}</a>
+					</f:if>
 				</div>
 			</neos:link.node>
 		</div>
@@ -44,6 +47,10 @@
 							<div class="MediaSlideMedium-Teaser RteTextLinkable">{teaser -> f:format.raw()}</div>
 							<f:if condition="{node.nodeType.name} == 'Sfi.News:Announcement'">
 								<div class="MediaSlideMedium-Teaser">{place -> f:format.raw()}</div>
+							</f:if>
+
+							<f:if condition="{node.properties.buttonLabel}">
+								<a href="{nodeUri}" class="Button marginTop-double">{node.properties.buttonLabel}</a>
 							</f:if>
 						</div>
 					</div>

@@ -181,6 +181,8 @@ prototype(Sfi.News:TopShort) < prototype(Sfi.News:NewsShort) {
 	@context.configuration = ${Configuration.setting('Sfi.News.topShort')}
 	configuration = ${configuration}
 
+	buttonLabel = ${node.properties.buttonLabel}
+
 	place = ${String.stripTags(author.properties.place || node.properties.author.properties.title || '')}
 
 	thumbnailImageLargeUri = Sfi.News:ThumbnailImageUri {
