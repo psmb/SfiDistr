@@ -173,7 +173,7 @@
             values:
               noShortcut:
                 label: 'Нет ссылки'
-        coverImage:
+    coverImage:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: 'Фото на обложку карусели (мобильные)'
