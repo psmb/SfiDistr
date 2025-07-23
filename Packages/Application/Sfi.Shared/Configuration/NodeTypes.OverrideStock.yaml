@@ -173,10 +173,30 @@
             values:
               noShortcut:
                 label: 'Нет ссылки'
+        coverImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото на обложку карусели (мобильные)'
+        help:
+          message: 'Eесли не задана, то используется фото из coverCollection. Внутри новости не отображается.'
+        reloadIfChanged: false
+        inspector:
+          group: news
+          position: 50
+          editorOptions:
+            features:
+              resize: true
+            crop:
+              aspectRatio:
+                enableOriginal: false
+                allowCustom: false
+                locked:
+                  width: 420
+                  height: 222
     importantCoverImage:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Фото на обложку карусели'
+        label: 'Фото на обложку карусели (десктоп)'
         reloadIfChanged: false
         inspector:
           group: news
