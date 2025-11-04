@@ -60,6 +60,13 @@ prototype(Sfi.Sfi:PersonShort) < prototype(Neos.Neos:Content) {
 	quote = ${q(node).property('quote')}
 	showPosition = ${true}
 	image = ${node.properties.image ? node.properties.image : q(node).find('[instanceof Neos.NodeTypes:Image]').first().property('image')}
+	maximumWidth = 400
+	maximumHeight = 533
+}
+
+prototype(Sfi.Sfi:RectorShort) < prototype(Sfi.Sfi:PersonShort) {
+	maximumWidth = 800
+	maximumHeight = 533
 }
 
 prototype(Sfi.Sfi:PersonGphShort) < prototype(Neos.Neos:ContentComponent) {
@@ -176,7 +183,7 @@ prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection
 prototype(Sfi.Shared:ContentCaseShort) < prototype(Neos.Neos:ContentCase) {
 	isRector {
 		condition = ${q(node).property('isRector')}
-		type = 'Sfi.Sfi:PersonShort'
+		type = 'Sfi.Sfi:RectorShort'
 	}
 	isProRector {
 		condition = ${q(node).property('isProRector')}
