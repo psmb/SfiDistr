@@ -11,8 +11,12 @@
         </div>
     </div>
     <div class="row marginBottom-single">
-        <div class="medium-6 columns">{coverImage -> f:format.raw()}</div>
-        <div class="medium-6 columns">
+        <div class="columns">
+            {coverImage -> f:format.raw()}
+        </div>
+    </div>
+    <div class="row marginBottom-single">
+        <div class="medium-4 columns">
             <div>
                 <f:if
                     condition="{node.context.workspace.name} != 'live' || {freeText}"
@@ -154,10 +158,11 @@
                 </div>
             </f:if>
         </div>
+        <div class="medium-8 columns">{main -> f:format.raw()}</div>
     </div>
     <div class="row">
         <div class="columns">
-            {main -> f:format.raw()} {authorBlogs -> f:format.raw()}
+            {authorBlogs -> f:format.raw()}
             {authorArticles -> f:format.raw()} {articlesByTag -> f:format.raw()}
             {listByTag -> f:format.raw()}
         </div>

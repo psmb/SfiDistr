@@ -40,8 +40,8 @@ prototype(Sfi.Sfi:Person) {
 	@context.coverCollection = Neos.Neos:ContentCollection {
 		nodePath = 'coverCollection'
 		prototype(Neos.NodeTypes:Image) {
-			maximumWidth = 400
-			maximumHeight = 600
+			maximumWidth = 1024
+			maximumHeight = 768
 			allowCropping = TRUE
 		}
 	}
