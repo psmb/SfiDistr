@@ -450,7 +450,7 @@ blah:
                 allowCustom: true
                 locked:
                   width: 400
-                  height: 600
+                  height: 533
     squareImage:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
