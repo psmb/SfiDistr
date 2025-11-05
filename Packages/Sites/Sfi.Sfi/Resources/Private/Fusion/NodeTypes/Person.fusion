@@ -65,8 +65,6 @@ prototype(Sfi.Sfi:PersonShort) < prototype(Neos.Neos:Content) {
 }
 
 prototype(Sfi.Sfi:RectorShort) < prototype(Sfi.Sfi:PersonShort) {
-	maximumWidth = 710
-	maximumHeight = 533
 }
 
 prototype(Sfi.Sfi:PersonGphShort) < prototype(Neos.Neos:ContentComponent) {
