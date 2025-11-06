@@ -1,32 +1,71 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 {namespace ts=Neos\Fusion\ViewHelpers}
 {namespace s=Sfi\Shared\ViewHelpers}
-<div class="row">
-	<div class="">
-		<div class="Cover" style="background-image:url('{converImageUri}'); background-position: 67%; background-size: cover;">
-			<div class="row">
-				<div class="MediaSlideMedium-Wrap columns">
-					<div class="MediaSlideMedium-Body">
-						<div class="Service color-white">{level}</div>
-						<h3 class="H2 color-white marginVertical-single">
-							{neos:contentElement.editable(property: 'title')}
-							<f:if condition="{node.context.workspace.name} != 'live' || {specialityId}">
-								({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
-							</f:if>
-						</h3>
-						<div class="ServiceEm color-white marginBottom-double">{division}</div>
-						<div class="show-for-medium-up Paragraph RteTextLinkable color-white">{neos:contentElement.editable(property: 'lead')}</div>
-						<div class="marginTop-double" style="margin-right: -40px">
-							<a class="Button--warn marginBottom-single" style="font-weight: 600; font-size: 12px; padding: 8px 12px; margin-right: 22px" href="#about">О программе</a>
-							<a class="Button color-white marginBottom-single" style="font-weight: 600; font-size: 12px; padding: 6px 12px; border: 2px solid white; background-color: transparent;" href="#abitur">Как поступить</a>
+<div>
+	<div class="show-for-small-only">
+
+		<div class="row">
+			<div class="">
+				<div class="MediaSlideSmall">
+					<neos:link.node absolute="true" node="{node}">
+						<div class="MediaSlideSmall-Image">
+							{converImageSmall -> f:format.raw()}
+						</div>
+						<div class="MediaSlideSmall-Body">
+							<div class="Service color-white">{level}</div>
+							<h3 class="H2 color-white marginVertical-single">
+								{neos:contentElement.editable(property: 'title')}
+								<f:if condition="{node.context.workspace.name} != 'live' || {specialityId}">
+									({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
+								</f:if>
+							</h3>
+							<div class="ServiceEm color-white marginBottom-double">{division}</div>
+							<div class="show-for-medium-up Paragraph RteTextLinkable color-white">{neos:contentElement.editable(property: 'lead')}</div>
+							<div class="marginTop-double" style="margin-right: -40px">
+								<a class="Button--warn marginBottom-single" style="font-weight: 600; font-size: 12px; padding: 8px 12px; margin-right: 22px; margin-bottom: 0;" href="#about">О программе</a>
+								<a class="Button color-white marginBottom-single" style="font-weight: 600; font-size: 12px; padding: 6px 12px; border: 2px solid white; background-color: transparent; margin-bottom: 0;" href="#abitur">Как поступить</a>
+							</div>
+						</div>
+					</neos:link.node>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="show-for-medium-up">
+
+
+		<div class="row">
+			<div class="">
+				<div class="Cover" style="background-image:url('{converImageUri}'); background-position: 67%; background-size: cover;">
+					<div class="row">
+						<div class="MediaSlideMedium-Wrap columns">
+							<div class="MediaSlideMedium-Body">
+								<div class="Service color-white">{level}</div>
+								<h3 class="H2 color-white marginVertical-single">
+									{neos:contentElement.editable(property: 'title')}
+									<f:if condition="{node.context.workspace.name} != 'live' || {specialityId}">
+										({neos:contentElement.editable(property: 'specialityId', tag: 'span')})
+									</f:if>
+								</h3>
+								<div class="ServiceEm color-white marginBottom-double">{division}</div>
+								<div class="show-for-medium-up Paragraph RteTextLinkable color-white">{neos:contentElement.editable(property: 'lead')}</div>
+								<div class="marginTop-double" style="margin-right: -40px">
+									<a class="Button--warn marginBottom-single" style="font-weight: 600; font-size: 12px; padding: 8px 12px; margin-right: 22px" href="#about">О программе</a>
+									<a class="Button color-white marginBottom-single" style="font-weight: 600; font-size: 12px; padding: 6px 12px; border: 2px solid white; background-color: transparent;" href="#abitur">Как поступить</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
+		
+	</div>
 </div>
+
+
+
 
 <style>
 	@media screen and (max-width: 640px) {

@@ -17,6 +17,16 @@ prototype(Sfi.Sfi:StudyProgram) {
 		asset = ${node.properties.coverImage}
 	}
 
+	converImageSmall = Neos.Fusion:Tag {
+		tagName = 'img'
+		attributes.src = Neos.Neos:ImageUri {
+			asset = ${node.properties.coverImageSmall || node.properties.coverImage}
+			maximumWidth = 640
+			maximumHeight = 338
+		}
+		attributes.alt = ${node.properties.title}
+	}
+
 	sectionMenu = ${sectionMenu}
 	level = ${String.stripTags(q(node).parent().parent().property('title'))}
 	division = ${String.stripTags(q(node).parent().property('title'))}

@@ -106,6 +106,22 @@
                 locked:
                   width: 1170
                   height: 400
+    coverImageSmall:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Картинка для обложки мобильная (640*338px)'
+        reloadIfChanged: true
+        inspector:
+          group: studyProgram
+          editorOptions:
+            crop:
+              aspectRatio:
+                forceCrop: true
+                enableOriginal: false
+                allowCustom: true
+                locked:
+                  width: 640
+                  height: 338
     extraPoints:
       type: string
       defaultValue: ''
