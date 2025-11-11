@@ -143,20 +143,20 @@
                     <div>
                         <div class="row ParagraphAlt--Small color-grayAlt">
                             <div class="small-6 columns">
-                                <input checked class="" name="agreeOffer" type="checkbox" disabled checked="checked"> Я ознакомился c
+                                <input checked class="" name="agreeOffer" type="checkbox" checked="checked"> Я ознакомился c
                                 <a style="text-decoration: underline" href="https://psmb-neos-resources.hb.bizmrg.com/target/sfi/f8a8b92a1e96b28da4231e2304e4795f949c6ef6/%D0%BE%D1%84%D0%B5%D1%80%D1%82%D0%B0.pdf">договором-офертой</a> и согласен с ней
                             </div>
                             <div class="small-6 columns">
-                                <input checked class="" name="agreePolicy" type="checkbox" disabled checked="checked"> Я ознакомился c
+                                <input checked class="" name="agreePolicy" type="checkbox" checked="checked"> Я ознакомился c
                                 <a style="text-decoration: underline" href="https://psmb-neos-resources.hb.bizmrg.com/target/sfi/40f459d031c3c981d27ae931a4f915f32c1d3db4/109_1_%D0%9F%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0_%D0%A1%D0%A4%D0%98_%D0%B2_%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D0%B8_%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B8_%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.pdf">политикой обработки персональных данных </a> и согласен с ней
                             </div>
                         </div>
                         <div class="row ParagraphAlt--Small color-grayAlt">
                             <div class="small-6 columns">
-                                <input checked class="" name="agreeRf" type="checkbox" disabled checked="checked"> Я являюсь гражданином Российской Федерации
+                                <input checked class="" name="agreeRf" type="checkbox" checked="checked"> Я являюсь гражданином Российской Федерации
                             </div>
                             <div class="small-6 columns">
-                                <input checked class="" name="agreePolicy" type="checkbox" disabled checked="checked"> Я ознакомился c
+                                <input checked class="" name="agreeProcessing" type="checkbox" checked="checked"> Я ознакомился c
                                 <a style="text-decoration: underline" href="https://psmb-neos-resources.hb.bizmrg.com/target/sfi/2d261d4b05bc138bc9236ef76d07a8076478334b/%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5%20%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D0%B8%D0%B5%20%D0%BF%D0%BE%D1%81%D0%B5%D1%82%D0%B8%D1%82%D0%B5%D0%BB%D1%8F%20%D1%81%D0%B0%D0%B8%CC%86%D1%82%D0%B0%20%D0%BD%D0%B0%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D1%83%20%D0%9F%D0%94%D0%BD.pdf">согласием на обработку персональных данных </a> и согласен с ним
                             </div>
                         </div>
@@ -214,64 +214,73 @@
             }
         }
 
-        if (form.querySelector('[name=agreeOffer]').value && form.querySelector('[name=agreeRf]').value && form.querySelector('[name=agreePolicy]').value) {
-            var referer = form.querySelector('[name=projectSelector]') && form.querySelector('[name=projectSelector]').value || form.dataset.referer
-            var widget = new cp.CloudPayments();
-
-            var urlParams = new URLSearchParams(window.location.search);
-            var data = {
-                firstName: form.querySelector('[name=firstName]').value,
-                lastName: form.querySelector('[name=lastName]').value,
-                referer: referer,
-                comment: urlParams.get('ref') || ''
-            };
-
-            var settings = {
-                chapel: {
-                    publicId: 'pk_415cecbcf382aff40554dd2b12ed2',
-                    description: 'Образовательная деятельность СФИ'
-                },
-                projects: {
-                    publicId: 'pk_76f3a38f1ebea58ef0e9b816c957c',
-                    description: 'Научная деятельность СФИ'
-                },
-                social: {
-                    publicId: 'pk_f8cf013ff4e254ccdff7bca75e38e',
-                    description: 'Новая профессия: «Социальный координатор»'
-                },
-                publishing: {
-                    publicId: 'pk_2937759f3704624324bb94d73d42b',
-                    description: 'Издательская деятельность'
-                }
-            };
-
-            var isRecurrent = form.querySelector('.PaymentSelector .isActive').dataset.value === 'monthly';
-            if (isRecurrent) {
-                data.cloudPayments = {
-                    recurrent: {
-                        interval: 'Month',
-                        period: 1
-                    }
-                };
-            }
-            widget.charge(
-                {
-                    publicId: settings[referer].publicId,
-                    description: settings[referer].description + (isRecurrent ? ' (регулярное)' : ''),
-                    amount: getAmount(),
-                    currency: 'RUB',
-                    accountId: form.querySelector('[name=email]').value,
-                    email: form.querySelector('[name=email]').value,
-                    data: data
-                },
-                'http://sfi.ru/support/thanks.html',
-                function (reason, options) {
-                    alert('Ошибка' + reason);
-                }
-            );
-        } else {
-            alert('Ошибка');
+        if (!form.querySelector('[name=agreeOffer]').value) {
+            alert('Вы не согласились с договором-оффертой!');
         }
+        if (!form.querySelector('[name=agreeRf]').value) {
+            alert('Вы не подтвердили, что являетесь гражданином Российской Федерации!');
+        }
+        if (!form.querySelector('[name=agreePolicy]').value) {
+            alert('Вы не согласились с политикой обработки персональных данных!');
+        }
+        if (!form.querySelector('[name=agreeProcessing]').value) {
+            alert('Вы не согласились с согласием на обработку персональных данных!');
+        }
+
+        var referer = form.querySelector('[name=projectSelector]') && form.querySelector('[name=projectSelector]').value || form.dataset.referer
+        var widget = new cp.CloudPayments();
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var data = {
+            firstName: form.querySelector('[name=firstName]').value,
+            lastName: form.querySelector('[name=lastName]').value,
+            referer: referer,
+            comment: urlParams.get('ref') || ''
+        };
+
+        var settings = {
+            chapel: {
+                publicId: 'pk_415cecbcf382aff40554dd2b12ed2',
+                description: 'Образовательная деятельность СФИ'
+            },
+            projects: {
+                publicId: 'pk_76f3a38f1ebea58ef0e9b816c957c',
+                description: 'Научная деятельность СФИ'
+            },
+            social: {
+                publicId: 'pk_f8cf013ff4e254ccdff7bca75e38e',
+                description: 'Новая профессия: «Социальный координатор»'
+            },
+            publishing: {
+                publicId: 'pk_2937759f3704624324bb94d73d42b',
+                description: 'Издательская деятельность'
+            }
+        };
+
+        var isRecurrent = form.querySelector('.PaymentSelector .isActive').dataset.value === 'monthly';
+        if (isRecurrent) {
+            data.cloudPayments = {
+                recurrent: {
+                    interval: 'Month',
+                    period: 1
+                }
+            };
+        }
+        widget.charge(
+            {
+                publicId: settings[referer].publicId,
+                description: settings[referer].description + (isRecurrent ? ' (регулярное)' : ''),
+                amount: getAmount(),
+                currency: 'RUB',
+                accountId: form.querySelector('[name=email]').value,
+                email: form.querySelector('[name=email]').value,
+                data: data
+            },
+            'http://sfi.ru/support/thanks.html',
+            function (reason, options) {
+                alert('Ошибка' + reason);
+            }
+        );
     };
     form.addEventListener('submit', pay);
 })();
