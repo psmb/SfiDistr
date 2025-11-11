@@ -216,15 +216,19 @@
 
         if (!form.querySelector('[name=agreeOffer]').checked) {
             alert('Вы не согласились с договором-оффертой!');
+            return;
         }
         if (!form.querySelector('[name=agreeRf]').checked) {
             alert('Вы не подтвердили, что являетесь гражданином Российской Федерации!');
+            return;
         }
         if (!form.querySelector('[name=agreePolicy]').checked) {
             alert('Вы не согласились с политикой обработки персональных данных!');
+            return;
         }
         if (!form.querySelector('[name=agreeProcessing]').checked) {
             alert('Вы не согласились с согласием на обработку персональных данных!');
+            return;
         }
 
         var referer = form.querySelector('[name=projectSelector]') && form.querySelector('[name=projectSelector]').value || form.dataset.referer
