@@ -63,7 +63,7 @@ Psmb:
         label: "Все Жертвователи"
         interval: manual
         senderName: "СФИ"
-        replyToAddress: "donate@sfi.ru"
+        replyToAddress: "donate@edu.sfi.ru"
         dimensions:
           language:
             - ru
@@ -76,7 +76,7 @@ Psmb:
         label: "Без ссылки"
         interval: manual
         senderName: "СФИ"
-        replyToAddress: "donate@sfi.ru"
+        replyToAddress: "donate@edu.sfi.ru"
         dimensions:
           language:
             - ru
@@ -89,7 +89,7 @@ Psmb:
         label: "По ссылке psmb"
         interval: manual
         senderName: "СФИ"
-        replyToAddress: "donate@sfi.ru"
+        replyToAddress: "donate@edu.sfi.ru"
         dimensions:
           language:
             - ru
@@ -102,7 +102,7 @@ Psmb:
         label: "Жертвователи на часовню/помещения"
         interval: manual
         senderName: "СФИ"
-        replyToAddress: "donate@sfi.ru"
+        replyToAddress: "donate@edu.sfi.ru"
         dimensions:
           language:
             - ru
@@ -115,7 +115,7 @@ Psmb:
         label: "Жертвователи на научную деятельность"
         interval: manual
         senderName: "СФИ"
-        replyToAddress: "donate@sfi.ru"
+        replyToAddress: "donate@edu.sfi.ru"
         dimensions:
           language:
             - ru
@@ -128,7 +128,7 @@ Psmb:
         label: "Жертвователи на соцфакультет"
         interval: manual
         senderName: "СФИ"
-        replyToAddress: "donate@sfi.ru"
+        replyToAddress: "donate@edu.sfi.ru"
         dimensions:
           language:
             - ru
@@ -141,7 +141,7 @@ Psmb:
         label: "Жертвователи на издательскую деятельность"
         interval: manual
         senderName: "СФИ"
-        replyToAddress: "donate@sfi.ru"
+        replyToAddress: "donate@edu.sfi.ru"
         dimensions:
           language:
             - ru
@@ -150,7 +150,7 @@ Psmb:
         sendFromUiNodeType: "Sfi.Sfi:AutomatedNewsletter"
         interval: manual
         senderName: "СФИ"
-        replyToAddress: "donate@sfi.ru"
+        replyToAddress: "donate@edu.sfi.ru"
         dimensions:
           language:
             - ru
