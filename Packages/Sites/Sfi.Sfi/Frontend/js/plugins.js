@@ -116,11 +116,13 @@ $(document).ready(function () {
                 }
             });
 
-            // Activate first tab
-            _this
-                .find(".Sections-Anchor")
-                .eq(0)
-                .click();
+            // Activate first tab (skip for accordion-only sections)
+            if (!_this.hasClass("Sections--Accordion")) {
+                _this
+                    .find(".Sections-Anchor")
+                    .eq(0)
+                    .click();
+            }
         });
 
         return this;
