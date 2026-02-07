@@ -4,24 +4,24 @@
     "description": "Our frontend code",
     "main": "Gulpfile.js",
     "scripts": {
+        "build": "gulp build",
+        "serve": "gulp serve",
         "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "resolutions": {
-        "graceful-fs": "^4.2.10"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "browser-sync": "*",
-        "gulp": "^3",
+        "gulp": "^4",
         "gulp-autoprefixer": "*",
         "gulp-concat": "*",
         "gulp-concat-css": "*",
         "gulp-cssnano": "*",
-        "gulp-sass": "*",
-        "gulp-sass-glob": "1.0.5",
+        "gulp-sass": "^5",
+        "gulp-sass-glob": "^1.1.0",
         "gulp-sourcemaps": "*",
+        "gulp-terser": "^2.1.0",
         "gulp-uglify": "*",
-        "natives": "^1.1.6"
+        "sass": "^1"
     }
 }

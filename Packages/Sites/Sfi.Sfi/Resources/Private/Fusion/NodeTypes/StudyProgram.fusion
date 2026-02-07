@@ -34,29 +34,23 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetDescriptionsTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetDescriptions', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetDescriptionsO = Neos.Neos:ContentCollection {
 		nodePath = 'assetDescriptionsO'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	assetDescriptionsOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetDescriptionsOZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetDescriptionsZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetDescriptionsZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 
 	assetRpdTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetRpd', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetRpdO = Neos.Neos:ContentCollection {
 		nodePath = 'assetRpdO'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	assetRpdOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetRpdOZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetRpdZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetRpdZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
@@ -67,15 +61,12 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetsPlanTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetsPlan', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetsPlanO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanO'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	assetsPlanOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanOZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	assetsPlanZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetsAdmissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
@@ -83,20 +74,14 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetsPracticeAnnotationsTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetsPracticeAnnotations', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetsPracticeAnnotationsO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotationsO'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	assetsPracticeAnnotationsOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotationsOZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetsPracticeAnnotationsZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotationsZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	assetsMethodicalTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetsMethodical', null, [], null, 'Sfi.Sfi') + '</h3>'}
-	assetsMethodicalOTitle = ${(q(node).children('assetsMethodicalO').children().count() + q(node).children('fosO').children().count()) > 0 ? '<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' : ''}
-	assetsMethodicalOZTitle = ${(q(node).children('assetsMethodicalOZ').children().count() + q(node).children('fosOZ').children().count()) > 0 ? '<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' : ''}
-	assetsMethodicalZTitle = ${(q(node).children('assetsMethodicalZ').children().count() + q(node).children('fosZ').children().count()) > 0 ? '<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' : ''}
 
 	assetsMethodicalO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodicalO'
@@ -120,15 +105,12 @@ prototype(Sfi.Sfi:StudyProgram) {
 
 	fosO = Neos.Neos:ContentCollection {
 		nodePath = 'fosO'
-		# @process.title = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.fos', null, [], null, 'Sfi.Sfi') + '</h3><h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	fosOZ = Neos.Neos:ContentCollection {
 		nodePath = 'fosOZ'
-		# @process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	fosZ = Neos.Neos:ContentCollection {
 		nodePath = 'fosZ'
-		# @process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi')+ '</h4>' + value}
 	}
 	description = Neos.Neos:ContentCollection {
 		nodePath = 'description'
@@ -143,15 +125,12 @@ prototype(Sfi.Sfi:StudyProgram) {
 	scheduleTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.grafik', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	scheduleO = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleO'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	scheduleOZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleOZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.ochnoZaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	scheduleZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleZ'
-		@process.title = ${'<h4 class="H4 marginVertical-single">' + Translation.translate('studyProgram.zaochnaja', null, [], null, 'Sfi.Sfi') + '</h4>' + value}
 	}
 	documentSubmission = Neos.Neos:ContentCollection {
 		nodePath = 'documentSubmission'

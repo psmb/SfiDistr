@@ -1,9 +1,9 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var sassGlob = require('gulp-sass-glob');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
-var uglify = require('gulp-uglify');
+var uglify = require('gulp-terser');
 var concatJs = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
 var cssnano = require('gulp-cssnano');
@@ -18,56 +18,15 @@ var inputJs = [
 var inputVendorCss = [
     './vendor_css/**/*.css'
 ];
-var inputSass = ['./scss/**/*.scss', './../Resources/Private/Fusion/**/*.scss']; 
+var inputSass = ['./scss/**/*.scss', './../Resources/Private/Fusion/**/*.scss'];
 
-var allTasks = ['sass', 'js', 'vendorCss', 'assets'];
 var output = './built';
 
-gulp.task('serve', allTasks, function () {
-    browserSync.init({
-        proxy: 'dev.festival.psmb.loc'
-    });
-
-    gulp.watch(inputSass, ['sass'])
-        .on('change', function (event) {
-            console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-        });
-    gulp.watch(inputJs, ['js'])
-        .on('change', function (event) {
-            console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-        });
-});
-
-gulp.task('assets', function () {
-    return gulp
-        .src(inputAssets)
-        .pipe(gulp.dest(output));
-});
-
-gulp.task('js', function () {
-    return gulp
-        .src(inputJs)
-        .pipe(sourcemaps.init())
-        .pipe(concatJs('index.js'))
-        .pipe(uglify())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(output));
-});
-
-gulp.task('vendorCss', function () {
-    return gulp
-        .src(inputVendorCss)
-        .pipe(sourcemaps.init())
-        .pipe(concatCss('vendor.css'))
-        .pipe(cssnano())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest(output));
-});
-
-gulp.task('sass', function () {
+function sassTask() {
     var sassOptions = {
         errLogToConsole: true,
-        outputStyle: 'expanded'
+        outputStyle: 'expanded',
+        silenceDeprecations: ['import']
     };
     return gulp
         .src(inputSass)
@@ -79,7 +38,58 @@ gulp.task('sass', function () {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(output))
         .pipe(browserSync.stream());
-});
+}
 
-gulp.task('default', ['serve']);
-gulp.task('build', allTasks);
+function jsTask() {
+    return gulp
+        .src(inputJs)
+        .pipe(sourcemaps.init())
+        .pipe(concatJs('index.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(output));
+}
+
+function vendorCssTask() {
+    return gulp
+        .src(inputVendorCss)
+        .pipe(sourcemaps.init())
+        .pipe(concatCss('vendor.css'))
+        .pipe(cssnano())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(output));
+}
+
+function assetsTask(done) {
+    if (inputAssets.length === 0) {
+        done();
+        return;
+    }
+    return gulp
+        .src(inputAssets, {allowEmpty: true})
+        .pipe(gulp.dest(output));
+}
+
+function serveTask(done) {
+    browserSync.init({
+        proxy: 'dev.festival.psmb.loc'
+    });
+
+    gulp.watch(inputSass, sassTask)
+        .on('change', function (path) {
+            console.log('File ' + path + ' was changed, running tasks...');
+        });
+    gulp.watch(inputJs, jsTask)
+        .on('change', function (path) {
+            console.log('File ' + path + ' was changed, running tasks...');
+        });
+    done();
+}
+
+gulp.task('sass', sassTask);
+gulp.task('js', jsTask);
+gulp.task('vendorCss', vendorCssTask);
+gulp.task('assets', assetsTask);
+gulp.task('build', gulp.parallel(sassTask, jsTask, vendorCssTask, assetsTask));
+gulp.task('serve', gulp.series(gulp.parallel(sassTask, jsTask, vendorCssTask, assetsTask), serveTask));
+gulp.task('default', gulp.series('serve'));

@@ -3,7 +3,10 @@
     "description": "Neos Distribution for Sfi.ru",
     "config": {
         "vendor-dir": "Packages/Libraries",
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
     },
     "repositories": [
         {
