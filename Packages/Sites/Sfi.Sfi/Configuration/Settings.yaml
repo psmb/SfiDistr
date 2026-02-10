@@ -177,7 +177,25 @@ Neos:
     i18n:
       defaultLocale: ru
     http:
-      baseUri: "http://127.0.0.1:8081/"
+      baseUri: "https://dev.sfi.ru/"
+    resource:
+      collections:
+        persistent:
+          storage: s3PersistentResourcesStorage
+          target: s3PersistentResourcesTarget
+      storages:
+        s3PersistentResourcesStorage:
+          storage: 'Flownative\Aws\S3\S3Storage'
+          storageOptions:
+            bucket: "psmb-neos-resources"
+            keyPrefix: "storage/sfi/"
+      targets:
+        s3PersistentResourcesTarget:
+          target: 'Flownative\Aws\S3\S3Target'
+          targetOptions:
+            bucket: "psmb-neos-resources"
+            keyPrefix: "target/sfi/"
+            baseUri: "https://psmb-neos-resources.hb.bizmrg.com/target/sfi/"
     error:
       exceptionHandler:
         renderingGroups:
