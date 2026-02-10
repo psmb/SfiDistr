@@ -2151,25 +2151,23 @@ var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)
                 signKey: signKey
             };
 
-            // Persist signature metadata for SHA1 keys (inline asset links)
-            if (/^[a-f0-9]{40}$/.test(signKey)) {
-                fetch("/api/signature/store", {
-                    method: "POST",
-                    credentials: "same-origin",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    body: new URLSearchParams({
-                        signKey: signKey,
-                        signee: signatureData.signee,
-                        signeePosition: signatureData.signeePosition,
-                        signDate: signatureData.signDate.toISOString(),
-                        sourceUrl: sourceUrl
-                    })
-                }).catch(function (err) {
-                    return console.warn("Failed to store signature:", err);
-                });
-            }
+            // Persist signature metadata to SignatureRecord
+            fetch("/api/signature/store", {
+                method: "POST",
+                credentials: "same-origin",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    signKey: signKey,
+                    signee: signatureData.signee,
+                    signeePosition: signatureData.signeePosition,
+                    signDate: signatureData.signDate.toISOString(),
+                    sourceUrl: sourceUrl
+                })
+            }).catch(function (err) {
+                return console.warn("Failed to store signature:", err);
+            });
 
             (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify(signatureData), false);
         }, _this.handleSign = function () {
@@ -2202,11 +2200,18 @@ var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)
                 return;
             }
 
-            // Check for /umo/ link
+            // Check for /umo/ link - hash the path to get a SHA1 signKey
             if (href.includes("/umo/")) {
                 var umoPath = href.split("/umo/")[1];
                 if (umoPath) {
-                    _this.doSign("u:" + btoa(umoPath), href);
+                    var buffer = new TextEncoder().encode(umoPath);
+                    crypto.subtle.digest("SHA-1", buffer).then(function (hashBuffer) {
+                        var hashArray = Array.from(new Uint8Array(hashBuffer));
+                        var sha1 = hashArray.map(function (b) {
+                            return b.toString(16).padStart(2, "0");
+                        }).join("");
+                        _this.doSign(sha1, href);
+                    });
                     return;
                 }
             }

@@ -17,6 +17,8 @@ use Neos\Media\Domain\Repository\ImageRepository;
 use Neos\Media\Domain\Repository\AssetRepository;
 
 use Neos\Neos\Controller\Module\AbstractModuleController;
+use Sfi\Sfi\Domain\Repository\SignatureRecordRepository;
+use Sfi\Sfi\Domain\Model\SignatureRecord;
 
 function encodeURI($url)
 {
@@ -121,6 +123,12 @@ class BackendController extends AbstractModuleController
     protected $assetRepository;
 
     /**
+     * @Flow\Inject
+     * @var SignatureRecordRepository
+     */
+    protected $signatureRecordRepository;
+
+    /**
      * @return void
      */
     public function indexAction() {}
@@ -159,12 +167,25 @@ class BackendController extends AbstractModuleController
             $name = $maybeRows['название'];
             $this->output .= "<li style='list-style-type: initial'>$name</li>";
             $signDate = $maybeRows['дата_подписи'];
-            $key = 'u:' . base64_encode($maybeRows['filepath']);
+            $key = sha1($maybeRows['filepath']);
 
             $signee = 'Мазуров Алексей Борисович';
             if (strtotime($signDate) > strtotime('2024-04-15')) {
                 $signee = 'Копировский Александр Михайлович';
             }
+
+            // Upsert SignatureRecord for this file
+            $record = $this->signatureRecordRepository->findOneBySignKey($key);
+            if ($record === null) {
+                $record = new SignatureRecord();
+                $record->setSignKey($key);
+                $this->signatureRecordRepository->add($record);
+            }
+            $record->setSignee($signee);
+            $record->setSigneePosition('Ректор');
+            $record->setSignDate(new \DateTime($signDate));
+            $record->setSourceUrl('/umo/' . $maybeRows['filepath']);
+            $this->signatureRecordRepository->update($record);
 
             $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;$signee&quot;,&quot;signeePosition&quot;:&quot;Ректор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
         } else {

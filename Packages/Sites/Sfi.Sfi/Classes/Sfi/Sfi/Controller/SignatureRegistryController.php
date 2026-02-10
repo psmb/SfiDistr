@@ -41,66 +41,14 @@ class SignatureRegistryController extends ActionController
         $key = trim($key);
         $this->view->assign('key', $key);
 
-        // /umo/ link (base64 encoded with u: prefix)
-        if (strpos($key, 'u:') === 0) {
-            $this->handleUmoKey($key);
-            return;
-        }
-
         // Node identifier (n: prefix)
         if (strpos($key, 'n:') === 0) {
             $this->handleNodeKey($key);
             return;
         }
 
-        // Asset lookup by SHA1 (inline links)
-        $this->handleSha1Key($key);
-    }
-
-    /**
-     * Handle /umo/ file lookup - parse index.csv for signature metadata
-     */
-    protected function handleUmoKey(string $key): void
-    {
-        $path = base64_decode(substr($key, 2), true);
-        if ($path === false) {
-            $this->addFlashMessage('Неверный формат ключа', '', Message::SEVERITY_ERROR);
-            return;
-        }
-        $filePath = FLOW_PATH_WEB . 'umo/' . $path;
-        if (!file_exists($filePath) || !is_file($filePath)) {
-            $this->addFlashMessage('Файл не найден', '', Message::SEVERITY_WARNING);
-            return;
-        }
-        $this->view->assign('umoPath', '/umo/' . $path);
-        $this->view->assign('fileName', basename($path));
-
-        // Parse index.csv for signature metadata
-        $dir = dirname($filePath);
-        $indexPath = $dir . '/index.csv';
-        if (file_exists($indexPath)) {
-            $handle = fopen($indexPath, 'r');
-            $head = fgetcsv($handle, 0, ';');
-            while (($data = fgetcsv($handle, 0, ';')) !== false) {
-                $row = array_combine($head, $data);
-                if ($row && $row['файл'] === basename($path)) {
-                    $signDate = $row['дата_подписи'] ?? null;
-                    if ($signDate) {
-                        $signee = 'Мазуров Алексей Борисович';
-                        if (strtotime($signDate) > strtotime('2024-04-15')) {
-                            $signee = 'Копировский Александр Михайлович';
-                        }
-                        $this->view->assign('signature', [
-                            'signee' => $signee,
-                            'signeePosition' => 'Ректор',
-                            'signDate' => $signDate,
-                        ]);
-                    }
-                    break;
-                }
-            }
-            fclose($handle);
-        }
+        // SHA1 hash lookup (covers both UMO files and inline asset links)
+        $this->handleHashKey($key);
     }
 
     /**
@@ -139,31 +87,56 @@ class SignatureRegistryController extends ActionController
     }
 
     /**
-     * Handle asset lookup by SHA1 - check SignatureRecord for metadata
+     * Handle hash key lookup - covers both UMO files and inline asset links via SignatureRecord
      */
-    protected function handleSha1Key(string $key): void
+    protected function handleHashKey(string $key): void
     {
-        $sha1 = strtolower($key);
-        if (!preg_match('/^[a-f0-9]{40}$/', $sha1)) {
+        $hash = strtolower($key);
+        if (!preg_match('/^[a-f0-9]{40}$/', $hash)) {
             $this->addFlashMessage('Неверный формат ключа', '', Message::SEVERITY_ERROR);
             return;
         }
-        $asset = $this->assetRepository->findOneByResourceSha1($sha1);
-        if ($asset === null) {
-            $this->addFlashMessage('Файл не найден', '', Message::SEVERITY_WARNING);
-            return;
-        }
-        $this->view->assign('asset', $asset);
 
-        // Look up signature metadata from the registry
-        $record = $this->signatureRecordRepository->findOneBySignKey($sha1);
+        // Look up SignatureRecord (covers UMO files and inline asset links)
+        $record = $this->signatureRecordRepository->findOneBySignKey($hash);
+
         if ($record !== null) {
+            $sourceUrl = $record->getSourceUrl();
+
+            // UMO file: sourceUrl starts with /umo/
+            if ($sourceUrl && strpos($sourceUrl, '/umo/') === 0) {
+                $filePath = FLOW_PATH_WEB . ltrim($sourceUrl, '/');
+                if (file_exists($filePath) && is_file($filePath)) {
+                    $this->view->assign('umoPath', $sourceUrl);
+                    $this->view->assign('fileName', basename($sourceUrl));
+                } else {
+                    $this->addFlashMessage('Файл не найден', '', Message::SEVERITY_WARNING);
+                    return;
+                }
+            } else {
+                // Inline asset link: try asset lookup by SHA1
+                $asset = $this->assetRepository->findOneByResourceSha1($hash);
+                if ($asset !== null) {
+                    $this->view->assign('asset', $asset);
+                }
+            }
+
             $this->view->assign('signature', [
                 'signee' => $record->getSignee(),
                 'signeePosition' => $record->getSigneePosition(),
                 'signDate' => $record->getSignDate()->format('d.m.Y'),
             ]);
+            return;
         }
+
+        // No SignatureRecord - try direct asset lookup by SHA1
+        $asset = $this->assetRepository->findOneByResourceSha1($hash);
+        if ($asset !== null) {
+            $this->view->assign('asset', $asset);
+            return;
+        }
+
+        $this->addFlashMessage('Файл не найден', '', Message::SEVERITY_WARNING);
     }
 
     /**

@@ -32,25 +32,23 @@ export default class LinkEditorOptions extends PureComponent {
             signKey: signKey,
         };
 
-        // Persist signature metadata for SHA1 keys (inline asset links)
-        if (/^[a-f0-9]{40}$/.test(signKey)) {
-            fetch("/api/signature/store", {
-                method: "POST",
-                credentials: "same-origin",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: new URLSearchParams({
-                    signKey: signKey,
-                    signee: signatureData.signee,
-                    signeePosition: signatureData.signeePosition,
-                    signDate: signatureData.signDate.toISOString(),
-                    sourceUrl: sourceUrl,
-                }),
-            }).catch((err) =>
-                console.warn("Failed to store signature:", err),
-            );
-        }
+        // Persist signature metadata to SignatureRecord
+        fetch("/api/signature/store", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({
+                signKey: signKey,
+                signee: signatureData.signee,
+                signeePosition: signatureData.signeePosition,
+                signDate: signatureData.signDate.toISOString(),
+                sourceUrl: sourceUrl,
+            }),
+        }).catch((err) =>
+            console.warn("Failed to store signature:", err),
+        );
 
         executeCommand("signature", JSON.stringify(signatureData), false);
     };
@@ -84,11 +82,16 @@ export default class LinkEditorOptions extends PureComponent {
             return;
         }
 
-        // Check for /umo/ link
+        // Check for /umo/ link - hash the path to get a SHA1 signKey
         if (href.includes("/umo/")) {
             const umoPath = href.split("/umo/")[1];
             if (umoPath) {
-                this.doSign("u:" + btoa(umoPath), href);
+                const buffer = new TextEncoder().encode(umoPath);
+                crypto.subtle.digest("SHA-1", buffer).then((hashBuffer) => {
+                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                    const sha1 = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+                    this.doSign(sha1, href);
+                });
                 return;
             }
         }
