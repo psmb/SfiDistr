@@ -158,6 +158,7 @@ class BackendController extends AbstractModuleController
     ];
 
     protected $output = '';
+    protected $signatureRecordCache = [];
 
     function renderRows($maybeRows, $level)
     {
@@ -174,18 +175,21 @@ class BackendController extends AbstractModuleController
                 $signee = 'Копировский Александр Михайлович';
             }
 
-            // Upsert SignatureRecord for this file
-            $record = $this->signatureRecordRepository->findOneBySignKey($key);
-            if ($record === null) {
-                $record = new SignatureRecord();
-                $record->setSignKey($key);
-                $this->signatureRecordRepository->add($record);
+            // Upsert SignatureRecord for this file (skip if already processed in this run)
+            if (!isset($this->signatureRecordCache[$key])) {
+                $record = $this->signatureRecordRepository->findOneBySignKey($key);
+                if ($record === null) {
+                    $record = new SignatureRecord();
+                    $record->setSignKey($key);
+                    $this->signatureRecordRepository->add($record);
+                }
+                $record->setSignee($signee);
+                $record->setSigneePosition('Ректор');
+                $record->setSignDate(new \DateTime($signDate));
+                $record->setSourceUrl('/umo/' . $maybeRows['filepath']);
+                $this->signatureRecordRepository->update($record);
+                $this->signatureRecordCache[$key] = true;
             }
-            $record->setSignee($signee);
-            $record->setSigneePosition('Ректор');
-            $record->setSignDate(new \DateTime($signDate));
-            $record->setSourceUrl('/umo/' . $maybeRows['filepath']);
-            $this->signatureRecordRepository->update($record);
 
             $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;$signee&quot;,&quot;signeePosition&quot;:&quot;Ректор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
         } else {
