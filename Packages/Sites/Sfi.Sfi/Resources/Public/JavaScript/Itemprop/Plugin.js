@@ -2092,13 +2092,13 @@ module.exports = function (css) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _class, _class2, _temp;
+var _dec, _class, _class2, _temp2;
 
 var _react = __webpack_require__(3);
 
@@ -2126,172 +2126,249 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function makeid(length) {
-  var result = '';
-  var characters = 'abcdef0123456789';
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
-
 var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)({
-  formattingUnderCursor: _neosUiReduxStore.selectors.UI.ContentCanvas.formattingUnderCursor
-})), _dec(_class = (_temp = _class2 = function (_PureComponent) {
-  _inherits(LinkEditorOptions, _PureComponent);
+    formattingUnderCursor: _neosUiReduxStore.selectors.UI.ContentCanvas.formattingUnderCursor
+})), _dec(_class = (_temp2 = _class2 = function (_PureComponent) {
+    _inherits(LinkEditorOptions, _PureComponent);
 
-  function LinkEditorOptions() {
-    _classCallCheck(this, LinkEditorOptions);
+    function LinkEditorOptions() {
+        var _ref;
 
-    return _possibleConstructorReturn(this, (LinkEditorOptions.__proto__ || Object.getPrototypeOf(LinkEditorOptions)).apply(this, arguments));
-  }
+        var _temp, _this, _ret;
 
-  _createClass(LinkEditorOptions, [{
-    key: "render",
-    value: function render() {
-      var signature = null;
-      var signatureJson = (0, _plowJs.$get)('signature', this.props.formattingUnderCursor);
-      if (signatureJson) {
-        try {
-          signature = JSON.parse(signatureJson);
-        } catch (e) {}
-      }
+        _classCallCheck(this, LinkEditorOptions);
 
-      if (!signature) {
-        return _react2.default.createElement(
-          "div",
-          { style: {
-              flexBasis: '50%',
-              padding: 8
-            } },
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              _reactUiComponents.Button,
-              { onClick: function onClick() {
-                  (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify({
-                    signed: false,
-                    signee: 'Копировский Александр Михайлович',
-                    signeePosition: 'Ректор',
-                    signDate: new Date(),
-                    signKey: makeid(40)
-                  }), false);
-                } },
-              "\u041F\u043E\u0434\u043F\u0438\u0441\u0430\u0442\u044C"
-            )
-          )
-        );
-      }
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-      var updateSignature = function updateSignature(key) {
-        return function (value) {
-          signature[key] = value;
-          (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify(signature), false);
-        };
-      };
-      return _react2.default.createElement(
-        "div",
-        { style: {
-            maxHeight: 450,
-            overflow: 'auto',
-            display: 'flex',
-            flexWrap: 'wrap'
-          } },
-        _react2.default.createElement(
-          "div",
-          { style: {
-              flexBasis: '50%',
-              padding: 8
-            } },
-          _react2.default.createElement(
-            "label",
-            { className: { marginBottom: 4 }, htmlFor: "signee" },
-            "\u0424\u0418\u041E \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u0432\u0448\u0435\u0433\u043E \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442"
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(_reactUiComponents.TextInput, {
-              id: "signee",
-              value: signature.signee,
-              placeholder: "ФИО подписавшего документ",
-              onChange: updateSignature('signee')
-            })
-          )
-        ),
-        _react2.default.createElement(
-          "div",
-          { style: {
-              flexBasis: '50%',
-              padding: 8
-            } },
-          _react2.default.createElement(
-            "label",
-            { className: { marginBottom: 4 }, htmlFor: "signeePosition" },
-            "\u0414\u043E\u043B\u0436\u043D\u043E\u0441\u0442\u044C \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u0432\u0448\u0435\u0433\u043E"
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(_reactUiComponents.TextInput, {
-              id: "signeePosition",
-              value: signature.signeePosition,
-              placeholder: "ФИО подписавшего документ",
-              onChange: updateSignature('signeePosition')
-            })
-          )
-        ),
-        _react2.default.createElement(
-          "div",
-          { style: {
-              flexBasis: '50%',
-              padding: 8
-            } },
-          _react2.default.createElement(
-            "label",
-            { className: { marginBottom: 4 }, htmlFor: "signDate" },
-            "\u0414\u0430\u0442\u0430 \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u043D\u0438\u044F"
-          ),
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(_reactUiComponents.DateInput, {
-              id: "signDate",
-              value: signature.signDate,
-              onChange: updateSignature('signDate')
-            })
-          )
-        ),
-        _react2.default.createElement(
-          "div",
-          { style: {
-              flexBasis: '50%',
-              padding: 8,
-              marginTop: 20
-            } },
-          _react2.default.createElement(
-            "div",
-            null,
-            _react2.default.createElement(
-              _reactUiComponents.Button,
-              { onClick: function onClick() {
-                  (0, _neosUiCkeditor5Bindings.executeCommand)("removeSignature");
-                } },
-              "\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u043E\u0434\u043F\u0438\u0441\u044C"
-            )
-          )
-        )
-      );
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LinkEditorOptions.__proto__ || Object.getPrototypeOf(LinkEditorOptions)).call.apply(_ref, [this].concat(args))), _this), _this.doSign = function (signKey, sourceUrl) {
+            var signatureData = {
+                signed: false,
+                signee: "Копировский Александр Михайлович",
+                signeePosition: "Ректор",
+                signDate: new Date(),
+                signKey: signKey
+            };
+
+            // Persist signature metadata for SHA1 keys (inline asset links)
+            if (/^[a-f0-9]{40}$/.test(signKey)) {
+                fetch("/api/signature/store", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: new URLSearchParams({
+                        signKey: signKey,
+                        signee: signatureData.signee,
+                        signeePosition: signatureData.signeePosition,
+                        signDate: signatureData.signDate.toISOString(),
+                        sourceUrl: sourceUrl
+                    })
+                }).catch(function (err) {
+                    return console.warn("Failed to store signature:", err);
+                });
+            }
+
+            (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify(signatureData), false);
+        }, _this.handleSign = function () {
+            var href = (0, _plowJs.$get)("link", _this.props.formattingUnderCursor);
+            if (!href) return;
+
+            // Check for asset:// link (Neos internal format) - resolve to SHA1
+            var assetMatch = href.match(/^asset:\/\/(.+)$/);
+            if (assetMatch) {
+                fetch("/api/asset-sha1?identifier=" + assetMatch[1], {
+                    credentials: "same-origin"
+                }).then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    if (data.sha1) {
+                        _this.doSign(data.sha1, href);
+                    } else {
+                        alert("Не удалось получить SHA1 файла");
+                    }
+                }).catch(function () {
+                    return alert("Ошибка при получении SHA1 файла");
+                });
+                return;
+            }
+
+            // Check for Neos resource URL with SHA1 in path
+            var sha1Match = href.match(/\/([a-f0-9]{40})\//i);
+            if (sha1Match) {
+                _this.doSign(sha1Match[1].toLowerCase(), href);
+                return;
+            }
+
+            // Check for /umo/ link
+            if (href.includes("/umo/")) {
+                var umoPath = href.split("/umo/")[1];
+                if (umoPath) {
+                    _this.doSign("u:" + btoa(umoPath), href);
+                    return;
+                }
+            }
+
+            alert("Невозможно подписать эту ссылку");
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
-  }]);
 
-  return LinkEditorOptions;
+    _createClass(LinkEditorOptions, [{
+        key: "render",
+        value: function render() {
+            var signature = null;
+            var signatureJson = (0, _plowJs.$get)("signature", this.props.formattingUnderCursor);
+            if (signatureJson) {
+                try {
+                    signature = JSON.parse(signatureJson);
+                } catch (e) {}
+            }
+
+            if (!signature) {
+                return _react2.default.createElement(
+                    "div",
+                    {
+                        style: {
+                            flexBasis: "50%",
+                            padding: 8
+                        }
+                    },
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            _reactUiComponents.Button,
+                            { onClick: this.handleSign },
+                            "\u041F\u043E\u0434\u043F\u0438\u0441\u0430\u0442\u044C"
+                        )
+                    )
+                );
+            }
+
+            var updateSignature = function updateSignature(key) {
+                return function (value) {
+                    signature[key] = value;
+                    (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify(signature), false);
+                };
+            };
+            return _react2.default.createElement(
+                "div",
+                {
+                    style: {
+                        maxHeight: 450,
+                        overflow: "auto",
+                        display: "flex",
+                        flexWrap: "wrap"
+                    }
+                },
+                _react2.default.createElement(
+                    "div",
+                    {
+                        style: {
+                            flexBasis: "50%",
+                            padding: 8
+                        }
+                    },
+                    _react2.default.createElement(
+                        "label",
+                        { className: { marginBottom: 4 }, htmlFor: "signee" },
+                        "\u0424\u0418\u041E \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u0432\u0448\u0435\u0433\u043E \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(_reactUiComponents.TextInput, {
+                            id: "signee",
+                            value: signature.signee,
+                            placeholder: "ФИО подписавшего документ",
+                            onChange: updateSignature("signee")
+                        })
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    {
+                        style: {
+                            flexBasis: "50%",
+                            padding: 8
+                        }
+                    },
+                    _react2.default.createElement(
+                        "label",
+                        {
+                            className: { marginBottom: 4 },
+                            htmlFor: "signeePosition"
+                        },
+                        "\u0414\u043E\u043B\u0436\u043D\u043E\u0441\u0442\u044C \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u0432\u0448\u0435\u0433\u043E"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(_reactUiComponents.TextInput, {
+                            id: "signeePosition",
+                            value: signature.signeePosition,
+                            placeholder: "ФИО подписавшего документ",
+                            onChange: updateSignature("signeePosition")
+                        })
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    {
+                        style: {
+                            flexBasis: "50%",
+                            padding: 8
+                        }
+                    },
+                    _react2.default.createElement(
+                        "label",
+                        { className: { marginBottom: 4 }, htmlFor: "signDate" },
+                        "\u0414\u0430\u0442\u0430 \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u043D\u0438\u044F"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(_reactUiComponents.DateInput, {
+                            id: "signDate",
+                            value: signature.signDate,
+                            onChange: updateSignature("signDate")
+                        })
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    {
+                        style: {
+                            flexBasis: "50%",
+                            padding: 8,
+                            marginTop: 20
+                        }
+                    },
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            _reactUiComponents.Button,
+                            {
+                                onClick: function onClick() {
+                                    (0, _neosUiCkeditor5Bindings.executeCommand)("removeSignature");
+                                }
+                            },
+                            "\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u043F\u043E\u0434\u043F\u0438\u0441\u044C"
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return LinkEditorOptions;
 }(_react.PureComponent), _class2.propTypes = {
-  formattingUnderCursor: _propTypes2.default.object,
-  linkingOptions: _propTypes2.default.object
-}, _temp)) || _class);
+    formattingUnderCursor: _propTypes2.default.object,
+    linkingOptions: _propTypes2.default.object
+}, _temp2)) || _class);
 exports.default = LinkEditorOptions;
 
 /***/ })

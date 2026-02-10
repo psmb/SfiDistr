@@ -15,7 +15,7 @@ var inBackend = Boolean(document.querySelector(".neos-backend"));
 $.fn.switchstylesheet = function (options) {
     //default vals
     var defaults = {
-        seperator: "alt"
+        seperator: "alt",
     };
 
     var options = $.extend(defaults, options);
@@ -75,12 +75,12 @@ var cookie;
                     return c.substring(nameEQ.length, c.length);
             }
             return null;
-        }
+        },
     };
 })(jQuery);
 
 $(document).ready(function () {
-    $(".js-switchStylesheet").switchstylesheet({seperator: "stylesheet"});
+    $(".js-switchStylesheet").switchstylesheet({ seperator: "stylesheet" });
 });
 
 //TODO: move to plugin
@@ -90,9 +90,7 @@ $(document).ready(function () {
             var _this = $(this);
 
             _this.find(".Sections-Anchor").click(function (e) {
-                var parent = $(this)
-                    .parents(".js-sections")
-                    .eq(0);
+                var parent = $(this).parents(".js-sections").eq(0);
                 e.preventDefault();
                 var panelId = $(this).attr("href");
 
@@ -118,10 +116,7 @@ $(document).ready(function () {
 
             // Activate first tab (skip for accordion-only sections)
             if (!_this.hasClass("Sections--Accordion")) {
-                _this
-                    .find(".Sections-Anchor")
-                    .eq(0)
-                    .click();
+                _this.find(".Sections-Anchor").eq(0).click();
             }
         });
 
@@ -144,9 +139,7 @@ var headingAnchors = function () {
         var anchor = $(
             '<a class="HeadingAnchor-Link"><i class="icon-link"></i></a>'
         ).attr("href", "#" + $(this).attr("id"));
-        $(this)
-            .find("h1,h2,h3,h4,h5,h6")
-            .append(anchor);
+        $(this).find("h1,h2,h3,h4,h5,h6").append(anchor);
     });
 };
 
@@ -172,11 +165,11 @@ var onReadyPlugins = function () {
         var as = audiojs.createAll({
             imageLocation: path + "player-graphics.gif",
             swfLocation: path + "audiojs.swf",
-            css: ""
+            css: "",
         });
     });
 
-    if(!inBackend) {
+    if (!inBackend) {
         // Open external urls in new window
         $("a").each(function () {
             var a = new RegExp("/" + window.location.host + "/");
@@ -226,7 +219,7 @@ var onReadyPlugins = function () {
         prevArrow:
             '<button type="button" class="slick-prev icon-left-open">Назад</button>',
         nextArrow:
-            '<button type="button" class="slick-next icon-right-open">Вперед</button>'
+            '<button type="button" class="slick-next icon-right-open">Вперед</button>',
     });
 
     $(".js-carousel-2x").slick({
@@ -245,17 +238,17 @@ var onReadyPlugins = function () {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2
-                }
+                    slidesToScroll: 2,
+                },
             },
             {
                 breakpoint: 560,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     });
 
     $(".js-carousel-3x").slick({
@@ -274,17 +267,17 @@ var onReadyPlugins = function () {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2
-                }
+                    slidesToScroll: 2,
+                },
             },
             {
                 breakpoint: 560,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     });
 
     $(".js-carousel-4x").slick({
@@ -303,17 +296,17 @@ var onReadyPlugins = function () {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2
-                }
+                    slidesToScroll: 2,
+                },
             },
             {
                 breakpoint: 560,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     });
 
     //$(".js-stickInParent").stick_in_parent();
@@ -356,14 +349,14 @@ document.querySelectorAll(".js-ReadMore").forEach(function (node) {
     document
         .querySelectorAll(".js-stickInParent--large")
         .forEach(function (node) {
-            stickInParent(node, {minWidth: 1024});
+            stickInParent(node, { minWidth: 1024 });
         });
 })();
 (function () {
     document
         .querySelectorAll(".js-stickInParent--small")
         .forEach(function (node) {
-            stickInParent(node, {minWidth: 1});
+            stickInParent(node, { minWidth: 1 });
         });
 })();
 
@@ -397,11 +390,11 @@ function stickInParent(element, options) {
             if (
                 scrollPosition > parent.offsetTop &&
                 scrollPosition + window.innerHeight >
-                parent.offsetTop +
-                element.offsetTop +
-                element.offsetHeight
-                &&
-                scrollPosition + window.innerHeight < parent.offsetTop + parent.offsetHeight
+                    parent.offsetTop +
+                        element.offsetTop +
+                        element.offsetHeight &&
+                scrollPosition + window.innerHeight <
+                    parent.offsetTop + parent.offsetHeight
             ) {
                 setFixed();
             } else {
@@ -410,7 +403,11 @@ function stickInParent(element, options) {
         }
     }
     function setFixed() {
-        element.style = "position: fixed; " + (element.offsetHeight < window.innerHeight ? "top" : "bottom") + ": 0;" + originalStyles;
+        element.style =
+            "position: fixed; " +
+            (element.offsetHeight < window.innerHeight ? "top" : "bottom") +
+            ": 0;" +
+            originalStyles;
         element.classList.add("isFixed");
         fixer.style = "display: block; height: " + element.offsetHeight + "px";
     }
@@ -455,44 +452,132 @@ function debouncedScroll(callback) {
 
 function md5(inputString) {
     var hc = "0123456789abcdef";
-    function rh(n) {var j, s = ""; for (j = 0; j <= 3; j++) s += hc.charAt((n >> (j * 8 + 4)) & 0x0F) + hc.charAt((n >> (j * 8)) & 0x0F); return s;}
-    function ad(x, y) {var l = (x & 0xFFFF) + (y & 0xFFFF); var m = (x >> 16) + (y >> 16) + (l >> 16); return (m << 16) | (l & 0xFFFF);}
-    function rl(n, c) {return (n << c) | (n >>> (32 - c));}
-    function cm(q, a, b, x, s, t) {return ad(rl(ad(ad(a, q), ad(x, t)), s), b);}
-    function ff(a, b, c, d, x, s, t) {return cm((b & c) | ((~b) & d), a, b, x, s, t);}
-    function gg(a, b, c, d, x, s, t) {return cm((b & d) | (c & (~d)), a, b, x, s, t);}
-    function hh(a, b, c, d, x, s, t) {return cm(b ^ c ^ d, a, b, x, s, t);}
-    function ii(a, b, c, d, x, s, t) {return cm(c ^ (b | (~d)), a, b, x, s, t);}
-    function sb(x) {
-        var i; var nblk = ((x.length + 8) >> 6) + 1; var blks = new Array(nblk * 16); for (i = 0; i < nblk * 16; i++) blks[i] = 0;
-        for (i = 0; i < x.length; i++) blks[i >> 2] |= x.charCodeAt(i) << ((i % 4) * 8);
-        blks[i >> 2] |= 0x80 << ((i % 4) * 8); blks[nblk * 16 - 2] = x.length * 8; return blks;
+    function rh(n) {
+        var j,
+            s = "";
+        for (j = 0; j <= 3; j++)
+            s +=
+                hc.charAt((n >> (j * 8 + 4)) & 0x0f) +
+                hc.charAt((n >> (j * 8)) & 0x0f);
+        return s;
     }
-    var i, x = sb(inputString), a = 1732584193, b = -271733879, c = -1732584194, d = 271733878, olda, oldb, oldc, oldd;
+    function ad(x, y) {
+        var l = (x & 0xffff) + (y & 0xffff);
+        var m = (x >> 16) + (y >> 16) + (l >> 16);
+        return (m << 16) | (l & 0xffff);
+    }
+    function rl(n, c) {
+        return (n << c) | (n >>> (32 - c));
+    }
+    function cm(q, a, b, x, s, t) {
+        return ad(rl(ad(ad(a, q), ad(x, t)), s), b);
+    }
+    function ff(a, b, c, d, x, s, t) {
+        return cm((b & c) | (~b & d), a, b, x, s, t);
+    }
+    function gg(a, b, c, d, x, s, t) {
+        return cm((b & d) | (c & ~d), a, b, x, s, t);
+    }
+    function hh(a, b, c, d, x, s, t) {
+        return cm(b ^ c ^ d, a, b, x, s, t);
+    }
+    function ii(a, b, c, d, x, s, t) {
+        return cm(c ^ (b | ~d), a, b, x, s, t);
+    }
+    function sb(x) {
+        var i;
+        var nblk = ((x.length + 8) >> 6) + 1;
+        var blks = new Array(nblk * 16);
+        for (i = 0; i < nblk * 16; i++) blks[i] = 0;
+        for (i = 0; i < x.length; i++)
+            blks[i >> 2] |= x.charCodeAt(i) << ((i % 4) * 8);
+        blks[i >> 2] |= 0x80 << ((i % 4) * 8);
+        blks[nblk * 16 - 2] = x.length * 8;
+        return blks;
+    }
+    var i,
+        x = sb(inputString),
+        a = 1732584193,
+        b = -271733879,
+        c = -1732584194,
+        d = 271733878,
+        olda,
+        oldb,
+        oldc,
+        oldd;
     for (i = 0; i < x.length; i += 16) {
-        olda = a; oldb = b; oldc = c; oldd = d;
-        a = ff(a, b, c, d, x[i + 0], 7, -680876936); d = ff(d, a, b, c, x[i + 1], 12, -389564586); c = ff(c, d, a, b, x[i + 2], 17, 606105819);
-        b = ff(b, c, d, a, x[i + 3], 22, -1044525330); a = ff(a, b, c, d, x[i + 4], 7, -176418897); d = ff(d, a, b, c, x[i + 5], 12, 1200080426);
-        c = ff(c, d, a, b, x[i + 6], 17, -1473231341); b = ff(b, c, d, a, x[i + 7], 22, -45705983); a = ff(a, b, c, d, x[i + 8], 7, 1770035416);
-        d = ff(d, a, b, c, x[i + 9], 12, -1958414417); c = ff(c, d, a, b, x[i + 10], 17, -42063); b = ff(b, c, d, a, x[i + 11], 22, -1990404162);
-        a = ff(a, b, c, d, x[i + 12], 7, 1804603682); d = ff(d, a, b, c, x[i + 13], 12, -40341101); c = ff(c, d, a, b, x[i + 14], 17, -1502002290);
-        b = ff(b, c, d, a, x[i + 15], 22, 1236535329); a = gg(a, b, c, d, x[i + 1], 5, -165796510); d = gg(d, a, b, c, x[i + 6], 9, -1069501632);
-        c = gg(c, d, a, b, x[i + 11], 14, 643717713); b = gg(b, c, d, a, x[i + 0], 20, -373897302); a = gg(a, b, c, d, x[i + 5], 5, -701558691);
-        d = gg(d, a, b, c, x[i + 10], 9, 38016083); c = gg(c, d, a, b, x[i + 15], 14, -660478335); b = gg(b, c, d, a, x[i + 4], 20, -405537848);
-        a = gg(a, b, c, d, x[i + 9], 5, 568446438); d = gg(d, a, b, c, x[i + 14], 9, -1019803690); c = gg(c, d, a, b, x[i + 3], 14, -187363961);
-        b = gg(b, c, d, a, x[i + 8], 20, 1163531501); a = gg(a, b, c, d, x[i + 13], 5, -1444681467); d = gg(d, a, b, c, x[i + 2], 9, -51403784);
-        c = gg(c, d, a, b, x[i + 7], 14, 1735328473); b = gg(b, c, d, a, x[i + 12], 20, -1926607734); a = hh(a, b, c, d, x[i + 5], 4, -378558);
-        d = hh(d, a, b, c, x[i + 8], 11, -2022574463); c = hh(c, d, a, b, x[i + 11], 16, 1839030562); b = hh(b, c, d, a, x[i + 14], 23, -35309556);
-        a = hh(a, b, c, d, x[i + 1], 4, -1530992060); d = hh(d, a, b, c, x[i + 4], 11, 1272893353); c = hh(c, d, a, b, x[i + 7], 16, -155497632);
-        b = hh(b, c, d, a, x[i + 10], 23, -1094730640); a = hh(a, b, c, d, x[i + 13], 4, 681279174); d = hh(d, a, b, c, x[i + 0], 11, -358537222);
-        c = hh(c, d, a, b, x[i + 3], 16, -722521979); b = hh(b, c, d, a, x[i + 6], 23, 76029189); a = hh(a, b, c, d, x[i + 9], 4, -640364487);
-        d = hh(d, a, b, c, x[i + 12], 11, -421815835); c = hh(c, d, a, b, x[i + 15], 16, 530742520); b = hh(b, c, d, a, x[i + 2], 23, -995338651);
-        a = ii(a, b, c, d, x[i + 0], 6, -198630844); d = ii(d, a, b, c, x[i + 7], 10, 1126891415); c = ii(c, d, a, b, x[i + 14], 15, -1416354905);
-        b = ii(b, c, d, a, x[i + 5], 21, -57434055); a = ii(a, b, c, d, x[i + 12], 6, 1700485571); d = ii(d, a, b, c, x[i + 3], 10, -1894986606);
-        c = ii(c, d, a, b, x[i + 10], 15, -1051523); b = ii(b, c, d, a, x[i + 1], 21, -2054922799); a = ii(a, b, c, d, x[i + 8], 6, 1873313359);
-        d = ii(d, a, b, c, x[i + 15], 10, -30611744); c = ii(c, d, a, b, x[i + 6], 15, -1560198380); b = ii(b, c, d, a, x[i + 13], 21, 1309151649);
-        a = ii(a, b, c, d, x[i + 4], 6, -145523070); d = ii(d, a, b, c, x[i + 11], 10, -1120210379); c = ii(c, d, a, b, x[i + 2], 15, 718787259);
-        b = ii(b, c, d, a, x[i + 9], 21, -343485551); a = ad(a, olda); b = ad(b, oldb); c = ad(c, oldc); d = ad(d, oldd);
+        olda = a;
+        oldb = b;
+        oldc = c;
+        oldd = d;
+        a = ff(a, b, c, d, x[i + 0], 7, -680876936);
+        d = ff(d, a, b, c, x[i + 1], 12, -389564586);
+        c = ff(c, d, a, b, x[i + 2], 17, 606105819);
+        b = ff(b, c, d, a, x[i + 3], 22, -1044525330);
+        a = ff(a, b, c, d, x[i + 4], 7, -176418897);
+        d = ff(d, a, b, c, x[i + 5], 12, 1200080426);
+        c = ff(c, d, a, b, x[i + 6], 17, -1473231341);
+        b = ff(b, c, d, a, x[i + 7], 22, -45705983);
+        a = ff(a, b, c, d, x[i + 8], 7, 1770035416);
+        d = ff(d, a, b, c, x[i + 9], 12, -1958414417);
+        c = ff(c, d, a, b, x[i + 10], 17, -42063);
+        b = ff(b, c, d, a, x[i + 11], 22, -1990404162);
+        a = ff(a, b, c, d, x[i + 12], 7, 1804603682);
+        d = ff(d, a, b, c, x[i + 13], 12, -40341101);
+        c = ff(c, d, a, b, x[i + 14], 17, -1502002290);
+        b = ff(b, c, d, a, x[i + 15], 22, 1236535329);
+        a = gg(a, b, c, d, x[i + 1], 5, -165796510);
+        d = gg(d, a, b, c, x[i + 6], 9, -1069501632);
+        c = gg(c, d, a, b, x[i + 11], 14, 643717713);
+        b = gg(b, c, d, a, x[i + 0], 20, -373897302);
+        a = gg(a, b, c, d, x[i + 5], 5, -701558691);
+        d = gg(d, a, b, c, x[i + 10], 9, 38016083);
+        c = gg(c, d, a, b, x[i + 15], 14, -660478335);
+        b = gg(b, c, d, a, x[i + 4], 20, -405537848);
+        a = gg(a, b, c, d, x[i + 9], 5, 568446438);
+        d = gg(d, a, b, c, x[i + 14], 9, -1019803690);
+        c = gg(c, d, a, b, x[i + 3], 14, -187363961);
+        b = gg(b, c, d, a, x[i + 8], 20, 1163531501);
+        a = gg(a, b, c, d, x[i + 13], 5, -1444681467);
+        d = gg(d, a, b, c, x[i + 2], 9, -51403784);
+        c = gg(c, d, a, b, x[i + 7], 14, 1735328473);
+        b = gg(b, c, d, a, x[i + 12], 20, -1926607734);
+        a = hh(a, b, c, d, x[i + 5], 4, -378558);
+        d = hh(d, a, b, c, x[i + 8], 11, -2022574463);
+        c = hh(c, d, a, b, x[i + 11], 16, 1839030562);
+        b = hh(b, c, d, a, x[i + 14], 23, -35309556);
+        a = hh(a, b, c, d, x[i + 1], 4, -1530992060);
+        d = hh(d, a, b, c, x[i + 4], 11, 1272893353);
+        c = hh(c, d, a, b, x[i + 7], 16, -155497632);
+        b = hh(b, c, d, a, x[i + 10], 23, -1094730640);
+        a = hh(a, b, c, d, x[i + 13], 4, 681279174);
+        d = hh(d, a, b, c, x[i + 0], 11, -358537222);
+        c = hh(c, d, a, b, x[i + 3], 16, -722521979);
+        b = hh(b, c, d, a, x[i + 6], 23, 76029189);
+        a = hh(a, b, c, d, x[i + 9], 4, -640364487);
+        d = hh(d, a, b, c, x[i + 12], 11, -421815835);
+        c = hh(c, d, a, b, x[i + 15], 16, 530742520);
+        b = hh(b, c, d, a, x[i + 2], 23, -995338651);
+        a = ii(a, b, c, d, x[i + 0], 6, -198630844);
+        d = ii(d, a, b, c, x[i + 7], 10, 1126891415);
+        c = ii(c, d, a, b, x[i + 14], 15, -1416354905);
+        b = ii(b, c, d, a, x[i + 5], 21, -57434055);
+        a = ii(a, b, c, d, x[i + 12], 6, 1700485571);
+        d = ii(d, a, b, c, x[i + 3], 10, -1894986606);
+        c = ii(c, d, a, b, x[i + 10], 15, -1051523);
+        b = ii(b, c, d, a, x[i + 1], 21, -2054922799);
+        a = ii(a, b, c, d, x[i + 8], 6, 1873313359);
+        d = ii(d, a, b, c, x[i + 15], 10, -30611744);
+        c = ii(c, d, a, b, x[i + 6], 15, -1560198380);
+        b = ii(b, c, d, a, x[i + 13], 21, 1309151649);
+        a = ii(a, b, c, d, x[i + 4], 6, -145523070);
+        d = ii(d, a, b, c, x[i + 11], 10, -1120210379);
+        c = ii(c, d, a, b, x[i + 2], 15, 718787259);
+        b = ii(b, c, d, a, x[i + 9], 21, -343485551);
+        a = ad(a, olda);
+        b = ad(b, oldb);
+        c = ad(c, oldc);
+        d = ad(d, oldd);
     }
     return rh(a) + rh(b) + rh(c) + rh(d);
 }
@@ -500,19 +585,33 @@ function md5(inputString) {
 function utoa(str) {
     return window.btoa(encodeURIComponent(str));
 }
-if(!inBackend) {
+if (!inBackend) {
     document.querySelectorAll("a[data-signature]").forEach(function (node) {
-        var json = node.getAttribute('data-signature');
-        var signature = JSON.parse(json)
-        signature.url = node.getAttribute('href')
-        var title = 'Дата и время подписания: ' + signature.signDate + '\nФИО подписавшего документ: ' + signature.signee + '\nДолжность: ' + signature.signeePosition + '\nУникальный программный ключ: ' + md5(signature.signee || '')
-        node.setAttribute('title', title)
-        node.setAttribute('href', 'https://docs.sfi.ru/?data=' + utoa(JSON.stringify(signature)))
+        var json = node.getAttribute("data-signature");
+        var signature = JSON.parse(json);
+        signature.url = node.getAttribute("href");
+        var title =
+            "Дата и время подписания: " +
+            signature.signDate +
+            "\nФИО подписавшего документ: " +
+            signature.signee +
+            "\nДолжность: " +
+            signature.signeePosition +
+            "\nУникальный программный ключ: " +
+            signature.signKey;
+        node.setAttribute("title", title);
+        node.setAttribute(
+            "href",
+            "https://docs.sfi.ru/?data=" + utoa(JSON.stringify(signature))
+        );
     });
 }
 
 document.querySelectorAll(".js-Expand").forEach(function (node) {
-    node.querySelector(".js-Expand-title").addEventListener('click', function () {
-        node.classList.toggle('isExpanded')
-    })
-})
+    node.querySelector(".js-Expand-title").addEventListener(
+        "click",
+        function () {
+            node.classList.toggle("isExpanded");
+        }
+    );
+});

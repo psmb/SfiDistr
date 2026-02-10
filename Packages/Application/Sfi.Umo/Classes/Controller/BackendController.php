@@ -159,14 +159,14 @@ class BackendController extends AbstractModuleController
             $name = $maybeRows['название'];
             $this->output .= "<li style='list-style-type: initial'>$name</li>";
             $signDate = $maybeRows['дата_подписи'];
-            $key = sha1($fileUri);
+            $key = 'u:' . base64_encode($maybeRows['filepath']);
 
             $signee = 'Мазуров Алексей Борисович';
             if (strtotime($signDate) > strtotime('2024-04-15')) {
                 $signee = 'Копировский Александр Михайлович';
             }
 
-            $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;$signee&quot;,&quot;signeePosition&quot;:&quotРектор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
+            $text .= "<a href=\"$fileUri\" data-signature=\"{&quot;signed&quot;:false,&quot;signee&quot;:&quot;$signee&quot;,&quot;signeePosition&quot;:&quot;Ректор&quot;,&quot;signDate&quot;:&quot;$signDate&quot;,&quot;signKey&quot;:&quot;$key&quot;}\">$name</a><br>";
         } else {
             $firstValue = reset($maybeRows);
             if ($firstValue && isset($firstValue['сортировка'])) {

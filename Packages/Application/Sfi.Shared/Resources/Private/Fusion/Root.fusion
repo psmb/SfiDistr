@@ -17,7 +17,7 @@ prototype(Sfi.Shared:TextWithImage) {
 }
 
 prototype(Sfi.Shared:Asset) {
-	attributes.data-signature = ${Json.stringify({signee: node.properties.signee, signeePosition: node.properties.signeePosition, signDate: Date.format(node.properties.signDate, 'Y.m.d H:i:s'), signKey: node.properties.asset.resource.sha1})}
+	attributes.data-signature = ${Json.stringify({signee: node.properties.signee, signeePosition: node.properties.signeePosition, signDate: Date.format(node.properties.signDate, 'Y.m.d H:i:s'), signKey: 'n:' + node.identifier})}
 	attributes.data-signature.@if.onlySigned = ${node.properties.variant == 'Asset-Signed'}
 	attributes.class = ${node.properties.variant == 'Asset-Button' ? 'Button AssetButton' : 'ButtonInline AssetInline'}
 	attributes.href = ${'asset://' + node.properties.asset.identifier}

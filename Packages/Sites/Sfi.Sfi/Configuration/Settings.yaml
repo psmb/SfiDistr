@@ -159,6 +159,15 @@ Neos:
     defaultContext:
       Sfi: Sfi\Sfi\Helper\SfiHelper
   Flow:
+    security:
+      authentication:
+        providers:
+          "Neos.Neos:Backend":
+            requestPatterns:
+              "Sfi.Sfi:SignatureControllers":
+                pattern: ControllerObjectName
+                patternOptions:
+                  controllerObjectNamePattern: 'Sfi\Sfi\Controller\SignatureRegistryController'
     mvc:
       routes:
         "Sfi.Sfi":

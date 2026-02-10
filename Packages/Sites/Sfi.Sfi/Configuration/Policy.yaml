@@ -2,6 +2,12 @@ privilegeTargets:
   'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
     'Sfi.Sfi:Subscription':
       matcher: 'method(Sfi\Sfi\Controller\SubscriptionController->(.*)Action())'
+    'Sfi.Sfi:SignatureRegistry':
+      matcher: 'method(Sfi\Sfi\Controller\SignatureRegistryController->indexAction())'
+    'Sfi.Sfi:SignatureStore':
+      matcher: 'method(Sfi\Sfi\Controller\SignatureRegistryController->storeAction())'
+    'Sfi.Sfi:SignatureGetAssetSha1':
+      matcher: 'method(Sfi\Sfi\Controller\SignatureRegistryController->getAssetSha1Action())'
   'Neos\Neos\Security\Authorization\Privilege\NodeTreePrivilege':
     'Sfi.Sfi:SystemPages':
       matcher: >-
@@ -35,8 +41,17 @@ roles:
       -
         privilegeTarget: 'Sfi.Sfi:Subscription'
         permission: GRANT
+      -
+        privilegeTarget: 'Sfi.Sfi:SignatureRegistry'
+        permission: GRANT
   'Neos.Neos:AbstractEditor':
     privileges:
+      -
+        privilegeTarget: 'Sfi.Sfi:SignatureGetAssetSha1'
+        permission: GRANT
+      -
+        privilegeTarget: 'Sfi.Sfi:SignatureStore'
+        permission: GRANT
       -
         privilegeTarget: 'Sfi.Sfi:NotFundrisingNewsletterPages'
         permission: GRANT

@@ -1,4 +1,31 @@
 -
+  name: 'Get Asset SHA1'
+  uriPattern: 'api/asset-sha1'
+  defaults:
+    '@package':    'Sfi.Sfi'
+    '@controller': 'SignatureRegistry'
+    '@action':     'getAssetSha1'
+    '@format':     'json'
+  appendExceedingArguments: true
+-
+  name: 'Store Signature'
+  uriPattern: 'api/signature/store'
+  defaults:
+    '@package':    'Sfi.Sfi'
+    '@controller': 'SignatureRegistry'
+    '@action':     'store'
+    '@format':     'json'
+  httpMethods: ['POST']
+  appendExceedingArguments: true
+-
+  name: 'Signature Registry'
+  uriPattern: 'signature-registry'
+  defaults:
+    '@package':    'Sfi.Sfi'
+    '@controller': 'SignatureRegistry'
+    '@action':     'index'
+  appendExceedingArguments: true
+-
   name: 'Unsubscribe route'
   uriPattern: 'fundraising-unsubscribe'
   defaults:
