@@ -89,6 +89,12 @@ class SignatureCommandController extends CommandController
             $outputPath = $outputBasePath . '/' . $item['relativePath'];
             $progress = sprintf('[%d/%d]', $index + 1, $total);
 
+            // Only process PDF files
+            if (strtolower(pathinfo($item['relativePath'], PATHINFO_EXTENSION)) !== 'pdf') {
+                $skipped++;
+                continue;
+            }
+
             if (!$force && file_exists($outputPath)) {
                 $this->log($logFile, $dryRun, '%s SKIP (exists): %s', [$progress, $item['relativePath']]);
                 $skipped++;
