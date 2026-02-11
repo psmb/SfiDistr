@@ -197,7 +197,7 @@ class SignatureCommandController extends CommandController
                     continue;
                 }
                 $filename = $resource->getFilename() ?: $signKey . '.pdf';
-                $relativePath = 'assets/' . $signKey . '_' . $filename;
+                $relativePath = 'assets/' . self::safeFilename($signKey . '_' . $filename);
             }
 
             $signDate = $record->getSignDate();
@@ -258,7 +258,7 @@ class SignatureCommandController extends CommandController
             }
 
             $filename = $resource->getFilename() ?: $node->getIdentifier() . '.pdf';
-            $relativePath = 'nodes/' . $node->getIdentifier() . '_' . $filename;
+            $relativePath = 'nodes/' . self::safeFilename($node->getIdentifier() . '_' . $filename);
 
             $signDate = $node->getProperty('signDate');
 
@@ -329,6 +329,20 @@ class SignatureCommandController extends CommandController
         ];
         $score = ['%23' => '#'];
         return strtr(rawurlencode($url), array_merge($reserved, $unescaped, $score));
+    }
+
+    protected static function safeFilename(string $name, int $maxBytes = 200): string
+    {
+        if (strlen($name) <= $maxBytes) {
+            return $name;
+        }
+        $ext = pathinfo($name, PATHINFO_EXTENSION);
+        $suffix = $ext !== '' ? '.' . $ext : '';
+        $base = $ext !== '' ? pathinfo($name, PATHINFO_FILENAME) : $name;
+        $limit = $maxBytes - strlen($suffix);
+        // Truncate without breaking multi-byte characters
+        $base = mb_strcut($base, 0, $limit, 'UTF-8');
+        return $base . $suffix;
     }
 
     protected function formatBytes(int $bytes): string
