@@ -178,7 +178,7 @@ class SignatureCommandController extends CommandController
                     continue;
                 }
                 $relativePath = substr($sourceUrl, strlen('/umo/'));
-                $url = $sourceUrlPrefix . $sourceUrl;
+                $url = self::encodeURI($sourceUrlPrefix . $sourceUrl);
             } else {
                 // Inline asset link: signKey is resource SHA1
                 $asset = $this->assetRepository->findOneByResourceSha1($signKey);
@@ -306,6 +306,23 @@ class SignatureCommandController extends CommandController
         if (!$dryRun && $logFile) {
             file_put_contents($logFile, date('Y-m-d H:i:s') . ' ' . $message . "\n", FILE_APPEND);
         }
+    }
+
+    /**
+     * PHP equivalent of JavaScript's encodeURI()
+     */
+    protected static function encodeURI(string $url): string
+    {
+        $unescaped = [
+            '%2D' => '-', '%5F' => '_', '%2E' => '.', '%21' => '!',
+            '%7E' => '~', '%2A' => '*', '%27' => "'", '%28' => '(', '%29' => ')',
+        ];
+        $reserved = [
+            '%3B' => ';', '%2C' => ',', '%2F' => '/', '%3F' => '?', '%3A' => ':',
+            '%40' => '@', '%26' => '&', '%3D' => '=', '%2B' => '+', '%24' => '$',
+        ];
+        $score = ['%23' => '#'];
+        return strtr(rawurlencode($url), array_merge($reserved, $unescaped, $score));
     }
 
     protected function formatBytes(int $bytes): string
