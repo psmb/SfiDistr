@@ -206,6 +206,8 @@ class BackendController extends AbstractModuleController
                 $record->setSigneePosition('Ректор');
                 $record->setSignDate(new \DateTime($signDate));
                 $record->setSourceUrl('/umo/' . $maybeRows['filepath']);
+                $fpSegments = explode('/', $maybeRows['filepath'], 3);
+                $record->setFolder(count($fpSegments) >= 2 ? $fpSegments[1] : '');
                 $this->signatureRecordRepository->update($record);
                 $this->signatureRecordCache[$key] = true;
             }

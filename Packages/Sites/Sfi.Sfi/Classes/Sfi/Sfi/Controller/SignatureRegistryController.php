@@ -147,10 +147,11 @@ class SignatureRegistryController extends ActionController
      * @param string $signeePosition
      * @param string $signDate
      * @param string $sourceUrl
+     * @param string $folder
      * @return string
      * @Flow\SkipCsrfProtection
      */
-    public function storeAction(string $signKey, string $signee, string $signeePosition, string $signDate, string $sourceUrl = '')
+    public function storeAction(string $signKey, string $signee, string $signeePosition, string $signDate, string $sourceUrl = '', string $folder = '')
     {
         $record = $this->signatureRecordRepository->findOneBySignKey($signKey);
         if ($record === null) {
@@ -163,6 +164,7 @@ class SignatureRegistryController extends ActionController
         $record->setSigneePosition($signeePosition);
         $record->setSignDate(new \DateTime($signDate));
         $record->setSourceUrl($sourceUrl);
+        $record->setFolder($folder ?: null);
         $this->signatureRecordRepository->update($record);
 
         return json_encode(['status' => 'ok', 'signKey' => $signKey]);
