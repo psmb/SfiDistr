@@ -237,6 +237,13 @@ class SignatureCommandController extends CommandController
             if ($asset === null) {
                 continue;
             }
+            // In CLI context, the property may return a string identifier instead of an Asset object
+            if (is_string($asset)) {
+                $asset = $this->assetRepository->findByIdentifier($asset);
+                if ($asset === null) {
+                    continue;
+                }
+            }
 
             $resource = $asset->getResource();
             $url = $this->resourceManager->getPublicPersistentResourceUri($resource);
