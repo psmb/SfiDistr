@@ -1,6 +1,10 @@
 Sfi:
   Sfi:
     apiAuth: "%env:SFI_API_AUTH%"
+    watermarkService:
+      baseUrl: "https://docs.sfi.ru/"
+      sourceUrlPrefix: "https://sfi.ru"
+      outputBasePath: "/data/www-provisioned/Web/umo/signed/"
     viewHelpers:
       partialRootPath: "resource://Sfi.Sfi/Private/Partials/"
 Psmb:

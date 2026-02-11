@@ -11,6 +11,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Domain\Service\NodeSearchService;
 use Neos\Eel\FlowQuery\FlowQuery;
 
+use Neos\Flow\Core\Booting\Scripts;
 use Neos\Flow\ObjectManagement\ObjectManagerInterface;
 use Neos\Flow\ResourceManagement\ResourceManager;
 use Neos\Media\Domain\Repository\ImageRepository;
@@ -129,9 +130,27 @@ class BackendController extends AbstractModuleController
     protected $signatureRecordRepository;
 
     /**
+     * @Flow\InjectConfiguration(package="Neos.Flow")
+     * @var array
+     */
+    protected $flowSettings;
+
+    /**
      * @return void
      */
     public function indexAction() {}
+
+    /**
+     * Trigger background generation of watermarked signed PDFs
+     *
+     * @return void
+     */
+    public function generateSignedPdfsAction()
+    {
+        Scripts::executeCommandAsync('sfi.sfi:signature:generatesignedpdfs', $this->flowSettings, []);
+        $this->addFlashMessage('Генерация подписанных PDF запущена в фоновом режиме. Результаты будут сохранены в /data/www-provisioned/Web/umo/signed/');
+        $this->redirect('index');
+    }
 
     protected $collectionByType = [
         'W' => 'assetRpd',
