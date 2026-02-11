@@ -176,6 +176,7 @@ class SignatureCommandController extends CommandController
         foreach ($this->signatureRecordRepository->findAll() as $record) {
             $sourceUrl = $record->getSourceUrl();
             $signKey = $record->getSignKey();
+            $folder = $record->getFolder() ?: 'other';
 
             if ($sourceUrl && strpos($sourceUrl, '/umo/') === 0) {
                 // UMO file: check if file still exists on disk
@@ -183,7 +184,16 @@ class SignatureCommandController extends CommandController
                 if (!file_exists($filePath) || !is_file($filePath)) {
                     continue;
                 }
-                $relativePath = substr($sourceUrl, strlen('/umo/'));
+                // sourceUrl = "/umo/F/2024 48.03.01/file.pdf" → type = "F", filename = "file.pdf"
+                $parts = substr($sourceUrl, strlen('/umo/'));
+                $segments = explode('/', $parts, 3);
+                if (count($segments) === 3) {
+                    $type = $segments[0];
+                    $filename = $segments[2];
+                    $relativePath = $folder . '/' . $type . '/' . self::safeFilename($filename);
+                } else {
+                    $relativePath = $folder . '/' . self::safeFilename(basename($parts));
+                }
                 $url = self::encodeURI($sourceUrlPrefix . $sourceUrl);
             } else {
                 // Inline asset link: signKey is resource SHA1
@@ -197,7 +207,7 @@ class SignatureCommandController extends CommandController
                     continue;
                 }
                 $filename = $resource->getFilename() ?: $signKey . '.pdf';
-                $relativePath = 'assets/' . self::safeFilename($signKey . '_' . $filename);
+                $relativePath = $folder . '/' . self::safeFilename($filename);
             }
 
             $signDate = $record->getSignDate();
@@ -258,7 +268,8 @@ class SignatureCommandController extends CommandController
             }
 
             $filename = $resource->getFilename() ?: $node->getIdentifier() . '.pdf';
-            $relativePath = 'nodes/' . self::safeFilename($node->getIdentifier() . '_' . $filename);
+            $folder = self::findParentFolderName($node);
+            $relativePath = $folder . '/' . self::safeFilename($filename);
 
             $signDate = $node->getProperty('signDate');
 
@@ -329,6 +340,25 @@ class SignatureCommandController extends CommandController
         ];
         $score = ['%23' => '#'];
         return strtr(rawurlencode($url), array_merge($reserved, $unescaped, $score));
+    }
+
+    protected static function findParentFolderName(NodeInterface $node): string
+    {
+        $doc = (new FlowQuery([$node]))->parents('[instanceof Neos.Neos:Document]')->get(0);
+        if (!$doc) {
+            return 'other';
+        }
+        if ($doc->getNodeType()->isOfType('Sfi.Sfi:StudyProgram')) {
+            $id = $doc->getProperty('specialityIdInternal');
+            if ($id) {
+                return $id;
+            }
+            $id = $doc->getProperty('specialityId');
+            if ($id) {
+                return $id;
+            }
+        }
+        return $doc->getProperty('title') ?: 'other';
     }
 
     protected static function safeFilename(string $name, int $maxBytes = 200): string

@@ -15,12 +15,23 @@ import { selectors } from "@neos-project/neos-ui-redux-store";
 @connect(
     $transform({
         formattingUnderCursor: selectors.UI.ContentCanvas.formattingUnderCursor,
+        documentNode: selectors.CR.Nodes.documentNodeSelector,
     }),
 )
 export default class LinkEditorOptions extends PureComponent {
     static propTypes = {
         formattingUnderCursor: PropTypes.object,
         linkingOptions: PropTypes.object,
+        documentNode: PropTypes.object,
+    };
+
+    getFolder = () => {
+        const node = this.props.documentNode;
+        if (!node || !node.properties) return "";
+        return node.properties.specialityIdInternal
+            || node.properties.specialityId
+            || node.properties.title
+            || "";
     };
 
     doSign = (signKey, sourceUrl) => {
@@ -45,6 +56,7 @@ export default class LinkEditorOptions extends PureComponent {
                 signeePosition: signatureData.signeePosition,
                 signDate: signatureData.signDate.toISOString(),
                 sourceUrl: sourceUrl,
+                folder: this.getFolder(),
             }),
         }).catch((err) =>
             console.warn("Failed to store signature:", err),

@@ -36,6 +36,12 @@ class SignatureRecord
      */
     protected $sourceUrl;
 
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $folder;
+
     public function getSignKey(): string
     {
         return $this->signKey;
@@ -84,5 +90,15 @@ class SignatureRecord
     public function setSourceUrl(?string $sourceUrl): void
     {
         $this->sourceUrl = $sourceUrl;
+    }
+
+    public function getFolder(): ?string
+    {
+        return $this->folder;
+    }
+
+    public function setFolder(?string $folder): void
+    {
+        $this->folder = $folder;
     }
 }
