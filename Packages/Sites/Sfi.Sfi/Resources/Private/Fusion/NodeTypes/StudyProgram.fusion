@@ -35,23 +35,31 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetDescriptionsO = Neos.Neos:ContentCollection {
 		nodePath = 'assetDescriptionsO'
 	}
+	hasAssetDescO = ${q(node).children('assetDescriptionsO').children().count() > 0 || documentNode.context.inBackend}
 	assetDescriptionsOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetDescriptionsOZ'
 	}
+	hasAssetDescOZ = ${q(node).children('assetDescriptionsOZ').children().count() > 0 || documentNode.context.inBackend}
 	assetDescriptionsZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetDescriptionsZ'
 	}
+	hasAssetDescZ = ${q(node).children('assetDescriptionsZ').children().count() > 0 || documentNode.context.inBackend}
+	hasAssetDesc = ${this.hasAssetDescO || this.hasAssetDescOZ || this.hasAssetDescZ}
 
 	assetRpdTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetRpd', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetRpdO = Neos.Neos:ContentCollection {
 		nodePath = 'assetRpdO'
 	}
+	hasRpdO = ${q(node).children('assetRpdO').children().count() > 0 || documentNode.context.inBackend}
 	assetRpdOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetRpdOZ'
 	}
+	hasRpdOZ = ${q(node).children('assetRpdOZ').children().count() > 0 || documentNode.context.inBackend}
 	assetRpdZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetRpdZ'
 	}
+	hasRpdZ = ${q(node).children('assetRpdZ').children().count() > 0 || documentNode.context.inBackend}
+	hasRpd = ${this.hasRpdO || this.hasRpdOZ || this.hasRpdZ}
 
 	assetAccreditation = Sfi.Sfi:StudyProgramAsset {
 		title = ${Translation.translate('studyProgram.assetAccreditation', null, [], null, 'Sfi.Sfi')}
@@ -62,12 +70,17 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetsPlanO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanO'
 	}
+	hasPlanO = ${q(node).children('assetsPlanO').children().count() > 0 || documentNode.context.inBackend}
 	assetsPlanOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanOZ'
 	}
+	hasPlanOZ = ${q(node).children('assetsPlanOZ').children().count() > 0 || documentNode.context.inBackend}
 	assetsPlanZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPlanZ'
 	}
+	hasPlanZ = ${q(node).children('assetsPlanZ').children().count() > 0 || documentNode.context.inBackend}
+	hasPlan = ${this.hasPlanO || this.hasPlanOZ || this.hasPlanZ}
+
 	assetsAdmissionRegulations = Neos.Neos:ContentCollection {
 		nodePath = 'assetsAdmissionRegulations'
 	}
@@ -75,14 +88,18 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetsPracticeAnnotationsO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotationsO'
 	}
+	hasPracticeO = ${q(node).children('assetsPracticeAnnotationsO').children().count() > 0 || documentNode.context.inBackend}
 	assetsPracticeAnnotationsOZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotationsOZ'
 	}
+	hasPracticeOZ = ${q(node).children('assetsPracticeAnnotationsOZ').children().count() > 0 || documentNode.context.inBackend}
 	assetsPracticeAnnotationsZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsPracticeAnnotationsZ'
 	}
-	assetsMethodicalTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetsMethodical', null, [], null, 'Sfi.Sfi') + '</h3>'}
+	hasPracticeZ = ${q(node).children('assetsPracticeAnnotationsZ').children().count() > 0 || documentNode.context.inBackend}
+	hasPractice = ${this.hasPracticeO || this.hasPracticeOZ || this.hasPracticeZ}
 
+	assetsMethodicalTitle = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.assetsMethodical', null, [], null, 'Sfi.Sfi') + '</h3>'}
 	assetsMethodicalO = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodicalO'
 	}
@@ -92,7 +109,6 @@ prototype(Sfi.Sfi:StudyProgram) {
 	assetsMethodicalZ = Neos.Neos:ContentCollection {
 		nodePath = 'assetsMethodicalZ'
 	}
-
 	upbringingO = Neos.Neos:ContentCollection {
 		nodePath = 'upbringingO'
 	}
@@ -102,7 +118,6 @@ prototype(Sfi.Sfi:StudyProgram) {
 	upbringingZ = Neos.Neos:ContentCollection {
 		nodePath = 'upbringingZ'
 	}
-
 	fosO = Neos.Neos:ContentCollection {
 		nodePath = 'fosO'
 	}
@@ -112,6 +127,11 @@ prototype(Sfi.Sfi:StudyProgram) {
 	fosZ = Neos.Neos:ContentCollection {
 		nodePath = 'fosZ'
 	}
+	hasMethodicalO = ${q(node).children('assetsMethodicalO').children().count() > 0 || q(node).children('fosO').children().count() > 0 || q(node).children('upbringingO').children().count() > 0 || documentNode.context.inBackend}
+	hasMethodicalOZ = ${q(node).children('assetsMethodicalOZ').children().count() > 0 || q(node).children('fosOZ').children().count() > 0 || q(node).children('upbringingOZ').children().count() > 0 || documentNode.context.inBackend}
+	hasMethodicalZ = ${q(node).children('assetsMethodicalZ').children().count() > 0 || q(node).children('fosZ').children().count() > 0 || q(node).children('upbringingZ').children().count() > 0 || documentNode.context.inBackend}
+	hasMethodical = ${this.hasMethodicalO || this.hasMethodicalOZ || this.hasMethodicalZ}
+
 	description = Neos.Neos:ContentCollection {
 		nodePath = 'description'
 	}
@@ -126,12 +146,17 @@ prototype(Sfi.Sfi:StudyProgram) {
 	scheduleO = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleO'
 	}
+	hasScheduleO = ${q(node).children('scheduleO').children().count() > 0 || documentNode.context.inBackend}
 	scheduleOZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleOZ'
 	}
+	hasScheduleOZ = ${q(node).children('scheduleOZ').children().count() > 0 || documentNode.context.inBackend}
 	scheduleZ = Neos.Neos:ContentCollection {
 		nodePath = 'scheduleZ'
 	}
+	hasScheduleZ = ${q(node).children('scheduleZ').children().count() > 0 || documentNode.context.inBackend}
+	hasSchedule = ${this.hasScheduleO || this.hasScheduleOZ || this.hasScheduleZ}
+
 	documentSubmission = Neos.Neos:ContentCollection {
 		nodePath = 'documentSubmission'
 		@process.title = ${'<h3 class="H3 marginTop-double marginBottom-single">' + Translation.translate('studyProgram.documentsList', null, [], null, 'Sfi.Sfi') + '</h3>' + value}

@@ -150,83 +150,131 @@
 
 		<div>
 			<div>
-				{assetDescriptionsTitle -> f:format.raw()}
-				<div class="Sections js-sections Sections--Accordion">
-					<a href="#tab-l-assetDescO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-assetDescO">{assetDescriptionsO -> f:format.raw()}</div>
-					<a href="#tab-l-assetDescOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-assetDescOZ">{assetDescriptionsOZ -> f:format.raw()}</div>
-					<a href="#tab-l-assetDescZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-assetDescZ">{assetDescriptionsZ -> f:format.raw()}</div>
-				</div>
+				<f:if condition="{hasAssetDesc}">
+					{assetDescriptionsTitle -> f:format.raw()}
+					<div class="Sections js-sections Sections--Accordion">
+						<f:if condition="{hasAssetDescO}">
+							<a href="#tab-l-assetDescO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-assetDescO">{assetDescriptionsO -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasAssetDescOZ}">
+							<a href="#tab-l-assetDescOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-assetDescOZ">{assetDescriptionsOZ -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasAssetDescZ}">
+							<a href="#tab-l-assetDescZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-assetDescZ">{assetDescriptionsZ -> f:format.raw()}</div>
+						</f:if>
+					</div>
+				</f:if>
 			</div>
 			<div>
 				{subjects -> f:format.raw()}
 
-				{assetRpdTitle -> f:format.raw()}
-				<div class="Sections js-sections Sections--Accordion">
-					<a href="#tab-l-rpdO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-rpdO">{assetRpdO -> f:format.raw()}</div>
-					<a href="#tab-l-rpdOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-rpdOZ">{assetRpdOZ -> f:format.raw()}</div>
-					<a href="#tab-l-rpdZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-rpdZ">{assetRpdZ -> f:format.raw()}</div>
-				</div>
+				<f:if condition="{hasRpd}">
+					{assetRpdTitle -> f:format.raw()}
+					<div class="Sections js-sections Sections--Accordion">
+						<f:if condition="{hasRpdO}">
+							<a href="#tab-l-rpdO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-rpdO">{assetRpdO -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasRpdOZ}">
+							<a href="#tab-l-rpdOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-rpdOZ">{assetRpdOZ -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasRpdZ}">
+							<a href="#tab-l-rpdZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-rpdZ">{assetRpdZ -> f:format.raw()}</div>
+						</f:if>
+					</div>
+				</f:if>
 
-				{assetsPracticeAnnotationsTitle -> f:format.raw()}
-				<div class="Sections js-sections Sections--Accordion">
-					<a href="#tab-l-practiceO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-practiceO">{assetsPracticeAnnotationsO -> f:format.raw()}</div>
-					<a href="#tab-l-practiceOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-practiceOZ">{assetsPracticeAnnotationsOZ -> f:format.raw()}</div>
-					<a href="#tab-l-practiceZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-practiceZ">{assetsPracticeAnnotationsZ -> f:format.raw()}</div>
-				</div>
+				<f:if condition="{hasPractice}">
+					{assetsPracticeAnnotationsTitle -> f:format.raw()}
+					<div class="Sections js-sections Sections--Accordion">
+						<f:if condition="{hasPracticeO}">
+							<a href="#tab-l-practiceO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-practiceO">{assetsPracticeAnnotationsO -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasPracticeOZ}">
+							<a href="#tab-l-practiceOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-practiceOZ">{assetsPracticeAnnotationsOZ -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasPracticeZ}">
+							<a href="#tab-l-practiceZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-practiceZ">{assetsPracticeAnnotationsZ -> f:format.raw()}</div>
+						</f:if>
+					</div>
+				</f:if>
 
-				{assetsMethodicalTitle -> f:format.raw()}
-				<div class="Sections js-sections Sections--Accordion">
-					<a href="#tab-l-methodicalO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-methodicalO">
-						{assetsMethodicalO -> f:format.raw()}
-						{fosO -> f:format.raw()}
-						{upbringingO -> f:format.raw()}
+				<f:if condition="{hasMethodical}">
+					{assetsMethodicalTitle -> f:format.raw()}
+					<div class="Sections js-sections Sections--Accordion">
+						<f:if condition="{hasMethodicalO}">
+							<a href="#tab-l-methodicalO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-methodicalO">
+								{assetsMethodicalO -> f:format.raw()}
+								{fosO -> f:format.raw()}
+								{upbringingO -> f:format.raw()}
+							</div>
+						</f:if>
+						<f:if condition="{hasMethodicalOZ}">
+							<a href="#tab-l-methodicalOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-methodicalOZ">
+								{assetsMethodicalOZ -> f:format.raw()}
+								{fosOZ -> f:format.raw()}
+								{upbringingOZ -> f:format.raw()}
+							</div>
+						</f:if>
+						<f:if condition="{hasMethodicalZ}">
+							<a href="#tab-l-methodicalZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-methodicalZ">
+								{assetsMethodicalZ -> f:format.raw()}
+								{fosZ -> f:format.raw()}
+								{upbringingZ -> f:format.raw()}
+							</div>
+						</f:if>
 					</div>
-					<a href="#tab-l-methodicalOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-methodicalOZ">
-						{assetsMethodicalOZ -> f:format.raw()}
-						{fosOZ -> f:format.raw()}
-						{upbringingOZ -> f:format.raw()}
-					</div>
-					<a href="#tab-l-methodicalZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-methodicalZ">
-						{assetsMethodicalZ -> f:format.raw()}
-						{fosZ -> f:format.raw()}
-						{upbringingZ -> f:format.raw()}
-					</div>
-				</div>
+				</f:if>
 			</div>
 			<div>
 				{schedule -> f:format.raw()}
 
-				{scheduleTitle -> f:format.raw()}
-				<div class="Sections js-sections Sections--Accordion">
-					<a href="#tab-l-schedFormO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-schedFormO">{scheduleO -> f:format.raw()}</div>
-					<a href="#tab-l-schedFormOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-schedFormOZ">{scheduleOZ -> f:format.raw()}</div>
-					<a href="#tab-l-schedFormZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-schedFormZ">{scheduleZ -> f:format.raw()}</div>
-				</div>
+				<f:if condition="{hasSchedule}">
+					{scheduleTitle -> f:format.raw()}
+					<div class="Sections js-sections Sections--Accordion">
+						<f:if condition="{hasScheduleO}">
+							<a href="#tab-l-schedFormO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-schedFormO">{scheduleO -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasScheduleOZ}">
+							<a href="#tab-l-schedFormOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-schedFormOZ">{scheduleOZ -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasScheduleZ}">
+							<a href="#tab-l-schedFormZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-schedFormZ">{scheduleZ -> f:format.raw()}</div>
+						</f:if>
+					</div>
+				</f:if>
 
-				{assetsPlanTitle -> f:format.raw()}
-				<div class="Sections js-sections Sections--Accordion">
-					<a href="#tab-l-planO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-planO">{assetsPlanO -> f:format.raw()}</div>
-					<a href="#tab-l-planOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-planOZ">{assetsPlanOZ -> f:format.raw()}</div>
-					<a href="#tab-l-planZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
-					<div class="Sections-Panel" id="tab-l-planZ">{assetsPlanZ -> f:format.raw()}</div>
-				</div>
+				<f:if condition="{hasPlan}">
+					{assetsPlanTitle -> f:format.raw()}
+					<div class="Sections js-sections Sections--Accordion">
+						<f:if condition="{hasPlanO}">
+							<a href="#tab-l-planO" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-planO">{assetsPlanO -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasPlanOZ}">
+							<a href="#tab-l-planOZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.ochnoZaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-planOZ">{assetsPlanOZ -> f:format.raw()}</div>
+						</f:if>
+						<f:if condition="{hasPlanZ}">
+							<a href="#tab-l-planZ" class="Sections-Anchor Sections-AccordionTitle"><f:translate id="studyProgram.zaochnaja" package="Sfi.Sfi"/></a>
+							<div class="Sections-Panel" id="tab-l-planZ">{assetsPlanZ -> f:format.raw()}</div>
+						</f:if>
+					</div>
+				</f:if>
 			</div>
 		</div>
 
