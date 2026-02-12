@@ -2127,7 +2127,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)({
-    formattingUnderCursor: _neosUiReduxStore.selectors.UI.ContentCanvas.formattingUnderCursor
+    formattingUnderCursor: _neosUiReduxStore.selectors.UI.ContentCanvas.formattingUnderCursor,
+    documentNode: _neosUiReduxStore.selectors.CR.Nodes.documentNodeSelector
 })), _dec(_class = (_temp2 = _class2 = function (_PureComponent) {
     _inherits(LinkEditorOptions, _PureComponent);
 
@@ -2142,7 +2143,11 @@ var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LinkEditorOptions.__proto__ || Object.getPrototypeOf(LinkEditorOptions)).call.apply(_ref, [this].concat(args))), _this), _this.doSign = function (signKey, sourceUrl) {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LinkEditorOptions.__proto__ || Object.getPrototypeOf(LinkEditorOptions)).call.apply(_ref, [this].concat(args))), _this), _this.getFolder = function () {
+            var node = _this.props.documentNode;
+            if (!node || !node.properties) return "";
+            return node.properties.specialityIdInternal || node.properties.specialityId || node.properties.title || "";
+        }, _this.doSign = function (signKey, sourceUrl) {
             var signatureData = {
                 signed: false,
                 signee: "Копировский Александр Михайлович",
@@ -2163,7 +2168,8 @@ var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)
                     signee: signatureData.signee,
                     signeePosition: signatureData.signeePosition,
                     signDate: signatureData.signDate.toISOString(),
-                    sourceUrl: sourceUrl
+                    sourceUrl: sourceUrl,
+                    folder: _this.getFolder()
                 })
             }).catch(function (err) {
                 return console.warn("Failed to store signature:", err);
@@ -2256,6 +2262,25 @@ var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)
                 return function (value) {
                     signature[key] = value;
                     (0, _neosUiCkeditor5Bindings.executeCommand)("signature", JSON.stringify(signature), false);
+
+                    if (signature.signKey) {
+                        var signDate = signature.signDate instanceof Date ? signature.signDate.toISOString() : signature.signDate;
+                        fetch("/api/signature/store", {
+                            method: "POST",
+                            credentials: "same-origin",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: new URLSearchParams({
+                                signKey: signature.signKey,
+                                signee: signature.signee || "",
+                                signeePosition: signature.signeePosition || "",
+                                signDate: signDate || ""
+                            })
+                        }).catch(function (err) {
+                            return console.warn("Failed to update signature:", err);
+                        });
+                    }
                 };
             };
             return _react2.default.createElement(
@@ -2372,7 +2397,8 @@ var LinkEditorOptions = (_dec = (0, _reactRedux.connect)((0, _plowJs.$transform)
     return LinkEditorOptions;
 }(_react.PureComponent), _class2.propTypes = {
     formattingUnderCursor: _propTypes2.default.object,
-    linkingOptions: _propTypes2.default.object
+    linkingOptions: _propTypes2.default.object,
+    documentNode: _propTypes2.default.object
 }, _temp2)) || _class);
 exports.default = LinkEditorOptions;
 

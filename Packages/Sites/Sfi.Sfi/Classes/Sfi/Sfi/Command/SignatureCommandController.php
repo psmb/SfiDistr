@@ -182,6 +182,7 @@ class SignatureCommandController extends CommandController
                 // UMO file: check if file still exists on disk
                 $filePath = FLOW_PATH_WEB . ltrim($sourceUrl, '/');
                 if (!file_exists($filePath) || !is_file($filePath)) {
+                    $this->outputLine('  MISSING on disk: %s', [$filePath]);
                     continue;
                 }
                 // sourceUrl = "/umo/F/2024 48.03.01/file.pdf" → type = "F", filename = "file.pdf"

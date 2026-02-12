@@ -163,8 +163,12 @@ class SignatureRegistryController extends ActionController
         $record->setSignee($signee);
         $record->setSigneePosition($signeePosition);
         $record->setSignDate(new \DateTime($signDate));
-        $record->setSourceUrl($sourceUrl);
-        $record->setFolder($folder ?: null);
+        if ($sourceUrl !== '') {
+            $record->setSourceUrl($sourceUrl);
+        }
+        if ($folder !== '') {
+            $record->setFolder($folder);
+        }
         $this->signatureRecordRepository->update($record);
 
         return json_encode(['status' => 'ok', 'signKey' => $signKey]);

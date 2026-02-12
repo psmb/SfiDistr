@@ -141,6 +141,27 @@ export default class LinkEditorOptions extends PureComponent {
         const updateSignature = (key) => (value) => {
             signature[key] = value;
             executeCommand("signature", JSON.stringify(signature), false);
+
+            if (signature.signKey) {
+                const signDate = signature.signDate instanceof Date
+                    ? signature.signDate.toISOString()
+                    : signature.signDate;
+                fetch("/api/signature/store", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams({
+                        signKey: signature.signKey,
+                        signee: signature.signee || "",
+                        signeePosition: signature.signeePosition || "",
+                        signDate: signDate || "",
+                    }),
+                }).catch((err) =>
+                    console.warn("Failed to update signature:", err),
+                );
+            }
         };
         return (
             <div
