@@ -5,7 +5,7 @@ prototype(Sfi.Sfi:CookieBanner) < prototype(Neos.Fusion:Component) {
         top: 12px;
         right: 8px;
         }
-        .CookieBanner {
+        .Cook {
         z-index: 1000;
         inset-block-start: auto;
         inset-block-end: 20px;
@@ -18,7 +18,7 @@ prototype(Sfi.Sfi:CookieBanner) < prototype(Neos.Fusion:Component) {
     </style>' + value}
 
     renderer.@process.script = ${value + '<script>
-            const dialog = document.querySelector(".js-cookieBanner");
+            const dialog = document.querySelector(".js-cook");
             const closeDialogBtns = document.querySelectorAll(".js-closeDialog");
 
             const closeDialog = (e) => {
@@ -45,7 +45,7 @@ prototype(Sfi.Sfi:CookieBanner) < prototype(Neos.Fusion:Component) {
     
 
     renderer = afx`
-        <dialog class="CookieBanner js-cookieBanner" aria-labelledby="CookieBanner" aria-describedby="CookieBanner">
+        <dialog class="Cook js-cook" aria-labelledby="Cookie consent" aria-describedby="Cookie consent">
             <button class="cross js-closeDialog" tabindex="-1">
                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L16 16" stroke="black"/>
