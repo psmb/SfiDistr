@@ -46,7 +46,7 @@ prototype(Sfi.News:AnnouncementsList) < prototype(Flowpack.Listable:List) {
 	prototype(Flowpack.Listable:Listable) {
 		sortProperty>
 		sortOrder>
-		limit = 6
+		limit = 12
 		paginationEnabled = ${false}
 		collection = ${collection}
 		collection.@process.sort>
