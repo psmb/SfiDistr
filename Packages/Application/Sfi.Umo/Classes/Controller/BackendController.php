@@ -229,7 +229,7 @@ class BackendController extends AbstractModuleController
 
     protected function getInternalSignedPdfsLogPath(): string
     {
-        return $this->getInternalSignedPdfsBasePath() . '/generation.log';
+        return rtrim(FLOW_PATH_DATA, '/') . '/Logs/InternalSignedPdfs/generation.log';
     }
 
     protected function appendInternalSignedPdfsLog(string $message): bool
@@ -239,8 +239,8 @@ class BackendController extends AbstractModuleController
             return true;
         }
 
-        $basePath = $this->getInternalSignedPdfsBasePath();
-        if (!is_dir($basePath) && !@mkdir($basePath, 0775, true) && !is_dir($basePath)) {
+        $logDirectory = dirname($this->getInternalSignedPdfsLogPath());
+        if (!is_dir($logDirectory) && !@mkdir($logDirectory, 0775, true) && !is_dir($logDirectory)) {
             return false;
         }
 

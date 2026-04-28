@@ -181,10 +181,10 @@ class SignatureCommandController extends CommandController
     public function generateInternalSignedPdfsCommand(bool $force = false, bool $dryRun = false): void
     {
         $internalBasePath = rtrim(FLOW_PATH_WEB, '/') . '/umo/internal';
-        $logFile = $internalBasePath . '/generation.log';
+        $logFile = $this->getInternalSignedPdfsLogPath();
 
         if (!is_dir($internalBasePath)) {
-            $this->outputLine('Internal UMO folder does not exist: %s', [$internalBasePath]);
+            $this->log($logFile, $dryRun, 'Internal UMO folder does not exist: %s', [$internalBasePath]);
             return;
         }
 
@@ -484,6 +484,11 @@ class SignatureCommandController extends CommandController
             'signee' => trim($row['имя_подписавшего']),
             'signeePosition' => trim($row['должность_подписавшего']),
         ];
+    }
+
+    protected function getInternalSignedPdfsLogPath(): string
+    {
+        return rtrim(FLOW_PATH_DATA, '/') . '/Logs/InternalSignedPdfs/generation.log';
     }
 
     /**
