@@ -406,7 +406,21 @@ class SignatureCommandController extends CommandController
 
         $head = fgetcsv($handle, 0, ';');
         $data = fgetcsv($handle, 0, ';');
+        $hasExtraDataRow = false;
+        while (($extraData = fgetcsv($handle, 0, ';')) !== false) {
+            $nonEmptyValues = array_filter($extraData, function ($value) {
+                return trim((string)$value) !== '';
+            });
+            if (count($nonEmptyValues) > 0) {
+                $hasExtraDataRow = true;
+                break;
+            }
+        }
         fclose($handle);
+
+        if ($hasExtraDataRow) {
+            return null;
+        }
 
         if (!is_array($head) || !is_array($data) || count($head) !== count($data)) {
             return null;
