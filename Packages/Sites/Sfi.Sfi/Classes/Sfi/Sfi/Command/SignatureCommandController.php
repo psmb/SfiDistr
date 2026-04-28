@@ -9,6 +9,7 @@ use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Media\Domain\Repository\AssetRepository;
 use Neos\Eel\FlowQuery\FlowQuery;
 use Sfi\Sfi\Domain\Repository\SignatureRecordRepository;
+use Sfi\Sfi\Domain\Model\SignatureRecord;
 
 /**
  * @Flow\Scope("singleton")
@@ -167,6 +168,104 @@ class SignatureCommandController extends CommandController
     }
 
     /**
+     * Generate signed PDFs for files stored in Web/umo/internal/* folders
+     *
+     * Each processed folder is expected to contain index.csv with a single
+     * metadata row and one or more PDFs. Signed copies are written to that
+     * folder's signed/ subdirectory. Nested folders are scanned recursively.
+     *
+     * @param bool $force Force regeneration of existing files
+     * @param bool $dryRun Show what would be done without generating files
+     * @return void
+     */
+    public function generateInternalSignedPdfsCommand(bool $force = false, bool $dryRun = false): void
+    {
+        $internalBasePath = rtrim(FLOW_PATH_WEB, '/') . '/umo/internal';
+        $logFile = $internalBasePath . '/generation.log';
+
+        if (!is_dir($internalBasePath)) {
+            $this->outputLine('Internal UMO folder does not exist: %s', [$internalBasePath]);
+            return;
+        }
+
+        $items = $this->collectInternalSignatureItems($internalBasePath, $logFile, $dryRun);
+        $total = count($items);
+        $this->log($logFile, $dryRun, 'Found %d internal PDF files to process.', [$total]);
+
+        if ($total === 0) {
+            $this->log($logFile, $dryRun, 'Nothing to do.');
+            return;
+        }
+
+        $processed = 0;
+        $skipped = 0;
+        $errors = 0;
+
+        foreach ($items as $index => $item) {
+            $outputPath = $item['outputPath'];
+            $displayPath = $item['displayPath'];
+            $progress = sprintf('[%d/%d]', $index + 1, $total);
+
+            if (!$force && file_exists($outputPath)) {
+                $this->log($logFile, $dryRun, '%s SKIP (exists): %s', [$progress, $displayPath]);
+                $skipped++;
+                continue;
+            }
+
+            if ($dryRun) {
+                $this->log($logFile, $dryRun, '%s DRY-RUN: would generate %s', [$progress, $displayPath]);
+                $processed++;
+                continue;
+            }
+
+            try {
+                $pdfContent = $this->generateSignedPdfContent($item, 120);
+            } catch (\Exception $e) {
+                $this->log($logFile, $dryRun, '%s ERROR: %s -- %s', [$progress, $displayPath, $e->getMessage()]);
+                $errors++;
+                continue;
+            }
+
+            if (strlen($pdfContent) < 5 || substr($pdfContent, 0, 5) !== '%PDF-') {
+                $this->log($logFile, $dryRun, '%s ERROR: %s -- Response is not a valid PDF (%d bytes)', [$progress, $displayPath, strlen($pdfContent)]);
+                $errors++;
+                continue;
+            }
+
+            $outputDir = dirname($outputPath);
+            if (!is_dir($outputDir)) {
+                if (!mkdir($outputDir, 0775, true) && !is_dir($outputDir)) {
+                    $this->log($logFile, $dryRun, '%s ERROR: %s -- Could not create directory: %s', [$progress, $displayPath, $outputDir]);
+                    $errors++;
+                    continue;
+                }
+            }
+
+            $bytesWritten = file_put_contents($outputPath, $pdfContent);
+            if ($bytesWritten === false) {
+                $this->log($logFile, $dryRun, '%s ERROR: %s -- Failed to write file', [$progress, $displayPath]);
+                $errors++;
+                continue;
+            }
+
+            $this->log($logFile, $dryRun, '%s OK: %s (%s)', [$progress, $displayPath, $this->formatBytes($bytesWritten)]);
+            $processed++;
+        }
+
+        $this->log($logFile, $dryRun, '');
+        $this->log($logFile, $dryRun, '--- Summary ---');
+        $this->log($logFile, $dryRun, 'Total:     %d', [$total]);
+        $this->log($logFile, $dryRun, 'Generated: %d', [$processed]);
+        $this->log($logFile, $dryRun, 'Skipped:   %d', [$skipped]);
+        $this->log($logFile, $dryRun, 'Errors:    %d', [$errors]);
+
+        if ($dryRun) {
+            $this->log($logFile, $dryRun, '');
+            $this->log($logFile, $dryRun, 'This was a dry run. Remove --dry-run to actually generate files.');
+        }
+    }
+
+    /**
      * Collect items from SignatureRecords
      */
     protected function collectFromSignatureRecords(array &$items): void
@@ -179,6 +278,9 @@ class SignatureCommandController extends CommandController
             $folder = $record->getFolder() ?: 'other';
 
             if ($sourceUrl && strpos($sourceUrl, '/umo/') === 0) {
+                if (strpos($sourceUrl, '/umo/internal/') === 0) {
+                    continue;
+                }
                 // UMO file: check if file still exists on disk
                 $filePath = FLOW_PATH_WEB . ltrim($sourceUrl, '/');
                 if (!file_exists($filePath) || !is_file($filePath)) {
@@ -221,6 +323,165 @@ class SignatureCommandController extends CommandController
                 'signKey' => $signKey,
             ];
         }
+    }
+
+    /**
+     * Collect internal PDFs and upsert SignatureRecords for them
+     */
+    protected function collectInternalSignatureItems(string $internalBasePath, string $logFile, bool $dryRun): array
+    {
+        $items = [];
+        $sourceUrlPrefix = rtrim($this->settings['sourceUrlPrefix'], '/');
+        $internalBasePath = rtrim($internalBasePath, '/');
+        $directoriesToScan = [$internalBasePath];
+
+        while ($directoriesToScan) {
+            $folderPath = array_shift($directoriesToScan);
+
+            foreach (new \DirectoryIterator($folderPath) as $entry) {
+                if ($entry->isDot() || !$entry->isDir() || $entry->getFilename() === 'signed') {
+                    continue;
+                }
+
+                $directoriesToScan[] = $entry->getPathname();
+            }
+
+            if ($folderPath === $internalBasePath) {
+                continue;
+            }
+
+            $relativeFolderPath = $this->getInternalRelativePath($internalBasePath, $folderPath);
+            $indexPath = $folderPath . '/index.csv';
+
+            if (!file_exists($indexPath) || !is_file($indexPath)) {
+                if ($this->hasDirectPdfFiles($folderPath)) {
+                    $this->log($logFile, $dryRun, 'SKIP (missing index.csv): internal/%s', [$relativeFolderPath]);
+                }
+                continue;
+            }
+
+            $metadata = $this->readInternalIndexCsv($indexPath);
+            if ($metadata === null) {
+                $this->log($logFile, $dryRun, 'SKIP (invalid index.csv): internal/%s', [$relativeFolderPath]);
+                continue;
+            }
+
+            foreach (new \DirectoryIterator($folderPath) as $file) {
+                if ($file->isDot() || !$file->isFile() || strtolower($file->getExtension()) !== 'pdf') {
+                    continue;
+                }
+
+                $filename = $file->getFilename();
+                $relativePath = 'internal/' . $relativeFolderPath . '/' . $filename;
+                $sourceUrl = '/umo/' . $relativePath;
+                $signKey = sha1($relativePath);
+                $signedDirectory = $folderPath . '/signed';
+                $outputPath = $signedDirectory . '/' . $filename;
+
+                if (!$dryRun) {
+                    $record = $this->signatureRecordRepository->findOneBySignKey($signKey);
+                    if ($record === null) {
+                        $record = new SignatureRecord();
+                        $record->setSignKey($signKey);
+                        $this->signatureRecordRepository->add($record);
+                    }
+
+                    $record->setSignee($metadata['signee']);
+                    $record->setSigneePosition($metadata['signeePosition']);
+                    $record->setSignDate($metadata['signDate']);
+                    $record->setSourceUrl($sourceUrl);
+                    $record->setFolder('internal/' . $relativeFolderPath);
+                    $this->signatureRecordRepository->update($record);
+                }
+
+                $items[] = [
+                    'relativePath' => $relativePath,
+                    'displayPath' => $relativePath . ' -> internal/' . $relativeFolderPath . '/signed/' . $filename,
+                    'outputPath' => $outputPath,
+                    'url' => self::encodeURI($sourceUrlPrefix . $sourceUrl),
+                    'signDate' => $metadata['signDate']->format('d.m.Y'),
+                    'signee' => $metadata['signee'],
+                    'signeePosition' => $metadata['signeePosition'],
+                    'signKey' => $signKey,
+                ];
+            }
+        }
+
+        return $items;
+    }
+
+    protected function getInternalRelativePath(string $internalBasePath, string $folderPath): string
+    {
+        $relativePath = substr($folderPath, strlen(rtrim($internalBasePath, '/') . '/'));
+        return str_replace('\\', '/', $relativePath);
+    }
+
+    protected function hasDirectPdfFiles(string $folderPath): bool
+    {
+        foreach (new \DirectoryIterator($folderPath) as $file) {
+            if (!$file->isDot() && $file->isFile() && strtolower($file->getExtension()) === 'pdf') {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected function readInternalIndexCsv(string $indexPath): ?array
+    {
+        $handle = fopen($indexPath, 'r');
+        if ($handle === false) {
+            return null;
+        }
+
+        $head = fgetcsv($handle, 0, ';');
+        $data = fgetcsv($handle, 0, ';');
+        $hasExtraDataRow = false;
+        while (($extraData = fgetcsv($handle, 0, ';')) !== false) {
+            $nonEmptyValues = array_filter($extraData, function ($value) {
+                return trim((string)$value) !== '';
+            });
+            if (count($nonEmptyValues) > 0) {
+                $hasExtraDataRow = true;
+                break;
+            }
+        }
+        fclose($handle);
+
+        if ($hasExtraDataRow) {
+            return null;
+        }
+
+        if (!is_array($head) || !is_array($data) || count($head) !== count($data)) {
+            return null;
+        }
+
+        $head[0] = preg_replace('/^\xEF\xBB\xBF/', '', $head[0]);
+        $row = array_combine($head, $data);
+        if ($row === false) {
+            return null;
+        }
+
+        foreach (['дата_подписи', 'имя_подписавшего', 'должность_подписавшего'] as $requiredColumn) {
+            if (!isset($row[$requiredColumn]) || trim($row[$requiredColumn]) === '') {
+                return null;
+            }
+        }
+
+        $signDate = \DateTime::createFromFormat('!d.m.Y', trim($row['дата_подписи']));
+        $dateErrors = \DateTime::getLastErrors();
+        if (
+            $signDate === false ||
+            ($dateErrors !== false && ($dateErrors['warning_count'] > 0 || $dateErrors['error_count'] > 0))
+        ) {
+            return null;
+        }
+
+        return [
+            'signDate' => $signDate,
+            'signee' => trim($row['имя_подписавшего']),
+            'signeePosition' => trim($row['должность_подписавшего']),
+        ];
     }
 
     /**
@@ -312,6 +573,22 @@ class SignatureCommandController extends CommandController
         }
 
         return $result;
+    }
+
+    protected function generateSignedPdfContent(array $item, int $timeout): string
+    {
+        $jsonPayload = json_encode([
+            'url' => $item['url'],
+            'signDate' => $item['signDate'],
+            'signee' => $item['signee'],
+            'signeePosition' => $item['signeePosition'],
+            'signKey' => $item['signKey'],
+        ], JSON_UNESCAPED_UNICODE);
+
+        $encodedData = base64_encode(rawurlencode($jsonPayload));
+        $serviceUrl = rtrim($this->settings['baseUrl'], '/') . '/?data=' . $encodedData;
+
+        return $this->fetchUrl($serviceUrl, $timeout);
     }
 
     /**
