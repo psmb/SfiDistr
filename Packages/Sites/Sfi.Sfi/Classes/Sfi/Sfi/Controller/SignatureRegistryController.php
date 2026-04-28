@@ -105,10 +105,15 @@ class SignatureRegistryController extends ActionController
 
             // UMO file: sourceUrl starts with /umo/
             if ($sourceUrl && strpos($sourceUrl, '/umo/') === 0) {
-                $filePath = FLOW_PATH_WEB . ltrim($sourceUrl, '/');
+                $downloadUrl = $sourceUrl;
+                if (strpos($sourceUrl, '/umo/internal/') === 0) {
+                    $downloadUrl = $this->getInternalSignedUrl($sourceUrl);
+                }
+
+                $filePath = FLOW_PATH_WEB . ltrim($downloadUrl, '/');
                 if (file_exists($filePath) && is_file($filePath)) {
-                    $this->view->assign('umoPath', $sourceUrl);
-                    $this->view->assign('fileName', basename($sourceUrl));
+                    $this->view->assign('umoPath', $downloadUrl);
+                    $this->view->assign('fileName', basename($downloadUrl));
                 } else {
                     $this->addFlashMessage('Файл не найден', '', Message::SEVERITY_WARNING);
                     return;
@@ -137,6 +142,11 @@ class SignatureRegistryController extends ActionController
         }
 
         $this->addFlashMessage('Файл не найден', '', Message::SEVERITY_WARNING);
+    }
+
+    protected function getInternalSignedUrl(string $sourceUrl): string
+    {
+        return rtrim(dirname($sourceUrl), '/') . '/signed/' . basename($sourceUrl);
     }
 
     /**

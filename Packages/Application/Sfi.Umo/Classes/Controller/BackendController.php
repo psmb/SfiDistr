@@ -152,6 +152,18 @@ class BackendController extends AbstractModuleController
         $this->redirect('index');
     }
 
+    /**
+     * Trigger background generation of internal signed PDFs
+     *
+     * @return void
+     */
+    public function generateInternalSignedPdfsAction()
+    {
+        Scripts::executeCommandAsync('sfi.sfi:signature:generateinternalsignedpdfs', $this->flowSettings, []);
+        $this->addFlashMessage('Генерация внутренних подписанных PDF запущена в фоновом режиме. Результаты будут сохранены в /data/www-provisioned/Web/umo/internal/*/signed/');
+        $this->redirect('index');
+    }
+
     protected $collectionByType = [
         'W' => 'assetRpd',
         'P' => 'assetsPracticeAnnotations',
@@ -274,6 +286,9 @@ class BackendController extends AbstractModuleController
         $this->output = "";
 
         foreach ($typeSubFolders as $type) {
+            if ($type === 'internal') {
+                continue;
+            }
             if (!array_key_exists($type, $this->collectionByType)) {
                 $this->output .= "<div style='color: red'>Не поддерживаемый тип: " . $type . "</div>";
                 continue;
