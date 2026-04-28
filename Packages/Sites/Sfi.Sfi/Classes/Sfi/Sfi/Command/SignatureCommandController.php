@@ -170,9 +170,9 @@ class SignatureCommandController extends CommandController
     /**
      * Generate signed PDFs for files stored in Web/umo/internal/* folders
      *
-     * Each direct child folder is expected to contain index.csv with a single
-     * metadata row and one or more PDFs. Signed copies are written to the
-     * folder's signed/ subdirectory.
+     * Each processed folder is expected to contain index.csv with a single
+     * metadata row and one or more PDFs. Signed copies are written to that
+     * folder's signed/ subdirectory. Nested folders are scanned recursively.
      *
      * @param bool $force Force regeneration of existing files
      * @param bool $dryRun Show what would be done without generating files
@@ -332,24 +332,37 @@ class SignatureCommandController extends CommandController
     {
         $items = [];
         $sourceUrlPrefix = rtrim($this->settings['sourceUrlPrefix'], '/');
+        $internalBasePath = rtrim($internalBasePath, '/');
+        $directoriesToScan = [$internalBasePath];
 
-        foreach (new \DirectoryIterator($internalBasePath) as $folder) {
-            if ($folder->isDot() || !$folder->isDir() || $folder->getFilename() === 'signed') {
+        while ($directoriesToScan) {
+            $folderPath = array_shift($directoriesToScan);
+
+            foreach (new \DirectoryIterator($folderPath) as $entry) {
+                if ($entry->isDot() || !$entry->isDir() || $entry->getFilename() === 'signed') {
+                    continue;
+                }
+
+                $directoriesToScan[] = $entry->getPathname();
+            }
+
+            if ($folderPath === $internalBasePath) {
                 continue;
             }
 
-            $folderName = $folder->getFilename();
-            $folderPath = $folder->getPathname();
+            $relativeFolderPath = $this->getInternalRelativePath($internalBasePath, $folderPath);
             $indexPath = $folderPath . '/index.csv';
 
             if (!file_exists($indexPath) || !is_file($indexPath)) {
-                $this->log($logFile, $dryRun, 'SKIP (missing index.csv): internal/%s', [$folderName]);
+                if ($this->hasDirectPdfFiles($folderPath)) {
+                    $this->log($logFile, $dryRun, 'SKIP (missing index.csv): internal/%s', [$relativeFolderPath]);
+                }
                 continue;
             }
 
             $metadata = $this->readInternalIndexCsv($indexPath);
             if ($metadata === null) {
-                $this->log($logFile, $dryRun, 'SKIP (invalid index.csv): internal/%s', [$folderName]);
+                $this->log($logFile, $dryRun, 'SKIP (invalid index.csv): internal/%s', [$relativeFolderPath]);
                 continue;
             }
 
@@ -359,7 +372,7 @@ class SignatureCommandController extends CommandController
                 }
 
                 $filename = $file->getFilename();
-                $relativePath = 'internal/' . $folderName . '/' . $filename;
+                $relativePath = 'internal/' . $relativeFolderPath . '/' . $filename;
                 $sourceUrl = '/umo/' . $relativePath;
                 $signKey = sha1($relativePath);
                 $signedDirectory = $folderPath . '/signed';
@@ -377,13 +390,13 @@ class SignatureCommandController extends CommandController
                     $record->setSigneePosition($metadata['signeePosition']);
                     $record->setSignDate($metadata['signDate']);
                     $record->setSourceUrl($sourceUrl);
-                    $record->setFolder('internal/' . $folderName);
+                    $record->setFolder('internal/' . $relativeFolderPath);
                     $this->signatureRecordRepository->update($record);
                 }
 
                 $items[] = [
                     'relativePath' => $relativePath,
-                    'displayPath' => $relativePath . ' -> internal/' . $folderName . '/signed/' . $filename,
+                    'displayPath' => $relativePath . ' -> internal/' . $relativeFolderPath . '/signed/' . $filename,
                     'outputPath' => $outputPath,
                     'url' => self::encodeURI($sourceUrlPrefix . $sourceUrl),
                     'signDate' => $metadata['signDate']->format('d.m.Y'),
@@ -395,6 +408,23 @@ class SignatureCommandController extends CommandController
         }
 
         return $items;
+    }
+
+    protected function getInternalRelativePath(string $internalBasePath, string $folderPath): string
+    {
+        $relativePath = substr($folderPath, strlen(rtrim($internalBasePath, '/') . '/'));
+        return str_replace('\\', '/', $relativePath);
+    }
+
+    protected function hasDirectPdfFiles(string $folderPath): bool
+    {
+        foreach (new \DirectoryIterator($folderPath) as $file) {
+            if (!$file->isDot() && $file->isFile() && strtolower($file->getExtension()) === 'pdf') {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function readInternalIndexCsv(string $indexPath): ?array
