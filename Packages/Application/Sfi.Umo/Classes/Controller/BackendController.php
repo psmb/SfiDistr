@@ -138,7 +138,14 @@ class BackendController extends AbstractModuleController
     /**
      * @return void
      */
-    public function indexAction() {}
+    public function indexAction()
+    {
+        $logPath = $this->getInternalSignedPdfsLogPath();
+
+        $this->view->assign('internalSignedPdfsBasePath', $this->getInternalSignedPdfsBasePath());
+        $this->view->assign('internalSignedPdfsLogPath', $logPath);
+        $this->view->assign('internalSignedPdfsLog', $this->readLogTail($logPath));
+    }
 
     /**
      * Trigger background generation of watermarked signed PDFs
@@ -159,9 +166,142 @@ class BackendController extends AbstractModuleController
      */
     public function generateInternalSignedPdfsAction()
     {
+        $basePath = $this->getInternalSignedPdfsBasePath();
+        $logPath = $this->getInternalSignedPdfsLogPath();
+
+        if (!$this->appendInternalSignedPdfsLog(sprintf('Запуск генерации внутренних подписанных PDF из интерфейса. Папка: %s', $basePath))) {
+            $this->addFlashMessage(
+                'Не удалось записать лог внутренних подписанных PDF: %s',
+                'Ошибка записи лога',
+                \Neos\Error\Messages\Message::SEVERITY_WARNING,
+                [$logPath]
+            );
+        }
+
         Scripts::executeCommandAsync('sfi.sfi:signature:generateinternalsignedpdfs', $this->flowSettings, []);
-        $this->addFlashMessage('Генерация внутренних подписанных PDF запущена в фоновом режиме. Результаты будут сохранены в /data/www-provisioned/Web/umo/internal/*/signed/');
+        $this->addFlashMessage(sprintf('Генерация внутренних подписанных PDF запущена в фоновом режиме. Результаты будут сохранены в %s/*/signed/. Лог: %s', $basePath, $logPath));
         $this->redirect('index');
+    }
+
+    /**
+     * Check internal signed PDF input folders without generating files
+     *
+     * @return void
+     */
+    public function dryRunInternalSignedPdfsAction()
+    {
+        $basePath = $this->getInternalSignedPdfsBasePath();
+        $logPath = $this->getInternalSignedPdfsLogPath();
+
+        $this->appendInternalSignedPdfsLog(sprintf('Проверка внутренних PDF без генерации запущена из интерфейса. Папка: %s', $basePath));
+
+        $bufferLevel = ob_get_level();
+        ob_start();
+
+        try {
+            Scripts::executeCommand('sfi.sfi:signature:generateinternalsignedpdfs', $this->flowSettings, true, ['dry-run' => 'true']);
+            $output = trim($this->collectOutputBuffer($bufferLevel));
+
+            $this->appendInternalSignedPdfsLog($output !== '' ? "Результат проверки:\n" . $output : 'Результат проверки: команда не вернула вывода.');
+            $this->addFlashMessage(sprintf('Проверка внутренних PDF завершена. Результат записан в лог: %s', $logPath));
+        } catch (\Exception $exception) {
+            $output = trim($this->collectOutputBuffer($bufferLevel));
+            $message = 'Ошибка проверки внутренних PDF: ' . $exception->getMessage();
+            if ($output !== '') {
+                $message .= "\nВывод команды:\n" . $output;
+            }
+            $this->appendInternalSignedPdfsLog($message);
+            $this->addFlashMessage(
+                'Проверка внутренних PDF завершилась с ошибкой. Подробности записаны в лог: %s',
+                'Ошибка проверки',
+                \Neos\Error\Messages\Message::SEVERITY_ERROR,
+                [$logPath]
+            );
+        }
+
+        $this->redirect('index');
+    }
+
+    protected function getInternalSignedPdfsBasePath(): string
+    {
+        return rtrim(FLOW_PATH_WEB, '/') . '/umo/internal';
+    }
+
+    protected function getInternalSignedPdfsLogPath(): string
+    {
+        return $this->getInternalSignedPdfsBasePath() . '/generation.log';
+    }
+
+    protected function appendInternalSignedPdfsLog(string $message): bool
+    {
+        $message = trim($message);
+        if ($message === '') {
+            return true;
+        }
+
+        $basePath = $this->getInternalSignedPdfsBasePath();
+        if (!is_dir($basePath) && !@mkdir($basePath, 0775, true) && !is_dir($basePath)) {
+            return false;
+        }
+
+        $timestamp = date('Y-m-d H:i:s');
+        $entry = '';
+        foreach (preg_split('/\r\n|\r|\n/', $message) as $line) {
+            $entry .= $timestamp . ' ' . $line . PHP_EOL;
+        }
+
+        return @file_put_contents($this->getInternalSignedPdfsLogPath(), $entry, FILE_APPEND | LOCK_EX) !== false;
+    }
+
+    protected function readLogTail(string $logPath, int $maxBytes = 65536): string
+    {
+        if (!is_file($logPath)) {
+            return '';
+        }
+
+        $size = filesize($logPath);
+        if ($size === false) {
+            return '';
+        }
+
+        $handle = fopen($logPath, 'rb');
+        if ($handle === false) {
+            return '';
+        }
+
+        if ($size > $maxBytes) {
+            fseek($handle, -$maxBytes, SEEK_END);
+        }
+
+        $contents = stream_get_contents($handle);
+        fclose($handle);
+
+        if ($contents === false) {
+            return '';
+        }
+
+        if ($size > $maxBytes) {
+            $firstLineBreak = strpos($contents, "\n");
+            if ($firstLineBreak !== false) {
+                $contents = substr($contents, $firstLineBreak + 1);
+            }
+            $contents = "... показаны последние строки лога\n" . $contents;
+        }
+
+        return $contents;
+    }
+
+    protected function collectOutputBuffer(int $bufferLevel): string
+    {
+        $output = '';
+        while (ob_get_level() > $bufferLevel) {
+            $buffer = ob_get_clean();
+            if ($buffer !== false) {
+                $output = $buffer . $output;
+            }
+        }
+
+        return $output;
     }
 
     protected $collectionByType = [

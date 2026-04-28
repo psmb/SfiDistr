@@ -33,4 +33,30 @@
     >
         <div><f:form.submit class="button" value="Генерировать внутренние подписанные PDF"/></div>
     </f:form>
+
+    <br/>
+
+    <f:form
+        method="post"
+        action="dryRunInternalSignedPdfs"
+        controller="Backend"
+        package="Sfi.Umo"
+    >
+        <div><f:form.submit class="button" value="Проверить внутренние PDF без генерации"/></div>
+    </f:form>
+
+    <h2>Внутренние подписанные PDF</h2>
+    <p>Папка с исходными файлами: <code>{internalSignedPdfsBasePath}</code></p>
+    <p>Лог генерации: <code>{internalSignedPdfsLogPath}</code></p>
+
+    <f:link.action action="index" class="button">Обновить лог</f:link.action>
+
+    <f:if condition="{internalSignedPdfsLog}">
+        <f:then>
+            <pre style="margin-top: 16px; padding: 12px; max-height: 480px; overflow: auto; background: #f7f7f7; border: 1px solid #ccc; white-space: pre-wrap;">{internalSignedPdfsLog}</pre>
+        </f:then>
+        <f:else>
+            <p>Лог пока пуст. Нажмите кнопку проверки или генерации, чтобы создать первую запись.</p>
+        </f:else>
+    </f:if>
 </f:section>
