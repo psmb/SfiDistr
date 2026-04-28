@@ -188,6 +188,8 @@ class SignatureCommandController extends CommandController
             return;
         }
 
+        $this->log($logFile, $dryRun, 'Starting internal signed PDF generation. Base path: %s', [$internalBasePath]);
+
         $items = $this->collectInternalSignatureItems($internalBasePath, $logFile, $dryRun);
         $total = count($items);
         $this->log($logFile, $dryRun, 'Found %d internal PDF files to process.', [$total]);
@@ -599,7 +601,15 @@ class SignatureCommandController extends CommandController
         $message = vsprintf($format, $args);
         $this->outputLine($message);
         if (!$dryRun && $logFile) {
-            file_put_contents($logFile, date('Y-m-d H:i:s') . ' ' . $message . "\n", FILE_APPEND);
+            $logDirectory = dirname($logFile);
+            if (!is_dir($logDirectory) && !mkdir($logDirectory, 0775, true) && !is_dir($logDirectory)) {
+                $this->outputLine('Could not create log directory: %s', [$logDirectory]);
+                return;
+            }
+
+            if (file_put_contents($logFile, date('Y-m-d H:i:s') . ' ' . $message . "\n", FILE_APPEND | LOCK_EX) === false) {
+                $this->outputLine('Could not write log file: %s', [$logFile]);
+            }
         }
     }
 
