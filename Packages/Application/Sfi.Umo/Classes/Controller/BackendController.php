@@ -68,6 +68,7 @@ function arrayDeepSet(&$array, $path, $value)
 
 class BackendController extends AbstractModuleController
 {
+    const INTERNAL_SIGNED_PDFS_RUN_MARKER = 'Генерация внутренних подписанных PDF запущена.';
 
     /**
      * @Flow\Inject
@@ -138,13 +139,10 @@ class BackendController extends AbstractModuleController
     /**
      * @return void
      */
-    public function indexAction()
+    public function indexAction(bool $showInternalSignedPdfsLog = false)
     {
-        $logPath = $this->getInternalSignedPdfsLogPath();
-
-        $this->view->assign('internalSignedPdfsBasePath', $this->getInternalSignedPdfsBasePath());
-        $this->view->assign('internalSignedPdfsLogPath', $logPath);
-        $this->view->assign('internalSignedPdfsLog', $this->readLogTail($logPath));
+        $this->view->assign('showInternalSignedPdfsLog', $showInternalSignedPdfsLog);
+        $this->view->assign('internalSignedPdfsLog', $showInternalSignedPdfsLog ? $this->readLastInternalSignedPdfsRunLog($this->getInternalSignedPdfsLogPath()) : '');
     }
 
     /**
@@ -166,65 +164,9 @@ class BackendController extends AbstractModuleController
      */
     public function generateInternalSignedPdfsAction()
     {
-        $basePath = $this->getInternalSignedPdfsBasePath();
-        $logPath = $this->getInternalSignedPdfsLogPath();
-
-        if (!$this->appendInternalSignedPdfsLog(sprintf('Запуск генерации внутренних подписанных PDF из интерфейса. Папка: %s', $basePath))) {
-            $this->addFlashMessage(
-                'Не удалось записать лог внутренних подписанных PDF: %s',
-                'Ошибка записи лога',
-                \Neos\Error\Messages\Message::SEVERITY_WARNING,
-                [$logPath]
-            );
-        }
-
+        $this->appendInternalSignedPdfsLog(self::INTERNAL_SIGNED_PDFS_RUN_MARKER, true);
         Scripts::executeCommandAsync('sfi.sfi:signature:generateinternalsignedpdfs', $this->flowSettings, []);
-        $this->addFlashMessage(sprintf('Генерация внутренних подписанных PDF запущена в фоновом режиме. Результаты будут сохранены в %s/*/signed/. Лог: %s', $basePath, $logPath));
-        $this->redirect('index');
-    }
-
-    /**
-     * Check internal signed PDF input folders without generating files
-     *
-     * @return void
-     */
-    public function dryRunInternalSignedPdfsAction()
-    {
-        $basePath = $this->getInternalSignedPdfsBasePath();
-        $logPath = $this->getInternalSignedPdfsLogPath();
-
-        $this->appendInternalSignedPdfsLog(sprintf('Проверка внутренних PDF без генерации запущена из интерфейса. Папка: %s', $basePath));
-
-        $bufferLevel = ob_get_level();
-        ob_start();
-
-        try {
-            Scripts::executeCommand('sfi.sfi:signature:generateinternalsignedpdfs', $this->flowSettings, true, ['dry-run' => 'true']);
-            $output = trim($this->collectOutputBuffer($bufferLevel));
-
-            $this->appendInternalSignedPdfsLog($output !== '' ? "Результат проверки:\n" . $output : 'Результат проверки: команда не вернула вывода.');
-            $this->addFlashMessage(sprintf('Проверка внутренних PDF завершена. Результат записан в лог: %s', $logPath));
-        } catch (\Exception $exception) {
-            $output = trim($this->collectOutputBuffer($bufferLevel));
-            $message = 'Ошибка проверки внутренних PDF: ' . $exception->getMessage();
-            if ($output !== '') {
-                $message .= "\nВывод команды:\n" . $output;
-            }
-            $this->appendInternalSignedPdfsLog($message);
-            $this->addFlashMessage(
-                'Проверка внутренних PDF завершилась с ошибкой. Подробности записаны в лог: %s',
-                'Ошибка проверки',
-                \Neos\Error\Messages\Message::SEVERITY_ERROR,
-                [$logPath]
-            );
-        }
-
-        $this->redirect('index');
-    }
-
-    protected function getInternalSignedPdfsBasePath(): string
-    {
-        return rtrim(FLOW_PATH_WEB, '/') . '/umo/internal';
+        $this->redirect('index', null, null, ['showInternalSignedPdfsLog' => true]);
     }
 
     protected function getInternalSignedPdfsLogPath(): string
@@ -232,7 +174,7 @@ class BackendController extends AbstractModuleController
         return rtrim(FLOW_PATH_DATA, '/') . '/Logs/InternalSignedPdfs/generation.log';
     }
 
-    protected function appendInternalSignedPdfsLog(string $message): bool
+    protected function appendInternalSignedPdfsLog(string $message, bool $truncate = false): bool
     {
         $message = trim($message);
         if ($message === '') {
@@ -250,58 +192,38 @@ class BackendController extends AbstractModuleController
             $entry .= $timestamp . ' ' . $line . PHP_EOL;
         }
 
-        return @file_put_contents($this->getInternalSignedPdfsLogPath(), $entry, FILE_APPEND | LOCK_EX) !== false;
+        $flags = $truncate ? LOCK_EX : FILE_APPEND | LOCK_EX;
+        return @file_put_contents($this->getInternalSignedPdfsLogPath(), $entry, $flags) !== false;
     }
 
-    protected function readLogTail(string $logPath, int $maxBytes = 65536): string
+    protected function readLastInternalSignedPdfsRunLog(string $logPath): string
     {
         if (!is_file($logPath)) {
             return '';
         }
 
-        $size = filesize($logPath);
-        if ($size === false) {
-            return '';
-        }
-
-        $handle = fopen($logPath, 'rb');
-        if ($handle === false) {
-            return '';
-        }
-
-        if ($size > $maxBytes) {
-            fseek($handle, -$maxBytes, SEEK_END);
-        }
-
-        $contents = stream_get_contents($handle);
-        fclose($handle);
-
+        $contents = file_get_contents($logPath);
         if ($contents === false) {
             return '';
         }
 
-        if ($size > $maxBytes) {
-            $firstLineBreak = strpos($contents, "\n");
-            if ($firstLineBreak !== false) {
-                $contents = substr($contents, $firstLineBreak + 1);
-            }
-            $contents = "... показаны последние строки лога\n" . $contents;
+        $lines = preg_split('/\r\n|\r|\n/', trim($contents));
+        if (!is_array($lines)) {
+            return '';
         }
 
-        return $contents;
-    }
-
-    protected function collectOutputBuffer(int $bufferLevel): string
-    {
-        $output = '';
-        while (ob_get_level() > $bufferLevel) {
-            $buffer = ob_get_clean();
-            if ($buffer !== false) {
-                $output = $buffer . $output;
+        $startIndex = null;
+        foreach ($lines as $index => $line) {
+            if (strpos($line, self::INTERNAL_SIGNED_PDFS_RUN_MARKER) !== false) {
+                $startIndex = $index;
             }
         }
 
-        return $output;
+        if ($startIndex === null) {
+            return '';
+        }
+
+        return implode(PHP_EOL, array_slice($lines, $startIndex));
     }
 
     protected $collectionByType = [

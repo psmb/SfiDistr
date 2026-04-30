@@ -184,18 +184,18 @@ class SignatureCommandController extends CommandController
         $logFile = $this->getInternalSignedPdfsLogPath();
 
         if (!is_dir($internalBasePath)) {
-            $this->log($logFile, $dryRun, 'Internal UMO folder does not exist: %s', [$internalBasePath]);
+            $this->log($logFile, $dryRun, 'Папка с внутренними PDF не найдена.');
             return;
         }
 
-        $this->log($logFile, $dryRun, 'Starting internal signed PDF generation. Base path: %s', [$internalBasePath]);
+        $this->log($logFile, $dryRun, 'Обработка файлов началась.');
 
         $items = $this->collectInternalSignatureItems($internalBasePath, $logFile, $dryRun);
         $total = count($items);
-        $this->log($logFile, $dryRun, 'Found %d internal PDF files to process.', [$total]);
+        $this->log($logFile, $dryRun, 'Найдено PDF-файлов: %d', [$total]);
 
         if ($total === 0) {
-            $this->log($logFile, $dryRun, 'Nothing to do.');
+            $this->log($logFile, $dryRun, 'Подходящих PDF-файлов не найдено.');
             return;
         }
 
@@ -209,13 +209,13 @@ class SignatureCommandController extends CommandController
             $progress = sprintf('[%d/%d]', $index + 1, $total);
 
             if (!$force && file_exists($outputPath)) {
-                $this->log($logFile, $dryRun, '%s SKIP (exists): %s', [$progress, $displayPath]);
+                $this->log($logFile, $dryRun, '%s Уже готово: %s', [$progress, $displayPath]);
                 $skipped++;
                 continue;
             }
 
             if ($dryRun) {
-                $this->log($logFile, $dryRun, '%s DRY-RUN: would generate %s', [$progress, $displayPath]);
+                $this->log($logFile, $dryRun, '%s Будет создано: %s', [$progress, $displayPath]);
                 $processed++;
                 continue;
             }
@@ -223,13 +223,13 @@ class SignatureCommandController extends CommandController
             try {
                 $pdfContent = $this->generateSignedPdfContent($item, 120);
             } catch (\Exception $e) {
-                $this->log($logFile, $dryRun, '%s ERROR: %s -- %s', [$progress, $displayPath, $e->getMessage()]);
+                $this->log($logFile, $dryRun, '%s ОШИБКА: %s -- %s', [$progress, $displayPath, $e->getMessage()]);
                 $errors++;
                 continue;
             }
 
             if (strlen($pdfContent) < 5 || substr($pdfContent, 0, 5) !== '%PDF-') {
-                $this->log($logFile, $dryRun, '%s ERROR: %s -- Response is not a valid PDF (%d bytes)', [$progress, $displayPath, strlen($pdfContent)]);
+                $this->log($logFile, $dryRun, '%s ОШИБКА: сервис подписи вернул некорректный PDF для файла %s (%d байт)', [$progress, $displayPath, strlen($pdfContent)]);
                 $errors++;
                 continue;
             }
@@ -237,7 +237,7 @@ class SignatureCommandController extends CommandController
             $outputDir = dirname($outputPath);
             if (!is_dir($outputDir)) {
                 if (!mkdir($outputDir, 0775, true) && !is_dir($outputDir)) {
-                    $this->log($logFile, $dryRun, '%s ERROR: %s -- Could not create directory: %s', [$progress, $displayPath, $outputDir]);
+                    $this->log($logFile, $dryRun, '%s ОШИБКА: не удалось создать папку signed для файла %s', [$progress, $displayPath]);
                     $errors++;
                     continue;
                 }
@@ -245,25 +245,25 @@ class SignatureCommandController extends CommandController
 
             $bytesWritten = file_put_contents($outputPath, $pdfContent);
             if ($bytesWritten === false) {
-                $this->log($logFile, $dryRun, '%s ERROR: %s -- Failed to write file', [$progress, $displayPath]);
+                $this->log($logFile, $dryRun, '%s ОШИБКА: не удалось сохранить подписанный PDF для файла %s', [$progress, $displayPath]);
                 $errors++;
                 continue;
             }
 
-            $this->log($logFile, $dryRun, '%s OK: %s (%s)', [$progress, $displayPath, $this->formatBytes($bytesWritten)]);
+            $this->log($logFile, $dryRun, '%s Готово: %s (%s)', [$progress, $displayPath, $this->formatBytes($bytesWritten)]);
             $processed++;
         }
 
         $this->log($logFile, $dryRun, '');
-        $this->log($logFile, $dryRun, '--- Summary ---');
-        $this->log($logFile, $dryRun, 'Total:     %d', [$total]);
-        $this->log($logFile, $dryRun, 'Generated: %d', [$processed]);
-        $this->log($logFile, $dryRun, 'Skipped:   %d', [$skipped]);
-        $this->log($logFile, $dryRun, 'Errors:    %d', [$errors]);
+        $this->log($logFile, $dryRun, 'Итог:');
+        $this->log($logFile, $dryRun, 'Всего:     %d', [$total]);
+        $this->log($logFile, $dryRun, 'Создано:   %d', [$processed]);
+        $this->log($logFile, $dryRun, 'Пропущено: %d', [$skipped]);
+        $this->log($logFile, $dryRun, 'Ошибок:    %d', [$errors]);
 
         if ($dryRun) {
             $this->log($logFile, $dryRun, '');
-            $this->log($logFile, $dryRun, 'This was a dry run. Remove --dry-run to actually generate files.');
+            $this->log($logFile, $dryRun, 'Это была проверка без создания файлов.');
         }
     }
 
@@ -398,7 +398,7 @@ class SignatureCommandController extends CommandController
 
                 $items[] = [
                     'relativePath' => $relativePath,
-                    'displayPath' => $relativePath . ' -> internal/' . $relativeFolderPath . '/signed/' . $filename,
+                    'displayPath' => $relativeFolderPath . '/' . $filename,
                     'outputPath' => $outputPath,
                     'url' => self::encodeURI($sourceUrlPrefix . $sourceUrl),
                     'signDate' => $metadata['signDate']->format('d.m.Y'),

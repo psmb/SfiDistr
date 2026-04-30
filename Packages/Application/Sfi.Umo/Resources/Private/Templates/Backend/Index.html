@@ -34,29 +34,19 @@
         <div><f:form.submit class="button" value="Генерировать внутренние подписанные PDF"/></div>
     </f:form>
 
-    <br/>
+    <f:if condition="{showInternalSignedPdfsLog}">
+        <section style="margin-top: 24px; max-width: 980px; padding: 16px; color: #222; background: #fff; border: 1px solid #d6d6d6;">
+            <h2 style="margin: 0 0 8px; color: #222;">Внутренние подписанные PDF</h2>
+            <p style="margin: 0 0 12px; color: #222;">Генерация запущена. Если результат еще не появился, обновите страницу через несколько секунд.</p>
 
-    <f:form
-        method="post"
-        action="dryRunInternalSignedPdfs"
-        controller="Backend"
-        package="Sfi.Umo"
-    >
-        <div><f:form.submit class="button" value="Проверить внутренние PDF без генерации"/></div>
-    </f:form>
-
-    <h2>Внутренние подписанные PDF</h2>
-    <p>Папка с исходными файлами: <code>{internalSignedPdfsBasePath}</code></p>
-    <p>Лог генерации: <code>{internalSignedPdfsLogPath}</code></p>
-
-    <f:link.action action="index" class="button">Обновить лог</f:link.action>
-
-    <f:if condition="{internalSignedPdfsLog}">
-        <f:then>
-            <pre style="margin-top: 16px; padding: 12px; max-height: 480px; overflow: auto; background: #f7f7f7; border: 1px solid #ccc; white-space: pre-wrap;">{internalSignedPdfsLog}</pre>
-        </f:then>
-        <f:else>
-            <p>Лог пока пуст. Нажмите кнопку проверки или генерации, чтобы создать первую запись.</p>
-        </f:else>
+            <f:if condition="{internalSignedPdfsLog}">
+                <f:then>
+                    <pre style="margin: 0; padding: 12px; max-height: 360px; overflow: auto; color: #222; background: #f7f7f7; border: 1px solid #ccc; white-space: pre-wrap;">{internalSignedPdfsLog}</pre>
+                </f:then>
+                <f:else>
+                    <p style="margin: 0; color: #222;">Журнал генерации появится здесь.</p>
+                </f:else>
+            </f:if>
+        </section>
     </f:if>
 </f:section>
