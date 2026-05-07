@@ -146,7 +146,8 @@ class SignatureRegistryController extends ActionController
 
     protected function getInternalSignedUrl(string $sourceUrl): string
     {
-        return rtrim(dirname($sourceUrl), '/') . '/signed/' . basename($sourceUrl);
+        $relativePath = substr($sourceUrl, strlen('/umo/internal/'));
+        return '/umo/internal/signed/' . $relativePath;
     }
 
     /**

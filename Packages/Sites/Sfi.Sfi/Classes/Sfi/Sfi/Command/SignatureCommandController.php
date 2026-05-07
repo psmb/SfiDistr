@@ -171,8 +171,9 @@ class SignatureCommandController extends CommandController
      * Generate signed PDFs for files stored in Web/umo/internal/* folders
      *
      * Each processed folder is expected to contain index.csv with a single
-     * metadata row and one or more PDFs. Signed copies are written to that
-     * folder's signed/ subdirectory. Nested folders are scanned recursively.
+     * metadata row and one or more PDFs. Signed copies are written to a
+     * top-level signed/ folder that mirrors the internal folder structure.
+     * Nested folders are scanned recursively.
      *
      * @param bool $force Force regeneration of existing files
      * @param bool $dryRun Show what would be done without generating files
@@ -377,7 +378,7 @@ class SignatureCommandController extends CommandController
                 $relativePath = 'internal/' . $relativeFolderPath . '/' . $filename;
                 $sourceUrl = '/umo/' . $relativePath;
                 $signKey = sha1($relativePath);
-                $signedDirectory = $folderPath . '/signed';
+                $signedDirectory = $internalBasePath . '/signed/' . $relativeFolderPath;
                 $outputPath = $signedDirectory . '/' . $filename;
 
                 if (!$dryRun) {
