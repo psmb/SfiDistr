@@ -5770,7 +5770,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sfi-ru/Sfi.Styleguide.git",
-                "reference": "c2594b2b27933155e8fcbcecd640fd82142305b8"
+                "reference": "4ecddfa191d5cf05e49df3469d49b720519609a9"
             },
             "require": {
                 "neos/flow": "^4.0|^5.0|^6.0"
@@ -5859,7 +5859,7 @@
                 }
             },
             "description": "Add description here",
-            "time": "2019-12-31T15:45:30+00:00"
+            "time": "2026-05-13T07:07:00+00:00"
         },
         {
             "name": "soundasleep/html2text",
