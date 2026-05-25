@@ -16,15 +16,24 @@
 						<div class="MainMenu-SubItems MainMenu-SubItems--nested">
 							<f:for each="{item.subItems}" as="subItem">
 								<div class="MainMenu-SubGroup">
-									<f:if condition="{neos:uri.node(node: subItem.node)}">
+									<f:if condition="{subItem.node.properties.targetMode} == 'noShortcut'">
 										<f:then>
-											<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level1 ParagraphAlt {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
-												<neos:link.node node="{subItem.node}" title="{subItem.node.properties.title}">{subItem.node.label}</neos:link.node>
-											</div>
+											<f:if condition="{subItem.node.properties.uriPathSegment} == 'vkr'">
+												<f:then>
+													<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level1 ParagraphAlt {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
+														<neos:link.node node="{subItem.node}" title="{subItem.node.properties.title}">{subItem.node.label}</neos:link.node>
+													</div>
+												</f:then>
+												<f:else>
+													<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level1 MainMenu-SubItem--inactive ParagraphAlt {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
+														{subItem.node.label}
+													</div>
+												</f:else>
+											</f:if>
 										</f:then>
 										<f:else>
-											<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level1 MainMenu-SubItem--inactive ParagraphAlt {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
-												{subItem.node.label}
+											<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level1 ParagraphAlt {ts:render(path:'{subItem.state}.attributes.class', context: {item: subItem}) -> f:format.raw()}">
+												<neos:link.node node="{subItem.node}" title="{subItem.node.properties.title}">{subItem.node.label}</neos:link.node>
 											</div>
 										</f:else>
 									</f:if>
@@ -32,30 +41,30 @@
 										<f:if condition="{subItem.node.properties.uriPathSegment} != 'vkr'">
 											<div class="MainMenu-NestedSubItems">
 												<f:for each="{subItem.subItems}" as="nestedItem">
-													<f:if condition="{neos:uri.node(node: nestedItem.node)}">
+													<f:if condition="{nestedItem.node.properties.targetMode} == 'noShortcut'">
 														<f:then>
-															<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level2 ParagraphAlt {ts:render(path:'{nestedItem.state}.attributes.class', context: {item: nestedItem}) -> f:format.raw()}">
-																<neos:link.node node="{nestedItem.node}" title="{nestedItem.node.properties.title}">{nestedItem.node.label}</neos:link.node>
+															<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level2 MainMenu-SubItem--inactive ParagraphAlt {ts:render(path:'{nestedItem.state}.attributes.class', context: {item: nestedItem}) -> f:format.raw()}">
+																{nestedItem.node.label}
 															</div>
 														</f:then>
 														<f:else>
-															<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level2 MainMenu-SubItem--inactive ParagraphAlt {ts:render(path:'{nestedItem.state}.attributes.class', context: {item: nestedItem}) -> f:format.raw()}">
-																{nestedItem.node.label}
+															<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level2 ParagraphAlt {ts:render(path:'{nestedItem.state}.attributes.class', context: {item: nestedItem}) -> f:format.raw()}">
+																<neos:link.node node="{nestedItem.node}" title="{nestedItem.node.properties.title}">{nestedItem.node.label}</neos:link.node>
 															</div>
 														</f:else>
 													</f:if>
 													<f:if condition="{nestedItem.subItems}">
 														<div class="MainMenu-NestedSubItems MainMenu-NestedSubItems--level3">
 															<f:for each="{nestedItem.subItems}" as="thirdLevelItem">
-																<f:if condition="{neos:uri.node(node: thirdLevelItem.node)}">
+																<f:if condition="{thirdLevelItem.node.properties.targetMode} == 'noShortcut'">
 																	<f:then>
-																		<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level3 ParagraphAlt {ts:render(path:'{thirdLevelItem.state}.attributes.class', context: {item: thirdLevelItem}) -> f:format.raw()}">
-																			<neos:link.node node="{thirdLevelItem.node}" title="{thirdLevelItem.node.properties.title}">{thirdLevelItem.node.label}</neos:link.node>
+																		<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level3 MainMenu-SubItem--inactive ParagraphAlt {ts:render(path:'{thirdLevelItem.state}.attributes.class', context: {item: thirdLevelItem}) -> f:format.raw()}">
+																			{thirdLevelItem.node.label}
 																		</div>
 																	</f:then>
 																	<f:else>
-																		<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level3 MainMenu-SubItem--inactive ParagraphAlt {ts:render(path:'{thirdLevelItem.state}.attributes.class', context: {item: thirdLevelItem}) -> f:format.raw()}">
-																			{thirdLevelItem.node.label}
+																		<div class="LinkState MainMenu-SubItem MainMenu-SubItem--level3 ParagraphAlt {ts:render(path:'{thirdLevelItem.state}.attributes.class', context: {item: thirdLevelItem}) -> f:format.raw()}">
+																			<neos:link.node node="{thirdLevelItem.node}" title="{thirdLevelItem.node.properties.title}">{thirdLevelItem.node.label}</neos:link.node>
 																		</div>
 																	</f:else>
 																</f:if>
