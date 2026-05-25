@@ -53,7 +53,7 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			itemClass = 'LinkState H4 lineHeight-single'
 			entryLevel = 1
-			maximumLevels = 2
+			maximumLevels = 4
 		}
 
 		lang = ${Array.first(node.context.dimensions.language)}
