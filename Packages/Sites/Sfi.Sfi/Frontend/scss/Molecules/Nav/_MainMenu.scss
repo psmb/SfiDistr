@@ -30,6 +30,14 @@
 	}
 }
 
+.MainMenu-SubItem--level1.MainMenu-SubItem--inactive {
+	color: $gray--dark;
+
+	&:hover {
+		color: $gray--dark !important;
+	}
+}
+
 @include breakpoint('large') {
 	.MainMenu {
 		display: flex;
