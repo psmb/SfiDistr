@@ -67,7 +67,7 @@ prototype(Sfi.Sfi:Page) < prototype(Neos.Neos:Page) {
 			partialRootPath = 'resource://Sfi.Sfi/Private/Partials'
 			itemClass = 'ParagraphAlt lineHeight-single'
 			startingPoint = ${subMenuNode}
-			maximumLevels = 2
+			maximumLevels = 3
 		}
 		secondaryMenu = Neos.Neos:Menu {
 			templatePath = 'resource://Sfi.Sfi/Private/Templates/TypoScriptObjects/SecondaryMenu.html'
