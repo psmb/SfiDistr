@@ -34,6 +34,17 @@
         <div><f:form.submit class="button" value="Генерировать внутренние подписанные PDF"/></div>
     </f:form>
 
+    <br/>
+
+    <f:form
+        method="post"
+        action="generateInternalSignedPdfsForce"
+        controller="Backend"
+        package="Sfi.Umo"
+    >
+        <div><f:form.submit class="button" value="Перегенерировать внутренние подписанные PDF"/></div>
+    </f:form>
+
     <f:if condition="{showInternalSignedPdfsLog}">
         <section style="margin-top: 24px; max-width: 980px; padding: 16px; color: #222; background: #fff; border: 1px solid #d6d6d6;">
             <h2 style="margin: 0 0 8px; color: #222;">Внутренние подписанные PDF</h2>

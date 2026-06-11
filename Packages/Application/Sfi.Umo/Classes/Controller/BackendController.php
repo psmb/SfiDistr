@@ -169,6 +169,18 @@ class BackendController extends AbstractModuleController
         $this->redirect('index', null, null, ['showInternalSignedPdfsLog' => true]);
     }
 
+    /**
+     * Trigger background regeneration of internal signed PDFs, overwriting existing files
+     *
+     * @return void
+     */
+    public function generateInternalSignedPdfsForceAction()
+    {
+        $this->appendInternalSignedPdfsLog(self::INTERNAL_SIGNED_PDFS_RUN_MARKER . ' Принудительный режим: существующие файлы будут перезаписаны.', true);
+        Scripts::executeCommandAsync('sfi.sfi:signature:generateinternalsignedpdfs', $this->flowSettings, ['force' => '']);
+        $this->redirect('index', null, null, ['showInternalSignedPdfsLog' => true]);
+    }
+
     protected function getInternalSignedPdfsLogPath(): string
     {
         return rtrim(FLOW_PATH_DATA, '/') . '/Logs/InternalSignedPdfs/generation.log';
