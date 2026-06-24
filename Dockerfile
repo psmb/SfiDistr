@@ -1,11 +1,16 @@
 FROM dimaip/docker-neos-alpine:latest
 ENV PHP_TIMEZONE=Europe/Moscow
-ENV AWS_ENDPOINT=https://hb.bizmrg.com
+ENV AWS_ENDPOINT=https://hb.ru-msk.vkcloud-storage.ru
 ENV AWS_BACKUP_ARN=s3://psmb-neos-resources/db/sfi/
 ENV REPOSITORY_URL=https://github.com/psmb/SfiDistr
 ENV DONT_PUBLISH_PERSISTENT=1
 WORKDIR /data/www-provisioned
-RUN chown -R 80:80 /composer/ && \
+RUN curl -fsSL https://repo.harica.gr/certs/HARICA-TLS-Root-2021-RSA.cer -o /tmp/harica-root.cer && \
+    echo "d95d0e8eda79525bf9beb11b14d2100d3294985f0c62d9fabd9cd999eccb7b1d  /tmp/harica-root.cer" | sha256sum -c - && \
+    openssl x509 -inform DER -in /tmp/harica-root.cer -out /usr/local/share/ca-certificates/HARICA_TLS_RSA_Root_CA_2021.crt && \
+    update-ca-certificates && \
+    rm /tmp/harica-root.cer && \
+    chown -R 80:80 /composer/ && \
     chown -R 80:80 /data/www-provisioned && \
     /bin/bash -c "source /init-php-conf.sh"
 USER 80

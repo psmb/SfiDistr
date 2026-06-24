@@ -1,0 +1,11 @@
+/Data/
+/Packages/Framework/
+/Packages/Libraries/
+/Packages/Neos/
+/Web/_Resources/
+/bin/
+node_modules/
+bower_components/
+.idea/
+.sass-cache/
+*.DS_Store
