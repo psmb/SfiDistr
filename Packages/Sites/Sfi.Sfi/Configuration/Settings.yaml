@@ -277,4 +277,4 @@ Flownative:
           credentials:
             key: "%env:AWS_ACCESS_KEY_ID%"
             secret: "%env:AWS_SECRET_ACCESS_KEY%"
-          endpoint: "https://hb.bizmrg.com"
+          endpoint: "https://hb.ru-msk.vkcloud-storage.ru"
