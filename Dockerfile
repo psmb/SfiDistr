@@ -11,6 +11,7 @@ RUN curl -fsSL https://repo.harica.gr/certs/HARICA-TLS-Root-2021-RSA.cer -o /tmp
     update-ca-certificates && \
     rm /tmp/harica-root.cer && \
     chown -R 80:80 /composer/ && \
+    chown -R 80:80 /var/tmp/nginx && \
     chown -R 80:80 /data/www-provisioned && \
     /bin/bash -c "source /init-php-conf.sh"
 USER 80
