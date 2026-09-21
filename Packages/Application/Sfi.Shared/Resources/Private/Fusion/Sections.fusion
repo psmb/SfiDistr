@@ -5,14 +5,14 @@ prototype(Sfi.Shared:Sections) {
 	sectionName = 'main'
 	layout = ${q(node).property('layout')}
 
-	tabs = Neos.Fusion:Collection {
-		collection = ${q(node).children()}
+	tabs = Neos.Fusion:Loop {
+		items = ${q(node).children()}
 		itemRenderer = Sfi.Shared:SectionsTabRenderer
 		itemName = 'node'
 	}
 
-	panels = Neos.Fusion:Collection {
-		collection = ${q(node).children()}
+	panels = Neos.Fusion:Loop {
+		items = ${q(node).children()}
 		itemRenderer = Sfi.Shared:SectionsPanelRenderer
 		itemName = 'node'
 	}

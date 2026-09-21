@@ -1,0 +1,8 @@
+Yeebase\Graylog\Log\GraylogLoggerInterface:
+  className: Yeebase\Graylog\Log\GraylogLogger
+  scope: singleton
+
+Yeebase\Graylog\Log\Backend\GraylogBackend:
+  arguments:
+    1:
+      setting: Yeebase.Graylog.Logger.backendOptions

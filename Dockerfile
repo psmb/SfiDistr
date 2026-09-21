@@ -1,27 +1,51 @@
-FROM dimaip/docker-neos-alpine:latest
-ENV PHP_TIMEZONE=Europe/Moscow
-ENV AWS_ENDPOINT=https://hb.ru-msk.vkcloud-storage.ru
-ENV AWS_BACKUP_ARN=s3://psmb-neos-resources/db/sfi/
-ENV REPOSITORY_URL=https://github.com/psmb/SfiDistr
-ENV DONT_PUBLISH_PERSISTENT=1
+FROM php:8.3-fpm-alpine3.22
+
+ENV PHP_TIMEZONE=Europe/Moscow \
+    PHP_MEMORY_LIMIT=4096M \
+    FLOW_CONTEXT=Production \
+    FLOW_REWRITEURLS=1 \
+    COMPOSER_ALLOW_SUPERUSER=1 \
+    DB_DATABASE=db \
+    DB_HOST=db \
+    DB_USER=admin \
+    DB_PASS=pass \
+    AWS_ENDPOINT=https://hb.ru-msk.vkcloud-storage.ru \
+    AWS_BACKUP_ARN=s3://psmb-neos-resources/db/sfi/
+
+RUN apk add --no-cache bash ca-certificates curl git nginx supervisor su-exec \
+        mariadb-client aws-cli openssh rsync tzdata icu-libs libzip libpng libjpeg-turbo freetype \
+        optipng libjpeg-turbo-utils \
+    && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS icu-dev libzip-dev \
+        libpng-dev libjpeg-turbo-dev freetype-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd pdo_mysql opcache intl exif zip \
+    && pecl install redis-6.2.0 \
+    && docker-php-ext-enable redis \
+    && apk del .build-deps \
+    && deluser www-data \
+    && (delgroup cdrw || true) \
+    && addgroup -g 80 www-data \
+    && adduser -D -u 80 -G www-data -h /data -s /bin/bash www-data \
+    && mkdir -p /data/www-provisioned /var/lib/nginx /var/tmp/nginx /run/nginx \
+    && chown -R www-data:www-data /data /var/lib/nginx /var/tmp/nginx \
+    && printf 'clear_env = no\n' > /usr/local/etc/php-fpm.d/zz-environment.conf
+
+COPY --from=composer:2.8 /usr/bin/composer /usr/local/bin/composer
+COPY Build/Docker/ /opt/sfi/
+RUN chmod +x /opt/sfi/*.sh \
+    && cp /opt/sfi/nginx.conf /etc/nginx/nginx.conf \
+    && cp /opt/sfi/supervisord.conf /etc/supervisord.conf \
+    && ln -s /opt/sfi/backupDb.sh /data/backupDb.sh \
+    && printf '\nPasswordAuthentication no\nPermitRootLogin no\nAllowUsers www-data\n' >> /etc/ssh/sshd_config
+
 WORKDIR /data/www-provisioned
-RUN curl -fsSL https://repo.harica.gr/certs/HARICA-TLS-Root-2021-RSA.cer -o /tmp/harica-root.cer && \
-    echo "d95d0e8eda79525bf9beb11b14d2100d3294985f0c62d9fabd9cd999eccb7b1d  /tmp/harica-root.cer" | sha256sum -c - && \
-    openssl x509 -inform DER -in /tmp/harica-root.cer -out /usr/local/share/ca-certificates/HARICA_TLS_RSA_Root_CA_2021.crt && \
-    update-ca-certificates && \
-    rm /tmp/harica-root.cer && \
-    chown -R 80:80 /composer/ && \
-    chown -R 80:80 /var/tmp/nginx && \
-    chown -R 80:80 /data/www-provisioned && \
-    /bin/bash -c "source /init-php-conf.sh"
-USER 80
-COPY --chown=80:80 composer.json /data/www-provisioned/composer.json
-COPY --chown=80:80 composer.lock /data/www-provisioned/composer.lock
-RUN composer install && \
-    rm -rf /composer/cache && \
-    mkdir -p /data/www-provisioned/Configuration && \
-    cp /Settings.yaml /data/www-provisioned/Configuration/
-COPY --chown=80:80 ./ /data/www-provisioned/
-RUN composer run-script post-update-cmd && git remote set-url origin $REPOSITORY_URL
-USER root
-# HEALTHCHECK --interval=30s --timeout=15s --start-period=30s --retries=3 CMD curl -f http://localhost/ | grep "This website is powered by Neos"
+COPY --chown=www-data:www-data ./ ./
+RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader \
+    && composer clear-cache \
+    && cp /opt/sfi/Settings.yaml Configuration/Settings.yaml \
+    && chown -R www-data:www-data /data/www-provisioned \
+    && ln -s /data/www-provisioned /data/www
+
+EXPOSE 80 22
+ENTRYPOINT ["/opt/sfi/entrypoint.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

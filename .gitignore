@@ -47,3 +47,11 @@ Configuration/Development/Settings.yaml
 /flow.bat
 /Readme.rst
 /Upgrading.rst
+
+/.playwright-cli/
+/output/
+.phpunit.result.cache
+!/Configuration/Testing/
+/Configuration/Testing/*
+!/Configuration/Testing/Settings.yaml
+!/Configuration/Testing/Caches.yaml

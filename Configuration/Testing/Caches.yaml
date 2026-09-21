@@ -1,0 +1,15 @@
+Neos_Fusion_Content:
+  backend: Neos\Cache\Backend\FileBackend
+  backendOptions: []
+Flow_Mvc_Routing_Resolve:
+  backend: Neos\Cache\Backend\FileBackend
+  backendOptions: []
+Flow_Mvc_Routing_Route:
+  backend: Neos\Cache\Backend\FileBackend
+  backendOptions: []
+Flow_Session_MetaData:
+  backend: Neos\Cache\Backend\FileBackend
+  backendOptions: []
+Flow_Session_Storage:
+  backend: Neos\Cache\Backend\FileBackend
+  backendOptions: []

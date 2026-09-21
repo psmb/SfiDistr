@@ -3,7 +3,6 @@
 namespace Sfi\Sfi\TypoScript;
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Log\SystemLoggerInterface;
 use Neos\Fusion\FusionObjects\AbstractFusionObject;
 use Neos\Neos\Exception as NeosException;
 
@@ -18,7 +17,7 @@ class CooluriDecodeImplementation extends AbstractFusionObject
 	 * interface ...
 	 *
 	 * @Flow\Inject
-	 * @var \Doctrine\Common\Persistence\ObjectManager
+	 * @var \Doctrine\ORM\EntityManagerInterface
 	 */
 	protected $entityManager;
 

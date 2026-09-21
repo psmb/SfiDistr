@@ -1,0 +1,3 @@
+prototype(Flowpack.Mustache:Template) {
+	@class = 'Flowpack\\Mustache\\Fusion\\TemplateImplementation'
+}

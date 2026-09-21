@@ -78,7 +78,7 @@ class BackendController extends AbstractModuleController
 
     /**
      * @Flow\Inject(lazy = FALSE)
-     * @var \Doctrine\Common\Persistence\ObjectManager
+     * @var \Doctrine\ORM\EntityManagerInterface
      */
     protected $entityManager;
 

@@ -26,7 +26,7 @@ class MailerCommandController extends CommandController
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\Log\SystemLoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     protected $systemLogger;
 
@@ -102,11 +102,11 @@ class MailerCommandController extends CommandController
                         if (!$dryRun) {
                             $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
                         }
-                        $this->systemLogger->log("Email sent: " . ($dryRun ? "(Dry-run)" : "") . $subscriber['email'] . "; " . $reason . "; " . $subscripionId, \LOG_INFO);
+                        $this->systemLogger->info("Email sent: " . ($dryRun ? "(Dry-run)" : "") . $subscriber['email'] . "; " . $reason . "; " . $subscripionId);
                     } catch (\Exception $e) {
                         $message = $e->getMessage();
-                        $level = strpos($message, 'does not comply with RFC 2822') !== false ? \LOG_NOTICE : \LOG_ERR;
-                        $this->systemLogger->log($message, $level);
+                        $level = strpos($message, 'does not comply with RFC 2822') !== false ? \Psr\Log\LogLevel::NOTICE : \Psr\Log\LogLevel::ERROR;
+                        $this->systemLogger->log($level, $message);
                     }
                 } else {
                     $this->outputLine('Not yet time for %s %s', [$subscriber['email'], $subscriber['date']]);

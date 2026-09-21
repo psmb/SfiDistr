@@ -3,7 +3,7 @@ namespace Flowpack\Listable\Tests\Functional\FusionObjects;
 
 use Neos\ContentRepository\Domain\Model\NodeInterface;
 
-class ListableTest extends AbstractTypoScriptObjectTest
+class ListableTest extends AbstractTypoScriptObjectTestCase
 {
     /**
      * @test
@@ -19,9 +19,9 @@ class ListableTest extends AbstractTypoScriptObjectTest
         $view->setFusionPath('listable/basicListing');
         $view->assign('collection', [$newNode1, $newNode2]);
         $this->assertXmlStringEqualsXmlString(
-          '<ul>
-            <li>Hello world</li>
-            <li>Another hello world!</li>
+          '<ul class="">
+            <li class="">Hello world</li>
+            <li class="">Another hello world!</li>
           </ul>',
           $view->render()
         );

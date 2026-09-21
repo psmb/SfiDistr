@@ -1,12 +1,12 @@
 prototype(Sfi.Sfi:DonateProject) {
 	image = Neos.Fusion:Tag {
 		tagName = 'picture'
-		content = Neos.Fusion:Array {
+		content = Neos.Fusion:Join {
 			large = Neos.Fusion:Tag {
 				tagName = 'source'
 				attributes {
 					media = '(min-width: 1024px)'
-					srcset = Neos.Fusion:Array {
+					srcset = Neos.Fusion:Join {
 						1 = Neos.Neos:ImageUri {
 							asset = ${node.properties.imageLarge}
 							maximumWidth = 1280
@@ -24,7 +24,7 @@ prototype(Sfi.Sfi:DonateProject) {
 				tagName = 'source'
 				attributes {
 					media = '(min-width: 640px)'
-					srcset = Neos.Fusion:Array {
+					srcset = Neos.Fusion:Join {
 						1 = Neos.Neos:ImageUri {
 							asset = ${node.properties.imageMedium}
 							maximumWidth = 960
@@ -41,7 +41,7 @@ prototype(Sfi.Sfi:DonateProject) {
 			small = Neos.Fusion:Tag {
 				tagName = 'source'
 				attributes {
-					srcset = Neos.Fusion:Array {
+					srcset = Neos.Fusion:Join {
 						1 = Neos.Neos:ImageUri {
 							asset = ${node.properties.imageSmall}
 							maximumWidth = 480

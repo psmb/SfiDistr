@@ -1,0 +1,11 @@
+
+Neos:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Psmb.Term:
+            - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Psmb.Term: true

@@ -22,8 +22,8 @@ prototype(Sfi.Sfi:TagsListItem) < prototype(Neos.Fusion:Component) {
 
 
 
-prototype(Sfi.Sfi:TagsList) < prototype(Neos.Fusion:Collection) {
-  collection = ''
+prototype(Sfi.Sfi:TagsList) < prototype(Neos.Fusion:Loop) {
+  items = ''
   itemName = 'node'
   itemRenderer = Sfi.Sfi:TagsListItem
   @process.tmpl = afx`
@@ -42,11 +42,11 @@ prototype(Sfi.Sfi:TagsList) < prototype(Neos.Fusion:Collection) {
 
 prototype(Sfi.Sfi:TagsOverview) < prototype(Neos.Fusion:Component) {
   people = Sfi.Sfi:TagsList {
-    collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').get()}
+    items = ${q(site).find('[instanceof Sfi.Sfi:Person]').get()}
     @context.title = ${Translation.translate('allPersons', null, [], null, 'Sfi.Sfi')}
   }
   tags = Sfi.Sfi:TagsList {
-    collection = ${q(site).find('[instanceof Sfi.Sfi:PageTag]').get()}
+    items = ${q(site).find('[instanceof Sfi.Sfi:PageTag]').get()}
     @context.title = ${Translation.translate('allTags', null, [], null, 'Sfi.Sfi')}
   }
   style = "

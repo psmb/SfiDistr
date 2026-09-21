@@ -336,12 +336,12 @@ prototype(Sfi.Sfi:StudyProgramShortFormal) < prototype(Neos.Fusion:Template) {
 }
 
 prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections) {
-	panels.collection = 'to-be-set'
+	panels.items = 'to-be-set'
 
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
 	@context.rootNode = ${q(node).property('rootNode')}
 	layout = 'Sections--Accordion'
-	tabs>
+	tabs = ''
 	panels.itemRenderer {
 		accordion = ${q(node).property('specialityId') ? q(node).property('title') + ' (' + q(node).property('specialityId') + ')' : q(node).property('title')}
 		panel = Sfi.Sfi:StudyProgramShort
@@ -350,7 +350,7 @@ prototype(Sfi.Sfi:StudyProgramsListingAbstract) < prototype(Sfi.Shared:Sections)
 
 prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListingAbstract) {
 	@context.rootNode = ${q(node).property('rootNode')}
-	panels.collection = ${q(rootNode).children().get()}
+	panels.items = ${q(rootNode).children().get()}
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
 
 	@cache {
@@ -368,8 +368,8 @@ prototype(Sfi.Sfi:StudyProgramsListing) < prototype(Sfi.Sfi:StudyProgramsListing
 
 prototype(Sfi.Sfi:StudyProgramsListingFormal) {
 	templatePath = 'resource://Sfi.Sfi/Private/Fusion/NodeTypes/StudyProgramsListingFormal.html'
-	collection = Neos.Fusion:Collection {
-		collection = ${q(node).property('references')}
+	collection = Neos.Fusion:Loop {
+		items = ${q(node).property('references')}
 		itemName = 'node'
 		itemRenderer = Sfi.Sfi:StudyProgramShortFormal
 	}
@@ -387,7 +387,7 @@ prototype(Sfi.Sfi:StudyProgramsListingFormal) {
 
 prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProgramsListingAbstract) {
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/Sections.html'
-	panels.collection = ${q(node).property('references')}
+	panels.items = ${q(node).property('references')}
 
 	@cache {
 		mode = 'cached'

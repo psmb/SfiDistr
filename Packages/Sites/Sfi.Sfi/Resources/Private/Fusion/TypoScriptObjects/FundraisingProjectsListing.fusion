@@ -1,11 +1,11 @@
-prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection) {
+prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Loop) {
     @context.subscriber = ${Registry.get('subscriber')}
     @context.amounts = ${Sfi.fetch('https://payments.sfi.ru/getAmountDonate')}
     @process.wrap = ${'<ul style="display:flex" class="FundraisingProjectsListing">' + value + '</ul>'}
-    collection = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject]').get()}
-    collection.@process.filterOutCurrent = ${subscriber.referer ? q(value).filter('[uriPathSegment != ' + subscriber.referer + ']') : value}
+    items = ${q(site).find('[instanceof Sfi.Sfi:FundraisingProject]').get()}
+    items.@process.filterOutCurrent = ${subscriber.referer ? q(value).filter('[uriPathSegment != ' + subscriber.referer + ']') : value}
     itemName = 'node'
-    itemRenderer = Neos.Fusion:Array {
+    itemRenderer = Neos.Fusion:Join {
         @process.wrap = ${'<li style="' + (node.properties.complete ? 'opacity: 0.5' : '') + '" class="FundraisingProjectSmall marginBottom-double"><div class="FundraisingProjectSmall-inner marginHorizontal-single"><a href="' + this.nodeUri + '"><div>' + value + '</div></a></div></li>'}
         @ignoreProperties = ${['thumbUri', 'nodeUri']}
         nodeUri = Neos.Neos:NodeUri {
@@ -18,7 +18,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Collection
             allowCropping = true
         }
         image = ${'<img src="' + this.thumbUri + '">'}
-        body = Neos.Fusion:Array {
+        body = Neos.Fusion:Join {
             @process.wrap = ${'<div class="FundraisingProjectSmall-body">' + value + '</div>'}
             title = ${'<h3 class="FundraisingProjectSmall-title H2 color-brown">' + node.properties.title + '</h3>'}
             bar = Sfi.Sfi:FundraisingBar {

@@ -1,0 +1,8 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Flowpack.Mustache: true
+  Fusion:
+    defaultContext:
+      Mustache: Flowpack\Mustache\Helper\MustacheHelper

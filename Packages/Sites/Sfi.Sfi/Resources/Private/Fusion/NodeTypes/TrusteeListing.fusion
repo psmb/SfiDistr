@@ -1,9 +1,9 @@
 prototype(Sfi.Sfi:TrusteeShort) < prototype(Sfi.Sfi:PersonShort) {
 }
 
-prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Collection) {
+prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Loop) {
 	@process.tmpl = ${'<ul class="medium-block-grid-2 large-block-grid-3">' + value + '</ul>'}
-	collection = ${node.properties.trustees}
+	items = ${node.properties.trustees}
 	itemName = 'node'
 	itemRenderer = Sfi.Sfi:TrusteeShort {
 		@process.li = ${'<li>' + value + '</li>'}

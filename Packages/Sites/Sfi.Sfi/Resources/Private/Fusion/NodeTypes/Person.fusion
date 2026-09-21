@@ -76,7 +76,7 @@ prototype(Sfi.Sfi:PersonGphShort) < prototype(Neos.Neos:ContentComponent) {
 }
 
 prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
-	renderer = Neos.Fusion:Array {
+	renderer = Neos.Fusion:Join {
 		1 = Sfi.Sfi:PersonFormalListingByLevel {
 			title = 'Состав педагогических (научно-педагогических) работников образовательной организации по образовательной программе 46.04.01 История (магистратура)'
 			level = '46.04.01 История (магистратура)'
@@ -109,14 +109,14 @@ prototype(Sfi.Sfi:PersonFormalListing) < prototype(Neos.Neos:ContentComponent) {
 	}
 }
 
-prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Collection) {
+prototype(Sfi.Sfi:PersonFormalListingByLevel) < prototype(Neos.Fusion:Loop) {
 	title = 'to-be-set'
 	level = 'to-be-set'
 	anchor = 'to-be-set'
 	@context.level = ${String.replace(String.replace(this.level, '(', '\('), ')', '\)')}
 	@context.title = ${this.title}
 	@context.anchor = ${this.anchor}
-	collection = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('[isProfessor = TRUE][subject *= "' + this.level + '"]').get()}
+	items = ${q(site).find('[instanceof Sfi.Sfi:Person]').filter('[isProfessor = TRUE][subject *= "' + this.level + '"]').get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Component {
 		nodeUri = Neos.Neos:NodeUri {

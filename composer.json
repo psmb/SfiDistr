@@ -6,50 +6,74 @@
         "bin-dir": "bin",
         "allow-plugins": {
             "neos/composer-plugin": true
-        }
+        },
+        "platform": {
+            "php": "8.3.0"
+        },
+        "sort-packages": true
     },
     "repositories": [
         {
-            "type": "git",
-            "url": "https://github.com/sfi-ru/Sfi.Styleguide.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/dimaip/Yeebase.Graylog"
+            "type": "path",
+            "url": "DistributionPackages/*",
+            "options": {
+                "symlink": true
+            }
         }
     ],
     "require": {
-        "neos/neos-development-collection": "^4.3",
-        "neos/flow-development-collection": "^5.3",
-        "sfi/styleguide": "@dev",
-        "sfi/grid": "@dev",
-        "neos/redirecthandler": "^3",
-        "neos/redirecthandler-databasestorage": "^4",
-        "neos/redirecthandler-neosadapter": "^4",
-        "neos/googleanalytics": "^3.1",
-        "flowpack/jobqueue-common": "^3.0",
-        "psmb/term": "^3.0",
-        "psmb/newsletter": "dev-master",
-        "psmb/bookmarklet": "^0.1",
-        "flowpack/cachebuster": "^1.0",
-        "neos/neos-ui": "^4",
-        "sandstorm/optimizedrediscachebackend": "^1.1.0",
-        "yeebase/graylog": "dev-patch-2",
-        "flowpack/nodetemplates": "^1.1",
-        "psmb/createnodebutton": "@dev",
-        "flownative/aws-s3": "2.*",
-        "psmb/registry": "^2.1.1",
-        "neos/fusion-afx": "^1.4",
         "aertmann/history": "^2.0",
-        "ttree/dimensionkeeper": "^1.0",
-        "psmb/footnote": "^0.3.0",
+        "flownative/aws-s3": "^2.8",
+        "flowpack/cachebuster": "^1.0",
+        "flowpack/jobqueue-common": "^3.0",
+        "flowpack/mustache": "dev-neos84",
+        "flowpack/nodetemplates": "^2.2",
         "mustache/mustache": "^2.13",
-        "flowpack/mustache": "^0.0.1"
+        "neos/flow": "~8.4.0",
+        "neos/form": "^5.4",
+        "neos/fusion-afx": "~8.4.0",
+        "neos/googleanalytics": "^3.4",
+        "neos/neos": "~8.4.0",
+        "neos/neos-ui": "~8.4.0",
+        "neos/nodetypes": "~8.4.0",
+        "neos/redirecthandler": "^5.1",
+        "neos/redirecthandler-databasestorage": "^5.0",
+        "neos/redirecthandler-neosadapter": "^4.3.4",
+        "neos/swiftmailer": "^7.4",
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+        "psmb/bookmarklet": "^0.1",
+        "psmb/createnodebutton": "@dev",
+        "psmb/footnote": "dev-neos84",
+        "psmb/newsletter": "dev-neos84",
+        "psmb/registry": "^2.1.4",
+        "psmb/term": "dev-neos84",
+        "sfi/grid": "dev-neos84",
+        "sfi/styleguide": "dev-neos84",
+        "ttree/dimensionkeeper": "^1.2.1",
+        "yeebase/graylog": "dev-neos84"
     },
     "scripts": {
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+        "test": "bash Build/Tests/run.sh"
+    },
+    "require-dev": {
+        "behat/behat": "^3.29",
+        "neos/buildessentials": "~8.4.0",
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flowpack\\Listable\\": "Packages/Application/Flowpack.Listable/Classes",
+            "Sfi\\Sber\\": "Packages/Application/Sfi.Sber/Classes/",
+            "Sfi\\Umo\\": "Packages/Application/Sfi.Umo/Classes/"
+        },
+        "psr-0": {
+            "Sfi\\News": "Packages/Application/Sfi.News/Classes",
+            "Sfi\\Shared": "Packages/Application/Sfi.Shared/Classes",
+            "Sfi\\Sfi": "Packages/Sites/Sfi.Sfi/Classes"
+        }
     }
 }

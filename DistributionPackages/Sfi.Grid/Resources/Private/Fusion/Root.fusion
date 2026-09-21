@@ -1,0 +1,14 @@
+prototype(Sfi.Grid:Row) < prototype(Neos.Fusion:Tag) {
+	attributes.class = ${'row ' + q(node).property('large') + ' ' + q(node).property('additionalClass')}
+	content = Neos.Neos:ContentCollectionRenderer
+	# Add contentElementWrapping so it would be possible to edit row's properties
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}
+
+prototype(Sfi.Grid:Column) < prototype(Neos.Fusion:Tag) {
+	iterator = ${iterator}
+	attributes.class = ${'columns ' + q(node).property('large') + ' ' + q(node).property('medium') + ' ' + q(node).property('small') + ' ' + q(node).property('largeOffset') + ' ' + q(node).property('mediumOffset') + ' ' + q(node).property('smallOffset') + ' ' + q(node).property('additionalClass')}
+	content = Neos.Neos:ContentCollectionRenderer
+	# Add contentElementWrapping so it would be possible to edit column's properties
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}

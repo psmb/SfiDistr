@@ -1,5 +1,5 @@
 prototype(Sfi.Sfi:AbiturientuImport)>
-prototype(Sfi.Sfi:AbiturientuImport) < prototype(Neos.Fusion:Array) {
+prototype(Sfi.Sfi:AbiturientuImport) < prototype(Neos.Fusion:Join) {
     @process.tmpl = ${'<div style="background-color: lightgrey">' + value + '</div>'}
     @process.tmpl.@if.inBackend = ${node.context.inBackend}
     @context.rootNode = ${q(documentNode).children('[instanceof Neos.Neos:Document]').first().children('main').get(0)}
@@ -14,8 +14,8 @@ prototype(Sfi.Sfi:AbiturientuImport) < prototype(Neos.Fusion:Array) {
         attributes.style = 'color:red'
         content = ${'Отображается отсюда: ' + node.properties.title}
     }
-    2 = Neos.Fusion:Collection {
-        collection = ${q(rootNode).children().get()}
+    2 = Neos.Fusion:Loop {
+        items = ${q(rootNode).children().get()}
         itemName = 'node'
         itemRenderer = Neos.Neos:ContentCase
         @cache {

@@ -1,0 +1,54 @@
+---
+## Graylog server options
+Yeebase:
+  Graylog:
+#    host: '127.0.0.1'
+#    port: 12201
+#    chunksize: 'wan'
+#    skipStatusCodes: [403, 404]
+#
+    Logger:
+      backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+      backendOptions:
+        severityThreshold: '%LOG_INFO%'
+        logIpAddress: true
+        alsoLogWithSystemLogger: false
+
+## Optional: Extend your message context with this configuration to pass some static fields.
+## Useful to distinguish between live and stage for instance
+#    messageContext:
+#      app_context: 'stage'
+
+## Optional: Register GraylogBackend
+#Neos:
+#  Flow:
+#    log:
+#      systemLogger:
+#        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+#      securityLogger:
+#        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+#      sqlLogger:
+#        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+#      i18nLogger:
+#        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
+
+
+## Optional: Register GraylogExceptionHandler
+#Neos:
+#  Flow:
+#    error:
+#      exceptionHandler:
+#        className: 'Yeebase\Graylog\Error\GraylogExceptionHandler'
+
+Neos:
+  Flow:
+    log:
+      psr3:
+        'Neos\Flow\Log\PsrLoggerFactory':
+          graylogLogger:
+            default:
+              class: Yeebase\Graylog\Log\Backend\GraylogBackend
+              options:
+                severityThreshold: '%LOG_INFO%'
+                logIpAddress: true
+                alsoLogWithSystemLogger: false

@@ -1,0 +1,89 @@
+
+'Sfi.Styleguide:Category':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    label: 'Styleguide Category'
+    icon: icon-book
+    group: styleguide
+  constraints:
+    nodeTypes:
+      '*': false
+      'Sfi.Styleguide:SubCategory': true
+'Sfi.Styleguide:SubCategory':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    label: 'Styleguide SubCategory'
+    icon: icon-book
+    group: styleguide
+  properties:
+    title:
+      type: string
+      defaultValue: '<h2>Sub Category title</h2>'
+      ui:
+        inlineEditable: true
+    description:
+      type: string
+      defaultValue: '<p>Sub Category description</p>'
+      ui:
+        inlineEditable: true
+  constraints:
+    nodeTypes:
+      '*': false
+      'Sfi.Styleguide:Item': true
+      'Neos.Neos:Shortcut': true
+'Sfi.Styleguide:Item':
+  superTypes:
+    'Neos.Neos:Document': true
+  ui:
+    label: 'Styleguide Item'
+    icon: icon-edit
+    group: styleguide
+    inlineEditable: true
+    inspector:
+      groups:
+        status:
+          label: 'Development status'
+          position: 5
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  properties:
+    title:
+      type: string
+      defaultValue: '<h3>Item title</h3>'
+      ui:
+        inlineEditable: true
+    description:
+      type: string
+      defaultValue: '<p></p>'
+      ui:
+        inlineEditable: true
+    statusTrack:
+      type: boolean
+      ui:
+        label: 'Track development?'
+        inspector:
+          group: status
+    statusDevelopment:
+      type: boolean
+      ui:
+        label: 'Development ready?'
+        inspector:
+          group: status
+    statusDesignMobile:
+      type: boolean
+      ui:
+        label: 'Mobile design ready?'
+        inspector:
+          group: status
+    statusDesignDesktop:
+      type: boolean
+      ui:
+        label: 'Desktop design ready?'
+        inspector:
+          group: status
+  constraints:
+    nodeTypes:
+      '*': true

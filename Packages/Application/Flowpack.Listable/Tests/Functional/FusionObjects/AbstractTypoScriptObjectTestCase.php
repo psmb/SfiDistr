@@ -1,15 +1,16 @@
 <?php
 namespace Flowpack\Listable\Tests\Functional\FusionObjects;
 
-use Neos\Flow\Http\Request;
-use Neos\Flow\Http\Response;
+use GuzzleHttp\Psr7\ServerRequest;
+use Neos\Flow\Mvc\ActionRequest;
+use Neos\Flow\Mvc\ActionResponse;
 use Neos\Flow\Mvc\Controller\Arguments;
 use Neos\Flow\Mvc\Controller\ControllerContext;
 use Neos\Flow\Mvc\Routing\UriBuilder;
 use Neos\Flow\Tests\FunctionalTestCase;
 use Neos\Fusion\View\FusionView;
 
-abstract class AbstractTypoScriptObjectTest extends FunctionalTestCase
+abstract class AbstractTypoScriptObjectTestCase extends FunctionalTestCase
 {
     /**
      * @var ControllerContext
@@ -25,23 +26,21 @@ abstract class AbstractTypoScriptObjectTest extends FunctionalTestCase
     {
         $view = new FusionView();
 
-        $httpRequest = Request::createFromEnvironment();
-        $request = $httpRequest->createActionRequest();
+        $request = ActionRequest::fromHttpRequest(new ServerRequest('GET', 'http://localhost/'));
 
         $uriBuilder = new UriBuilder();
         $uriBuilder->setRequest($request);
 
         $this->controllerContext = new ControllerContext(
             $request,
-            new Response(),
+            new ActionResponse(),
             new Arguments([]),
             $uriBuilder
         );
 
         $view->setControllerContext($this->controllerContext);
-        $view->disableFallbackView();
         $view->setPackageKey('Flowpack.Listable');
-        $view->setFusionPathPattern(__DIR__ . '/Fixtures/');
+        $view->setFusionPathPattern(__DIR__ . '/Fixtures/Listable.fusion');
 
         return $view;
     }

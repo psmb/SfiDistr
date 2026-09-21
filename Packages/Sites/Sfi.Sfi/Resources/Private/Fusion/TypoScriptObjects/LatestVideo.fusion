@@ -4,8 +4,8 @@ prototype(Sfi.Sfi:LatestVideo) < prototype(Neos.Fusion:Value) {
         @context.collection = ${q(rootNode).find('[instanceof Sfi.News:AbstractNews]').sort('date', 'DESC').slice(0, 1).get()}
         @if.notEmpty = ${q(collection).count() > 0}
         listTitle = ${rootNode.properties.title}
-        list = Neos.Fusion:Collection {
-            collection = ${collection}
+        list = Neos.Fusion:Loop {
+            items = ${collection}
             itemName = 'node'
             itemRenderer = Flowpack.Listable:ContentCaseShort
         }

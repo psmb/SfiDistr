@@ -1,0 +1,62 @@
+-
+  name: 'Psmb.Newsletter edit route'
+  uriPattern: '{node}~newsletter/edit/{--newsletter.subscriber}'
+  defaults:
+    '@package':    'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@format':     'html'
+    '@action':     'show'
+    '--newsletter':
+      '@package': 'Psmb.Newsletter'
+      '@controller': 'Subscription'
+      '@action': 'edit'
+      '@format': 'html'
+  routeParts:
+    node:
+      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandler
+  appendExceedingArguments: TRUE
+
+-
+  name: 'Psmb.Newsletter unsubscribe route'
+  uriPattern: '{node}~newsletter/unsubscribe/{--newsletter.subscriber}'
+  defaults:
+    '@package':    'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@format':     'html'
+    '@action':     'show'
+    '--newsletter':
+      '@package': 'Psmb.Newsletter'
+      '@controller': 'Subscription'
+      '@action': 'unsubscribe'
+      '@format': 'html'
+  routeParts:
+    node:
+      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandler
+  appendExceedingArguments: TRUE
+
+-
+  name: 'Psmb.Newsletter other routes'
+  uriPattern: '{node}~newsletter/{--newsletter.@action}'
+  defaults:
+    '@package':    'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@format':     'html'
+    '@action':     'show'
+    '--newsletter':
+      '@package': 'Psmb.Newsletter'
+      '@controller': 'Subscription'
+      '@format': 'html'
+  routeParts:
+    node:
+      handler: Neos\Neos\Routing\FrontendNodeRoutePartHandler
+  appendExceedingArguments: TRUE
+
+-
+  name: 'Psmb.Newsletter AJAX routes'
+  uriPattern: 'newsletter/{@action}'
+  defaults:
+    '@package':    'Psmb.Newsletter'
+    '@controller': 'Newsletter'
+    '@format':     'json'
+    '@action':     'send'
+  appendExceedingArguments: TRUE

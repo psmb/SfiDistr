@@ -1,6 +1,6 @@
 #This is a default page object. It's being extended and never used directly.
 
-prototype(Sfi.Sfi:Stylesheets) < prototype(Neos.Fusion:Array) {
+prototype(Sfi.Sfi:Stylesheets) < prototype(Neos.Fusion:Join) {
 	site = Neos.Fusion:Template {
 		templatePath = 'resource://Sfi.Sfi/Private/Templates/SharedResources.html'
 		sectionName = 'stylesheets'

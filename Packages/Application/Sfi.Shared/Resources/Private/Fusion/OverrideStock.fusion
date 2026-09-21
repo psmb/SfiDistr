@@ -18,7 +18,7 @@ prototype(Neos.NodeTypes:Headline) {
 }
 
 # TODO: implement it the write way
-prototype(Neos.NodeTypes:AssetList) {
+prototype(Neos.NodeTypes.AssetList:AssetList) {
 	templatePath = 'resource://Sfi.Shared/Private/Templates/NodeTypes/AssetList.html'
 }
 

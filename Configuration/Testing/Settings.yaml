@@ -1,0 +1,23 @@
+Neos:
+  Flow:
+    object:
+      registerFunctionalTestClasses: true
+      includeClasses:
+        # The installed Party package's own tests require PHPUnit 10 attributes.
+        # Only this distribution's tests are run with Flow 8.4 / PHPUnit 9.
+        'Neos.Party': ['^Neos\\Party\\(?!Tests\\).*']
+    persistence:
+      backendOptions:
+        driver: pdo_sqlite
+        path: '%FLOW_PATH_DATA%Temporary/Testing/neos84.sqlite'
+    resource:
+      collections:
+        persistent:
+          storage: defaultPersistentResourcesStorage
+          target: localWebDirectoryPersistentResourcesTarget
+  SwiftMailer:
+    transport:
+      type: 'Swift_NullTransport'
+Yeebase:
+  Graylog:
+    host: ''

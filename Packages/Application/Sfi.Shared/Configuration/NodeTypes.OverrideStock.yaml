@@ -1,9 +1,9 @@
 
 'Neos.Neos:PluginView':
   abstract: true
-'Neos.NodeTypes:Menu':
+'Neos.NodeTypes.Navigation:Navigation':
   abstract: true
-'Neos.NodeTypes:Form':
+'Neos.NodeTypes.Form:Form':
   abstract: true
 'Neos.NodeTypes:ImageMixin':
   properties:
@@ -133,7 +133,7 @@
                 label: 'Альтернативный маленький'
               ParagraphAlt--Large:
                 label: 'Альтернативный большой'
-'Neos.NodeTypes:ContentReferences':
+'Neos.NodeTypes.ContentReferences:ContentReferences':
   ui:
     group: lists
 'Neos.Neos:Document':

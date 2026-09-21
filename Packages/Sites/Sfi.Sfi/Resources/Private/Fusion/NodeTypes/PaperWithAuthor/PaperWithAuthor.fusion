@@ -1,6 +1,6 @@
 prototype(Sfi.Sfi:PaperWithAuthor.AuthorDegree) < prototype(Neos.Fusion:Value) {
-	value = Neos.Fusion:Collection {
-		collection = Neos.Fusion:RawArray {
+	value = Neos.Fusion:Loop {
+		items = Neos.Fusion:DataStructure {
 			1 = ${String.stripTags(node.properties.author.properties.degree)}
 			4 = ${String.stripTags(node.properties.author.properties.freeText || node.properties.author.properties.position)}
 		}

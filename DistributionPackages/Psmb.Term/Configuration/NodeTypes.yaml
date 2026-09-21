@@ -1,0 +1,21 @@
+'Psmb.Term:TermMixin':
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        term:
+          label: i18n
+          position: 1
+  properties:
+    replaceVariants:
+      type: string
+      ui:
+        label: i18n
+        help:
+          message: i18n
+        reloadIfChanged: FALSE
+        inspector:
+          group: 'term'
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
+          editorOptions:
+            rows: 7
