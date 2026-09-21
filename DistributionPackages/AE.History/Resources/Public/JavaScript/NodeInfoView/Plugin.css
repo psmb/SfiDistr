@@ -1,0 +1,33 @@
+.style__nodeInfoView___mYbQ4 {
+    background-color: var(--colors-ContrastNeutral);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+    .style__nodeInfoView__item___3rmzo {
+        padding: 8px;
+        border-bottom: 1px solid #222;
+        line-height: 20px;
+        min-height: 20px;
+    }
+
+    .style__nodeInfoView__item___3rmzo:last-child {
+            border-bottom: none;
+        }
+
+    .style__nodeInfoView__title___3tt-4 {
+        font-weight: bold;
+    }
+
+    .style__nodeInfoView__content___1z3ez {
+        font-size: 13px;
+    }
+
+.style__link___23seG {
+    color: #ff8700;
+}
+
+.style__link___23seG:hover {
+        text-decoration: underline;
+    }

@@ -1,0 +1,112 @@
+<div{attributes -> f:format.raw()} style="margin-top: 12px; padding: 6px; display: flex">
+  <f:form
+    id="createNewNodeForm"
+    method="post"
+    action="create"
+    controller="Node"
+    package="Neos.Neos"
+    subpackage="Service"
+    format="json"
+    >
+    <f:form.hidden name="referenceNode" value="{referenceNode.contextPath}" />
+    <f:form.hidden name="position" value="{position}" />
+    <f:form.hidden name="nodeData[nodeType]" value="{type}" />
+    <f:form.textfield name="nodeData[properties][title]" placeholder="{f:translate(package: 'Psmb.CreateNodeButton', id: 'placeholder')}" />
+    <f:form.submit class="neos-button" value="{f:translate(package: 'Psmb.CreateNodeButton', id: 'create')}"/>
+  </f:form>
+  <f:form style="margin-left: auto;"
+    id="deleteNodeForm"
+    method="post"
+    action="delete"
+    controller="Node"
+    package="Neos.Neos"
+    subpackage="Service"
+    format="json"
+    >
+    <f:form.hidden name="node" value="{deleteNode.contextPath}" />
+    <f:form.hidden name="position" value="{position}" />
+    <f:form.submit class="neos-button" title="{f:translate(package: 'Psmb.CreateNodeButton', id: 'deleteFull')}" value="{f:translate(package: 'Psmb.CreateNodeButton', id: 'delete')}"/>
+  </f:form>
+
+  <script type="text/javascript">
+    (function() {
+      function initCreate() {
+        var endpointUrl = '/neos/service/node/create';
+        var form = document.getElementById('createNewNodeForm');
+
+        form.addEventListener('submit', function(event) {
+          var submitButton = form.querySelector('input[type=submit]');
+          submitButton.disabled = true;
+          submitButton.value = "<f:translate package="Psmb.CreateNodeButton" id="creating"/>";
+
+          var request = new XMLHttpRequest();
+          request.withCredentials = true;
+          request.open('POST', endpointUrl, true);
+
+          request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+              var response = JSON.parse(request.responseText);
+              window.location = response.data.nextUri;
+            } else {
+              submitButton.value = "<f:translate package="Psmb.CreateNodeButton" id="error"/>";
+            }
+          };
+          request.onerror = function() {
+            submitButton.value = "<f:translate package="Psmb.CreateNodeButton" id="error"/>";
+          };
+
+          request.send(new FormData(form));
+
+          // Prevent form submission
+          event.preventDefault();
+          return false;
+        });
+      }
+      function initDelete() {
+        var endpointUrl = '/neos/service/node/delete';
+        var form = document.getElementById('deleteNodeForm');
+
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          var submitButton = form.querySelector('input[type=submit]');
+          var confirmationText = "<f:translate package="Psmb.CreateNodeButton" id="confirm"/>";
+          if (submitButton.value != confirmationText) {
+            submitButton.value = confirmationText;
+            submitButton.classList.add('neos-button-danger');
+          } else {
+            submitButton.disabled = true;
+            submitButton.value = "<f:translate package="Psmb.CreateNodeButton" id="deleting"/>";
+
+            var request = new XMLHttpRequest();
+            request.withCredentials = true;
+            request.open('POST', endpointUrl, true);
+
+            request.onload = function() {
+              if (request.status >= 200 && request.status < 400) {
+                var response = JSON.parse(request.responseText);
+                window.location = '/neos';
+              } else {
+                submitButton.value = "<f:translate package="Psmb.CreateNodeButton" id="error"/>";
+              }
+            };
+            request.onerror = function() {
+              submitButton.value = "<f:translate package="Psmb.CreateNodeButton" id="error"/>";
+            };
+
+            request.send(new FormData(form));
+          }
+          return false;
+        });
+      }
+      function init() {
+        initCreate();
+        initDelete();
+      }
+
+      init();
+      document.addEventListener('Neos.PageLoaded', function(event) {
+        init();
+      }, false);
+    }());
+  </script>
+</div>

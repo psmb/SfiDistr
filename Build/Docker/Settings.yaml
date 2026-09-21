@@ -1,5 +1,8 @@
 Neos:
   Flow:
+    security:
+      cryptography:
+        encryptionKey: '%env:FLOW_ENCRYPTION_KEY%'
     persistence:
       backendOptions:
         driver: pdo_mysql

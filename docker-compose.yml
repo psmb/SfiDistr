@@ -32,6 +32,7 @@ services:
       - GA_DEVKEY
       - SFI_API_AUTH
       - IMPORT_GITHUB_PUB_KEYS
+      - FLOW_ENCRYPTION_KEY
       - FLOW_HTTP_TRUSTED_PROXIES
     labels:
       - "neos=true"

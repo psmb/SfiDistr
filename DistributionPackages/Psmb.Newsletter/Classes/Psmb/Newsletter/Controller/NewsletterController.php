@@ -130,15 +130,20 @@ class NewsletterController extends ActionController
      * @param string $subscription Subscription id to send newsletter to
      * @param NodeInterface $node Node of the current newsletter item
      * @param string $email Test email address
+     * @param array $dataSourceAdditionalArguments
      * @return void
      */
-    public function testSendAction($subscription, NodeInterface $node, $email)
+    public function testSendAction($subscription, NodeInterface $node, $email, array $dataSourceAdditionalArguments = null)
     {
         $subscriptions = array_filter($this->subscriptions, function ($item) use ($subscription) {
             return $item['identifier'] == $subscription;
         });
         $subscription = reset($subscriptions);
         $subscription['isSendFromUi'] = true;
+
+        if ($dataSourceAdditionalArguments) {
+            $subscription['dataSourceAdditionalArguments'] = $dataSourceAdditionalArguments;
+        }
 
         $subscriber = new Subscriber();
         $subscriber->setEmail($email);

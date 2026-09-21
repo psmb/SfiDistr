@@ -1,0 +1,20 @@
+{
+    "description": "Create bookmarklets for quick backend access",
+    "type": "neos-package",
+    "name": "psmb/bookmarklet",
+    "require": {
+        "neos/neos": "*"
+    },
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-0": {
+            "Psmb\\Bookmarklet": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Psmb.Bookmarklet"
+        }
+    },
+    "version": "dev-neos84"
+}

@@ -5,7 +5,7 @@ This distribution upgrades Neos 4.3 / Flow 5.3 to Neos **8.4.7**, Flow **8.4.4**
 ## Changes included
 
 - Split Neos/Flow Composer packages replace the old development collections. Existing in-repository packages have explicit root autoload mappings, while maintained compatibility packages install from `DistributionPackages/`.
-- Third-party dependencies have compatible versions. The newsletter, term replacement, Mustache templates, grid, styleguide, Graylog integration and footnotes have local compatibility ports with upstream origins recorded in `DistributionPackages/README.md`.
+- Third-party dependencies have compatible versions. The newsletter, term replacement, Mustache templates, grid, styleguide, Graylog integration, footnotes, quick creation, bookmarklet and history have local compatibility ports with upstream origins recorded in `DistributionPackages/README.md`.
 - HTTP request creation uses PSR-7 requests and Flow action responses. Logging uses PSR-3, and custom Doctrine access uses the current entity-manager interface.
 - Project-owned prototype generators preserve the existing Fluid templates and automatic node-property bindings removed from core. Rewriting these templates in Fusion is not a prerequisite for this upgrade.
 - Fusion uses `Join`, `DataStructure`, `Loop`, and `Map`, including the `items` property and inherited collection overrides. The stock node-type names have been updated.
@@ -16,26 +16,26 @@ This distribution upgrades Neos 4.3 / Flow 5.3 to Neos **8.4.7**, Flow **8.4.4**
 
 ## Deployment
 
-Complete the required checks in the [validation and go-live plan](Neos-8.4-go-live.md) before production cutover. Public-page parity has passed; editorial save/publish workflows and the remaining custom extensions still need acceptance testing. `/umo` and `/docs` file validation is currently deferred by request.
+Complete the required checks in the [validation and go-live plan](Neos-8.4-go-live.md) before production cutover. Public-page parity and representative local editor/custom-feature checks have passed; see the [editor QA report](Neos-8.4-editor-qa.md) for coverage and remaining staging gates. `/umo` and `/docs` file validation is currently deferred by request.
 
 Rehearse these steps against a fresh production database copy and the actual asset store before scheduling the production cutover. The local test snapshot is not a substitute for a current production rehearsal.
 
 1. Stop editorial changes and newsletter workers. Back up the database, persistent resources, local configuration and the current image tag/digest. Keep the old deployment available for rollback.
 2. Build the new image from this branch, or install the locked dependencies under PHP 8.3 with `composer install --no-dev --prefer-dist --optimize-autoloader`. Do not run `composer update` during deployment. Keep `DistributionPackages/` in the release: Composer links those packages locally.
-3. Provide the existing database, S3, SMTP and other integration environment variables. Securely preserve and configure the current deployment's effective Flow signing key before starting the new application; verify that it survives container replacement and validates previously issued tokens. The key may come from configuration, the legacy `Data/Persistent/EncryptionKey` file or the persistent HashService cache, and is not included in the SQL dump. The database volume and credentials do not change. This upgrade does not change the MariaDB or Redis server versions.
-4. With the new code and the site still in maintenance, run as the web user in the production context:
+3. Provide the existing database, S3, SMTP and other integration environment variables. Set `FLOW_ENCRYPTION_KEY` (environment or `/run/secrets/FLOW_ENCRYPTION_KEY`) to the current deployment's effective Flow signing key before starting the new application. Production startup refuses an absent key; verify that it survives container replacement and validates previously issued tokens. The key may come from configuration, the legacy `Data/Persistent/EncryptionKey` file or the persistent HashService cache, and is not included in the SQL dump. The database volume and credentials do not change. This upgrade does not change the MariaDB or Redis server versions.
+4. With the new code and the site still in maintenance, run inside the container as the web user in the production context:
 
    ```sh
-   FLOW_CONTEXT=Production ./flow flow:cache:flush --force
-   FLOW_CONTEXT=Production ./flow doctrine:migrate
-   FLOW_CONTEXT=Production ./flow node:migrate 20190304111200
-   FLOW_CONTEXT=Production ./flow flow:session:destroyall
-   FLOW_CONTEXT=Production ./flow resource:publish --collection static
-   FLOW_CONTEXT=Production ./flow flow:cache:warmup
+   FLOW_CONTEXT=Production sfi-flow flow:cache:flush --force
+   FLOW_CONTEXT=Production sfi-flow doctrine:migrate
+   FLOW_CONTEXT=Production sfi-flow node:migrate 20190304111200
+   FLOW_CONTEXT=Production sfi-flow flow:session:destroyall
+   FLOW_CONTEXT=Production sfi-flow resource:publish --collection static
+   FLOW_CONTEXT=Production sfi-flow flow:cache:warmup
    ./cron-hourly
    ```
 
-   The node migration renames the extracted stock node types. Check `node:migrationstatus` first and run it only if not already applied. Code migrations are already represented in this branch; do not rerun them against the deployed files.
+   Run the hourly script from `/data/www`; on a non-container installation, replace `sfi-flow` with `./flow`. The node migration renames the extracted stock node types. Check `node:migrationstatus` first and run it only if not already applied. Code migrations are already represented in this branch; do not rerun them against the deployed files.
 5. Check the homepage, education/program listings, news/article pages, English pages, journal, fundraising, backend login, inline editing, custom editors and newsletter preview. Confirm S3 reads/uploads, SMTP and payment integrations using staging credentials before reopening production editing. Do not trigger real broadcasts or payments for a smoke test.
 6. Re-enable traffic, editing and workers after those checks. If rollback is needed, restore the database backup together with the old image and its resources/configuration. Do not run the old application against the upgraded schema.
 
@@ -43,7 +43,7 @@ Do not run `node:repair`, resource cleanup or thumbnail deletion as an automatic
 
 ## Container operations
 
-Use `docker exec --user 80 <container> ./flow ...` for application commands; the image works in `/data/www-provisioned`. `DB_DATABASE`, `DB_HOST`, `DB_USER`, `DB_PASS`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `SFI_PM_USER`, `SFI_PM_PASSWORD`, `SFI_API_AUTH`, `GA_SECRET` and `GA_DEVKEY` retain their roles. Docker secrets with matching names are also loaded at startup. When serving behind Traefik, set `FLOW_HTTP_TRUSTED_PROXIES` to its address or Docker network CIDR so Flow trusts forwarded HTTPS/host/client headers.
+Use `docker exec --user 80 <container> sfi-flow ...` for application commands; the image works in `/data/www-provisioned`. `DB_DATABASE`, `DB_HOST`, `DB_USER`, `DB_PASS`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `SFI_PM_USER`, `SFI_PM_PASSWORD`, `SFI_API_AUTH`, `GA_SECRET` and `GA_DEVKEY` retain their roles. Docker secrets with matching names are loaded at startup and by `sfi-flow`. Use that wrapper for Docker maintenance commands, including the deployment commands above, because `docker exec ./flow` does not inherit secrets exported only by the entrypoint. Local non-container installations continue to use `./flow`. When serving behind Traefik, set `FLOW_HTTP_TRUSTED_PROXIES` to its address or Docker network CIDR so Flow trusts forwarded HTTPS/host/client headers.
 
 `IMPORT_GITHUB_PUB_KEYS` still accepts comma-separated GitHub usernames for SSH access. `DB_AUTO_BACKUP` accepts `hourly`, `daily`, `weekly` or `monthly`; `/data/backupDb.sh` remains available for manual use. No database is imported automatically at startup. Preserve the existing mounts for documents and `Web/umo`, and any deployment-specific cron configuration.
 
@@ -59,20 +59,26 @@ The checked-in editor bundles can be reproduced in each directory with `npm ci` 
 
 - `Packages/Sites/Sfi.Sfi/Resources/Private/Itemprop`
 - `DistributionPackages/Psmb.Footnote/Resources/Private/Footnotes`
+- `DistributionPackages/Psmb.Newsletter/Resources/Private/NewsletterView`
+- `DistributionPackages/Psmb.CreateNodeButton/Resources/Private/CreateNodeView`
+- `DistributionPackages/Psmb.Bookmarklet/Resources/Private/Bookmarklet`
+- `DistributionPackages/AE.History/Resources/Private/JavaScript/NodeInfoView`
 
-Use npm and the package lock files. The legacy Webpack adapter still requires the OpenSSL compatibility option on current Node.js. Browser console warnings about the deprecated Plow.js API remain in older UI extensions; they do not prevent the tested editor from loading.
+Run `bash Build/Tests/editor-extensions.sh` to rebuild all six bundles and run the newsletter JavaScript regressions. Use npm and the package lock files. The legacy Webpack adapter still requires the OpenSSL compatibility option on current Node.js. Browser console warnings about the deprecated Plow.js API remain in older UI extensions; they do not prevent the tested editor from loading.
 
 Local checks completed during the upgrade:
 
 - Composer platform validation, dependency installation and PHP syntax checks.
-- Six compatibility tests covering Fluid prototype generation, newsletter request construction, PSR-3 logging, cache tag invalidation and actual Fusion list rendering.
-- Eight pending database migrations and the stock node-type migration on a separate database copy, with **52,050 content-node records before and after** and no pending schema migrations.
+- Fifteen PHP tests and three JavaScript tests covering compatibility, recipient filters, dry-run and failure side effects, signing-key behavior and restricted editor links.
+- The initial rehearsal applied eight pending database migrations and the stock node-type migration on a separate database copy, with **52,050 content-node records before and after** and no pending schema migrations. The subsequent fresh-dump rehearsal preserved all **59,898 live records**; its full counts are recorded in the disclosure QA report below.
 - Representative Russian/English pages, education listing, journal and fundraising page rendering.
 - Backend login, document tree and inline editor loading, including an article containing footnotes.
 - Newsletter generation for one synthetic subscriber in dry-run mode; no email sent.
 - PHP 8.3 container build, startup and HTTP rendering in Development and a Production subcontext, including the Redis 3.2 cache backend.
 
 The local asset snapshot is incomplete. Full media validation and real SMTP, payment, PDF-signing, external subscriber-source and Google Analytics integrations require the staging environment and its credentials. Production has not been changed.
+
+The [editor and release QA report](Neos-8.4-editor-qa.md) records the subsequent editorial, fixture-integration and release-image checks.
 
 The [fresh production-dump disclosure QA report](Neos-8.4-sveden-qa.md) records the subsequent rehearsal of all disclosure sections, including browser-level microdata, tables, signatures and the cached education route.
 

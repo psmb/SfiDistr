@@ -16,7 +16,7 @@ const sendNewsletter = (focusedNodeContextPath, subscription, isTest, email, dat
     let sendEndpointUrl = isTest ? '/newsletter/testSend' : '/newsletter/send';
     const csrfToken = document.getElementById('appContainer').dataset.csrfToken;
     const data = new URLSearchParams();
-    data.set('node', focusedNodeContextPath.replace(/user-.+\;/, 'live;'));
+    data.set('node', focusedNodeContextPath.replace(/@[^;]+(?=;|$)/, '@live'));
     data.set('subscription', subscription);
     data.set('__csrfToken', csrfToken);
     if (isTest && email) {
@@ -24,7 +24,7 @@ const sendNewsletter = (focusedNodeContextPath, subscription, isTest, email, dat
     }
     if (dataSourceAdditionalArguments) {
         Object.keys(dataSourceAdditionalArguments).forEach(option => {
-            data.set('dataSourceAdditionalArguments[' + pair[0] + ']', dataSourceAdditionalArguments[option]);
+            data.set('dataSourceAdditionalArguments[' + option + ']', dataSourceAdditionalArguments[option]);
         });
     }
     return fetch(sendEndpointUrl, {
@@ -88,7 +88,7 @@ export default class NewsletterView extends Component {
 
     sendNewsletter() {
         const isTest = false;
-        sendNewsletter(this.props.focusedNodeContextPath, this.state.selectedSubscription, isTest)
+        sendNewsletter(this.props.focusedNodeContextPath, this.state.selectedSubscription, isTest, undefined, this.props.options && this.props.options.dataSourceAdditionalArguments)
             .then(json => {
                 return json.status === 'success' ? this.setState({isSent: true}) : this.setState({isError: true});
             })
@@ -98,7 +98,7 @@ export default class NewsletterView extends Component {
 
     sendTestNewsletter(email) {
         const isTest = true;
-        sendNewsletter(this.props.focusedNodeContextPath, this.state.selectedSubscription, isTest, email)
+        sendNewsletter(this.props.focusedNodeContextPath, this.state.selectedSubscription, isTest, email, this.props.options && this.props.options.dataSourceAdditionalArguments)
             .then(json => {
                 return json.status === 'success' ? this.setState({isSent: true}) : this.setState({isError: true})
             })

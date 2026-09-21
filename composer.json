@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "aertmann/history": "^2.0",
+        "aertmann/history": "dev-neos84",
         "flownative/aws-s3": "^2.8",
         "flowpack/cachebuster": "^1.0",
         "flowpack/jobqueue-common": "^3.0",
@@ -41,8 +41,8 @@
         "neos/redirecthandler-neosadapter": "^4.3.4",
         "neos/swiftmailer": "^7.4",
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-        "psmb/bookmarklet": "^0.1",
-        "psmb/createnodebutton": "@dev",
+        "psmb/bookmarklet": "dev-neos84",
+        "psmb/createnodebutton": "dev-neos84",
         "psmb/footnote": "dev-neos84",
         "psmb/newsletter": "dev-neos84",
         "psmb/registry": "^2.1.4",

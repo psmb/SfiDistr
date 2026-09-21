@@ -1,41 +1,80 @@
-name: Create and publish a Docker image
+name: Validate and build release image
 
 on:
+  pull_request:
   push:
-    branches: ['master']
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish a staging candidate (does not deploy)
+        type: boolean
+        default: false
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+permissions:
+  contents: read
 
 jobs:
-  build-and-push-image:
+  compatibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: '8.3'
+          extensions: gd, intl, pdo_sqlite, pdo_mysql, redis, zip
+          coverage: none
+          tools: composer:v2
+          ini-values: memory_limit=1024M
+      - run: composer install --prefer-dist --no-interaction --no-progress
+      - run: composer test
+      - name: Rebuild custom editor extensions and test newsletter requests
+        run: bash Build/Tests/editor-extensions.sh
+      - name: Verify the committed editor bundles match the build
+        run: |
+          git diff --exit-code --ignore-space-at-eol --ignore-blank-lines -- \
+            Packages/Sites/Sfi.Sfi/Resources/Public/JavaScript/Itemprop \
+            DistributionPackages/Psmb.Footnote/Resources/Public/JavaScript/Footnote \
+            DistributionPackages/Psmb.Newsletter/Resources/Public/JavaScript/NewsletterView \
+            DistributionPackages/Psmb.CreateNodeButton/Resources/Public/JavaScript/CreateNodeView \
+            DistributionPackages/Psmb.Bookmarklet/Resources/Public/JavaScript/Bookmarklet \
+            DistributionPackages/AE.History/Resources/Public/JavaScript/NodeInfoView
+
+  image:
+    needs: compatibility
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          persist-credentials: false
+      - name: Build the production image
+        run: docker build --tag sfi-candidate .
+      - name: Verify production refuses an absent signing key
+        run: |
+          if docker run --rm sfi-candidate > startup.log 2>&1; then
+            echo 'Production started without a persistent signing key' >&2
+            exit 1
+          fi
+          grep -q 'FLOW_ENCRYPTION_KEY must contain' startup.log
+      - name: Publish a candidate and retain the master tag for master pushes
+        if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)
+        env:
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          image="ghcr.io/${GITHUB_REPOSITORY,,}"
+          candidate="$image:sha-${GITHUB_SHA}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          printf '%s' "$REGISTRY_TOKEN" | docker login ghcr.io --username "$GITHUB_ACTOR" --password-stdin
+          docker tag sfi-candidate "$candidate"
+          docker push "$candidate"
+          docker pull "$candidate"
+          digest=$(docker image inspect "$candidate" --format '{{index .RepoDigests 0}}')
+          printf 'Candidate: `%s`\n\nDeploy by digest: `%s`\n' "$candidate" "$digest" >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$GITHUB_EVENT_NAME" == push ]]; then
+            docker tag sfi-candidate "$image:master"
+            docker push "$image:master"
+          fi

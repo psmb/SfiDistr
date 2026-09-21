@@ -96,13 +96,15 @@ class MailerCommandController extends CommandController
                     $subscriber['projectTarget'] = $project->getProperty('target');
                     try {
                         $originalNode = clone $node;
-                        // We register sent event before actually sending to prevent double delivery
-                        // TODO: make actual delivery more robust
-                        $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
-                        if (!$dryRun) {
+                        if ($dryRun) {
+                            $this->fusionMailService->generateSubscriptionLetter($subscriber, $subscription, $originalNode);
+                        } else {
+                            // Keep the existing at-most-once policy: record before delivery.
+                            // A delivery failure requires manual reconciliation before retrying.
+                            $this->eventStoreApi->registerEmailSent($reason, $subscripionId, $subscriber['email']);
                             $this->fusionMailService->generateSubscriptionLetterAndSend($subscriber, $subscription, $originalNode);
                         }
-                        $this->systemLogger->info("Email sent: " . ($dryRun ? "(Dry-run)" : "") . $subscriber['email'] . "; " . $reason . "; " . $subscripionId);
+                        $this->systemLogger->info(($dryRun ? "Dry-run rendered: " : "Email sent: ") . $subscriber['email'] . "; " . $reason . "; " . $subscripionId);
                     } catch (\Exception $e) {
                         $message = $e->getMessage();
                         $level = strpos($message, 'does not comply with RFC 2822') !== false ? \Psr\Log\LogLevel::NOTICE : \Psr\Log\LogLevel::ERROR;

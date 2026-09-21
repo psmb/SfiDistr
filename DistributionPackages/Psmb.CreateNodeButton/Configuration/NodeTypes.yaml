@@ -1,0 +1,25 @@
+'Psmb.CreateNodeButton:CreateNodeMixin':
+  abstract: true
+  ui:
+    inspector:
+      tabs:
+        createNode:
+          label: i18n
+          position: 100
+          icon: plus-circle
+      groups:
+        createNode:
+          label: i18n
+          tab: createNode
+      views:
+        createNode:
+          label: i18n
+          group: createNode
+          view: Psmb.CreateNodeButton/Views/CreateNodeView
+          viewOptions:
+            enabled: true
+            # Possible values are `before`, `into` and `after`
+            position: 'into'
+            # type: 'Set.Your:DocumentNodeType'
+            # referenceNodePath: '/sites/site/to-set'
+            # placeholder: 'Enter title...'

@@ -4,21 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f59fa2daaac5765d7a89942c18fc62ca",
+    "content-hash": "29e6e6e2119279d52cbe71f334f34791",
     "packages": [
         {
             "name": "aertmann/history",
-            "version": "2.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aertmann/history.git",
-                "reference": "a00238209452bd3d9b2e82f7bfd27495c1b5dd01"
-            },
+            "version": "dev-neos84",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/aertmann/history/zipball/a00238209452bd3d9b2e82f7bfd27495c1b5dd01",
-                "reference": "a00238209452bd3d9b2e82f7bfd27495c1b5dd01",
-                "shasum": ""
+                "type": "path",
+                "url": "DistributionPackages/AE.History",
+                "reference": "d6922e845663943e1eec9cbc1aa8c359938808b9"
             },
             "require": {
                 "neos/neos": ">3"
@@ -109,7 +103,6 @@
                     "AE\\History\\": "Classes"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -121,15 +114,14 @@
             ],
             "description": "An improved history backend module for Neos",
             "keywords": [
-                "Neos",
                 "event-log",
-                "history"
+                "history",
+                "neos"
             ],
-            "support": {
-                "issues": "https://github.com/aertmann/history/issues",
-                "source": "https://github.com/aertmann/history/tree/2.0.9"
-            },
-            "time": "2021-02-02T15:55:50+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "aws/aws-crt-php",
@@ -7990,17 +7982,11 @@
         },
         {
             "name": "psmb/bookmarklet",
-            "version": "0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/psmb/Psmb.Bookmarklet.git",
-                "reference": "89fb40b1b7d9417cf2284d39c6dd3c73108da116"
-            },
+            "version": "dev-neos84",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/psmb/Psmb.Bookmarklet/zipball/89fb40b1b7d9417cf2284d39c6dd3c73108da116",
-                "reference": "89fb40b1b7d9417cf2284d39c6dd3c73108da116",
-                "shasum": ""
+                "type": "path",
+                "url": "DistributionPackages/Psmb.Bookmarklet",
+                "reference": "26c44e44939a81d34d25fe2a409e95f3e5cd0abf"
             },
             "require": {
                 "neos/neos": "*"
@@ -8016,35 +8002,26 @@
                     "Psmb\\Bookmarklet": "Classes/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
             "description": "Create bookmarklets for quick backend access",
-            "support": {
-                "issues": "https://github.com/psmb/Psmb.Bookmarklet/issues",
-                "source": "https://github.com/psmb/Psmb.Bookmarklet/tree/master"
-            },
-            "time": "2018-09-04T14:16:43+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "psmb/createnodebutton",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/psmb/Psmb.CreateNodeButton.git",
-                "reference": "9dfe876f91f007e154c76116d65d44fa61cde105"
-            },
+            "version": "dev-neos84",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/psmb/Psmb.CreateNodeButton/zipball/9dfe876f91f007e154c76116d65d44fa61cde105",
-                "reference": "9dfe876f91f007e154c76116d65d44fa61cde105",
-                "shasum": ""
+                "type": "path",
+                "url": "DistributionPackages/Psmb.CreateNodeButton",
+                "reference": "7645da370f4fc8ebbd7e1c5fdc2aa7a93f4d68c8"
             },
             "require": {
                 "neos/neos": "*"
             },
-            "default-branch": true,
             "type": "neos-package",
             "extra": {
                 "neos": {
@@ -8121,16 +8098,14 @@
                     "Psmb\\CreateNodeButton": "Classes/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
             "description": "Create the nodes in Neos even without the tree...",
-            "support": {
-                "issues": "https://github.com/psmb/Psmb.CreateNodeButton/issues",
-                "source": "https://github.com/psmb/Psmb.CreateNodeButton/tree/master"
-            },
-            "time": "2021-01-04T20:18:18+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "psmb/footnote",
@@ -14321,7 +14296,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "aertmann/history": 20,
         "flowpack/mustache": 20,
+        "psmb/bookmarklet": 20,
         "psmb/createnodebutton": 20,
         "psmb/footnote": 20,
         "psmb/newsletter": 20,

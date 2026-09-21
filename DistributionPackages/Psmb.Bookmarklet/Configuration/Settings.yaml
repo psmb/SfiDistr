@@ -1,0 +1,7 @@
+Neos:
+  Neos:
+    Ui:
+      resources:
+        javascript:
+          'Psmb.Bookmarklet:Bookmarklet':
+            resource: resource://Psmb.Bookmarklet/Public/JavaScript/Bookmarklet/Plugin.js
