@@ -16,11 +16,13 @@ This distribution upgrades Neos 4.3 / Flow 5.3 to Neos **8.4.7**, Flow **8.4.4**
 
 ## Deployment
 
+Complete the required checks in the [validation and go-live plan](Neos-8.4-go-live.md) before production cutover. Public-page parity has passed; editorial save/publish workflows and the remaining custom extensions still need acceptance testing. `/umo` and `/docs` file validation is currently deferred by request.
+
 Rehearse these steps against a fresh production database copy and the actual asset store before scheduling the production cutover. The local test snapshot is not a substitute for a current production rehearsal.
 
 1. Stop editorial changes and newsletter workers. Back up the database, persistent resources, local configuration and the current image tag/digest. Keep the old deployment available for rollback.
 2. Build the new image from this branch, or install the locked dependencies under PHP 8.3 with `composer install --no-dev --prefer-dist --optimize-autoloader`. Do not run `composer update` during deployment. Keep `DistributionPackages/` in the release: Composer links those packages locally.
-3. Provide the existing database, S3, SMTP and other integration environment variables. The database volume and credentials do not change. This upgrade does not change the MariaDB or Redis server versions.
+3. Provide the existing database, S3, SMTP and other integration environment variables. Securely preserve and configure the current deployment's effective Flow signing key before starting the new application; verify that it survives container replacement and validates previously issued tokens. The key may come from configuration, the legacy `Data/Persistent/EncryptionKey` file or the persistent HashService cache, and is not included in the SQL dump. The database volume and credentials do not change. This upgrade does not change the MariaDB or Redis server versions.
 4. With the new code and the site still in maintenance, run as the web user in the production context:
 
    ```sh
