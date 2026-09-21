@@ -30,6 +30,7 @@ Rehearse these steps against a fresh production database copy and the actual ass
    FLOW_CONTEXT=Production ./flow flow:session:destroyall
    FLOW_CONTEXT=Production ./flow resource:publish --collection static
    FLOW_CONTEXT=Production ./flow flow:cache:warmup
+   ./cron-hourly
    ```
 
    The node migration renames the extracted stock node types. Check `node:migrationstatus` first and run it only if not already applied. Code migrations are already represented in this branch; do not rerun them against the deployed files.
@@ -45,6 +46,8 @@ Use `docker exec --user 80 <container> ./flow ...` for application commands; the
 `IMPORT_GITHUB_PUB_KEYS` still accepts comma-separated GitHub usernames for SSH access. `DB_AUTO_BACKUP` accepts `hourly`, `daily`, `weekly` or `monthly`; `/data/backupDb.sh` remains available for manual use. No database is imported automatically at startup. Preserve the existing mounts for documents and `Web/umo`, and any deployment-specific cron configuration.
 
 For the development Compose file, install Composer dependencies into the mounted checkout and supply local `Configuration/Settings.yaml` before starting the web service. An example using the Compose database is in `Build/Docker/Settings.yaml`. Local development settings must point to test resources and a mail sink.
+
+The container schedules `cron-hourly` and `cron-minutely` as the web user. The minute job remains inactive unless its commented newsletter command is explicitly enabled. The hourly job refreshes `/sveden/education.html` using an atomic file replacement and keeps the previous page if rendering fails. Before the first successful refresh, that URL temporarily redirects to its dynamic source, `/about/sveden/education.html`.
 
 ## Verification and maintenance
 
@@ -68,6 +71,8 @@ Local checks completed during the upgrade:
 - PHP 8.3 container build, startup and HTTP rendering in Development and a Production subcontext, including the Redis 3.2 cache backend.
 
 The local asset snapshot is incomplete. Full media validation and real SMTP, payment, PDF-signing, external subscriber-source and Google Analytics integrations require the staging environment and its credentials. Production has not been changed.
+
+The [fresh production-dump disclosure QA report](Neos-8.4-sveden-qa.md) records the subsequent rehearsal of all disclosure sections, including browser-level microdata, tables, signatures and the cached education route.
 
 ## References
 

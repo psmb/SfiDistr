@@ -44,7 +44,8 @@ RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoload
     && composer clear-cache \
     && cp /opt/sfi/Settings.yaml Configuration/Settings.yaml \
     && chown -R www-data:www-data /data/www-provisioned \
-    && ln -s /data/www-provisioned /data/www
+    && ln -s /data/www-provisioned /data/www \
+    && printf '* * * * * cd /data/www && ./cron-minutely\n0 * * * * cd /data/www && ./cron-hourly\n' | crontab -u www-data -
 
 EXPOSE 80 22
 ENTRYPOINT ["/opt/sfi/entrypoint.sh"]
