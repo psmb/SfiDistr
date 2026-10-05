@@ -1,9 +1,6 @@
-.TestimonyCard {
-    padding: 2*$u 0;
-}
-
 .TestimonyCard-Content {
     margin: 0;
+    padding: 2*$u 0;
 }
 
 .TestimonyCard-Author {
@@ -35,7 +32,7 @@
     }
 }
 
-.Carousel .TestimonyCard {
+.Carousel .TestimonyCard-Content {
     padding: 3*$u 4*$u 2*$u;
 
     @include breakpoint(medium) {
