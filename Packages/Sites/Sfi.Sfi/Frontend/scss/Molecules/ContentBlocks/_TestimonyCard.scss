@@ -1,0 +1,45 @@
+.TestimonyCard {
+    padding: 2*$u 0;
+}
+
+.TestimonyCard-Content {
+    margin: 0;
+}
+
+.TestimonyCard-Author {
+    display: flex;
+    align-items: center;
+    gap: 1.5*$u;
+    margin-bottom: 4*$u;
+}
+
+.TestimonyCard-Image {
+    width: 8*$u;
+    height: 8*$u;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.TestimonyCard-Details {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.TestimonyCard-Quote {
+    margin: 0;
+    overflow-wrap: break-word;
+
+    p + p {
+        margin-top: $u;
+    }
+}
+
+.Carousel .TestimonyCard {
+    padding: 3*$u 4*$u 2*$u;
+
+    @include breakpoint(medium) {
+        padding-right: 6*$u;
+        padding-left: 6*$u;
+    }
+}
