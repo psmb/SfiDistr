@@ -18,9 +18,18 @@ RUN apk add --no-cache bash ca-certificates curl git nginx supervisor su-exec \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS icu-dev libzip-dev \
         libpng-dev libjpeg-turbo-dev freetype-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd pdo_mysql opcache intl exif zip \
-    && pecl install redis-6.2.0 \
-    && docker-php-ext-enable redis \
+    && docker-php-ext-install -j2 gd pdo_mysql opcache intl exif zip
+
+RUN curl --fail --show-error --location --retry 3 \
+        https://codeload.github.com/phpredis/phpredis/tar.gz/refs/tags/6.2.0 \
+        --output /tmp/phpredis.tar.gz \
+    && echo '470333b27cbf9485d36b610b81300c06491a6575f22c6801a9cefc55285ed123  /tmp/phpredis.tar.gz' | sha256sum -c - \
+    && docker-php-source extract \
+    && mkdir -p /usr/src/php/ext/redis \
+    && tar -xzf /tmp/phpredis.tar.gz --strip-components=1 -C /usr/src/php/ext/redis \
+    && docker-php-ext-install -j2 redis \
+    && docker-php-source delete \
+    && rm /tmp/phpredis.tar.gz \
     && apk del .build-deps \
     && deluser www-data \
     && (delgroup cdrw || true) \

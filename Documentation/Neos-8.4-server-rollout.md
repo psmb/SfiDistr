@@ -31,18 +31,17 @@ Review the commands in three batches before execution:
 
 The host has approximately 100 GB free on `/`, 5 TB on `/mnt/vol2`, and 14 GiB available RAM at inspection. Recheck before cloning. Database restore, migrations and cache warmup determine the maintenance window; measure them on staging before committing to a duration. No S3 object copy is needed.
 
-## Resolve these inputs before staging
+## Startup and scheduling
 
-- Inspect root's scheduled jobs. Passwordless sudo is unavailable, so the read-only command below needs an operator's interactive sudo authentication. Determine whether any job runs Spaas, pulls `master`, updates code, or backs up this site. Before cutover, agree exactly which SFI-specific automation must be suspended. Do not disable unrelated site jobs.
+- Cron inspection was waived on 23 October. Leave existing jobs unchanged; it is not a prerequisite for this rollout.
 - The legacy startup scripts have been inspected: `DEVELOPMENT` is unset, initial provisioning skips an existing checkout, and database import is confined to development mode. Restarting the preserved container should therefore retain its code and database. Verify this in the maintenance-window rollback rehearsal.
 
 ```bash
-ssh -t server.psmb.ru 'sudo crontab -l'
 ssh server.psmb.ru 'df -h / /mnt/vol2; free -h'
 ssh server.psmb.ru 'docker inspect --format "{{json .Config.Entrypoint}} {{json .Config.Cmd}}" sfidistr-web-1'
 ```
 
-Any required job edit will be shown separately after inspection; this plan does not authorize editing root's crontab.
+This rollout does not change root's crontab.
 
 ## Prepare the candidate locally
 
@@ -227,10 +226,10 @@ sha256sum backups/staging-source.sql.gz > backups/staging-source.sql.gz.sha256
 
 # Wait for the new database, then fail if it is not ready.
 for attempt in {1..30}; do
-  docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysqladmin -uroot ping --silent' >/dev/null 2>&1 && break
+  docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT 1" "$MYSQL_DATABASE"' >/dev/null 2>&1 && break
   sleep 2
 done
-docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysqladmin -uroot ping --silent'
+docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT 1" "$MYSQL_DATABASE"'
 test "$(docker inspect -f '{{index .Config.Labels "com.docker.compose.project"}}' sfi84-db-1)" = sfi84
 test "$(docker inspect -f '{{range .Mounts}}{{if eq .Destination "/var/lib/mysql"}}{{.Name}}{{end}}{{end}}' sfi84-db-1)" = sfi84_stage_db
 test "$(docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=DATABASE()" "$MYSQL_DATABASE"')" = 0
@@ -331,10 +330,10 @@ for volume in sfi84_release_db sfi84_release_redis; do
 done
 sfi84 up -d --force-recreate db redis
 for attempt in {1..30}; do
-  docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysqladmin -uroot ping --silent' >/dev/null 2>&1 && break
+  docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT 1" "$MYSQL_DATABASE"' >/dev/null 2>&1 && break
   sleep 2
 done
-docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysqladmin -uroot ping --silent'
+docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT 1" "$MYSQL_DATABASE"'
 test "$(docker inspect -f '{{range .Mounts}}{{if eq .Destination "/var/lib/mysql"}}{{.Name}}{{end}}{{end}}' sfi84-db-1)" = sfi84_release_db
 test "$(docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=DATABASE()" "$MYSQL_DATABASE"')" = 0
 gzip -dc backups/cutover.sql.gz | docker exec -i sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; exec mysql -uroot "$MYSQL_DATABASE"'
@@ -458,10 +457,10 @@ docker run -d --name sfi84-restore-check --network none --label traefik.enable=f
   --env-file "$SFI_RUN/restore-check.env" -v sfi84_restore_check_db:/var/lib/mysql \
   mariadb@sha256:a25e7c87fe20c6d035fe81003937a8d732574ecf54466d0294da3423b64af80c
 for attempt in {1..30}; do
-  docker exec sfi84-restore-check sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysqladmin -uroot ping --silent' >/dev/null 2>&1 && break
+  docker exec sfi84-restore-check sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT 1" "$MYSQL_DATABASE"' >/dev/null 2>&1 && break
   sleep 2
 done
-docker exec sfi84-restore-check sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysqladmin -uroot ping --silent'
+docker exec sfi84-restore-check sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT 1" "$MYSQL_DATABASE"'
 gzip -dc backups/restore-rehearsal.sql.gz | docker exec -i sfi84-restore-check sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; exec mysql -uroot "$MYSQL_DATABASE"'
 docker exec sfi84-restore-check sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysqlcheck -uroot --check "$MYSQL_DATABASE"'
 docker stop sfi84-restore-check
