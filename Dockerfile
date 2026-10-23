@@ -52,6 +52,7 @@ COPY --chown=www-data:www-data ./ ./
 ARG APP_REVISION
 LABEL org.opencontainers.image.revision=$APP_REVISION
 RUN test -n "$APP_REVISION" \
+    && chown root:root . \
     && git init --initial-branch=master \
     && git remote add origin https://github.com/psmb/SfiDistr.git \
     && git fetch --depth=1 origin "$APP_REVISION" \
