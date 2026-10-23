@@ -1,0 +1,12 @@
+{
+  "services": {
+    "web": {
+      "labels": {
+        "traefik.enable": "true",
+        "traefik.frontend.rule": "Host:next.sfi.ru",
+        "traefik.frontend.auth.basic.removeHeader": "true",
+        "traefik.frontend.headers.customResponseHeaders": "X-Robots-Tag:noindex, nofollow, noarchive"
+      }
+    }
+  }
+}

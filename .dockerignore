@@ -28,3 +28,7 @@ Unconfirmed*.crdownload
 /Configuration/Testing/
 
 .phpunit.result.cache
+**/*.sql
+**/*.sql.*
+**/*.dump
+**/*.bak

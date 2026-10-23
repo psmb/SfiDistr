@@ -1,0 +1,64 @@
+{
+  "services": {
+    "db": {
+      "image": "${SFI_DB_IMAGE:?}",
+      "restart": "unless-stopped",
+      "environment": {
+        "MYSQL_ROOT_PASSWORD": "${SFI_DB_ROOT_PASSWORD:?}",
+        "MYSQL_DATABASE": "db",
+        "MYSQL_USER": "admin",
+        "MYSQL_PASSWORD": "${SFI_DB_PASSWORD:?}"
+      },
+      "volumes": ["db-data:/var/lib/mysql"],
+      "labels": {"traefik.enable": "false"}
+    },
+    "redis": {
+      "image": "${SFI_REDIS_IMAGE:?}",
+      "restart": "unless-stopped",
+      "volumes": ["redis-data:/data"],
+      "labels": {"traefik.enable": "false"}
+    },
+    "web": {
+      "image": "${SFI_IMAGE:?}",
+      "restart": "unless-stopped",
+      "env_file": ["${SFI_RUNTIME_ENV:?}"],
+      "environment": {
+        "FLOW_CONTEXT": "Production/Upgrade",
+        "FLOW_HTTP_TRUSTED_PROXIES": "172.19.0.7",
+        "DB_HOST": "db",
+        "DB_DATABASE": "db",
+        "DB_USER": "admin",
+        "DB_PASS": "${SFI_DB_PASSWORD:?}",
+        "AWS_ENDPOINT": "https://hb.ru-msk.vkcloud-storage.ru",
+        "AWS_BACKUP_ARN": "",
+        "DB_AUTO_BACKUP": "",
+        "IMPORT_GITHUB_PUB_KEYS": ""
+      },
+      "volumes": [
+        "app-data:/data/www-provisioned/Data",
+        "web-resources:/data/www-provisioned/Web/_Resources",
+        "${SFI_RUN:?}/secrets:/run/secrets:ro",
+        "${SFI_SETTINGS_FILE:?}:/data/www-provisioned/Configuration/Production/Upgrade/Settings.yaml:ro",
+        "${SFI_REDIRECTS_DIR:?}:/data/www-provisioned/server/nginx/conf.d:ro",
+        "/mnt/vol2/docker/sites/kabinet/www/moodledata/repository/ltso/accred:/data/www-provisioned/Web/docs",
+        "/home/umo/umo:/data/www-provisioned/Web/umo"
+      ],
+      "tmpfs": ["/data/www-provisioned/Web/_Resources/Static:uid=80,gid=80,mode=0755"],
+      "networks": ["default", "main"],
+      "labels": {
+        "traefik.enable": "false",
+        "traefik.port": "80",
+        "traefik.docker.network": "main",
+        "traefik.frontend.priority": "100"
+      },
+      "depends_on": ["db", "redis"]
+    }
+  },
+  "volumes": {
+    "db-data": {"external": true, "name": "${SFI_DB_VOLUME:?}"},
+    "redis-data": {"external": true, "name": "${SFI_REDIS_VOLUME:?}"},
+    "app-data": {"external": true, "name": "${SFI_DATA_VOLUME:?}"},
+    "web-resources": {"external": true, "name": "${SFI_RESOURCES_VOLUME:?}"}
+  },
+  "networks": {"main": {"external": true, "name": "main"}}
+}
