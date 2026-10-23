@@ -45,11 +45,10 @@ class CooluriDecodeImplementation extends AbstractFusionObject
 				$url = $url . "/";
 			}
 			$url = "www.sfi.ru@statja/" . $url;
-			$sql = "SELECT params FROM link_cache WHERE url='" . $url . "'";
-
-			$statement = $this->entityManager->getConnection()->prepare($sql);
-			$statement->execute();
-			$result = $statement->fetchAll();
+			$result = $this->entityManager->getConnection()->executeQuery(
+				'SELECT params FROM link_cache WHERE url = ?',
+				[$url]
+			)->fetchAllAssociative();
 			if ($result) {
 				$params = unserialize($result[0]['params']);
 				if ($params['tx_ttnews[tt_news]']) {

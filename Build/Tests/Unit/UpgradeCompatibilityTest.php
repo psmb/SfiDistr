@@ -1,17 +1,38 @@
 <?php
 
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Neos\ContentRepository\Domain\Model\NodeType;
 use Neos\Flow\Http\Helper\RequestInformationHelper;
 use PHPUnit\Framework\TestCase;
 use Psmb\Newsletter\Service\FusionMailService;
 use Sfi\Sfi\LegacyContentPrototypeGenerator;
 use Sfi\Sfi\LegacyDocumentPrototypeGenerator;
+use Sfi\Sfi\TypoScript\CooluriDecodeImplementation;
 use Yeebase\Graylog\Log\Backend\GraylogBackend;
 use Yeebase\Graylog\Log\GraylogLogger;
 use Yeebase\Graylog\Log\GraylogLoggerInterface;
 
 final class UpgradeCompatibilityTest extends TestCase
 {
+    public function testLegacyNewsRedirectResolvesAStoredUrlContainingAQuote(): void
+    {
+        $connection = DriverManager::getConnection(['driver' => 'pdo_sqlite', 'memory' => true]);
+        $connection->executeStatement('CREATE TABLE link_cache (url TEXT, params TEXT)');
+        $connection->insert('link_cache', [
+            'url' => "www.sfi.ru@statja/legacy-'article/",
+            'params' => serialize(['tx_ttnews[tt_news]' => '42']),
+        ]);
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager->method('getConnection')->willReturn($connection);
+        $decoder = $this->getMockBuilder(CooluriDecodeImplementation::class)
+            ->disableOriginalConstructor()->onlyMethods(['getUrl'])->getMock();
+        $decoder->method('getUrl')->willReturn("legacy-'article");
+        (new ReflectionProperty($decoder, 'entityManager'))->setValue($decoder, $entityManager);
+
+        self::assertSame('42', $decoder->evaluate());
+    }
+
     public function testNewsletterRequestPreservesHostPortAndInstallationPath(): void
     {
         $service = new FusionMailService();
