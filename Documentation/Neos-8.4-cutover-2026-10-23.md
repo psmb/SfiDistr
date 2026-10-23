@@ -1,6 +1,6 @@
 # Neos 8.4 live cutover — 23 October 2026
 
-`https://sfi.ru` now runs the accepted Neos 8.4 build with the classic content repository. The original web container is stopped, and its database and Redis remain available for rollback. Spaas adoption, registry publication, merging the upgrade branch and retirement have not been performed.
+`https://sfi.ru` runs Neos 8.4 with the classic content repository in the normal `sfidistr` Spaas stack. The upgrade is merged into `master`, the automatic image build passed, and the upgraded database has been restored into the original database volume. The first sections below record the earlier cutover; the final section records the completed Spaas handover and current state.
 
 ## Running deployment
 
@@ -73,8 +73,29 @@ Live log review exposed an additional upgrade compatibility error in the old-new
 
 Protected pre-change files and the checkout diff are retained under `backups/before-normal-setup.tar` and `backups/before-checkout-normalization.patch`. Additional verification evidence is under `output/playwright/cutover/normal-setup-*` in the upgrade worktree. The original rollback container, database and backups remain unchanged.
 
-## Trial and next steps
+## Return to normal Spaas deployment
 
-The site is ready for the editorial trial. Keep the original container, database, Redis, rollback image and backups during the observation period. No editor notification or recurring monitoring task has been created.
+The approved handover completed on 23 October 2026. [PR #64](https://github.com/psmb/SfiDistr/pull/64) merged the upgrade into `master`. A Git ownership failure in the first image build was corrected before deployment. [Build 39988957408](https://github.com/psmb/SfiDistr/actions/runs/39988957408) then passed the compatibility suite, custom editor bundle checks, ordinary Flow CLI check, and clean Git checkout check, and automatically published the master image.
 
-After successful use for a few days, approve Spaas adoption separately. That step publishes the tested image, installs the reviewed persistent-volume configuration, verifies backup restoration/off-host preservation and only then retires the old containers. Follow the [rollout and rollback commands](Neos-8.4-server-rollout.md); do not run a global Spaas update or remove volumes during the trial. If rollback becomes necessary after editing resumes, new content needs reconciliation with the preserved old database.
+- Image source: `310b37630f667b78d7cae68d9b426e973d520d6e`.
+- Deployed registry digest: `ghcr.io/psmb/sfidistr@sha256:8785aafc5bd1022b1c97059c6897b81ead7049acfefd45fd7a429d12b5eb1c9e`.
+- Production containers: `sfidistr-web-1`, `sfidistr-db-1`, `sfidistr-redis-1`, all with restart policy `always` and zero restarts during acceptance.
+- Production storage: original `sfidistr_db-data`, new `sfidistr_app-data` and `sfidistr_redis-data`, and unchanged resource volume `07d9f1a9ffed77be7ed1ec7b9e1bfb0967efe9466dd1784e38dffefac806f2a8`. Existing S3, `/docs`, and `/umo` remain shared.
+- Ordinary `Production` context, native Flow CLI, and a clean Git checkout following `master`. An actual `git pull --ff-only` succeeded. The standard signing key matches the original byte for byte, with UID 80 and mode 600.
+- The master Compose file is installed in `/var/cache/spaas/SfiDistr.yml`, byte-identical to the source file. Its SHA-256 is `7b1e1601326e6d3eb12c7ae59d8f78661cfa31e94a1b81019ab9319be14ae18d`. Deployment used Spaas's scoped Compose command and the original `/mnt/vol2/docker/secrets/SfiDistr.env`; unrelated projects and root cron were untouched.
+
+The original database was backed up to `backups/spaas-original-db-20261023T162737Z.sql.gz` (145,529,566 compressed bytes). The current upgraded database was dumped to `backups/spaas-upgraded-db-20261023T164410Z.sql.gz` (144,169,489 bytes). Both gzip integrity and SHA-256 checks passed. The upgraded dump was restored into `sfidistr_db-data` in 192 seconds, from 19:50:51 to 19:54:03 Moscow time. All 38 table counts matched the source, including 60,764 content records. Doctrine still reports 157 applied migrations and zero pending; no migrations were rerun.
+
+The new canonical web container was checked internally while the temporary stack continued serving public traffic. Its education cache was generated before the switch. The temporary web container stopped at 19:57:16 Moscow time; public requests were confirmed in the canonical container's access log by 19:57:26. No maintenance mode or DNS change was used.
+
+A fresh public browser comparison before and after handover covered all 15 disclosure sections. All returned HTTP 200 with zero JavaScript exceptions, and all ordered itemprop, table, microdata, and decoded signature hashes matched exactly: **2,891 itemprops, 36 tables, and 3,565 signed links**, with zero invalid payloads. The current baseline differs from the earlier 2,890-itemprop acceptance run; there was no markup difference across this handover.
+
+The homepage, study page, journal, projects page, login page, and both stale/valid almanac article cases passed. Static stylesheets and logo/menu assets returned 200. The known old-news redirect returned 301, a missing legacy target returned 404, the exposed-dump URL returned 404, `www` redirected to the canonical hostname, and HTTP redirected to HTTPS. The existing English homepage `appendChild` JavaScript error remains unchanged.
+
+A temporary ordinary editor logged in through public HTTPS and opened the common-information page in the CMS, including its inspector and custom tabs. The session cookie was secure, HttpOnly, SameSite=Lax, and scoped to `sfi.ru`. The test did not change or publish content. The temporary user, personal workspace, active sessions, and local credentials were removed afterward. Content/user/workspace counts returned to their original values; the audit log retained the expected `Account.Created` and `Account.Deleted` records.
+
+The normal hourly cron automatically rebuilt the education cache at **20:00 Moscow time**. Its 2,645,072-byte file matched the public response exactly. Both the manual script and scheduled execution were verified. Application logs contained no warnings or errors, and the public verification window contained no HTTP 5xx responses. PHP-FPM emitted three worker-capacity warnings during cache warmup and testing; these were not application failures, but worker capacity is an operational follow-up if they recur under normal traffic.
+
+The temporary `sfi84` web, database, and Redis containers are stopped; their volumes are retained. The pre-upgrade rollback image/archive, original signing key, and dated database backups remain protected under `/mnt/vol2/docker/sfi84-20261023`. The original canonical containers were replaced by the normal deployment, so returning to the pre-upgrade version now requires restoring its database backup and matching runtime; the active original database volume contains Neos 8.4 data.
+
+The [current deployment and rollback commands](Neos-8.4-server-rollout.md) describe routine `git pull` plus Flow cache flush, image replacement, and rollback preservation. Local evidence is in ignored `output/playwright/cutover/spaas-*`; protected server evidence is under `backups/spaas-*`. Further artifact deletion remains deferred during observation. No editor notifications or recurring monitoring task were created.

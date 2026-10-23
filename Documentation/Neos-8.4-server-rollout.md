@@ -1,32 +1,40 @@
 # Neos 8.4 server rollout and rollback
 
-Prepared on 23 October 2026 for `server.psmb.ru`. Staging and the subsequent authorized live cutover are complete; see the [staging report](Neos-8.4-staging-2026-10-23.md) and [cutover report](Neos-8.4-cutover-2026-10-23.md). Spaas adoption and retirement still require separate approval after the trial. The target is Neos 8.4 with the classic content repository. Editors were told to pause changes for the cutover. `/umo` and `/docs` acceptance remains deferred; their existing files and mounts are preserved.
+Updated on 23 October 2026 after the approved return to the normal Spaas deployment. Production is the `sfidistr` Compose project: `sfidistr-web-1`, `sfidistr-db-1`, and `sfidistr-redis-1`. The upgraded database was dumped from the trial stack and restored into the original `sfidistr_db-data` volume. Neos 8.4 continues to use the classic content repository.
 
-Bring up `next.sfi.ru` with its own database and Redis, using the existing production S3 bucket, prefixes, credentials and shared file mounts. Payment and external API configuration stays as in production. After acceptance, import a fresh production dump into a clean database volume, switch Traefik to the candidate, and keep the original web container stopped for several days. Adopt the tested deployment into Spaas only after the trial succeeds.
-
-This follows the simplified storage and integration scope agreed on 23 October. It replaces the separate S3-copy and payment-sandbox requirements in the earlier go-live plan. Rollback restores the application and database; changes to shared files or S3 remain shared.
+The current configuration is [docker-compose.yml](../docker-compose.yml) on `master`, installed at `/var/cache/spaas/SfiDistr.yml`, with the existing environment file `/mnt/vol2/docker/secrets/SfiDistr.env`. Runtime data uses `sfidistr_app-data`, Redis 7.4 uses `sfidistr_redis-data`, and the existing persistent resource volume, S3, `/docs`, and `/umo` remain shared. `/docs` and `/umo` acceptance remains deferred.
 
 ## Routine application updates
 
-As agreed after cutover on 23 October, keep the site live for ordinary application code updates. Pull the approved upgrade branch inside the running container, then flush Flow caches. Do not enable maintenance mode or rebuild and transfer an image for these updates. Database/schema or runtime changes need their own deployment procedure.
-
-The live checkout follows `origin/dimaip/upgrade-neos-8-4`. Keep that upgrade branch until the later approved merge and Spaas adoption. Preserve installed dependencies, mounted settings, runtime data and generated files during code updates.
-
-Record the current revision and run:
+Run ordinary code updates in the existing container, without maintenance mode or container replacement:
 
 ```bash
-ssh server.psmb.ru 'docker exec --user 80 sfi84-web-1 sh -ec '\''
+ssh server.psmb.ru 'docker exec -i --user 80 sfidistr-web-1 sh -se' <<'REMOTE'
   cd /data/www
-  test "$(git branch --show-current)" = dimaip/upgrade-neos-8-4
+  test "$(git branch --show-current)" = master
   git rev-parse HEAD
   git pull --ff-only
-  ./flow flow:cache:flush
-'\'''
+  FLOW_CONTEXT=Production ./flow flow:cache:flush
+REMOTE
 ```
 
-Flow reads the original signing key from `Data/Persistent/EncryptionKey` on the existing persistent Data volume. The live container still defaults to `Production/Upgrade`; its live settings are also present in `Production/Settings.yaml`, so explicitly setting `FLOW_CONTEXT=Production` works too. Use the inherited context when flushing the running website's caches. Check affected public pages and new application errors afterward. Keep the previous revision for code rollback. Changes to dependencies, compiled assets, container configuration or database schema require the corresponding additional steps before this command can serve as a complete deployment.
+The container uses ordinary `Production` context and Flow's standard `Data/Persistent/EncryptionKey`, preserved from the original installation. There is no custom Flow wrapper. Check affected public pages and new application errors after updates. Dependency, runtime, compiled-asset, or schema changes require their corresponding build/migration steps.
 
-The remaining staging/cutover commands below describe the already completed deployment using its original image and wrapper. They are historical recipes, not the routine update procedure. Current application commands use `docker exec --user 80 sfi84-web-1 ./flow ...`. Do not recreate the live container from the pre-normalization image: its writable layer now contains the Git checkout and operational simplification. Include these changes in the image used for the later approved Spaas adoption.
+Pushes to `master` automatically validate and publish `ghcr.io/psmb/sfidistr:master`; that workflow does not deploy it. For an image deployment, wait for successful CI, explicitly pull the image, and verify its revision. Spaas does not explicitly pull images, and its script processes all configured projects. To apply only SFI, use its scoped command:
+
+```bash
+ssh server.psmb.ru 'docker pull ghcr.io/psmb/sfidistr:master'
+# Install the reviewed master docker-compose.yml in the Spaas cache first.
+ssh server.psmb.ru 'docker compose -f /var/cache/spaas/SfiDistr.yml \
+  --env-file /mnt/vol2/docker/secrets/SfiDistr.env -p sfidistr up -d --force-recreate'
+ssh server.psmb.ru 'docker exec --user 80 sfidistr-web-1 /data/www/cron-hourly'
+```
+
+The hourly cron runs as UID 80 at minute zero. It atomically regenerates `/data/www-provisioned/Web/sveden/education.html` from the dynamic education page and retains the previous file if generation fails. The manual command above uses the same script. The database backup command remains `/data/backupDb.sh`; by default it also uploads to the configured S3 backup location. Dated handover dumps are retained separately below.
+
+## Historical staging and first cutover
+
+The following sections record the earlier staging, first cutover, and rollback rehearsal. Their temporary container names, maintenance steps, and earlier approval boundaries describe that completed work. Use the current production commands above for ongoing operation and the final handover section below for current backup/rollback details.
 
 ## Approvals and verified facts
 
@@ -503,100 +511,29 @@ docker stop sfi84-restore-check
 
 Compare restored table/content counts with the backup snapshot. Repeat the same restore with the off-host copy before deleting the only original runtime. The restored test database must never be connected to production web traffic.
 
-## Adopt into Spaas after the trial
+## Spaas handover on 23 October 2026
 
-`spaas` has no per-project argument parser: invoking `spaas SfiDistr` would still process its configured repository set. It reads `master/docker-compose.yml`, compares cached file text, and uses Compose with `--force-recreate`; it does not explicitly pull the image. Use the scoped Compose command below for this handoff and leave its cache equal to the reviewed canonical repository file.
+The upgrade was merged in PR #64. The automatic build for source `310b37630f667b78d7cae68d9b426e973d520d6e` passed compatibility checks and image validation, then published the production image. The server pulled and deployed:
 
-First publish the **existing tested image**, under a unique candidate tag, and pin its registry digest. Registry access is a prerequisite; do not overwrite the `master` tag as a staging shortcut.
-
-```bash
-# Server, after registry-push approval and authentication:
-SFI_TAG=$(cat candidate-tag)
-SFI_REGISTRY_TAG="ghcr.io/psmb/sfidistr:${SFI_TAG#sfi-candidate:}"
-docker tag "$SFI_IMAGE" "$SFI_REGISTRY_TAG"
-docker push "$SFI_REGISTRY_TAG"
-docker pull "$SFI_REGISTRY_TAG"
-SFI_DIGEST=$(docker image inspect "$SFI_REGISTRY_TAG" --format '{{index .RepoDigests 0}}')
-test -n "$SFI_DIGEST"
-export SFI_DIGEST
-
-# Generate a secret-free, standalone Compose document for master/docker-compose.yml.
-python3 - <<'PY'
-import json, os, pathlib
-p = pathlib.Path.cwd()
-base = json.loads((p/'compose.json').read_text())
-live = json.loads((p/'live.json').read_text())
-base['services']['web']['labels'].update(live['services']['web']['labels'])
-base['services']['web']['image'] = os.environ['SFI_DIGEST']
-(p/'spaas-candidate.yml').write_text(json.dumps(base, indent=2)+'\n')
-PY
-docker compose --env-file "$SFI_RUN/release.env" -p sfidistr -f "$SFI_RUN/spaas-candidate.yml" config --quiet
+```text
+ghcr.io/psmb/sfidistr@sha256:8785aafc5bd1022b1c97059c6897b81ead7049acfefd45fd7a429d12b5eb1c9e
 ```
 
-All volume names are explicit: the release database and Redis, the candidate's existing application-data volume, and the shared production resource volume. Paths for settings, credentials and redirects are absolute through `SFI_RUN`; they remain valid when Spaas reads the file from `/var/cache/spaas`. Copy the generated file to the upgrade branch as `docker-compose.yml`, review and commit it, then push the branch and obtain merge approval. Do not merge while Spaas or another updater could consume an intermediate configuration. Verify the approved file on `master` is byte-identical to the one installed in the cache.
+The approved handover used `/mnt/vol2/docker/sfi84-20261023` for protected artifacts:
 
-```bash
-# Workstation, after reviewing the generated deployment file:
-cd /Users/dimaip/psmb/SfiDistr-neos84
-scp server.psmb.ru:/mnt/vol2/docker/sfi84-20261023/spaas-candidate.yml docker-compose.yml
-git diff -- docker-compose.yml
-git add docker-compose.yml
-git commit -m 'Deploy the tested Neos 8.4 image with persistent release volumes'
-git push -u origin dimaip/upgrade-neos-8-4
-# Merge through the reviewed repository process after explicit approval.
-```
+1. Backed up the original database to `backups/spaas-original-db-20261023T162737Z.sql.gz` (145,529,566 compressed bytes).
+2. Dumped the current upgraded database to `backups/spaas-upgraded-db-20261023T164410Z.sql.gz` (144,169,489 compressed bytes), with database recreation statements. Both dumps passed gzip and SHA-256 checks.
+3. Restored the upgraded dump through `sfidistr-db-1` into `sfidistr_db-data`. All 38 table counts matched, including 60,764 content records. No schema or content migrations were rerun: all 157 Doctrine migrations were already applied.
+4. Copied the current persistent application data into `sfidistr_app-data`, preserving the original 96-byte signing key as UID 80, mode 600. Temporary compiled caches were rebuilt in ordinary Production context.
+5. Installed the master Compose file in the Spaas cache and ran the scoped command above with the original environment file. The original anonymous resource volume was preserved. Redis was upgraded to 7.4 with its own named volume.
+6. Verified the new container internally and generated its education cache, then stopped `sfi84-web-1`. Public requests were confirmed in the new canonical container's access log. No maintenance mode or DNS change was used.
 
-The final master merge uses the repository's reviewed merge process; its PR identity and exact merge command depend on the PR created at that point. The deployment image stays pinned to the already tested registry digest, even if the master workflow builds another image.
+The Spaas cache SHA-256 is `7b1e1601326e6d3eb12c7ae59d8f78661cfa31e94a1b81019ab9319be14ae18d`, identical to the deployed master Compose file. The handover files include table counts, migration status, public responses, timestamps, image identity, and the previous Spaas configuration. See the [cutover report](Neos-8.4-cutover-2026-10-23.md) for final public acceptance results.
 
-Only after the rollback archive and off-host backup are verified, install the approved Compose/environment files. These writes and the following `--force-recreate` replace the original `sfidistr` services and are the final destructive approval boundary. Renaming containers would not avoid replacement because Compose identifies them by project/service labels.
+## Rollback after the Spaas handover
 
-```bash
-# Server: use the operator's approved sudo access for root-owned configuration.
-cp /var/cache/spaas/SfiDistr.yml backups/spaas-before-adoption.yml
-cp /mnt/vol2/docker/secrets/SfiDistr.env backups/spaas-before-adoption.env
-sfi84_maintenance up -d
-docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; exec mysqldump -uroot --single-transaction --quick --routines --events --triggers "$MYSQL_DATABASE"' | gzip > backups/before-spaas-adoption.sql.gz
-gzip -t backups/before-spaas-adoption.sql.gz
+The original canonical containers were replaced by the normal Compose deployment. The pre-upgrade application is preserved in `sfi-rollback:pre-neos84-20261023` and `backups/original-runtime.tar.gz`; the original database is preserved in the dated dump above. The active `sfidistr_db-data` now contains the upgraded database. Returning to the pre-upgrade application requires restoring the pre-upgrade dump and its matching runtime/Redis configuration; merely starting old application code against the current database is not a rollback.
 
-# Stop the trial database before another MariaDB process mounts the same volume.
-sfi84_live stop web db redis
-sudo install -m 600 "$SFI_RUN/release.env" /mnt/vol2/docker/secrets/SfiDistr.env
-sudo install -m 644 "$SFI_RUN/spaas-candidate.yml" /var/cache/spaas/SfiDistr.yml
-sudo docker compose -f /var/cache/spaas/SfiDistr.yml \
-  --env-file /mnt/vol2/docker/secrets/SfiDistr.env -p sfidistr up -d --force-recreate
-docker inspect -f '{{range .Mounts}}{{if eq .Destination "/var/lib/mysql"}}{{.Name}}{{end}}{{end}}' sfidistr-db-1
-# Must print sfi84_release_db. Confirm sfi84-db-1 remains stopped.
-docker exec --user 80 sfidistr-web-1 ./flow node:migrationstatus
-docker exec sfidistr-web-1 curl --fail --silent --show-error -H 'Host: sfi.ru' \
-  http://127.0.0.1/about/sveden/common.html > backups/spaas-common.html
-docker exec --user 80 sfidistr-web-1 /data/www/cron-hourly
-sfi84_maintenance stop
-curl --fail --silent --show-error -I https://sfi.ru/
-```
+The stopped trial stack retains its Neos 8.4 runtime and separate database/data/Redis volumes. For an immediate handover rollback, its web container can be restarted after its database and Redis are running; its route priority takes precedence over the canonical web route. If edits have occurred since handover, copy the current upgraded database into the trial database first so that those edits survive. Keep the normal stack available until the alternative passes checks, then stop its web container and reconcile the Spaas configuration with the selected deployment.
 
-If adoption fails, keep maintenance active, stop the new canonical `sfidistr` services, and restart `sfi84` using `release.env` and `live.json`. Those stopped trial containers remain available and use the same upgraded volumes. Never start both database containers against the same volume. Revert the Spaas cache to the reviewed safe configuration and keep its automation suspended until the failure is understood.
-
-```bash
-# Adoption-failure branch only:
-sudo docker compose -f /var/cache/spaas/SfiDistr.yml \
-  --env-file /mnt/vol2/docker/secrets/SfiDistr.env -p sfidistr stop web db redis
-sfi84_live start db redis
-# Wait for database readiness, then:
-sfi84_live start web
-docker exec sfi84-web-1 curl --fail --silent --show-error -H 'Host: sfi.ru' \
-  http://127.0.0.1/about/sveden/common.html > backups/adoption-rollback-common.html
-sfi84_maintenance stop
-```
-
-After successful adoption, repeat browser/login/publish/asset/disclosure checks and enable the reviewed SFI backup/automation arrangement. Keep the trial containers until this verification passes. Remove only their stopped containers, without volumes:
-
-```bash
-test "$(docker inspect -f '{{.State.Running}}' sfi84-web-1)" = false
-test "$(docker inspect -f '{{.State.Running}}' sfi84-db-1)" = false
-test "$(docker inspect -f '{{.State.Running}}' sfi84-redis-1)" = false
-docker rm sfi84-web-1 sfi84-db-1 sfi84-redis-1
-```
-
-The canonical Compose replacement already retired the original `sfidistr` containers. Retain `sfidistr_db-data`, the rollback image/archive and dated backups for an agreed period; 30 days is proposed. Their later deletion needs a separate exact list and approval. The shared resource volume, S3 prefixes and document directories remain active production storage and are not retirement targets. Never use `down -v`, `docker system prune`, delete shared document directories, or run unrestricted S3 deletion as part of this rollout.
-
-Traefik routing, authentication and header labels follow the [Traefik 1.7 Docker backend documentation](https://doc.traefik.io/traefik/v1.7/configuration/backends/docker/). No DNS change or global proxy restart is required.
+Retain the trial volumes, original database dump, signing key, rollback image, and runtime archive during the observation period. Off-host preservation and a restore rehearsal remain prerequisites for deleting the last rollback artifacts. Do not use `down -v` or prune shared resources as part of retirement. The shared resource volume, S3, `/docs`, and `/umo` are active production storage.
