@@ -115,7 +115,7 @@ SFI_SHA=$(git rev-parse HEAD)
 SFI_TAG="sfi-candidate:neos84-$SFI_SHA"
 SFI_BUILD=$(mktemp -d /tmp/sfi84-build.XXXXXX)
 git archive HEAD | tar -x -C "$SFI_BUILD"
-docker buildx build --platform linux/amd64 --load --build-arg APP_REVISION="$SFI_COMMIT" -t "$SFI_TAG" "$SFI_BUILD"
+docker buildx build --platform linux/amd64 --load --build-arg APP_REVISION="$SFI_SHA" -t "$SFI_TAG" "$SFI_BUILD"
 docker run --rm --entrypoint nginx "$SFI_TAG" -t
 ```
 
