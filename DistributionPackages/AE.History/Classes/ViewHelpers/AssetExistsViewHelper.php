@@ -31,7 +31,7 @@ class AssetExistsViewHelper extends AbstractConditionViewHelper
      *
      * @return bool
      */
-    protected static function evaluateCondition($arguments = null, RenderingContextInterface $renderingContext) : bool
+    protected static function evaluateCondition($arguments, RenderingContextInterface $renderingContext) : bool
     {
         try {
             $arguments['asset']->getResource();
