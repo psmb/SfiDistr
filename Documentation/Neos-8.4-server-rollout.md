@@ -1,6 +1,6 @@
 # Neos 8.4 server rollout and rollback
 
-Prepared on 23 October 2026 for `server.psmb.ru`. Staging was authorized and deployed on that date; see [the execution report](Neos-8.4-staging-2026-10-23.md). Cutover and retirement remain proposed commands, requiring their separate approvals. The target is Neos 8.4 with the classic content repository. Editors have already been told to pause changes. `/umo` and `/docs` acceptance remains deferred; their existing files and mounts are preserved.
+Prepared on 23 October 2026 for `server.psmb.ru`. Staging and the subsequent authorized live cutover are complete; see the [staging report](Neos-8.4-staging-2026-10-23.md) and [cutover report](Neos-8.4-cutover-2026-10-23.md). Spaas adoption and retirement still require separate approval after the trial. The target is Neos 8.4 with the classic content repository. Editors were told to pause changes for the cutover. `/umo` and `/docs` acceptance remains deferred; their existing files and mounts are preserved.
 
 Bring up `next.sfi.ru` with its own database and Redis, using the existing production S3 bucket, prefixes, credentials and shared file mounts. Payment and external API configuration stays as in production. After acceptance, import a fresh production dump into a clean database volume, switch Traefik to the candidate, and keep the original web container stopped for several days. Adopt the tested deployment into Spaas only after the trial succeeds.
 
@@ -13,10 +13,10 @@ The exposed dump remediation completed before staging: moved `/data/www/Web/db.s
 Execution is divided into three batches:
 
 1. **Staging (authorized):** build and transfer the candidate, create its database and Redis, reuse shared storage, clone the database, and publish authenticated `next.sfi.ru`. Production routing and database stay in place.
-2. **Cutover or rollback:** maintenance routing, stopping/restarting web containers, switching the live hostname and replacing staging containers with the release configuration. This requires a separate go-ahead after staging results.
+2. **Cutover (authorized and complete):** maintenance routing, stopping/restarting web containers, switching the live hostname and replacing staging containers with the release configuration. The original runtime restart was rehearsed successfully. The commands below document the process; do not repeat the fresh-volume/import sequence on the running release.
 3. **Spaas adoption and retirement:** publish/merge the final deployment configuration, replace the original Compose services, then remove stopped trial containers. This requires approval after the observation period.
 
-| Item | Observed state |
+| Item | Observed during preparation |
 | --- | --- |
 | Production web | `sfidistr-web-1`; PHP 7.2.11; code commit `ce606a6a191e18f125324693a790e8cad29e1209` |
 | Original web image | `sha256:131b0a919f6ae5459e844724d4332c4cda32fdecb807904213d10342635a3767`; runtime code has been updated since this image was created |
@@ -372,21 +372,26 @@ docker logs --since 10m sfi84-web-1 > backups/cutover-container.log 2>&1
 # Rollback rehearsal while public traffic still sees maintenance.
 sfi84_live stop web
 docker start sfidistr-web-1
-curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 2 --retry-max-time 60 \
+docker exec sfidistr-web-1 curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 2 --retry-max-time 60 \
   -H 'Host: sfi.ru' -H 'X-Forwarded-Proto: https' \
-  http://127.0.0.1:32784/about/sveden/common.html > backups/rollback-rehearsal-common.html
+  http://127.0.0.1/about/sveden/common.html > backups/rollback-rehearsal-common.html
 docker stop sfidistr-web-1
 sfi84_live start web
 # Wait for successful internal HTTP checks, then remove maintenance:
 docker exec sfi84-web-1 curl --fail --silent --show-error -H 'Host: sfi.ru' \
   http://127.0.0.1/about/sveden/common.html > backups/release-common-after-rehearsal.html
 sfi84_maintenance stop
-curl --fail --silent --show-error -I https://sfi.ru/
+sleep 3
+curl --fail --silent --show-error --retry 3 --retry-all-errors --retry-delay 2 --max-time 30 -I https://sfi.ru/
 curl --fail --silent --show-error https://sfi.ru/about/sveden/common.html > backups/live-common.html
 curl --silent --show-error -I https://www.sfi.ru/
 ```
 
 Confirm the new container receives the public requests, the hostname redirect is correct, no staging authentication/noindex policy is present on production, and existing resources/signed links work. Repeat the disclosure and representative page checks. Keep the editorial pause for these initial checks. If any gate fails, execute the rollback branch below rather than opening editing.
+
+The original container uses an automatically assigned host port, which changes when it restarts. Run its health checks with `docker exec` as above; do not reuse the port observed before cutover. Traefik uses the container network and does not depend on that host port.
+
+Allow the proxy configuration to refresh when maintenance stops, and retry transient connection failures. The first immediate server-side probe timed out at cutover; subsequent public browser and HTTP checks passed. The server's `ops.sh` now defaults to `release.env`. The staging database is preserved in its separate volume and backup; `next.sfi.ru` is no longer an active deployment.
 
 ## Preserve the exact old runtime
 
@@ -428,12 +433,13 @@ docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; exec mys
   | gzip > "backups/upgrade-before-rollback-$SFI_ROLLBACK_TIME.sql.gz"
 gzip -t "backups/upgrade-before-rollback-$SFI_ROLLBACK_TIME.sql.gz"
 docker start sfidistr-web-1
-curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 2 --retry-max-time 60 \
+docker exec sfidistr-web-1 curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 2 --retry-max-time 60 \
   -H 'Host: sfi.ru' -H 'X-Forwarded-Proto: https' \
-  http://127.0.0.1:32784/about/sveden/common.html > backups/rollback-common.html
+  http://127.0.0.1/about/sveden/common.html > backups/rollback-common.html
 docker update --restart=always sfidistr-web-1
 sfi84_maintenance stop
-curl --fail --silent --show-error -I https://sfi.ru/
+sleep 3
+curl --fail --silent --show-error --retry 3 --retry-all-errors --retry-delay 2 --max-time 30 -I https://sfi.ru/
 ```
 
 If the new database is unavailable, preserve its volume and logs and decide whether immediate old-site recovery takes precedence over obtaining the logical dump; do not let a failed dump silently prevent recovery. Resume only the old deployment's reviewed automation. Any content created after editors resume needs reconciliation before an old-version rollback; no automatic reverse migration or database replay is assumed.
