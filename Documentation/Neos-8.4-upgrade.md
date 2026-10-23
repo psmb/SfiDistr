@@ -74,7 +74,7 @@ Local checks completed during the upgrade:
 - Representative Russian/English pages, education listing, journal and fundraising page rendering.
 - Backend login, document tree and inline editor loading, including an article containing footnotes.
 - Newsletter generation for one synthetic subscriber in dry-run mode; no email sent.
-- PHP 8.3 container build, startup and HTTP rendering in Development and a Production subcontext, including the Redis 3.2 cache backend.
+- PHP 8.3 container build, startup and HTTP rendering in Development and a Production subcontext, including initial page rendering with Redis 3.2. The later server publishing test exposed an incompatibility: Neos 8.4 cache invalidation uses `UNLINK`. The upgraded deployment requires Redis 4 or later and now pins tested Redis 7.4.11; Redis 3.2 is unsuitable.
 
 The local asset snapshot is incomplete. Full media validation and real SMTP, payment, PDF-signing, external subscriber-source and Google Analytics integrations require the staging environment and its credentials. Production has not been changed.
 

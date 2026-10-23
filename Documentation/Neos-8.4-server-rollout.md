@@ -1,6 +1,6 @@
 # Neos 8.4 server rollout and rollback
 
-Prepared on 23 October 2026 for `server.psmb.ru`. This is a proposed command plan, not a record of deployment. The target is Neos 8.4 with the classic content repository. Editors have already been told to pause changes. `/umo` and `/docs` acceptance remains deferred; their existing files and mounts are preserved.
+Prepared on 23 October 2026 for `server.psmb.ru`. Staging was authorized and deployed on that date; see [the execution report](Neos-8.4-staging-2026-10-23.md). Cutover and retirement remain proposed commands, requiring their separate approvals. The target is Neos 8.4 with the classic content repository. Editors have already been told to pause changes. `/umo` and `/docs` acceptance remains deferred; their existing files and mounts are preserved.
 
 Bring up `next.sfi.ru` with its own database and Redis, using the existing production S3 bucket, prefixes, credentials and shared file mounts. Payment and external API configuration stays as in production. After acceptance, import a fresh production dump into a clean database volume, switch Traefik to the candidate, and keep the original web container stopped for several days. Adopt the tested deployment into Spaas only after the trial succeeds.
 
@@ -8,11 +8,11 @@ This follows the simplified storage and integration scope agreed on 23 October. 
 
 ## Approvals and verified facts
 
-The only approved server change completed so far is moving `/data/www/Web/db.sql` to `/data/www/Data/Persistent/db-public-20261023.sql` inside `sfidistr-web-1` and setting mode `600`. The file is preserved. Its public URL returns 404; the homepage returns 200.
+The exposed dump remediation completed before staging: moved `/data/www/Web/db.sql` to `/data/www/Data/Persistent/db-public-20261023.sql` inside `sfidistr-web-1` and set mode `600`. The file is preserved. Its public URL returns 404; the homepage returns 200.
 
-Review the commands in three batches before execution:
+Execution is divided into three batches:
 
-1. **Staging:** build and transfer the candidate, create its database and Redis, reuse shared storage, clone the database, and publish authenticated `next.sfi.ru`. Production routing and database stay in place.
+1. **Staging (authorized):** build and transfer the candidate, create its database and Redis, reuse shared storage, clone the database, and publish authenticated `next.sfi.ru`. Production routing and database stay in place.
 2. **Cutover or rollback:** maintenance routing, stopping/restarting web containers, switching the live hostname and replacing staging containers with the release configuration. This requires a separate go-ahead after staging results.
 3. **Spaas adoption and retirement:** publish/merge the final deployment configuration, replace the original Compose services, then remove stopped trial containers. This requires approval after the observation period.
 
@@ -24,12 +24,14 @@ Review the commands in three batches before execution:
 | Redis | `sfidistr-redis-1`; Redis 3.2 |
 | Proxy | Traefik 1.7; Docker network `main`; observed proxy address `172.19.0.7` |
 | DNS | `sfi.ru`, `www.sfi.ru`, `next.sfi.ru` already resolve to `91.232.135.49` |
-| Staging TLS | A trusted certificate for `next.sfi.ru` has not yet been verified |
+| Staging TLS | Trusted HTTPS verified in curl and Chrome; anonymous requests return 401 |
 | Spaas | `/usr/bin/spaas`; cached Compose `/var/cache/spaas/SfiDistr.yml`; environment `/mnt/vol2/docker/secrets/SfiDistr.env` |
 | Source | Upgrade worktree `/Users/dimaip/psmb/SfiDistr-neos84`, branch `dimaip/upgrade-neos-8-4`, starting commit `4c4074efa`; branch was not on the remote at inspection |
 | Resources | S3 bucket `psmb-neos-resources`; original prefixes `storage/sfi/` and `target/sfi/`; resource records represent about 74.5 GiB of files |
 
 The host has approximately 100 GB free on `/`, 5 TB on `/mnt/vol2`, and 14 GiB available RAM at inspection. Recheck before cloning. Database restore, migrations and cache warmup determine the maintenance window; measure them on staging before committing to a duration. No S3 object copy is needed.
+
+The candidate uses Redis 7.4, pinned below in the setup commands. Neos 8.4 cache invalidation uses `UNLINK`, which the original Redis 3.2 does not support. Do not reuse the original Redis image for the upgraded application. The original stack retains Redis 3.2 for rollback.
 
 ## Startup and scheduling
 
@@ -45,7 +47,7 @@ This rollout does not change root's crontab.
 
 ## Prepare the candidate locally
 
-The recent testimony-card changes on `master` are missing from the upgrade branch. Integrate them before building. Do not publish `master` during staging: its workflow publishes the production image tag, and Spaas reads deployment files from `master`.
+The recent testimony-card changes from `master` were integrated by merge commit `d98a1a16d` before building. The following source-preparation commands describe the original preparation sequence; do not repeat them on the completed staging checkout. Do not publish `master` during staging: its workflow publishes the production image tag, and Spaas reads deployment files from `master`.
 
 These commands run in a Bash shell on the workstation. Stop on conflicts and review the resulting diff. The existing dirty original checkout is not the build source.
 
@@ -58,7 +60,7 @@ git fetch origin master
 git merge --no-edit origin/master
 ```
 
-Before the build, add dump exclusions and an Nginx denial rule as a small reviewed hardening change. The commands below make the exact proposed edits; they have not been executed.
+Before the build, add dump exclusions and an Nginx denial rule as a small reviewed hardening change. These hardening changes were committed in `21599ff01`; the commands below retain the preparation recipe.
 
 ```bash
 python3 - <<'PY'
@@ -164,7 +166,7 @@ values = {
     'SFI_RUN': str(p),
     'SFI_IMAGE': os.environ['SFI_IMAGE'],
     'SFI_DB_IMAGE': 'mariadb@sha256:a25e7c87fe20c6d035fe81003937a8d732574ecf54466d0294da3423b64af80c',
-    'SFI_REDIS_IMAGE': 'redis@sha256:7b0a40301bc1567205e6461c5bf94c38e1e1ad0169709e49132cafc47f6b51f3',
+    'SFI_REDIS_IMAGE': 'redis@sha256:57e4255cc971b1c8d6f8a6ca283ac01bc3ecdd914273ef6bfaede87aaecd6541',
     'SFI_DB_ROOT_PASSWORD': secrets.token_hex(24),
     'SFI_DB_PASSWORD': secrets.token_hex(24),
     'SFI_DB_VOLUME': 'sfi84_stage_db',
@@ -195,8 +197,8 @@ export SFI_ENV="$SFI_RUN/stage.env"
 sfi84() { docker compose --env-file "$SFI_ENV" -p sfi84 -f "$SFI_RUN/compose.json" "$@"; }
 sfi84_stage() { sfi84 -f "$SFI_RUN/stage.json" -f "$SFI_RUN/stage-auth.json" "$@"; }
 sfi84_live() { sfi84 -f "$SFI_RUN/live.json" "$@"; }
-sfi84_flow() { sfi84 run --rm --no-deps --label traefik.enable=false --user 80 --entrypoint /usr/local/bin/sfi-flow web "$@"; }
-sfi84_stage_flow() { sfi84_stage run --rm --no-deps --label traefik.enable=false --user 80 --entrypoint /usr/local/bin/sfi-flow web "$@"; }
+sfi84_flow() { sfi84 run --rm --no-deps -T --label traefik.enable=false --user 80 --entrypoint /usr/local/bin/sfi-flow web "$@" </dev/null; }
+sfi84_stage_flow() { sfi84_stage run --rm --no-deps -T --label traefik.enable=false --user 80 --entrypoint /usr/local/bin/sfi-flow web "$@" </dev/null; }
 sfi84_maintenance() { docker compose --env-file "$SFI_ENV" -p sfi84-maintenance -f "$SFI_RUN/maintenance.json" "$@"; }
 sfi84_stage config --quiet
 docker volume inspect 07d9f1a9ffed77be7ed1ec7b9e1bfb0967efe9466dd1784e38dffefac806f2a8 >/dev/null
@@ -238,14 +240,15 @@ gzip -dc backups/staging-source.sql.gz | docker exec -i sfi84-db-1 sh -ec '
   exec mysql -uroot "$MYSQL_DATABASE"
 '
 docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT COUNT(*) FROM neos_contentrepository_domain_model_nodedata" "$MYSQL_DATABASE"' > backups/stage-node-count-before.txt
-sfi84 run --rm --no-deps --label traefik.enable=false --entrypoint sh web -ec \
-  'mkdir -p /data/www/Data; chown -R 80:80 /data/www/Data; test -w /data/www/Web/_Resources'
+sfi84 run --rm --no-deps -T --label traefik.enable=false --entrypoint sh web -ec \
+  'mkdir -p /data/www/Data; chown -R 80:80 /data/www/Data; test -w /data/www/Web/_Resources' </dev/null
 sfi84_stage_flow flow:cache:flush --force
 sfi84_stage_flow doctrine:migrate
 sfi84_stage_flow node:migrationstatus
 # Execute this only when the preceding status shows it is not applied:
 sfi84_stage_flow node:migrate 20190304111200
 docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT COUNT(*) FROM neos_contentrepository_domain_model_nodedata" "$MYSQL_DATABASE"' > backups/stage-node-count-after.txt
+# Stop and investigate any count difference before continuing.
 diff -u backups/stage-node-count-before.txt backups/stage-node-count-after.txt
 sfi84_stage_flow flow:session:destroyall
 sfi84_stage_flow domain:list
@@ -254,8 +257,11 @@ sfi84_stage_flow domain:add sfi next.sfi.ru --scheme https
 sfi84_stage_flow resource:publish --collection static
 sfi84_stage_flow flow:cache:warmup
 sfi84_stage up -d web
+docker exec sfi84-web-1 curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 2 --retry-max-time 60 http://127.0.0.1/neos/login >/dev/null
 docker exec --user 80 sfi84-web-1 /data/www/cron-hourly
 ```
+
+On the 23 October clone, the stock node migration removed one already-deleted record in `user-dimaip`; all live records were preserved. Record-level comparison explained the 60,765 → 60,764 total. Do not silently ignore a different mismatch on the final clone.
 
 Capture migration output and timing in protected release logs. Compare table/content-node counts before and after; confirm no pending Doctrine migrations and the node migration's applied status. Do not run `node:repair`, content export/import, resource cleanup, or event-sourced repository commands.
 
@@ -337,8 +343,8 @@ docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -u
 test "$(docker inspect -f '{{range .Mounts}}{{if eq .Destination "/var/lib/mysql"}}{{.Name}}{{end}}{{end}}' sfi84-db-1)" = sfi84_release_db
 test "$(docker exec sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; mysql -uroot -Nse "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=DATABASE()" "$MYSQL_DATABASE"')" = 0
 gzip -dc backups/cutover.sql.gz | docker exec -i sfi84-db-1 sh -ec 'export MYSQL_PWD="$MYSQL_ROOT_PASSWORD"; exec mysql -uroot "$MYSQL_DATABASE"'
-sfi84 run --rm --no-deps --label traefik.enable=false --entrypoint sh web -ec \
-  'mkdir -p /data/www/Data; chown -R 80:80 /data/www/Data; test -w /data/www/Web/_Resources'
+sfi84 run --rm --no-deps -T --label traefik.enable=false --entrypoint sh web -ec \
+  'mkdir -p /data/www/Data; chown -R 80:80 /data/www/Data; test -w /data/www/Web/_Resources' </dev/null
 sfi84_flow flow:cache:flush --force
 sfi84_flow doctrine:migrate
 sfi84_flow node:migrationstatus
@@ -350,6 +356,7 @@ sfi84_flow domain:list
 sfi84_flow resource:publish --collection static
 sfi84_flow flow:cache:warmup
 sfi84_live up -d --force-recreate --no-deps web
+docker exec sfi84-web-1 curl --fail --silent --show-error --retry 15 --retry-connrefused --retry-delay 2 --retry-max-time 60 http://127.0.0.1/neos/login >/dev/null
 docker exec --user 80 sfi84-web-1 /data/www/cron-hourly
 ```
 

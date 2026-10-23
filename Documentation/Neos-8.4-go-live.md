@@ -1,5 +1,7 @@
 # Neos 8.4 validation and go-live plan
 
+Current server rollout: see [the 23 October staging report](Neos-8.4-staging-2026-10-23.md) and [server command plan](Neos-8.4-server-rollout.md). They supersede the earlier isolated-S3/payment-sandbox requirements below; storage and integrations remain shared as agreed. The upgraded stack uses Redis 7.4.11.
+
 Status: local compatibility fixes and representative editor acceptance completed on 21 September 2026; production-like staging and rollback acceptance remain. The upgrade remains on Neos 8.4 with the classic content repository. `/umo` and `/docs` file validation is deferred by request and is not a gate for this plan. Existing mounts should remain unchanged.
 
 ## Recommendation
