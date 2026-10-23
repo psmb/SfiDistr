@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<phpunit bootstrap="../BuildEssentials/PhpUnit/FunctionalTestBootstrap.php"
+    failOnWarning="true" beStrictAboutOutputDuringTests="true">
+    <testsuites>
+        <testsuite name="Distribution">
+            <directory>Functional</directory>
+            <directory>../../Packages/Application/Flowpack.Listable/Tests/Functional</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="FLOW_REWRITEURLS" value="1"/>
+    </php>
+</phpunit>

@@ -1,7 +1,7 @@
 prototype(Sfi.Sfi:Expand) < prototype(Neos.Fusion:Tag) {
 	attributes.class = ${'js-Expand' + node.properties.class}
 	attributes.id = ${node.properties.navTitle}
-	content = Neos.Fusion:Array {
+	content = Neos.Fusion:Join {
     title = Neos.Neos:Editable {
       property = 'title'
       block = false

@@ -1,0 +1,18 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<div class="SubCategory">
+	<div class="row">
+		<div class="column">
+			<neos:contentElement.wrap node="{node}">
+				<div class="SubCategory-Title">
+					<neos:link.node node="{node}">{neos:contentElement.editable(property: 'title')}</neos:link.node>
+				</div>
+				<div class="SubCategory-Description">
+					{neos:contentElement.editable(property: 'description')}
+				</div>
+			</neos:contentElement.wrap>
+			<div class="SubCategory-Content">
+				{content -> f:format.raw()}
+			</div>
+		</div>
+	</div>
+</div>

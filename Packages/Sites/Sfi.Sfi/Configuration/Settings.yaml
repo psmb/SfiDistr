@@ -199,7 +199,7 @@ Neos:
           targetOptions:
             bucket: "psmb-neos-resources"
             keyPrefix: "target/sfi/"
-            baseUri: "https://psmb-neos-resources.hb.bizmrg.com/target/sfi/"
+            baseUri: "https://psmb-neos-resources.hb.ru-msk.vkcloud-storage.ru/target/sfi/"
     error:
       exceptionHandler:
         renderingGroups:
@@ -210,6 +210,9 @@ Neos:
   Neos:
     Ui:
       resources:
+        stylesheets:
+          "Sfi.Sfi:Itemprop":
+            resource: 'resource://Sfi.Sfi/Public/JavaScript/Itemprop/Plugin.css'
         javascript:
           "Sfi.Sfi:Itemprop":
             resource: '${"resource://Sfi.Sfi/Public/JavaScript/Itemprop/Plugin.js"}'
@@ -277,4 +280,5 @@ Flownative:
           credentials:
             key: "%env:AWS_ACCESS_KEY_ID%"
             secret: "%env:AWS_SECRET_ACCESS_KEY%"
+          region: "ru-msk"
           endpoint: "https://hb.ru-msk.vkcloud-storage.ru"

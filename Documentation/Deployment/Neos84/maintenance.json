@@ -1,0 +1,20 @@
+{
+  "services": {
+    "maintenance": {
+      "image": "${SFI_IMAGE:?}",
+      "restart": "unless-stopped",
+      "entrypoint": ["/usr/sbin/nginx"],
+      "command": ["-g", "daemon off;", "-c", "/etc/nginx/sfi-maintenance.conf"],
+      "volumes": ["${SFI_RUN:?}/maintenance.conf:/etc/nginx/sfi-maintenance.conf:ro"],
+      "networks": ["main"],
+      "labels": {
+        "traefik.enable": "true",
+        "traefik.port": "80",
+        "traefik.docker.network": "main",
+        "traefik.frontend.rule": "Host:sfi.ru,www.sfi.ru",
+        "traefik.frontend.priority": "1000"
+      }
+    }
+  },
+  "networks": {"main": {"external": true, "name": "main"}}
+}

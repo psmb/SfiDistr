@@ -3,8 +3,8 @@ prototype(Sfi.Sfi:PaperWithAuthor.TopList) < prototype(Neos.Fusion:Component) {
     @if.notEmpty = ${q(collection).count() > 0}
     @process.tmpl = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
     listTitle = ${q(site).find('[instanceof Sfi.Sfi:PaperWithAuthor.Store]').first().property('title')}
-    list = Neos.Fusion:Collection {
-        collection = ${collection}
+    list = Neos.Fusion:Loop {
+        items = ${collection}
         itemName = 'node'
         itemRenderer = Flowpack.Listable:ContentCaseShort
         @cache {

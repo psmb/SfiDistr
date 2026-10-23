@@ -1,0 +1,275 @@
+/* Color palette */
+$grayDarker: #141414;
+$grayDark: #222;
+$grayMedium: #323232;
+$grayLight: #3f3f3f;
+$grayLighter: #eee;
+$blueDark: #007fb2;
+$green: #00a338;
+$warning: #ff460d;
+
+/* Sizes & margins */
+$unit: 40px;
+$defaultMargin: 16px;
+$relatedMargin: 8px;
+$tightMargin: 4px;
+$wideMargin: 32px;
+
+.neos.neos-module.neos-module-management-history {
+    .neos-history {
+        &::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+    }
+
+    .neos-history-info {
+        float: left;
+
+        .neos-tooltip-inner {
+            white-space: nowrap;
+            max-width: none;
+        }
+
+        + p {
+            width: 100%;
+            margin-top: 20px;
+            float: left;
+        }
+    }
+
+    .neos-history-day {
+        .neos-history-events {
+            padding-top: $defaultMargin;
+
+            .neos-history-date {
+                margin-bottom: $defaultMargin;
+
+                .neos-history-date-inner {
+                    line-height: $unit;
+                    width: $unit;
+                    height: $unit;
+                    margin-left: -(($unit / 2) + 2);
+                    font-size: 12px;
+                    background: $grayLight;
+                }
+            }
+
+            .neos-history-event {
+                padding-top: 0;
+                padding-right: 0;
+                margin-bottom: $defaultMargin;
+                background-color: $grayMedium;
+                -webkit-background-clip: padding-box;
+                -moz-background-clip: padding;
+                background-clip: padding-box;
+                border: 1px solid $grayLight;
+                box-shadow: none;
+
+                &::after {
+                    content: none;
+                }
+
+                .neos-history-event-arrow,
+                .neos-history-event-arrow:after {
+                    position: absolute;
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-color: transparent;
+                }
+
+                .neos-history-event-arrow:after {
+                    content: "";
+                    z-index: -1;
+                }
+
+                .neos-history-event-title {
+                    margin: 0; // reset heading margin
+                    padding: ($defaultMargin - 3) ($defaultMargin - $tightMargin);
+                    font-size: 14px;
+                    line-height: 14px;
+                    font-weight: bold;
+                    color: #fff;
+                    background-color: $grayDark;
+                    border-bottom: 1px solid $grayLight;
+
+                    &:empty {
+                        display: none;
+                    }
+
+                    .neos-tooltip-inner {
+                        white-space: nowrap;
+                        max-width: none;
+                    }
+
+                    .icon-external-link {
+                        float: right;
+                    }
+                }
+
+                .neos-history-event-content {
+                    padding: $relatedMargin ($relatedMargin + $tightMargin);
+                }
+
+                .neos-history-sub-event {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                .neos-history-sub-event + .neos-history-sub-event {
+                    margin-top: $relatedMargin;
+                }
+
+                .neos-history-event-user {
+                    border-radius: 50%;
+                    width: $wideMargin;
+                    height: $wideMargin;
+                    margin-right: 0;
+                    float: none;
+                    border: none;
+                    background: $blueDark;
+                    overflow: hidden;
+                    text-align: center;
+                    line-height: $wideMargin;
+                    font-size: 12px;
+                    justify-content: center;
+                    flex-shrink: 0;
+                }
+
+                .neos-history-event-description {
+                    padding: $tightMargin 0 $tightMargin $defaultMargin;
+                    margin-right: 0;
+                    line-height: $defaultMargin;
+
+                    a {
+                        text-decoration: underline;
+                    }
+
+                    .neos-history-event-details {
+                        cursor: pointer;
+                        user-select: none;
+                    }
+
+                    .neos-popover {
+                        width: 600px;
+
+                        .neos-popover-title i {
+                            vertical-align: top;
+                        }
+
+                        table {
+                            width: 100%;
+
+                            th {
+                                text-align: center;
+                                font-weight: bold;
+                            }
+
+                            td,
+                            th {
+                                height: auto;
+                                padding: $relatedMargin;
+                                line-height: 1;
+
+                                &:first-child {
+                                    padding-left: 0 !important;
+                                }
+
+                                &:last-child {
+                                    padding-right: 0 !important;
+                                }
+
+                                td {
+                                    width: 50%;
+                                    border: none;
+                                }
+                            }
+                        }
+
+                        ins, ins a {
+                            color: $green;
+                            text-decoration: none;
+                        }
+
+                        del, del a {
+                            color: $warning;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .neos-history-day:nth-child(even) {
+        .neos-history-events {
+            &.neos-history-alignment {
+                .neos-history-date {
+                    margin-left: 100%;
+                }
+
+                .neos-history-event {
+                    margin-right: 10px;
+                }
+
+                .neos-history-event-arrow {
+                    top: 50%;
+                    right: -10px;
+                    margin-top: -10px;
+                    border-width: 10px 0 10px 10px;
+                    border-left-color: $grayMedium;
+
+                    &:after {
+                        border-width: 11px 0 11px 11px;
+                        border-left-color: $grayLight;
+                        bottom: -11px;
+                        right: -1px
+                    }
+                }
+            }
+        }
+    }
+
+    .neos-history-day:nth-child(odd) {
+        .neos-history-events {
+            &.neos-history-alignment {
+                .neos-history-date {
+                    margin-left: -4px;
+                }
+
+                .neos-history-event {
+                    margin-left: 10px;
+                }
+
+                .neos-history-event-arrow {
+                    top: 50%;
+                    left: -10px;
+                    margin-top: -10px;
+                    border-width: 10px 10px 10px 0;
+                    border-right-color: $grayMedium;
+
+                    &:after {
+                        border-width: 11px 11px 11px 0;
+                        border-right-color: $grayLight;
+                        bottom: -11px;
+                        left: -1px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.neos-history-event-details summary {
+    cursor: pointer;
+}
+.neos-history-diff-panel {
+    max-width: 100%;
+    overflow: auto;
+    padding: 1rem;
+    background: #222;
+}

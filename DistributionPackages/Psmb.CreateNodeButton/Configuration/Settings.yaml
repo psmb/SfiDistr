@@ -1,0 +1,24 @@
+Neos:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Psmb.CreateNodeButton:
+            - Main
+            - 'NodeTypes/*'
+    fusion:
+      autoInclude:
+        Psmb.CreateNodeButton: true
+    Ui:
+      resources:
+        javascript:
+          'Psmb.CreateNodeButton:CreateNodeView':
+            resource: resource://Psmb.CreateNodeButton/Public/JavaScript/CreateNodeView/Plugin.js
+      frontendConfiguration:
+        'Psmb.CreateNodeButton':
+          enabled: false
+          # Possible values are `before`, `into` and `after`
+          position: 'into'
+          # type: 'Set.Your:DocumentNodeType'
+          # referenceNodePath: '/sites/site/to-set'
+          placeholder: 'Enter title...'

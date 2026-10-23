@@ -2,8 +2,8 @@ prototype(Sfi.Sfi:TimeIntervalSum) < prototype(Sfi.Sfi:Reduce) {
 	path = 'to-be-set'
 	@context.path = ${this.path}
 	@context.initDate = ${Date.parse('00:00', 'H:i')}
-	items = Neos.Fusion:RawCollection {
-		collection = ${q(node).children(path).children('[instanceof Sfi.Sfi:PersonEmployment]').get()}
+	items = Neos.Fusion:Map {
+		items = ${q(node).children(path).children('[instanceof Sfi.Sfi:PersonEmployment]').get()}
 		itemName = 'node'
 		itemRenderer = Neos.Fusion:Value {
 			dateStart = ${node.properties.dateStart ? node.properties.dateStart : Date.now()}

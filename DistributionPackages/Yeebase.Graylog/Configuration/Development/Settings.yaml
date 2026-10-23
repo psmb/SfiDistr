@@ -1,0 +1,5 @@
+Yeebase:
+  Graylog:
+    Logger:
+      backendOptions:
+        alsoLogWithSystemLogger: true

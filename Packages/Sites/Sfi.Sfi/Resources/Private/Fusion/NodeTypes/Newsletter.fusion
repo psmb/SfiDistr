@@ -7,9 +7,9 @@ prototype(Sfi.Sfi:Newsletter) {
 		}
 	}
 
-	menu = Neos.Fusion:Collection {
+	menu = Neos.Fusion:Loop {
 		@process.tmpl = ${'<ul class="marginVertical-double">' + value + '</ul>'}
-		collection = ${q(node).parent().children().get()}
+		items = ${q(node).parent().children().get()}
 		itemName = 'node'
 		itemRenderer = Neos.Fusion:Tag {
 			@process.tmpl = ${'<li>' + value + '</li>'}

@@ -1,6 +1,6 @@
-prototype(Sfi.Sfi:AlmanacRestMenu) < prototype(Neos.Fusion:Collection) {
+prototype(Sfi.Sfi:AlmanacRestMenu) < prototype(Neos.Fusion:Loop) {
 	@process.wrap = afx`<ul class="marginTop-double">{value}</ul>`
-	collection = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacCategoryPage]').get()}
+	items = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacCategoryPage]').get()}
 	itemName = 'node'
 	itemRenderer = Neos.Fusion:Case {
 		@process.wrap = afx`<li class="lineHeight-single ParagraphAlt marginBottom-single">{value}</li>`

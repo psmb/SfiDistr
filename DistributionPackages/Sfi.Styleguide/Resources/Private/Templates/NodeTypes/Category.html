@@ -1,0 +1,9 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<div class="row">
+	<div class="column">
+		<nav class="StyleguideMenu">{menu -> f:format.raw()}</nav>
+		<h1 class="Styleguide-CategoryTitle">{title}</h1>
+		<nav class="StyleguideSubMenu">{subMenu -> f:format.raw()}</nav>
+		{content -> f:format.raw()}
+	</div>
+</div>

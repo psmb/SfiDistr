@@ -6,9 +6,9 @@ prototype(Sfi.Sfi:Blog.TopList) < prototype(Neos.Fusion:Component) {
     @process.tmpl = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
     listTitle = ${q(nodes)}
     listTitle = ${q(site).find('[instanceof Sfi.Sfi:Blog.Store]').first().property('title')}
-    list = Neos.Fusion:Collection {
+    list = Neos.Fusion:Loop {
         @process.ul = afx`<ul class="large-block-grid-4 medium-block-grid-2 small-block-grid-1">{value}</ul>`
-        collection = ${collection}
+        items = ${collection}
         itemName = 'node'
         itemRenderer = Flowpack.Listable:ContentCaseShort {
             # Array of all previously rendered authors

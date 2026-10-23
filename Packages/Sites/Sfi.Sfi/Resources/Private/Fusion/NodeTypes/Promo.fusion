@@ -7,7 +7,7 @@ prototype(Sfi.Sfi:Promo) {
 	}
 
 	moreItems = Sfi.Sfi:PromoList {
-		content.collection.@process.filterOutSelf {
+		content.items.@process.filterOutSelf {
 			expression = ${q(value).filter('[_name != ' + q(node).property('_name') + ']').get()}
 			@position = 'start'
 		}

@@ -33,7 +33,7 @@ prototype(Sfi.News:News) < prototype(Neos.Neos:Content) {
 		@if.notVideoOrBackend = ${(q(node).property('hasVideo') != true) || (node.context.workspace.name != 'live')}
 	}
 	gallery = Sfi.Shared:Carousel {
-		content.collection = ${q(node).children('gallery').children()}
+		content.items = ${q(node).children('gallery').children()}
 		attributes.class = 'Carousel js-carousel-2x'
 		@if.hassGallery = ${q(node).children('gallery').children().count() > 0}
 	}

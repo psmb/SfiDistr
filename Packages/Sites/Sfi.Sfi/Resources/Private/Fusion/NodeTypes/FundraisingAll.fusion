@@ -1,5 +1,5 @@
 prototype(Sfi.Sfi:FundraisingAll)>
-prototype(Sfi.Sfi:FundraisingAll) < prototype(Neos.Fusion:Array) {
+prototype(Sfi.Sfi:FundraisingAll) < prototype(Neos.Fusion:Join) {
 	@process.cssHack = ${'<style>.breadcrumbsWrapper{border-bottom: 1px solid #ccc; margin-top: 18px}</style>' + value}
 	@process.wrapAll = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
 	title = ${'<div class="H1 textAlign-center marginVertical-triple paddingBottom-single">' + node.properties.title + '</div>'}

@@ -1,0 +1,11 @@
+prototype(Psmb.CreateNodeButton:CreateNodeButton) < prototype(Neos.Fusion:Template) {
+	templatePath = 'resource://Psmb.CreateNodeButton/Private/Templates/CreateNodeButton.html'
+	attributes = Neos.Fusion:Attributes {
+		class = 'CreateNodeButton neos neos-module'
+	}
+	referenceNode = ${node}
+	deleteNode = ${node}
+	position = 'after'
+	type = 'Neos.Neos:Page'
+	@if.onlyInBackend = ${node.context.inBackend}
+}

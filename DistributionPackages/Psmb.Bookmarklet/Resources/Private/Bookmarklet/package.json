@@ -1,0 +1,15 @@
+{
+  "description": "Bookmarklet",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "neos-react-scripts build",
+    "watch": "neos-react-scripts watch"
+  },
+  "devDependencies": {
+    "@neos-project/neos-ui-extensibility-webpack-adapter": "8.4.4"
+  },
+  "neos": {
+    "buildTargetDirectory": "../../Public/JavaScript/Bookmarklet"
+  }
+}

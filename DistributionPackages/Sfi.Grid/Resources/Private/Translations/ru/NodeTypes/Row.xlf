@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Sfi.Grid" source-language="en" datatype="plaintext">
+		<body>
+			<trans-unit id="creationDialog.numberOfColumns" xml:space="preserve">
+				<target>Число колонок</target>
+			</trans-unit>
+			<trans-unit id="creationDialog.small.selectBoxEditor.values." xml:space="preserve">
+				<target>Empty</target>
+			</trans-unit>
+			<trans-unit id="creationDialog.medium.selectBoxEditor.values." xml:space="preserve">
+				<target>Empty</target>
+			</trans-unit>
+			<trans-unit id="creationDialog.large.selectBoxEditor.values." xml:space="preserve">
+				<target>Empty</target>
+			</trans-unit>
+			<trans-unit id="creationDialog.numberOfColumns.selectBoxEditor.values." xml:space="preserve">
+				<target>Empty</target>
+			</trans-unit>
+			<trans-unit id="creationDialog.numberOfColumns.selectBoxEditor.values.1" xml:space="preserve">
+				<target>1 колонка</target>
+			</trans-unit>
+			<trans-unit id="creationDialog.numberOfColumns.selectBoxEditor.values.2" xml:space="preserve">
+				<target>2 колонки</target>
+			</trans-unit>
+			<trans-unit id="creationDialog.numberOfColumns.selectBoxEditor.values.3" xml:space="preserve">
+				<target>3 колонки</target>
+			</trans-unit>
+			<trans-unit id="creationDialog.numberOfColumns.selectBoxEditor.values.4" xml:space="preserve">
+				<target>4 колонки</target>
+			</trans-unit>
+			<trans-unit id="properties.additionalClass" xml:space="preserve">
+				<target>Дополнительный класс</target>
+			</trans-unit>
+			<trans-unit id="ui.label" xml:space="preserve">
+				<target>Сетка</target>
+			</trans-unit>
+			<trans-unit id="groups.structurel" xml:space="preserve">
+				<target>Структура сетки</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

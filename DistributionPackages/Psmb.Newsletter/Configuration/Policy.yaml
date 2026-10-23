@@ -1,0 +1,23 @@
+privilegeTargets:
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'Psmb.Newsletter:Subscription':
+      matcher: 'method(Psmb\Newsletter\Controller\SubscriptionController->(.*)Action())'
+    'Psmb.Newsletter:Backend':
+      matcher: 'method(Psmb\Newsletter\Controller\NewsletterController->(.*)Action())'
+    'Psmb.Newsletter:BackendModule':
+      matcher: 'method(Psmb\Newsletter\Controller\BackendController->.*Action())'
+
+roles:
+  'Neos.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'Psmb.Newsletter:Subscription'
+        permission: GRANT
+  'Neos.Neos:Editor':
+    privileges:
+      -
+        privilegeTarget: 'Psmb.Newsletter:Backend'
+        permission: GRANT
+      -
+        privilegeTarget: 'Psmb.Newsletter:BackendModule'
+        permission: GRANT

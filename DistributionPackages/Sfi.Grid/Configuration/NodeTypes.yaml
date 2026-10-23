@@ -1,0 +1,414 @@
+# Disable default Neos grid
+
+'Neos.Neos.NodeTypes.ColumnLayouts:TwoColumn':
+  abstract: true
+'Neos.Neos.NodeTypes.ColumnLayouts:ThreeColumn':
+  abstract: true
+'Neos.Neos.NodeTypes.ColumnLayouts:FourColumn':
+  abstract: true
+
+'Sfi.Grid:Row':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  options:
+    template:
+      childNodes:
+        columns:
+          name: '${"column" + item}'
+          type: 'Sfi.Grid:Column'
+          properties:
+            large: '${data.large || ""}'
+            medium: '${data.medium || "medium-" + 12/data.numberOfColumns}'
+            small: '${data.small || ""}'
+          withItems: '${Array.range(1, data.numberOfColumns)}'
+  ui:
+    creationDialog:
+      elements:
+        numberOfColumns:
+          type: string
+          ui:
+            label: i18n
+            editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+            editorOptions:
+              values:
+                '':
+                  label: i18n
+                1:
+                  label: i18n
+                2:
+                  label: i18n
+                3:
+                  label: i18n
+                4:
+                  label: i18n
+          validation:
+            'Neos.Neos/Validation/NotEmptyValidator': []
+        large:
+          type: string
+          ui:
+            label: Large
+            editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+            editorOptions:
+              values:
+                '':
+                  label: i18n
+                large-1:
+                  label: large-1
+                large-2:
+                  label: large-2
+                large-3:
+                  label: large-3
+                large-4:
+                  label: large-4
+                large-5:
+                  label: large-5
+                large-6:
+                  label: large-6
+                large-7:
+                  label: large-7
+                large-8:
+                  label: large-8
+                large-9:
+                  label: large-9
+                large-10:
+                  label: large-10
+                large-11:
+                  label: large-11
+                large-12:
+                  label: large-12
+        medium:
+          type: string
+          ui:
+            label: Medium
+            editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+            editorOptions:
+              values:
+                '':
+                  label: i18n
+                medium-1:
+                  label: medium-1
+                medium-2:
+                  label: medium-2
+                medium-3:
+                  label: medium-3
+                medium-4:
+                  label: medium-4
+                medium-5:
+                  label: medium-5
+                medium-6:
+                  label: medium-6
+                medium-7:
+                  label: medium-7
+                medium-8:
+                  label: medium-8
+                medium-9:
+                  label: medium-9
+                medium-10:
+                  label: medium-10
+                medium-11:
+                  label: medium-11
+                medium-12:
+                  label: medium-12
+        small:
+          type: string
+          ui:
+            label: Small
+            editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+            editorOptions:
+              values:
+                '':
+                  label: i18n
+                small-1:
+                  label: small-1
+                small-2:
+                  label: small-2
+                small-3:
+                  label: small-3
+                small-4:
+                  label: small-4
+                small-5:
+                  label: small-5
+                small-6:
+                  label: small-6
+                small-7:
+                  label: small-7
+                small-8:
+                  label: small-8
+                small-9:
+                  label: small-9
+                small-10:
+                  label: small-10
+                small-11:
+                  label: small-11
+                small-12:
+                  label: small-12
+    label: i18n
+    group: structure
+    position: start
+    inlineEditable: true
+    icon: icon-minus
+    inspector:
+      groups:
+        structure:
+          label: i18n
+          position: 10
+  properties:
+    additionalClass:
+      type: string
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: structure
+  constraints:
+    nodeTypes:
+      '*': false
+      'Sfi.Grid:Column': true
+
+'Sfi.Grid:Column':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: i18n
+    group: structure
+    icon: icon-columns
+    inlineEditable: true
+    inspector:
+      groups:
+        structure:
+          label: i18n
+          position: 10
+  constraints:
+    nodeTypes:
+      '*': true
+  properties:
+    large:
+      defaultValue: ''
+      type: string
+      ui:
+        label: Large
+        reloadIfChanged: true
+        inspector:
+          group: structure
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              '':
+                label: i18n
+              large-1:
+                label: large-1
+              large-2:
+                label: large-2
+              large-3:
+                label: large-3
+              large-4:
+                label: large-4
+              large-5:
+                label: large-5
+              large-6:
+                label: large-6
+              large-7:
+                label: large-7
+              large-8:
+                label: large-8
+              large-9:
+                label: large-9
+              large-10:
+                label: large-10
+              large-11:
+                label: large-11
+              large-12:
+                label: large-12
+    medium:
+      defaultValue: ''
+      type: string
+      ui:
+        label: Medium
+        reloadIfChanged: true
+        inspector:
+          group: structure
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              '':
+                label: i18n
+              medium-1:
+                label: medium-1
+              medium-2:
+                label: medium-2
+              medium-3:
+                label: medium-3
+              medium-4:
+                label: medium-4
+              medium-5:
+                label: medium-5
+              medium-6:
+                label: medium-6
+              medium-7:
+                label: medium-7
+              medium-8:
+                label: medium-8
+              medium-9:
+                label: medium-9
+              medium-10:
+                label: medium-10
+              medium-11:
+                label: medium-11
+              medium-12:
+                label: medium-12
+    small:
+      defaultValue: ''
+      type: string
+      ui:
+        label: Small
+        reloadIfChanged: true
+        inspector:
+          group: structure
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              '':
+                label: i18n
+              small-1:
+                label: small-1
+              small-2:
+                label: small-2
+              small-3:
+                label: small-3
+              small-4:
+                label: small-4
+              small-5:
+                label: small-5
+              small-6:
+                label: small-6
+              small-7:
+                label: small-7
+              small-8:
+                label: small-8
+              small-9:
+                label: small-9
+              small-10:
+                label: small-10
+              small-11:
+                label: small-11
+              small-12:
+                label: small-12
+    largeOffset:
+      defaultValue: ''
+      type: string
+      ui:
+        label: large-offset
+        reloadIfChanged: true
+        inspector:
+          group: structure
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              '':
+                label: i18n
+              large-offset-1:
+                label: large-offset-1
+              large-offset-2:
+                label: large-offset-2
+              large-offset-3:
+                label: large-offset-3
+              large-offset-4:
+                label: large-offset-4
+              large-offset-5:
+                label: large-offset-5
+              large-offset-6:
+                label: large-offset-6
+              large-offset-7:
+                label: large-offset-7
+              large-offset-8:
+                label: large-offset-8
+              large-offset-9:
+                label: large-offset-9
+              large-offset-10:
+                label: large-offset-10
+              large-offset-11:
+                label: large-offset-11
+    mediumOffset:
+      defaultValue: ''
+      type: string
+      ui:
+        label: medium-offset
+        reloadIfChanged: true
+        inspector:
+          group: structure
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              '':
+                label: i18n
+              medium-offset-1:
+                label: medium-offset-1
+              medium-offset-2:
+                label: medium-offset-2
+              medium-offset-3:
+                label: medium-offset-3
+              medium-offset-4:
+                label: medium-offset-4
+              medium-offset-5:
+                label: medium-offset-5
+              medium-offset-6:
+                label: medium-offset-6
+              medium-offset-7:
+                label: medium-offset-7
+              medium-offset-8:
+                label: medium-offset-8
+              medium-offset-9:
+                label: medium-offset-9
+              medium-offset-10:
+                label: medium-offset-10
+              medium-offset-11:
+                label: medium-offset-11
+    smallOffset:
+      defaultValue: ''
+      type: string
+      ui:
+        label: small-offset
+        reloadIfChanged: true
+        inspector:
+          group: structure
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            values:
+              '':
+                label: i18n
+              small-offset-1:
+                label: small-offset-1
+              small-offset-2:
+                label: small-offset-2
+              small-offset-3:
+                label: small-offset-3
+              small-offset-4:
+                label: small-offset-4
+              small-offset-5:
+                label: small-offset-5
+              small-offset-6:
+                label: small-offset-6
+              small-offset-7:
+                label: small-offset-7
+              small-offset-8:
+                label: small-offset-8
+              small-offset-9:
+                label: small-offset-9
+              small-offset-10:
+                label: small-offset-10
+              small-offset-11:
+                label: small-offset-11
+    additionalClass:
+      type: string
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: structure
+
+'Neos.Neos:ContentCollection':
+  constraints:
+    nodeTypes:
+      'Sfi.Grid:Column': false

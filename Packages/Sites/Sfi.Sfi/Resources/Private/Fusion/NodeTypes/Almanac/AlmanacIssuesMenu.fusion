@@ -1,4 +1,4 @@
-prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
+prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Loop) {
 	@process.wrap = afx`
 		<div id="almanac-issues" style="position: relative; top: -50px"></div>
 
@@ -19,10 +19,10 @@ prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
 		<h3 class="ServiceLight marginBottom-single">{Translation.translate('almanac.allIssues', null, [], null, 'Sfi.Sfi')}</h3>
 		<div class="marginTop-single">{value}</div>
 	`
-	collection = Neos.Fusion:RawCollection {
-		collection = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacIssuePage]').get()}
+	items = Neos.Fusion:Map {
+		items = ${q(almanacRoot).children('[instanceof Sfi.Sfi:AlmanacIssuePage]').get()}
 		itemName = 'node'
-		itemRenderer = Neos.Fusion:RawArray {
+		itemRenderer = Neos.Fusion:DataStructure {
 			title = ${node.properties.issueNumber}
 			year = ${String.pregMatch(node.properties.title, "/\b(\d{4})\b/")[1]}
 			year.@process.cutoff = ${value < 2014 ? 'до 2014' : value }
@@ -35,7 +35,7 @@ prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
 	}
 	itemName = 'group'
 	itemKey = 'year'
-	itemRenderer = Neos.Fusion:Collection {
+	itemRenderer = Neos.Fusion:Loop {
 		@process.wrap = afx`<ul style="display: flex; flex-wrap: wrap; max-width: 180px">{value}</ul>`
 		@process.year = afx`
 			<div style="display: flex; align-items: center;">
@@ -43,7 +43,7 @@ prototype(Sfi.Sfi:AlmanacIssuesMenu) < prototype(Neos.Fusion:Collection) {
 				{value}
 			</div>
 		`
-		collection = ${group}
+		items = ${group}
 		itemName = 'item'
 		itemRenderer = Neos.Fusion:Tag {
 			@process.wrap = afx`<li style="

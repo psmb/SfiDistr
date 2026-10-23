@@ -1,0 +1,35 @@
+Neos:
+  Neos:
+    eventLog:
+      enabled: true
+    modules:
+      management:
+        submodules:
+          history:
+            controller: \AE\History\Controller\HistoryController
+            privilegeTarget: 'AE.History:BackendModule'
+            additionalResources:
+              styleSheets:
+                - 'resource://AE.History/Public/Styles/Module.css'
+    userInterface:
+      requireJsPathMapping:
+        'AE.History/Views': 'resource://AE.History/Public/JavaScript'
+    Ui:
+      resources:
+        stylesheets:
+          'AE.History/Views/NodeInfoView':
+            resource: 'resource://AE.History/Public/JavaScript/NodeInfoView/Plugin.css'
+        javascript:
+          'AE.History/Views/NodeInfoView':
+            resource: 'resource://AE.History/Public/JavaScript/NodeInfoView/Plugin.js'
+
+  Flow:
+    security:
+      authentication:
+        providers:
+          'Neos.Neos:Backend':
+            requestPatterns:
+              'AE.History:Controllers':
+                pattern: 'ControllerObjectName'
+                patternOptions:
+                  controllerObjectNamePattern: 'AE\History\Controller\.*'

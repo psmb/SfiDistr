@@ -1,0 +1,29 @@
+prototype(Psmb.Footnote:PregReplaceCallback) {
+    @class = 'Psmb\\Footnote\\Fusion\\PregReplaceCallbackImplementation'
+}
+prototype(Psmb.Footnote:PregMatchAll) {
+    @class = 'Psmb\\Footnote\\Fusion\\PregMatchAllImplementation'
+}
+
+# Gathers footnotes from text
+prototype(Psmb.Footnote:FootnoteProcessor) < prototype(Neos.Fusion:Join) {
+    content = Neos.Fusion:Value {
+        value = ${value}
+        @process.parse = Psmb.Footnote:PregReplaceCallback {
+            @if.notInBackend = ${!documentNode.context.inBackend}
+            pattern = ${'/<span data-footnote="(.*?)">(.*?)<\/span>/'}
+            subject = ${value}
+            replacementRenderer = ${matches[2] + '<sup class="footnote" id="footnoteSource_' + iterator.cycle + '"><a href="#footnote_' + iterator.cycle + '">' + iterator.cycle + '</a></sup>'}
+        }
+    }
+    footnotes = Neos.Fusion:Loop {
+        @if.live = ${node.context.workspaceName == 'live'}
+        @process.wrap = ${value && '<ul class="footnoteList">' + value + '</ul>'}
+        items = Psmb.Footnote:PregMatchAll {
+            pattern = ${'/<span data-footnote="(.*?)">(.*?)<\/span>/'}
+            subject = ${value}
+        }
+        itemName = 'item'
+        itemRenderer = ${'<li class="footnoteList-item" id="footnote_' + iterator.cycle + '"><a href="#footnoteSource_' + iterator.cycle + '"><sup>' + iterator.cycle + '</sup></a> ' + item[1] + '</li>'}
+    }
+}

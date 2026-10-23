@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="Psmb.Term" source-language="en" target-language="ru" datatype="plaintext">
+		<body>
+			<trans-unit id="groups.term" xml:space="preserve">
+				<source>Terms</source>
+				<target>Термины</target>
+			</trans-unit>
+			<trans-unit id="properties.replaceVariants" xml:space="preserve">
+				<source>Spelling variants</source>
+				<target>Варианты написания</target>
+			</trans-unit>
+			<trans-unit id="properties.replaceVariants.ui.help.message" xml:space="preserve">
+				<source>Spelling variants, separated by comma, supporting regexp, "|" expands into "\w*?"</source>
+				<target>Варианты разделяются запятой, поддерживают regexp, "|" отделяет изменяемую часть. Примеры: "Дмитри+ (Сергеевич+)? Гасак+", "(священник+|о.|отец|отц+)? Георги+ Кочетков+"</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,10 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        Sfi.Grid: true
+    userInterface:
+      translation:
+        autoInclude:
+          Sfi.Grid:
+            - 'NodeTypes/*'

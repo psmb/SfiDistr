@@ -5,7 +5,7 @@ prototype(Neos.Neos:Content) {
 	}
 }
 
-prototype(Neos.NodeTypes:ContentReferences) {
+prototype(Neos.NodeTypes.ContentReferences:ContentReferences) {
 	referenceNodes.itemRenderer = Neos.Fusion:Value {
 		value = Neos.Neos:ContentCase
 		link = Neos.Neos:NodeUri {

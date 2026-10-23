@@ -1,0 +1,30 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<div class="StyleguideItem">
+	<div class="row">
+		<div class="large-4 column">
+			<neos:contentElement.wrap node="{node}">
+				<div class="StyleguideItem-Title">
+					<neos:link.node node="{node}">{neos:contentElement.editable(property: 'title')}</neos:link.node>
+				</div>
+				<div class="StyleguideItem-Description">
+					{neos:contentElement.editable(property: 'description')}
+				</div>
+			</neos:contentElement.wrap>
+			<f:if condition="{statusTrack}">
+			    <dl>
+					<dt>Development ready?</dt>
+					{f:if(condition:statusDevelopment,then:'<span style="color:green">YES</span>',else:'<span style="color:red">NO</span>')}
+					<dt>Mobile design ready?</dt>
+					{f:if(condition:statusDesignMobile,then:'<span style="color:green">YES</span>',else:'<span style="color:red">NO</span>')}
+					<dt>Desktop design ready?</dt>
+					{f:if(condition:statusDesignDesktop,then:'<span style="color:green">YES</span>',else:'<span style="color:red">NO</span>')}
+				</dl>
+			</f:if>
+		</div>
+		<div class="large-8 column">
+			<div class="StyleguideItem-Content">
+				{content -> f:format.raw()}
+			</div>
+		</div>
+	</div>
+</div>

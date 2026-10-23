@@ -1,0 +1,11 @@
+
+Neos:
+  Neos:
+    nodeTypes:
+      groups:
+        styleguide:
+          position: 900
+          label: Styleguide
+    fusion:
+      autoInclude:
+        Sfi.Styleguide: true

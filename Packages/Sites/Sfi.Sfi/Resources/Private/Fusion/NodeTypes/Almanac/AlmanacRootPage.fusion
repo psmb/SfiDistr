@@ -6,7 +6,7 @@ prototype(Sfi.Sfi:AlmanacRootPage) < prototype(Sfi.Sfi:AlmanacAbstractPage) {
 				property = 'title'
 				block = false
 			}
-			content = Neos.Fusion:Array {
+			content = Neos.Fusion:Join {
 				content = Neos.Neos:ContentCollection {
 					nodePath = 'main'
 				}

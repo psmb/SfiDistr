@@ -34,7 +34,7 @@ prototype(Sfi.Sfi:FundraisingProject) {
 	complete = ${node.properties.complete}
 
 	otherProjects = Sfi.Sfi:FundraisingProjectsListing {
-		collection.@process.filterOutSelf = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
+		items.@process.filterOutSelf = ${q(value).filter('[_identifier != "' + documentNode.identifier + '"]').get()}
 	}
 
 	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping

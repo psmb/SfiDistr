@@ -1,5 +1,5 @@
 prototype(Sfi.Sfi:Blog.Store)>
-prototype(Sfi.Sfi:Blog.Store) < prototype(Neos.Fusion:Array) {
+prototype(Sfi.Sfi:Blog.Store) < prototype(Neos.Fusion:Join) {
     @process.tmpl = ${'<div class="row"><div class="columns">' + value + '</div></div>'}
     title = ${'<h1 class="PageTitle">' + node.properties.title + '</h1>'}
     list = Flowpack.Listable:Listable {

@@ -76,9 +76,9 @@ prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
 
 
 
-prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Collection) {
-	collection = ${site.properties.important}
-	collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.subtract(Date.Now(), 'PT2H'), '>', 'Sfi.News:Announcement').get() : value}
+prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Loop) {
+	items = ${site.properties.important}
+	items.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.subtract(Date.Now(), 'PT2H'), '>', 'Sfi.News:Announcement').get() : value}
 
 	@process.tmpl = ${'<div class="Carousel--Cover js-carousel-1x">' + value + '</div>'}
 	itemRenderer = Sfi.News:TopShort
@@ -101,8 +101,8 @@ prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Collection) {
 
 
 prototype(Sfi.News:CategorizedList) < prototype(Neos.Fusion:Tag) {
-	content = Neos.Fusion:Collection {
-		collection = ${q(documentNode).find('[instanceof Sfi.News:Category]').get()}
+	content = Neos.Fusion:Loop {
+		items = ${q(documentNode).find('[instanceof Sfi.News:Category]').get()}
 		itemName = 'categoryNode'
 		iterationName = 'iterator'
 		itemRenderer = Flowpack.Listable:List {

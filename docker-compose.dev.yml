@@ -1,7 +1,6 @@
-version: "3.4"
 services:
     redis:
-        image: redis:3.2
+        image: redis:7.4-alpine@sha256:57e4255cc971b1c8d6f8a6ca283ac01bc3ecdd914273ef6bfaede87aaecd6541
     db:
         image: mariadb:10.3
         volumes:
@@ -13,11 +12,14 @@ services:
             MYSQL_PASSWORD: pass
     web:
         labels:
-            - "neos"
+            - "neos=true"
         volumes:
             - ./:/data/www:rw,delegated
             - /data/www/Data
-        image: dimaip/sfidistr:latest
+        build: .
+        image: sfi-neos84:local
+        environment:
+            FLOW_CONTEXT: Development
         hostname: "sfiru"
         networks:
             - default
@@ -31,5 +33,5 @@ volumes:
     db-data:
 networks:
     main:
-        external:
-            name: main
+        external: true
+        name: main

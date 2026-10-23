@@ -5,8 +5,8 @@ prototype(Sfi.News:RssList) < prototype(Neos.Fusion:Template) {
 	@override.collection.@process.yandexOnly = ${q(value).count() > 0 ? q(value).filter('[yandex = TRUE]').get() : value}
 	@override.collection.@process.filterByDate = ${q(value).count() > 0 ? q(value).filterByDate('date', Date.subtract(Date.now(), 'P7D')).get() : value}
 
-	childItems = Neos.Fusion:Collection {
-		collection = ${collection}
+	childItems = Neos.Fusion:Loop {
+		items = ${collection}
 		itemRenderer = Sfi.News:RssItem
 		itemName = 'node'
 	}

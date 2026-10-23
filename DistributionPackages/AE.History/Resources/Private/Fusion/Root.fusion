@@ -1,0 +1,85 @@
+include: resource://Neos.Fusion/Private/Fusion/Root.fusion
+include: resource://Neos.Neos/Private/Fusion/Backend/History/Root.fusion
+
+AE.History.HistoryController.index = AE.History:Template {
+    accountIdentifier = ${accountIdentifier}
+    eventsByDate = ${eventsByDate}
+    firstEvent = ${firstEvent}
+    nextPage = ${nextPage}
+    nodeIdentifier = ${nodeIdentifier}
+    siteIdentifier = ${siteIdentifier}
+    sites = ${sites}
+    accounts = ${accounts}
+
+    eventRenderer = Neos.Neos:History.EventRenderer
+}
+
+prototype(AE.History:Template) < prototype(Neos.Fusion:Template) {
+    templatePath = 'resource://AE.History/Private/Templates/History/Index.html'
+}
+
+prototype(Neos.Neos:History.EventRenderer).nodeEvent.type = 'AE.History:History.NodeEventRenderer'
+
+prototype(AE.History:History.NodeEventRenderer) < prototype(AE.History:Template) {
+    sectionName = 'eventElement'
+
+    accountIdentifier = ${accountIdentifier}
+    event = ${event}
+    nodeIdentifier = ${nodeIdentifier}
+    siteIdentifier = ${siteIdentifier}
+
+    content = Neos.Fusion:Array {
+        @context {
+            contentEvents = ${Neos.Array.filterNegated(event.childEvents, 'documentEvent')}
+            documentEvents = ${Neos.Array.filter(event.childEvents, 'documentEvent')}
+        }
+
+        documentEvents = Neos.Fusion:Collection {
+            collection = ${documentEvents}
+            itemName = 'event'
+
+            itemRenderer = Neos.Fusion:Case {
+                default {
+                    condition = true
+                    type = ${'Neos.Neos:History.PublishedNode.' + event.eventType}
+                }
+            }
+        }
+
+        content = Neos.Fusion:Case {
+            changed {
+                condition = ${nodeIdentifier == null}
+                renderer = Neos.Neos:History.PublishedNode.ContentChanged {
+                    @if {
+                        documentNotRemoved = ${Array.first(documentEvents).eventType != 'Node.Removed'}
+                        hasContentEvents = ${Array.length(contentEvents) > 0}
+                    }
+                }
+            }
+
+            events {
+                condition = ${nodeIdentifier != null}
+                renderer = Neos.Fusion:Collection {
+                    collection = ${contentEvents}
+                    itemName = 'event'
+
+                    itemRenderer = Neos.Fusion:Case {
+                        default {
+                            condition = true
+                            type = ${'Neos.Neos:History.PublishedNode.' + event.eventType}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+prototype(Neos.Neos:History.PublishedNode.AbstractSubEvent) {
+    templatePath = 'resource://AE.History/Private/Templates/History/Index.html'
+    sectionName = 'subEventElement'
+
+    @context.eventsOfMatchedType = ${[event]}
+
+    subEventType >
+}

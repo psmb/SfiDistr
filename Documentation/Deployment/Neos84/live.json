@@ -1,0 +1,10 @@
+{
+  "services": {
+    "web": {
+      "labels": {
+        "traefik.enable": "true",
+        "traefik.frontend.rule": "Host:sfi.ru,www.sfi.ru"
+      }
+    }
+  }
+}

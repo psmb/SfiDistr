@@ -86,8 +86,8 @@ prototype(Sfi.Shared:Well) < prototype(Sfi.Shared:Group) {
 
 prototype(Sfi.Shared:ListByReferences) < prototype(Neos.Fusion:Tag) {
 	@override.itemRendererType = ${q(node).property('itemRenderer')}
-	content = Neos.Fusion:Collection {
-		collection = ${q(node).property('references')}
+	content = Neos.Fusion:Loop {
+		items = ${q(node).property('references')}
 		itemRenderer = Sfi.Shared:ContentCaseShort {
 			byType {
 				@position = 'start'

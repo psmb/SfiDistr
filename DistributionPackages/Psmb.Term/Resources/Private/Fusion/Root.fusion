@@ -1,0 +1,7 @@
+prototype(Psmb.Term:ReplaceTerms) {
+	@class = 'Psmb\\Term\\Fusion\\ReplaceTermsImplementation'
+	value = ${value}
+	node = ${node}
+	documentNode = ${documentNode}
+	terms = ${q(site).find('[instanceof Psmb.Term:TermMixin]').filter('[replaceVariants][replaceVariants != ""]').get()}
+}

@@ -1,0 +1,106 @@
+# Put this plugin wherever you want to insert the subscription form
+prototype(Psmb.Newsletter:SubscriptionPlugin) < prototype(Neos.Neos:Plugin) {
+	package = 'Psmb.Newsletter'
+	controller = 'Subscription'
+	argumentNamespace = 'newsletter'
+	additionalData = Neos.Fusion:DataStructure
+}
+
+prototype(Neos.Fusion:GlobalCacheIdentifiers) {
+	newsletterAction = ${request.pluginArguments['newsletter']['@action']}
+}
+
+#
+# This object is meant to be used with @process.
+# `cssPath` should contain a path to a CSS file, e.g. `cssPath = 'resource://Psmb.Newsletter/Public/styles.css'`
+#
+prototype(Psmb.Newsletter:CssToInline) {
+	@class = 'Psmb\\Newsletter\\Fusion\\CssToInlineImplementation'
+	value = ${value}
+	cssPath = 'to-be-set'
+}
+
+prototype(Psmb.Newsletter:MailRenderer) < prototype(Neos.Fusion:DataStructure) {
+	subject = ''
+	body = ''
+	#body.@cache.mode = 'cached'
+	#body.@process.cssToInline = Psmb.Newsletter:CssToInline {
+	#	cssPath = 'to-be-set'
+	#}
+	recipientAddress = ${subscriber.email}
+	recipientName = ${subscriber.name}
+	replyToAddress = ${subscription.replyToAddress || globalSettings.replyToAddress || subscription.senderAddress || globalSettings.senderAddress}
+	senderAddress = ${subscription.senderAddress || globalSettings.senderAddress}
+	senderName = ${subscription.senderName || globalSettings.senderName}
+}
+
+prototype(Psmb.Newsletter:ConfirmationMailRenderer) < prototype(Psmb.Newsletter:MailRenderer) {
+	subject = 'Activate your subscription'
+	body = Neos.Fusion:Tag {
+		tagName = 'a'
+		attributes.href = ${activationLink}
+		content = 'Click to confirm your subscription'
+	}
+}
+
+prototype(Psmb.Newsletter:SubscriptionCase) < prototype(Neos.Fusion:Case) {
+	# We need this to work around Fusion's cache limitations, i.e. to allow
+	# subscriber never to be cached within other cache records.
+	# To reliably get subscriber data within cached aread use `${Registry.get('subscriber')}`
+	# See https://github.com/psmb/Psmb.Registry
+	@context.justNeedToExecute = ${Registry.set('subscriber', subscriber)}
+	confirmation {
+		condition = ${activationLink}
+		renderer = Psmb.Newsletter:ConfirmationMailRenderer
+	}
+	rendererFromSettings {
+		condition = ${subscription.renderer}
+		type = ${subscription.renderer}
+	}
+	default {
+		condition = ${true}
+		renderer = Psmb.Newsletter:MailRenderer
+	}
+}
+
+prototype(Psmb.Newsletter:EditSubscriptionLink) < prototype(Neos.Neos:NodeUri) {
+	node = ${site}
+	additionalParams {
+		--newsletter = Neos.Fusion:DataStructure {
+			'@package' = 'Psmb.Newsletter'
+			'@controller' = 'Subscription'
+			'@action' = 'Edit'
+			subscriber = ${Registry.get('subscriber')}
+		}
+	}
+	absolute = ${true}
+	@cache {
+		mode = 'uncached'
+		context {
+			1 = 'site'
+			2 = 'documentNode'
+		}
+	}
+}
+
+prototype(Psmb.Newsletter:UnsubscribeLink) < prototype(Neos.Neos:NodeUri) {
+	node = ${site}
+	additionalParams {
+		--newsletter = Neos.Fusion:DataStructure {
+			'@package' = 'Psmb.Newsletter'
+			'@controller' = 'Subscription'
+			'@action' = 'Unsubscribe'
+			subscriber = ${Registry.get('subscriber')}
+		}
+	}
+	absolute = ${true}
+	@cache {
+		mode = 'uncached'
+		context {
+			1 = 'site'
+			2 = 'documentNode'
+		}
+	}
+}
+
+newsletter = Psmb.Newsletter:SubscriptionCase

@@ -1,0 +1,40 @@
+
+'Psmb.Newsletter:SubscriptionPlugin':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Newsletter sign up form'
+    icon: icon-envelope
+    group: plugins
+'Psmb.Newsletter:NewsletterMixin':
+  abstract: true
+  ui:
+    inspector:
+      tabs:
+        newsletter:
+          label: i18n
+          position: 100
+          icon: icon-send
+      groups:
+        newsletter:
+          label: i18n
+          tab: newsletter
+      views:
+        newsletter:
+          label: 'Newsletter view'
+          group: newsletter
+          view: Psmb.Newsletter/Views/NewsletterView
+          # viewOptions:
+          #   dataSourceAdditionalArguments:
+          #     startDate: 'ClientEval:node.properties.sampleProperty'
+  # properties:
+  #   sampleProperty:
+  #     type: DateTime
+  #     ui:
+  #       label: 'Жертвователи с'
+  #       reloadIfChanged: true
+  #       inspector:
+  #         group: newsletter
+  #         position: 1
+  #         editorOptions:
+  #           format: 'Y-m-d'

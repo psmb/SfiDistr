@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Psmb.Newsletter" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="flash.confirm" xml:space="preserve">
+                <source>All that remains is to confirm your subscription. Open your email and follow the link in the message.</source>
+            </trans-unit>
+            <trans-unit id="flash.noEmail" xml:space="preserve">
+                <source>You haven’t shown your email address</source>
+            </trans-unit>
+            <trans-unit id="flash.wrongEmail" xml:space="preserve">
+                <source>You have shown an incorrect email address</source>
+            </trans-unit>
+            <trans-unit id="flash.alreadyRegistered" xml:space="preserve">
+                <source>You are already subscribed to our mailing list</source>
+            </trans-unit>
+            <trans-unit id="flash.confirmed" xml:space="preserve">
+                <source>Your subscription has been registered! You will now receive mailings from us.</source>
+            </trans-unit>
+            <trans-unit id="flash.noToken" xml:space="preserve">
+                <source>Something has gone wrong. Perhaps you have already activated your subscription?</source>
+            </trans-unit>
+            <trans-unit id="flash.unsubscribed" xml:space="preserve">
+                <source>You have successfully unsubscribed from our mailing list</source>
+            </trans-unit>
+            <trans-unit id="flash.updated" xml:space="preserve">
+                <source>You have successfully changed the parameters of your subscription</source>
+            </trans-unit>
+
+            <trans-unit id="js.send" xml:space="preserve">
+                <source>Send</source>
+            </trans-unit>
+            <trans-unit id="js.sending" xml:space="preserve">
+                <source>Sending...</source>
+            </trans-unit>
+            <trans-unit id="js.sent" xml:space="preserve">
+                <source>Newsletter sent</source>
+            </trans-unit>
+            <trans-unit id="js.test" xml:space="preserve">
+                <source>Test</source>
+            </trans-unit>
+            <trans-unit id="js.error" xml:space="preserve">
+                <source>Error</source>
+            </trans-unit>
+            <trans-unit id="js.selectSubscription" xml:space="preserve">
+                <source>Please select a subscription</source>
+            </trans-unit>
+            <trans-unit id="js.sendTo" xml:space="preserve">
+                <source>Send newsletter to: </source>
+            </trans-unit>
+            <trans-unit id="js.loading" xml:space="preserve">
+                <source>Loading...</source>
+            </trans-unit>
+
+            <trans-unit id="js.recepients" xml:space="preserve">
+                <source>Total number of recepients</source>
+            </trans-unit>
+            <trans-unit id="js.confirmationTitle" xml:space="preserve">
+                <source>Send Newsletter</source>
+            </trans-unit>
+            <trans-unit id="js.confirmationDescription" xml:space="preserve">
+                <source>This will send the letter to all subscribers. Check that all your changes are published to live workspace and hit "Send".</source>
+            </trans-unit>
+            <trans-unit id="js.testConfirmationTitle" xml:space="preserve">
+                <source>Send Test Newsletter</source>
+            </trans-unit>
+            <trans-unit id="js.testEmailLabel" xml:space="preserve">
+                <source>Enter test email:</source>
+            </trans-unit>
+
+            <trans-unit id="flash.subscriber.updated" xml:space="preserve">
+                <source>The subscriber "{s}" has been updated.</source>
+            </trans-unit>
+            <trans-unit id="flash.subscriber.removed" xml:space="preserve">
+                <source>The subscriber "{s}" has been removed.</source>
+            </trans-unit>
+            <trans-unit id="flash.subscriber.added" xml:space="preserve">
+                <source>The subscriber "{s}" has been added.</source>
+            </trans-unit>
+            <trans-unit id="flash.csv" xml:space="preserve">
+                <source>Only CSV files are allowed!</source>
+            </trans-unit>
+            <trans-unit id="flash.file.error" xml:space="preserve">
+                <source>File is not readable or does not exist.</source>
+            </trans-unit>
+            <trans-unit id="flash.file.error" xml:space="preserve">
+                <source>Added: {0}, Updated: {1}, Corrupted: {2}</source>
+            </trans-unit>
+
+            <trans-unit id="backend.subscribers" xml:space="preserve">
+                <source>Newsletter Subscribers</source>
+            </trans-unit>
+            <trans-unit id="backend.name" xml:space="preserve">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="backend.email" xml:space="preserve">
+                <source>E-Mail</source>
+            </trans-unit>
+            <trans-unit id="backend.filter" xml:space="preserve">
+                <source>Filter Options:</source>
+            </trans-unit>
+            <trans-unit id="backend.subscriptions" xml:space="preserve">
+                <source>Subscriptions</source>
+            </trans-unit>
+            <trans-unit id="backend.subscribers.export" xml:space="preserve">
+                <source>Export subscribers</source>
+            </trans-unit>
+            <trans-unit id="backend.csv.upload" xml:space="preserve">
+                <source>Upload CSV</source>
+            </trans-unit>
+            <trans-unit id="backend.subscriber.add" xml:space="preserve">
+                <source>Add subscriber</source>
+            </trans-unit>
+            <trans-unit id="backend.subscriber.create" xml:space="preserve">
+                <source>Create subscriber</source>
+            </trans-unit>
+            <trans-unit id="backend.subscriber.update" xml:space="preserve">
+                <source>Update subscriber</source>
+            </trans-unit>
+            <trans-unit id="backend.modal.delete.header" xml:space="preserve">
+                <source>Do you really want to delete the subscriber "{subscriber}"</source>
+            </trans-unit>
+            <trans-unit id="backend.modal.delete.content" xml:space="preserve">
+                <source>This will delete the subscriber. No E-Mail will be sent out!</source>
+            </trans-unit>
+            <trans-unit id="backend.modal.delete.button" xml:space="preserve">
+                <source>Yes, delete subscriber</source>
+            </trans-unit>
+            <trans-unit id="backend.modal.filter.button" xml:space="preserve">
+                <source>Filter subscribers</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -16,8 +16,8 @@ prototype(Sfi.Sfi:PaperWithAuthorShort) < prototype(Neos.Neos:Content) {
 	tags.@process.hasPhoto = ${node.properties.hasPhoto ? Array.push(value, Translation.translate('photo', null, [], null, 'Sfi.Sfi')) : value}
 	tags.@process.hasAudio = ${node.properties.hasAudio ? Array.push(value, Translation.translate('audio', null, [], null, 'Sfi.Sfi')) : value}
 	tags.@process.hasVideo = ${node.properties.hasVideo ? Array.push(value, Translation.translate('video', null, [], null, 'Sfi.Sfi')) : value}
-	tags.@process.concat = Neos.Fusion:Collection {
-		collection = ${value}
+	tags.@process.concat = Neos.Fusion:Loop {
+		items = ${value}
 		itemName = 'item'
 		itemRenderer = ${item && item + (iterator.isLast ? ' ' : ', ')}
 	}

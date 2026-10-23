@@ -1,0 +1,69 @@
+Flowpack:
+  JobQueue:
+    Common:
+      queues:
+        psmb-newsletter:
+          className: Flowpack\JobQueue\Common\Queue\FakeQueue
+        psmb-newsletter-web:
+          className: Flowpack\JobQueue\Common\Queue\FakeQueue
+          options:
+            async: true
+Neos:
+  Flow:
+    security:
+      authentication:
+        providers:
+          'Neos.Neos:Backend':
+            requestPatterns:
+              'Psmb.Newsletter:Backend':
+                pattern: ControllerObjectName
+                patternOptions:
+                  controllerObjectNamePattern: 'Psmb\Newsletter\Controller\.*'
+    mvc:
+      routes:
+        'Psmb.Newsletter':
+          position: 'before Neos.Neos'
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Psmb.Newsletter:
+            - Main
+            - 'NodeTypes/*'
+      requireJsPathMapping:
+        Psmb.Newsletter/Views: 'resource://Psmb.Newsletter/Public/JavaScript/Inspector/Views'
+    modules:
+      management:
+        submodules:
+          newsletter:
+            label: 'Newsletter'
+            controller: 'Psmb\Newsletter\Controller\BackendController'
+            description: 'Manage all subscriber lists for your Newsletter. You can edit/delete/update each subscription individually. Keep in mind that all subscribers are detached from Neos users.'
+            icon: 'fas fa-envelope'
+            privilegeTarget: 'Psmb.Newsletter:BackendModule'
+    fusion:
+      autoInclude:
+        Psmb.Newsletter: true
+    Ui:
+      resources:
+        javascript:
+          'Psmb.Newsletter:NewsletterView':
+            resource: resource://Psmb.Newsletter/Public/JavaScript/NewsletterView/Plugin.js
+
+Psmb:
+  Newsletter:
+    module:
+      itemsPerPage: 10
+
+#    globalSettings:
+#      senderAddress: 'robot@server.com'
+#      senderName: 'Your robot'
+#    subscriptions:
+#      -
+#        identifier: 'daily'
+#        renderer: 'Your:LetterRenderer'
+#        sendFromUiNodeType: 'Your:NodeType'
+#        label: 'Our daily newsletter'
+#        interval: P1D
+#        dimensions:
+#          language: ['dimensionValues']

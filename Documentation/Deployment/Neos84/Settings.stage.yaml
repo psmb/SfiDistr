@@ -1,0 +1,14 @@
+Neos:
+  Flow:
+    http:
+      baseUri: 'https://next.sfi.ru/'
+    session:
+      name: 'Sfi84AcceptanceSession'
+      cookie:
+        secure: true
+        domain: null
+  SwiftMailer:
+    transport:
+      type: 'Neos\SwiftMailer\Transport\MboxTransport'
+      options:
+        mboxPathAndFilename: '%FLOW_PATH_DATA%Persistent/acceptance-mail.mbox'

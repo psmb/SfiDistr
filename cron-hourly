@@ -1,4 +1,12 @@
-#!/usr/bin/with-contenv /bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-mkdir -p /data/www-provisioned/Web/sveden
-curl -o /data/www-provisioned/Web/sveden/education.html http://localhost/about/sveden/education.html --retry 3
+target=/data/www-provisioned/Web/sveden/education.html
+mkdir -p "$(dirname "$target")"
+temporary_file=$(mktemp "${target}.XXXXXX")
+trap 'rm -f "$temporary_file"' EXIT
+
+curl --fail --silent --show-error --max-time 600 --retry 3 \
+    --output "$temporary_file" http://127.0.0.1/about/sveden/education.html
+chmod 644 "$temporary_file"
+mv -f "$temporary_file" "$target"
