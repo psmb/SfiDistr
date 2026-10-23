@@ -1,0 +1,62 @@
+'Sfi.Sfi:TestimonyCard':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Карточка отзыва'
+    icon: icon-comment
+    group: contentBlocks
+    inlineEditable: true
+    inspector:
+      groups:
+        image:
+          label: 'Фото автора'
+  properties:
+    name:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Имя автора'
+            formatting:
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              strong: false
+              em: false
+    description:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Должность или описание автора'
+            formatting:
+              p: false
+              h1: false
+              h2: false
+              h3: false
+              strong: false
+              em: false
+    quote:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Текст отзыва'
+            formatting:
+              p: true
+              h1: false
+              h2: false
+              h3: false
+              strong: false
+              em: false
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото автора'
+        reloadIfChanged: true
+        inspector:
+          group: image

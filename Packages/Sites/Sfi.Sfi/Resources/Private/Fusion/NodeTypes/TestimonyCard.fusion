@@ -1,0 +1,35 @@
+prototype(Sfi.Sfi:TestimonyCard) < prototype(Neos.Fusion:Component) {
+    name = Neos.Neos:Editable {
+        property = 'name'
+        block = false
+    }
+    description = Neos.Neos:Editable {
+        property = 'description'
+        block = false
+    }
+    quote = Neos.Neos:Editable {
+        property = 'quote'
+    }
+    imageUri = Neos.Neos:ImageUri {
+        asset = ${node.properties.image}
+        maximumWidth = 192
+        maximumHeight = 192
+        allowCropping = true
+        @if.hasImage = ${node.properties.image}
+    }
+    renderer = afx`
+        <div class="TestimonyCard">
+            <figure class="TestimonyCard-Content">
+                <figcaption class="TestimonyCard-Author">
+                    <img class="TestimonyCard-Image" src={props.imageUri} alt="" width="96" height="96" @if.hasImage={props.imageUri}/>
+                    <div class="TestimonyCard-Details ParagraphAlt--Small color-grayAlt lineHeight-tight">
+                        <div>{props.name}</div>
+                        <div>{props.description}</div>
+                    </div>
+                </figcaption>
+                <blockquote class="TestimonyCard-Quote H4 lineHeight-tight">{props.quote}</blockquote>
+            </figure>
+        </div>
+    `
+    @process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+}
