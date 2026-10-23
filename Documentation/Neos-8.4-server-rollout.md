@@ -382,7 +382,7 @@ docker exec sfi84-web-1 curl --fail --silent --show-error -H 'Host: sfi.ru' \
   http://127.0.0.1/about/sveden/common.html > backups/release-common-after-rehearsal.html
 sfi84_maintenance stop
 sleep 3
-curl --fail --silent --show-error --retry 3 --retry-all-errors --retry-delay 2 --max-time 30 -I https://sfi.ru/
+curl --fail --silent --show-error --retry 3 --retry-connrefused --retry-delay 2 --max-time 30 -I https://sfi.ru/
 curl --fail --silent --show-error https://sfi.ru/about/sveden/common.html > backups/live-common.html
 curl --silent --show-error -I https://www.sfi.ru/
 ```
@@ -439,7 +439,7 @@ docker exec sfidistr-web-1 curl --fail --silent --show-error --retry 15 --retry-
 docker update --restart=always sfidistr-web-1
 sfi84_maintenance stop
 sleep 3
-curl --fail --silent --show-error --retry 3 --retry-all-errors --retry-delay 2 --max-time 30 -I https://sfi.ru/
+curl --fail --silent --show-error --retry 3 --retry-connrefused --retry-delay 2 --max-time 30 -I https://sfi.ru/
 ```
 
 If the new database is unavailable, preserve its volume and logs and decide whether immediate old-site recovery takes precedence over obtaining the logical dump; do not let a failed dump silently prevent recovery. Resume only the old deployment's reviewed automation. Any content created after editors resume needs reconciliation before an old-version rollback; no automatic reverse migration or database replay is assumed.

@@ -4,7 +4,7 @@
 
 ## Running deployment
 
-- Application source: `56fe7c4e248989cd956e8d7e9120bbb859a4c60e`, with the same tested image `sha256:0a019e29c79f55359bc5411270c4cfec08e5c910db63381182503d7561eb2053`.
+- Final application image: `sha256:7c86ebeba31e33acf3a8f79ac8c01a424d4f12a23f0a21336f4cbeab4df1e84f`, tagged `sfi-candidate:neos84-4f4230bf6fe1cdc15eb59451b00799f66979589e`. It derives from the accepted image `sha256:0a019e29c79f55359bc5411270c4cfec08e5c910db63381182503d7561eb2053` (source `56fe7c4e248989cd956e8d7e9120bbb859a4c60e`), adding only the two-line almanac fix from `4f4230bf6fe1cdc15eb59451b00799f66979589e`. The derivation Dockerfile and exact input are retained under `hotfix-4f4230bf6/`; candidate metadata and `release.env` point to the final image.
 - Neos 8.4.7, Flow 8.4.4, Neos UI 8.4.4, PHP 8.3.31 and Redis 7.4.11. No event-sourced repository migration.
 - Compose project `sfi84`: `sfi84-web-1`, `sfi84-db-1`, `sfi84-redis-1` are running with `unless-stopped` restart policies.
 - Database volume `sfi84_release_db`; Redis volume `sfi84_release_redis`; existing candidate runtime volume `sfi84_data`.
@@ -39,13 +39,25 @@ All 15 disclosure sections were compared with a fresh pre-cutover production bro
 
 A temporary user with the ordinary `Neos.Neos:Editor` role logged in, edited the common-information page, published a marker, and restored/published the original text. Public content reflected the publication without a manual cache flush. The final comparison matches the original content and confirms no marker remains. Login was repeated through the real public HTTPS route; the `Neos_Session` cookie is secure, HttpOnly, SameSite=Lax and scoped to `sfi.ru`.
 
-The fresh education page was generated successfully. Russian and English homepages, the study index, journal and projects page returned HTTP 200. The English homepage retains the previously documented `appendChild` JavaScript error, also observed on production before the upgrade. No new application warning/error was found in the System log.
+The fresh education page was generated successfully. Russian and English homepages, the study index, journal and projects page returned HTTP 200. The English homepage retains the previously documented `appendChild` JavaScript error, also observed on production before the upgrade. The common page's two stylesheets and three header/content images loaded successfully.
+
+Six route-resolution warnings appeared after public traffic resumed, coinciding with requests for an older conference page (`/science/nauchno-praktichieskiie-konfierientsii/tradiciya-svyatootecheskoj-katehizacii-tema-cheloveka-na-osnovnom-etape-oglasheniya-2014/izbrannye-doklady.html`) and article (`/lektsii-diskussii-interviu/vospitatel-ne-chinovnik.html`). Both subsequently returned HTTP 200 in under half a second; their rendered anchors all have nonempty targets. The log does not identify the unresolved node, so its underlying link-generation cause remains a follow-up rather than a claim of full resolution. These warnings were not present during the focused disclosure/editor checks.
 
 Public routing checks confirm the homepage and CMS login return 200, `www.sfi.ru` redirects to `https://sfi.ru/`, HTTP redirects to HTTPS, `/sveden/common` redirects to the common-information page, and `/sveden/education` redirects to its generated HTML page. Staging HTTP authentication and noindex headers are absent. `/db.sql` returns 404.
 
 Two operational checks were corrected during execution: Docker reassigns the original container's automatic host port on restart, so rollback health checks now use `docker exec`; and the first immediate proxy probe after stopping maintenance timed out, so the runbook allows configuration propagation and retries transient failures. Subsequent public browser/HTTP checks passed.
 
 Evidence is in ignored `output/playwright/cutover/` in the upgrade worktree and the protected server `backups/` directory. Broader custom-plugin acceptance remains documented in the staging report. `/docs`, `/umo`, payment rehearsal and root cron inspection remain outside the agreed scope.
+
+## Almanac correction during live verification
+
+A crawler exposed a server error at `/science/nauchnyj-zhurnal/vypusk-23-leto-2017.html?article=node-27iq7medihz02`: the requested article no longer resolved, but the template selected its detail view and replaced the current node with null. The language menu then called `Array.first()` with null. The template now requires an existing article node before selecting the detail view and article title; otherwise it shows the issue page.
+
+The fix was built as an immutable image derived from the accepted image. An isolated validation container used the release database for read-only HTTP checks, its own file caches, no scheduler, and no public proxy route. The stale URL returned 200 with byte-identical output to the issue page. The normal issue page and a valid article were byte-for-byte unchanged from the live pre-fix output.
+
+The release container was replaced during a second maintenance window, 16:45:22–16:48:31 Moscow time (3 minutes 9 seconds). The targeted Fusion cache flush was insufficient; a full `flow:cache:flush --force` and cache warmup picked up the new template. Keep the full cache rebuild as the replacement procedure. The generated education page was preserved across replacement, and its generator was rerun successfully afterward. The corrected stale/valid article cases and all 15 disclosure pages were checked again publicly; the same 2,890 itemprops, 36 tables and 3,565 signatures match the pre-upgrade baseline. The original failed request and diagnostic reproductions remain in historical exception logs; final log verification is measured from the patched reopening timestamp in `backups/hotfix-live-opened.txt`. No new application warning/error/critical entry or HTTP 5xx response appeared in that verification window. The original signing key still matches.
+
+The stopped `sfi84-hotfix-check` container remains available for inspection. No database migration or schema change was needed for this correction. The old runtime and original database remain preserved. Use the final patched image when adopting into Spaas.
 
 ## Trial and next steps
 
