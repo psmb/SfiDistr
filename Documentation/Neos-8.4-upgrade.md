@@ -22,20 +22,20 @@ Rehearse these steps against a fresh production database copy and the actual ass
 
 1. Stop editorial changes and newsletter workers. Back up the database, persistent resources, local configuration and the current image tag/digest. Keep the old deployment available for rollback.
 2. Build the new image from this branch, or install the locked dependencies under PHP 8.3 with `composer install --no-dev --prefer-dist --optimize-autoloader`. Do not run `composer update` during deployment. Keep `DistributionPackages/` in the release: Composer links those packages locally.
-3. Provide the existing database, S3, SMTP and other integration environment variables. Set `FLOW_ENCRYPTION_KEY` (environment or `/run/secrets/FLOW_ENCRYPTION_KEY`) to the current deployment's effective Flow signing key before starting the new application. Production startup refuses an absent key; verify that it survives container replacement and validates previously issued tokens. The key may come from configuration, the legacy `Data/Persistent/EncryptionKey` file or the persistent HashService cache, and is not included in the SQL dump. The database volume and credentials do not change. This upgrade does not change the MariaDB or Redis server versions.
+3. Provide the existing database, S3, SMTP and other integration environment variables. Copy the current deployment's effective Flow signing key, byte for byte, to `Data/Persistent/EncryptionKey` before starting the new application. Keep `Data` on a persistent volume and make the key readable only by the web user. Flow reads this standard file directly; verify that it survives container replacement and validates previously issued tokens. The key may come from configuration, the legacy `Data/Persistent/EncryptionKey` file or the persistent HashService cache, and is not included in the SQL dump. The database volume and credentials do not change. This upgrade does not change the MariaDB or Redis server versions.
 4. With the new code and the site still in maintenance, run inside the container as the web user in the production context:
 
    ```sh
-   FLOW_CONTEXT=Production sfi-flow flow:cache:flush --force
-   FLOW_CONTEXT=Production sfi-flow doctrine:migrate
-   FLOW_CONTEXT=Production sfi-flow node:migrate 20190304111200
-   FLOW_CONTEXT=Production sfi-flow flow:session:destroyall
-   FLOW_CONTEXT=Production sfi-flow resource:publish --collection static
-   FLOW_CONTEXT=Production sfi-flow flow:cache:warmup
+   FLOW_CONTEXT=Production ./flow flow:cache:flush --force
+   FLOW_CONTEXT=Production ./flow doctrine:migrate
+   FLOW_CONTEXT=Production ./flow node:migrate 20190304111200
+   FLOW_CONTEXT=Production ./flow flow:session:destroyall
+   FLOW_CONTEXT=Production ./flow resource:publish --collection static
+   FLOW_CONTEXT=Production ./flow flow:cache:warmup
    ./cron-hourly
    ```
 
-   Run the hourly script from `/data/www`; on a non-container installation, replace `sfi-flow` with `./flow`. The node migration renames the extracted stock node types. Check `node:migrationstatus` first and run it only if not already applied. Code migrations are already represented in this branch; do not rerun them against the deployed files.
+   Run these commands and the hourly script from `/data/www`. The node migration renames the extracted stock node types. Check `node:migrationstatus` first and run it only if not already applied. Code migrations are already represented in this branch; do not rerun them against the deployed files.
 5. Check the homepage, education/program listings, news/article pages, English pages, journal, fundraising, backend login, inline editing, custom editors and newsletter preview. Confirm S3 reads/uploads, SMTP and payment integrations using staging credentials before reopening production editing. Do not trigger real broadcasts or payments for a smoke test.
 6. Re-enable traffic, editing and workers after those checks. If rollback is needed, restore the database backup together with the old image and its resources/configuration. Do not run the old application against the upgraded schema.
 
@@ -43,7 +43,7 @@ Do not run `node:repair`, resource cleanup or thumbnail deletion as an automatic
 
 ## Container operations
 
-Use `docker exec --user 80 <container> sfi-flow ...` for application commands; the image works in `/data/www-provisioned`. `DB_DATABASE`, `DB_HOST`, `DB_USER`, `DB_PASS`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `SFI_PM_USER`, `SFI_PM_PASSWORD`, `SFI_API_AUTH`, `GA_SECRET` and `GA_DEVKEY` retain their roles. Docker secrets with matching names are loaded at startup and by `sfi-flow`. Use that wrapper for Docker maintenance commands, including the deployment commands above, because `docker exec ./flow` does not inherit secrets exported only by the entrypoint. Local non-container installations continue to use `./flow`. When serving behind Traefik, set `FLOW_HTTP_TRUSTED_PROXIES` to its address or Docker network CIDR so Flow trusts forwarded HTTPS/host/client headers.
+Use `docker exec --user 80 <container> ./flow ...` for application commands; the image works in `/data/www-provisioned`. `DB_DATABASE`, `DB_HOST`, `DB_USER`, `DB_PASS`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `SFI_PM_USER`, `SFI_PM_PASSWORD`, `SFI_API_AUTH`, `GA_SECRET` and `GA_DEVKEY` retain their roles. Use normal container environment variables for integration credentials and Flow's standard persistent storage for the signing key. CLI commands need no wrapper or secret-loading step. When serving behind Traefik, set `FLOW_HTTP_TRUSTED_PROXIES` to its address or Docker network CIDR so Flow trusts forwarded HTTPS/host/client headers.
 
 `IMPORT_GITHUB_PUB_KEYS` still accepts comma-separated GitHub usernames for SSH access. `DB_AUTO_BACKUP` accepts `hourly`, `daily`, `weekly` or `monthly`; `/data/backupDb.sh` remains available for manual use. No database is imported automatically at startup. Preserve the existing mounts for documents and `Web/umo`, and any deployment-specific cron configuration.
 

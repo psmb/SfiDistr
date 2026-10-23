@@ -6,6 +6,28 @@ Bring up `next.sfi.ru` with its own database and Redis, using the existing produ
 
 This follows the simplified storage and integration scope agreed on 23 October. It replaces the separate S3-copy and payment-sandbox requirements in the earlier go-live plan. Rollback restores the application and database; changes to shared files or S3 remain shared.
 
+## Routine application updates
+
+As agreed after cutover on 23 October, keep the site live for ordinary application code updates. Pull the approved upgrade branch inside the running container, then flush Flow caches. Do not enable maintenance mode or rebuild and transfer an image for these updates. Database/schema or runtime changes need their own deployment procedure.
+
+The live checkout follows `origin/dimaip/upgrade-neos-8-4`. Keep that upgrade branch until the later approved merge and Spaas adoption. Preserve installed dependencies, mounted settings, runtime data and generated files during code updates.
+
+Record the current revision and run:
+
+```bash
+ssh server.psmb.ru 'docker exec --user 80 sfi84-web-1 sh -ec '\''
+  cd /data/www
+  test "$(git branch --show-current)" = dimaip/upgrade-neos-8-4
+  git rev-parse HEAD
+  git pull --ff-only
+  ./flow flow:cache:flush
+'\'''
+```
+
+Flow reads the original signing key from `Data/Persistent/EncryptionKey` on the existing persistent Data volume. The live container still defaults to `Production/Upgrade`; its live settings are also present in `Production/Settings.yaml`, so explicitly setting `FLOW_CONTEXT=Production` works too. Use the inherited context when flushing the running website's caches. Check affected public pages and new application errors afterward. Keep the previous revision for code rollback. Changes to dependencies, compiled assets, container configuration or database schema require the corresponding additional steps before this command can serve as a complete deployment.
+
+The remaining staging/cutover commands below describe the already completed deployment using its original image and wrapper. They are historical recipes, not the routine update procedure. Current application commands use `docker exec --user 80 sfi84-web-1 ./flow ...`. Do not recreate the live container from the pre-normalization image: its writable layer now contains the Git checkout and operational simplification. Include these changes in the image used for the later approved Spaas adoption.
+
 ## Approvals and verified facts
 
 The exposed dump remediation completed before staging: moved `/data/www/Web/db.sql` to `/data/www/Data/Persistent/db-public-20261023.sql` inside `sfidistr-web-1` and set mode `600`. The file is preserved. Its public URL returns 404; the homepage returns 200.
@@ -544,7 +566,7 @@ sudo docker compose -f /var/cache/spaas/SfiDistr.yml \
   --env-file /mnt/vol2/docker/secrets/SfiDistr.env -p sfidistr up -d --force-recreate
 docker inspect -f '{{range .Mounts}}{{if eq .Destination "/var/lib/mysql"}}{{.Name}}{{end}}{{end}}' sfidistr-db-1
 # Must print sfi84_release_db. Confirm sfi84-db-1 remains stopped.
-docker exec --user 80 sfidistr-web-1 sfi-flow node:migrationstatus
+docker exec --user 80 sfidistr-web-1 ./flow node:migrationstatus
 docker exec sfidistr-web-1 curl --fail --silent --show-error -H 'Host: sfi.ru' \
   http://127.0.0.1/about/sveden/common.html > backups/spaas-common.html
 docker exec --user 80 sfidistr-web-1 /data/www/cron-hourly

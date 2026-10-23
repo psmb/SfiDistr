@@ -15,6 +15,7 @@ services:
   web:
     restart: always
     volumes:
+      - app-data:/data/www-provisioned/Data
       - /data/www-provisioned/Web/_Resources
       - /mnt/vol2/docker/sites/kabinet/www/moodledata/repository/ltso/accred:/data/www-provisioned/Web/docs
       - /home/umo/umo:/data/www-provisioned/Web/umo
@@ -32,7 +33,6 @@ services:
       - GA_DEVKEY
       - SFI_API_AUTH
       - IMPORT_GITHUB_PUB_KEYS
-      - FLOW_ENCRYPTION_KEY
       - FLOW_HTTP_TRUSTED_PROXIES
     labels:
       - "neos=true"
@@ -48,6 +48,7 @@ services:
       - redis
 volumes:
   db-data:
+  app-data:
 networks:
   main:
     external: true

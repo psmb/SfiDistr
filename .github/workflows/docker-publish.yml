@@ -54,13 +54,9 @@ jobs:
           persist-credentials: false
       - name: Build the production image
         run: docker build --tag sfi-candidate .
-      - name: Verify production refuses an absent signing key
+      - name: Verify the ordinary Flow CLI works without a wrapper
         run: |
-          if docker run --rm sfi-candidate > startup.log 2>&1; then
-            echo 'Production started without a persistent signing key' >&2
-            exit 1
-          fi
-          grep -q 'FLOW_ENCRYPTION_KEY must contain' startup.log
+          docker run --rm --user 80 --entrypoint ./flow sfi-candidate help flow:cache:flush
       - name: Publish a candidate and retain the master tag for master pushes
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)
         env:

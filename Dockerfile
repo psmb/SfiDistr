@@ -45,7 +45,6 @@ RUN chmod +x /opt/sfi/*.sh \
     && cp /opt/sfi/nginx.conf /etc/nginx/nginx.conf \
     && cp /opt/sfi/supervisord.conf /etc/supervisord.conf \
     && ln -s /opt/sfi/backupDb.sh /data/backupDb.sh \
-    && ln -s /opt/sfi/flow.sh /usr/local/bin/sfi-flow \
     && printf '\nPasswordAuthentication no\nPermitRootLogin no\nAllowUsers www-data\n' >> /etc/ssh/sshd_config
 
 WORKDIR /data/www-provisioned

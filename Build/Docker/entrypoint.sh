@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source /opt/sfi/load-secrets.sh
-
 cat > "$PHP_INI_DIR/conf.d/sfi.ini" <<INI
 date.timezone=${PHP_TIMEZONE:-Europe/Moscow}
 memory_limit=${PHP_MEMORY_LIMIT:-4096M}
