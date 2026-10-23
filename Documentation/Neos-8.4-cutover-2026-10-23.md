@@ -4,7 +4,7 @@
 
 ## Running deployment
 
-- Final application image: `sha256:7c86ebeba31e33acf3a8f79ac8c01a424d4f12a23f0a21336f4cbeab4df1e84f`, tagged `sfi-candidate:neos84-4f4230bf6fe1cdc15eb59451b00799f66979589e`. It derives from the accepted image `sha256:0a019e29c79f55359bc5411270c4cfec08e5c910db63381182503d7561eb2053` (source `56fe7c4e248989cd956e8d7e9120bbb859a4c60e`), adding only the two-line almanac fix from `4f4230bf6fe1cdc15eb59451b00799f66979589e`. The derivation Dockerfile and exact input are retained under `hotfix-4f4230bf6/`; candidate metadata and `release.env` point to the final image.
+- Image used at cutover (later in-place code updates are recorded below): `sha256:7c86ebeba31e33acf3a8f79ac8c01a424d4f12a23f0a21336f4cbeab4df1e84f`, tagged `sfi-candidate:neos84-4f4230bf6fe1cdc15eb59451b00799f66979589e`. It derives from the accepted image `sha256:0a019e29c79f55359bc5411270c4cfec08e5c910db63381182503d7561eb2053` (source `56fe7c4e248989cd956e8d7e9120bbb859a4c60e`), adding only the two-line almanac fix from `4f4230bf6fe1cdc15eb59451b00799f66979589e`. The derivation Dockerfile and exact input are retained under `hotfix-4f4230bf6/`; candidate metadata and `release.env` point to the final image.
 - Neos 8.4.7, Flow 8.4.4, Neos UI 8.4.4, PHP 8.3.31 and Redis 7.4.11. No event-sourced repository migration.
 - Compose project `sfi84`: `sfi84-web-1`, `sfi84-db-1`, `sfi84-redis-1` are running with `unless-stopped` restart policies.
 - Database volume `sfi84_release_db`; Redis volume `sfi84_release_redis`; existing candidate runtime volume `sfi84_data`.
@@ -57,7 +57,21 @@ The fix was built as an immutable image derived from the accepted image. An isol
 
 The release container was replaced during a second maintenance window, 16:45:22–16:48:31 Moscow time (3 minutes 9 seconds). The targeted Fusion cache flush was insufficient; a full `flow:cache:flush --force` and cache warmup picked up the new template. Keep the full cache rebuild as the replacement procedure. The generated education page was preserved across replacement, and its generator was rerun successfully afterward. The corrected stale/valid article cases and all 15 disclosure pages were checked again publicly; the same 2,890 itemprops, 36 tables and 3,565 signatures match the pre-upgrade baseline. The original failed request and diagnostic reproductions remain in historical exception logs; final log verification is measured from the patched reopening timestamp in `backups/hotfix-live-opened.txt`. No new application warning/error/critical entry or HTTP 5xx response appeared in that verification window. The original signing key still matches.
 
-The stopped `sfi84-hotfix-check` container remains available for inspection. No database migration or schema change was needed for this correction. The old runtime and original database remain preserved. Use the final patched image when adopting into Spaas.
+The stopped `sfi84-hotfix-check` container remains available for inspection. No database migration or schema change was needed for this correction. The old runtime and original database remain preserved. Include the later in-place changes below in the release used for Spaas adoption.
+
+## Standard setup and in-place updates
+
+After cutover, the operational setup was simplified at the owner's request. Source commit `d38c42fd2` removes the custom secret loader and `sfi-flow` wrapper. The existing signing key is now in Flow's standard `Data/Persistent/EncryptionKey` file on `sfi84_data`, owned by UID 80 with mode 600. It matches the original key byte for byte; native HashService validation passed with no key environment variable. No database content or schema was changed.
+
+The running container now has a clean Git checkout tracking `origin/dimaip/upgrade-neos-8-4`. That branch was published without merging into `master` or triggering its deployment workflow. Installed packages, shared mounts and generated files were preserved. The host-specific, bind-mounted `server/nginx/conf.d/default-sfi.ru.conf` is marked `skip-worktree` in this checkout; review it separately if changing routing. Local runtime configuration and generated files are excluded through `.git/info/exclude`. The source image remains the cutover image; the current application revision is available through `git rev-parse HEAD` and the server's `live-source-commit` file. Include the current checkout and standard key storage in the eventual Spaas release before recreating the container.
+
+Routine updates now use `git pull --ff-only && ./flow flow:cache:flush` inside `/data/www` as UID 80. The inherited context is still `Production/Upgrade`. Its live HTTP settings were also copied into standard `Production/Settings.yaml`, so explicit Production CLI commands load the same settings; flush the inherited context for the running website. No maintenance routing, container restart, image build or image transfer was used for this simplification. Flow briefly returned 503 during cache recompilation; subsequent public checks passed.
+
+Plain CLI cache flush/warmup and migration-status commands passed (157 applied migrations, none pending). All 15 disclosure pages retained identical itemprop, table, microdata and signature hashes. The homepage, login, common-information page, education page and corrected almanac URL returned 200.
+
+Live log review exposed an additional upgrade compatibility error in the old-news redirect resolver: it called the removed Doctrine `Statement::fetchAll()` method. Commit `730e8fc70` uses a parameterized query and the supported result API. It was delivered with an actual fast-forward pull, ordinary Flow cache flush and warmup. Ten unit tests passed, including a regression resolving a stored legacy URL containing a quote. A known legacy news URL returned 301, while missing legacy URLs returned 404 instead of 500. No new HTTP 5xx response appeared in the focused verification after that fix.
+
+Protected pre-change files and the checkout diff are retained under `backups/before-normal-setup.tar` and `backups/before-checkout-normalization.patch`. Additional verification evidence is under `output/playwright/cutover/normal-setup-*` in the upgrade worktree. The original rollback container, database and backups remain unchanged.
 
 ## Trial and next steps
 
