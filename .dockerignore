@@ -25,7 +25,6 @@ Unconfirmed*.crdownload
 /Build/BuildEssentials/
 /Build/Reports/
 /.playwright-cli/
-/Configuration/Testing/
 
 .phpunit.result.cache
 **/*.sql

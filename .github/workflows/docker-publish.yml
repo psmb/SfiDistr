@@ -53,10 +53,14 @@ jobs:
         with:
           persist-credentials: false
       - name: Build the production image
-        run: docker build --tag sfi-candidate .
+        run: docker build --build-arg APP_REVISION="$GITHUB_SHA" --tag sfi-candidate .
       - name: Verify the ordinary Flow CLI works without a wrapper
         run: |
           docker run --rm --user 80 --entrypoint ./flow sfi-candidate help flow:cache:flush
+          docker run --rm --user 80 --entrypoint sh sfi-candidate -ec '
+            test "$(git branch --show-current)" = master
+            test -z "$(git status --porcelain)"
+          '
       - name: Publish a candidate and retain the master tag for master pushes
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish)
         env:

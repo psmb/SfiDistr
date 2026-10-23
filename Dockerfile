@@ -49,7 +49,20 @@ RUN chmod +x /opt/sfi/*.sh \
 
 WORKDIR /data/www-provisioned
 COPY --chown=www-data:www-data ./ ./
-RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader \
+ARG APP_REVISION
+LABEL org.opencontainers.image.revision=$APP_REVISION
+RUN test -n "$APP_REVISION" \
+    && git init --initial-branch=master \
+    && git remote add origin https://github.com/psmb/SfiDistr.git \
+    && git fetch --depth=1 origin "$APP_REVISION" \
+    && git update-ref refs/heads/master FETCH_HEAD \
+    && git read-tree HEAD \
+    && git config remote.origin.fetch '+refs/heads/master:refs/remotes/origin/master' \
+    && git config branch.master.remote origin \
+    && git config branch.master.merge refs/heads/master \
+    && git config pull.ff only \
+    && printf '/Configuration/Development/**\n/Configuration/Production/**\n/Web/docs/\n/Web/sveden/\n' >> .git/info/exclude \
+    && composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader \
     && composer clear-cache \
     && cp /opt/sfi/Settings.yaml Configuration/Settings.yaml \
     && chown -R www-data:www-data /data/www-provisioned \

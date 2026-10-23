@@ -2,6 +2,8 @@ services:
   redis:
     restart: always
     image: redis:7.4-alpine@sha256:57e4255cc971b1c8d6f8a6ca283ac01bc3ecdd914273ef6bfaede87aaecd6541
+    volumes:
+      - redis-data:/data
   db:
     restart: always
     image: mariadb:10.3
@@ -19,6 +21,8 @@ services:
       - /data/www-provisioned/Web/_Resources
       - /mnt/vol2/docker/sites/kabinet/www/moodledata/repository/ltso/accred:/data/www-provisioned/Web/docs
       - /home/umo/umo:/data/www-provisioned/Web/umo
+    tmpfs:
+      - /data/www-provisioned/Web/_Resources/Static:uid=80,gid=80,mode=0755
     image: ghcr.io/psmb/sfidistr:master
     hostname: 'sfiru'
     networks:
@@ -33,7 +37,8 @@ services:
       - GA_DEVKEY
       - SFI_API_AUTH
       - IMPORT_GITHUB_PUB_KEYS
-      - FLOW_HTTP_TRUSTED_PROXIES
+      - FLOW_CONTEXT=Production
+      - FLOW_HTTP_TRUSTED_PROXIES=172.19.0.7
     labels:
       - "neos=true"
       - "traefik.enable=true"
@@ -49,6 +54,7 @@ services:
 volumes:
   db-data:
   app-data:
+  redis-data:
 networks:
   main:
     external: true
