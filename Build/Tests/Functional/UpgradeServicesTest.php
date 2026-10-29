@@ -2,10 +2,17 @@
 
 use Neos\Flow\Tests\FunctionalTestCase;
 use Neos\Flow\Cache\CacheManager;
+use Neos\ContentRepository\Domain\Service\NodeTypeManager;
 use Yeebase\Graylog\Log\GraylogLoggerInterface;
 
 final class UpgradeServicesTest extends FunctionalTestCase
 {
+    public function testHomepageIsAvailableAsASiteNodeType(): void
+    {
+        $homepage = $this->objectManager->get(NodeTypeManager::class)->getNodeType('Sfi.Sfi:PageMain');
+        self::assertTrue($homepage->isOfType('Neos.Neos:Site'));
+    }
+
     public function testContentCacheSupportsTagInvalidation(): void
     {
         $cache = $this->objectManager->get(CacheManager::class)->getCache('Neos_Fusion_Content');

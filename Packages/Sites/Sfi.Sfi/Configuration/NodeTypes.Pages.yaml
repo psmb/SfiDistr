@@ -40,6 +40,7 @@ blah:
           position: '0'
   superTypes:
     'Sfi.Sfi:AbstractPage': true
+    'Neos.Neos:Site': true
   properties:
     important:
       type: references

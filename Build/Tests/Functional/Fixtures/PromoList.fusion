@@ -1,0 +1,12 @@
+include: resource://Neos.Fusion/Private/Fusion/Root.fusion
+include: resource://Neos.Neos/Private/Fusion/Root.fusion
+include: resource://Sfi.Sfi/Private/Fusion/NodeTypes/Promo.fusion
+
+promoList = Sfi.Sfi:PromoList {
+    @cache.mode = 'embed'
+}
+
+prototype(Sfi.Sfi:PromoShort) >
+prototype(Sfi.Sfi:PromoShort) < prototype(Neos.Fusion:Value) {
+    value = ${node.properties.title}
+}

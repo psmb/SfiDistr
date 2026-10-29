@@ -33,7 +33,7 @@
         "neos/form": "^5.4",
         "neos/fusion-afx": "~8.4.0",
         "neos/googleanalytics": "^3.4",
-        "neos/neos": "~8.4.0",
+        "neos/neos": "~8.4.8",
         "neos/neos-ui": "~8.4.0",
         "neos/nodetypes": "~8.4.0",
         "neos/redirecthandler": "^5.1",
