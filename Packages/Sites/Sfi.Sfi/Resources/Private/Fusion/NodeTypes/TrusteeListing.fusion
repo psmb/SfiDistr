@@ -17,7 +17,7 @@ prototype(Sfi.Sfi:TrusteeListing) < prototype(Neos.Fusion:Loop) {
 		}
 		entryTags {
 			1 = ${Neos.Caching.nodeTag(node)}
-			2 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:PageTag')}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:PageTag', node)}
 		}
 	}
 }

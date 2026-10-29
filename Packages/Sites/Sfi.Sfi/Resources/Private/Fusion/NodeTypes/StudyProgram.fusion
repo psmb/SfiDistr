@@ -396,7 +396,7 @@ prototype(Sfi.Sfi:StudyProgramsListingByReference) < prototype(Sfi.Sfi:StudyProg
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:StudyProgram')}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:StudyProgram', node)}
 			2 = ${Neos.Caching.nodeTag(node)}
 		}
 	}
