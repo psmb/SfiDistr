@@ -42,7 +42,7 @@ prototype(Sfi.News:Latest) < prototype(Neos.Fusion:Component) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews', node)}
 		}
 	}
 }
@@ -69,7 +69,7 @@ prototype(Sfi.News:NewsRelated) < prototype(Flowpack.Listable:List) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews', node)}
 		}
 	}
 }
@@ -92,7 +92,7 @@ prototype(Sfi.News:TopList) < prototype(Neos.Fusion:Loop) {
 		maximumLifetime = ${3600}
 		entryTags {
 			1 = ${Neos.Caching.nodeTag(site)}
-			2 = ${Neos.Caching.nodeTypeTag('Sfi.News:ImportantMixin')}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.News:ImportantMixin', node)}
 		}
 	}
 }
@@ -149,7 +149,7 @@ prototype(Sfi.News:ListByTag) < prototype(Flowpack.Listable:List) {
 			3 = 'site'
 		}
 		entryTags {
-			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews')}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:AbstractNews', node)}
 			2 = ${Neos.Caching.nodeTag(node)}
 		}
 	}

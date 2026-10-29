@@ -105,7 +105,7 @@ prototype(Sfi.Shared:ListByReferences) < prototype(Neos.Fusion:Tag) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${Neos.Caching.nodeTypeTag('Flowpack.Listable:ListableMixin')}
+			1 = ${Neos.Caching.nodeTypeTag('Flowpack.Listable:ListableMixin', node)}
 			2 = ${Neos.Caching.nodeTag(node)}
 		}
 	}

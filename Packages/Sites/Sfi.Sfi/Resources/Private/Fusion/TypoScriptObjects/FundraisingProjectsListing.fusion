@@ -39,7 +39,7 @@ prototype(Sfi.Sfi:FundraisingProjectsListing) < prototype(Neos.Fusion:Loop) {
         }
         entryDiscriminator = ${subscriber.referer}
         entryTags {
-            1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:FundraisingProject')}
+            1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:FundraisingProject', node)}
         }
         context {
             1 = 'site'

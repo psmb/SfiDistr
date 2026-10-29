@@ -26,7 +26,7 @@ prototype(Sfi.Sfi:Blog.TopList) < prototype(Neos.Fusion:Component) {
                 node = ${node}
             }
             entryTags {
-                1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Blog')}
+                1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Blog', node)}
             }
         }
     }

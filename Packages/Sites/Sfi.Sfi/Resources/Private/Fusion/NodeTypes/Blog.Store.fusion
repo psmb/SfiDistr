@@ -18,8 +18,8 @@ prototype(Sfi.Sfi:Blog.Store) < prototype(Neos.Fusion:Join) {
                 3 = 'site'
             }
             entryTags {
-                1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Blog')}
-                2 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Person')}
+                1 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Blog', node)}
+                2 = ${Neos.Caching.nodeTypeTag('Sfi.Sfi:Person', node)}
             }
         }
     }

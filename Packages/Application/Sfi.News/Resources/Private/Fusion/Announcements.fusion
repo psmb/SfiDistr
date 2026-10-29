@@ -62,7 +62,7 @@ prototype(Sfi.News:AnnouncementsList) < prototype(Flowpack.Listable:List) {
 			editPreviewMode = ${editPreviewMode}
 		}
 		entryTags {
-			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:Announcement')}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.News:Announcement', node)}
 		}
 	}
 	@if.notEmpty = ${q(collection).count() > 0}
