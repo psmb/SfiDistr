@@ -1,6 +1,6 @@
 # Neos 8.4 upgrade
 
-This distribution upgrades Neos 4.3 / Flow 5.3 to Neos **8.4.7**, Flow **8.4.4**, and Neos UI **8.4.4**, using PHP **8.3**. The Composer constraints stay on 8.4. The classic, database-backed content repository remains in use; no event-sourced repository packages, content export/import, or Neos 9 preparation migrations are involved.
+This distribution upgrades Neos 4.3 / Flow 5.3 to Neos **8.4.8**, Flow **8.4.4**, and Neos UI **8.4.4**, using PHP **8.3**. The original cutover used Neos 8.4.7; the follow-up security patch is recorded in the audit linked below. The Composer constraints stay on 8.4. The classic, database-backed content repository remains in use; no event-sourced repository packages, content export/import, or Neos 9 preparation migrations are involved.
 
 ## Changes included
 
@@ -53,7 +53,7 @@ The container schedules `cron-hourly` and `cron-minutely` as the web user. The m
 
 ## Verification and maintenance
 
-Run `composer install`, then `composer test`. Tests use SQLite in the Testing context, file caches and a null mail transport; they do not use the application database. The test runner provides the memory needed for framework compilation. The installed Party package's own tests are excluded from reflection because they target newer PHPUnit attributes; this distribution's tests use PHPUnit 9 with Flow 8.4.
+Run `composer install`, then `composer test`. Tests use SQLite in the Testing context, file caches and a null mail transport; they do not use the application database. The test runner provides the memory needed for framework compilation. Upstream tests in Party and the patched Neos packages are excluded from reflection because they use PHPUnit 10 attributes; this distribution's tests use PHPUnit 9 with Flow 8.4.
 
 The checked-in editor bundles can be reproduced in each directory with `npm ci` followed by `NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider npm run build`:
 
@@ -83,6 +83,8 @@ The [editor and release QA report](Neos-8.4-editor-qa.md) records the subsequent
 The [fresh production-dump disclosure QA report](Neos-8.4-sveden-qa.md) records the subsequent rehearsal of all disclosure sections, including browser-level microdata, tables, signatures and the cached education route.
 
 ## References
+
+The [29 October follow-up audit](Neos-8.4-audit-2026-10-29.md) records the intermediate release checks, additional corrections, dependency security update, and verification limits.
 
 - [Neos upgrade instructions](https://docs.neos.io/api/upgrade-instructions)
 - [Neos 8.2 editor-plugin rebuild requirement](https://docs.neos.io/api/upgrade-instructions/8/upgrade-instructions-8-1-8-2)

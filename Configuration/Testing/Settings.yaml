@@ -3,8 +3,13 @@ Neos:
     object:
       registerFunctionalTestClasses: true
       includeClasses:
-        # The installed Party package's own tests require PHPUnit 10 attributes.
+        # Upstream package tests use PHPUnit 10 attributes.
         # Only this distribution's tests are run with Flow 8.4 / PHPUnit 9.
+        'Neos.ContentRepository': ['^Neos\\ContentRepository\\(?!Tests\\).*']
+        'Neos.Fusion': ['^Neos\\Fusion\\(?!Tests\\).*']
+        'Neos.Fusion.Afx': ['^Neos\\Fusion\\Afx\\(?!Tests\\).*']
+        'Neos.Media': ['^Neos\\Media\\(?!Tests\\).*']
+        'Neos.Neos': ['^Neos\\Neos\\(?!Tests\\).*']
         'Neos.Party': ['^Neos\\Party\\(?!Tests\\).*']
     persistence:
       backendOptions:

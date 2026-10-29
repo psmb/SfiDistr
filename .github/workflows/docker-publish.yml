@@ -29,6 +29,8 @@ jobs:
           tools: composer:v2
           ini-values: memory_limit=1024M
       - run: composer install --prefer-dist --no-interaction --no-progress
+      - name: Audit production dependencies
+        run: composer audit --locked --no-dev --abandoned=ignore
       - run: composer test
       - name: Rebuild custom editor extensions and test newsletter requests
         run: bash Build/Tests/editor-extensions.sh
