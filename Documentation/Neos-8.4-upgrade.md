@@ -22,7 +22,7 @@ Rehearse these steps against a fresh production database copy and the actual ass
 
 1. Stop editorial changes and newsletter workers. Back up the database, persistent resources, local configuration and the current image tag/digest. Keep the old deployment available for rollback.
 2. Build the new image from this branch, or install the locked dependencies under PHP 8.3 with `composer install --no-dev --prefer-dist --optimize-autoloader`. Do not run `composer update` during deployment. Keep `DistributionPackages/` in the release: Composer links those packages locally.
-3. Provide the existing database, S3, SMTP and other integration environment variables. Copy the current deployment's effective Flow signing key, byte for byte, to `Data/Persistent/EncryptionKey` before starting the new application. Keep `Data` on a persistent volume and make the key readable only by the web user. Flow reads this standard file directly; verify that it survives container replacement and validates previously issued tokens. The key may come from configuration, the legacy `Data/Persistent/EncryptionKey` file or the persistent HashService cache, and is not included in the SQL dump. The database volume and credentials do not change. This upgrade does not change the MariaDB or Redis server versions.
+3. Provide the existing database, S3, SMTP and other integration environment variables. Copy the current deployment's effective Flow signing key, byte for byte, to `Data/Persistent/EncryptionKey` before starting the new application. Keep `Data` on a persistent volume and make the key readable only by the web user. Flow reads this standard file directly; verify that it survives container replacement and validates previously issued tokens. The key may come from configuration, the legacy `Data/Persistent/EncryptionKey` file or the persistent HashService cache, and is not included in the SQL dump. The database volume, credentials, and MariaDB 10.3 version do not change. Content-cache invalidation requires Redis 4 or later; the upgraded deployment pins Redis 7.4.11.
 4. With the new code and the site still in maintenance, run inside the container as the web user in the production context:
 
    ```sh
@@ -76,7 +76,7 @@ Local checks completed during the upgrade:
 - Newsletter generation for one synthetic subscriber in dry-run mode; no email sent.
 - PHP 8.3 container build, startup and HTTP rendering in Development and a Production subcontext, including initial page rendering with Redis 3.2. The later server publishing test exposed an incompatibility: Neos 8.4 cache invalidation uses `UNLINK`. The upgraded deployment requires Redis 4 or later and now pins tested Redis 7.4.11; Redis 3.2 is unsuitable.
 
-The local asset snapshot is incomplete. Full media validation and real SMTP, payment, PDF-signing, external subscriber-source and Google Analytics integrations require the staging environment and its credentials. Production has not been changed.
+The initial local asset snapshot was incomplete. Full media validation and real SMTP, payment, PDF-signing, external subscriber-source and Google Analytics integrations were not established by that rehearsal. The subsequent server deployment and its verification are recorded in the staging, cutover, and audit reports linked below.
 
 The [editor and release QA report](Neos-8.4-editor-qa.md) records the subsequent editorial, fixture-integration and release-image checks.
 
