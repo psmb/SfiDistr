@@ -64,6 +64,10 @@ prototype(Sfi.Sfi:AlmanacEntryFull) < prototype(Neos.Neos:ContentComponent) {
 	download = afx`<div class="marginTop-half"><a class="Button" onclick={"ga('send', 'event', 'TabClick', '" + (lang == 'en' ? hrefEn : href) + "'); return true;"} href={lang == 'en' ? hrefEn : href}>{lang == 'en' ? 'Download' : 'Скачать'}</a></div>`
 	download.@if.assetAvailable = ${lang == 'en' ? node.properties.assetEn : node.properties.asset }
 
+	body = Neos.Neos:ContentCollection {
+		nodePath = 'body'
+	}
+
 	renderer = afx`
 		<div class="marginVertical-double AlmanacEntry">
 			<div>
@@ -96,6 +100,7 @@ prototype(Sfi.Sfi:AlmanacEntryFull) < prototype(Neos.Neos:ContentComponent) {
 			{props.linkAlt}
 			<br/>
 			{props.download}
+			{q(node).children('body').count() > 0 ? props.body : ''}
 		</div>
 	`
 }

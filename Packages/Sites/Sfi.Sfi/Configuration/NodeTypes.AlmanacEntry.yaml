@@ -11,6 +11,9 @@
       groups:
         asset:
           label: Asset
+  childNodes:
+    body:
+      type: 'Neos.Neos:ContentCollection'
   properties:
     categories:
       type: references
