@@ -209,6 +209,8 @@ Neos:
               - 410
   Neos:
     Ui:
+      # Let editors open the published page and copy its public URL.
+      nextVersionPreviewBehavior: false
       resources:
         stylesheets:
           "Sfi.Sfi:Itemprop":
